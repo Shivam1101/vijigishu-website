@@ -166,19 +166,19 @@
     /* Top Right Admin Profile & Dropdown */
     .admin-profile-container { position: relative; }
     .admin-profile-badge {
-      display: flex; align-items: center; gap: 10px;
+      display: flex; align-items: center; gap: 8px;
       background: var(--white); border: 1px solid var(--border);
-      padding: 6px 14px 6px 8px; border-radius: 100px;
+      padding: 5px 12px 5px 6px; border-radius: 100px;
       cursor: pointer; transition: all .2s; user-select: none;
     }
     .admin-profile-badge:hover { border-color: var(--green); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     .admin-avatar {
-      width: 28px; height: 28px; border-radius: 50%;
+      width: 26px; height: 26px; border-radius: 50%;
       background: var(--green); color: var(--white);
       display: grid; place-items: center; font-weight: 800; font-size: .75rem;
     }
-    .admin-profile-name { font-size: .8rem; font-weight: 700; color: var(--navy); }
-    .admin-profile-arrow { font-size: .65rem; color: var(--gray); transition: transform .2s; }
+    .admin-profile-name { font-size: .78rem; font-weight: 700; color: var(--navy); }
+    .admin-profile-arrow { font-size: .62rem; color: var(--gray); transition: transform .2s; }
     .admin-profile-badge.active .admin-profile-arrow { transform: rotate(180deg); }
 
     .profile-dropdown {
@@ -228,11 +228,12 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
     
-    /* Top Bar */
-    .admin-top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 14px; }
+    /* Top Bar stacked layout */
+    .admin-top-bar { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .admin-title h1 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--navy); }
     .admin-title p { color: var(--gray); font-size: .85rem; }
-    .top-actions-wrap { display: flex; align-items: center; gap: 12px; }
+    .top-right-column { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+    .top-actions-wrap { display: flex; align-items: center; gap: 10px; }
     
     /* Stats Bar */
     .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
@@ -291,6 +292,14 @@
     @media (max-width: 1100px) { .gallery-grid-layout { grid-template-columns: 1fr; } }
 
     .card-box { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+    
+    /* STICKY UPLOAD FORM CARD BOX */
+    .card-box.sticky-card {
+      position: sticky;
+      top: 24px;
+      z-index: 10;
+    }
+
     .card-box-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
 
     .upload-dropzone { border: 2px dashed #CBD5E1; border-radius: 12px; padding: 18px 12px; text-align: center; background: #F8FAFC; cursor: pointer; transition: all .3s; position: relative; margin-bottom: 14px; }
@@ -393,22 +402,17 @@
     
     <div class="alert-banner" id="alertBanner"></div>
 
-    <!-- TOP CONTROL BAR -->
+    <!-- TOP CONTROL BAR WITH ADMIN PROFILE ON TOP RIGHT -->
     <div class="admin-top-bar">
       <div class="admin-title">
         <h1 id="pageMainHeading">Blog <em>Management</em></h1>
         <p id="pageSubHeading">Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.</p>
       </div>
 
-      <!-- TOP ACTIONS AREA (Live View, Add Article, Profile Dropdown) -->
-      <div class="top-actions-wrap">
-        <a href="blog.html" id="topLiveSiteBtn" class="top-live-btn" target="_blank">
-          👁 View Live Blog ↗
-        </a>
-
-        <button class="btn btn-green" id="topCreateBtn" onclick="showNewPostForm()">+ Create New Article</button>
-
-        <!-- ADMIN PROFILE DROPDOWN -->
+      <!-- RIGHT SIDE STACKED COLUMN (PROFILE ON TOP, ACTION BUTTONS BELOW) -->
+      <div class="top-right-column">
+        
+        <!-- ADMIN PROFILE DROPDOWN AT THE VERY TOP -->
         <div class="admin-profile-container">
           <div class="admin-profile-badge" id="profileBadge" onclick="toggleProfileDropdown()">
             <div class="admin-avatar">A</div>
@@ -426,6 +430,16 @@
             </button>
           </div>
         </div>
+
+        <!-- ACTION BUTTONS ROW BELOW PROFILE -->
+        <div class="top-actions-wrap">
+          <a href="blog.html" id="topLiveSiteBtn" class="top-live-btn" target="_blank">
+            👁 View Live Blog ↗
+          </a>
+
+          <button class="btn btn-green" id="topCreateBtn" onclick="showNewPostForm()">+ Create New Article</button>
+        </div>
+
       </div>
     </div>
 
@@ -559,8 +573,8 @@
 
       <div class="gallery-grid-layout">
         
-        <!-- ADD NEW PHOTO FORM -->
-        <div class="card-box">
+        <!-- STICKY ADD NEW PHOTO FORM CARD BOX -->
+        <div class="card-box sticky-card">
           <h3 class="card-box-title">➕ Upload &amp; Add Photo</h3>
           <form id="addPhotoForm">
             
