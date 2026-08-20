@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    if (localStorage.getItem('vijigishu_admin_logged_in') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog CMS Manager – Vijigishu Control Panel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -169,7 +174,14 @@
   <div class="admin-nav-btns">
     <a href="blog.html" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,.3);" target="_blank">👁 View Live Blog →</a>
     <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Blog</button>
+    <button class="btn btn-outline" style="color: #FF7043; border-color: rgba(255,112,67,0.4); background: rgba(255,112,67,0.1);" onclick="logoutAdmin()">Logout 🚪</button>
   </div>
+  <script>
+    function logoutAdmin() {
+      localStorage.removeItem('vijigishu_admin_logged_in');
+      window.location.href = 'login.html';
+    }
+  </script>
 </header>
 
 <main class="admin-container">
