@@ -41,7 +41,7 @@
     .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
 
     /* ─── SCROLL MARGIN FOR BOOKMARK ANCHORS ─── */
-    section, .disc-card {
+    section {
       scroll-margin-top: 140px;
     }
 
@@ -563,16 +563,14 @@
   </div>
 </div>
 
-<!-- ===== BOOKMARK FILTER BAR ===== -->
+<!-- ===== BOOKMARK FILTER BAR (COMBINED & ICONIFIED) ===== -->
 <div class="filter-bar">
   <div class="filter-inner">
-    <a href="#best-selling" class="filter-btn active" data-section="best-selling">🌐 All Programs</a>
+    <a href="#best-selling" class="filter-btn active" data-section="all">🌐 All Programs</a>
     <a href="#best-selling" class="filter-btn" data-section="best-selling">🔥 Best Selling</a>
-    <a href="#management" class="filter-btn" data-section="management">💼 Management</a>
-    <a href="#architecture" class="filter-btn" data-section="architecture">🏛️ Architecture &amp; Design</a>
-    <a href="#engineering" class="filter-btn" data-section="engineering">⚙️ Engineering</a>
-    <a href="#school" class="filter-btn" data-section="school">🎒 School Programs</a>
-    <a href="#internship" class="filter-btn" data-section="internship">📜 Internships &amp; Conferences</a>
+    <a href="#disciplines" class="filter-btn" data-section="disciplines">🎓 Academic Disciplines</a>
+    <a href="#process" class="filter-btn" data-section="process">📋 How It Works</a>
+    <a href="#internship" class="filter-btn" data-section="internship">🤝 Internships, Faculty Development &amp; Conferences</a>
   </div>
 </div>
 
@@ -886,7 +884,7 @@
   </div>
 </section>
 
-<!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES (EXACT MATCH TO ATTACHED DESIGN) ===== -->
+<!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES ===== -->
 <section id="internship">
   <div class="container">
     <div class="internship-header reveal">
@@ -1070,17 +1068,15 @@
   const filterBtns = document.querySelectorAll('.filter-btn');
   const sections = [
     { id: 'best-selling', btnTag: 'best-selling' },
-    { id: 'management', btnTag: 'management' },
-    { id: 'architecture', btnTag: 'architecture' },
-    { id: 'engineering', btnTag: 'engineering' },
-    { id: 'school', btnTag: 'school' },
+    { id: 'disciplines', btnTag: 'disciplines' },
+    { id: 'process', btnTag: 'process' },
     { id: 'internship', btnTag: 'internship' }
   ];
 
   window.addEventListener('scroll', () => {
     const scrollPos = window.scrollY + 160;
 
-    let currentSectionTag = '';
+    let currentSectionTag = 'all';
     sections.forEach(sec => {
       const el = document.getElementById(sec.id);
       if (el) {
@@ -1092,12 +1088,14 @@
       }
     });
 
-    if (currentSectionTag) {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      const activeBtn = document.querySelector(`.filter-btn[data-section="${currentSectionTag}"]`);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
+    if (window.scrollY < 200) {
+      currentSectionTag = 'all';
+    }
+
+    filterBtns.forEach(b => b.classList.remove('active'));
+    const activeBtn = document.querySelector(`.filter-btn[data-section="${currentSectionTag}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
     }
   });
 
