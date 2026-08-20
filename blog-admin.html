@@ -629,7 +629,7 @@
   });
 
   // ==========================================
-  // BLOG CMS SCRIPT LOGIC (WITH ICON-ONLY ACTIONS & TOOLTIPS)
+  // BLOG CMS SCRIPT LOGIC
   // ==========================================
   const DEFAULT_BLOGS = [
     {
@@ -708,13 +708,19 @@
     updateBlogBulkBar();
   }
 
-  function toggleBlogSelect(id, checked) {
+  function toggleBlogSelect(id, checked, checkboxEl) {
     const strId = String(id);
     if (checked) {
       selectedBlogIds.add(strId);
     } else {
       selectedBlogIds.delete(strId);
     }
+    
+    if (checkboxEl) {
+      const row = checkboxEl.closest('tr');
+      if (row) row.style.background = checked ? 'rgba(56,103,58,0.06)' : '';
+    }
+
     updateBlogBulkBar();
   }
 
@@ -732,9 +738,9 @@
     }
 
     tbody.innerHTML = blogs.map(b => `
-      <tr>
+      <tr style="${selectedBlogIds.has(String(b.id)) ? 'background:rgba(56,103,58,0.06);' : ''}">
         <td style="text-align: center;">
-          <input type="checkbox" ${selectedBlogIds.has(String(b.id)) ? 'checked' : ''} onchange="toggleBlogSelect('${b.id}', this.checked)" />
+          <input type="checkbox" ${selectedBlogIds.has(String(b.id)) ? 'checked' : ''} onchange="toggleBlogSelect('${b.id}', this.checked, this)" />
         </td>
         <td><img src="${b.image}" class="blog-thumb" alt="" /></td>
         <td>
@@ -759,6 +765,8 @@
         </td>
       </tr>
     `).join('');
+
+    updateBlogBulkBar();
   }
 
   function showNewPostForm() {
@@ -805,7 +813,6 @@
         selectedBlogIds.delete(String(id));
         saveBlogsToStorage(blogs);
         renderTable();
-        updateBlogBulkBar();
         showAlert('🗑️ Article deleted successfully.');
       }
     );
@@ -823,7 +830,6 @@
         document.getElementById('selectAllBlogs').checked = false;
         saveBlogsToStorage(blogs);
         renderTable();
-        updateBlogBulkBar();
         showAlert('🗑️ Selected articles deleted successfully.');
       }
     );
@@ -950,7 +956,7 @@
   }
 
   // ==========================================
-  // GALLERY MANAGEMENT SCRIPT LOGIC (ICON ACTIONS & TOOLTIPS)
+  // GALLERY MANAGEMENT SCRIPT LOGIC
   // ==========================================
   const countryIcons = {
     singapore: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><path d="M 1 18 A 17 17 0 0 1 35 18 Z" fill="#EF3340"/><path d="M 10 9 A 6 6 0 1 0 10 17 A 7 7 0 1 1 10 9 Z" fill="#FFFFFF"/></svg>`,
@@ -1035,17 +1041,24 @@
       filtered.forEach(item => selectedGalleryIds.add(String(item.id)));
     }
     renderAdminGallery();
-    updateGalleryBulkBar();
   }
 
-  function toggleGallerySelect(id, checked) {
+  function toggleGallerySelect(id, checked, checkboxEl) {
     const strId = String(id);
     if (checked) {
       selectedGalleryIds.add(strId);
     } else {
       selectedGalleryIds.delete(strId);
     }
-    renderAdminGallery();
+    
+    // Smooth DOM toggle without destroying card grid
+    if (checkboxEl) {
+      const card = checkboxEl.closest('.admin-item-card');
+      if (card) {
+        card.classList.toggle('selected', checked);
+      }
+    }
+
     updateGalleryBulkBar();
   }
 
@@ -1108,7 +1121,7 @@
     });
   }
 
-  // Render Admin Gallery List with Icon Action Buttons & Tooltips
+  // Render Admin Gallery List
   function renderAdminGallery() {
     const items = getGalleryItems();
     const filter = document.getElementById('adminFilterSelect').value;
@@ -1131,7 +1144,7 @@
       const iconSvg = countryIcons[item.country] || '';
       card.innerHTML = `
         <div class="card-checkbox-wrap">
-          <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleGallerySelect('${strId}', this.checked)" />
+          <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleGallerySelect('${strId}', this.checked, this)" />
         </div>
         <img src="${item.src}" class="admin-item-img" alt="${item.title}" />
         <div class="admin-item-body">
@@ -1155,7 +1168,6 @@
     const master = document.getElementById('selectAllGallery');
     if (master) master.checked = false;
     renderAdminGallery();
-    updateGalleryBulkBar();
   });
 
   function confirmDeleteGalleryPhoto(id) {
@@ -1169,7 +1181,6 @@
         selectedGalleryIds.delete(strId);
         localStorage.setItem('vijigishu_gallery_items', JSON.stringify(items));
         renderAdminGallery();
-        updateGalleryBulkBar();
         showAlert('🗑️ Photo deleted successfully.');
       }
     );
@@ -1188,7 +1199,6 @@
         if (master) master.checked = false;
         localStorage.setItem('vijigishu_gallery_items', JSON.stringify(items));
         renderAdminGallery();
-        updateGalleryBulkBar();
         showAlert('🗑️ Selected photos deleted successfully.');
       }
     );
