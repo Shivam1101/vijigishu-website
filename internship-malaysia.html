@@ -212,29 +212,33 @@
     /* ─── SECTION 2: PROGRAM DETAILS BAR ─── */
     #details-bar-section {
       background: var(--navy);
-      padding: 28px 0;
+      padding: 20px 0;
       color: var(--white);
     }
     .details-bar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 16px;
+    }
+    .details-info-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 20px;
     }
     .details-info-left h4 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      display: inline-block;
-      margin-right: 12px;
+      font-size: 1.25rem;
       color: var(--sage);
+      white-space: nowrap;
     }
     .details-info-left span {
-      font-size: .95rem;
+      font-size: .84rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      margin-right: 18px;
-      display: inline-block;
+      color: rgba(255,255,255,0.92);
+      white-space: nowrap;
     }
 
     /* ─── SECTION 3: PROGRAM INCLUSIONS ─── */
