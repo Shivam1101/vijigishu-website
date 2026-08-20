@@ -6,7 +6,7 @@
   <title>Immersion Programs – Vijigishu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   
   <style>
@@ -39,6 +39,11 @@
     .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
     .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
+
+    /* ─── SCROLL MARGIN FOR BOOKMARK ANCHORS ─── */
+    section, .disc-card {
+      scroll-margin-top: 140px;
+    }
 
     /* ─── ANIMATED BELL ENQUIRY ICON BUTTON ─── */
     @keyframes bellRinging {
@@ -148,7 +153,7 @@
       font-style: italic;
     }
 
-    /* ─── FILTER BAR WITH ICONS ─── */
+    /* ─── BOOKMARK FILTER BAR ─── */
     .filter-bar {
       background: var(--white);
       border-bottom: 1px solid rgba(0,0,0,.06);
@@ -183,6 +188,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      text-decoration: none;
     }
     .filter-btn:hover { color: var(--navy); }
     .filter-btn.active { color: var(--green); border-bottom-color: var(--green); }
@@ -557,16 +563,16 @@
   </div>
 </div>
 
-<!-- ===== FILTER BAR WITH RESPECIVE ICONS ===== -->
+<!-- ===== BOOKMARK FILTER BAR ===== -->
 <div class="filter-bar">
   <div class="filter-inner">
-    <button class="filter-btn active" data-filter="all">🌐 All Programs</button>
-    <button class="filter-btn" data-filter="best-selling">🔥 Best Selling</button>
-    <button class="filter-btn" data-filter="management">💼 Management</button>
-    <button class="filter-btn" data-filter="architecture">🏛️ Architecture &amp; Design</button>
-    <button class="filter-btn" data-filter="engineering">⚙️ Engineering</button>
-    <button class="filter-btn" data-filter="school">🎒 School Programs</button>
-    <button class="filter-btn" data-filter="internship">📜 Internships &amp; Conferences</button>
+    <a href="#best-selling" class="filter-btn active" data-section="best-selling">🌐 All Programs</a>
+    <a href="#best-selling" class="filter-btn" data-section="best-selling">🔥 Best Selling</a>
+    <a href="#management" class="filter-btn" data-section="management">💼 Management</a>
+    <a href="#architecture" class="filter-btn" data-section="architecture">🏛️ Architecture &amp; Design</a>
+    <a href="#engineering" class="filter-btn" data-section="engineering">⚙️ Engineering</a>
+    <a href="#school" class="filter-btn" data-section="school">🎒 School Programs</a>
+    <a href="#internship" class="filter-btn" data-section="internship">📜 Internships &amp; Conferences</a>
   </div>
 </div>
 
@@ -703,8 +709,8 @@
 
     <div class="disc-grid">
 
-      <!-- Management -->
-      <div class="disc-card reveal">
+      <!-- Management Card -->
+      <div id="management" class="disc-card reveal">
         <div class="disc-img">
           <img src="images/mangement-2-scaled.webp" alt="Management" loading="lazy" />
         </div>
@@ -737,8 +743,8 @@
         </div>
       </div>
 
-      <!-- Architecture & Design -->
-      <div class="disc-card reveal reveal-delay-1">
+      <!-- Architecture & Design Card -->
+      <div id="architecture" class="disc-card reveal reveal-delay-1">
         <div class="disc-img">
           <img src="images/archi-scaled.webp" alt="Architecture & Design" loading="lazy" />
         </div>
@@ -771,8 +777,8 @@
         </div>
       </div>
 
-      <!-- Engineering -->
-      <div class="disc-card reveal">
+      <!-- Engineering Card -->
+      <div id="engineering" class="disc-card reveal">
         <div class="disc-img">
           <img src="images/engg-2-scaled.webp" alt="Engineering" loading="lazy" />
         </div>
@@ -805,8 +811,8 @@
         </div>
       </div>
 
-      <!-- School Programs -->
-      <div class="disc-card reveal reveal-delay-1">
+      <!-- School Programs Card -->
+      <div id="school" class="disc-card reveal reveal-delay-1">
         <div class="disc-img">
           <img src="images/School.webp" alt="School Programs" loading="lazy" />
         </div>
@@ -1060,32 +1066,39 @@
     mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
   });
 
-  // Filter Buttons Logic
+  // ScrollSpy for Filter Bar Bookmarks
   const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
+  const sections = [
+    { id: 'best-selling', btnTag: 'best-selling' },
+    { id: 'management', btnTag: 'management' },
+    { id: 'architecture', btnTag: 'architecture' },
+    { id: 'engineering', btnTag: 'engineering' },
+    { id: 'school', btnTag: 'school' },
+    { id: 'internship', btnTag: 'internship' }
+  ];
 
-      if (filter === 'all') {
-        document.getElementById('best-selling').style.display = 'block';
-        document.getElementById('disciplines').style.display = 'block';
-        document.getElementById('internship').style.display = 'block';
-      } else if (filter === 'best-selling') {
-        document.getElementById('best-selling').style.display = 'block';
-        document.getElementById('disciplines').style.display = 'none';
-        document.getElementById('internship').style.display = 'none';
-      } else if (filter === 'internship') {
-        document.getElementById('best-selling').style.display = 'none';
-        document.getElementById('disciplines').style.display = 'none';
-        document.getElementById('internship').style.display = 'block';
-      } else {
-        document.getElementById('best-selling').style.display = 'none';
-        document.getElementById('disciplines').style.display = 'block';
-        document.getElementById('internship').style.display = 'none';
+  window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY + 160;
+
+    let currentSectionTag = '';
+    sections.forEach(sec => {
+      const el = document.getElementById(sec.id);
+      if (el) {
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionTag = sec.btnTag;
+        }
       }
     });
+
+    if (currentSectionTag) {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      const activeBtn = document.querySelector(`.filter-btn[data-section="${currentSectionTag}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+    }
   });
 
   // Reveal Animations
