@@ -40,6 +40,55 @@
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
     .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
 
+    /* ─── ANIMATED BELL ENQUIRY ICON BUTTON ─── */
+    @keyframes bellRinging {
+      0% { transform: rotate(0deg); }
+      4% { transform: rotate(16deg); }
+      8% { transform: rotate(-14deg); }
+      12% { transform: rotate(12deg); }
+      16% { transform: rotate(-8deg); }
+      20% { transform: rotate(4deg); }
+      24% { transform: rotate(0deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(56, 103, 58, 0.35); }
+      50% { box-shadow: 0 0 0 10px rgba(56, 103, 58, 0); }
+    }
+
+    .enquiry-bell-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--sage);
+      border: 2px solid var(--sage);
+      box-shadow: 0 6px 20px rgba(27, 28, 74, 0.15);
+      cursor: pointer;
+      transition: all .3s var(--ease);
+      position: relative;
+      text-decoration: none;
+      animation: pulseGlow 2.5s infinite;
+      flex-shrink: 0;
+    }
+    .enquiry-bell-btn:hover {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(56, 103, 58, 0.3);
+    }
+    .enquiry-bell-btn svg {
+      width: 22px;
+      height: 22px;
+      animation: bellRinging 3.2s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
     /* ─── NAVBAR ─── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
     nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
@@ -212,7 +261,7 @@
 
     /* ─── DISCIPLINES ─── */
     #disciplines { padding: 80px 0; background: var(--white); }
-    .disc-intro { max-width: 640px; margin-bottom: 60px; }
+    .disc-intro { max-width: 640px; margin-bottom: 0; }
     .disc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
     .disc-card {
       border-radius: 24px;
@@ -565,10 +614,22 @@
 <!-- ===== BEST SELLING (OUR MOST POPULAR DESTINATIONS) ===== -->
 <section id="best-selling">
   <div class="container">
-    <div class="sec-header reveal">
-      <div class="tag">Best Selling</div>
-      <h2 class="section-heading">Our Most Popular <span>Destinations</span></h2>
+    <!-- HEADING WITH ANIMATED BELL ENQUIRY ICON ON FAR RIGHT -->
+    <div class="sec-header reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <div class="tag">Best Selling</div>
+        <h2 class="section-heading">Our Most Popular <span>Destinations</span></h2>
+      </div>
+
+      <!-- ANIMATED BELL ENQUIRY ICON REDIRECTING TO CONTACT PAGE -->
+      <a href="contact.html?type=destination-enquiry" class="enquiry-bell-btn" title="Send Quick Enquiry" aria-label="Send Quick Enquiry">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+      </a>
     </div>
+
     <div class="programs-scroll">
 
       <!-- UAE CARD -->
@@ -658,38 +719,29 @@
       </div>
 
     </div>
-
-    <!-- MINIMAL QUICK ENQUIRY FORM BAR ON MOST POPULAR DESTINATIONS -->
-    <div class="quick-enquiry-banner reveal" style="margin-top: 40px; background: var(--white); border-radius: 20px; padding: 24px 32px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-      <div>
-        <div style="font-size: .72rem; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 4px;">⚡ Instant Consultation</div>
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 2px;">Plan Your Custom Destination Tour</h3>
-        <p style="font-size: .84rem; color: var(--gray);">Request customized itineraries and institutional group pricing.</p>
-      </div>
-      <form action="contact.html" method="GET" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex: 1; max-width: 520px; justify-content: flex-end;">
-        <input type="text" name="name" placeholder="Your Name" required style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; flex: 1; min-width: 120px; font-family: inherit;" />
-        <select name="destination" style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; font-family: inherit; background: var(--white); color: var(--navy);">
-          <option value="" disabled selected>Destination</option>
-          <option value="UAE">🇦🇪 UAE / Dubai</option>
-          <option value="Europe">🇪🇺 Europe</option>
-          <option value="Singapore">🇸🇬 Singapore &amp; Malaysia</option>
-          <option value="Custom">✈️ Custom Tour</option>
-        </select>
-        <button type="submit" class="btn btn-green" style="padding: 10px 22px; font-size: .84rem; white-space: nowrap;">Send Enquiry →</button>
-      </form>
-    </div>
-
   </div>
 </section>
 
 <!-- ===== DISCIPLINES (ACADEMIC DISCIPLINES TAILORED TO YOUR FIELD) ===== -->
 <section id="disciplines">
   <div class="container">
-    <div class="disc-intro reveal">
-      <div class="tag">Academic Disciplines</div>
-      <h2 class="section-heading">Programs Tailored to<br><span>Your Field of Study</span></h2>
-      <p style="color:var(--gray);margin-top:12px;line-height:1.7;">Each immersion is crafted for a specific academic stream — industry visits, university tours, and cultural experiences aligned with your curriculum.</p>
+    <!-- HEADING WITH ANIMATED BELL ENQUIRY ICON ON FAR RIGHT -->
+    <div class="sec-header reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 48px;">
+      <div class="disc-intro">
+        <div class="tag">Academic Disciplines</div>
+        <h2 class="section-heading">Programs Tailored to<br><span>Your Field of Study</span></h2>
+        <p style="color:var(--gray);margin-top:12px;line-height:1.7;">Each immersion is crafted for a specific academic stream — industry visits, university tours, and cultural experiences aligned with your curriculum.</p>
+      </div>
+
+      <!-- ANIMATED BELL ENQUIRY ICON REDIRECTING TO CONTACT PAGE -->
+      <a href="contact.html?type=academic-enquiry" class="enquiry-bell-btn" title="Send Quick Enquiry" aria-label="Send Quick Enquiry">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+      </a>
     </div>
+
     <div class="disc-grid">
 
       <!-- Management -->
@@ -829,27 +881,6 @@
       </div>
 
     </div>
-
-    <!-- MINIMAL QUICK ENQUIRY FORM ON ACADEMIC DISCIPLINES -->
-    <div class="quick-enquiry-banner reveal" style="margin-top: 48px; background: #F8FAFC; border-radius: 20px; padding: 28px 36px; border: 1.5px solid #E2EDF7; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-      <div>
-        <div style="font-size: .72rem; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 4px;">🎓 Academic Stream Enquiry</div>
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 2px;">Need a Curriculum-Aligned Program for Your College?</h3>
-        <p style="font-size: .84rem; color: var(--gray);">Our academic team designs bespoke syllabus-aligned immersion modules.</p>
-      </div>
-      <form action="contact.html" method="GET" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex: 1; max-width: 520px; justify-content: flex-end;">
-        <input type="text" name="institution" placeholder="College / Institution Name" required style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; flex: 1; min-width: 130px; font-family: inherit; background: var(--white);" />
-        <select name="discipline" style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; font-family: inherit; background: var(--white); color: var(--navy);">
-          <option value="" disabled selected>Select Field</option>
-          <option value="Management">💼 Management</option>
-          <option value="Architecture">🏛️ Architecture &amp; Design</option>
-          <option value="Engineering">⚙️ Engineering</option>
-          <option value="School">🎒 School Programs</option>
-        </select>
-        <button type="submit" class="btn btn-primary" style="padding: 10px 22px; font-size: .84rem; white-space: nowrap;">Request Proposal →</button>
-      </form>
-    </div>
-
   </div>
 </section>
 
