@@ -265,7 +265,36 @@
         radial-gradient(ellipse 50% 60% at 90% 80%, rgba(56, 103, 58, 0.15) 0%, transparent 70%);
       pointer-events: none;
     }
+    
     .footer-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr 1.2fr 1.6fr;
+      gap: 40px;
+      align-items: flex-end;
+      margin-bottom: 0;
+    }
+    .footer-mascot-wrap {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      margin-bottom: -22px;
+      z-index: 3;
+    }
+    .footer-mascot-img {
+      max-height: 280px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
+      transition: transform 0.3s var(--ease, ease);
+    }
+    .footer-mascot-img:hover {
+      transform: scale(1.04);
+    }
+
+    .footer-grid_old {
       position: relative;
       z-index: 2;
       display: grid;
