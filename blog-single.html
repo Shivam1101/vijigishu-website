@@ -172,36 +172,12 @@
       .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="css/global-components.css" />
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="index.html" class="logo-wrap" style="text-decoration: none;">
-      <img src="images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="immersion-programs.html">Immersion Programs</a>
-      <a href="leadership-walk.html">Leadership Walk</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="blog.html" class="active">Blogs</a>
-      <a href="contact.html" class="nav-cta">Contact Us</a>
-    </div>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
-  <a href="immersion-programs.html">Immersion Programs</a>
-  <a href="leadership-walk.html">Leadership Walk</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="blog.html">Blogs</a>
-  <a href="contact.html">Contact Us</a>
-</div>
+<!-- ===== GLOBAL HEADER ===== -->
+<header id="global-header"></header>
 
 <!-- ===== MAIN ARTICLE HOLDER ===== -->
 <main id="articleContent">
@@ -218,61 +194,11 @@
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo" style="margin-bottom: 16px;">
-          <a href="index.html" style="text-decoration: none; display: inline-block;">
-            <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
-          </a>
-        </div>
-        <p class="footer-tagline">India's Most Trusted Educational Travel Specialist. Empowering students with global academic experiences since 1999.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Navigation</div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="immersion-programs.html">Immersion Programs</a>
-          <a href="leadership-walk.html">Leadership Walk</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="blog.html">Blogs</a>
-          <a href="contact.html">Contact Us</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Programs</div>
-        <div class="footer-links">
-          <a href="management.html">Management Immersion</a>
-          <a href="architecture-design.html">Architecture &amp; Design</a>
-          <a href="engineering.html">Engineering Immersion</a>
-          <a href="school-programs.html">School Edu-Tours</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Get In Touch</div>
-        <a href="contact.html" style="color:var(--sage); font-weight:700;">Contact Us →</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>© 2026 Vijigishu Education Pvt. Ltd. All rights reserved.</div>
-      <div style="display:flex; gap: 20px;">
-        <a href="#" style="color:inherit;">Privacy Policy</a>
-        <a href="#" style="color:inherit;">Terms of Use</a>
-      </div>
-    </div>
-  </div>
-</footer>
+<!-- ===== GLOBAL FOOTER ===== -->
+<footer id="global-footer"></footer>
 
+<script src="js/global-components.js"></script>
 <script>
-  // Mobile Hamburger Toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
-  });
 
   // Get URL Param
   const urlParams = new URLSearchParams(window.location.search);
