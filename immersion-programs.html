@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  
   <style>
     /* ─── Reset & Tokens ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -249,61 +251,108 @@
     .disc-explore { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: .85rem; font-weight: 700; transition: gap .25s; }
     .disc-card:hover .disc-explore { gap: 12px; }
 
-    /* ─── INTERNSHIP SECTION ─── */
-    #internship { padding: 80px 0; background: var(--navy); position: relative; overflow: hidden; }
-    #internship::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 0% 50%, rgba(56,103,58,.25) 0%, transparent 60%),
-                  radial-gradient(ellipse 50% 60% at 100% 50%, rgba(159,194,140,.1) 0%, transparent 60%);
-    }
-    .internship-inner {
+    /* ─── INTERNSHIPS, FACULTY DEVELOPMENT & CONFERENCES (EXACT DESIGN MATCH) ─── */
+    #internship {
+      padding: 90px 0;
+      background: #F0F7FC; /* Clean Light Blue background matching attached screenshot */
       position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
     }
-    .internship-left {}
-    .internship-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); line-height: 1.15; margin-bottom: 18px; }
-    .internship-h2 em { color: var(--sage); font-style: italic; }
-    .internship-sub { color: rgba(255,255,255,.65); font-size: 1rem; line-height: 1.7; margin-bottom: 36px; max-width: 420px; }
-    .internship-cards { display: flex; flex-direction: column; gap: 16px; }
-    .int-card {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      padding: 20px 24px;
+    .internship-header {
+      margin-bottom: 40px;
+    }
+    .internship-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .internship-accordion-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 1050px;
+    }
+    .internship-accordion-item {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid #E2EDF7;
+      padding: 24px 32px;
+      box-shadow: 0 4px 16px rgba(0, 50, 100, 0.03);
+      transition: all .3s var(--ease);
+      cursor: pointer;
+    }
+    .internship-accordion-item:hover {
+      box-shadow: 0 10px 30px rgba(0, 50, 100, 0.08);
+      transform: translateY(-2px);
+    }
+    .internship-accordion-header {
       display: flex;
       align-items: center;
-      gap: 16px;
-      transition: background .3s;
-      backdrop-filter: blur(10px);
+      justify-content: space-between;
+      gap: 20px;
     }
-    .int-card:hover { background: rgba(255,255,255,.14); }
-    .int-card-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0; }
-    .int-card-body {}
-    .int-card-title { font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: 4px; }
-    .int-card-text { font-size: .84rem; color: rgba(255,255,255,.6); line-height: 1.55; }
-    .internship-right {
+    .internship-badge {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #1E6091;
+      margin-bottom: 6px;
+    }
+    .internship-item-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .internship-item-sub {
+      font-size: .88rem;
+      color: var(--gray);
+    }
+    .internship-toggle-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #F0F7FC;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      place-items: center;
+      color: #1E6091;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: transform .3s var(--ease), background .3s;
+      flex-shrink: 0;
+    }
+    .internship-accordion-item.active .internship-toggle-icon {
+      transform: rotate(45deg);
+      background: var(--navy);
+      color: var(--white);
+    }
+    .internship-accordion-body {
+      display: none;
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: 1px solid #F0F7FC;
+      font-size: .88rem;
+      color: var(--navy);
+      line-height: 1.65;
+    }
+    .internship-accordion-item.active .internship-accordion-body {
+      display: block;
+    }
+
+    .int-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
+      margin-bottom: 20px;
+      background: #F8FAFC;
+      padding: 16px;
+      border-radius: 14px;
     }
-    .int-dest-card {
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-    }
-    .int-dest-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform .5s var(--ease); }
-    .int-dest-card:hover img { transform: scale(1.06); }
-    .int-dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,14,46,.8) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; }
-    .int-dest-name { color: var(--white); font-weight: 700; font-size: .95rem; }
-    .int-dest-tag { color: var(--sage); font-size: .72rem; font-weight: 600; margin-bottom: 2px; }
-    .int-dest-cta { position: absolute; top: 12px; right: 12px; background: var(--sage); color: var(--navy); font-size: .72rem; font-weight: 700; padding: 5px 12px; border-radius: 100px; transition: background .25s; }
-    .int-dest-card:hover .int-dest-cta { background: var(--white); }
+    .int-detail-box label { font-size: .7rem; font-weight: 800; text-transform: uppercase; color: #1E6091; display: block; margin-bottom: 2px; }
+    .int-detail-box span { font-weight: 700; color: var(--navy); }
 
     /* ─── CTA BANNER ─── */
     #ip-cta {
@@ -398,7 +447,6 @@
       transform: scale(1.04);
     }
 
-    .footer-grid_old { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 64px; }
     .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .footer-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1rem; }
     .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); font-weight: 800; }
@@ -431,7 +479,6 @@
     @media (max-width: 1024px) {
       .programs-scroll { grid-template-columns: repeat(2, 1fr); }
       .disc-grid { grid-template-columns: 1fr; }
-      .internship-inner { grid-template-columns: 1fr; gap: 48px; }
       .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
       .steps-grid::before { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -444,10 +491,10 @@
       .programs-scroll { grid-template-columns: 1fr; }
       .disc-card { grid-template-columns: 1fr; }
       .disc-img img { height: 200px; }
-      .internship-right { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; text-align: center; }
+      .internship-accordion-item { padding: 20px; }
     }
   </style>
 </head>
@@ -508,14 +555,14 @@
     <button class="filter-btn active" data-filter="all">All Programs</button>
     <button class="filter-btn" data-filter="best-selling">Best Selling</button>
     <button class="filter-btn" data-filter="management">Management</button>
-    <button class="filter-btn" data-filter="architecture">Architecture & Design</button>
+    <button class="filter-btn" data-filter="architecture">Architecture &amp; Design</button>
     <button class="filter-btn" data-filter="engineering">Engineering</button>
     <button class="filter-btn" data-filter="school">School Programs</button>
-    <button class="filter-btn" data-filter="internship">International Internship</button>
+    <button class="filter-btn" data-filter="internship">Internships &amp; Conferences</button>
   </div>
 </div>
 
-<!-- ===== BEST SELLING ===== -->
+<!-- ===== BEST SELLING (OUR MOST POPULAR DESTINATIONS) ===== -->
 <section id="best-selling">
   <div class="container">
     <div class="sec-header reveal">
@@ -524,6 +571,7 @@
     </div>
     <div class="programs-scroll">
 
+      <!-- UAE CARD -->
       <div class="prog-card reveal">
         <div class="prog-img">
           <img src="images/1-elementor-io-optimized.webp" alt="UAE" loading="lazy" />
@@ -533,11 +581,7 @@
           <div class="prog-meta">
             <div class="prog-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              5N / 6D
-            </div>
-            <div class="prog-meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Dubai & Abu Dhabi
+              4 Nights / 5 Days
             </div>
           </div>
           <div class="prog-name">UAE</div>
@@ -549,6 +593,7 @@
         </div>
       </div>
 
+      <!-- EUROPE CARD -->
       <div class="prog-card reveal reveal-delay-1">
         <div class="prog-img">
           <img src="images/2-elementor-io-optimized.webp" alt="Europe" loading="lazy" />
@@ -558,11 +603,7 @@
           <div class="prog-meta">
             <div class="prog-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              6N / 7D
-            </div>
-            <div class="prog-meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Multiple Cities
+              4 Nights / 5 Days
             </div>
           </div>
           <div class="prog-name">Europe</div>
@@ -574,6 +615,7 @@
         </div>
       </div>
 
+      <!-- MALAYSIA & SINGAPORE CARD -->
       <div class="prog-card reveal reveal-delay-2">
         <div class="prog-img">
           <img src="images/4-elementor-io-optimized.webp" alt="Malaysia & Singapore" loading="lazy" />
@@ -582,14 +624,10 @@
           <div class="prog-meta">
             <div class="prog-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              6N / 7D
-            </div>
-            <div class="prog-meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              KL & Singapore
+              4 Nights / 5 Days
             </div>
           </div>
-          <div class="prog-name">Malaysia & Singapore</div>
+          <div class="prog-name">Malaysia &amp; Singapore</div>
           <div class="prog-tagline">Global giants, booming growth — two nations, one journey.</div>
           <a href="malaysia-singapore.html" class="prog-link">
             Explore Program
@@ -598,6 +636,7 @@
         </div>
       </div>
 
+      <!-- SINGAPORE & INDONESIA CARD -->
       <div class="prog-card reveal reveal-delay-3">
         <div class="prog-img">
           <img src="images/3-elementor-io-optimized.webp" alt="Singapore & Indonesia" loading="lazy" />
@@ -606,14 +645,10 @@
           <div class="prog-meta">
             <div class="prog-meta-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              6N / 7D
-            </div>
-            <div class="prog-meta-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              City & Sentosa
+              4 Nights / 5 Days
             </div>
           </div>
-          <div class="prog-name">Singapore & Indonesia</div>
+          <div class="prog-name">Singapore &amp; Indonesia</div>
           <div class="prog-tagline">Where culture meets real-world learning across two vibrant nations.</div>
           <a href="singapore-indonesia.html" class="prog-link">
             Explore Program
@@ -623,10 +658,31 @@
       </div>
 
     </div>
+
+    <!-- MINIMAL QUICK ENQUIRY FORM BAR ON MOST POPULAR DESTINATIONS -->
+    <div class="quick-enquiry-banner reveal" style="margin-top: 40px; background: var(--white); border-radius: 20px; padding: 24px 32px; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: .72rem; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 4px;">⚡ Instant Consultation</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 2px;">Plan Your Custom Destination Tour</h3>
+        <p style="font-size: .84rem; color: var(--gray);">Request customized itineraries and institutional group pricing.</p>
+      </div>
+      <form action="contact.html" method="GET" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex: 1; max-width: 520px; justify-content: flex-end;">
+        <input type="text" name="name" placeholder="Your Name" required style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; flex: 1; min-width: 120px; font-family: inherit;" />
+        <select name="destination" style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; font-family: inherit; background: var(--white); color: var(--navy);">
+          <option value="" disabled selected>Destination</option>
+          <option value="UAE">🇦🇪 UAE / Dubai</option>
+          <option value="Europe">🇪🇺 Europe</option>
+          <option value="Singapore">🇸🇬 Singapore &amp; Malaysia</option>
+          <option value="Custom">✈️ Custom Tour</option>
+        </select>
+        <button type="submit" class="btn btn-green" style="padding: 10px 22px; font-size: .84rem; white-space: nowrap;">Send Enquiry →</button>
+      </form>
+    </div>
+
   </div>
 </section>
 
-<!-- ===== DISCIPLINES ===== -->
+<!-- ===== DISCIPLINES (ACADEMIC DISCIPLINES TAILORED TO YOUR FIELD) ===== -->
 <section id="disciplines">
   <div class="container">
     <div class="disc-intro reveal">
@@ -678,7 +734,7 @@
         <div class="disc-body">
           <div>
             <div class="disc-icon">🏛️</div>
-            <div class="disc-name">Architecture & Design</div>
+            <div class="disc-name">Architecture &amp; Design</div>
             <div class="disc-sub">Step beyond textbooks — experience how design lives in the real world.</div>
             <div class="disc-dest-row">
               <div class="disc-dest-item">
@@ -726,7 +782,7 @@
                 <span class="disc-dest-icon">🏠</span>
                 <div>
                   <span class="disc-dest-label">Domestic</span>
-                  Pune · Mumbai · Bengaluru · Delhi · Manali & Shimla
+                  Pune · Mumbai · Bengaluru · Delhi · Manali &amp; Shimla
                 </div>
               </div>
             </div>
@@ -773,6 +829,27 @@
       </div>
 
     </div>
+
+    <!-- MINIMAL QUICK ENQUIRY FORM ON ACADEMIC DISCIPLINES -->
+    <div class="quick-enquiry-banner reveal" style="margin-top: 48px; background: #F8FAFC; border-radius: 20px; padding: 28px 36px; border: 1.5px solid #E2EDF7; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: .72rem; font-weight: 800; color: var(--green); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 4px;">🎓 Academic Stream Enquiry</div>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--navy); margin-bottom: 2px;">Need a Curriculum-Aligned Program for Your College?</h3>
+        <p style="font-size: .84rem; color: var(--gray);">Our academic team designs bespoke syllabus-aligned immersion modules.</p>
+      </div>
+      <form action="contact.html" method="GET" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; flex: 1; max-width: 520px; justify-content: flex-end;">
+        <input type="text" name="institution" placeholder="College / Institution Name" required style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; flex: 1; min-width: 130px; font-family: inherit; background: var(--white);" />
+        <select name="discipline" style="padding: 10px 16px; border-radius: 100px; border: 1.5px solid #CBD5E1; font-size: .84rem; outline: none; font-family: inherit; background: var(--white); color: var(--navy);">
+          <option value="" disabled selected>Select Field</option>
+          <option value="Management">💼 Management</option>
+          <option value="Architecture">🏛️ Architecture &amp; Design</option>
+          <option value="Engineering">⚙️ Engineering</option>
+          <option value="School">🎒 School Programs</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="padding: 10px 22px; font-size: .84rem; white-space: nowrap;">Request Proposal →</button>
+      </form>
+    </div>
+
   </div>
 </section>
 
@@ -796,7 +873,7 @@
       </div>
       <div class="step-item reveal reveal-delay-2">
         <div class="step-num">3</div>
-        <div class="step-title">Visa & Docs</div>
+        <div class="step-title">Visa &amp; Docs</div>
         <div class="step-desc">We handle complete visa assistance and all documentation support.</div>
       </div>
       <div class="step-item reveal reveal-delay-3">
@@ -806,88 +883,126 @@
       </div>
       <div class="step-item reveal" style="transition-delay:.4s">
         <div class="step-num">5</div>
-        <div class="step-title">Experience & Return</div>
+        <div class="step-title">Experience &amp; Return</div>
         <div class="step-desc">Our tour leaders travel with your group from take-off to touchdown.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== INTERNATIONAL INTERNSHIP ===== -->
+<!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES (EXACT MATCH TO ATTACHED DESIGN) ===== -->
 <section id="internship">
   <div class="container">
-    <div class="internship-inner">
-      <div class="internship-left reveal">
-        <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage)">International Internship</div>
-        <h2 class="internship-h2">Work Abroad, <em>Grow Beyond</em></h2>
-        <p class="internship-sub">Gain real international industry exposure through our structured internship programs — in collaboration with leading global institutions and industry partners.</p>
-        <div class="internship-cards">
-          <div class="int-card">
-            <div class="int-card-icon" style="background:rgba(212,168,64,.2)">🇲🇾</div>
-            <div class="int-card-body">
-              <div class="int-card-title">Malaysia Internship Program</div>
-              <div class="int-card-text">Structured industry placements with leading Malaysian companies and research institutes. Earn international work experience recognised by Indian universities.</div>
-            </div>
+    <div class="internship-header reveal">
+      <h2 class="internship-h2">Internships, faculty<br>development and conferences.</h2>
+      <p style="color:var(--gray); font-size:.95rem; max-width:620px; line-height:1.65; margin-top:8px;">Expand horizons through industry-aligned internships, faculty exchange programs, and international academic conferences.</p>
+    </div>
+
+    <div class="internship-accordion-list">
+
+      <!-- ITEM 1: Malaysia Internship -->
+      <div class="internship-accordion-item reveal" onclick="toggleInternshipAccordion(this)">
+        <div class="internship-accordion-header">
+          <div>
+            <div class="internship-badge">INTERNSHIP PROGRAM</div>
+            <div class="internship-item-title">International Internship — Malaysia</div>
+            <div class="internship-item-sub">Industry-focused practical exposure in Kuala Lumpur.</div>
           </div>
-          <div class="int-card">
-            <div class="int-card-icon" style="background:rgba(100,149,237,.2)">🇸🇬</div>
-            <div class="int-card-body">
-              <div class="int-card-title">Singapore Internship Program</div>
-              <div class="int-card-text">Work alongside global professionals in Asia's most dynamic business hub. Perfect for management, tech, and finance students.</div>
-            </div>
-          </div>
+          <div class="internship-toggle-icon">+</div>
         </div>
-        <a href="https://staging.vijigishu.co.in/immersion-programs/international-internship-program-malaysia/" target="_blank" class="btn btn-green" style="margin-top:32px;">
-          Get Started →
-        </a>
-      </div>
-      <div class="internship-right reveal reveal-delay-1">
-        <div class="int-dest-card">
-          <img src="images/MALAYSIA-scaled.webp" alt="Malaysia Internship" loading="lazy" />
-          <div class="int-dest-overlay">
-            <div class="int-dest-tag">Internship</div>
-            <div class="int-dest-name">Malaysia</div>
+        <div class="internship-accordion-body">
+          <p style="margin-bottom: 14px;">Gain hands-on international industry experience in Malaysia's thriving corporate &amp; tech sectors. Collaborate with top ASEAN enterprises and leading Malaysian universities.</p>
+          <div class="int-detail-grid">
+            <div class="int-detail-box"><label>Key Focus</label><span>Corporate Operations, IT &amp; Software, Engineering, Business Analytics</span></div>
+            <div class="int-detail-box"><label>Target Audience</label><span>Management, Engineering, and Computer Science students</span></div>
+            <div class="int-detail-box"><label>Duration</label><span>2 Weeks / 4 Weeks / 8 Weeks</span></div>
+            <div class="int-detail-box"><label>Location</label><span>Kuala Lumpur, Malaysia</span></div>
           </div>
-          <a href="https://staging.vijigishu.co.in/immersion-programs/international-internship-program-malaysia/" target="_blank" class="int-dest-cta">Apply Now</a>
-        </div>
-        <div class="int-dest-card">
-          <img src="images/Singapore.webp" alt="Singapore Internship" loading="lazy" />
-          <div class="int-dest-overlay">
-            <div class="int-dest-tag">Internship</div>
-            <div class="int-dest-name">Singapore</div>
-          </div>
-          <a href="#" class="int-dest-cta">Apply Now</a>
-        </div>
-        <div class="int-dest-card">
-          <img src="images/Japan-Banner.webp" alt="Japan" loading="lazy" />
-          <div class="int-dest-overlay">
-            <div class="int-dest-tag">Coming Soon</div>
-            <div class="int-dest-name">Japan</div>
-          </div>
-        </div>
-        <div class="int-dest-card">
-          <img src="images/Europe-GIP-1.webp" alt="Europe" loading="lazy" />
-          <div class="int-dest-overlay">
-            <div class="int-dest-tag">Coming Soon</div>
-            <div class="int-dest-name">Europe</div>
-          </div>
+          <a href="contact.html?type=internship-malaysia" class="btn btn-green" style="padding: 9px 20px; font-size: .8rem;">Apply for Internship →</a>
         </div>
       </div>
+
+      <!-- ITEM 2: Thailand Internship -->
+      <div class="internship-accordion-item reveal reveal-delay-1" onclick="toggleInternshipAccordion(this)">
+        <div class="internship-accordion-header">
+          <div>
+            <div class="internship-badge">INTERNSHIP PROGRAM</div>
+            <div class="internship-item-title">International Internship — Thailand</div>
+            <div class="internship-item-sub">Practical learning inside Thailand's innovation ecosystem.</div>
+          </div>
+          <div class="internship-toggle-icon">+</div>
+        </div>
+        <div class="internship-accordion-body">
+          <p style="margin-bottom: 14px;">Experience Thailand’s fast-growing business hubs, hospitality management, and sustainable technology sectors with guided project mentorship.</p>
+          <div class="int-detail-grid">
+            <div class="int-detail-box"><label>Key Focus</label><span>Supply Chain Management, Smart Manufacturing, Renewable Energy</span></div>
+            <div class="int-detail-box"><label>Target Audience</label><span>Business Administration, Hospitality, and Engineering students</span></div>
+            <div class="int-detail-box"><label>Duration</label><span>2 Weeks / 4 Weeks</span></div>
+            <div class="int-detail-box"><label>Location</label><span>Bangkok &amp; Chonburi, Thailand</span></div>
+          </div>
+          <a href="contact.html?type=internship-thailand" class="btn btn-green" style="padding: 9px 20px; font-size: .8rem;">Apply for Internship →</a>
+        </div>
+      </div>
+
+      <!-- ITEM 3: Faculty Development Program -->
+      <div class="internship-accordion-item reveal reveal-delay-2" onclick="toggleInternshipAccordion(this)">
+        <div class="internship-accordion-header">
+          <div>
+            <div class="internship-badge">SPECIAL LEARNING TOUR</div>
+            <div class="internship-item-title">Faculty Development Program</div>
+            <div class="internship-item-sub">Collaborate with top-tier international institutions.</div>
+          </div>
+          <div class="internship-toggle-icon">+</div>
+        </div>
+        <div class="internship-accordion-body">
+          <p style="margin-bottom: 14px;">Designed for professors, academicians, and institutional leaders to explore global pedagogical standards, OBE accreditation, and joint research symposiums.</p>
+          <div class="int-detail-grid">
+            <div class="int-detail-box"><label>Key Focus</label><span>Global Accreditation, Outcome-Based Education (OBE), Research Collaborations</span></div>
+            <div class="int-detail-box"><label>Target Audience</label><span>Faculty Members, Deans, Directors, and Academic Administrators</span></div>
+            <div class="int-detail-box"><label>Duration</label><span>5 Days / 7 Days</span></div>
+            <div class="int-detail-box"><label>Location</label><span>Singapore, Malaysia, Dubai, Europe</span></div>
+          </div>
+          <a href="contact.html?type=fdp" class="btn btn-primary" style="padding: 9px 20px; font-size: .8rem;">Enquire for FDP →</a>
+        </div>
+      </div>
+
+      <!-- ITEM 4: International Conferences & Seminars -->
+      <div class="internship-accordion-item reveal reveal-delay-3" onclick="toggleInternshipAccordion(this)">
+        <div class="internship-accordion-header">
+          <div>
+            <div class="internship-badge">ACADEMIC CONFERENCE</div>
+            <div class="internship-item-title">International Conferences &amp; Seminars</div>
+            <div class="internship-item-sub">Present research and network with international delegates.</div>
+          </div>
+          <div class="internship-toggle-icon">+</div>
+        </div>
+        <div class="internship-accordion-body">
+          <p style="margin-bottom: 14px;">Present paper presentations, attend keynotes, and network with researchers, scientists, and industry pioneers worldwide with Scopus-indexed journal publication support.</p>
+          <div class="int-detail-grid">
+            <div class="int-detail-box"><label>Key Focus</label><span>Multidisciplinary Research, Technological Innovations, SDGs</span></div>
+            <div class="int-detail-box"><label>Target Audience</label><span>Researchers, PhD Scholars, Faculty, and Post-Graduate Students</span></div>
+            <div class="int-detail-box"><label>Duration</label><span>3 Days / 5 Days</span></div>
+            <div class="int-detail-box"><label>Location</label><span>Dubai, Singapore, Bangkok, Paris</span></div>
+          </div>
+          <a href="contact.html?type=conference" class="btn btn-primary" style="padding: 9px 20px; font-size: .8rem;">Enquire for Conference →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ===== CTA PANEL ===== -->
+<!-- ===== CTA BANNER ===== -->
 <section id="ip-cta">
   <div class="container">
     <div class="ip-cta-inner reveal">
       <div class="ip-cta-left">
-        <h2 class="ip-cta-h2">Ready to Design Your<br><em>Institution's Program?</em></h2>
-        <p class="ip-cta-sub">Every program is fully customisable — destination, discipline, duration, and budget. Talk to our team and get a proposal within 48 hours.</p>
+        <h2 class="ip-cta-h2">Ready to Design a <em>Custom Immersion?</em></h2>
+        <p class="ip-cta-sub">We work directly with Indian universities, colleges, and schools to build custom itineraries tailored to your academic calendar and budget.</p>
       </div>
       <div class="ip-cta-right">
-        <a href="index.html#cta" class="btn btn-green">Get a Custom Quote</a>
-        <a href="index.html#cta" class="btn btn-outline">Talk to Our Team</a>
+        <a href="contact.html" class="btn btn-green">Plan a Group Program →</a>
+        <a href="tel:+919876543210" class="btn btn-outline" style="justify-content: center;">📞 Call Our Academic Team</a>
       </div>
     </div>
   </div>
@@ -898,12 +1013,10 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo" style="margin-bottom: 16px;">
-          <a href="index.html" style="text-decoration: none; display: inline-block;">
-            <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
-          </a>
+        <div class="footer-logo">
+          <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 44px; width: auto;" />
         </div>
-        <p class="footer-tagline">India's Most Trusted Educational Travel Specialist. Empowering students with international academic experiences since 1999.</p>
+        <p class="footer-tagline">Connecting Indian classrooms to global boardrooms. Experiential learning journeys crafted for the next generation of leaders.</p>
       </div>
       <div>
         <div class="footer-col-title">Quick Links</div>
@@ -919,80 +1032,92 @@
       <div>
         <div class="footer-col-title">Programs</div>
         <div class="footer-links">
-          <a href="#">Management</a>
-          <a href="#">Architecture & Design</a>
-          <a href="#">Engineering</a>
-          <a href="#">School Programs</a>
-          <a href="#">Malaysia Internship</a>
-          <a href="#">Singapore Internship</a>
+          <a href="management.html" target="_blank">Management</a>
+          <a href="architecture-design.html" target="_blank">Architecture &amp; Design</a>
+          <a href="engineering.html" target="_blank">Engineering</a>
+          <a href="school-programs.html" target="_blank">School Programs</a>
+          <a href="uae.html" target="_blank">UAE Immersion</a>
+          <a href="europe.html" target="_blank">Europe Immersion</a>
         </div>
       </div>
-      <div>
-        <div class="footer-col-title">Stay Updated</div>
-        <div class="newsletter-form">
-          <p>Subscribe for new programs, destinations, and student stories.</p>
-          <input type="email" placeholder="Your email address" />
-          <button type="button">Subscribe →</button>
-        </div>
+      <div class="footer-mascot-wrap">
+        <img src="images/Viji-mascot-footer.webp" alt="Viji Mascot" class="footer-mascot-img" />
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Vijigishu Education Pvt. Ltd. All rights reserved.</div>
+      <div class="footer-copy">© 2026 Vijigishu Educational Travel. All rights reserved.</div>
       <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-  // Navbar scroll
-  const navbar = document.getElementById('navbar');
+  // Navbar scroll background
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    }
+  });
 
-  // Hamburger
+  // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  let menuOpen = false;
   hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
   });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menuOpen = false; mobileMenu.style.display = 'none';
-  }));
 
-  // Filter buttons (visual only — wire up to show/hide cards if needed)
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  // Filter Buttons Logic
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // Scroll to relevant section
-      const map = {
-        'best-selling': '#best-selling',
-        'management': '#disciplines',
-        'architecture': '#disciplines',
-        'engineering': '#disciplines',
-        'school': '#disciplines',
-        'internship': '#internship',
-        'all': '#best-selling'
-      };
-      const target = document.querySelector(map[btn.dataset.filter] || '#best-selling');
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const filter = btn.dataset.filter;
+
+      if (filter === 'all') {
+        document.getElementById('best-selling').style.display = 'block';
+        document.getElementById('disciplines').style.display = 'block';
+        document.getElementById('internship').style.display = 'block';
+      } else if (filter === 'best-selling') {
+        document.getElementById('best-selling').style.display = 'block';
+        document.getElementById('disciplines').style.display = 'none';
+        document.getElementById('internship').style.display = 'none';
+      } else if (filter === 'internship') {
+        document.getElementById('best-selling').style.display = 'none';
+        document.getElementById('disciplines').style.display = 'none';
+        document.getElementById('internship').style.display = 'block';
+      } else {
+        document.getElementById('best-selling').style.display = 'none';
+        document.getElementById('disciplines').style.display = 'block';
+        document.getElementById('internship').style.display = 'none';
+      }
     });
   });
 
-  // Reveal on scroll
+  // Reveal Animations
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
     });
-  }, { threshold: 0.1 });
+  }, observerOptions);
+
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Internship Accordion Toggle Function
+  function toggleInternshipAccordion(el) {
+    const isAlreadyActive = el.classList.contains('active');
+    document.querySelectorAll('.internship-accordion-item').forEach(item => item.classList.remove('active'));
+    if (!isAlreadyActive) {
+      el.classList.add('active');
+    }
+  }
 </script>
 </body>
 </html>
-
