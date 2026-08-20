@@ -73,7 +73,7 @@
     #gallery { padding: 50px 0 100px; }
     .country-filters-wrap { text-align: center; margin-bottom: 40px; }
     .gallery-filters { display: inline-flex; justify-content: center; flex-wrap: wrap; gap: 8px; background: var(--white); padding: 8px 12px; border-radius: 100px; box-shadow: 0 4px 25px rgba(0,0,0,.05); border: 1px solid rgba(0,0,0,.06); }
-    .filter-btn { padding: 10px 22px; border-radius: 100px; background: transparent; border: none; font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .3s var(--ease); }
+    .filter-btn { padding: 10px 22px; border-radius: 100px; background: transparent; border: none; font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .3s var(--ease); display: flex; align-items: center; gap: 6px; }
     .filter-btn:hover { color: var(--navy); background: rgba(0,0,0,.04); }
     .filter-btn.active { background: var(--green); color: var(--white); box-shadow: 0 6px 20px rgba(56,103,58,.25); }
 
@@ -98,6 +98,28 @@
       display: block;
       transition: transform .6s var(--ease);
     }
+    
+    /* Subtle Gradient Glassmorphic Flag Badge */
+    .masonry-item-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 100px;
+      padding: 6px 12px;
+      font-size: 1.05rem;
+      line-height: 1;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      z-index: 3;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .masonry-overlay {
       position: absolute;
       inset: 0;
@@ -121,7 +143,6 @@
       transition: transform .35s var(--ease);
     }
     .masonry-title { display: none !important; }
-    .masonry-item-badge { display: none !important; }
     .masonry-item:hover img { transform: scale(1.05); }
     .masonry-item:hover .masonry-overlay { opacity: 1; }
     .masonry-item:hover .masonry-zoom-icon { transform: scale(1); }
@@ -233,20 +254,20 @@
   </div>
 </div>
 
-<!-- ===== GALLERY SECTION WITH CLEAN COUNTRY FILTERS ===== -->
+<!-- ===== GALLERY SECTION WITH COUNTRY FILTERS ===== -->
 <section id="gallery">
   <div class="container">
     
     <div class="country-filters-wrap reveal">
       <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">All Destinations</button>
-        <button class="filter-btn" data-filter="singapore">Singapore</button>
-        <button class="filter-btn" data-filter="japan">Japan</button>
-        <button class="filter-btn" data-filter="south-korea">South Korea</button>
-        <button class="filter-btn" data-filter="europe">Europe</button>
-        <button class="filter-btn" data-filter="malaysia">Malaysia</button>
-        <button class="filter-btn" data-filter="uae">UAE / Dubai</button>
-        <button class="filter-btn" data-filter="india">India</button>
+        <button class="filter-btn active" data-filter="all">🌐 All Destinations</button>
+        <button class="filter-btn" data-filter="singapore">🇸🇬 Singapore</button>
+        <button class="filter-btn" data-filter="japan">🇯🇵 Japan</button>
+        <button class="filter-btn" data-filter="south-korea">🇰🇷 South Korea</button>
+        <button class="filter-btn" data-filter="europe">🇪🇺 Europe</button>
+        <button class="filter-btn" data-filter="malaysia">🇲🇾 Malaysia</button>
+        <button class="filter-btn" data-filter="uae">🇦🇪 UAE / Dubai</button>
+        <button class="filter-btn" data-filter="india">🇮🇳 India</button>
       </div>
     </div>
 
@@ -375,25 +396,25 @@
 
   // Gallery Country Data Mapping
   const galleryItems = [
-    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
-    { src: 'images/Gallery-11-scaled.webp', country: 'japan', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
-    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
-    { src: 'images/Gallery-13-scaled.webp', country: 'europe', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
-    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
-    { src: 'images/Gallery-15-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
-    { src: 'images/Gallery-16-scaled.webp', country: 'india', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
-    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
-    { src: 'images/Gallery-19-scaled.webp', country: 'japan', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
-    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
-    { src: 'images/Gallery-22-scaled.webp', country: 'europe', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
-    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
-    { src: 'images/Gallery-25-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
-    { src: 'images/Gallery-30-scaled.webp', country: 'india', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
-    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
-    { src: 'images/Gallery-35-scaled.webp', country: 'japan', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
-    { src: 'images/Gallery-36-scaled.webp', country: 'europe', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
-    { src: 'images/Gallery-37-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
-    { src: 'images/Gallery-38-scaled.webp', country: 'india', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
+    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', flag: '🇸🇬', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
+    { src: 'images/Gallery-11-scaled.webp', country: 'japan', flag: '🇯🇵', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
+    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', flag: '🇰🇷', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
+    { src: 'images/Gallery-13-scaled.webp', country: 'europe', flag: '🇪🇺', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
+    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', flag: '🇲🇾', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
+    { src: 'images/Gallery-15-scaled.webp', country: 'uae', flag: '🇦🇪', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
+    { src: 'images/Gallery-16-scaled.webp', country: 'india', flag: '🇮🇳', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
+    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', flag: '🇸🇬', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
+    { src: 'images/Gallery-19-scaled.webp', country: 'japan', flag: '🇯🇵', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
+    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', flag: '🇰🇷', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
+    { src: 'images/Gallery-22-scaled.webp', country: 'europe', flag: '🇪🇺', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
+    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', flag: '🇲🇾', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
+    { src: 'images/Gallery-25-scaled.webp', country: 'uae', flag: '🇦🇪', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
+    { src: 'images/Gallery-30-scaled.webp', country: 'india', flag: '🇮🇳', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
+    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', flag: '🇸🇬', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
+    { src: 'images/Gallery-35-scaled.webp', country: 'japan', flag: '🇯🇵', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
+    { src: 'images/Gallery-36-scaled.webp', country: 'europe', flag: '🇪🇺', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
+    { src: 'images/Gallery-37-scaled.webp', country: 'uae', flag: '🇦🇪', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
+    { src: 'images/Gallery-38-scaled.webp', country: 'india', flag: '🇮🇳', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
   ];
 
   const masonryGrid = document.getElementById('masonryGrid');
@@ -412,6 +433,7 @@
       card.setAttribute('data-country', item.country);
       card.style.transitionDelay = `${(index % 4) * 0.08}s`;
       card.innerHTML = `
+        <div class="masonry-item-badge">${item.flag}</div>
         <img src="${item.src}" loading="lazy" alt="${item.title}" />
         <div class="masonry-overlay">
           <div class="masonry-zoom-icon">
@@ -457,7 +479,7 @@
     const item = currentFilteredList[currentLightboxIndex];
     if (item) {
       lightboxImg.src = item.src;
-      lightboxCaption.textContent = `${item.label} • ${item.title}`;
+      lightboxCaption.textContent = `${item.flag} ${item.label} • ${item.title}`;
     }
   }
 
