@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijigishu – India's Most Trusted Educational Travel Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1B1C4A;
+      --green:  #38673A;
+      --sage:   #9FC28C;
+      --gold:   #D4A840;
+      --white:  #FFFFFF;
+      --off:    #F6F7F2;
+      --gray:   #7B7B8F;
+      --dark:   #0D0E2E;
+      --ease:   cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Utility ─── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(56,103,58,.1);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 16px;
+    }
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      color: var(--navy);
+    }
+    .section-heading span { color: var(--sage); font-style: italic; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .02em;
+      transition: all .3s var(--ease);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+    .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
+    .btn-green {
+      background: var(--sage);
+      color: var(--navy);
+    }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      padding: 0 24px;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 2px 20px rgba(0,0,0,.05);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--sage);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--gray);
+      transition: color .25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--green);
+      border-radius: 2px;
+      transition: width .3s var(--ease);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--sage);
+      color: var(--navy) !important;
+      padding: 8px 22px;
+      border-radius: 100px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: calc(100vh - 72px);
+      overflow: hidden;
+      background: #000;
+    }
+    .hero-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      #hero {
+        height: 50vh;
+        min-height: 350px;
+      }
+    }
+    .dest-days {
+      color: var(--sage);
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    /* ─── MARQUEE STRIP ─── */
+    .marquee-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      background: rgba(13,14,46,.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      white-space: nowrap;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+    }
+    .marquee-item span { color: var(--sage); margin: 0 24px; }
+
+    /* ─── PROGRAMS SECTION ─── */
+    #programs { padding: 100px 0; background: var(--off); }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .section-header-left {}
+    .section-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 360px;
+      margin-top: 12px;
+    }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .program-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+      cursor: pointer;
+    }
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.12);
+    }
+    .program-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .program-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s var(--ease);
+    }
+    .program-card:hover .program-img img { transform: scale(1.06); }
+    .program-badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--sage);
+      color: var(--navy);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .program-body { padding: 20px; }
+    .program-duration {
+      font-size: .78rem;
+      color: var(--green);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+    .program-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .program-desc {
+      font-size: .85rem;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .program-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--green);
+      font-size: .85rem;
+      font-weight: 700;
+      transition: gap .25s;
+    }
+    .program-card:hover .program-link { gap: 12px; }
+    .program-link svg { transition: transform .25s; }
+    .program-card:hover .program-link svg { transform: translateX(4px); }
+
+    /* ─── WHY SECTION ─── */
+    #why { padding: 90px 0; background: var(--white); }
+    .why-header { text-align: center; margin-bottom: 56px; }
+    .why-container-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .why-col-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 14px;
+      border-radius: 20px;
+      transition: all .35s var(--ease);
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .why-col-item:hover {
+      transform: translateY(-8px);
+      background: var(--off);
+      border-color: rgba(0, 0, 0, 0.04);
+      box-shadow: 0 16px 36px rgba(13, 14, 46, 0.06);
+    }
+    .why-icon-box {
+      width: 68px;
+      height: 68px;
+      background: #eef2eb;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.85rem;
+      margin-bottom: 18px;
+      transition: all .35s var(--ease);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+    .why-col-item:hover .why-icon-box {
+      transform: scale(1.12);
+      background: rgba(159, 194, 140, 0.28);
+      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.15);
+    }
+    .why-item-title {
+      font-size: .95rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.35;
+      transition: color .3s var(--ease);
+    }
+    .why-col-item:hover .why-item-title {
+      color: var(--green);
+    }
+    .why-item-desc {
+      font-size: .82rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    @media (max-width: 1024px) {
+      .why-container-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px 20px;
+      }
+    }
+    @media (max-width: 600px) {
+      .why-container-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 12px;
+      }
+    }
+
+    /* ─── COUNTERS & STATS (PARALLAX) ─── */
+    #stats {
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+      background-image: url('stats-bg-landmarks.jpg?v=4');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+    }
+    #stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13, 14, 46, 0.76) 0%, rgba(7, 8, 26, 0.72) 100%);
+      z-index: 1;
+    }
+    .stats-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+    .stat-item {
+      padding: 40px 24px;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--sage); }
+    .stat-lbl {
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-top: 10px;
+    }
+
+    /* ─── FACILITATORS ─── */
+    #partners { padding: 90px 0; background: var(--off); }
+    .partners-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .partners-track-wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      padding: 10px 0;
+    }
+    .partners-track-wrap::before,
+    .partners-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+    }
+    .partners-track-wrap::before { left: 0; background: linear-gradient(to right, var(--off), transparent); }
+    .partners-track-wrap::after { right: 0; background: linear-gradient(to left, var(--off), transparent); }
+    .partners-track {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .partners-track:hover {
+      animation-play-state: paused;
+    }
+    .partner-logo {
+      height: 76px;
+      width: 170px;
+      object-fit: contain;
+      filter: grayscale(1) opacity(.82);
+      transition: filter .3s var(--ease), transform .3s var(--ease);
+      flex-shrink: 0;
+    }
+    .partner-logo:hover { filter: grayscale(0) opacity(1); transform: scale(1.12); }
+
+        /* ─── TESTIMONIALS ─── */
+    #testimonials { padding: 100px 0; background: var(--off); }
+    .testimonials-header { text-align: center; margin-bottom: 60px; }
+
+    .testi-slider-wrapper {
+      position: relative;
+    }
+    .testi-slider {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
+    }
+    .testi-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
+    }
+    .testi-card {
+      flex: 0 0 calc((100% - 48px) / 3);
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .testi-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    .testi-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .testi-body {
+      padding: 40px 24px 32px;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .testi-quote-badge {
+      width: 48px; height: 48px;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid var(--white);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+    .testi-name {
+      font-size: .95rem;
+      color: var(--navy);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 14px;
+    }
+    .testi-text {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    .slider-arrow {
+      background: var(--white);
+      border: 2px solid rgba(0,0,0,0.08);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .slider-arrow:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .prev-arrow { left: -24px; }
+    .next-arrow { right: -24px; }
+
+    @media (max-width: 1280px) {
+      .prev-arrow { left: 8px; }
+      .next-arrow { right: 8px; }
+    }
+    @media (max-width: 1024px) {
+      .testi-card { flex: 0 0 calc((100% - 24px) / 2); }
+    }
+    @media (max-width: 768px) {
+      .testi-card { flex: 0 0 100%; }
+    }
+
+    /* ─── CTA BANNER ─── */
+    #cta {
+      padding: 100px 0;
+      background: #000000;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Group-339.png');
+      background-size: cover;
+      background-position: center;
+      opacity: .15;
+    }
+    .cta-content { position: relative; z-index: 2; }
+    .cta-h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .cta-h2 em { color: var(--sage); font-style: italic; }
+    .cta-sub {
+      color: rgba(255,255,255,.6);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FAQ ─── */
+    #faq { padding: 100px 0; background: var(--off); }
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq-left {}
+    .faq-sub {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 16px;
+      margin-bottom: 32px;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      transition: box-shadow .3s;
+    }
+    .faq-item.open { box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--navy);
+      user-select: none;
+    }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--off);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      transition: background .3s, transform .3s;
+    }
+    .faq-item.open .faq-icon { background: var(--green); transform: rotate(45deg); }
+    .faq-icon svg { width: 14px; height: 14px; }
+    .faq-item.open .faq-icon svg path { stroke: var(--white); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s var(--ease), padding .4s var(--ease);
+      font-size: .9rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    /* ─── FOOTER (ROOT GRADIENT DESIGN) ─── */
+    footer {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 60%, var(--dark) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 0;
+      border-top: 1px solid rgba(159, 194, 140, 0.12);
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(159, 194, 140, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 90% 80%, rgba(56, 103, 58, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .footer-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 2.2fr 1.2fr 1.2fr;
+      gap: 56px;
+      margin-bottom: 60px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.7);
+      transition: all .35s var(--ease);
+      font-size: .9rem;
+    }
+    .social-btn:hover { 
+      background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%);
+      border-color: var(--sage);
+      color: var(--navy); 
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.3);
+    }
+    .footer-col-title {
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+      position: relative;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 32px; height: 2px;
+      background: linear-gradient(90deg, var(--sage), transparent);
+      border-radius: 2px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 14px; }
+    .footer-links a {
+      color: rgba(255,255,255,.65);
+      font-size: .92rem;
+      font-weight: 500;
+      transition: all .25s var(--ease);
+      display: inline-block;
+    }
+    .footer-links a:hover { 
+      color: var(--sage); 
+      transform: translateX(4px);
+    }
+    .footer-bottom-bar {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(90deg, #0D0E2E 0%, #38673A 50%, #9FC28C 100%);
+      color: #FFFFFF;
+      padding: 18px 24px;
+      text-align: center;
+      font-weight: 400;
+      font-size: .88rem;
+      letter-spacing: .02em;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .footer-newsletter {}
+    .footer-newsletter p {
+      color: rgba(255,255,255,.5);
+      font-size: .88rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      flex-direction: column;
+    }
+    .newsletter-form input {
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.06);
+      color: var(--white);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .25s;
+      font-family: inherit;
+    }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,.3); }
+    .newsletter-form input:focus { border-color: var(--sage); }
+    .newsletter-form button {
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 700;
+      font-size: .88rem;
+      border: none;
+      cursor: pointer;
+      transition: background .25s;
+      font-family: inherit;
+    }
+    .newsletter-form button:hover { background: var(--sage); color: var(--navy); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-copy {
+      color: rgba(255,255,255,.3);
+      font-size: .82rem;
+    }
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-bottom-links a {
+      color: rgba(255,255,255,.3);
+      font-size: .82rem;
+      transition: color .25s;
+    }
+    .footer-bottom-links a:hover { color: var(--sage); }
+
+    /* ─── Mobile nav ─── */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--white);
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      z-index: 998;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      padding: 16px 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.1);
+    }
+    .mobile-menu a {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,.04);
+      font-weight: 600;
+      color: var(--navy);
+      display: block;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { max-width: 400px; margin: 0 auto; }
+      .programs-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,.08); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-right { display: none; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { gap: 16px; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-item { border-right: none !important; border-top: 1px solid rgba(255,255,255,.08); }
+      .stat-item:first-child { border-top: none; }
+      .why-right { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Scroll animations ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap" style="text-decoration: none;">
+      <img src="https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="immersion-programs.html">Immersion Programs</a>
+      <a href="leadership-walk.html">Leadership Walk</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blogs</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="immersion-programs.html">Immersion Programs</a>
+  <a href="leadership-walk.html">Leadership Walk</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blogs</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="https://staging.vijigishu.co.in/wp-content/uploads/2026/05/Website-Home-Page-Banner-Video-.mp4" type="video/mp4">
+  </video>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-strip">
+    <div class="marquee-track" aria-hidden="true">
+      <!-- Repeated twice for seamless loop -->
+      <div class="marquee-item">Singapore <span>✦</span></div>
+      <div class="marquee-item">Japan <span>✦</span></div>
+      <div class="marquee-item">South Korea <span>✦</span></div>
+      <div class="marquee-item">Europe <span>✦</span></div>
+      <div class="marquee-item">Malaysia <span>✦</span></div>
+      <div class="marquee-item">UAE <span>✦</span></div>
+      <div class="marquee-item">Indonesia <span>✦</span></div>
+      <div class="marquee-item">Thailand <span>✦</span></div>
+      <div class="marquee-item">USA <span>✦</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HERO INTRO (BELOW MARQUEE) ===== -->
+<section id="hero-intro" class="reveal" style="padding: 80px 24px 30px; background: var(--white); text-align: center;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto;">
+    <p style="text-transform: uppercase; color: var(--navy); letter-spacing: 2.5px; font-weight: 700; font-size: 0.92rem; margin-bottom: 12px; margin-top: 0;">India's Most Trusted</p>
+    <h2 class="section-heading" style="margin-bottom: 0; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.2;">Educational Travel <span>Specialist</span></h2>
+  </div>
+</section>
+
+<!-- ===== PROGRAMS ===== -->
+<section id="programs">
+  <div class="container">
+    <div class="section-header" style="text-align: center; justify-content: center; display: block; margin-bottom: 48px;">
+      <div class="tag" style="margin-bottom: 12px;">Featured Programs</div>
+      <h2 class="section-heading" style="text-align: center; font-size: clamp(2rem, 4vw, 2.8rem);">Immersive Journeys <span>Across the Globe</span></h2>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <div class="program-img">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Singapore.webp" alt="Singapore Program" loading="lazy" />
+          <span class="program-badge">Popular</span>
+        </div>
+        <div class="program-body">
+          <div class="program-duration">4 Nights / 5 Days</div>
+          <div class="program-name">Singapore</div>
+          <div class="program-desc">One of the world's most future-ready nations — a smart city classroom.</div>
+          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+            Explore Program
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="program-card reveal reveal-delay-1">
+        <div class="program-img">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Japan-Banner.webp" alt="Japan Program" loading="lazy" />
+        </div>
+        <div class="program-body">
+          <div class="program-duration">6 Nights / 7 Days</div>
+          <div class="program-name">Japan</div>
+          <div class="program-desc">High tech meets ancient tradition — robotics, Bullet Trains &amp; culture.</div>
+          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+            Explore Program
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="program-card reveal reveal-delay-2">
+        <div class="program-img">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/South-Korea.webp" alt="South Korea Program" loading="lazy" />
+        </div>
+        <div class="program-body">
+          <div class="program-duration">6 Nights / 7 Days</div>
+          <div class="program-name">South Korea</div>
+          <div class="program-desc">From Samsung to Hyundai — see how global innovation is engineered.</div>
+          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+            Explore Program
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="program-card reveal reveal-delay-3">
+        <div class="program-img">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Europe-GIP-1.webp" alt="Europe Program" loading="lazy" />
+          <span class="program-badge">Premium</span>
+        </div>
+        <div class="program-body">
+          <div class="program-duration">8 – 11 Days</div>
+          <div class="program-name">Europe</div>
+          <div class="program-desc">Innovation, history, design and global systems — the ultimate immersion.</div>
+          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+            Explore Program
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All Programs Button Below Cards -->
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="immersion-programs.html" class="btn btn-primary">
+        View All Programs
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE ===== -->
+<section id="why">
+  <div class="container">
+    <div class="why-header reveal">
+      <div class="tag">Our Core Pillars</div>
+      <h2 class="section-heading">Why Choose <span>Vijigishu</span></h2>
+    </div>
+
+    <div class="why-container-grid">
+      
+      <!-- Item 1 -->
+      <div class="why-col-item reveal">
+        <div class="why-icon-box">🏆</div>
+        <h3 class="why-item-title">Prestigious Recognition</h3>
+        <p class="why-item-desc">Part of the Cornell Maha 60 Accelerator program.</p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="why-col-item reveal reveal-delay-1">
+        <div class="why-icon-box">🌍</div>
+        <h3 class="why-item-title">25+ Years of Experience</h3>
+        <p class="why-item-desc">Proven expertise in organizing academic enrichment programs.</p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="why-col-item reveal reveal-delay-2">
+        <div class="why-icon-box">🏨</div>
+        <h3 class="why-item-title">Luxury Tour Arrangements</h3>
+        <p class="why-item-desc">Well-planned tours with comfortable stays and trained managers.</p>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="why-col-item reveal reveal-delay-3">
+        <div class="why-icon-box">🎓</div>
+        <h3 class="why-item-title">Top University Collaborations</h3>
+        <p class="why-item-desc">Strong partnerships with QS-ranked universities.</p>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="why-col-item reveal">
+        <div class="why-icon-box">🚀</div>
+        <h3 class="why-item-title">Pioneer in International Programs</h3>
+        <p class="why-item-desc">Leaders in delivering international academic exposure.</p>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="why-col-item reveal reveal-delay-1">
+        <div class="why-icon-box">❤️</div>
+        <h3 class="why-item-title">Trusted by Many</h3>
+        <p class="why-item-desc">Trusted by 125+ institutes in India &amp; 18000+ students.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section id="stats">
+  <div class="container">
+    
+    <div class="stats-header reveal" style="text-align: center; margin-bottom: 56px; position: relative; z-index: 2;">
+      <p style="text-transform: uppercase; color: var(--sage); letter-spacing: 2.5px; font-weight: 700; font-size: 0.88rem; margin-bottom: 12px;">India's Most Trusted</p>
+      <h2 class="section-heading" style="color: var(--white); font-size: clamp(2rem, 3.8vw, 2.8rem);">Educational Travel <span>Specialist</span></h2>
+    </div>
+
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="counter" data-target="125">0</span><span>+</span></div>
+        <div class="stat-lbl">Partnered Institutions</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span class="counter" data-target="18">0</span><span>K+</span></div>
+        <div class="stat-lbl">Students Travelled</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="counter" data-target="30">0</span><span>+</span></div>
+        <div class="stat-lbl">Countries Covered</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num"><span class="counter" data-target="25">0</span><span>+</span></div>
+        <div class="stat-lbl">Years of Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACADEMIC FACILITATORS ===== -->
+<section id="partners">
+  <div class="container">
+    <div class="partners-heading reveal">
+      <div class="tag">University Partners</div>
+      <h2 class="section-heading">Our Academic <span>Facilitators</span></h2>
+    </div>
+  </div>
+  <div class="partners-track-wrap">
+    <div class="partners-track" aria-label="Academic facilitators and partner universities">
+      <!-- All 14 Partner Logos -->
+      <img class="partner-logo" src="partners/1.png" alt="Partner University 1" loading="lazy" />
+      <img class="partner-logo" src="partners/2.png" alt="Partner University 2" loading="lazy" />
+      <img class="partner-logo" src="partners/3.png" alt="Partner University 3" loading="lazy" />
+      <img class="partner-logo" src="partners/4.png" alt="Partner University 4" loading="lazy" />
+      <img class="partner-logo" src="partners/5.png" alt="Partner University 5" loading="lazy" />
+      <img class="partner-logo" src="partners/6.png" alt="Partner University 6" loading="lazy" />
+      <img class="partner-logo" src="partners/7.png" alt="Partner University 7" loading="lazy" />
+      <img class="partner-logo" src="partners/8.png" alt="Partner University 8" loading="lazy" />
+      <img class="partner-logo" src="partners/9.png" alt="Partner University 9" loading="lazy" />
+      <img class="partner-logo" src="partners/10.png" alt="Partner University 10" loading="lazy" />
+      <img class="partner-logo" src="partners/11.png" alt="Partner University 11" loading="lazy" />
+      <img class="partner-logo" src="partners/12.png" alt="Partner University 12" loading="lazy" />
+      <img class="partner-logo" src="partners/13.png" alt="Partner University 13" loading="lazy" />
+      <img class="partner-logo" src="partners/14.png" alt="Partner University 14" loading="lazy" />
+
+      <!-- Duplicate 14 Logos for Seamless Infinity Marquee Loop -->
+      <img class="partner-logo" src="partners/1.png" alt="Partner University 1" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/2.png" alt="Partner University 2" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/3.png" alt="Partner University 3" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/4.png" alt="Partner University 4" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/5.png" alt="Partner University 5" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/6.png" alt="Partner University 6" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/7.png" alt="Partner University 7" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/8.png" alt="Partner University 8" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/9.png" alt="Partner University 9" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/10.png" alt="Partner University 10" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/11.png" alt="Partner University 11" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/12.png" alt="Partner University 12" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/13.png" alt="Partner University 13" loading="lazy" aria-hidden="true" />
+      <img class="partner-logo" src="partners/14.png" alt="Partner University 14" loading="lazy" aria-hidden="true" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="tag">Testimonials</div>
+      <h2 class="section-heading">What Our <span>Students Say</span></h2>
+    </div>
+
+    <div class="testi-slider-wrapper reveal">
+      <button class="slider-arrow prev-arrow" id="testi-prev" aria-label="Previous">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="testi-slider" id="testi-slider">
+        <div class="testi-track" id="testi-track">
+
+          <div class="testi-card">
+            <div class="testi-img">
+              <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Malaysia-1.webp" alt="Amitesh Chakraborty" loading="lazy" />
+            </div>
+            <div class="testi-body">
+              <div class="testi-quote-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </div>
+              <div class="testi-name">Amitesh Chakraborty</div>
+              <p class="testi-text">Vijigishu Education Pvt. Ltd. flawlessly executed our 6-day, 5-night college tour to Dubai. The itinerary was perfectly balanced, combining educational and recreational activities. Accommodations, food and transport were top-notch, and their team was professional and highly attentive. A truly memorable and stress-free experience. Highly recommended.</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-img">
+              <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Indonesia.webp" alt="Nakul Jadav" loading="lazy" />
+            </div>
+            <div class="testi-body">
+              <div class="testi-quote-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </div>
+              <div class="testi-name">Nakul Jadav</div>
+              <p class="testi-text">Our recent student tour to Dubai with Vijigishu Organization was an unforgettable experience! Everything was perfectly managed, from travel arrangements to accommodation and sightseeing. Highly recommend Vijigishu Organization for student tours, professional, reliable, and truly dedicated to creating memorable experiences.</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-img">
+              <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/07/Gallery-35-scaled.webp" alt="Garima Goyal" loading="lazy" />
+            </div>
+            <div class="testi-body">
+              <div class="testi-quote-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </div>
+              <div class="testi-name">Garima Goyal</div>
+              <p class="testi-text">My experience of VIJIGISHU EDUCATION PVT. LTD. is superb. They planned a very nice educational trip for us to Malaysia.</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-img">
+              <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Dubai-2.webp" alt="Sai Vamshi Akkem" loading="lazy" />
+            </div>
+            <div class="testi-body">
+              <div class="testi-quote-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </div>
+              <div class="testi-name">Sai Vamshi Akkem</div>
+              <p class="testi-text">The trip was really awesome, we all enjoy travelling to 3 countries, Malaysia, Indonesia and Singapore. One of my best life long experience. Thank you Vijigishu for providing this option.</p>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-img">
+              <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Singapore-1.webp" alt="Dr. Vijaya Kumar Thota" loading="lazy" />
+            </div>
+            <div class="testi-body">
+              <div class="testi-quote-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              </div>
+              <div class="testi-name">Dr. Vijaya Kumar Thota</div>
+              <p class="testi-text">Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate their outstanding planning and flawless execution. From seamless airport and ferry transfers to comfortable accommodation in both Batam and Singapore, every arrangement reflected professionalism and attention to detail. The hospitality extended throughout the trip ensured students felt safe, well-guided, and cared for at every stage.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="slider-arrow next-arrow" id="testi-next" aria-label="Next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <div class="cta-content reveal">
+      <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage);">Start Your Journey</div>
+      <h2 class="cta-h2">Immersive Learning Experiences<br><em>Across the World</em></h2>
+      <div class="cta-actions">
+        <a href="https://staging.vijigishu.co.in/contact/" class="btn btn-green">Join The Experience</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-left reveal">
+        <div class="tag">Got Questions?</div>
+        <h2 class="section-heading">Frequently Asked <span>Questions</span></h2>
+        <p class="faq-sub">Everything you need to know before embarking on an international academic journey with Vijigishu.</p>
+        <a href="https://staging.vijigishu.co.in/contact/" class="btn btn-primary">Ask Us Anything</a>
+      </div>
+      <div class="faq-list reveal reveal-delay-1">
+        <div class="faq-item">
+          <div class="faq-question">
+            What kind of food is provided during the trip?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Indian meals are provided, with options for vegetarian, non-vegetarian, and Jain food.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Will Vijigishu assist with the visa process?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Yes, Vijigishu provides complete visa assistance for the traveling group, including documentation guidance and process support.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Can the trip be customised for our college?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Yes, all our programs are fully customizable based on your academic requirements, preferred destinations, duration, and budget.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Who will be our point of contact during the trip?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">An experienced Vijigishu tour leader will travel with the group and act as the primary point of contact, ensuring smooth coordination throughout the journey.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Is travel insurance included in the program?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Yes, travel insurance is included in the program for all participants.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What kind of accommodation is provided?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">We provide comfortable 3-star or 4-star category hotels, ensuring safety, convenience, and a student-friendly environment.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How do you balance learning and leisure?
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Our programs combine academic sessions, industry visits, and cultural exploration with visits to iconic landmarks — ensuring students learn while enjoying the destination.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container" style="padding-bottom: 40px;">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo" style="margin-bottom: 16px;">
+          <a href="index.html" style="text-decoration: none; display: inline-block;">
+            <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+          </a>
+        </div>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="immersion-programs.html">Programs</a>
+          <a href="leadership-walk.html">Leadership walk</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="#">Cancellation &amp; Refund process</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Destinations</div>
+        <div class="footer-links">
+          <a href="singapore-indonesia.html">Singapore</a>
+          <a href="japan.html">Japan</a>
+          <a href="south-korea.html">South Korea</a>
+          <a href="europe.html">Europe</a>
+          <a href="malaysia-singapore.html">Malaysia</a>
+          <a href="uae.html">UAE / Dubai</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sage Green Gradient Bottom Bar -->
+  <div class="footer-bottom-bar">
+    © 2026 Vijigishu Education Pvt. Ltd. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.display = 'none';
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+  // Testimonial Slider
+  (function() {
+    const track = document.getElementById('testi-track');
+    const prevBtn = document.getElementById('testi-prev');
+    const nextBtn = document.getElementById('testi-next');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+
+    function getVisibleCount() {
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
+    }
+
+    function getCardWidth() {
+      const card = track.querySelector('.testi-card');
+      if (!card) return 0;
+      return card.offsetWidth + 24; // card width + gap
+    }
+
+    function getMaxIndex() {
+      const totalCards = track.querySelectorAll('.testi-card').length;
+      return Math.max(0, totalCards - getVisibleCount());
+    }
+
+    function slide() {
+      const offset = currentIndex * getCardWidth();
+      track.style.transform = 'translateX(-' + offset + 'px)';
+    }
+
+    prevBtn.addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        slide();
+      }
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (currentIndex < getMaxIndex()) {
+        currentIndex++;
+        slide();
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (currentIndex > getMaxIndex()) {
+        currentIndex = getMaxIndex();
+      }
+      slide();
+    });
+  })();
+
+  // Counter Animation for Stats
+  (function() {
+    const statsSection = document.getElementById('stats');
+    if (!statsSection) return;
+
+    let animated = false;
+
+    function animateCounters() {
+      const counters = statsSection.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const duration = 2000;
+        const stepTime = 30;
+        const totalSteps = duration / stepTime;
+        const increment = target / totalSteps;
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            counter.innerText = target;
+            clearInterval(timer);
+          } else {
+            counter.innerText = Math.ceil(current);
+          }
+        }, stepTime);
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(statsSection);
+  })();
+</script>
+</body>

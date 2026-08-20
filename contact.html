@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – Vijigishu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--off); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--green); background: rgba(56,103,58,.1); border-radius: 100px; padding: 4px 14px; margin-bottom: 16px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── NAVBAR ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
+    nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1.1rem; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta { background: var(--sage); color: var(--navy) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero { position: relative; height: 400px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero-img { position: absolute; inset: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 14s ease-in-out infinite alternate; }
+    @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,14,46,.85) 0%, rgba(13,14,46,.4) 60%, transparent 100%); }
+    .page-hero-content { position: relative; z-index: 2; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
+    .page-hero-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: rgba(255,255,255,.5); margin-bottom: 20px; }
+    .page-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: color .25s; }
+    .page-hero-breadcrumb a:hover { color: var(--sage); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
+    .page-hero h1 em { color: var(--sage); font-style: italic; }
+
+    /* ─── CONTACT SECTION ─── */
+    #contact-section { padding: 80px 0; }
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 40px;
+      background: var(--white);
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.06);
+    }
+
+    /* Contact Left (Info) */
+    .contact-info {
+      background: var(--navy);
+      color: var(--white);
+      padding: 64px 48px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-info::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(159,194,140,.15) 0%, transparent 70%);
+    }
+    .contact-info-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 16px; line-height: 1.2; }
+    .contact-info-title em { color: var(--sage); font-style: italic; }
+    .contact-info-sub { color: rgba(255,255,255,.6); font-size: .95rem; line-height: 1.6; margin-bottom: 48px; }
+
+    .info-list { display: flex; flex-direction: column; gap: 32px; flex-grow: 1; }
+    .info-item { display: flex; align-items: flex-start; gap: 20px; }
+    .info-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,.1); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0; color: var(--sage); }
+    .info-label { font-size: .75rem; font-weight: 700; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
+    .info-value { font-size: 1rem; color: var(--white); line-height: 1.6; }
+    .info-value a { transition: color .2s; }
+    .info-value a:hover { color: var(--sage); }
+
+    .social-links { display: flex; gap: 16px; margin-top: 48px; }
+    .social-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.1); display: grid; place-items: center; color: var(--white); transition: all .3s var(--ease); font-size: 1.1rem; }
+    .social-icon:hover { background: var(--sage); color: var(--navy); transform: translateY(-4px); }
+
+    /* Contact Right (Form) */
+    .contact-form-wrap { padding: 64px 64px 64px 32px; }
+    .form-title { font-size: 1.6rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .form-sub { font-size: .9rem; color: var(--gray); margin-bottom: 32px; }
+
+    /* Form Status States */
+    .form-status { display: none; padding: 48px 24px; text-align: center; flex-direction: column; align-items: center; justify-content: center; }
+    .form-status.active { display: flex; }
+    .status-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(56,103,58,.1); color: var(--green); display: grid; place-items: center; font-size: 2rem; margin-bottom: 24px; }
+    .status-icon.error { background: rgba(207,46,46,.1); color: #cf2e2e; }
+    .status-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 12px; }
+    .status-title span { color: var(--green); font-style: italic; }
+    .status-desc { color: var(--gray); font-size: .95rem; line-height: 1.6; max-width: 320px; }
+    
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label { font-size: .85rem; font-weight: 700; color: var(--navy); }
+    .form-control { width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); background: var(--off); font-family: inherit; font-size: .95rem; color: var(--navy); transition: all .3s; outline: none; }
+    .form-control::placeholder { color: #A0A0B0; }
+    .form-control:focus { border-color: var(--green); background: var(--white); box-shadow: 0 0 0 4px rgba(56,103,58,.1); }
+    textarea.form-control { resize: vertical; min-height: 140px; }
+
+    /* ─── ELITE CIRCLE CTA (PARALLAX) ─── */
+    #elite-cta {
+      position: relative;
+      padding: 120px 0;
+      text-align: center;
+      background-image: url('https://staging.vijigishu.co.in/wp-content/uploads/2026/05/Gemini_Generated_Image_mcw1u1mcw1u1mcw1-scaled.webp');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      color: var(--white);
+      overflow: hidden;
+    }
+    #elite-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 14, 46, 0.75);
+      z-index: 1;
+    }
+    .elite-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .elite-tag { color: var(--sage); font-size: .85rem; font-weight: 800; text-transform: uppercase; letter-spacing: .15em; margin-bottom: 16px; }
+    .elite-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+    .elite-h2 em { color: var(--sage); font-style: italic; }
+    .elite-p { font-size: 1.05rem; color: rgba(255,255,255,.82); line-height: 1.7; margin-bottom: 32px; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--dark); padding: 80px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 64px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .footer-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1rem; }
+    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); font-weight: 800; }
+    .footer-tagline { color: rgba(255,255,255,.4); font-size: .88rem; line-height: 1.7; max-width: 300px; }
+    .footer-col-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: rgba(255,255,255,.5); font-size: .88rem; transition: color .25s; }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.5; margin-bottom: 12px; }
+    .footer-contact-item span { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { color: rgba(255,255,255,.3); font-size: .82rem; transition: color .25s; }
+    .footer-bottom-links a:hover { color: var(--sage); }
+
+    /* ─── Reveal ─── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .contact-info { padding: 48px; }
+      .contact-form-wrap { padding: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero { height: 320px; }
+      .contact-info { padding: 40px 24px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      #elite-cta { padding: 80px 24px; background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap" style="text-decoration: none;">
+      <img src="https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="immersion-programs.html">Immersion Programs</a>
+      <a href="leadership-walk.html">Leadership Walk</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="nav-cta active">Contact Us</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="immersion-programs.html">Immersion Programs</a>
+  <a href="leadership-walk.html">Leadership Walk</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/03/Contact-us-1.png" alt="Contact Vijigishu" fetchpriority="high" />
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span style="color:var(--white)">Contact Us</span>
+    </div>
+    <h1>Get in <em>Touch</em></h1>
+  </div>
+</div>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="contact-section">
+  <div class="container">
+    <div class="contact-wrapper reveal">
+      
+      <!-- Contact Info (Left) -->
+      <div class="contact-info">
+        <h2 class="contact-info-title">Let's start the <em>Journey</em></h2>
+        <p class="contact-info-sub">Reach out to us to design a custom educational experience, ask a question, or simply say hello.</p>
+        
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div>
+              <div class="info-label">Call Us</div>
+              <div class="info-value"><a href="tel:02079626639">020 7962 6639</a><br><a href="tel:7588522386">7588522386</a></div>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-label">Email Us</div>
+              <div class="info-value"><a href="mailto:info@vijigishu.co.in">info@vijigishu.co.in</a></div>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Our Office</div>
+              <div class="info-value">A9- 3rd floor, Mark Park building,<br>Pandurang Colony, Near Dr. Kalmadi Shamrao Jr. College,<br>Erandwane, Pune 411038</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" class="social-icon">f</a>
+          <a href="https://www.instagram.com/vijigishu_official?igsh=cWc1ejBqdmZ3djRv" target="_blank" class="social-icon">ig</a>
+          <a href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" class="social-icon">in</a>
+          <a href="https://youtube.com/@vijigishueducation?si=LATkWNQpwHbw_ppp" target="_blank" class="social-icon">yt</a>
+        </div>
+      </div>
+
+      <!-- Contact Form (Right) -->
+      <div class="contact-form-wrap" id="formContainer">
+        
+        <!-- Success State -->
+        <div class="form-status" id="formSuccess">
+          <div class="status-icon">✓</div>
+          <h3 class="status-title">Message <span>Sent</span></h3>
+          <p class="status-desc">Thank you for reaching out! Our travel specialist will get back to you shortly.</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="form-status" id="formError">
+          <div class="status-icon error">✕</div>
+          <h3 class="status-title">Oops! <span>Failed</span></h3>
+          <p class="status-desc" id="errorMessage">Something went wrong. Please try again or email us directly at info@vijigishu.co.in</p>
+          <button type="button" class="btn btn-primary" style="margin-top: 20px;" onclick="resetForm()">Try Again</button>
+        </div>
+
+        <!-- Initial Form State -->
+        <div id="formFields">
+          <h3 class="form-title">Send us a message</h3>
+          <p class="form-sub">We'll get back to you as soon as possible.</p>
+          
+          <form id="contactForm" method="POST">
+            <!-- Hidden Access Key -->
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" id="accessKey">
+            <input type="hidden" name="subject" value="New Contact Form Submission - Vijigishu Redesign">
+            <input type="checkbox" name="botcheck" style="display: none;">
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 98765 43210" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="subjectField">Subject</label>
+                <input type="text" id="subjectField" name="custom_subject" class="form-control" placeholder="How can we help?" />
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="message">Message</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Tell us about your requirements..." required></textarea>
+              </div>
+              <div class="form-group full" style="margin-top: 10px;">
+                <button type="submit" id="submitBtn" class="btn btn-primary" style="width:100%; font-size:1rem; padding: 16px; justify-content: center;">Send Message →</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ELITE CIRCLE CTA ===== -->
+<section id="elite-cta">
+  <div class="container">
+    <div class="elite-inner reveal">
+      <div class="elite-tag">Transformation Can't Wait</div>
+      <h2 class="elite-h2">Join the Elite Circle of <em>Vijigishu</em></h2>
+      <p class="elite-p">We don’t just "travel"—we curate limited-access, immersive learning experiences for the visionary. Contact our specialists to see if our upcoming programs align with your goals.</p>
+      <a href="immersion-programs.html" class="btn btn-green">Explore Our Programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo" style="margin-bottom: 16px;">
+          <a href="index.html" style="text-decoration: none; display: inline-block;">
+            <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+          </a>
+        </div>
+        <p class="footer-tagline">India's Most Trusted Educational Travel Specialist. Empowering students with international academic experiences since 1999.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="immersion-programs.html">Immersion Programs</a>
+          <a href="leadership-walk.html">Leadership Walk</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programs</div>
+        <div class="footer-links">
+          <a href="#">Management</a>
+          <a href="#">Architecture & Design</a>
+          <a href="#">Engineering</a>
+          <a href="#">School Programs</a>
+          <a href="#">Malaysia Internship</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item"><span>📞</span><div>020 7962 6639<br>7588522386</div></div>
+        <div class="footer-contact-item"><span>✉️</span><div>info@vijigishu.co.in</div></div>
+        <div class="footer-contact-item"><span>📍</span><div>A9- 3rd floor, Mark Park Building, Pandurang Colony, Erandwane, Pune 411038</div></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Vijigishu Education Pvt. Ltd. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menuOpen = false; mobileMenu.style.display = 'none';
+  }));
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Contact Form Submission
+  const contactForm = document.getElementById('contactForm');
+  const formFields = document.getElementById('formFields');
+  const formSuccess = document.getElementById('formSuccess');
+  const formError = document.getElementById('formError');
+  const submitBtn = document.getElementById('submitBtn');
+  const errorMessage = document.getElementById('errorMessage');
+
+  // CONFIGURATION
+  // 1. Paste your Google Apps Script URL here to save submissions to Excel / Google Sheets and send Gmails:
+  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+  // 2. Or paste your Web3Forms Access Key here:
+  const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+
+  // Set initial access key value
+  const accessKeyInput = document.getElementById('accessKey');
+  if (accessKeyInput && WEB3FORMS_ACCESS_KEY !== 'YOUR_ACCESS_KEY_HERE') {
+    accessKeyInput.value = WEB3FORMS_ACCESS_KEY;
+  }
+
+  function resetForm() {
+    contactForm.reset();
+    formSuccess.classList.remove('active');
+    formError.classList.remove('active');
+    formFields.style.display = 'block';
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const isGoogleSheets = GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+      const isWeb3Forms = !isGoogleSheets && accessKeyInput && accessKeyInput.value !== 'YOUR_ACCESS_KEY_HERE';
+
+      if (!isGoogleSheets && !isWeb3Forms) {
+        alert('Please configure either the GOOGLE_SCRIPT_URL or the WEB3FORMS_ACCESS_KEY in the script at the bottom of the page.');
+        return;
+      }
+
+      // Show loading state
+      const originalBtnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Sending...';
+      submitBtn.disabled = true;
+
+      const formData = new FormData(contactForm);
+
+      try {
+        let response;
+        if (isGoogleSheets) {
+          // Post directly to Google Apps Script
+          response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: formData
+          });
+        } else {
+          // Post to Web3Forms
+          const object = Object.fromEntries(formData);
+          const json = JSON.stringify(object);
+          response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: json
+          });
+        }
+        
+        if (response.ok || isGoogleSheets) {
+          formFields.style.display = 'none';
+          formSuccess.classList.add('active');
+        } else {
+          const result = await response.json();
+          errorMessage.innerText = result.message || 'Something went wrong. Please check your network or try again.';
+          formFields.style.display = 'none';
+          formError.classList.add('active');
+        }
+      } catch (error) {
+        if (isGoogleSheets) {
+          // Google Sheets often succeeds even if fetch throws a redirect/CORS error in local browser
+          formFields.style.display = 'none';
+          formSuccess.classList.add('active');
+        } else {
+          console.error(error);
+          errorMessage.innerText = 'Network error. Please try again later or email us directly.';
+          formFields.style.display = 'none';
+          formError.classList.add('active');
+        }
+      } finally {
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
+  }
+</script>
+</body>
+</html>

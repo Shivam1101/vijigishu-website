@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Vijigishu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--green); background: rgba(56,103,58,.1); border-radius: 100px; padding: 4px 14px; margin-bottom: 16px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
+    .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
+
+    /* ─── NAVBAR ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
+    nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta { background: var(--sage); color: var(--navy) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
+
+    /* ─── PAGE HERO BANNER ─── */
+    .page-hero { position: relative; height: 420px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero-img { position: absolute; inset: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 14s ease-in-out infinite alternate; }
+    @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+
+    /* ─── ABOUT INTRO ─── */
+    #about-intro { padding: 48px 0 80px; background: var(--white); }
+    .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-lead { font-size: 1.1rem; color: var(--navy); line-height: 1.8; font-weight: 500; margin-bottom: 20px; }
+    .about-body { font-size: .95rem; color: var(--gray); line-height: 1.8; margin-bottom: 24px; }
+    .about-right { position: relative; }
+    .about-img-main { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.12); }
+    .about-img-main img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    /* ─── CORNELL SECTION ─── */
+    #cornell { padding: 80px 0; background: var(--off); }
+    .cornell-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .cornell-img { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.1); }
+    .cornell-img img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .cornell-ribbon {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(212,168,64,.1);
+      border: 1px solid rgba(212,168,64,.3);
+      border-radius: 12px;
+      padding: 10px 18px;
+      margin-bottom: 24px;
+    }
+    .cornell-ribbon-icon { font-size: 1.2rem; }
+    .cornell-ribbon-text { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); }
+    .cornell-h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
+    .cornell-h3 em { color: var(--green); font-style: italic; }
+    .cornell-p { font-size: .95rem; color: var(--gray); line-height: 1.8; margin-bottom: 14px; }
+
+    /* ─── ABOUT PILLARS STRIP ─── */
+    .about-pillars-strip {
+      background: linear-gradient(135deg, #F4F7F2 0%, #EEF3EB 100%);
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid rgba(56,103,58,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .pillar-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 20px;
+      border-right: 1px solid rgba(0,0,0,0.08);
+      transition: transform .3s var(--ease);
+    }
+    .pillar-item:last-child {
+      border-right: none;
+    }
+    .pillar-item:hover {
+      transform: translateY(-2px);
+    }
+    .pillar-icon-box {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(159,194,140,0.25);
+      border: 1px solid rgba(56,103,58,0.15);
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      transition: all .3s var(--ease);
+    }
+    .pillar-item:hover .pillar-icon-box {
+      background: var(--sage);
+      transform: scale(1.08) rotate(3deg);
+      box-shadow: 0 8px 20px rgba(56,103,58,0.2);
+    }
+    .pillar-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    /* ─── VISION & MISSION ─── */
+    #vision-mission { padding: 80px 0; background: var(--white); }
+    .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    .vm-card {
+      border-radius: 24px;
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .vm-card-vision { background: var(--navy); }
+    .vm-card-mission { background: var(--green); }
+    .vm-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+    }
+    .vm-icon { font-size: 2.5rem; margin-bottom: 20px; }
+    .vm-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+    .vm-text { font-size: .98rem; color: rgba(255,255,255,.82); line-height: 1.75; }
+
+    /* ─── CORE VALUES ─── */
+    #core-values { padding: 80px 0; background: var(--dark); position: relative; overflow: hidden; }
+    #core-values::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 10% 50%, rgba(56,103,58,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 90% 30%, rgba(159,194,140,.1) 0%, transparent 60%);
+    }
+    .cv-header { position: relative; z-index: 2; text-align: center; margin-bottom: 56px; }
+    .cv-header .section-heading { color: var(--white); }
+    .cv-subtitle { color: rgba(255,255,255,.65); font-size: .95rem; line-height: 1.75; max-width: 760px; margin: 16px auto 0; }
+    .cv-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .cv-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: background .3s, transform .3s var(--ease);
+    }
+    .cv-card:hover { background: rgba(255,255,255,.1); transform: translateY(-6px); }
+    .cv-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--sage);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .cv-word { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .cv-text { font-size: .8rem; color: rgba(255,255,255,.5); line-height: 1.65; }
+
+    /* ─── DIRECTORS ─── */
+    #directors { padding: 96px 0; background: var(--off); }
+    .dir-header { margin-bottom: 64px; text-align: center; }
+    .dir-grid { display: flex; flex-direction: column; gap: 64px; }
+    .dir-card {
+      background: var(--white);
+      border-radius: 28px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      box-shadow: 0 8px 40px rgba(0,0,0,.07);
+    }
+    .dir-card.reverse { grid-template-columns: 1fr 280px; }
+    .dir-photo { position: relative; overflow: hidden; }
+    .dir-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .dir-card.reverse .dir-photo { order: 2; }
+    .dir-body { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+    .dir-card.reverse .dir-body { order: 1; }
+    .dir-award {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,168,64,.1);
+      border: 1px solid rgba(212,168,64,.25);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 20px;
+    }
+    .dir-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+    .dir-title { font-size: .88rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px; }
+    .dir-divider { width: 48px; height: 3px; background: var(--sage); border-radius: 2px; margin-bottom: 20px; }
+    .dir-bio { font-size: .92rem; color: var(--gray); line-height: 1.8; }
+    .dir-highlights { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
+    .dir-highlight { display: flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 600; color: var(--navy); }
+    .dir-highlight::before { content: '✓'; color: var(--green); font-weight: 800; }
+
+    /* ─── CTA PANEL ─── */
+    #about-cta { padding: 80px 0; background: var(--off); }
+    .about-cta-inner { background: var(--navy); border-radius: 28px; padding: 56px 64px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; position: relative; overflow: hidden; }
+    .about-cta-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(56,103,58,.3) 0%, transparent 60%); }
+    .about-cta-left { position: relative; z-index: 2; }
+    .about-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 10px; line-height: 1.2; }
+    .about-cta-h2 em { color: var(--sage); font-style: italic; }
+    .about-cta-sub { color: rgba(255,255,255,.55); font-size: .95rem; line-height: 1.65; }
+    .about-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+
+    /* ─── FOOTER (GRADIENT DESIGN) ─── */
+    footer {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 60%, var(--dark) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 0;
+      border-top: 1px solid rgba(159, 194, 140, 0.12);
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(159, 194, 140, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 90% 80%, rgba(56, 103, 58, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .footer-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 2.2fr 1.2fr 1.2fr;
+      gap: 56px;
+      margin-bottom: 60px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .footer-socials { display: flex; gap: 12px; margin-top: 28px; }
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.7);
+      transition: all .35s var(--ease);
+      font-size: .9rem;
+    }
+    .social-btn:hover { 
+      background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%);
+      border-color: var(--sage);
+      color: var(--navy); 
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.3);
+    }
+    .footer-col-title {
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 24px;
+      position: relative;
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+    .footer-col-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 32px; height: 2px;
+      background: linear-gradient(90deg, var(--sage), transparent);
+      border-radius: 2px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 14px; }
+    .footer-links a {
+      color: rgba(255,255,255,.65);
+      font-size: .92rem;
+      font-weight: 500;
+      transition: all .25s var(--ease);
+      display: inline-block;
+    }
+    .footer-links a:hover { 
+      color: var(--sage); 
+      transform: translateX(4px);
+    }
+    .footer-bottom-bar {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(90deg, #0D0E2E 0%, #38673A 50%, #9FC28C 100%);
+      color: #FFFFFF;
+      padding: 18px 24px;
+      text-align: center;
+      font-weight: 400;
+      font-size: .88rem;
+      letter-spacing: .02em;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ─── Reveal ─── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .about-split, .cornell-inner, .vm-grid { grid-template-columns: 1fr; }
+      .cv-grid { grid-template-columns: repeat(3, 1fr); }
+      .dir-card, .dir-card.reverse { grid-template-columns: 1fr; }
+      .dir-card.reverse .dir-photo { order: 0; }
+      .dir-card.reverse .dir-body { order: 0; }
+      .dir-photo img { height: 320px; width: 100%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .about-cta-inner { grid-template-columns: 1fr; padding: 40px 36px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero { height: 320px; }
+      .cv-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap" style="text-decoration: none;">
+      <img src="https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Us</a>
+      <a href="immersion-programs.html">Immersion Programs</a>
+      <a href="leadership-walk.html">Leadership Walk</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="immersion-programs.html">Immersion Programs</a>
+  <a href="leadership-walk.html">Leadership Walk</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- ===== PAGE HERO BANNER (NO GRADIENT OVERLAY) ===== -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/About-Us-1.webp" alt="About Vijigishu" fetchpriority="high" />
+  </div>
+</div>
+
+<!-- ===== HERO CONTENT (BELOW BANNER) ===== -->
+<section style="padding: 48px 0 24px; text-align: center; background: var(--white);">
+  <div class="container">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: var(--navy); margin-bottom: 20px; line-height: 1.15;">About <span style="color: var(--green); font-style: italic;">Vijigishu</span></h1>
+    <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(56,103,58,0.08); border: 1px solid rgba(56,103,58,0.2); border-radius: 100px; padding: 8px 24px; color: var(--green); font-size: 0.9rem; font-weight: 600;">
+      <span>🪔</span>
+      <span>विजिगीषु — World Conqueror Forever</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT INTRO ===== -->
+<section id="about-intro">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-left reveal">
+        <div class="tag">Who We Are</div>
+        <h2 class="section-heading">Conquer the World<br>Through <span>Experience</span></h2>
+        <p class="about-lead" style="margin-top:20px;">Vijigishu (विजिगीषु) is a Sanskrit term meaning "World conqueror forever," perfectly capturing our visionary ethos.</p>
+        <p class="about-body">We are committed to transforming lives and making a profound impact by crafting unique learning experiences through our diverse travel programs. Our expertise lies in curating International and Domestic Academic Immersion Programs tailored for school, undergraduate, and postgraduate students.</p>
+        <p class="about-body">We also offer Transformational Learning Programs, Leadership Walks, Spiritual Retreats, International Internship Programs, Study Abroad initiatives, Faculty Development Programs, Summer and Winter Schools, and Seminars &amp; Conferences — shaping the leaders of tomorrow through experiences that transcend the classroom.</p>
+      </div>
+      <div class="about-right reveal reveal-delay-2">
+        <div class="about-img-main">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Random-1.webp" alt="Vijigishu students" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4 PILLARS FEATURE STRIP (BELOW ABOUT INTRO) ===== -->
+<div style="padding: 0 0 64px; background: var(--white);">
+  <div class="container">
+    <div class="about-pillars-strip reveal">
+      <div class="pillar-item">
+        <div class="pillar-icon-box">🎓</div>
+        <div class="pillar-text">Academic<br>Immersion</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-icon-box">🏭</div>
+        <div class="pillar-text">Industry<br>Exposure</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-icon-box">🌍</div>
+        <div class="pillar-text">Global<br>Connections</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-icon-box">🌱</div>
+        <div class="pillar-text">Cultural<br>Learning</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CORNELL ===== -->
+<section id="cornell">
+  <div class="container">
+    <div class="cornell-inner">
+      <div class="cornell-img reveal">
+        <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Maha60w-1-scaled.webp" alt="Cornell Maha 60" loading="lazy" />
+      </div>
+      <div class="cornell-content reveal reveal-delay-2">
+        <div class="cornell-ribbon">
+          <span class="cornell-ribbon-icon">🏆</span>
+          <span class="cornell-ribbon-text">Ivy League Recognition</span>
+        </div>
+        <h3 class="cornell-h3">Recognised by <em>Cornell Maha 60</em></h3>
+        <p class="cornell-p">Vijigishu Education Pvt. Ltd. (VEPL) is a proud part of the prestigious Cornell Maha 60 program — India's 1st Ivy League Business Accelerator Program, a fully sponsored initiative by the Government of Maharashtra in association with Cornell University, USA.</p>
+        <p class="cornell-p">Our unwavering commitment is to redefine the future of education and provide a 360-degree learning approach that will be a catalyst in the transformative journey of every student.</p>
+        <a href="index.html#cta" class="btn btn-primary" style="margin-top:8px;">Partner with Us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISION & MISSION ===== -->
+<section id="vision-mission">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="tag">Our Purpose</div>
+      <h2 class="section-heading">Vision &amp; <span>Mission</span></h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card vm-card-vision reveal reveal-delay-1">
+        <div class="vm-icon">🌏</div>
+        <div class="vm-title">Vision</div>
+        <p class="vm-text">Make Vijigishu a reference point of transformation through immersive learning experiences — where every student returns changed, empowered, and globally aware.</p>
+      </div>
+      <div class="vm-card vm-card-mission reveal reveal-delay-2">
+        <div class="vm-icon">🎯</div>
+        <div class="vm-title">Mission</div>
+        <p class="vm-text">To transform lives and create a positive impact by curating unique learning experiences through mindfully crafted travel programs that shape the leaders of tomorrow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CORE VALUES ===== -->
+<section id="core-values">
+  <div class="container">
+    <div class="cv-header reveal">
+      <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage)">Our I-RACE Philosophy</div>
+      <h2 class="section-heading">Core <span>Values</span></h2>
+      <p class="cv-subtitle">At Vijigishu, our values define who we are, how we work, and the way we build lasting relationships with our clients, partners, and team members. Guided by our I-RACE philosophy, we are committed to maintaining the highest standards in everything we do.</p>
+    </div>
+    <div class="cv-grid">
+      <div class="cv-card reveal">
+        <div class="cv-letter">I</div>
+        <div class="cv-word">Integrity</div>
+        <p class="cv-text">We believe in being ethical, sincere, and transparent in every interaction. Integrity is the foundation of our business, helping us build trust and long-term relationships.</p>
+      </div>
+      <div class="cv-card reveal reveal-delay-1">
+        <div class="cv-letter">R</div>
+        <div class="cv-word">Respect</div>
+        <p class="cv-text">We treat every individual with dignity, fairness, and respect. We value diverse perspectives and foster an environment where everyone feels heard and empowered.</p>
+      </div>
+      <div class="cv-card reveal reveal-delay-2">
+        <div class="cv-letter">A</div>
+        <div class="cv-word">Accountability</div>
+        <p class="cv-text">We take ownership of our actions and commitments. By being accountable, we ensure reliability, responsibility, and continuous improvement in all our efforts.</p>
+      </div>
+      <div class="cv-card reveal reveal-delay-3">
+        <div class="cv-letter">C</div>
+        <div class="cv-word">Collaboration</div>
+        <p class="cv-text">Success comes from working together. We encourage teamwork, open communication, and shared goals to create innovative solutions and meaningful results.</p>
+      </div>
+      <div class="cv-card reveal reveal-delay-4">
+        <div class="cv-letter">E</div>
+        <div class="cv-word">Excellence</div>
+        <p class="cv-text">We strive for excellence in every aspect of our work. Through dedication and continuous learning, we aim to exceed expectations and deliver the highest quality outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIRECTORS ===== -->
+<section id="directors">
+  <div class="container">
+    <div class="dir-header reveal">
+      <div class="tag">Leadership</div>
+      <h2 class="section-heading">Meet Our <span>Directors</span></h2>
+      <p style="color:var(--gray);margin:14px auto 0;font-size:.95rem;line-height:1.7;max-width:640px;">Master storytellers and visionary creators. Meet the brilliant directors bringing bold ideas and captivating narratives to life.</p>
+    </div>
+    <div class="dir-grid">
+
+      <!-- Director 1 -->
+      <div class="dir-card reveal">
+        <div class="dir-photo">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/5.webp" alt="Mr. Neeraj Yadav" loading="lazy" />
+        </div>
+        <div class="dir-body">
+          <div class="dir-award">🏆 35 Under 35 – Entrepreneurs Today</div>
+          <div class="dir-name">Mr. Neeraj Yadav</div>
+          <div class="dir-title">Co-Founder &amp; Director</div>
+          <div class="dir-divider"></div>
+          <p class="dir-bio">After serving in the industry for 15+ years heading senior positions and delivering success, Neeraj's entrepreneurial journey began in 2018. He brings strong business development experience in E-learning technology &amp; Edu-tourism. With his extensive expertise, he has helped institutions build innovative and value-adding programs especially for students of Architecture &amp; Design.</p>
+          <p class="dir-bio" style="margin-top:12px;">He was the co-recipient of the prestigious <strong>35 Under 35 Award</strong> for Transforming Education through Experiential Learning and Global Exposure by Entrepreneurs Today.</p>
+          <div class="dir-highlights" style="margin-top:20px;">
+            <div class="dir-highlight">15+ Years Industry Experience</div>
+            <div class="dir-highlight">Architecture &amp; Design Specialist</div>
+            <div class="dir-highlight">E-learning &amp; Edu-tourism Expert</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Director 2 -->
+      <div class="dir-card reverse reveal">
+        <div class="dir-photo">
+          <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/4.webp" alt="Mr. Pranav Chobhe" loading="lazy" />
+        </div>
+        <div class="dir-body">
+          <div class="dir-award">🏆 Cornell Maha 60 · 35 Under 35</div>
+          <div class="dir-name">Mr. Pranav Chobhe</div>
+          <div class="dir-title">Co-Founder &amp; Director</div>
+          <div class="dir-divider"></div>
+          <p class="dir-bio">With over 10+ years of experience in Edu-tourism and education, Pranav is a first-generation entrepreneur. Since launching his first startup in 2015, he has a proven track record of initiating and developing projects in education, both internationally and within India.</p>
+          <p class="dir-bio" style="margin-top:12px;">He serves as a board member at BMCC Pune and was selected by the Government of Maharashtra for the prestigious <strong>Cornell Maha 60 program</strong> — fully sponsored in association with Cornell University, USA. He has also been honoured with the <strong>35 Under 35 Award</strong> by Entrepreneurs Today.</p>
+          <div class="dir-highlights" style="margin-top:20px;">
+            <div class="dir-highlight">Board Member, BMCC Pune</div>
+            <div class="dir-highlight">Cornell Maha 60 Alumnus</div>
+            <div class="dir-highlight">10+ Years in Edu-tourism</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section id="about-cta">
+  <div class="container">
+    <div class="about-cta-inner reveal">
+      <div class="about-cta-left">
+        <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+        <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+      </div>
+      <div class="about-cta-right">
+        <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
+        <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container" style="padding-bottom: 40px;">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo" style="margin-bottom: 16px;">
+          <a href="index.html" style="text-decoration: none; display: inline-block;">
+            <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+          </a>
+        </div>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="immersion-programs.html">Programs</a>
+          <a href="leadership-walk.html">Leadership walk</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="#">Cancellation &amp; Refund process</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Destinations</div>
+        <div class="footer-links">
+          <a href="singapore-indonesia.html">Singapore</a>
+          <a href="japan.html">Japan</a>
+          <a href="south-korea.html">South Korea</a>
+          <a href="europe.html">Europe</a>
+          <a href="malaysia-singapore.html">Malaysia</a>
+          <a href="uae.html">UAE / Dubai</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sage Green Gradient Bottom Bar -->
+  <div class="footer-bottom-bar">
+    © 2026 Vijigishu Education Pvt. Ltd. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menuOpen = false; mobileMenu.style.display = 'none';
+  }));
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
