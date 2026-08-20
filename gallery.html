@@ -73,9 +73,11 @@
     #gallery { padding: 50px 0 100px; }
     .country-filters-wrap { text-align: center; margin-bottom: 40px; }
     .gallery-filters { display: inline-flex; justify-content: center; flex-wrap: wrap; gap: 8px; background: var(--white); padding: 8px 12px; border-radius: 100px; box-shadow: 0 4px 25px rgba(0,0,0,.05); border: 1px solid rgba(0,0,0,.06); }
-    .filter-btn { padding: 10px 22px; border-radius: 100px; background: transparent; border: none; font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .3s var(--ease); display: flex; align-items: center; gap: 6px; }
+    .filter-btn { padding: 10px 22px; border-radius: 100px; background: transparent; border: none; font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .3s var(--ease); display: inline-flex; align-items: center; gap: 8px; }
+    .filter-btn svg { flex-shrink: 0; border-radius: 50%; }
     .filter-btn:hover { color: var(--navy); background: rgba(0,0,0,.04); }
     .filter-btn.active { background: var(--green); color: var(--white); box-shadow: 0 6px 20px rgba(56,103,58,.25); }
+    .filter-btn.active stroke { stroke: var(--white); }
 
     .masonry-grid {
       column-count: 3;
@@ -104,20 +106,22 @@
       position: absolute;
       top: 14px;
       left: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       border-radius: 100px;
-      padding: 6px 12px;
-      font-size: 1.05rem;
-      line-height: 1;
+      padding: 6px 8px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
       z-index: 3;
       pointer-events: none;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .masonry-item-badge svg {
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
     .masonry-overlay {
@@ -259,15 +263,8 @@
   <div class="container">
     
     <div class="country-filters-wrap reveal">
-      <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">🌐 All Destinations</button>
-        <button class="filter-btn" data-filter="singapore">🇸🇬 Singapore</button>
-        <button class="filter-btn" data-filter="japan">🇯🇵 Japan</button>
-        <button class="filter-btn" data-filter="south-korea">🇰🇷 South Korea</button>
-        <button class="filter-btn" data-filter="europe">🇪🇺 Europe</button>
-        <button class="filter-btn" data-filter="malaysia">🇲🇾 Malaysia</button>
-        <button class="filter-btn" data-filter="uae">🇦🇪 UAE / Dubai</button>
-        <button class="filter-btn" data-filter="india">🇮🇳 India</button>
+      <div class="gallery-filters" id="galleryFilters">
+        <!-- Injected via JavaScript with SVG icons -->
       </div>
     </div>
 
@@ -284,7 +281,6 @@
   <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next">›</button>
   <div class="lightbox-img-wrap">
     <img class="lightbox-content" id="lightbox-img" alt="Gallery Photo" />
-    <div class="lightbox-caption" id="lightbox-caption"></div>
   </div>
 </div>
 
@@ -394,27 +390,61 @@
     }));
   }
 
+  // High Quality Vector SVG Flag & Globe Icons
+  const countryIcons = {
+    all: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    singapore: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#EEEEEE"/><path d="M18 0C10.6 0 4.2 4.4 1.4 10.8H34.6C31.8 4.4 25.4 0 18 0Z" fill="#ED2939"/><circle cx="11" cy="9" r="4.5" fill="#FFFFFF"/><circle cx="13" cy="9" r="4" fill="#ED2939"/></svg>`,
+    japan: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><circle cx="18" cy="18" r="7.5" fill="#BC002D"/></svg>`,
+    'south-korea': `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><path d="M18 10C22.4 10 26 13.6 26 18C26 22.4 22.4 26 18 26C13.6 26 10 22.4 10 18C10 13.6 13.6 10 18 10Z" fill="#0047A0"/><path d="M18 10C22.4 10 26 13.6 26 18C26 18 22 18 18 18C14 18 10 18 10 18C10 13.6 13.6 10 18 10Z" fill="#C60C30"/><circle cx="14" cy="18" r="4" fill="#C60C30"/><circle cx="22" cy="18" r="4" fill="#0047A0"/></svg>`,
+    europe: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#003399"/><circle cx="18" cy="8" r="1.5" fill="#FFCC00"/><circle cx="25" cy="11" r="1.5" fill="#FFCC00"/><circle cx="28" cy="18" r="1.5" fill="#FFCC00"/><circle cx="25" cy="25" r="1.5" fill="#FFCC00"/><circle cx="18" cy="28" r="1.5" fill="#FFCC00"/><circle cx="11" cy="25" r="1.5" fill="#FFCC00"/><circle cx="8" cy="18" r="1.5" fill="#FFCC00"/><circle cx="11" cy="11" r="1.5" fill="#FFCC00"/></svg>`,
+    malaysia: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#CC0000"/><rect x="0" y="4" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="12" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="20" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="28" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="0" width="18" height="20" fill="#000066"/><path d="M7 5A6 6 0 1 0 13 15A7 7 0 1 1 7 5Z" fill="#FFCC00"/></svg>`,
+    uae: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#000000"/><path d="M0 0H36V12H0Z" fill="#007A3D"/><path d="M0 12H36V24H0Z" fill="#FFFFFF"/><rect x="0" y="0" width="10" height="36" fill="#FF0000"/></svg>`,
+    india: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FFFFFF"/><path d="M0 0H36V12H0Z" fill="#FF9933"/><path d="M0 24H36V36H0Z" fill="#128807"/><circle cx="18" cy="18" r="4.5" fill="none" stroke="#000080" stroke-width="1.2"/><circle cx="18" cy="18" r="1" fill="#000080"/></svg>`
+  };
+
+  // Country Categories Configuration
+  const categoriesList = [
+    { key: 'all', label: 'All Destinations', icon: countryIcons.all },
+    { key: 'singapore', label: 'Singapore', icon: countryIcons.singapore },
+    { key: 'japan', label: 'Japan', icon: countryIcons.japan },
+    { key: 'south-korea', label: 'South Korea', icon: countryIcons['south-korea'] },
+    { key: 'europe', label: 'Europe', icon: countryIcons.europe },
+    { key: 'malaysia', label: 'Malaysia', icon: countryIcons.malaysia },
+    { key: 'uae', label: 'UAE / Dubai', icon: countryIcons.uae },
+    { key: 'india', label: 'India', icon: countryIcons.india }
+  ];
+
+  // Render Filter Buttons
+  const galleryFilters = document.getElementById('galleryFilters');
+  categoriesList.forEach((cat, idx) => {
+    const btn = document.createElement('button');
+    btn.className = `filter-btn ${idx === 0 ? 'active' : ''}`;
+    btn.setAttribute('data-filter', cat.key);
+    btn.innerHTML = `${cat.icon} <span>${cat.label}</span>`;
+    galleryFilters.appendChild(btn);
+  });
+
   // Gallery Country Data Mapping
   const galleryItems = [
-    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', flag: '🇸🇬', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
-    { src: 'images/Gallery-11-scaled.webp', country: 'japan', flag: '🇯🇵', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
-    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', flag: '🇰🇷', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
-    { src: 'images/Gallery-13-scaled.webp', country: 'europe', flag: '🇪🇺', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
-    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', flag: '🇲🇾', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
-    { src: 'images/Gallery-15-scaled.webp', country: 'uae', flag: '🇦🇪', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
-    { src: 'images/Gallery-16-scaled.webp', country: 'india', flag: '🇮🇳', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
-    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', flag: '🇸🇬', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
-    { src: 'images/Gallery-19-scaled.webp', country: 'japan', flag: '🇯🇵', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
-    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', flag: '🇰🇷', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
-    { src: 'images/Gallery-22-scaled.webp', country: 'europe', flag: '🇪🇺', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
-    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', flag: '🇲🇾', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
-    { src: 'images/Gallery-25-scaled.webp', country: 'uae', flag: '🇦🇪', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
-    { src: 'images/Gallery-30-scaled.webp', country: 'india', flag: '🇮🇳', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
-    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', flag: '🇸🇬', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
-    { src: 'images/Gallery-35-scaled.webp', country: 'japan', flag: '🇯🇵', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
-    { src: 'images/Gallery-36-scaled.webp', country: 'europe', flag: '🇪🇺', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
-    { src: 'images/Gallery-37-scaled.webp', country: 'uae', flag: '🇦🇪', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
-    { src: 'images/Gallery-38-scaled.webp', country: 'india', flag: '🇮🇳', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
+    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', icon: countryIcons.singapore, label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
+    { src: 'images/Gallery-11-scaled.webp', country: 'japan', icon: countryIcons.japan, label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
+    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', icon: countryIcons['south-korea'], label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
+    { src: 'images/Gallery-13-scaled.webp', country: 'europe', icon: countryIcons.europe, label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
+    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', icon: countryIcons.malaysia, label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
+    { src: 'images/Gallery-15-scaled.webp', country: 'uae', icon: countryIcons.uae, label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
+    { src: 'images/Gallery-16-scaled.webp', country: 'india', icon: countryIcons.india, label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
+    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', icon: countryIcons.singapore, label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
+    { src: 'images/Gallery-19-scaled.webp', country: 'japan', icon: countryIcons.japan, label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
+    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', icon: countryIcons['south-korea'], label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
+    { src: 'images/Gallery-22-scaled.webp', country: 'europe', icon: countryIcons.europe, label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
+    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', icon: countryIcons.malaysia, label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
+    { src: 'images/Gallery-25-scaled.webp', country: 'uae', icon: countryIcons.uae, label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
+    { src: 'images/Gallery-30-scaled.webp', country: 'india', icon: countryIcons.india, label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
+    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', icon: countryIcons.singapore, label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
+    { src: 'images/Gallery-35-scaled.webp', country: 'japan', icon: countryIcons.japan, label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
+    { src: 'images/Gallery-36-scaled.webp', country: 'europe', icon: countryIcons.europe, label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
+    { src: 'images/Gallery-37-scaled.webp', country: 'uae', icon: countryIcons.uae, label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
+    { src: 'images/Gallery-38-scaled.webp', country: 'india', icon: countryIcons.india, label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
   ];
 
   const masonryGrid = document.getElementById('masonryGrid');
@@ -433,7 +463,7 @@
       card.setAttribute('data-country', item.country);
       card.style.transitionDelay = `${(index % 4) * 0.08}s`;
       card.innerHTML = `
-        <div class="masonry-item-badge">${item.flag}</div>
+        <div class="masonry-item-badge">${item.icon}</div>
         <img src="${item.src}" loading="lazy" alt="${item.title}" />
         <div class="masonry-overlay">
           <div class="masonry-zoom-icon">
@@ -449,21 +479,20 @@
   // Initial render
   renderGallery('all');
 
-  // Country Filter Buttons
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+  // Country Filter Buttons Listener
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filterValue = btn.getAttribute('data-filter');
       renderGallery(filterValue);
-    });
+    }
   });
 
   // Lightbox Modal Controls
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
-  const lightboxCaption = document.getElementById("lightbox-caption");
   const lightboxPrev = document.getElementById("lightboxPrev");
   const lightboxNext = document.getElementById("lightboxNext");
   const lightboxClose = document.getElementById("lightboxClose");
@@ -479,7 +508,6 @@
     const item = currentFilteredList[currentLightboxIndex];
     if (item) {
       lightboxImg.src = item.src;
-      lightboxCaption.textContent = `${item.flag} ${item.label} • ${item.title}`;
     }
   }
 
