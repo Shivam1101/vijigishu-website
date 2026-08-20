@@ -315,8 +315,13 @@
     }
     .internship-accordion-item:hover {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      border-color: rgba(56, 103, 58, 0.3);
+      border-color: rgba(56, 103, 58, 0.4);
       transform: translateY(-2px);
+    }
+    /* ACTIVE ACCORDION ITEM WITH PROMINENT GREEN BORDER */
+    .internship-accordion-item.active {
+      border: 2px solid var(--green);
+      box-shadow: 0 12px 35px rgba(56, 103, 58, 0.15);
     }
     .internship-accordion-header {
       display: flex;
@@ -898,11 +903,13 @@
 
     <div class="internship-accordion-list">
 
-      <!-- ITEM 1: Malaysia Internship -->
+      <!-- ITEM 1: Malaysia Internship (WITH GALLERY MATCHING SVG FLAG ICON) -->
       <div class="internship-accordion-item reveal" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🇲🇾</div>
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+              <svg width="34" height="34" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#CC0000"/><rect x="0" y="4" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="12" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="20" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="28" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="0" width="18" height="20" fill="#000066"/><path d="M7 5A6 6 0 1 0 13 15A7 7 0 1 1 7 5Z" fill="#FFCC00"/></svg>
+            </div>
             <div>
               <div class="internship-badge">INTERNSHIP PROGRAM</div>
               <div class="internship-item-title">International Internship — Malaysia</div>
@@ -923,11 +930,13 @@
         </div>
       </div>
 
-      <!-- ITEM 2: Thailand Internship -->
+      <!-- ITEM 2: Thailand Internship (WITH GALLERY MATCHING SVG FLAG ICON) -->
       <div class="internship-accordion-item reveal reveal-delay-1" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🇹🇭</div>
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+              <svg width="34" height="34" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/><path d="M0 0H36V6H0Z" fill="#A51931"/><path d="M0 30H36V36H0Z" fill="#A51931"/><path d="M0 6H36V12H0Z" fill="#F4F5F8"/><path d="M0 24H36V30H0Z" fill="#F4F5F8"/><path d="M0 12H36V24H0Z" fill="#2D2A4A"/></svg>
+            </div>
             <div>
               <div class="internship-badge">INTERNSHIP PROGRAM</div>
               <div class="internship-item-title">International Internship — Thailand</div>
@@ -952,7 +961,7 @@
       <div class="internship-accordion-item reveal reveal-delay-2" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🎓</div>
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(56,103,58,0.1); display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0;">🎓</div>
             <div>
               <div class="internship-badge">SPECIAL LEARNING TOUR</div>
               <div class="internship-item-title">Faculty Development Program</div>
@@ -977,7 +986,7 @@
       <div class="internship-accordion-item reveal reveal-delay-3" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🌐</div>
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(27,28,74,0.08); display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0;">🌐</div>
             <div>
               <div class="internship-badge">SPECIAL LEARNING TOUR</div>
               <div class="internship-item-title">International Conferences &amp; Seminars</div>
