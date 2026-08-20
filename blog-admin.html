@@ -8,7 +8,7 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog CMS Manager – Vijigishu Control Panel</title>
+  <title>Unified Admin Control Center – Vijigishu Educational Travel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -33,13 +33,15 @@
       background: var(--off);
       color: var(--navy);
       line-height: 1.6;
+      min-height: 100vh;
     }
     a { text-decoration: none; color: inherit; }
 
+    /* ─── UNIFIED HEADER ─── */
     .admin-header {
       background: var(--navy);
       color: var(--white);
-      padding: 16px 32px;
+      padding: 14px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -47,33 +49,43 @@
       box-shadow: 0 4px 20px rgba(0,0,0,.15);
     }
     .admin-logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.1rem; }
-    .admin-logo span { color: var(--sage); font-family: 'Playfair Display', serif; }
-    .admin-nav-btns { display: flex; gap: 12px; }
+    
+    .admin-main-tabs { display: flex; background: rgba(255,255,255,0.08); padding: 4px; border-radius: 100px; gap: 4px; }
+    .tab-btn { padding: 8px 20px; border-radius: 100px; border: none; background: transparent; color: rgba(255,255,255,0.7); font-family: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; transition: all .25s; display: flex; align-items: center; gap: 8px; }
+    .tab-btn:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+    .tab-btn.active { background: var(--green); color: var(--white); box-shadow: 0 4px 15px rgba(56,103,58,0.4); }
+
+    .admin-nav-btns { display: flex; align-items: center; gap: 10px; }
 
     .btn {
-      padding: 10px 20px; border-radius: 100px; font-weight: 700; font-size: .85rem;
+      padding: 8px 18px; border-radius: 100px; font-weight: 700; font-size: .85rem;
       cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 8px; transition: all .2s;
     }
     .btn-green { background: var(--sage); color: var(--navy); }
     .btn-green:hover { background: var(--green); color: var(--white); }
     .btn-navy { background: var(--navy); color: var(--white); }
     .btn-navy:hover { background: #1B1C4A; }
-    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--navy); }
-    .btn-outline:hover { background: var(--white); }
-    .btn-danger { background: rgba(207,46,46,.1); color: #cf2e2e; }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: var(--white); }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+    .btn-danger { background: rgba(207,46,46,.15); border: 1px solid rgba(207,46,46,0.3); color: #FF8A80; }
     .btn-danger:hover { background: #cf2e2e; color: var(--white); }
 
-    .admin-container { max-width: 1240px; margin: 40px auto; padding: 0 24px; }
+    .admin-container { max-width: 1280px; margin: 36px auto; padding: 0 24px; }
+
+    /* Tab Content Section Switcher */
+    .tab-content-panel { display: none; }
+    .tab-content-panel.active { display: block; }
     
-    /* View Switcher Tabs */
+    /* Top Bar */
     .admin-top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
-    .admin-title h1 { font-family: 'Playfair Display', serif; font-size: 2rem; }
+    .admin-title h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy); }
+    .admin-title p { color: var(--gray); font-size: .92rem; }
     
     /* Stats Bar */
     .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
-    .stat-card { background: var(--white); border-radius: 16px; padding: 20px 24px; border: 1px solid var(--border); }
+    .stat-card { background: var(--white); border-radius: 18px; padding: 20px 24px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
     .stat-num { font-size: 2rem; font-weight: 800; color: var(--navy); font-family: 'Playfair Display', serif; }
-    .stat-lbl { font-size: .8rem; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .stat-lbl { font-size: .78rem; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 
     /* Table View */
     .table-wrap { background: var(--white); border-radius: 20px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.03); }
@@ -85,32 +97,60 @@
     .badge { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: .75rem; font-weight: 800; background: rgba(56,103,58,.1); color: var(--green); text-transform: uppercase; }
 
     /* Editor Modal / Panel */
-    .editor-card { background: var(--white); border-radius: 24px; border: 1px solid var(--border); padding: 40px; box-shadow: 0 15px 40px rgba(0,0,0,.05); margin-bottom: 40px; display: none; }
+    .editor-card { background: var(--white); border-radius: 24px; border: 1px solid var(--border); padding: 36px; box-shadow: 0 15px 40px rgba(0,0,0,.05); margin-bottom: 40px; display: none; }
     .editor-card.active { display: block; }
-    .editor-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+    .editor-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group.full { grid-column: 1 / -1; }
-    label { font-size: .85rem; font-weight: 700; color: var(--navy); }
+    label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--navy); }
+    label span.required { color: #E53935; margin-left: 2px; }
     input[type="text"], select, textarea {
-      padding: 14px 18px; border-radius: 12px; border: 1px solid var(--border);
+      padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--border);
       background: var(--off); font-family: inherit; font-size: .92rem; color: var(--navy); outline: none; transition: border-color .2s;
     }
     input[type="text"]:focus, select:focus, textarea:focus { border-color: var(--green); background: var(--white); }
 
     /* Block Builder */
-    .blocks-container { border-top: 2px dashed var(--border); padding-top: 32px; margin-top: 32px; }
-    .block-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .blocks-container { border-top: 2px dashed var(--border); padding-top: 28px; margin-top: 28px; }
+    .block-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
     .block-item {
-      background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 16px;
+      background: var(--off); border: 1px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 14px;
       position: relative; transition: all .2s;
     }
-    .block-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .block-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
     .block-type-tag { font-size: .75rem; font-weight: 800; text-transform: uppercase; color: var(--green); background: rgba(56,103,58,.1); padding: 4px 10px; border-radius: 6px; }
     .block-actions { display: flex; gap: 6px; }
     .btn-sm { padding: 4px 10px; font-size: .75rem; border-radius: 6px; cursor: pointer; border: 1px solid var(--border); background: var(--white); }
     .btn-sm:hover { background: var(--navy); color: var(--white); }
+
+    /* ─── GALLERY MANAGER STYLES ─── */
+    .gallery-grid-layout { display: grid; grid-template-columns: 380px 1fr; gap: 32px; align-items: start; }
+    @media (max-width: 1024px) { .gallery-grid-layout { grid-template-columns: 1fr; } }
+
+    .card-box { background: var(--white); border-radius: 20px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .card-box-title { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
+
+    .upload-dropzone { border: 2px dashed #CBD5E1; border-radius: 16px; padding: 24px 16px; text-align: center; background: #F8FAFC; cursor: pointer; transition: all .3s; position: relative; margin-bottom: 18px; }
+    .upload-dropzone:hover { border-color: var(--green); background: rgba(56,103,58,0.03); }
+    .upload-dropzone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .preview-img-container { width: 100%; height: 160px; border-radius: 12px; overflow: hidden; display: none; margin-bottom: 16px; position: relative; background: #000; }
+    .preview-img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+    .admin-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .admin-item-card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.04); position: relative; transition: transform .3s; }
+    .admin-item-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+    .admin-item-img { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .admin-item-body { padding: 14px; }
+    .admin-item-country { display: inline-flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 700; color: var(--green); background: rgba(56,103,58,0.1); padding: 4px 10px; border-radius: 100px; margin-bottom: 8px; }
+    .admin-item-title { font-size: .86rem; font-weight: 600; color: var(--navy); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .admin-item-actions { display: flex; justify-content: flex-end; padding: 10px 14px; border-top: 1px solid var(--border); background: #FAFAFA; }
+    .btn-delete-item { background: #FFEBEE; color: #D32F2F; border: none; padding: 6px 14px; border-radius: 8px; font-size: .8rem; font-weight: 700; cursor: pointer; transition: all .2s; }
+    .btn-delete-item:hover { background: #D32F2F; color: var(--white); }
+
+    /* Alert Banner */
+    .alert-banner { background: #E8F5E9; border: 1px solid #A5D6A7; color: #1B5E20; padding: 14px 20px; border-radius: 12px; font-size: .9rem; font-weight: 600; margin-bottom: 24px; display: none; }
 
     /* Success Modal Pop-up */
     .modal-backdrop {
@@ -155,13 +195,13 @@
     @media (max-width: 768px) {
       .form-grid { grid-template-columns: 1fr; }
       .stats-row { grid-template-columns: 1fr; }
-      .admin-header { padding: 16px; flex-direction: column; gap: 12px; }
+      .admin-header { padding: 14px 16px; flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===== ADMIN HEADER ===== -->
+<!-- ===== UNIFIED ADMIN HEADER ===== -->
 <header class="admin-header">
   <div class="admin-logo">
     <a href="index.html" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
@@ -169,142 +209,232 @@
       <span style="font-size: .75rem; background: var(--sage); color: var(--navy); padding: 3px 10px; border-radius: 4px; font-weight: 800; text-transform: uppercase;">CMS Admin</span>
     </a>
   </div>
-    <span>Vijigishu Blog CMS</span>
+
+  <!-- MAIN TAB SWITCHER (BLOG vs GALLERY) -->
+  <div class="admin-main-tabs">
+    <button class="tab-btn active" id="tabBtnBlog" onclick="switchAdminSection('blog')">
+      <span>📝 Blog Manager</span>
+    </button>
+    <button class="tab-btn" id="tabBtnGallery" onclick="switchAdminSection('gallery')">
+      <span>🖼️ Gallery Manager</span>
+    </button>
   </div>
+
   <div class="admin-nav-btns">
-    <a href="blog.html" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,.3);" target="_blank">👁 View Live Blog →</a>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Blog</button>
-    <button class="btn btn-outline" style="color: #FF7043; border-color: rgba(255,112,67,0.4); background: rgba(255,112,67,0.1);" onclick="logoutAdmin()">Logout 🚪</button>
+    <a href="blog.html" id="liveSiteLink" class="btn btn-outline" target="_blank">👁 Live Blog ↗</a>
+    <button class="btn btn-danger" onclick="logoutAdmin()">Logout 🚪</button>
   </div>
-  <script>
-    function logoutAdmin() {
-      localStorage.removeItem('vijigishu_admin_logged_in');
-      window.location.href = 'login.html';
-    }
-  </script>
 </header>
 
 <main class="admin-container">
+  
+  <div class="alert-banner" id="alertBanner"></div>
 
-  <!-- Top Bar -->
-  <div class="admin-top-bar">
-    <div class="admin-title">
-      <h1>Blog <em>Management</em></h1>
-      <p style="color:var(--gray); font-size:.9rem;">Create, edit, and publish dynamic blog posts for Vijigishu Educational Travel.</p>
-    </div>
-    <div>
-      <button class="btn btn-outline" onclick="resetDefaultBlogs()">🔄 Reset Sample Data</button>
-    </div>
-  </div>
-
-  <!-- Stats Overview -->
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-num" id="totalBlogsCount">0</div>
-      <div class="stat-lbl">Total Published Blogs</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="categoriesCount">0</div>
-      <div class="stat-lbl">Active Categories</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num" id="storageStatus">Active</div>
-      <div class="stat-lbl">Database Storage (Local)</div>
-    </div>
-  </div>
-
-  <!-- EDITOR FORM (HIDDEN BY DEFAULT) -->
-  <div class="editor-card" id="editorCard">
-    <div class="editor-header">
-      <h2 id="editorHeading" style="font-family:'Playfair Display',serif;">Create New <em>Article</em></h2>
-      <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
+  <!-- ========================================== -->
+  <!-- 1. BLOG MANAGEMENT SECTION -->
+  <!-- ========================================== -->
+  <div class="tab-content-panel active" id="panelBlog">
+    
+    <div class="admin-top-bar">
+      <div class="admin-title">
+        <h1>Blog <em>Management</em></h1>
+        <p>Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.</p>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Blog</button>
+        <button class="btn btn-outline" style="color:var(--navy); border-color:var(--border);" onclick="resetDefaultBlogs()">🔄 Reset Sample Articles</button>
+      </div>
     </div>
 
-    <form id="blogForm">
-      <input type="hidden" id="postId" />
-      
-      <div class="form-grid">
-        <div class="form-group full">
-          <label for="postTitle">Blog Title *</label>
-          <input type="text" id="postTitle" placeholder="e.g. Why Global Immersion Programs are Essential for Management Students" required />
-        </div>
-        
-        <div class="form-group">
-          <label for="postCategory">Category *</label>
-          <select id="postCategory" required>
-            <option value="Management">Management</option>
-            <option value="Architecture">Architecture &amp; Design</option>
-            <option value="Engineering">Engineering</option>
-            <option value="School Programs">School Tours</option>
-            <option value="Global Trends">Global Trends</option>
-          </select>
-        </div>
+    <!-- Stats Overview -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num" id="totalBlogsCount">0</div>
+        <div class="stat-lbl">Total Published Blogs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="categoriesCount">0</div>
+        <div class="stat-lbl">Active Categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" id="blogStorageStatus">Active</div>
+        <div class="stat-lbl">Storage Mode (LocalStorage)</div>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label for="postAuthor">Author Name *</label>
-          <input type="text" id="postAuthor" placeholder="e.g. Dr. Vijaya Kumar" required />
-        </div>
-
-        <div class="form-group full">
-          <label for="postImage">Cover Image URL *</label>
-          <input type="text" id="postImage" placeholder="images/mangement-2-scaled.webp" required />
-        </div>
-
-        <div class="form-group full">
-          <label for="postExcerpt">Short Excerpt / Summary *</label>
-          <textarea id="postExcerpt" rows="3" placeholder="Brief 2-3 sentence overview that appears on the card..." required></textarea>
-        </div>
+    <!-- BLOG EDITOR FORM -->
+    <div class="editor-card" id="editorCard">
+      <div class="editor-header">
+        <h2 id="editorHeading" style="font-family:'Playfair Display',serif;">Create New <em>Article</em></h2>
+        <button class="btn btn-outline" style="color:var(--navy); border-color:var(--border);" onclick="hideEditor()">✕ Cancel</button>
       </div>
 
-      <!-- DYNAMIC BLOCK BUILDER -->
-      <div class="blocks-container">
-        <div class="block-title-row">
-          <div>
-            <h3 style="font-family:'Playfair Display',serif;">Article <em>Content Builder</em></h3>
-            <p style="font-size:.85rem; color:var(--gray);">Add, remove, and reorder text paragraphs, subheadings, quotes, and images dynamically.</p>
+      <form id="blogForm">
+        <input type="hidden" id="postId" />
+        
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="postTitle">Blog Title <span class="required">*</span></label>
+            <input type="text" id="postTitle" placeholder="e.g. Why Global Immersion Programs are Essential for Management Students" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="postCategory">Category <span class="required">*</span></label>
+            <select id="postCategory" required>
+              <option value="Management">Management</option>
+              <option value="Architecture">Architecture &amp; Design</option>
+              <option value="Engineering">Engineering</option>
+              <option value="School Programs">School Tours</option>
+              <option value="Global Trends">Global Trends</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="postAuthor">Author Name <span class="required">*</span></label>
+            <input type="text" id="postAuthor" placeholder="e.g. Dr. Vijaya Kumar" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="postImage">Cover Image URL <span class="required">*</span></label>
+            <input type="text" id="postImage" placeholder="images/mangement-2-scaled.webp" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="postExcerpt">Short Excerpt / Summary <span class="required">*</span></label>
+            <textarea id="postExcerpt" rows="3" placeholder="Brief 2-3 sentence overview that appears on the card..." required></textarea>
           </div>
         </div>
 
-        <div id="blocksList">
-          <!-- Dynamically inserted block items -->
+        <!-- DYNAMIC BLOCK BUILDER -->
+        <div class="blocks-container">
+          <div class="block-title-row">
+            <div>
+              <h3 style="font-family:'Playfair Display',serif;">Article <em>Content Builder</em></h3>
+              <p style="font-size:.85rem; color:var(--gray);">Add text paragraphs, subheadings, quotes, and images dynamically.</p>
+            </div>
+          </div>
+
+          <div id="blocksList"></div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top: 16px;">
+            <span style="font-size:.85rem; font-weight:700; color:var(--navy); margin-right:8px; align-self:center;">+ Add Element:</span>
+            <button type="button" class="btn btn-outline" style="font-size:.8rem; color:var(--navy); border-color:var(--border);" onclick="addBlock('paragraph')">+ Paragraph</button>
+            <button type="button" class="btn btn-outline" style="font-size:.8rem; color:var(--navy); border-color:var(--border);" onclick="addBlock('heading')">+ Subheading</button>
+            <button type="button" class="btn btn-outline" style="font-size:.8rem; color:var(--navy); border-color:var(--border);" onclick="addBlock('quote')">+ Quote Block</button>
+            <button type="button" class="btn btn-outline" style="font-size:.8rem; color:var(--navy); border-color:var(--border);" onclick="addBlock('callout')">+ Key Takeaway Box</button>
+            <button type="button" class="btn btn-outline" style="font-size:.8rem; color:var(--navy); border-color:var(--border);" onclick="addBlock('image')">+ Inline Image</button>
+          </div>
         </div>
 
-        <div class="add-block-bar">
-          <span style="font-size:.85rem; font-weight:700; color:var(--navy); margin-right:8px; align-self:center;">+ Add Element:</span>
-          <button type="button" class="btn btn-outline" style="font-size:.8rem; padding:6px 14px;" onclick="addBlock('paragraph')">+ Paragraph</button>
-          <button type="button" class="btn btn-outline" style="font-size:.8rem; padding:6px 14px;" onclick="addBlock('heading')">+ Subheading</button>
-          <button type="button" class="btn btn-outline" style="font-size:.8rem; padding:6px 14px;" onclick="addBlock('quote')">+ Quote Block</button>
-          <button type="button" class="btn btn-outline" style="font-size:.8rem; padding:6px 14px;" onclick="addBlock('callout')">+ Key Takeaway Box</button>
-          <button type="button" class="btn btn-outline" style="font-size:.8rem; padding:6px 14px;" onclick="addBlock('image')">+ Inline Image</button>
+        <div style="margin-top: 36px; display: flex; gap: 16px; justify-content: flex-end;">
+          <button type="button" class="btn btn-outline" style="color:var(--navy); border-color:var(--border);" onclick="hideEditor()">Cancel</button>
+          <button type="submit" class="btn btn-green" style="font-size: 1rem; padding: 14px 32px;">💾 Save &amp; Publish Article</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- BLOGS TABLE -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Article Title</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th style="text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="blogsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. GALLERY MANAGEMENT SECTION -->
+  <!-- ========================================== -->
+  <div class="tab-content-panel" id="panelGallery">
+    
+    <div class="admin-top-bar">
+      <div class="admin-title">
+        <h1>Gallery <em>Control Center</em></h1>
+        <p>Upload photos, assign mandatory country tags, and control live gallery display.</p>
+      </div>
+      <button class="btn btn-outline" style="color:var(--navy); border-color:var(--border);" id="btnResetGallery">🔄 Reset Default Photos</button>
+    </div>
+
+    <div class="gallery-grid-layout">
+      
+      <!-- ADD NEW PHOTO FORM -->
+      <div class="card-box">
+        <h3 class="card-box-title">➕ Upload &amp; Add Photo</h3>
+        <form id="addPhotoForm">
+          
+          <!-- FILE UPLOAD DROPZONE -->
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label>Upload Image File <span class="required">*</span></label>
+            <div class="preview-img-container" id="previewContainer">
+              <img id="previewImg" src="" alt="Preview" />
+            </div>
+            <div class="upload-dropzone" id="uploadDropzone">
+              <input type="file" id="photoFileInput" accept="image/*" required />
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" style="margin-bottom: 8px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div style="font-size: .9rem; font-weight: 600; color: var(--navy);">Click or Drag Image File Here</div>
+              <div style="font-size: .78rem; color: var(--gray); margin-top: 4px;">Supports JPG, PNG, WEBP</div>
+            </div>
+          </div>
+
+          <!-- MANDATORY COUNTRY SELECT -->
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label>Assign Destination Country <span class="required">* (Mandatory)</span></label>
+            <select id="photoCountry" required>
+              <option value="" disabled selected>-- Select Destination Country --</option>
+              <option value="singapore">🇸🇬 Singapore</option>
+              <option value="japan">🇯🇵 Japan</option>
+              <option value="south-korea">🇰🇷 South Korea</option>
+              <option value="europe">🇪🇺 Europe</option>
+              <option value="malaysia">🇲🇾 Malaysia</option>
+              <option value="uae">🇦🇪 UAE / Dubai</option>
+              <option value="india">🇮🇳 India</option>
+            </select>
+          </div>
+
+          <!-- TITLE / LOCATION DETAILS -->
+          <div class="form-group" style="margin-bottom: 24px;">
+            <label>Title / Location Details</label>
+            <input type="text" id="photoTitle" placeholder="e.g. National University of Singapore Tech Hub" />
+          </div>
+
+          <button type="submit" class="btn btn-green" style="width: 100%; justify-content: center; padding: 14px;">🚀 Publish to Live Gallery</button>
+        </form>
+      </div>
+
+      <!-- ACTIVE GALLERY PHOTOS LIST -->
+      <div class="card-box">
+        <div class="card-box-title">
+          <span>🖼️ Active Gallery Photos (<span id="photoCountBadge">0</span>)</span>
+          <select id="adminFilterSelect" style="width: 180px; padding: 6px 12px; font-size: .82rem;">
+            <option value="all">Filter: All Countries</option>
+            <option value="singapore">Singapore</option>
+            <option value="japan">Japan</option>
+            <option value="south-korea">South Korea</option>
+            <option value="europe">Europe</option>
+            <option value="malaysia">Malaysia</option>
+            <option value="uae">UAE / Dubai</option>
+            <option value="india">India</option>
+          </select>
+        </div>
+
+        <div class="admin-gallery-grid" id="adminGalleryGrid">
+          <!-- Injected via JavaScript -->
         </div>
       </div>
 
-      <div style="margin-top: 36px; display: flex; gap: 16px; justify-content: flex-end;">
-        <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
-        <button type="submit" class="btn btn-green" style="font-size: 1rem; padding: 14px 32px;">💾 Save &amp; Publish Article</button>
-      </div>
-    </form>
+    </div>
   </div>
 
-  <!-- BLOGS LIST TABLE -->
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Cover</th>
-          <th>Article Title</th>
-          <th>Category</th>
-          <th>Author</th>
-          <th>Date</th>
-          <th style="text-align: right;">Actions</th>
-      </thead>
-      <tbody id="blogsTableBody">
-        <!-- Dynamically rendered rows -->
-      </tbody>
-    </table>
-  </div>
-
-  <!-- SUCCESS MODAL POP-UP -->
+  <!-- SUCCESS MODAL POP-UP FOR BLOGS -->
   <div class="modal-backdrop" id="successModal">
     <div class="modal-card">
       <div class="success-icon-wrap">✓</div>
@@ -320,11 +450,11 @@
       </div>
 
       <div class="modal-actions">
-        <a href="#" id="viewLiveLink" target="_blank" class="btn btn-navy" style="justify-content: center; width: 100%; font-size: .95rem; padding: 14px;">
+        <a href="#" id="viewLiveLinkModal" target="_blank" class="btn btn-navy" style="justify-content: center; width: 100%; font-size: .95rem; padding: 14px;">
           👁️ View Live Article →
         </a>
-        <button type="button" class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="closeSuccessModal()">
-          Back to Dashboard
+        <button type="button" class="btn btn-outline" style="color:var(--navy); border-color:var(--border); width: 100%; justify-content: center;" onclick="closeSuccessModal()">
+          Back to Admin Hub
         </button>
       </div>
     </div>
@@ -333,6 +463,49 @@
 </main>
 
 <script>
+  // Auth Check & Logout
+  function logoutAdmin() {
+    localStorage.removeItem('vijigishu_admin_logged_in');
+    window.location.href = 'login.html';
+  }
+
+  // Switch Main Sections (Blog vs Gallery)
+  function switchAdminSection(sectionKey) {
+    const tabBtnBlog = document.getElementById('tabBtnBlog');
+    const tabBtnGallery = document.getElementById('tabBtnGallery');
+    const panelBlog = document.getElementById('panelBlog');
+    const panelGallery = document.getElementById('panelGallery');
+    const liveSiteLink = document.getElementById('liveSiteLink');
+
+    if (sectionKey === 'gallery') {
+      tabBtnBlog.classList.remove('active');
+      tabBtnGallery.classList.add('active');
+      panelBlog.classList.remove('active');
+      panelGallery.classList.add('active');
+      liveSiteLink.href = 'gallery.html';
+      liveSiteLink.innerHTML = '👁 Live Gallery ↗';
+      renderAdminGallery();
+    } else {
+      tabBtnGallery.classList.remove('active');
+      tabBtnBlog.classList.add('active');
+      panelGallery.classList.remove('active');
+      panelBlog.classList.add('active');
+      liveSiteLink.href = 'blog.html';
+      liveSiteLink.innerHTML = '👁 Live Blog ↗';
+      renderTable();
+    }
+  }
+
+  function showAlert(msg) {
+    const alertBanner = document.getElementById('alertBanner');
+    alertBanner.textContent = msg;
+    alertBanner.style.display = 'block';
+    setTimeout(() => { alertBanner.style.display = 'none'; }, 4500);
+  }
+
+  // ==========================================
+  // BLOG CMS SCRIPT LOGIC
+  // ==========================================
   const DEFAULT_BLOGS = [
     {
       id: "blog-1",
@@ -388,7 +561,6 @@
     const blogs = getStoredBlogs();
     const tbody = document.getElementById('blogsTableBody');
     
-    // Update Stats
     document.getElementById('totalBlogsCount').innerText = blogs.length;
     const cats = new Set(blogs.map(b => b.category));
     document.getElementById('categoriesCount').innerText = cats.size;
@@ -417,14 +589,11 @@
     `).join('');
   }
 
-  // Show / Hide Editor Form
   function showNewPostForm() {
     document.getElementById('blogForm').reset();
     document.getElementById('postId').value = '';
     document.getElementById('editorHeading').innerHTML = 'Create New <em>Article</em>';
-    currentBlocks = [
-      { type: 'paragraph', content: '' }
-    ];
+    currentBlocks = [{ type: 'paragraph', content: '' }];
     renderBlocks();
     document.getElementById('editorCard').classList.add('active');
     document.getElementById('editorCard').scrollIntoView({ behavior: 'smooth' });
@@ -434,7 +603,6 @@
     document.getElementById('editorCard').classList.remove('active');
   }
 
-  // Edit Existing Post
   function editPost(id) {
     const blogs = getStoredBlogs();
     const post = blogs.find(b => b.id === id);
@@ -455,25 +623,24 @@
     document.getElementById('editorCard').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Delete Post
   function deletePost(id) {
     if (confirm('Are you sure you want to delete this blog post?')) {
       let blogs = getStoredBlogs();
       blogs = blogs.filter(b => b.id !== id);
       saveBlogsToStorage(blogs);
       renderTable();
+      showAlert('🗑️ Article deleted successfully.');
     }
   }
 
-  // Reset Sample Data
   function resetDefaultBlogs() {
     if (confirm('Reset blog data to default sample articles? Custom blogs will be cleared.')) {
       localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
       renderTable();
+      showAlert('🔄 Blog articles reset to defaults.');
     }
   }
 
-  // ─── DYNAMIC BLOCK BUILDER LOGIC ───
   function addBlock(type) {
     currentBlocks.push({ type: type, content: '', caption: '' });
     renderBlocks();
@@ -502,18 +669,13 @@
     }
   }
 
-  function updateBlockContent(index, value) {
-    currentBlocks[index].content = value;
-  }
-
-  function updateBlockCaption(index, value) {
-    currentBlocks[index].caption = value;
-  }
+  function updateBlockContent(index, value) { currentBlocks[index].content = value; }
+  function updateBlockCaption(index, value) { currentBlocks[index].caption = value; }
 
   function renderBlocks() {
     const list = document.getElementById('blocksList');
     if (currentBlocks.length === 0) {
-      list.innerHTML = `<p style="color:var(--gray); font-size:.85rem; padding: 10px 0;">No content blocks added yet. Click an element button below to add text or images.</p>`;
+      list.innerHTML = `<p style="color:var(--gray); font-size:.85rem; padding: 10px 0;">No content blocks added yet.</p>`;
       return;
     }
 
@@ -526,11 +688,11 @@
       } else if (b.type === 'quote') {
         inputField = `<textarea rows="2" placeholder="Enter quote text..." oninput="updateBlockContent(${i}, this.value)" required>${escapeHtml(b.content)}</textarea>`;
       } else if (b.type === 'callout') {
-        inputField = `<textarea rows="2" placeholder="Enter key takeaway / highlighted text..." oninput="updateBlockContent(${i}, this.value)" required>${escapeHtml(b.content)}</textarea>`;
+        inputField = `<textarea rows="2" placeholder="Enter key takeaway..." oninput="updateBlockContent(${i}, this.value)" required>${escapeHtml(b.content)}</textarea>`;
       } else if (b.type === 'image') {
         inputField = `
           <input type="text" value="${escapeHtml(b.content)}" placeholder="Image URL (https://...)" oninput="updateBlockContent(${i}, this.value)" required style="margin-bottom:8px;" />
-          <input type="text" value="${escapeHtml(b.caption || '')}" placeholder="Optional Image Caption..." oninput="updateBlockCaption(${i}, this.value)" />
+          <input type="text" value="${escapeHtml(b.caption || '')}" placeholder="Optional Caption..." oninput="updateBlockCaption(${i}, this.value)" />
         `;
       }
 
@@ -539,9 +701,9 @@
           <div class="block-item-header">
             <span class="block-type-tag">${b.type}</span>
             <div class="block-actions">
-              <button type="button" class="btn-sm" onclick="moveBlockUp(${i})" title="Move Up">▲</button>
-              <button type="button" class="btn-sm" onclick="moveBlockDown(${i})" title="Move Down">▼</button>
-              <button type="button" class="btn-sm" style="color:#cf2e2e;" onclick="removeBlock(${i})" title="Remove Block">✕</button>
+              <button type="button" class="btn-sm" onclick="moveBlockUp(${i})">▲</button>
+              <button type="button" class="btn-sm" onclick="moveBlockDown(${i})">▼</button>
+              <button type="button" class="btn-sm" style="color:#cf2e2e;" onclick="removeBlock(${i})">✕</button>
             </div>
           </div>
           ${inputField}
@@ -555,10 +717,8 @@
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
-  // Form Submit Handler
   document.getElementById('blogForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const title = document.getElementById('postTitle').value;
     const category = document.getElementById('postCategory').value;
     const author = document.getElementById('postAuthor').value;
@@ -569,33 +729,17 @@
     let blogs = getStoredBlogs();
 
     if (postId) {
-      // Update existing
       const index = blogs.findIndex(b => b.id === postId);
       if (index !== -1) {
-        blogs[index] = {
-          ...blogs[index],
-          title,
-          category,
-          author,
-          image,
-          excerpt,
-          blocks: currentBlocks,
-          slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
-        };
+        blogs[index] = { ...blogs[index], title, category, author, image, excerpt, blocks: currentBlocks, slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') };
       }
     } else {
-      // Add new
       const newPost = {
         id: 'blog-' + Date.now(),
-        title,
-        category,
-        author,
+        title, category, author,
         date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
         readTime: Math.max(3, Math.ceil(excerpt.length / 50)) + ' min read',
-        featured: false,
-        image,
-        excerpt,
-        blocks: currentBlocks,
+        featured: false, image, excerpt, blocks: currentBlocks,
         slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
       };
       blogs.unshift(newPost);
@@ -605,19 +749,183 @@
     hideEditor();
     renderTable();
 
-    // Show Success Modal Pop-up with Live Article Link
     const targetId = postId || blogs[0].id;
     document.getElementById('modalTitlePreview').innerText = title;
     document.getElementById('modalCatPreview').innerText = category;
     document.getElementById('modalImgPreview').src = image;
-    document.getElementById('viewLiveLink').href = `blog-single.html?id=${targetId}`;
-    
+    document.getElementById('viewLiveLinkModal').href = `blog-single.html?id=${targetId}`;
     document.getElementById('successModal').classList.add('active');
   });
 
   function closeSuccessModal() {
     document.getElementById('successModal').classList.remove('active');
   }
+
+  // ==========================================
+  // GALLERY MANAGEMENT SCRIPT LOGIC
+  // ==========================================
+  const countryIcons = {
+    singapore: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><path d="M 1 18 A 17 17 0 0 1 35 18 Z" fill="#EF3340"/><path d="M 10 9 A 6 6 0 1 0 10 17 A 7 7 0 1 1 10 9 Z" fill="#FFFFFF"/></svg>`,
+    japan: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><circle cx="18" cy="18" r="7.5" fill="#BC002D"/></svg>`,
+    'south-korea': `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><path d="M18 10C22.4 10 26 13.6 26 18C26 22.4 22.4 26 18 26C13.6 26 10 22.4 10 18C10 13.6 13.6 10 18 10Z" fill="#0047A0"/><path d="M18 10C22.4 10 26 13.6 26 18C26 18 22 18 18 18C14 18 10 18 10 18C10 13.6 13.6 10 18 10Z" fill="#C60C30"/><circle cx="14" cy="18" r="4" fill="#C60C30"/><circle cx="22" cy="18" r="4" fill="#0047A0"/></svg>`,
+    europe: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#003399"/><circle cx="18" cy="8" r="1.5" fill="#FFCC00"/><circle cx="25" cy="11" r="1.5" fill="#FFCC00"/><circle cx="28" cy="18" r="1.5" fill="#FFCC00"/><circle cx="25" cy="25" r="1.5" fill="#FFCC00"/><circle cx="18" cy="28" r="1.5" fill="#FFCC00"/><circle cx="11" cy="25" r="1.5" fill="#FFCC00"/><circle cx="8" cy="18" r="1.5" fill="#FFCC00"/><circle cx="11" cy="11" r="1.5" fill="#FFCC00"/></svg>`,
+    malaysia: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#CC0000"/><rect x="0" y="4" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="12" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="20" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="28" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="0" width="18" height="20" fill="#000066"/><path d="M7 5A6 6 0 1 0 13 15A7 7 0 1 1 7 5Z" fill="#FFCC00"/></svg>`,
+    uae: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#000000"/><path d="M0 0H36V12H0Z" fill="#007A3D"/><path d="M0 12H36V24H0Z" fill="#FFFFFF"/><rect x="0" y="0" width="10" height="36" fill="#FF0000"/></svg>`,
+    india: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FFFFFF"/><path d="M0 0H36V12H0Z" fill="#FF9933"/><path d="M0 24H36V36H0Z" fill="#128807"/><circle cx="18" cy="18" r="4.5" fill="none" stroke="#000080" stroke-width="1.2"/><circle cx="18" cy="18" r="1" fill="#000080"/></svg>`
+  };
+
+  const countryLabels = {
+    singapore: 'Singapore',
+    japan: 'Japan',
+    'south-korea': 'South Korea',
+    europe: 'Europe',
+    malaysia: 'Malaysia',
+    uae: 'UAE / Dubai',
+    india: 'India'
+  };
+
+  const defaultPresetGalleryItems = [
+    { id: 1, src: 'images/Gallery-10-scaled.webp', country: 'singapore', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
+    { id: 2, src: 'images/Gallery-11-scaled.webp', country: 'japan', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
+    { id: 3, src: 'images/Gallery-12-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
+    { id: 4, src: 'images/Gallery-13-scaled.webp', country: 'europe', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
+    { id: 5, src: 'images/Gallery-14-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
+    { id: 6, src: 'images/Gallery-15-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
+    { id: 7, src: 'images/Gallery-16-scaled.webp', country: 'india', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
+    { id: 8, src: 'images/Gallery-18-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
+    { id: 9, src: 'images/Gallery-19-scaled.webp', country: 'japan', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
+    { id: 10, src: 'images/Gallery-20-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
+    { id: 11, src: 'images/Gallery-22-scaled.webp', country: 'europe', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
+    { id: 12, src: 'images/Gallery-23-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
+    { id: 13, src: 'images/Gallery-25-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
+    { id: 14, src: 'images/Gallery-30-scaled.webp', country: 'india', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
+    { id: 15, src: 'images/Gallery-32-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
+    { id: 16, src: 'images/Gallery-35-scaled.webp', country: 'japan', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
+    { id: 17, src: 'images/Gallery-36-scaled.webp', country: 'europe', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
+    { id: 18, src: 'images/Gallery-37-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
+    { id: 19, src: 'images/Gallery-38-scaled.webp', country: 'india', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
+  ];
+
+  function getGalleryItems() {
+    const raw = localStorage.getItem('vijigishu_gallery_items');
+    if (!raw) {
+      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(defaultPresetGalleryItems));
+      return defaultPresetGalleryItems;
+    }
+    return JSON.parse(raw);
+  }
+
+  // Image Upload File Preview
+  const photoFileInput = document.getElementById('photoFileInput');
+  const previewContainer = document.getElementById('previewContainer');
+  const previewImg = document.getElementById('previewImg');
+  let currentUploadedBase64 = '';
+
+  if (photoFileInput) {
+    photoFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          currentUploadedBase64 = evt.target.result;
+          previewImg.src = currentUploadedBase64;
+          previewContainer.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+
+  // Add Gallery Form Submit
+  const addPhotoForm = document.getElementById('addPhotoForm');
+  if (addPhotoForm) {
+    addPhotoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const selectedCountry = document.getElementById('photoCountry').value;
+      const photoTitle = document.getElementById('photoTitle').value.trim() || `${countryLabels[selectedCountry]} Immersion Photo`;
+
+      if (!selectedCountry) {
+        alert('Mandatory Field: Please select a destination country.');
+        return;
+      }
+      if (!currentUploadedBase64) {
+        alert('Please select an image file to upload.');
+        return;
+      }
+
+      const items = getGalleryItems();
+      const newItem = {
+        id: Date.now(),
+        src: currentUploadedBase64,
+        country: selectedCountry,
+        label: countryLabels[selectedCountry],
+        title: photoTitle
+      };
+
+      items.unshift(newItem);
+      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(items));
+
+      addPhotoForm.reset();
+      previewContainer.style.display = 'none';
+      currentUploadedBase64 = '';
+
+      renderAdminGallery();
+      showAlert(`✅ Photo assigned to ${countryLabels[selectedCountry]} and published to live gallery!`);
+    });
+  }
+
+  // Render Admin Gallery List
+  function renderAdminGallery() {
+    const items = getGalleryItems();
+    const filter = document.getElementById('adminFilterSelect').value;
+    const filtered = filter === 'all' ? items : items.filter(i => i.country === filter);
+
+    document.getElementById('photoCountBadge').textContent = items.length;
+    const grid = document.getElementById('adminGalleryGrid');
+    grid.innerHTML = '';
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--gray); padding: 40px;">No photos found for this filter.</div>`;
+      return;
+    }
+
+    filtered.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'admin-item-card';
+      const iconSvg = countryIcons[item.country] || '';
+      card.innerHTML = `
+        <img src="${item.src}" class="admin-item-img" alt="${item.title}" />
+        <div class="admin-item-body">
+          <div class="admin-item-country">${iconSvg} ${item.label || item.country}</div>
+          <div class="admin-item-title">${item.title}</div>
+        </div>
+        <div class="admin-item-actions">
+          <button class="btn-delete-item" onclick="deleteGalleryPhoto(${item.id})">Delete</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  document.getElementById('adminFilterSelect').addEventListener('change', renderAdminGallery);
+
+  window.deleteGalleryPhoto = function(id) {
+    if (confirm('Delete this photo from the live gallery?')) {
+      let items = getGalleryItems();
+      items = items.filter(i => i.id !== id);
+      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(items));
+      renderAdminGallery();
+      showAlert('🗑️ Photo deleted successfully.');
+    }
+  };
+
+  document.getElementById('btnResetGallery').addEventListener('click', () => {
+    if (confirm('Reset live gallery to 19 default preset photos?')) {
+      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(defaultPresetGalleryItems));
+      renderAdminGallery();
+      showAlert('🔄 Gallery reset to default preset photos.');
+    }
+  });
 
   // Initial Load
   renderTable();
