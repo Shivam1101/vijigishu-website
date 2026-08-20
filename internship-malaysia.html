@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Internship — Malaysia – Vijigishu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  
+  <style>
+    /* ─── Reset & Tokens ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--green); background: rgba(56,103,58,.1); border-radius: 100px; padding: 4px 14px; margin-bottom: 16px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
+    .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
+
+    /* ─── NAVBAR ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
+    nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta { background: var(--sage); color: var(--navy) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; border-bottom: 1px solid rgba(0,0,0,.06); padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
+
+    /* ─── HERO BANNER ─── */
+    .hero {
+      position: relative;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 72px;
+    }
+    .hero-img { position: absolute; inset: 0; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 14s ease-in-out infinite alternate; }
+    @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,14,46,.88) 0%, rgba(13,14,46,.55) 60%, transparent 100%); }
+    .hero-content { position: relative; z-index: 2; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
+    .hero-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: rgba(255,255,255,.55); margin-bottom: 20px; }
+    .hero-breadcrumb a { color: rgba(255,255,255,.55); transition: color .25s; }
+    .hero-breadcrumb a:hover { color: var(--sage); }
+    .hero-breadcrumb span { color: var(--sage); }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); color: var(--white); line-height: 1.15; margin-bottom: 18px; }
+    .hero h1 em { color: var(--sage); font-style: italic; }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,.7); max-width: 540px; line-height: 1.7; margin-bottom: 32px; }
+    .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: var(--white); font-size: .78rem; font-weight: 700; padding: 6px 16px; border-radius: 100px; backdrop-filter: blur(8px); }
+
+    /* ─── OVERVIEW & HIGHLIGHTS ─── */
+    #overview { padding: 90px 0; background: var(--white); }
+    .overview-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 60px; align-items: start; }
+    .overview-lead { font-size: 1.2rem; font-weight: 700; color: var(--navy); line-height: 1.6; margin-bottom: 20px; border-left: 4px solid var(--green); padding-left: 18px; }
+    .overview-text { color: var(--gray); font-size: .95rem; line-height: 1.75; margin-bottom: 32px; }
+    .highlights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .hl-card { background: var(--off); border-radius: 18px; padding: 22px; border: 1px solid rgba(0,0,0,0.05); transition: transform .3s var(--ease); }
+    .hl-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+    .hl-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .hl-title { font-weight: 700; font-size: .98rem; color: var(--navy); margin-bottom: 6px; }
+    .hl-desc { font-size: .84rem; color: var(--gray); line-height: 1.55; }
+
+    /* ─── ACADEMIC FOCUS STREAMS ─── */
+    #streams { padding: 90px 0; background: var(--off); }
+    .streams-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+    .stream-card { background: var(--white); border-radius: 20px; padding: 28px 24px; border: 1.5px solid #E2E8F0; transition: all .3s var(--ease); display: flex; flex-direction: column; justify-content: space-between; }
+    .stream-card:hover { border-color: var(--green); transform: translateY(-6px); box-shadow: 0 12px 30px rgba(56,103,58,0.12); }
+    .stream-icon { width: 50px; height: 50px; border-radius: 14px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.4rem; margin-bottom: 20px; }
+    .stream-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .stream-desc { font-size: .85rem; color: var(--gray); line-height: 1.6; }
+
+    /* ─── PROGRAM DETAILS & INCLUSIONS ─── */
+    #details { padding: 90px 0; background: var(--white); }
+    .details-box { background: var(--navy); border-radius: 28px; padding: 48px; color: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; position: relative; overflow: hidden; }
+    .details-box::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 100% 0%, rgba(159,194,140,.2) 0%, transparent 60%); }
+    .details-col h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 24px; color: var(--white); }
+    .details-list { display: flex; flex-direction: column; gap: 16px; }
+    .details-item { display: flex; align-items: flex-start; gap: 14px; font-size: .92rem; line-height: 1.6; color: rgba(255,255,255,.8); }
+    .details-item-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+
+    /* ─── CTA BANNER ─── */
+    #cta { padding: 90px 0; background: var(--off); text-align: center; }
+    .cta-inner { max-width: 720px; margin: 0 auto; background: var(--white); border-radius: 28px; padding: 56px 40px; border: 1.5px solid #E2E8F0; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+    .cta-h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--navy); margin-bottom: 12px; }
+    .cta-sub { color: var(--gray); font-size: .95rem; line-height: 1.65; margin-bottom: 32px; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--dark); padding: 80px 0 32px; }
+    .footer-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr; gap: 40px; align-items: start; }
+    .footer-mascot-wrap { position: relative; display: flex; justify-content: flex-end; margin-bottom: -22px; z-index: 3; }
+    .footer-mascot-img { max-height: 280px; width: auto; object-fit: contain; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5)); }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .footer-tagline { color: rgba(255,255,255,.45); font-size: .9rem; line-height: 1.7; max-width: 300px; }
+    .footer-col-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: rgba(255,255,255,.55); font-size: .9rem; transition: color .25s; }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
+
+    @media (max-width: 1024px) {
+      .overview-grid, .details-box { grid-template-columns: 1fr; gap: 40px; }
+      .streams-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { height: 420px; }
+      .streams-grid, .highlights-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap" style="text-decoration: none;">
+      <img src="images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#why">About Us</a>
+      <a href="immersion-programs.html" class="active">Immersion Programs</a>
+      <a href="leadership-walk.html">Leadership Walk</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ===== HERO BANNER ===== -->
+<div class="hero">
+  <div class="hero-img">
+    <img src="images/MALAYSIA-scaled.webp" alt="Malaysia International Internship" fetchpriority="high" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="immersion-programs.html">Immersion Programs</a>
+      <span>›</span>
+      <span style="color:var(--white)">International Internship — Malaysia</span>
+    </div>
+    <h1>International Internship — <em>Malaysia</em></h1>
+    <p class="hero-sub">Gain real-world international industry experience, work with ASEAN corporate leaders, and enhance your global career prospects.</p>
+    <div class="hero-pills">
+      <span class="pill">⏱️ 2 Months Duration</span>
+      <span class="pill">📍 Kuala Lumpur</span>
+      <span class="pill">🎓 Global Certificate</span>
+      <span class="pill">🏢 Industry Mentorship</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW & KEY HIGHLIGHTS ===== -->
+<section id="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div>
+        <div class="tag">Program Overview</div>
+        <h2 class="section-heading" style="margin-bottom: 24px;">Bridge Academia with <span>Global Industry</span></h2>
+        <div class="overview-lead">
+          A 2-Month structured international internship program designed for management, engineering, technology, and finance students.
+        </div>
+        <div class="overview-text">
+          The Malaysia International Internship Program bridges academic learning with international corporate practices. Hosted in Kuala Lumpur — one of Southeast Asia's fastest-growing economic and financial hubs — this program offers students hands-on project exposure, corporate mentorship, and institutional networking across leading MNCs, tech startups, and research institutes.
+        </div>
+        <a href="contact.html?type=internship-malaysia" class="btn btn-primary">Apply For Internship Cohort →</a>
+      </div>
+
+      <div class="highlights-grid">
+        <div class="hl-card">
+          <div class="hl-icon">👔</div>
+          <div class="hl-title">Senior Industry Mentorship</div>
+          <div class="hl-desc">Guided directly by senior executives and industry specialists in Kuala Lumpur.</div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">📜</div>
+          <div class="hl-title">Global Certification</div>
+          <div class="hl-desc">Earn an internationally recognized internship certificate and project recommendation letter.</div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">🌏</div>
+          <div class="hl-title">Cross-Cultural Exposure</div>
+          <div class="hl-desc">Collaborate with multicultural teams in ASEAN’s premier business district.</div>
+        </div>
+        <div class="hl-card">
+          <div class="hl-icon">🚀</div>
+          <div class="hl-title">Live Case Projects</div>
+          <div class="hl-desc">Work on live industry case studies, market analysis, and software development sprints.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACADEMIC FOCUS STREAMS ===== -->
+<section id="streams">
+  <div class="container">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <div class="tag">Academic Streams</div>
+      <h2 class="section-heading">Tailored <span>Specializations</span></h2>
+      <p style="color:var(--gray); margin-top:12px;">Internship placements curated according to your field of study.</p>
+    </div>
+
+    <div class="streams-grid">
+      <div class="stream-card">
+        <div>
+          <div class="stream-icon">💼</div>
+          <div class="stream-name">Management &amp; Analytics</div>
+          <div class="stream-desc">Market research, digital marketing strategy, supply chain management, and corporate strategy.</div>
+        </div>
+      </div>
+
+      <div class="stream-card">
+        <div>
+          <div class="stream-icon">⚙️</div>
+          <div class="stream-name">Engineering &amp; Industry 4.0</div>
+          <div class="stream-desc">Smart manufacturing, IoT implementation, automation systems, and green technology projects.</div>
+        </div>
+      </div>
+
+      <div class="stream-card">
+        <div>
+          <div class="stream-icon">💻</div>
+          <div class="stream-name">Computer Science &amp; IT</div>
+          <div class="stream-desc">Web/App development, cloud infrastructure, cybersecurity basics, and data analytics sprints.</div>
+        </div>
+      </div>
+
+      <div class="stream-card">
+        <div>
+          <div class="stream-icon">📈</div>
+          <div class="stream-name">Finance &amp; Fintech</div>
+          <div class="stream-desc">ASEAN financial market analysis, corporate banking operations, and fintech innovations.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM DETAILS & INCLUSIONS ===== -->
+<section id="details">
+  <div class="container">
+    <div class="details-box">
+      <div class="details-col">
+        <h3>Program Quick Details</h3>
+        <div class="details-list">
+          <div class="details-item">
+            <span class="details-item-icon">⏱️</span>
+            <div><strong>Duration:</strong> 2 Months (8 Weeks)</div>
+          </div>
+          <div class="details-item">
+            <span class="details-item-icon">📍</span>
+            <div><strong>Location:</strong> Kuala Lumpur, Malaysia</div>
+          </div>
+          <div class="details-item">
+            <span class="details-item-icon">🎓</span>
+            <div><strong>Eligibility:</strong> BBA, B.Tech, BCA, B.Com, MBA, M.Tech, MCA students</div>
+          </div>
+          <div class="details-item">
+            <span class="details-item-icon">🏛️</span>
+            <div><strong>Academic Exposure:</strong> Asia Pacific University (APU) &amp; Universiti Malaya</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="details-col">
+        <h3>What's Included</h3>
+        <div class="details-list">
+          <div class="details-item"><span class="details-item-icon">✅</span> Support for Student Accommodation &amp; Stay</div>
+          <div class="details-item"><span class="details-item-icon">✅</span> Complete Visa Documentation Assistance</div>
+          <div class="details-item"><span class="details-item-icon">✅</span> Guaranteed Corporate Internship Placement</div>
+          <div class="details-item"><span class="details-item-icon">✅</span> Airport Pick-up &amp; City Orientation Walk</div>
+          <div class="details-item"><span class="details-item-icon">✅</span> Official Internship Completion Certificate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BANNER ===== -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="cta-h2">Ready to Accelerate Your Career in Malaysia?</h2>
+      <p class="cta-sub">Speak to our global internship advisors to apply for the upcoming cohort and request the detailed program brochure.</p>
+      <a href="contact.html?type=internship-malaysia" class="btn btn-green">Apply For Malaysia Internship →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 44px; width: auto;" />
+        </div>
+        <p class="footer-tagline">Connecting Indian classrooms to global boardrooms. Experiential learning journeys crafted for the next generation of leaders.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#why">About Us</a>
+          <a href="immersion-programs.html">Immersion Programs</a>
+          <a href="leadership-walk.html">Leadership Walk</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programs</div>
+        <div class="footer-links">
+          <a href="management.html" target="_blank">Management</a>
+          <a href="architecture-design.html" target="_blank">Architecture &amp; Design</a>
+          <a href="engineering.html" target="_blank">Engineering</a>
+          <a href="school-programs.html" target="_blank">School Programs</a>
+          <a href="internship-malaysia.html">Malaysia Internship</a>
+          <a href="uae.html" target="_blank">UAE Immersion</a>
+        </div>
+      </div>
+      <div class="footer-mascot-wrap">
+        <img src="images/Viji-mascot-footer.webp" alt="Viji Mascot" class="footer-mascot-img" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Vijigishu Educational Travel. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
