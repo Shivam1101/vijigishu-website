@@ -341,88 +341,27 @@
       100% { transform: translateY(-15px) rotate(20deg); }
     }
 
-    /* 3D Character Container */
+    /* 3D Lion Character Container */
     .character-box {
       width: 320px;
-      height: 320px;
+      height: 380px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .character-avatar {
-      width: 260px;
-      height: 260px;
-      background: linear-gradient(135deg, var(--navy) 0%, #1B1C4A 60%, var(--green) 100%);
-      border-radius: 50% 50% 45% 45%;
-      box-shadow: 0 25px 60px rgba(13, 14, 46, 0.35), inset 0 -15px 30px rgba(0,0,0,0.2);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .lion-mascot-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 35px rgba(13, 14, 46, 0.25));
       animation: floatChar 3.5s ease-in-out infinite alternate;
     }
 
     @keyframes floatChar {
       0% { transform: translateY(0); }
       100% { transform: translateY(-12px); }
-    }
-
-    /* Gold Bead Necklace around Character */
-    .bead-necklace {
-      position: absolute;
-      width: 280px;
-      height: 180px;
-      top: 60px;
-      border-radius: 50%;
-      border: 14px dotted var(--gold);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    /* Face Details */
-    .char-face {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 12px;
-      z-index: 2;
-    }
-
-    .eye {
-      width: 14px;
-      height: 7px;
-      border-bottom: 3px solid var(--sage);
-      border-radius: 0 0 10px 10px;
-    }
-
-    .char-tilak {
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      position: absolute;
-      top: 85px;
-      z-index: 2;
-    }
-
-    .char-beak {
-      width: 24px;
-      height: 16px;
-      background: var(--sage);
-      border-radius: 4px 4px 14px 14px;
-      margin-top: 4px;
-      z-index: 2;
-    }
-
-    .char-robe {
-      width: 200px;
-      height: 100px;
-      background: linear-gradient(135deg, rgba(56, 103, 58, 0.4) 0%, rgba(159, 194, 140, 0.2) 100%);
-      border-radius: 30px;
-      margin-top: 20px;
-      z-index: 2;
-      border-top: 2px solid var(--sage);
     }
 
     .char-title {
@@ -540,18 +479,9 @@
       <div class="leaf leaf-3"></div>
       <div class="leaf leaf-4"></div>
 
-      <!-- 3D Character Container -->
+      <!-- 3D Lion Character Container -->
       <div class="character-box">
-        <div class="bead-necklace"></div>
-        <div class="character-avatar">
-          <div class="char-tilak"></div>
-          <div class="char-face">
-            <div class="eye"></div>
-            <div class="eye"></div>
-          </div>
-          <div class="char-beak"></div>
-          <div class="char-robe"></div>
-        </div>
+        <img src="images/vijigishu-lion-mascot.png" alt="Vijigishu 3D Lion Mascot" class="lion-mascot-img" />
       </div>
 
       <div class="char-title">Vijigishu CMS Portal</div>
