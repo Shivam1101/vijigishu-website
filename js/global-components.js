@@ -167,6 +167,7 @@
 
     // Initialize Event Listeners
     initHeaderEvents();
+    initRevealObserver();
   }
 
   if (document.readyState === 'loading') {
@@ -202,6 +203,34 @@
           mobileMenu.classList.remove('open');
         }
       });
+    }
+  }
+
+  function initRevealObserver() {
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length === 0) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+
+      reveals.forEach(el => {
+        // If already in viewport on load, immediately show
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('visible');
+        } else {
+          observer.observe(el);
+        }
+      });
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
     }
   }
 

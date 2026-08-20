@@ -12,7 +12,9 @@
 }
 
 /* NAVBAR STYLES */
-#site-header {
+#global-header,
+#site-header,
+header {
   position: sticky;
   top: 0; left: 0; right: 0;
   z-index: 9999;
@@ -249,4 +251,23 @@ footer#site-footer::before {
     font-size: .8rem;
     padding: 14px 16px;
   }
+}
+
+/* Page Hero Margin Reset for Sticky Header */
+.page-hero,
+.about-hero,
+.hero,
+.blog-hero {
+  margin-top: 0 !important;
+}
+
+/* Global Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(.25,.46,.45,.94), transform 0.6s cubic-bezier(.25,.46,.45,.94);
+}
+.reveal.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }

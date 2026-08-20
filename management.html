@@ -470,30 +470,12 @@
 <script src="js/global-components.js"></script>
 
 <script>
-  // Navbar scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  let menuOpen = false;
-  hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menuOpen = false; mobileMenu.style.display = 'none';
-  }));
-
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>

@@ -56,7 +56,7 @@
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
     /* ─── PAGE HERO ─── */
-    .page-hero { position: relative; height: 400px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero { position: relative; height: 400px; display: flex; align-items: center; overflow: hidden; background: var(--navy); }
     .page-hero-img { position: absolute; inset: 0; }
     .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 14s ease-in-out infinite alternate; }
     @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
@@ -386,30 +386,15 @@
 <script src="js/global-components.js"></script>
 
 <script>
-  // Navbar scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  let menuOpen = false;
-  hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileMenu.style.display = menuOpen ? 'flex' : 'none';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    menuOpen = false; mobileMenu.style.display = 'none';
-  }));
-
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // Contact Form Submission

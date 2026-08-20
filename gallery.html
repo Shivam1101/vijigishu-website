@@ -269,28 +269,6 @@
 <script src="js/global-components.js"></script>
 
 <script>
-  // Navbar scroll
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-  }
-
-  // Hamburger
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (hamburger && mobileMenu) {
-    let menuOpen = false;
-    hamburger.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.style.display = menuOpen ? 'flex' : 'none';
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      menuOpen = false; mobileMenu.style.display = 'none';
-    }));
-  }
-
   // High Quality Vector SVG Flag & Globe Icons
   const countryIcons = {
     all: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#2196F3" stroke="#0D47A1" stroke-width="1"/><g fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="18" r="12"/><line x1="6" y1="18" x2="30" y2="18"/><ellipse cx="18" cy="18" rx="6" ry="12"/></g></svg>`,

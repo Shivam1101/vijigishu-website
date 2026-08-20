@@ -455,22 +455,5 @@
 <footer id="global-footer"></footer>
 
 <script src="js/global-components.js"></script>
-
-<script>
-  // Navbar scroll background
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      nav.classList.add('scrolled');
-    }
-  });
-
-  // Mobile menu toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
-  });
-</script>
 </body>
 </html>
