@@ -28,7 +28,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
+    html, body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--off);
       color: var(--navy);
@@ -41,7 +41,7 @@
     /* ─── SIDEBAR DASHBOARD LAYOUT ─── */
     .admin-wrapper { display: flex; min-height: 100vh; }
     
-    /* Left Sidebar */
+    /* Fixed Left Sidebar */
     .admin-sidebar {
       width: 250px;
       background: var(--navy);
@@ -51,9 +51,10 @@
       flex-direction: column;
       justify-content: space-between;
       border-right: 1px solid rgba(255,255,255,0.08);
-      flex-shrink: 0;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      bottom: 0;
       height: 100vh;
       transition: width .3s var(--ease), padding .3s var(--ease);
       z-index: 100;
@@ -222,8 +223,17 @@
     .action-icon-btn.btn-view:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
     .action-icon-btn.btn-delete-icon:hover { background: #D32F2F; color: var(--white); border-color: #D32F2F; }
 
-    /* Main Dashboard Content Area */
-    .admin-main-content { flex: 1; padding: 32px 36px; overflow-y: auto; }
+    /* Main Dashboard Content Area (Clean Window Scroll Layout) */
+    .admin-main-content {
+      flex: 1;
+      margin-left: 250px;
+      padding: 32px 36px;
+      min-height: 100vh;
+      transition: margin-left .3s var(--ease);
+    }
+    .admin-sidebar.collapsed ~ .admin-main-content {
+      margin-left: 72px;
+    }
 
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
@@ -303,11 +313,11 @@
 
     .card-box { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
     
-    /* PERFECT STICKY UPLOAD FORM CARD BOX */
+    /* 100% WORKING STICKY UPLOAD FORM CARD BOX */
     .card-box.sticky-card {
       position: sticky;
-      top: 16px;
-      z-index: 20;
+      top: 24px;
+      z-index: 50;
     }
 
     .card-box-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
@@ -376,7 +386,7 @@
 
 <div class="admin-wrapper">
   
-  <!-- ===== COLLAPSIBLE LEFT SIDEBAR DASHBOARD ===== -->
+  <!-- ===== FIXED LEFT SIDEBAR DASHBOARD ===== -->
   <aside class="admin-sidebar" id="adminSidebar">
     <div>
       <div class="sidebar-header">
