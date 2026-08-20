@@ -88,7 +88,7 @@
 
     .page-header-section h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-size: clamp(2rem, 4vw, 3.4rem);
       color: var(--navy);
       line-height: 1.15;
     }
@@ -102,6 +102,23 @@
       padding: 60px 0 80px;
       background: var(--off);
     }
+    .content-intro {
+      max-width: 960px;
+      margin: 0 auto 40px;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 32px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.03);
+    }
+    .content-intro p {
+      font-size: 1rem;
+      color: var(--navy);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .content-intro p:last-child { margin-bottom: 0; }
+
     .overview-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -111,28 +128,15 @@
     .overview-card {
       background: var(--white);
       border-radius: 24px;
-      padding: 24px 28px;
+      padding: 28px 32px;
       border: 1.5px solid #E2E8F0;
       box-shadow: 0 8px 30px rgba(0,0,0,0.03);
-    }
-    .overview-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .overview-text {
-      color: var(--navy);
-      font-size: .95rem;
-      line-height: 1.7;
-      margin-bottom: 16px;
     }
     .highlights-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       color: var(--navy);
-      margin-top: 24px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .highlights-list {
       display: flex;
@@ -167,13 +171,13 @@
       background: rgba(159, 194, 140, 0.25);
       border: 1.5px solid rgba(56, 103, 58, 0.2);
       border-radius: 24px;
-      padding: 24px 28px;
+      padding: 28px 32px;
     }
     .experience-main-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: var(--navy);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .experience-sub-text {
       font-size: .88rem;
@@ -182,39 +186,7 @@
       line-height: 1.5;
     }
 
-    /* ─── SECTION 2: PROGRAM DETAILS BAR ─── */
-    #details-bar-section {
-      background: var(--navy);
-      padding: 20px 0;
-      color: var(--white);
-    }
-    .details-bar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: nowrap;
-      gap: 16px;
-    }
-    .details-info-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .details-info-left h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      color: var(--sage);
-      white-space: nowrap;
-    }
-    .details-info-left span {
-      font-size: .84rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.92);
-      white-space: nowrap;
-    }
-
-    /* ─── SECTION 3: HOW IT WORKS ─── */
+    /* ─── SECTION 2: HOW IT WORKS ─── */
     #process { padding: 80px 0; background: var(--white); }
     .process-header { text-align: center; margin-bottom: 48px; }
     .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -262,7 +234,6 @@
       .overview-card, .experience-card { padding: 24px 20px; }
       .steps-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-      .details-bar-inner { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -316,17 +287,20 @@
   </div>
 </div>
 
-<!-- ===== OVERVIEW, HIGHLIGHTS & INCLUSIONS ===== -->
+<!-- ===== EXACT STAGING CONTENT SECTION ===== -->
 <section id="overview-section">
   <div class="container">
+    
+    <!-- PROGRAM OVERVIEW INTRO PARAGRAPHS -->
+    <div class="content-intro">
+      <p>VEPL facilitates international conferences and global immersion programs that provide participants with valuable exposure to emerging technologies, innovation ecosystems, industry practices, research trends, and cross-cultural learning experiences. These programs are designed for students, professionals, academicians, entrepreneurs, and industry leaders who aspire to expand their global perspective and professional network.</p>
+      <p>Our international conference programs combine academic learning, industry interaction, networking opportunities, and experiential travel into one enriching experience. Participants get the opportunity to attend keynote sessions, expert talks, panel discussions, workshops, and collaborative forums led by renowned global experts and industry professionals.</p>
+    </div>
+
     <div class="overview-grid">
       
-      <!-- LEFT COLUMN: OVERVIEW & HIGHLIGHTS -->
+      <!-- LEFT COLUMN: PROGRAM HIGHLIGHTS -->
       <div class="overview-card">
-        <h2 class="overview-title">Program Overview</h2>
-        <p class="overview-text">VEPL facilitates international conferences and global immersion programs that provide participants with valuable exposure to emerging technologies, innovation ecosystems, industry practices, research trends, and cross-cultural learning experiences. These programs are designed for students, professionals, academicians, entrepreneurs, and industry leaders who aspire to expand their global perspective and professional network.</p>
-        <p class="overview-text">Our international conference programs combine academic learning, industry interaction, networking opportunities, and experiential travel into one enriching experience. Participants get the opportunity to attend keynote sessions, expert talks, panel discussions, workshops, and collaborative forums led by renowned global experts and industry professionals.</p>
-
         <h3 class="highlights-title">Program Highlights</h3>
         <ul class="highlights-list">
           <li>Participation in prestigious international conferences and summits</li>
@@ -342,8 +316,8 @@
 
       <!-- RIGHT COLUMN: INCLUSIONS -->
       <div class="experience-card">
-        <h3 class="experience-main-title">Program Inclusions</h3>
-        <p class="experience-sub-text">Depending on the program and destination, inclusions cover:</p>
+        <h3 class="experience-main-title">Inclusions</h3>
+        <p class="experience-sub-text">Depending on the program and destination, inclusions may cover:</p>
         <ul class="highlights-list">
           <li>Conference registration and participation</li>
           <li>Hotel accommodation</li>
@@ -361,66 +335,48 @@
   </div>
 </section>
 
-<!-- ===== PROGRAM DETAILS BAR ===== -->
-<section id="details-bar-section">
-  <div class="container">
-    <div class="details-bar-inner">
-      <div class="details-info-left">
-        <h4>Program Details —</h4>
-        <span>⏱️ Duration: 3 Days / 5 Days</span>
-        <span>📍 Location: Dubai, Singapore, Bangkok, Paris</span>
-      </div>
-      <div>
-        <a href="contact.html?type=conference" class="btn btn-green" style="padding: 12px 28px;">
-          Apply Now! →
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== HOW IT WORKS SECTION ===== -->
 <section id="process">
   <div class="container">
     <div class="process-header">
       <div class="tag">How It Works</div>
-      <h2 class="section-heading">7 Steps to Your <span>Global Experience</span></h2>
+      <h2 class="section-heading">How It <span>Works</span></h2>
     </div>
 
     <div class="steps-grid">
       <div class="step-item-card">
         <b>1. Explore Our Programs</b>
-        <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences.</p>
+        <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution’s vision and learning goals.</p>
       </div>
 
       <div class="step-item-card">
-        <b>2. Connect With Experts</b>
-        <p>Get in touch with our program experts to discuss your requirements, preferred destinations, and academic interests.</p>
+        <b>2. Connect With Our Program Experts</b>
+        <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
       </div>
 
       <div class="step-item-card">
-        <b>3. Customize Experience</b>
-        <p>We help tailor the itinerary, academic sessions, industry visits, duration, and structure based on your goals.</p>
+        <b>3. Customize Your Experience</b>
+        <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
       </div>
 
       <div class="step-item-card">
         <b>4. Finalize the Program</b>
-        <p>Once approved, our team manages accommodations, transportation, academic engagements, and travel coordination.</p>
+        <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
       </div>
 
       <div class="step-item-card">
         <b>5. Pre-Departure Orientation</b>
-        <p>Detailed briefing covering travel guidelines, cultural awareness, itinerary, safety protocols, and documentation.</p>
+        <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
       </div>
 
       <div class="step-item-card">
-        <b>6. Global Exposure</b>
-        <p>Embark on an immersive journey filled with academic learning, industry insights, networking, and cultural exploration.</p>
+        <b>6. Experience Global Exposure &amp; Exploration</b>
+        <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
       </div>
 
-      <div class="step-item-card">
+      <div class="step-item-card" style="grid-column: span 2;">
         <b>7. Reflect, Share &amp; Grow</b>
-        <p>Post-program feedback and reflection from educators and students to ensure impactful, lifelong learning.</p>
+        <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
       </div>
     </div>
   </div>
