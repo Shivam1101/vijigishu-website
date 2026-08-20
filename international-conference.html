@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Conference Program – Vijigishu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  
+  <style>
+    /* ─── Reset & Design Tokens ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--green); background: rgba(56,103,58,.1); border-radius: 100px; padding: 4px 14px; margin-bottom: 16px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── NAVBAR ─── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
+    nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-cta { background: var(--sage); color: var(--navy) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
+    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; border-bottom: 1px solid rgba(0,0,0,.06); padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
+
+    /* ─── PAGE HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ─── */
+    .page-hero {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+      margin-top: 72px;
+    }
+    .page-hero-img { position: absolute; inset: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,14,46,0.1) 0%, rgba(13,14,46,0.25) 100%); }
+
+    /* ─── PAGE HEADER & BREADCRUMB BELOW BANNER ─── */
+    .page-header-section {
+      padding: 40px 0 24px;
+      background: var(--white);
+      text-align: center;
+    }
+    .page-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: .84rem;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .page-breadcrumb a { color: var(--gray); transition: color .25s; }
+    .page-breadcrumb a:hover { color: var(--green); }
+    .page-breadcrumb span { color: var(--green); }
+
+    .page-header-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: var(--navy);
+      line-height: 1.15;
+    }
+    .page-header-section h1 span {
+      color: var(--green);
+      font-style: italic;
+    }
+
+    /* ─── SECTION 1: OVERVIEW & HIGHLIGHTS ─── */
+    #overview-section {
+      padding: 60px 0 80px;
+      background: var(--off);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .overview-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 24px 28px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+    }
+    .overview-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .overview-text {
+      color: var(--navy);
+      font-size: .95rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .highlights-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+    .highlights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlights-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .92rem;
+      color: var(--navy);
+      line-height: 1.55;
+    }
+    .highlights-list li::before {
+      content: '✓';
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(56,103,58,0.12);
+      color: var(--green);
+      font-weight: 800;
+      font-size: .75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* RIGHT CARD */
+    .experience-card {
+      background: rgba(159, 194, 140, 0.25);
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      border-radius: 24px;
+      padding: 24px 28px;
+    }
+    .experience-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .experience-sub-text {
+      font-size: .88rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    /* ─── SECTION 2: PROGRAM DETAILS BAR ─── */
+    #details-bar-section {
+      background: var(--navy);
+      padding: 20px 0;
+      color: var(--white);
+    }
+    .details-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 16px;
+    }
+    .details-info-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .details-info-left h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--sage);
+      white-space: nowrap;
+    }
+    .details-info-left span {
+      font-size: .84rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      white-space: nowrap;
+    }
+
+    /* ─── SECTION 3: HOW IT WORKS ─── */
+    #process { padding: 80px 0; background: var(--white); }
+    .process-header { text-align: center; margin-bottom: 48px; }
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step-item-card {
+      background: var(--off);
+      border-radius: 20px;
+      padding: 24px 20px;
+      border: 1.5px solid #E2E8F0;
+    }
+    .step-item-card b {
+      display: block;
+      font-size: .98rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .step-item-card p {
+      font-size: .84rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--dark); padding: 80px 0 32px; }
+    .footer-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr; gap: 40px; align-items: start; }
+    .footer-mascot-wrap { position: relative; display: flex; justify-content: flex-end; margin-bottom: -22px; z-index: 3; }
+    .footer-mascot-img { max-height: 280px; width: auto; object-fit: contain; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5)); }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .footer-tagline { color: rgba(255,255,255,.45); font-size: .9rem; line-height: 1.7; max-width: 300px; }
+    .footer-col-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: rgba(255,255,255,.55); font-size: .9rem; transition: color .25s; }
+    .footer-links a:hover { color: var(--sage); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
+
+    @media (max-width: 1024px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 32px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero { height: 260px; }
+      .overview-card, .experience-card { padding: 24px 20px; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .details-bar-inner { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="scrolled">
+  <div class="nav-inner">
+    <a href="index.html" class="logo-wrap" style="text-decoration: none;">
+      <img src="images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#why">About Us</a>
+      <a href="immersion-programs.html" class="active">Immersion Programs</a>
+      <a href="leadership-walk.html">Leadership Walk</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="nav-cta">Contact Us</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="index.html#why">About Us</a>
+  <a href="immersion-programs.html">Immersion Programs</a>
+  <a href="leadership-walk.html">Leadership Walk</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<!-- ===== HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ===== -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="images/Immersion-Program-Banner.webp" alt="International Conference Program" fetchpriority="high" />
+  </div>
+  <div class="page-hero-overlay"></div>
+</div>
+
+<!-- ===== PAGE HEADER & BREADCRUMB BELOW BANNER ===== -->
+<div class="page-header-section">
+  <div class="container">
+    <div class="page-breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="immersion-programs.html">Immersion Programs</a>
+      <span>›</span>
+      <span style="color:var(--navy); font-weight: 600;">Special Learning Tours - International Conference</span>
+    </div>
+    <h1>Special Learning Tours - International <span>Conference</span></h1>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW, HIGHLIGHTS & INCLUSIONS ===== -->
+<section id="overview-section">
+  <div class="container">
+    <div class="overview-grid">
+      
+      <!-- LEFT COLUMN: OVERVIEW & HIGHLIGHTS -->
+      <div class="overview-card">
+        <h2 class="overview-title">Program Overview</h2>
+        <p class="overview-text">VEPL facilitates international conferences and global immersion programs that provide participants with valuable exposure to emerging technologies, innovation ecosystems, industry practices, research trends, and cross-cultural learning experiences. These programs are designed for students, professionals, academicians, entrepreneurs, and industry leaders who aspire to expand their global perspective and professional network.</p>
+        <p class="overview-text">Our international conference programs combine academic learning, industry interaction, networking opportunities, and experiential travel into one enriching experience. Participants get the opportunity to attend keynote sessions, expert talks, panel discussions, workshops, and collaborative forums led by renowned global experts and industry professionals.</p>
+
+        <h3 class="highlights-title">Program Highlights</h3>
+        <ul class="highlights-list">
+          <li>Participation in prestigious international conferences and summits</li>
+          <li>Exposure to global trends in AI, technology, business, education, and innovation</li>
+          <li>Interactive keynote sessions, workshops, and panel discussions</li>
+          <li>Networking opportunities with international delegates and industry experts</li>
+          <li>Industry visits and experiential learning opportunities</li>
+          <li>Cultural exposure and global collaboration experiences</li>
+          <li>Professional development and knowledge enhancement</li>
+          <li>End-to-end travel and event coordination by VEPL</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT COLUMN: INCLUSIONS -->
+      <div class="experience-card">
+        <h3 class="experience-main-title">Program Inclusions</h3>
+        <p class="experience-sub-text">Depending on the program and destination, inclusions cover:</p>
+        <ul class="highlights-list">
+          <li>Conference registration and participation</li>
+          <li>Hotel accommodation</li>
+          <li>Airport transfers and local transportation</li>
+          <li>Conference venue transfers</li>
+          <li>Visa guidance and assistance</li>
+          <li>Selected meals during the program</li>
+          <li>Travel kits and event materials</li>
+          <li>On-ground support by experienced coordinators</li>
+          <li>Guided immersion and networking activities</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM DETAILS BAR ===== -->
+<section id="details-bar-section">
+  <div class="container">
+    <div class="details-bar-inner">
+      <div class="details-info-left">
+        <h4>Program Details —</h4>
+        <span>⏱️ Duration: 3 Days / 5 Days</span>
+        <span>📍 Location: Dubai, Singapore, Bangkok, Paris</span>
+      </div>
+      <div>
+        <a href="contact.html?type=conference" class="btn btn-green" style="padding: 12px 28px;">
+          Apply Now! →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS SECTION ===== -->
+<section id="process">
+  <div class="container">
+    <div class="process-header">
+      <div class="tag">How It Works</div>
+      <h2 class="section-heading">7 Steps to Your <span>Global Experience</span></h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-item-card">
+        <b>1. Explore Our Programs</b>
+        <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences.</p>
+      </div>
+
+      <div class="step-item-card">
+        <b>2. Connect With Experts</b>
+        <p>Get in touch with our program experts to discuss your requirements, preferred destinations, and academic interests.</p>
+      </div>
+
+      <div class="step-item-card">
+        <b>3. Customize Experience</b>
+        <p>We help tailor the itinerary, academic sessions, industry visits, duration, and structure based on your goals.</p>
+      </div>
+
+      <div class="step-item-card">
+        <b>4. Finalize the Program</b>
+        <p>Once approved, our team manages accommodations, transportation, academic engagements, and travel coordination.</p>
+      </div>
+
+      <div class="step-item-card">
+        <b>5. Pre-Departure Orientation</b>
+        <p>Detailed briefing covering travel guidelines, cultural awareness, itinerary, safety protocols, and documentation.</p>
+      </div>
+
+      <div class="step-item-card">
+        <b>6. Global Exposure</b>
+        <p>Embark on an immersive journey filled with academic learning, industry insights, networking, and cultural exploration.</p>
+      </div>
+
+      <div class="step-item-card">
+        <b>7. Reflect, Share &amp; Grow</b>
+        <p>Post-program feedback and reflection from educators and students to ensure impactful, lifelong learning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 44px; width: auto;" />
+        </div>
+        <p class="footer-tagline">Connecting Indian classrooms to global boardrooms. Experiential learning journeys crafted for the next generation of leaders.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#why">About Us</a>
+          <a href="immersion-programs.html">Immersion Programs</a>
+          <a href="leadership-walk.html">Leadership Walk</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Programs</div>
+        <div class="footer-links">
+          <a href="management.html" target="_blank">Management</a>
+          <a href="architecture-design.html" target="_blank">Architecture &amp; Design</a>
+          <a href="engineering.html" target="_blank">Engineering</a>
+          <a href="school-programs.html" target="_blank">School Programs</a>
+          <a href="fdp.html">Faculty Development Program</a>
+          <a href="international-conference.html">International Conference</a>
+        </div>
+      </div>
+      <div class="footer-mascot-wrap">
+        <img src="images/Viji-mascot-footer.webp" alt="Viji Mascot" class="footer-mascot-img" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Vijigishu Educational Travel. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll background
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    }
+  });
+
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+  });
+</script>
+</body>
+</html>
