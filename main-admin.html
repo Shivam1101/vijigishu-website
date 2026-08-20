@@ -292,17 +292,22 @@
       display: grid;
       grid-template-columns: 320px 1fr;
       gap: 24px;
+      align-items: stretch;
     }
     @media (max-width: 1100px) { .gallery-grid-layout { grid-template-columns: 1fr; } }
+
+    .gallery-upload-col {
+      position: relative;
+      height: 100%;
+    }
 
     .card-box { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
     
     /* PERFECT STICKY UPLOAD FORM CARD BOX */
     .card-box.sticky-card {
       position: sticky;
-      top: 10px;
-      align-self: start;
-      z-index: 10;
+      top: 16px;
+      z-index: 20;
     }
 
     .card-box-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
@@ -578,48 +583,50 @@
 
       <div class="gallery-grid-layout">
         
-        <!-- STICKY ADD NEW PHOTO FORM CARD BOX -->
-        <div class="card-box sticky-card">
-          <h3 class="card-box-title">➕ Upload &amp; Add Photo</h3>
-          <form id="addPhotoForm">
-            
-            <!-- FILE UPLOAD DROPZONE -->
-            <div class="form-group" style="margin-bottom: 14px;">
-              <label>Upload Image File <span class="required">*</span></label>
-              <div class="preview-img-container" id="previewContainer">
-                <img id="previewImg" src="" alt="Preview" />
+        <!-- FULL-HEIGHT STRETCHED LEFT COLUMN WITH STICKY UPLOAD CARD -->
+        <div class="gallery-upload-col">
+          <div class="card-box sticky-card">
+            <h3 class="card-box-title">➕ Upload &amp; Add Photo</h3>
+            <form id="addPhotoForm">
+              
+              <!-- FILE UPLOAD DROPZONE -->
+              <div class="form-group" style="margin-bottom: 14px;">
+                <label>Upload Image File <span class="required">*</span></label>
+                <div class="preview-img-container" id="previewContainer">
+                  <img id="previewImg" src="" alt="Preview" />
+                </div>
+                <div class="upload-dropzone" id="uploadDropzone">
+                  <input type="file" id="photoFileInput" accept="image/*" required />
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" style="margin-bottom: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <div style="font-size: .84rem; font-weight: 600; color: var(--navy);">Click or Drag Image File Here</div>
+                  <div style="font-size: .72rem; color: var(--gray); margin-top: 2px;">Supports JPG, PNG, WEBP</div>
+                </div>
               </div>
-              <div class="upload-dropzone" id="uploadDropzone">
-                <input type="file" id="photoFileInput" accept="image/*" required />
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" style="margin-bottom: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <div style="font-size: .84rem; font-weight: 600; color: var(--navy);">Click or Drag Image File Here</div>
-                <div style="font-size: .72rem; color: var(--gray); margin-top: 2px;">Supports JPG, PNG, WEBP</div>
+
+              <!-- MANDATORY COUNTRY SELECT -->
+              <div class="form-group" style="margin-bottom: 14px;">
+                <label>Assign Destination Country <span class="required">* (Mandatory)</span></label>
+                <select id="photoCountry" required>
+                  <option value="" disabled selected>-- Select Destination Country --</option>
+                  <option value="singapore">🇸🇬 Singapore</option>
+                  <option value="japan">🇯🇵 Japan</option>
+                  <option value="south-korea">🇰🇷 South Korea</option>
+                  <option value="europe">🇪🇺 Europe</option>
+                  <option value="malaysia">🇲🇾 Malaysia</option>
+                  <option value="uae">🇦🇪 UAE / Dubai</option>
+                  <option value="india">🇮🇳 India</option>
+                </select>
               </div>
-            </div>
 
-            <!-- MANDATORY COUNTRY SELECT -->
-            <div class="form-group" style="margin-bottom: 14px;">
-              <label>Assign Destination Country <span class="required">* (Mandatory)</span></label>
-              <select id="photoCountry" required>
-                <option value="" disabled selected>-- Select Destination Country --</option>
-                <option value="singapore">🇸🇬 Singapore</option>
-                <option value="japan">🇯🇵 Japan</option>
-                <option value="south-korea">🇰🇷 South Korea</option>
-                <option value="europe">🇪🇺 Europe</option>
-                <option value="malaysia">🇲🇾 Malaysia</option>
-                <option value="uae">🇦🇪 UAE / Dubai</option>
-                <option value="india">🇮🇳 India</option>
-              </select>
-            </div>
+              <!-- TITLE / LOCATION DETAILS -->
+              <div class="form-group" style="margin-bottom: 20px;">
+                <label>Title / Location Details</label>
+                <input type="text" id="photoTitle" placeholder="e.g. National University of Singapore Tech Hub" />
+              </div>
 
-            <!-- TITLE / LOCATION DETAILS -->
-            <div class="form-group" style="margin-bottom: 20px;">
-              <label>Title / Location Details</label>
-              <input type="text" id="photoTitle" placeholder="e.g. National University of Singapore Tech Hub" />
-            </div>
-
-            <button type="submit" class="btn btn-green" style="width: 100%; justify-content: center; padding: 12px;">🚀 Publish to Live Gallery</button>
-          </form>
+              <button type="submit" class="btn btn-green" style="width: 100%; justify-content: center; padding: 12px;">🚀 Publish to Live Gallery</button>
+            </form>
+          </div>
         </div>
 
         <!-- ACTIVE GALLERY PHOTOS LIST -->
