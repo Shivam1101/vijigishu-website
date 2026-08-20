@@ -24,7 +24,7 @@
       --dark: #07081A;
       --white: #FFFFFF;
       --gray: #5A5B70;
-      --border: #E2E4EB;
+      --border: #CBD5E1;
       --ease: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -291,7 +291,7 @@
     /* Checkbox Custom Style */
     input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--green); }
 
-    /* Editor Modal / Panel */
+    /* Editor Modal / Panel & Input Box Styling */
     .editor-card { background: var(--white); border-radius: 20px; border: 1px solid var(--border); padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,.04); margin-bottom: 32px; display: none; }
     .editor-card.active { display: block; }
     .editor-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
@@ -301,17 +301,31 @@
     .form-group.full { grid-column: 1 / -1; }
     form label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--navy); }
     form label span.required { color: #E53935; margin-left: 2px; }
+    
+    /* SUBTLE & MINIMAL BORDER COLOR FOR INPUT BOXES */
     input[type="text"], select, textarea {
-      padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--border);
-      background: var(--off); font-family: inherit; font-size: .84rem; color: var(--navy); outline: none; transition: border-color .2s;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #CBD5E1;
+      background: #F8FAFC;
+      font-family: inherit;
+      font-size: .84rem;
+      color: var(--navy);
+      outline: none;
+      transition: all .25s var(--ease);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.02);
     }
-    input[type="text"]:focus, select:focus, textarea:focus { border-color: var(--green); background: var(--white); }
+    input[type="text"]:focus, select:focus, textarea:focus {
+      border-color: var(--green);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(56, 103, 58, 0.15);
+    }
 
-    /* Block Builder */
-    .blocks-container { border-top: 2px dashed var(--border); padding-top: 20px; margin-top: 20px; }
+    /* Block Builder Container */
+    .blocks-container { border-top: 2px dashed #CBD5E1; padding-top: 20px; margin-top: 20px; }
     .block-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .block-item {
-      background: var(--off); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 12px;
+      background: #F8FAFC; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 14px; margin-bottom: 12px;
       position: relative; transition: all .2s;
     }
     .block-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
@@ -319,6 +333,111 @@
     .block-actions { display: flex; gap: 4px; }
     .btn-sm { padding: 3px 8px; font-size: .7rem; border-radius: 4px; cursor: pointer; border: 1px solid var(--border); background: var(--white); }
     .btn-sm:hover { background: var(--navy); color: var(--white); }
+
+    /* + Add Element Toolbar & Individual Hover Buttons */
+    .element-builder-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 14px;
+    }
+
+    .builder-toolbar-title {
+      font-size: .8rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-right: 4px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .btn-element {
+      padding: 7px 14px;
+      border-radius: 100px;
+      font-size: .78rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all .25s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 1. Paragraph button - Blue Theme */
+    .btn-elem-paragraph {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border-color: #BFDBFE;
+    }
+    .btn-elem-paragraph:hover {
+      background: #1D4ED8;
+      color: var(--white);
+      border-color: #1D4ED8;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* 2. Subheading button - Green Theme */
+    .btn-elem-heading {
+      background: #F0FDF4;
+      color: #15803D;
+      border-color: #BBF7D0;
+    }
+    .btn-elem-heading:hover {
+      background: #15803D;
+      color: var(--white);
+      border-color: #15803D;
+      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* 3. Quote Block button - Amber / Gold Theme */
+    .btn-elem-quote {
+      background: #FFFBEB;
+      color: #B45309;
+      border-color: #FDE68A;
+    }
+    .btn-elem-quote:hover {
+      background: #B45309;
+      color: var(--white);
+      border-color: #B45309;
+      box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* 4. Key Takeaway Box button - Purple Theme */
+    .btn-elem-callout {
+      background: #F5F3FF;
+      color: #6D28D9;
+      border-color: #DDD6FE;
+    }
+    .btn-elem-callout:hover {
+      background: #6D28D9;
+      color: var(--white);
+      border-color: #6D28D9;
+      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* 5. Inline Image button - Rose Theme */
+    .btn-elem-image {
+      background: #FFF1F2;
+      color: #BE123C;
+      border-color: #FECDD3;
+    }
+    .btn-elem-image:hover {
+      background: #BE123C;
+      color: var(--white);
+      border-color: #BE123C;
+      box-shadow: 0 4px 12px rgba(190, 18, 60, 0.3);
+      transform: translateY(-2px);
+    }
 
     /* ─── GALLERY MANAGER STYLES ─── */
     .gallery-grid-layout {
@@ -569,13 +688,14 @@
 
             <div id="blocksList"></div>
 
-            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top: 14px;">
-              <span style="font-size:.78rem; font-weight:700; color:var(--navy); align-self:center;">+ Add Element:</span>
-              <button type="button" class="btn btn-outline" style="font-size:.75rem;" onclick="addBlock('paragraph')">+ Paragraph</button>
-              <button type="button" class="btn btn-outline" style="font-size:.75rem;" onclick="addBlock('heading')">+ Subheading</button>
-              <button type="button" class="btn btn-outline" style="font-size:.75rem;" onclick="addBlock('quote')">+ Quote Block</button>
-              <button type="button" class="btn btn-outline" style="font-size:.75rem;" onclick="addBlock('callout')">+ Key Takeaway Box</button>
-              <button type="button" class="btn btn-outline" style="font-size:.75rem;" onclick="addBlock('image')">+ Inline Image</button>
+            <!-- ENHANCED TOOLBAR FOR + ADD ELEMENT WITH INDIVIDUAL HOVER EFFECTS -->
+            <div class="element-builder-toolbar">
+              <span class="builder-toolbar-title">+ Add Element:</span>
+              <button type="button" class="btn-element btn-elem-paragraph" onclick="addBlock('paragraph')">📄 + Paragraph</button>
+              <button type="button" class="btn-element btn-elem-heading" onclick="addBlock('heading')">📌 + Subheading</button>
+              <button type="button" class="btn-element btn-elem-quote" onclick="addBlock('quote')">💬 + Quote Block</button>
+              <button type="button" class="btn-element btn-elem-callout" onclick="addBlock('callout')">💡 + Key Takeaway Box</button>
+              <button type="button" class="btn-element btn-elem-image" onclick="addBlock('image')">🖼️ + Inline Image</button>
             </div>
           </div>
 
