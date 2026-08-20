@@ -623,28 +623,33 @@
 
     /* ─── FAQ ─── */
     #faq { padding: 100px 0; background: var(--off); }
-    .faq-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+    .faq-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
     }
-    .faq-left {}
-    .faq-sub {
-      color: var(--gray);
-      line-height: 1.7;
-      margin-top: 16px;
-      margin-bottom: 32px;
+    .faq-header {
+      text-align: center;
+      margin-bottom: 48px;
     }
-    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-header .tag {
+      margin: 0 auto 16px;
+      display: inline-block;
+    }
+    .faq-header .section-heading {
+      text-align: center;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 14px; }
     .faq-item {
       background: var(--white);
       border-radius: 14px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,.06);
-      transition: box-shadow .3s;
+      border: 1px solid rgba(0,0,0,.08);
+      transition: all .3s var(--ease);
     }
-    .faq-item.open { box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+    .faq-item.open {
+      border-color: var(--green);
+      box-shadow: 0 10px 30px rgba(56, 103, 58, 0.12);
+    }
     .faq-question {
       display: flex;
       align-items: center;
@@ -655,6 +660,10 @@
       font-size: .95rem;
       color: var(--navy);
       user-select: none;
+      transition: color .25s var(--ease);
+    }
+    .faq-item.open .faq-question {
+      color: var(--green);
     }
     .faq-icon {
       width: 28px; height: 28px;
@@ -679,6 +688,10 @@
     .faq-item.open .faq-answer {
       max-height: 300px;
       padding: 0 24px 20px;
+    }
+    .faq-footer-action {
+      text-align: center;
+      margin-top: 40px;
     }
 
     /* ─── FOOTER (ROOT GRADIENT DESIGN) ─── */
@@ -1331,12 +1344,10 @@
 <!-- ===== FAQ ===== -->
 <section id="faq">
   <div class="container">
-    <div class="faq-inner">
-      <div class="faq-left reveal">
+    <div class="faq-wrapper">
+      <div class="faq-header reveal">
         <div class="tag">Got Questions?</div>
         <h2 class="section-heading">Frequently Asked <span>Questions</span></h2>
-        <p class="faq-sub">Everything you need to know before embarking on an international academic journey with Vijigishu.</p>
-        <a href="https://staging.vijigishu.co.in/contact/" class="btn btn-primary">Ask Us Anything</a>
       </div>
       <div class="faq-list reveal reveal-delay-1">
         <div class="faq-item">
@@ -1416,6 +1427,9 @@
           </div>
           <div class="faq-answer">Our programs combine academic sessions, industry visits, and cultural exploration with visits to iconic landmarks — ensuring students learn while enjoying the destination.</div>
         </div>
+      </div>
+      <div class="faq-footer-action reveal" style="text-align: center; margin-top: 40px;">
+        <a href="contact.html" class="btn btn-primary">Ask Us Anything</a>
       </div>
     </div>
   </div>
