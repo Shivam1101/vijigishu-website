@@ -273,21 +273,30 @@
     .disc-explore { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: .85rem; font-weight: 700; transition: gap .25s; }
     .disc-card:hover .disc-explore { gap: 12px; }
 
-    /* ─── INTERNSHIPS, FACULTY DEVELOPMENT & CONFERENCES (EXACT DESIGN MATCH) ─── */
+    /* ─── INTERNSHIPS, FACULTY DEVELOPMENT & CONFERENCES ─── */
     #internship {
       padding: 90px 0;
-      background: #F0F7FC; /* Clean Light Blue background matching attached screenshot */
+      background: var(--off);
       position: relative;
     }
-    .internship-header {
-      margin-bottom: 40px;
+    .internship-badge {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 4px;
     }
-    .internship-h2 {
+    .internship-item-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-size: 1.35rem;
+      font-weight: 700;
       color: var(--navy);
-      line-height: 1.15;
-      margin-bottom: 12px;
+      margin-bottom: 2px;
+    }
+    .internship-item-sub {
+      font-size: .85rem;
+      color: var(--gray);
     }
     .internship-accordion-list {
       display: flex;
@@ -298,14 +307,15 @@
     .internship-accordion-item {
       background: var(--white);
       border-radius: 20px;
-      border: 1px solid #E2EDF7;
-      padding: 24px 32px;
-      box-shadow: 0 4px 16px rgba(0, 50, 100, 0.03);
+      border: 1.5px solid #E2E8F0;
+      padding: 22px 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
       transition: all .3s var(--ease);
       cursor: pointer;
     }
     .internship-accordion-item:hover {
-      box-shadow: 0 10px 30px rgba(0, 50, 100, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-color: rgba(56, 103, 58, 0.3);
       transform: translateY(-2px);
     }
     .internship-accordion-header {
@@ -314,36 +324,17 @@
       justify-content: space-between;
       gap: 20px;
     }
-    .internship-badge {
-      font-size: .68rem;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #1E6091;
-      margin-bottom: 6px;
-    }
-    .internship-item-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
-    .internship-item-sub {
-      font-size: .88rem;
-      color: var(--gray);
-    }
     .internship-toggle-icon {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: #F0F7FC;
+      background: rgba(56, 103, 58, 0.08);
       display: grid;
       place-items: center;
-      color: #1E6091;
+      color: var(--green);
       font-weight: 700;
       font-size: 1.2rem;
-      transition: transform .3s var(--ease), background .3s;
+      transition: transform .3s var(--ease), background .3s, color .3s;
       flex-shrink: 0;
     }
     .internship-accordion-item.active .internship-toggle-icon {
@@ -355,7 +346,7 @@
       display: none;
       padding-top: 20px;
       margin-top: 20px;
-      border-top: 1px solid #F0F7FC;
+      border-top: 1px solid #F1F5F9;
       font-size: .88rem;
       color: var(--navy);
       line-height: 1.65;
@@ -363,18 +354,30 @@
     .internship-accordion-item.active .internship-accordion-body {
       display: block;
     }
-
     .int-detail-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
       margin-bottom: 20px;
       background: #F8FAFC;
-      padding: 16px;
+      padding: 18px 20px;
       border-radius: 14px;
+      border: 1px solid #F1F5F9;
     }
-    .int-detail-box label { font-size: .7rem; font-weight: 800; text-transform: uppercase; color: #1E6091; display: block; margin-bottom: 2px; }
-    .int-detail-box span { font-weight: 700; color: var(--navy); }
+    .int-detail-box label {
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--green);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: .03em;
+    }
+    .int-detail-box span {
+      font-weight: 700;
+      color: var(--navy);
+      font-size: .85rem;
+    }
 
     /* ─── CTA BANNER ─── */
     #ip-cta {
@@ -563,7 +566,7 @@
   </div>
 </div>
 
-<!-- ===== BOOKMARK FILTER BAR (COMBINED & ICONIFIED) ===== -->
+<!-- ===== BOOKMARK FILTER BAR ===== -->
 <div class="filter-bar">
   <div class="filter-inner">
     <a href="#best-selling" class="filter-btn active" data-section="all">🌐 All Programs</a>
@@ -887,9 +890,10 @@
 <!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES ===== -->
 <section id="internship">
   <div class="container">
-    <div class="internship-header reveal">
-      <h2 class="internship-h2">Internships, faculty<br>development and conferences.</h2>
-      <p style="color:var(--gray); font-size:.95rem; max-width:620px; line-height:1.65; margin-top:8px;">Expand horizons through industry-aligned internships, faculty exchange programs, and international academic conferences.</p>
+    <div class="internship-header reveal" style="margin-bottom: 48px;">
+      <div class="tag">Special Learning Tours</div>
+      <h2 class="section-heading">Internships, Faculty Development<br>and <span>Conferences</span></h2>
+      <p style="color:var(--gray); font-size:.95rem; max-width:620px; line-height:1.65; margin-top:14px;">Expand horizons through industry-aligned internships, faculty exchange programs, and international academic conferences.</p>
     </div>
 
     <div class="internship-accordion-list">
@@ -897,88 +901,100 @@
       <!-- ITEM 1: Malaysia Internship -->
       <div class="internship-accordion-item reveal" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
-          <div>
-            <div class="internship-badge">INTERNSHIP PROGRAM</div>
-            <div class="internship-item-title">International Internship — Malaysia</div>
-            <div class="internship-item-sub">Industry-focused practical exposure in Kuala Lumpur.</div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🇲🇾</div>
+            <div>
+              <div class="internship-badge">INTERNSHIP PROGRAM</div>
+              <div class="internship-item-title">International Internship — Malaysia</div>
+              <div class="internship-item-sub">Industry-focused practical exposure in Kuala Lumpur.</div>
+            </div>
           </div>
           <div class="internship-toggle-icon">+</div>
         </div>
         <div class="internship-accordion-body">
-          <p style="margin-bottom: 14px;">Gain hands-on international industry experience in Malaysia's thriving corporate &amp; tech sectors. Collaborate with top ASEAN enterprises and leading Malaysian universities.</p>
+          <p style="margin-bottom: 16px; color: var(--navy); line-height: 1.6;">Gain hands-on international industry experience in Malaysia's thriving corporate &amp; tech sectors. Collaborate with top ASEAN enterprises and leading Malaysian universities.</p>
           <div class="int-detail-grid">
-            <div class="int-detail-box"><label>Key Focus</label><span>Corporate Operations, IT &amp; Software, Engineering, Business Analytics</span></div>
-            <div class="int-detail-box"><label>Target Audience</label><span>Management, Engineering, and Computer Science students</span></div>
-            <div class="int-detail-box"><label>Duration</label><span>2 Weeks / 4 Weeks / 8 Weeks</span></div>
-            <div class="int-detail-box"><label>Location</label><span>Kuala Lumpur, Malaysia</span></div>
+            <div class="int-detail-box"><label>📌 Key Focus</label><span>Corporate Operations, IT &amp; Software, Engineering, Business Analytics</span></div>
+            <div class="int-detail-box"><label>🎯 Target Audience</label><span>Management, Engineering, and Computer Science students</span></div>
+            <div class="int-detail-box"><label>⏱️ Duration</label><span>2 Weeks / 4 Weeks / 8 Weeks</span></div>
+            <div class="int-detail-box"><label>📍 Location</label><span>Kuala Lumpur, Malaysia</span></div>
           </div>
-          <a href="contact.html?type=internship-malaysia" class="btn btn-green" style="padding: 9px 20px; font-size: .8rem;">Apply for Internship →</a>
+          <a href="contact.html?type=internship-malaysia" class="btn btn-green" style="padding: 10px 22px; font-size: .82rem;">Apply for Internship →</a>
         </div>
       </div>
 
       <!-- ITEM 2: Thailand Internship -->
       <div class="internship-accordion-item reveal reveal-delay-1" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
-          <div>
-            <div class="internship-badge">INTERNSHIP PROGRAM</div>
-            <div class="internship-item-title">International Internship — Thailand</div>
-            <div class="internship-item-sub">Practical learning inside Thailand's innovation ecosystem.</div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🇹🇭</div>
+            <div>
+              <div class="internship-badge">INTERNSHIP PROGRAM</div>
+              <div class="internship-item-title">International Internship — Thailand</div>
+              <div class="internship-item-sub">Practical learning inside Thailand's innovation ecosystem.</div>
+            </div>
           </div>
           <div class="internship-toggle-icon">+</div>
         </div>
         <div class="internship-accordion-body">
-          <p style="margin-bottom: 14px;">Experience Thailand’s fast-growing business hubs, hospitality management, and sustainable technology sectors with guided project mentorship.</p>
+          <p style="margin-bottom: 16px; color: var(--navy); line-height: 1.6;">Experience Thailand’s fast-growing business hubs, hospitality management, and sustainable technology sectors with guided project mentorship.</p>
           <div class="int-detail-grid">
-            <div class="int-detail-box"><label>Key Focus</label><span>Supply Chain Management, Smart Manufacturing, Renewable Energy</span></div>
-            <div class="int-detail-box"><label>Target Audience</label><span>Business Administration, Hospitality, and Engineering students</span></div>
-            <div class="int-detail-box"><label>Duration</label><span>2 Weeks / 4 Weeks</span></div>
-            <div class="int-detail-box"><label>Location</label><span>Bangkok &amp; Chonburi, Thailand</span></div>
+            <div class="int-detail-box"><label>📌 Key Focus</label><span>Supply Chain Management, Smart Manufacturing, Renewable Energy</span></div>
+            <div class="int-detail-box"><label>🎯 Target Audience</label><span>Business Administration, Hospitality, and Engineering students</span></div>
+            <div class="int-detail-box"><label>⏱️ Duration</label><span>2 Weeks / 4 Weeks</span></div>
+            <div class="int-detail-box"><label>📍 Location</label><span>Bangkok &amp; Chonburi, Thailand</span></div>
           </div>
-          <a href="contact.html?type=internship-thailand" class="btn btn-green" style="padding: 9px 20px; font-size: .8rem;">Apply for Internship →</a>
+          <a href="contact.html?type=internship-thailand" class="btn btn-green" style="padding: 10px 22px; font-size: .82rem;">Apply for Internship →</a>
         </div>
       </div>
 
       <!-- ITEM 3: Faculty Development Program -->
       <div class="internship-accordion-item reveal reveal-delay-2" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
-          <div>
-            <div class="internship-badge">SPECIAL LEARNING TOUR</div>
-            <div class="internship-item-title">Faculty Development Program</div>
-            <div class="internship-item-sub">Collaborate with top-tier international institutions.</div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🎓</div>
+            <div>
+              <div class="internship-badge">SPECIAL LEARNING TOUR</div>
+              <div class="internship-item-title">Faculty Development Program</div>
+              <div class="internship-item-sub">Collaborate with top-tier international institutions.</div>
+            </div>
           </div>
           <div class="internship-toggle-icon">+</div>
         </div>
         <div class="internship-accordion-body">
-          <p style="margin-bottom: 14px;">Designed for professors, academicians, and institutional leaders to explore global pedagogical standards, OBE accreditation, and joint research symposiums.</p>
+          <p style="margin-bottom: 16px; color: var(--navy); line-height: 1.6;">Designed for professors, academicians, and institutional leaders to explore global pedagogical standards, OBE accreditation, and joint research symposiums.</p>
           <div class="int-detail-grid">
-            <div class="int-detail-box"><label>Key Focus</label><span>Global Accreditation, Outcome-Based Education (OBE), Research Collaborations</span></div>
-            <div class="int-detail-box"><label>Target Audience</label><span>Faculty Members, Deans, Directors, and Academic Administrators</span></div>
-            <div class="int-detail-box"><label>Duration</label><span>5 Days / 7 Days</span></div>
-            <div class="int-detail-box"><label>Location</label><span>Singapore, Malaysia, Dubai, Europe</span></div>
+            <div class="int-detail-box"><label>📌 Key Focus</label><span>Global Accreditation, Outcome-Based Education (OBE), Research Collaborations</span></div>
+            <div class="int-detail-box"><label>🎯 Target Audience</label><span>Faculty Members, Deans, Directors, and Academic Administrators</span></div>
+            <div class="int-detail-box"><label>⏱️ Duration</label><span>5 Days / 7 Days</span></div>
+            <div class="int-detail-box"><label>📍 Location</label><span>Singapore, Malaysia, Dubai, Europe</span></div>
           </div>
-          <a href="contact.html?type=fdp" class="btn btn-primary" style="padding: 9px 20px; font-size: .8rem;">Enquire for FDP →</a>
+          <a href="contact.html?type=fdp" class="btn btn-primary" style="padding: 10px 22px; font-size: .82rem;">Enquire for FDP →</a>
         </div>
       </div>
 
       <!-- ITEM 4: International Conferences & Seminars -->
       <div class="internship-accordion-item reveal reveal-delay-3" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
-          <div>
-            <div class="internship-badge">ACADEMIC CONFERENCE</div>
-            <div class="internship-item-title">International Conferences &amp; Seminars</div>
-            <div class="internship-item-sub">Present research and network with international delegates.</div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,103,58,0.08); display: grid; place-items: center; font-size: 1.2rem; flex-shrink: 0;">🌐</div>
+            <div>
+              <div class="internship-badge">SPECIAL LEARNING TOUR</div>
+              <div class="internship-item-title">International Conferences &amp; Seminars</div>
+              <div class="internship-item-sub">Present research and network with international delegates.</div>
+            </div>
           </div>
           <div class="internship-toggle-icon">+</div>
         </div>
         <div class="internship-accordion-body">
-          <p style="margin-bottom: 14px;">Present paper presentations, attend keynotes, and network with researchers, scientists, and industry pioneers worldwide with Scopus-indexed journal publication support.</p>
+          <p style="margin-bottom: 16px; color: var(--navy); line-height: 1.6;">Present paper presentations, attend keynotes, and network with researchers, scientists, and industry pioneers worldwide with Scopus-indexed journal publication support.</p>
           <div class="int-detail-grid">
-            <div class="int-detail-box"><label>Key Focus</label><span>Multidisciplinary Research, Technological Innovations, SDGs</span></div>
-            <div class="int-detail-box"><label>Target Audience</label><span>Researchers, PhD Scholars, Faculty, and Post-Graduate Students</span></div>
-            <div class="int-detail-box"><label>Duration</label><span>3 Days / 5 Days</span></div>
-            <div class="int-detail-box"><label>Location</label><span>Dubai, Singapore, Bangkok, Paris</span></div>
+            <div class="int-detail-box"><label>📌 Key Focus</label><span>Multidisciplinary Research, Technological Innovations, SDGs</span></div>
+            <div class="int-detail-box"><label>🎯 Target Audience</label><span>Researchers, PhD Scholars, Faculty, and Post-Graduate Students</span></div>
+            <div class="int-detail-box"><label>⏱️ Duration</label><span>3 Days / 5 Days</span></div>
+            <div class="int-detail-box"><label>📍 Location</label><span>Dubai, Singapore, Bangkok, Paris</span></div>
           </div>
-          <a href="contact.html?type=conference" class="btn btn-primary" style="padding: 9px 20px; font-size: .8rem;">Enquire for Conference →</a>
+          <a href="contact.html?type=conference" class="btn btn-primary" style="padding: 10px 22px; font-size: .82rem;">Enquire for Conference →</a>
         </div>
       </div>
 
