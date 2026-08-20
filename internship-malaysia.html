@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   
   <style>
-    /* ─── Reset & Tokens ─── */
+    /* ─── Reset & Design Tokens ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy:  #1B1C4A;
@@ -37,8 +37,6 @@
     .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
     .btn-green { background: var(--sage); color: var(--navy); }
     .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
-    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
-    .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
 
     /* ─── NAVBAR ─── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
@@ -58,7 +56,7 @@
     .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; border-bottom: 1px solid rgba(0,0,0,.06); padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
-    /* ─── PAGE HERO BANNER (IMAGE ONLY - NO OVERLAY TEXT) ─── */
+    /* ─── PAGE HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ─── */
     .page-hero {
       position: relative;
       height: 380px;
@@ -71,7 +69,7 @@
 
     /* ─── PAGE HEADER & BREADCRUMB BELOW BANNER ─── */
     .page-header-section {
-      padding: 36px 0 24px;
+      padding: 40px 0 24px;
       background: var(--white);
       text-align: center;
     }
@@ -90,63 +88,195 @@
 
     .page-header-section h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
       color: var(--navy);
       line-height: 1.15;
     }
-    .page-header-section h1 em {
+    .page-header-section h1 span {
       color: var(--green);
       font-style: italic;
     }
 
-    /* ─── EXACT STAGING CONTENT SECTION ─── */
-    #content-section {
-      padding: 70px 0 90px;
+    /* ─── SECTION 1: OVERVIEW, HIGHLIGHTS & EXPERIENCE ─── */
+    #overview-section {
+      padding: 60px 0 80px;
       background: var(--off);
     }
-    .content-card {
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .overview-card {
       background: var(--white);
       border-radius: 24px;
-      padding: 48px;
+      padding: 40px;
       border: 1.5px solid #E2E8F0;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-      max-width: 900px;
-      margin: 0 auto;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
     }
-    .content-lead {
-      font-size: 1.15rem;
-      font-weight: 600;
+    .overview-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
       color: var(--navy);
-      line-height: 1.7;
-      margin-bottom: 32px;
-      border-left: 4px solid var(--green);
-      padding-left: 20px;
+      margin-bottom: 16px;
     }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
-      margin-bottom: 36px;
-      background: #F8FAFC;
-      padding: 24px;
-      border-radius: 18px;
-      border: 1px solid #F1F5F9;
-    }
-    .info-item label {
-      font-size: .72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--green);
-      display: block;
-      margin-bottom: 4px;
-      letter-spacing: .04em;
-    }
-    .info-item span {
-      font-weight: 700;
+    .overview-text {
       color: var(--navy);
       font-size: .95rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .highlights-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+    .highlights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlights-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .92rem;
+      color: var(--navy);
+      line-height: 1.55;
+    }
+    .highlights-list li::before {
+      content: '✓';
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(56,103,58,0.12);
+      color: var(--green);
+      font-weight: 800;
+      font-size: .75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* EXPERIENCE RIGHT CARD */
+    .experience-card {
+      background: rgba(159, 194, 140, 0.25);
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      border-radius: 24px;
+      padding: 40px 32px;
+    }
+    .experience-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+    .exp-item {
+      margin-bottom: 24px;
+    }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-item-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .exp-item-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+    .exp-item-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .exp-item-desc {
+      font-size: .88rem;
+      color: var(--navy);
+      line-height: 1.6;
+      padding-left: 50px;
+    }
+
+    /* ─── SECTION 2: PROGRAM DETAILS BAR ─── */
+    #details-bar-section {
+      background: var(--navy);
+      padding: 28px 0;
+      color: var(--white);
+    }
+    .details-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .details-info-left h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      display: inline-block;
+      margin-right: 12px;
+      color: var(--sage);
+    }
+    .details-info-left span {
+      font-size: .95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-right: 18px;
+      display: inline-block;
+    }
+
+    /* ─── SECTION 3: PROGRAM INCLUSIONS ─── */
+    #inclusions-section {
+      padding: 80px 0;
+      background: var(--white);
+    }
+    .inclusions-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .inclusion-card {
+      background: var(--off);
+      border-radius: 20px;
+      padding: 28px 16px;
+      text-align: center;
+      border: 1.5px solid #E2E8F0;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .inclusion-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border-color: var(--green);
+    }
+    .inclusion-icon-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      font-size: 1.6rem;
+    }
+    .inclusion-title {
+      font-size: .92rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.4;
     }
 
     /* ─── FOOTER ─── */
@@ -164,13 +294,16 @@
     .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
 
     @media (max-width: 1024px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 32px; }
+      .inclusions-grid { grid-template-columns: repeat(3, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .page-hero { height: 260px; }
-      .content-card { padding: 28px 20px; }
+      .overview-card, .experience-card { padding: 24px; }
+      .inclusions-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -203,15 +336,15 @@
   <a href="contact.html">Contact Us</a>
 </div>
 
-<!-- ===== HERO BANNER (IMAGE ONLY - NO TEXT) ===== -->
+<!-- ===== HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
-    <img src="images/MALAYSIA-scaled.webp" alt="Malaysia International Internship" fetchpriority="high" />
+    <img src="images/MALAYSIA-scaled.webp" alt="Malaysia International Internship Program" fetchpriority="high" />
   </div>
   <div class="page-hero-overlay"></div>
 </div>
 
-<!-- ===== BREADCRUMB AND TITLE SECTION BELOW BANNER ===== -->
+<!-- ===== PAGE HEADER & BREADCRUMB BELOW BANNER ===== -->
 <div class="page-header-section">
   <div class="container">
     <div class="page-breadcrumb">
@@ -219,41 +352,119 @@
       <span>›</span>
       <a href="immersion-programs.html">Immersion Programs</a>
       <span>›</span>
-      <span style="color:var(--navy); font-weight: 600;">International Internship — Malaysia</span>
+      <span style="color:var(--navy); font-weight: 600;">International Internship Program – Malaysia</span>
     </div>
-    <h1>International Internship — <em>Malaysia</em></h1>
+    <h1>International Internship Program – <span>MALAYSIA</span></h1>
   </div>
 </div>
 
-<!-- ===== EXACT STAGING CONTENT ===== -->
-<section id="content-section">
+<!-- ===== OVERVIEW, HIGHLIGHTS & WHAT YOU'LL EXPERIENCE ===== -->
+<section id="overview-section">
   <div class="container">
-    <div class="content-card">
-      <div class="tag">Internship Program</div>
-      <div class="content-lead">
-        Gain international industry exposure through our Malaysia International Internship Program in collaboration with leading institutions &amp; industry partners.
+    <div class="overview-grid">
+      
+      <!-- LEFT COLUMN: OVERVIEW & HIGHLIGHTS -->
+      <div class="overview-card">
+        <h2 class="overview-title">Program Overview</h2>
+        <p class="overview-text">Gain international industry exposure through our Malaysia International Internship Program in collaboration with leading institutions and industry partners.</p>
+        <p class="overview-text">Designed to bridge the gap between academic learning and real-world experience, this program offers students the opportunity to work in professional environments, develop practical skills, and gain valuable global exposure in one of Southeast Asia’s growing innovation and business hubs.</p>
+
+        <h3 class="highlights-title">Program Highlights</h3>
+        <ul class="highlights-list">
+          <li>International internship opportunity in Malaysia</li>
+          <li>Industry-focused practical exposure</li>
+          <li>Global networking and professional development</li>
+          <li>Hands-on learning experience</li>
+          <li>Exposure to multicultural work environments</li>
+          <li>Career-focused experiential learning</li>
+        </ul>
       </div>
 
-      <div class="info-grid">
-        <div class="info-item">
-          <label>Program Type</label>
-          <span>International Internship Program</span>
+      <!-- RIGHT COLUMN: WHAT YOU'LL EXPERIENCE -->
+      <div class="experience-card">
+        <h3 class="experience-main-title">What You’ll Experience</h3>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">🏭</div>
+            <div class="exp-item-title">Industry Exposure</div>
+          </div>
+          <div class="exp-item-desc">Work with industry professionals and gain practical experience through hands-on learning opportunities.</div>
         </div>
-        <div class="info-item">
-          <label>Location</label>
-          <span>Kuala Lumpur, Malaysia</span>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">🌐</div>
+            <div class="exp-item-title">Global Learning Environment</div>
+          </div>
+          <div class="exp-item-desc">Experience international work culture, professional communication, and collaborative learning in a multicultural environment.</div>
         </div>
-        <div class="info-item">
-          <label>Duration</label>
-          <span>2 Months Internship</span>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">✨</div>
+            <div class="exp-item-title">Skill Development</div>
+          </div>
+          <div class="exp-item-desc">Enhance problem-solving, teamwork, adaptability, leadership, and professional skills through real-world projects and industry interaction.</div>
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 36px;">
-        <a href="contact.html?type=internship-malaysia" class="btn btn-green" style="padding: 14px 36px;">
-          Get Started →
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM DETAILS BAR ===== -->
+<section id="details-bar-section">
+  <div class="container">
+    <div class="details-bar-inner">
+      <div class="details-info-left">
+        <h4>Program Details —</h4>
+        <span>⏱️ Duration: 2 Months Internship</span>
+        <span>📍 Location: Kuala Lumpur, Malaysia</span>
+      </div>
+      <div>
+        <a href="contact.html?type=internship-malaysia" class="btn btn-green" style="padding: 12px 28px;">
+          Apply Now! →
         </a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM INCLUSIONS ===== -->
+<section id="inclusions-section">
+  <div class="container">
+    <div style="text-align: center;">
+      <h2 class="section-heading">Program <span>Inclusions</span></h2>
+    </div>
+
+    <div class="inclusions-grid">
+      
+      <div class="inclusion-card">
+        <div class="inclusion-icon-wrap">🏢</div>
+        <div class="inclusion-title">Accommodation Assistance</div>
+      </div>
+
+      <div class="inclusion-card">
+        <div class="inclusion-icon-wrap">💼</div>
+        <div class="inclusion-title">Internship Opportunity</div>
+      </div>
+
+      <div class="inclusion-card">
+        <div class="inclusion-icon-wrap">🌐</div>
+        <div class="inclusion-title">International Exposure</div>
+      </div>
+
+      <div class="inclusion-card">
+        <div class="inclusion-icon-wrap">🎓</div>
+        <div class="inclusion-title">Professional Mentorship</div>
+      </div>
+
+      <div class="inclusion-card">
+        <div class="inclusion-icon-wrap">🤝</div>
+        <div class="inclusion-title">Local Support &amp; Coordination</div>
+      </div>
+
     </div>
   </div>
 </section>
