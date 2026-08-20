@@ -106,6 +106,21 @@
     .btn-danger { background: #FFEBEE; color: #D32F2F; border: 1px solid #FFCDD2; }
     .btn-danger:hover { background: #D32F2F; color: var(--white); }
 
+    /* Sidebar Live View Link Custom Hover */
+    .sidebar-live-link {
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+      background: transparent;
+      justify-content: center;
+      transition: all .25s var(--ease);
+    }
+    .sidebar-live-link:hover {
+      background: var(--sage);
+      color: var(--navy);
+      border-color: var(--sage);
+      box-shadow: 0 4px 15px rgba(159,194,140,0.3);
+    }
+
     /* Icon-Only Action Buttons with Tooltip */
     .action-icon-btn {
       width: 36px;
@@ -289,7 +304,7 @@
     </div>
 
     <div class="sidebar-footer">
-      <a href="blog.html" id="liveSiteLink" class="btn btn-outline" style="color:var(--white); border-color:rgba(255,255,255,0.2); justify-content: center;" target="_blank">👁 View Live Blog ↗</a>
+      <a href="blog.html" id="liveSiteLink" class="btn sidebar-live-link" target="_blank">👁 View Live Blog ↗</a>
       <button class="btn btn-danger" style="justify-content: center; background: rgba(229,57,53,0.15); border-color: rgba(229,57,53,0.3);" onclick="logoutAdmin()">Logout 🚪</button>
     </div>
   </aside>
