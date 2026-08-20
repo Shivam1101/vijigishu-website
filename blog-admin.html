@@ -148,8 +148,8 @@
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group.full { grid-column: 1 / -1; }
-    label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--navy); }
-    label span.required { color: #E53935; margin-left: 2px; }
+    form label { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--navy); }
+    form label span.required { color: #E53935; margin-left: 2px; }
     input[type="text"], select, textarea {
       padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--border);
       background: var(--off); font-family: inherit; font-size: .92rem; color: var(--navy); outline: none; transition: border-color .2s;
@@ -187,7 +187,7 @@
     .admin-item-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
     .admin-item-card.selected { border-color: var(--green); box-shadow: 0 0 0 2px var(--green); }
     
-    .card-checkbox-wrap { position: absolute; top: 12px; left: 12px; z-index: 5; background: rgba(255,255,255,0.9); padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
+    .card-checkbox-wrap { position: absolute; top: 12px; left: 12px; z-index: 5; background: rgba(255,255,255,0.92); padding: 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.08); }
 
     .admin-item-img { width: 100%; height: 140px; object-fit: cover; display: block; }
     .admin-item-body { padding: 14px; }
@@ -470,7 +470,7 @@
           <div class="card-box-title">
             <div style="display:flex; align-items:center; gap:12px;">
               <span>🖼️ Gallery Photos (<span id="photoCountBadge">0</span>)</span>
-              <label style="font-size:.78rem; text-transform:none; color:var(--gray); display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <label style="font-size:.82rem; font-weight:600; text-transform:none; color:var(--gray); display:inline-flex; align-items:center; gap:6px; cursor:pointer; background:var(--off); padding:4px 10px; border-radius:8px; border:1px solid var(--border);">
                 <input type="checkbox" id="selectAllGallery" onchange="toggleSelectAllGallery(this)" /> Select All
               </label>
             </div>
@@ -606,7 +606,7 @@
   });
 
   // ==========================================
-  // BLOG CMS SCRIPT LOGIC (WITH MULTI-SELECT)
+  // BLOG CMS SCRIPT LOGIC (WITH MULTI-SELECT & STRING ID MATCHING)
   // ==========================================
   const DEFAULT_BLOGS = [
     {
@@ -660,11 +660,18 @@
   function updateBlogBulkBar() {
     const bar = document.getElementById('blogBulkBar');
     const info = document.getElementById('blogBulkInfo');
+    const master = document.getElementById('selectAllBlogs');
+    const blogs = getStoredBlogs();
+
     if (selectedBlogIds.size > 0) {
       info.textContent = `${selectedBlogIds.size} article(s) selected`;
       bar.classList.add('active');
     } else {
       bar.classList.remove('active');
+    }
+
+    if (master) {
+      master.checked = blogs.length > 0 && blogs.every(b => selectedBlogIds.has(String(b.id)));
     }
   }
 
@@ -672,17 +679,18 @@
     const blogs = getStoredBlogs();
     selectedBlogIds.clear();
     if (master.checked) {
-      blogs.forEach(b => selectedBlogIds.add(b.id));
+      blogs.forEach(b => selectedBlogIds.add(String(b.id)));
     }
     renderTable();
     updateBlogBulkBar();
   }
 
   function toggleBlogSelect(id, checked) {
+    const strId = String(id);
     if (checked) {
-      selectedBlogIds.add(id);
+      selectedBlogIds.add(strId);
     } else {
-      selectedBlogIds.delete(id);
+      selectedBlogIds.delete(strId);
     }
     updateBlogBulkBar();
   }
@@ -703,7 +711,7 @@
     tbody.innerHTML = blogs.map(b => `
       <tr>
         <td style="text-align: center;">
-          <input type="checkbox" ${selectedBlogIds.has(b.id) ? 'checked' : ''} onchange="toggleBlogSelect('${b.id}', this.checked)" />
+          <input type="checkbox" ${selectedBlogIds.has(String(b.id)) ? 'checked' : ''} onchange="toggleBlogSelect('${b.id}', this.checked)" />
         </td>
         <td><img src="${b.image}" class="blog-thumb" alt="" /></td>
         <td>
@@ -738,7 +746,7 @@
 
   function editPost(id) {
     const blogs = getStoredBlogs();
-    const post = blogs.find(b => b.id === id);
+    const post = blogs.find(b => String(b.id) === String(id));
     if (!post) return;
 
     document.getElementById('postId').value = post.id;
@@ -762,8 +770,8 @@
       'Are you sure you want to delete this blog post? This action cannot be undone.',
       () => {
         let blogs = getStoredBlogs();
-        blogs = blogs.filter(b => b.id !== id);
-        selectedBlogIds.delete(id);
+        blogs = blogs.filter(b => String(b.id) !== String(id));
+        selectedBlogIds.delete(String(id));
         saveBlogsToStorage(blogs);
         renderTable();
         updateBlogBulkBar();
@@ -779,7 +787,7 @@
       `Are you sure you want to delete ${selectedBlogIds.size} selected article(s)? This action cannot be undone.`,
       () => {
         let blogs = getStoredBlogs();
-        blogs = blogs.filter(b => !selectedBlogIds.has(b.id));
+        blogs = blogs.filter(b => !selectedBlogIds.has(String(b.id)));
         selectedBlogIds.clear();
         document.getElementById('selectAllBlogs').checked = false;
         saveBlogsToStorage(blogs);
@@ -878,7 +886,7 @@
     let blogs = getStoredBlogs();
 
     if (postId) {
-      const index = blogs.findIndex(b => b.id === postId);
+      const index = blogs.findIndex(b => String(b.id) === String(postId));
       if (index !== -1) {
         blogs[index] = { ...blogs[index], title, category, author, image, excerpt, blocks: currentBlocks, slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') };
       }
@@ -911,7 +919,7 @@
   }
 
   // ==========================================
-  // GALLERY MANAGEMENT SCRIPT LOGIC (WITH MULTI-SELECT)
+  // GALLERY MANAGEMENT SCRIPT LOGIC (FIXED SINGLE SELECT)
   // ==========================================
   const countryIcons = {
     singapore: `<svg width="18" height="18" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><path d="M 1 18 A 17 17 0 0 1 35 18 Z" fill="#EF3340"/><path d="M 10 9 A 6 6 0 1 0 10 17 A 7 7 0 1 1 10 9 Z" fill="#FFFFFF"/></svg>`,
@@ -969,11 +977,20 @@
   function updateGalleryBulkBar() {
     const bar = document.getElementById('galleryBulkBar');
     const info = document.getElementById('galleryBulkInfo');
+    const master = document.getElementById('selectAllGallery');
+    const items = getGalleryItems();
+    const filter = document.getElementById('adminFilterSelect').value;
+    const filtered = filter === 'all' ? items : items.filter(i => i.country === filter);
+
     if (selectedGalleryIds.size > 0) {
       info.textContent = `${selectedGalleryIds.size} photo(s) selected`;
       bar.classList.add('active');
     } else {
       bar.classList.remove('active');
+    }
+
+    if (master) {
+      master.checked = filtered.length > 0 && filtered.every(i => selectedGalleryIds.has(String(i.id)));
     }
   }
 
@@ -984,17 +1001,18 @@
     
     selectedGalleryIds.clear();
     if (master.checked) {
-      filtered.forEach(item => selectedGalleryIds.add(item.id));
+      filtered.forEach(item => selectedGalleryIds.add(String(item.id)));
     }
     renderAdminGallery();
     updateGalleryBulkBar();
   }
 
   function toggleGallerySelect(id, checked) {
+    const strId = String(id);
     if (checked) {
-      selectedGalleryIds.add(id);
+      selectedGalleryIds.add(strId);
     } else {
-      selectedGalleryIds.delete(id);
+      selectedGalleryIds.delete(strId);
     }
     renderAdminGallery();
     updateGalleryBulkBar();
@@ -1075,13 +1093,14 @@
     }
 
     filtered.forEach(item => {
+      const strId = String(item.id);
+      const isSelected = selectedGalleryIds.has(strId);
       const card = document.createElement('div');
-      const isSelected = selectedGalleryIds.has(item.id);
       card.className = `admin-item-card ${isSelected ? 'selected' : ''}`;
       const iconSvg = countryIcons[item.country] || '';
       card.innerHTML = `
         <div class="card-checkbox-wrap">
-          <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleGallerySelect(${item.id}, this.checked)" />
+          <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleGallerySelect('${strId}', this.checked)" />
         </div>
         <img src="${item.src}" class="admin-item-img" alt="${item.title}" />
         <div class="admin-item-body">
@@ -1089,28 +1108,32 @@
           <div class="admin-item-title">${item.title}</div>
         </div>
         <div class="admin-item-actions">
-          <button class="btn-sm" style="color:#D32F2F;" onclick="confirmDeleteGalleryPhoto(${item.id})">🗑 Delete</button>
+          <button class="btn-sm" style="color:#D32F2F;" onclick="confirmDeleteGalleryPhoto('${strId}')">🗑 Delete</button>
         </div>
       `;
       grid.appendChild(card);
     });
+
+    updateGalleryBulkBar();
   }
 
   document.getElementById('adminFilterSelect').addEventListener('change', () => {
     selectedGalleryIds.clear();
-    document.getElementById('selectAllGallery').checked = false;
+    const master = document.getElementById('selectAllGallery');
+    if (master) master.checked = false;
     renderAdminGallery();
     updateGalleryBulkBar();
   });
 
   function confirmDeleteGalleryPhoto(id) {
+    const strId = String(id);
     openConfirmModal(
       'Delete Gallery Photo?',
       'Are you sure you want to delete this photo from the live gallery? This action cannot be undone.',
       () => {
         let items = getGalleryItems();
-        items = items.filter(i => i.id !== id);
-        selectedGalleryIds.delete(id);
+        items = items.filter(i => String(i.id) !== strId);
+        selectedGalleryIds.delete(strId);
         localStorage.setItem('vijigishu_gallery_items', JSON.stringify(items));
         renderAdminGallery();
         updateGalleryBulkBar();
@@ -1126,9 +1149,10 @@
       `Are you sure you want to delete ${selectedGalleryIds.size} selected photo(s) from the live gallery? This action cannot be undone.`,
       () => {
         let items = getGalleryItems();
-        items = items.filter(i => !selectedGalleryIds.has(i.id));
+        items = items.filter(i => !selectedGalleryIds.has(String(i.id)));
         selectedGalleryIds.clear();
-        document.getElementById('selectAllGallery').checked = false;
+        const master = document.getElementById('selectAllGallery');
+        if (master) master.checked = false;
         localStorage.setItem('vijigishu_gallery_items', JSON.stringify(items));
         renderAdminGallery();
         updateGalleryBulkBar();
