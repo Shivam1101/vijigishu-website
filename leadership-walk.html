@@ -93,7 +93,7 @@
     .rg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .rg-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; cursor: crosshair; }
     .rg-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
-    .rg-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,14,46,.8) 0%, transparent 50%); opacity: 0; transition: opacity .4s; display: flex; align-items: flex-end; padding: 20px; }
+    .rg-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,14,46,.8) 0%, transparent 50%); opacity: 0; transition: opacity .4s; display: flex; align-items: start; padding: 20px; }
     .rg-overlay-text { font-size: .9rem; font-weight: 600; color: var(--white); transform: translateY(10px); transition: transform .4s var(--ease); }
     .rg-item:hover img { transform: scale(1.08); }
     .rg-item:hover .rg-overlay { opacity: 1; }
@@ -116,16 +116,16 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 2.2fr 1.2fr 1.2fr;
+      grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr;
       gap: 40px;
-      align-items: flex-end;
+      align-items: start;
       margin-bottom: 0;
     }
     .footer-mascot-wrap {
       position: relative;
       display: flex;
       justify-content: flex-end;
-      align-items: flex-end;
+      align-items: start;
       margin-bottom: -22px;
       z-index: 3;
     }
