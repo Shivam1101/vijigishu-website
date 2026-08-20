@@ -486,19 +486,19 @@
       localStorage.setItem('vijigishu_admin_logged_in', 'true');
 
       setTimeout(() => {
-        window.location.href = 'blog-admin.html';
+        window.location.href = 'main-admin.html';
       }, 500);
     }
 
     function mockSocialLogin(provider) {
       alert(`Logging in with ${provider}... Redirecting to CMS Dashboard.`);
       localStorage.setItem('vijigishu_admin_logged_in', 'true');
-      window.location.href = 'blog-admin.html';
+      window.location.href = 'main-admin.html';
     }
 
     // Auto-redirect if already logged in
     if (localStorage.getItem('vijigishu_admin_logged_in') === 'true') {
-      window.location.href = 'blog-admin.html';
+      window.location.href = 'main-admin.html';
     }
   </script>
 </body>
