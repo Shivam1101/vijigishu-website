@@ -9,6 +9,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
+    :root {
+      --navy: #0D0E2E;
+      --green: #38673A;
+      --sage: #9FC28C;
+      --gold: #D4A840;
+      --off: #F4F7F2;
+      --dark: #07081A;
+      --white: #FFFFFF;
+      --gray: #5A5B70;
+      --border: rgba(56, 103, 58, 0.15);
+      --ease: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -18,14 +31,14 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
-      background: linear-gradient(135deg, #FFDEC9 0%, #FFECD9 50%, #FFD4BC 100%);
+      background: linear-gradient(135deg, #EEF4EB 0%, #F4F7F2 50%, #E2ECE0 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
       position: relative;
       overflow-x: hidden;
-      color: #2D2D2D;
+      color: var(--navy);
     }
 
     /* Ambient Background Glow Particles */
@@ -33,20 +46,20 @@
       position: absolute;
       border-radius: 50%;
       pointer-events: none;
-      filter: blur(40px);
-      opacity: 0.6;
+      filter: blur(50px);
+      opacity: 0.5;
     }
     .particle-1 {
-      width: 400px;
-      height: 400px;
-      background: rgba(255, 138, 101, 0.4);
-      top: -100px;
+      width: 450px;
+      height: 450px;
+      background: rgba(159, 194, 140, 0.45);
+      top: -120px;
       left: -100px;
     }
     .particle-2 {
       width: 500px;
       height: 500px;
-      background: rgba(255, 183, 77, 0.35);
+      background: rgba(56, 103, 58, 0.2);
       bottom: -150px;
       right: -100px;
     }
@@ -55,12 +68,12 @@
     .login-container {
       width: 100%;
       max-width: 1040px;
-      background: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       border-radius: 36px;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 30px 80px rgba(220, 100, 50, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(159, 194, 140, 0.35);
+      box-shadow: 0 30px 80px rgba(13, 14, 46, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
       display: grid;
       grid-template-columns: 440px 1fr;
       padding: 32px;
@@ -71,12 +84,11 @@
 
     /* Left Side Form Card */
     .form-card {
-      background: rgba(255, 246, 240, 0.88);
-      backdrop-filter: blur(12px);
+      background: var(--white);
       border-radius: 28px;
       padding: 40px 36px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 35px rgba(13, 14, 46, 0.04);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -85,25 +97,26 @@
     .brand-subtitle {
       font-size: 0.85rem;
       font-weight: 700;
-      color: #F2542D;
+      color: var(--green);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .brand-subtitle img {
-      height: 22px;
+      height: 28px;
       width: auto;
       object-fit: contain;
     }
 
     .form-title {
+      font-family: 'Playfair Display', serif;
       font-size: 2.2rem;
       font-weight: 800;
-      color: #1A1A1A;
+      color: var(--navy);
       margin-bottom: 28px;
       letter-spacing: -0.02em;
     }
@@ -115,9 +128,11 @@
     .form-label {
       display: block;
       font-size: 0.82rem;
-      font-weight: 600;
-      color: #666666;
+      font-weight: 700;
+      color: var(--gray);
       margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .input-wrapper {
@@ -130,22 +145,23 @@
       width: 100%;
       padding: 14px 18px;
       border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: #FFFFFF;
+      border: 1px solid var(--border);
+      background: var(--off);
       font-size: 0.92rem;
-      color: #222;
+      color: var(--navy);
       outline: none;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      transition: all 0.25s var(--ease);
       font-family: inherit;
     }
 
     .form-input::placeholder {
-      color: #AAAAAA;
+      color: #9A9BB0;
     }
 
     .form-input:focus {
-      border-color: #F2542D;
-      box-shadow: 0 0 0 4px rgba(242, 84, 45, 0.12);
+      background: var(--white);
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(56, 103, 58, 0.15);
     }
 
     .pwd-toggle {
@@ -154,15 +170,16 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: #888888;
+      color: var(--gray);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 4px;
+      transition: color 0.2s;
     }
 
     .pwd-toggle:hover {
-      color: #F2542D;
+      color: var(--green);
     }
 
     .forgot-link {
@@ -170,7 +187,7 @@
       text-align: right;
       font-size: 0.82rem;
       font-weight: 700;
-      color: #F2542D;
+      color: var(--green);
       text-decoration: none;
       margin-top: 8px;
       margin-bottom: 24px;
@@ -186,20 +203,21 @@
       width: 100%;
       padding: 14px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #F2542D 0%, #FF7043 100%);
-      color: #FFFFFF;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--green) 100%);
+      color: var(--white);
       font-size: 0.95rem;
       font-weight: 700;
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(242, 84, 45, 0.32);
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 25px rgba(13, 14, 46, 0.22);
+      transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s;
       font-family: inherit;
     }
 
     .btn-signin:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(242, 84, 45, 0.42);
+      box-shadow: 0 14px 30px rgba(56, 103, 58, 0.35);
+      background: linear-gradient(135deg, var(--green) 0%, #2A4F2C 100%);
     }
 
     .btn-signin:active {
@@ -211,7 +229,7 @@
       margin: 24px 0 20px;
       font-size: 0.8rem;
       font-weight: 600;
-      color: #888888;
+      color: var(--gray);
       position: relative;
     }
 
@@ -226,29 +244,31 @@
       width: 52px;
       height: 40px;
       border-radius: 100px;
-      background: #FFFFFF;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      background: var(--off);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
 
     .social-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+      border-color: var(--green);
+      box-shadow: 0 8px 18px rgba(56, 103, 58, 0.15);
+      background: var(--white);
     }
 
     .register-footer {
       text-align: center;
       font-size: 0.82rem;
-      color: #666666;
+      color: var(--gray);
     }
 
     .register-footer a {
-      color: #F2542D;
+      color: var(--green);
       font-weight: 700;
       text-decoration: none;
     }
@@ -257,7 +277,7 @@
       text-decoration: underline;
     }
 
-    /* Right Side 3D Visual Illustration */
+    /* Right Side 3D Visual Card */
     .visual-card {
       position: relative;
       display: flex;
@@ -267,9 +287,11 @@
       padding: 40px;
       overflow: hidden;
       border-radius: 28px;
+      background: linear-gradient(135deg, rgba(159, 194, 140, 0.25) 0%, rgba(56, 103, 58, 0.12) 100%);
+      border: 1px solid rgba(159, 194, 140, 0.3);
     }
 
-    /* Floating Leaves Effect */
+    /* Floating Leaves Effect (Sage, Green & Gold) */
     .leaf {
       position: absolute;
       border-radius: 50% 0 50% 0;
@@ -278,27 +300,27 @@
     }
 
     .leaf-1 {
-      width: 22px;
-      height: 22px;
-      background: #9FC28C;
+      width: 24px;
+      height: 24px;
+      background: var(--sage);
       top: 15%;
-      right: 25%;
+      right: 20%;
       transform: rotate(45deg);
       animation-delay: 0s;
     }
     .leaf-2 {
       width: 18px;
       height: 18px;
-      background: #8BC34A;
+      background: var(--green);
       top: 35%;
-      left: 10%;
+      left: 12%;
       transform: rotate(-30deg);
       animation-delay: 1s;
     }
     .leaf-3 {
       width: 26px;
       height: 26px;
-      background: #CDDC39;
+      background: var(--gold);
       bottom: 20%;
       right: 15%;
       transform: rotate(15deg);
@@ -307,9 +329,9 @@
     .leaf-4 {
       width: 16px;
       height: 16px;
-      background: #F2542D;
+      background: var(--navy);
       bottom: 30%;
-      left: 20%;
+      left: 18%;
       transform: rotate(60deg);
       animation-delay: 1.5s;
     }
@@ -319,7 +341,7 @@
       100% { transform: translateY(-15px) rotate(20deg); }
     }
 
-    /* 3D Character Illustration Box */
+    /* 3D Character Container */
     .character-box {
       width: 320px;
       height: 320px;
@@ -332,9 +354,9 @@
     .character-avatar {
       width: 260px;
       height: 260px;
-      background: linear-gradient(135deg, #FF7043 0%, #F2542D 60%, #D84315 100%);
+      background: linear-gradient(135deg, var(--navy) 0%, #1B1C4A 60%, var(--green) 100%);
       border-radius: 50% 50% 45% 45%;
-      box-shadow: 0 25px 60px rgba(242, 84, 45, 0.4), inset 0 -15px 30px rgba(0,0,0,0.15);
+      box-shadow: 0 25px 60px rgba(13, 14, 46, 0.35), inset 0 -15px 30px rgba(0,0,0,0.2);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -348,15 +370,15 @@
       100% { transform: translateY(-12px); }
     }
 
-    /* Wooden Bead Necklace around 3D Monk Character */
+    /* Gold Bead Necklace around Character */
     .bead-necklace {
       position: absolute;
       width: 280px;
       height: 180px;
       top: 60px;
       border-radius: 50%;
-      border: 14px dotted #5D4037;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      border: 14px dotted var(--gold);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
 
     /* Face Details */
@@ -370,14 +392,14 @@
     .eye {
       width: 14px;
       height: 7px;
-      border-bottom: 3px solid #3E2723;
+      border-bottom: 3px solid var(--sage);
       border-radius: 0 0 10px 10px;
     }
 
     .char-tilak {
       width: 8px;
       height: 8px;
-      background: #D84315;
+      background: var(--gold);
       border-radius: 50%;
       position: absolute;
       top: 85px;
@@ -387,7 +409,7 @@
     .char-beak {
       width: 24px;
       height: 16px;
-      background: #FFB74D;
+      background: var(--sage);
       border-radius: 4px 4px 14px 14px;
       margin-top: 4px;
       z-index: 2;
@@ -396,28 +418,30 @@
     .char-robe {
       width: 200px;
       height: 100px;
-      background: rgba(255, 255, 255, 0.15);
+      background: linear-gradient(135deg, rgba(56, 103, 58, 0.4) 0%, rgba(159, 194, 140, 0.2) 100%);
       border-radius: 30px;
       margin-top: 20px;
       z-index: 2;
-      border-top: 2px solid rgba(255,255,255,0.3);
+      border-top: 2px solid var(--sage);
     }
 
     .char-title {
+      font-family: 'Playfair Display', serif;
       margin-top: 24px;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      color: #4A2810;
+      color: var(--navy);
       text-align: center;
       letter-spacing: -0.01em;
     }
 
     .char-desc {
-      font-size: 0.85rem;
-      color: #8C5A3C;
+      font-size: 0.88rem;
+      color: var(--gray);
       text-align: center;
-      margin-top: 4px;
-      max-width: 260px;
+      margin-top: 6px;
+      max-width: 270px;
+      line-height: 1.5;
     }
 
     /* Responsive */
@@ -470,7 +494,7 @@
               </svg>
             </button>
           </div>
-          <a href="#" class="forgot-link" onclick="alert('Password reset link has been sent to your email!')">Forgot Password?</a>
+          <a href="#" class="forgot-link" onclick="alert('Password reset link has been sent to your admin email!')">Forgot Password?</a>
         </div>
 
         <!-- Sign In Button -->
@@ -490,12 +514,12 @@
             </svg>
           </button>
           <button type="button" class="social-btn" title="GitHub Login" onclick="mockSocialLogin('GitHub')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#24292E">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#0D0E2E">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
           </button>
           <button type="button" class="social-btn" title="Facebook Login" onclick="mockSocialLogin('Facebook')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#38673A">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
           </button>
