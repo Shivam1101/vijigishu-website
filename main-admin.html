@@ -288,15 +288,20 @@
     .btn-sm:hover { background: var(--navy); color: var(--white); }
 
     /* ─── GALLERY MANAGER STYLES ─── */
-    .gallery-grid-layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start; }
+    .gallery-grid-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 24px;
+    }
     @media (max-width: 1100px) { .gallery-grid-layout { grid-template-columns: 1fr; } }
 
     .card-box { background: var(--white); border-radius: 16px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
     
-    /* STICKY UPLOAD FORM CARD BOX */
+    /* PERFECT STICKY UPLOAD FORM CARD BOX */
     .card-box.sticky-card {
       position: sticky;
-      top: 24px;
+      top: 10px;
+      align-self: start;
       z-index: 10;
     }
 
