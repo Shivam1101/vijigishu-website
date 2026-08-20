@@ -424,34 +424,46 @@
     galleryFilters.appendChild(btn);
   });
 
-  // Gallery Country Data Mapping
-  const galleryItems = [
-    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', icon: countryIcons.singapore, label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
-    { src: 'images/Gallery-11-scaled.webp', country: 'japan', icon: countryIcons.japan, label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
-    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', icon: countryIcons['south-korea'], label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
-    { src: 'images/Gallery-13-scaled.webp', country: 'europe', icon: countryIcons.europe, label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
-    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', icon: countryIcons.malaysia, label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
-    { src: 'images/Gallery-15-scaled.webp', country: 'uae', icon: countryIcons.uae, label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
-    { src: 'images/Gallery-16-scaled.webp', country: 'india', icon: countryIcons.india, label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
-    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', icon: countryIcons.singapore, label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
-    { src: 'images/Gallery-19-scaled.webp', country: 'japan', icon: countryIcons.japan, label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
-    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', icon: countryIcons['south-korea'], label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
-    { src: 'images/Gallery-22-scaled.webp', country: 'europe', icon: countryIcons.europe, label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
-    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', icon: countryIcons.malaysia, label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
-    { src: 'images/Gallery-25-scaled.webp', country: 'uae', icon: countryIcons.uae, label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
-    { src: 'images/Gallery-30-scaled.webp', country: 'india', icon: countryIcons.india, label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
-    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', icon: countryIcons.singapore, label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
-    { src: 'images/Gallery-35-scaled.webp', country: 'japan', icon: countryIcons.japan, label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
-    { src: 'images/Gallery-36-scaled.webp', country: 'europe', icon: countryIcons.europe, label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
-    { src: 'images/Gallery-37-scaled.webp', country: 'uae', icon: countryIcons.uae, label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
-    { src: 'images/Gallery-38-scaled.webp', country: 'india', icon: countryIcons.india, label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
+  // Gallery Country Data Mapping (Dynamic with localStorage sync)
+  const defaultPresetItems = [
+    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
+    { src: 'images/Gallery-11-scaled.webp', country: 'japan', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
+    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
+    { src: 'images/Gallery-13-scaled.webp', country: 'europe', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
+    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
+    { src: 'images/Gallery-15-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
+    { src: 'images/Gallery-16-scaled.webp', country: 'india', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
+    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
+    { src: 'images/Gallery-19-scaled.webp', country: 'japan', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
+    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
+    { src: 'images/Gallery-22-scaled.webp', country: 'europe', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
+    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
+    { src: 'images/Gallery-25-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
+    { src: 'images/Gallery-30-scaled.webp', country: 'india', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
+    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
+    { src: 'images/Gallery-35-scaled.webp', country: 'japan', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
+    { src: 'images/Gallery-36-scaled.webp', country: 'europe', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
+    { src: 'images/Gallery-37-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
+    { src: 'images/Gallery-38-scaled.webp', country: 'india', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
   ];
 
+  function loadGalleryItems() {
+    const raw = localStorage.getItem('vijigishu_gallery_items');
+    if (!raw) {
+      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(defaultPresetItems));
+      return defaultPresetItems.map(item => ({ ...item, icon: countryIcons[item.country] }));
+    }
+    const parsed = JSON.parse(raw);
+    return parsed.map(item => ({ ...item, icon: countryIcons[item.country] }));
+  }
+
+  let galleryItems = loadGalleryItems();
   const masonryGrid = document.getElementById('masonryGrid');
   let currentFilteredList = [...galleryItems];
   let currentLightboxIndex = 0;
 
   function renderGallery(filter = 'all') {
+    galleryItems = loadGalleryItems();
     masonryGrid.innerHTML = '';
     currentFilteredList = filter === 'all' 
       ? galleryItems 
