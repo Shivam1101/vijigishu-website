@@ -50,11 +50,10 @@
         <!-- COLUMN 1: BRAND & SOCIALS -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+            <a href="index.html" style="text-decoration: none; display: inline-block;">
+              <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
+            </a>
           </div>
-          <p style="color: rgba(255,255,255,.55); font-size: .88rem; line-height: 1.65; max-width: 280px; margin-top: 12px;">
-            Empowering future leaders through immersive global educational experiences, industry exposure, and cultural learning.
-          </p>
           <div class="footer-socials">
             <a class="social-btn" href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
