@@ -90,21 +90,21 @@
     }
 
     /* ═════════════════════════════════════════════════════════════════
-       TOP SECTION: "LET'S START THE JOURNEY" COMPLETE REDESIGNED HUB
+       TOP SECTION: "LET'S START THE JOURNEY" CREATIVE WHITE HUB
        ═════════════════════════════════════════════════════════════════ */
     #journey-hub-section {
       padding: 40px 0 30px;
       background: var(--white);
     }
     .journey-hub-card {
-      background: linear-gradient(135deg, #0A0B26 0%, #17184A 100%);
+      background: #FFFFFF;
       border-radius: 32px;
       padding: 48px;
-      color: #FFFFFF;
+      color: var(--navy);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(10, 11, 38, 0.18);
-      border: 1.5px solid rgba(159, 194, 140, 0.25);
+      box-shadow: 0 20px 50px rgba(56, 103, 58, 0.08);
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
     }
     .journey-hub-card::before {
       content: '';
@@ -114,7 +114,7 @@
       width: 320px;
       height: 320px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(159, 194, 140, 0.22) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(159, 194, 140, 0.18) 0%, transparent 70%);
       pointer-events: none;
     }
     .journey-hub-card::after {
@@ -125,7 +125,7 @@
       width: 340px;
       height: 340px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 103, 58, 0.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(56, 103, 58, 0.12) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -135,8 +135,8 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 24px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 30px;
+      border-bottom: 1.5px solid rgba(56, 103, 58, 0.12);
       margin-bottom: 36px;
       position: relative;
       z-index: 2;
@@ -145,10 +145,10 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 3.5vw, 2.6rem);
       line-height: 1.15;
-      color: #FFFFFF;
+      color: var(--navy);
     }
     .journey-title-wrap h2 span {
-      color: var(--sage);
+      color: var(--green);
       font-style: italic;
     }
 
@@ -159,34 +159,35 @@
     }
     .journey-social-label {
       font-size: 0.8rem;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.6);
+      font-weight: 800;
+      color: var(--green);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       margin-right: 4px;
     }
     .journey-social-btn {
       width: 44px;
       height: 44px;
       border-radius: 14px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1.5px solid rgba(255, 255, 255, 0.16);
+      background: #FFFFFF;
+      border: 1.5px solid rgba(56, 103, 58, 0.22);
       display: grid;
       place-items: center;
-      color: #FFFFFF;
+      color: var(--navy);
       transition: all 0.3s var(--ease);
       flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
     .journey-social-btn svg { width: 19px; height: 19px; }
     .journey-social-btn:hover {
-      background: var(--sage);
-      border-color: var(--sage);
-      color: var(--navy);
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #FFFFFF;
       transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(159, 194, 140, 0.4);
+      box-shadow: 0 10px 24px rgba(27, 28, 74, 0.25);
     }
 
-    /* 3-Column Channels Grid */
+    /* 3-Column Channels Grid (Creative White Design) */
     .journey-channels-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -195,21 +196,20 @@
       z-index: 2;
     }
     .journey-channel-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid rgba(255, 255, 255, 0.09);
+      background: #FAFBF9;
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
       border-radius: 24px;
       padding: 28px 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
       transition: all 0.3s var(--ease);
-      backdrop-filter: blur(8px);
     }
     .journey-channel-card:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(159, 194, 140, 0.4);
+      background: #FFFFFF;
+      border-color: var(--green);
       transform: translateY(-4px);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 14px 34px rgba(56, 103, 58, 0.12);
     }
     .journey-channel-head {
       display: flex;
@@ -220,8 +220,8 @@
       width: 48px;
       height: 48px;
       border-radius: 14px;
-      background: rgba(159, 194, 140, 0.16);
-      color: var(--sage);
+      background: rgba(56, 103, 58, 0.1);
+      color: var(--green);
       display: grid;
       place-items: center;
       flex-shrink: 0;
@@ -230,22 +230,22 @@
     .journey-channel-tag {
       font-size: 0.74rem;
       font-weight: 800;
-      color: var(--sage);
+      color: var(--green);
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
     .journey-channel-body {
       font-size: 1rem;
-      color: #FFFFFF;
+      color: var(--navy);
       line-height: 1.55;
-      font-weight: 600;
+      font-weight: 700;
     }
     .journey-channel-body a {
       color: inherit;
       transition: color 0.2s;
     }
     .journey-channel-body a:hover {
-      color: var(--sage);
+      color: var(--green);
     }
 
     /* ═════════════════════════════════════════════════════════════════
@@ -547,7 +547,7 @@
   </div>
 </div>
 
-<!-- ===== TOP SECTION: LET'S START THE JOURNEY COMPLETE HUB ===== -->
+<!-- ===== TOP SECTION: LET'S START THE JOURNEY (CREATIVE WHITE HUB) ===== -->
 <section id="journey-hub-section">
   <div class="container">
     <div class="journey-hub-card reveal">
@@ -555,13 +555,12 @@
       <!-- Top Row: Heading + Social Media Connect -->
       <div class="journey-top-bar">
         <div class="journey-title-wrap">
-          <div class="tag" style="background: rgba(159, 194, 140, 0.16); color: var(--sage);">Direct Advisory</div>
           <h2>Let's start the <span>Journey</span></h2>
         </div>
 
         <!-- Social Media Icons (Links from Staging) -->
         <div class="journey-social-strip">
-          <span class="journey-social-label">Connect:</span>
+          <span class="journey-social-label">Connect With Us:</span>
           <a href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" rel="noopener" class="journey-social-btn" aria-label="Facebook" title="Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
@@ -577,7 +576,7 @@
         </div>
       </div>
 
-      <!-- 3 Direct Contact Channel Cards -->
+      <!-- 3 Direct Contact Channel Cards (White Theme) -->
       <div class="journey-channels-grid">
         
         <!-- Voice Channel -->
@@ -588,7 +587,7 @@
             </div>
             <div>
               <div class="journey-channel-tag">Voice Helpline</div>
-              <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6);">Mon – Sat (9:30 AM – 6:30 PM)</div>
+              <div style="font-size: 0.8rem; color: var(--gray);">Mon – Sat (9:30 AM – 6:30 PM)</div>
             </div>
           </div>
           <div class="journey-channel-body">
@@ -604,7 +603,7 @@
             </div>
             <div>
               <div class="journey-channel-tag">Electronic Dispatch</div>
-              <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6);">Direct Response Desk</div>
+              <div style="font-size: 0.8rem; color: var(--gray);">Direct Response Desk</div>
             </div>
           </div>
           <div class="journey-channel-body">
@@ -620,10 +619,10 @@
             </div>
             <div>
               <div class="journey-channel-tag">Pune Headquarters</div>
-              <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6);">Corporate Campus</div>
+              <div style="font-size: 0.8rem; color: var(--gray);">Corporate Campus</div>
             </div>
           </div>
-          <div class="journey-channel-body" style="font-size: 0.88rem; font-weight: 500; line-height: 1.5;">
+          <div class="journey-channel-body" style="font-size: 0.88rem; font-weight: 600; line-height: 1.5; color: var(--navy);">
             A9- 3rd floor, Mark Park building, Pandurang Colony, Near Dr. Kalmadi Shamrao Jr. College, Erandwane, Pune 411038
           </div>
         </div>
