@@ -81,61 +81,9 @@
     .highlight-icon { margin-top: 3px; color: var(--green); font-size: 1.1rem; flex-shrink: 0; }
     .highlight-text { font-size: .95rem; color: var(--navy); line-height: 1.5; font-weight: 500; }
 
-    /* ─── DESTINATIONS ─── */
+    /* ─── DESTINATIONS (VARIATION 2 & 3) ─── */
     #destinations { padding: 96px 0; background: var(--off); }
-    .dest-header { text-align: center; margin-bottom: 56px; }
-    .scroll-row-container { position: relative; margin-bottom: 40px; }
-    .scroll-row-container:last-child { margin-bottom: 0; }
-    .scroll-row {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding: 10px 4px 24px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--sage) transparent;
-      -webkit-overflow-scrolling: touch;
-    }
-    .scroll-row::-webkit-scrollbar {
-      height: 6px;
-    }
-    .scroll-row::-webkit-scrollbar-track {
-      background: rgba(27, 28, 74, 0.03);
-      border-radius: 10px;
-    }
-    .scroll-row::-webkit-scrollbar-thumb {
-      background: var(--sage);
-      border-radius: 10px;
-    }
-    .scroll-row::-webkit-scrollbar-thumb:hover {
-      background: var(--green);
-    }
-    .minimal-card {
-      flex: 0 0 auto;
-      background: var(--white);
-      border: 1px solid rgba(27, 28, 74, 0.05);
-      border-radius: 16px;
-      padding: 16px 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-      transition: all 0.3s var(--ease);
-    }
-    .minimal-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--green);
-      box-shadow: 0 10px 25px rgba(56, 103, 58, 0.08);
-    }
-    .minimal-card span.icon {
-      font-size: 1.2rem;
-      color: var(--green);
-    }
-    .minimal-card span.name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--navy);
-      white-space: nowrap;
-    }
+    .dest-header { text-align: center; margin-bottom: 48px; }
     .label-badge {
       display: inline-block;
       font-size: 0.72rem;
@@ -146,7 +94,126 @@
       background: rgba(56, 103, 58, 0.08);
       padding: 6px 16px;
       border-radius: 100px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+    }
+
+    /* Variation 2: Infinite Marquee Ticker Loop */
+    .ticker-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      background: var(--white);
+      border: 1px solid rgba(27, 28, 74, 0.05);
+      border-radius: 16px;
+      padding: 18px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      margin-bottom: 24px;
+    }
+    .ticker-wrapper::before,
+    .ticker-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ticker-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--white), transparent);
+    }
+    .ticker-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--white), transparent);
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: tickerLoop 30s linear infinite;
+      gap: 30px;
+      padding-left: 30px;
+    }
+    .ticker-wrapper:hover .ticker-track {
+      animation-play-state: paused;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+    .ticker-item span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    @keyframes tickerLoop {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Variation 3: Split Minimal Grid Strips */
+    .strip-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .strip-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid rgba(27, 28, 74, 0.05);
+      border-radius: 16px;
+      padding: 16px 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      gap: 20px;
+    }
+    .strip-label {
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-right: 2px solid rgba(27, 28, 74, 0.08);
+      padding-right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .strip-places-scroll {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .strip-places-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .strip-place {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--gray);
+      white-space: nowrap;
+      transition: color 0.25s var(--ease);
+    }
+    .strip-place:hover {
+      color: var(--green);
+    }
+    @media (max-width: 768px) {
+      .strip-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .strip-label {
+        border-right: none;
+        border-bottom: 2px solid rgba(27, 28, 74, 0.08);
+        padding-right: 0;
+        padding-bottom: 8px;
+      }
     }
 
     /* ─── TRIP HIGHLIGHTS ─── */
@@ -432,32 +499,86 @@
       <h2 class="section-heading">Program <span>Destinations</span></h2>
     </div>
     
-    <div class="scroll-row-container reveal">
+    <!-- VARIATION 2: Continuous Infinite Ticker -->
+    <div class="reveal" style="margin-bottom: 36px;">
       <div class="label-badge">International Hubs</div>
-      <div class="scroll-row">
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Vietnam</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Malaysia</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Singapore</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Thailand</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Dubai</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Indonesia</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Europe</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">South Korea</span></div>
-        <div class="minimal-card"><span class="icon">🌍</span><span class="name">Japan</span></div>
+      <div class="ticker-wrapper">
+        <div class="ticker-track">
+          <div class="ticker-item">Vietnam</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Malaysia</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Singapore</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Thailand</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Dubai</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Indonesia</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Europe</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">South Korea</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Japan</div><div class="ticker-item"><span class="dot"></span></div>
+          <!-- Duplicate for seamless continuous loop -->
+          <div class="ticker-item">Vietnam</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Malaysia</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Singapore</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Thailand</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Dubai</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Indonesia</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Europe</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">South Korea</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Japan</div>
+        </div>
+      </div>
+
+      <div class="label-badge" style="margin-top: 10px;">Domestic (India)</div>
+      <div class="ticker-wrapper">
+        <div class="ticker-track" style="animation-direction: reverse; animation-duration: 25s;">
+          <div class="ticker-item">Jaipur</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Mysore &amp; Bengaluru</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Chandigarh</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Manali &amp; Shimla</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Delhi &amp; Agra</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Ahmedabad</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Pune &amp; Mumbai</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Goa</div><div class="ticker-item"><span class="dot"></span></div>
+          <!-- Duplicate for seamless continuous loop -->
+          <div class="ticker-item">Jaipur</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Mysore &amp; Bengaluru</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Chandigarh</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Manali &amp; Shimla</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Delhi &amp; Agra</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Ahmedabad</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Pune &amp; Mumbai</div><div class="ticker-item"><span class="dot"></span></div>
+          <div class="ticker-item">Goa</div>
+        </div>
       </div>
     </div>
 
-    <div class="scroll-row-container reveal reveal-delay-1" style="margin-top: 30px;">
-      <div class="label-badge">Domestic (India)</div>
-      <div class="scroll-row">
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Jaipur</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Mysore &amp; Bengaluru</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Chandigarh</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Manali &amp; Shimla</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Delhi &amp; Agra</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Ahmedabad</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Pune &amp; Mumbai</span></div>
-        <div class="minimal-card"><span class="icon">📍</span><span class="name">Goa</span></div>
+    <!-- VARIATION 3: Split Flex Strips -->
+    <div class="strip-container reveal reveal-delay-1">
+      <div class="strip-row">
+        <div class="strip-label"><span>🌐</span> International</div>
+        <div class="strip-places-scroll">
+          <span class="strip-place">Vietnam</span>
+          <span class="strip-place">Malaysia</span>
+          <span class="strip-place">Singapore</span>
+          <span class="strip-place">Thailand</span>
+          <span class="strip-place">Dubai</span>
+          <span class="strip-place">Indonesia</span>
+          <span class="strip-place">Europe</span>
+          <span class="strip-place">South Korea</span>
+          <span class="strip-place">Japan</span>
+        </div>
+      </div>
+
+      <div class="strip-row">
+        <div class="strip-label"><span>🏠</span> Domestic</div>
+        <div class="strip-places-scroll">
+          <span class="strip-place">Jaipur</span>
+          <span class="strip-place">Mysore &amp; Bengaluru</span>
+          <span class="strip-place">Chandigarh</span>
+          <span class="strip-place">Manali &amp; Shimla</span>
+          <span class="strip-place">Delhi &amp; Agra</span>
+          <span class="strip-place">Ahmedabad</span>
+          <span class="strip-place">Pune &amp; Mumbai</span>
+          <span class="strip-place">Goa</span>
+        </div>
       </div>
     </div>
 
