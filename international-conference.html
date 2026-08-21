@@ -206,7 +206,7 @@
       border: 1px solid #E2E8F0;
     }
     .process-sidebar {
-      background: #2b2d2f;
+      background: var(--navy); /* Primary Navy brand color */
       padding: 60px 40px;
       color: #fff;
       display: flex;
@@ -222,8 +222,8 @@
       background: rgba(255, 255, 255, 0.05);
     }
     .process-sidebar .tag {
-      background: rgba(234, 160, 53, 0.15);
-      color: #eaa035;
+      background: rgba(159, 194, 140, 0.15);
+      color: var(--sage); /* Brand sage green */
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -232,24 +232,28 @@
       border-radius: 20px;
       align-self: flex-start;
       margin-bottom: 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .process-sidebar h2 {
+      font-family: 'Playfair Display', serif; /* Consistent heading font */
       font-size: 2.2rem;
       color: #fff;
       line-height: 1.25;
       margin-bottom: 20px;
-      font-weight: 800;
+      font-weight: 700;
     }
     .process-sidebar h2 span {
-      color: #74c25c;
+      color: var(--sage); /* Brand sage green accent */
+      font-style: italic;
     }
     .process-sidebar p {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.9rem;
-      line-height: 1.7;
-      color: #a0a5aa;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
     }
     .process-content {
-      background: #f8fafc;
+      background: var(--off); /* Brand off-white */
       padding: 60px 40px;
       display: flex;
       flex-direction: column;
@@ -321,8 +325,10 @@
     .info-body {
       flex: 1;
       padding: 18px 20px 18px 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
     .info-body h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 0.98rem;
       font-weight: 700;
       margin: 0 0 6px;
@@ -331,7 +337,7 @@
     .info-body p {
       font-size: 0.85rem;
       line-height: 1.6;
-      color: #64748b;
+      color: var(--gray);
       margin: 0;
     }
 
@@ -350,52 +356,34 @@
       font-weight: 800;
       min-width: 44px;
       text-align: center;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Playfair Display', serif; /* Consistent layout style */
       flex-shrink: 0;
     }
 
-    /* --- Accent Theme Colors --- */
-    /* Step 1: Orange */
-    .theme-orange .info-ribbon { background: #EAA035; }
-    .theme-orange .info-circle { border-color: #EAA035; }
-    .theme-orange .info-body h4 { color: #D38012; }
-    .theme-orange .info-num { color: #EAA035; }
+    /* --- Brand Cohesive Accent Theme Colors --- */
+    /* Theme: Brand Green */
+    .theme-green .info-ribbon { background: var(--green); }
+    .theme-green .info-circle { border-color: var(--green); }
+    .theme-green .info-body h4 { color: var(--green); }
+    .theme-green .info-num { color: var(--green); }
 
-    /* Step 2: Green */
-    .theme-green .info-ribbon { background: #74C25C; }
-    .theme-green .info-circle { border-color: #74C25C; }
-    .theme-green .info-body h4 { color: #58A042; }
-    .theme-green .info-num { color: #74C25C; }
+    /* Theme: Brand Sage */
+    .theme-sage .info-ribbon { background: #87A974; }
+    .theme-sage .info-circle { border-color: #87A974; }
+    .theme-sage .info-body h4 { color: #5B8049; }
+    .theme-sage .info-num { color: #87A974; }
 
-    /* Step 3: Teal */
-    .theme-teal .info-ribbon { background: #17B09F; }
-    .theme-teal .info-circle { border-color: #17B09F; }
-    .theme-teal .info-body h4 { color: #128D80; }
-    .theme-teal .info-num { color: #17B09F; }
+    /* Theme: Brand Gold */
+    .theme-gold .info-ribbon { background: var(--gold); }
+    .theme-gold .info-circle { border-color: var(--gold); }
+    .theme-gold .info-body h4 { color: #B38622; }
+    .theme-gold .info-num { color: var(--gold); }
 
-    /* Step 4: Sky Blue */
-    .theme-blue .info-ribbon { background: #2B80B9; }
-    .theme-blue .info-circle { border-color: #2B80B9; }
-    .theme-blue .info-body h4 { color: #21628E; }
-    .theme-blue .info-num { color: #2B80B9; }
-
-    /* Step 5: Indigo */
-    .theme-indigo .info-ribbon { background: #4956A3; }
-    .theme-indigo .info-circle { border-color: #4956A3; }
-    .theme-indigo .info-body h4 { color: #36407B; }
-    .theme-indigo .info-num { color: #4956A3; }
-
-    /* Step 6: Coral Red */
-    .theme-coral .info-ribbon { background: #E75A6C; }
-    .theme-coral .info-circle { border-color: #E75A6C; }
-    .theme-coral .info-body h4 { color: #BE3D4E; }
-    .theme-coral .info-num { color: #E75A6C; }
-
-    /* Step 7: Purple */
-    .theme-purple .info-ribbon { background: #8E44AD; }
-    .theme-purple .info-circle { border-color: #8E44AD; }
-    .theme-purple .info-body h4 { color: #6D3088; }
-    .theme-purple .info-num { color: #8E44AD; }
+    /* Theme: Brand Navy */
+    .theme-navy .info-ribbon { background: var(--navy); }
+    .theme-navy .info-circle { border-color: var(--navy); }
+    .theme-navy .info-body h4 { color: var(--navy); }
+    .theme-navy .info-num { color: var(--navy); }
 
     /* --- Responsive design --- */
     @media (max-width: 991px) {
@@ -565,7 +553,7 @@
       <div class="process-content">
 
         <!-- Step 1 -->
-        <div class="info-card theme-orange">
+        <div class="info-card theme-green">
           <div class="info-ribbon"></div>
           <div class="info-circle">🔍</div>
           <div class="info-body">
@@ -577,7 +565,7 @@
         </div>
 
         <!-- Step 2 -->
-        <div class="info-card theme-green">
+        <div class="info-card theme-sage">
           <div class="info-ribbon"></div>
           <div class="info-circle">🤝</div>
           <div class="info-body">
@@ -589,7 +577,7 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="info-card theme-teal">
+        <div class="info-card theme-gold">
           <div class="info-ribbon"></div>
           <div class="info-circle">✏️</div>
           <div class="info-body">
@@ -601,7 +589,7 @@
         </div>
 
         <!-- Step 4 -->
-        <div class="info-card theme-blue">
+        <div class="info-card theme-navy">
           <div class="info-ribbon"></div>
           <div class="info-circle">📋</div>
           <div class="info-body">
@@ -613,7 +601,7 @@
         </div>
 
         <!-- Step 5 -->
-        <div class="info-card theme-indigo">
+        <div class="info-card theme-green">
           <div class="info-ribbon"></div>
           <div class="info-circle">🧭</div>
           <div class="info-body">
@@ -625,7 +613,7 @@
         </div>
 
         <!-- Step 6 -->
-        <div class="info-card theme-coral">
+        <div class="info-card theme-sage">
           <div class="info-ribbon"></div>
           <div class="info-circle">🌍</div>
           <div class="info-body">
@@ -637,7 +625,7 @@
         </div>
 
         <!-- Step 7 -->
-        <div class="info-card theme-purple">
+        <div class="info-card theme-gold">
           <div class="info-ribbon"></div>
           <div class="info-circle">🌱</div>
           <div class="info-body">
