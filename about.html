@@ -272,7 +272,15 @@
     .about-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--navy) !important; margin-bottom: 12px; line-height: 1.2; }
     .about-cta-h2 em { color: var(--green) !important; font-style: italic; }
     .about-cta-sub { color: var(--gray) !important; font-size: .95rem; line-height: 1.65; margin: 0; }
-    .about-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; }
+    .about-cta-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 28px;
+      justify-content: flex-start;
+    }
 
     /* --- Mascot Portal Window --- */
     .opt-portal {
@@ -326,18 +334,33 @@
       .opt-portal {
         grid-template-columns: 1fr;
         gap: 30px;
-        padding: 40px 32px !important;
+        padding: 40px 0 !important;
         text-align: center;
       }
       .about-cta-left { text-align: center; padding-left: 0 !important; }
-      .about-cta-right { flex-direction: row; justify-content: center; width: 100%; }
-      .about-cta-right .btn { flex: 1; text-align: center; justify-content: center; }
+      .about-cta-right { flex-direction: row; justify-content: center; width: 100%; gap: 12px; margin-top: 24px; }
+      .about-cta-right .btn { flex: 1; max-width: 220px; text-align: center; justify-content: center; }
       .portal-shape {
         width: 240px;
         height: 240px;
       }
       .mascot-img-portal {
         width: 180px;
+      }
+      .about-split { gap: 40px; }
+      .about-pillars-strip {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 24px;
+        gap: 16px;
+      }
+      .pillar-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        padding: 12px 10px;
+        justify-content: flex-start;
+      }
+      .pillar-item:nth-last-child(-n+2) {
+        border-bottom: none;
       }
     }
 
@@ -484,6 +507,40 @@
       .hamburger { display: flex; }
       .page-hero { height: 280px; }
       .footer-grid { grid-template-columns: 1fr; }
+      .cv-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .cv-card:last-child { grid-column: span 2; }
+      #about-cta { padding: 48px 0; }
+    }
+    @media (max-width: 560px) {
+      .about-pillars-strip {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 12px;
+      }
+      .pillar-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        padding: 12px 4px;
+        justify-content: flex-start;
+      }
+      .pillar-item:last-child {
+        border-bottom: none;
+      }
+      .cv-grid { grid-template-columns: 1fr; gap: 12px; }
+      .cv-card { padding: 24px 16px; }
+      .cv-card:last-child { grid-column: span 1; }
+      .about-cta-right {
+        flex-direction: column !important;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .about-cta-right .btn {
+        flex: none;
+        max-width: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
@@ -695,7 +752,7 @@
       <div class="about-cta-left">
         <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
         <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
-        <div class="about-cta-right" style="flex-direction: row; margin-top: 28px; justify-content: flex-start;">
+        <div class="about-cta-right">
           <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
           <a href="index.html#cta" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">Contact Our Team</a>
         </div>
