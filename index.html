@@ -500,7 +500,7 @@
       transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
     }
     .testi-card {
-      flex: 0 0 calc((100% - 48px) / 3);
+      flex: 0 0 calc((100% - 72px) / 4);
       background: var(--white);
       border-radius: 12px;
       overflow: hidden;
@@ -1548,7 +1548,8 @@
     function getVisibleCount() {
       if (window.innerWidth <= 768) return 1;
       if (window.innerWidth <= 1024) return 2;
-      return 3;
+      if (window.innerWidth <= 1280) return 3;
+      return 4;
     }
 
     function getCardWidth() {
