@@ -421,175 +421,229 @@
     .ip-cta-sub { color: rgba(255,255,255,.6); font-size: .95rem; line-height: 1.65; max-width: 480px; }
     .ip-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
-    /* ─── SECTION: HOW IT WORKS – INFOGRAPHIC TIMELINE ─── */
+    /* ─── SECTION: HOW IT WORKS – TIMELINE LAYOUT ─── */
     #process {
-      padding: 80px 0;
-      background: var(--off); /* Nice off-white background */
+      padding: 100px 0;
+      background: var(--dark); /* High-end dark background */
       position: relative;
+      overflow: hidden;
     }
     .process-container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px;
     }
     .process-header {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 72px;
     }
-    .process-content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    /* --- INFOGRAPHIC CARDS --- */
-    .info-card {
-      display: flex;
-      align-items: center;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-      border: 1px solid #eef2f6;
+    
+    /* Alternating Timeline Layout */
+    .timeline-container {
       position: relative;
-      padding-left: 90px; /* Space for ribbon and circle icon */
-      padding-right: 24px;
-      min-height: 100px;
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      padding: 40px 0;
     }
-    
-    /* Reveal Animation States */
-    .info-card.reveal {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .info-card.reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .info-card.reveal.visible:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-    }
-    
-    /* Staggered entrance delays */
-    .info-card.reveal:nth-child(1) { transition-delay: 0.05s; }
-    .info-card.reveal:nth-child(2) { transition-delay: 0.15s; }
-    .info-card.reveal:nth-child(3) { transition-delay: 0.25s; }
-    .info-card.reveal:nth-child(4) { transition-delay: 0.35s; }
-    .info-card.reveal:nth-child(5) { transition-delay: 0.45s; }
-    .info-card.reveal:nth-child(6) { transition-delay: 0.55s; }
-    .info-card.reveal:nth-child(7) { transition-delay: 0.65s; }
-    
-    /* Reset delays once visible so hover remains snappy */
-    .info-card.reveal.visible {
-      transition-delay: 0s !important;
-    }
-
-    /* Ribbon tab sticking out on the left edge */
-    .info-ribbon {
-      position: absolute;
-      left: -12px;
-      top: 36px;
-      width: 44px;
-      height: 32px;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-      z-index: 1;
-    }
-    /* Ribbon bottom-left fold effect */
-    .info-ribbon::after {
+    /* Central Vertical Line */
+    .timeline-container::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 100%;
-      width: 0;
-      height: 0;
-      border-top: 8px solid rgba(0,0,0,0.3);
-      border-left: 8px solid transparent;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      background: linear-gradient(to bottom, var(--green), var(--sage), var(--gold), var(--green));
+      opacity: 0.7;
     }
-
-    /* Overlapping Circle Badge containing the Step Number */
-    .info-circle {
+    
+    /* Timeline Items */
+    .timeline-item {
+      display: flex;
+      position: relative;
+      margin-bottom: 50px;
+      width: 100%;
+      opacity: 0;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Left Cards positioning */
+    .timeline-item.left {
+      justify-content: flex-end;
+      padding-right: 50%;
+    }
+    /* Right Cards positioning */
+    .timeline-item.right {
+      justify-content: flex-start;
+      padding-left: 50%;
+    }
+    
+    /* Timeline Node (Middle Circle) */
+    .timeline-node {
       position: absolute;
-      left: 16px;
       top: 50%;
-      transform: translateY(-50%);
-      width: 54px;
-      height: 54px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      background: #fff;
+      background: var(--dark);
+      border: 3px solid var(--accent-color);
+      z-index: 5;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+    .timeline-card:hover ~ .timeline-node,
+    .timeline-item:hover .timeline-node {
+      background: var(--accent-color);
+      box-shadow: 0 0 12px var(--accent-color);
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+    
+    /* Timeline Cards */
+    .timeline-card {
+      width: 90%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.03); /* Translucent background */
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      padding: 26px 32px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Alignment adjustments */
+    .timeline-item.left .timeline-card {
+      text-align: right;
+      margin-right: 45px;
+    }
+    .timeline-item.right .timeline-card {
+      text-align: left;
+      margin-left: 45px;
+    }
+    
+    /* Step Meta info */
+    .timeline-step-meta {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif; /* Elegant numbers */
+      gap: 10px;
+      font-size: 0.85rem;
       font-weight: 700;
-      font-size: 1.25rem;
-      line-height: 1; /* Explicit line-height fixes vertical centering */
-      padding-bottom: 3px; /* Nudge serif font vertically to center it perfectly */
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      z-index: 2;
-      border: 3px solid;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
-
-    /* Main card text content */
-    .info-body {
-      flex: 1;
-      padding: 18px 20px 18px 10px;
+    .timeline-item.left .timeline-step-meta {
+      justify-content: flex-end;
+    }
+    .timeline-item.right .timeline-step-meta {
+      justify-content: flex-start;
+    }
+    
+    .timeline-step-num {
+      color: var(--accent-color);
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    .info-body h4 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 0.98rem;
+    .timeline-step-emoji {
+      font-size: 1.1rem;
+    }
+    
+    /* Titles and descriptions */
+    .timeline-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
       font-weight: 700;
-      margin: 0 0 6px;
+      color: var(--white);
+      margin-bottom: 10px;
       transition: color 0.3s;
     }
-    .info-body p {
-      font-size: 0.85rem;
+    .timeline-card:hover .timeline-card-title {
+      color: var(--accent-color);
+    }
+    .timeline-card-desc {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem;
       line-height: 1.6;
-      color: var(--gray);
-      margin: 0;
+      color: rgba(255, 255, 255, 0.6);
     }
-
-    /* Right column vertical separator */
-    .info-sep {
-      width: 1px;
-      height: 48px;
-      background: #e2e8f0;
-      margin: 0 24px;
-      flex-shrink: 0;
-    }
-
-    /* Step icon layout */
-    .info-icon {
-      font-size: 1.8rem;
-      min-width: 44px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    /* --- Brand Cohesive Accent Theme Colors --- */
-    /* Theme: Brand Green */
-    .theme-green .info-ribbon { background: var(--green); }
-    .theme-green .info-circle { border-color: var(--green); color: var(--green); }
-    .theme-green .info-body h4 { color: var(--green); }
-
-    /* Theme: Brand Sage */
-    .theme-sage .info-ribbon { background: #87A974; }
-    .theme-sage .info-circle { border-color: #87A974; color: #5B8049; }
-    .theme-sage .info-body h4 { color: #5B8049; }
-
-    /* Theme: Brand Gold */
-    .theme-gold .info-ribbon { background: var(--gold); }
-    .theme-gold .info-circle { border-color: var(--gold); color: #B38622; }
-    .theme-gold .info-body h4 { color: #B38622; }
-
-    /* Theme: Brand Navy */
-    .theme-navy .info-ribbon { background: var(--navy); }
-    .theme-navy .info-circle { border-color: var(--navy); color: var(--navy); }
-    .theme-navy .info-body h4 { color: var(--navy); }
     
+    /* Theme definitions */
+    .theme-green { --accent-color: var(--sage); }
+    .theme-sage { --accent-color: #87A974; }
+    .theme-gold { --accent-color: var(--gold); }
+    .theme-navy { --accent-color: #7B8DF4; }
+    
+    /* Scroll Reveal overrides */
+    .timeline-item.reveal.left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .timeline-item.reveal.right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* Staggered entry delay overrides */
+    .timeline-item.reveal:nth-child(1) { transition-delay: 0.05s; }
+    .timeline-item.reveal:nth-child(2) { transition-delay: 0.15s; }
+    .timeline-item.reveal:nth-child(3) { transition-delay: 0.2s; }
+    .timeline-item.reveal:nth-child(4) { transition-delay: 0.25s; }
+    .timeline-item.reveal:nth-child(5) { transition-delay: 0.3s; }
+    .timeline-item.reveal:nth-child(6) { transition-delay: 0.35s; }
+    .timeline-item.reveal:nth-child(7) { transition-delay: 0.4s; }
+    
+    .timeline-item.reveal.visible {
+      opacity: 1;
+      transform: translate(0) !important;
+    }
+    .timeline-item.reveal.visible * {
+      transition-delay: 0s !important;
+    }
+    
+    /* Responsive timeline rules */
+    @media (max-width: 868px) {
+      .timeline-container::before {
+        left: 24px;
+        transform: none;
+      }
+      .timeline-item {
+        padding-left: 54px !important;
+        padding-right: 0 !important;
+        justify-content: flex-start !important;
+        margin-bottom: 40px;
+      }
+      .timeline-item.reveal.left,
+      .timeline-item.reveal.right {
+        transform: translateX(30px);
+      }
+      .timeline-item.left .timeline-card,
+      .timeline-item.right .timeline-card {
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100% !important;
+        width: 100%;
+      }
+      .timeline-item.left .timeline-step-meta {
+        justify-content: flex-start !important;
+      }
+      .timeline-node {
+        left: 24px !important;
+        transform: translate(-50%, -50%);
+      }
+    }
     /* ─── FOOTER ─── */
     footer { background: var(--dark); padding: 80px 0 32px; }
     
@@ -1164,103 +1218,110 @@
 </section>
 
 <!-- ===== HOW IT WORKS SECTION ===== -->
-<!-- ===== HOW IT WORKS SECTION ===== -->
 <section id="process">
   <div class="process-container">
+    
     <!-- CENTERED HEADER WITH NO BACKGROUND -->
-    <div class="process-header reveal" style="text-align: center; margin-bottom: 56px;">
-      <div class="tag">How It Works</div>
-      <h2 class="section-heading">Your Journey With <span>Us</span></h2>
+    <div class="process-header reveal">
+      <div class="tag" style="color: var(--sage); background: rgba(159,194,140,0.15);">How It Works</div>
+      <h2 class="section-heading" style="color: var(--white);">Your Journey With <span style="color: var(--sage);">Us</span></h2>
     </div>
 
-    <!-- STACKED INFOGRAPHIC CONTENT -->
-    <div class="process-content">
+    <!-- ALTERNATING TIMELINE CONTAINER -->
+    <div class="timeline-container">
 
-      <!-- Step 1 -->
-      <div class="info-card theme-green reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">01</div>
-        <div class="info-body">
-          <h4>Explore Our Programs</h4>
-          <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
+      <!-- Step 1 (Left) -->
+      <div class="timeline-item left theme-green reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">🔍</span>
+            <span class="timeline-step-num">Step 01</span>
+          </div>
+          <h4 class="timeline-card-title">Explore Our Programs</h4>
+          <p class="timeline-card-desc">Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. Discover programs that align with your institution's vision and learning goals.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">🔍</div>
       </div>
 
-      <!-- Step 2 -->
-      <div class="info-card theme-sage reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">02</div>
-        <div class="info-body">
-          <h4>Connect With Our Program Experts</h4>
-          <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
+      <!-- Step 2 (Right) -->
+      <div class="timeline-item right theme-sage reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">🤝</span>
+            <span class="timeline-step-num">Step 02</span>
+          </div>
+          <h4 class="timeline-card-title">Connect With Experts</h4>
+          <p class="timeline-card-desc">Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">🤝</div>
       </div>
 
-      <!-- Step 3 -->
-      <div class="info-card theme-gold reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">03</div>
-        <div class="info-body">
-          <h4>Customize Your Experience</h4>
-          <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
+      <!-- Step 3 (Left) -->
+      <div class="timeline-item left theme-gold reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">✏️</span>
+            <span class="timeline-step-num">Step 03</span>
+          </div>
+          <h4 class="timeline-card-title">Customize Your Experience</h4>
+          <p class="timeline-card-desc">Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on budget.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">✏️</div>
       </div>
 
-      <!-- Step 4 -->
-      <div class="info-card theme-navy reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">04</div>
-        <div class="info-body">
-          <h4>Finalize the Program</h4>
-          <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
+      <!-- Step 4 (Right) -->
+      <div class="timeline-item right theme-navy reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">📋</span>
+            <span class="timeline-step-num">Step 04</span>
+          </div>
+          <h4 class="timeline-card-title">Finalize the Program</h4>
+          <p class="timeline-card-desc">Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, and travel coordination to ensure a seamless experience.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">📋</div>
       </div>
 
-      <!-- Step 5 -->
-      <div class="info-card theme-green reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">05</div>
-        <div class="info-body">
-          <h4>Pre-Departure Orientation</h4>
-          <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
+      <!-- Step 5 (Left) -->
+      <div class="timeline-item left theme-green reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">🧭</span>
+            <span class="timeline-step-num">Step 05</span>
+          </div>
+          <h4 class="timeline-card-title">Pre-Departure Orientation</h4>
+          <p class="timeline-card-desc">Before the journey begins, we conduct a detailed pre-departure orientation briefing covering travel guidelines, cultural awareness, safety protocols, documentation, and program expectations.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">🧭</div>
       </div>
 
-      <!-- Step 6 -->
-      <div class="info-card theme-sage reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">06</div>
-        <div class="info-body">
-          <h4>Experience Global Exposure &amp; Exploration</h4>
-          <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
+      <!-- Step 6 (Right) -->
+      <div class="timeline-item right theme-sage reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">🌍</span>
+            <span class="timeline-step-num">Step 06</span>
+          </div>
+          <h4 class="timeline-card-title">Experience Global Exposure</h4>
+          <p class="timeline-card-desc">Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">🌍</div>
       </div>
 
-      <!-- Step 7 -->
-      <div class="info-card theme-gold reveal">
-        <div class="info-ribbon"></div>
-        <div class="info-circle">07</div>
-        <div class="info-body">
-          <h4>Reflect, Share &amp; Grow</h4>
-          <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
+      <!-- Step 7 (Left) -->
+      <div class="timeline-item left theme-gold reveal">
+        <div class="timeline-node"></div>
+        <div class="timeline-card">
+          <div class="timeline-step-meta">
+            <span class="timeline-step-emoji">🌱</span>
+            <span class="timeline-step-num">Step 07</span>
+          </div>
+          <h4 class="timeline-card-title">Reflect, Share &amp; Grow</h4>
+          <p class="timeline-card-desc">At the end of every program, we encourage feedback from educators and students to continuously improve and enhance our experiences, ensuring future programs are even more impactful.</p>
         </div>
-        <div class="info-sep"></div>
-        <div class="info-icon">🌱</div>
       </div>
 
-    </div><!-- /.process-content -->
+    </div><!-- /.timeline-container -->
   </div><!-- /.process-container -->
 </section>
 
