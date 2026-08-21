@@ -166,9 +166,26 @@
       document.body.insertAdjacentHTML('beforeend', footerHTML);
     }
 
+    // Inject Global Scroll To Top Button (Excluding admin page)
+    if (!currentPath.includes('admin') && !document.getElementById('scrollToTop') && document.body) {
+      const scrollToTopHTML = `
+      <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top" title="Go to top">
+        <svg class="progress-ring" width="60" height="60" viewBox="0 0 60 60">
+          <circle class="progress-ring-bg" cx="30" cy="30" r="26" />
+          <circle class="progress-ring-circle" id="scrollProgressCircle" cx="30" cy="30" r="26" />
+        </svg>
+        <div class="compass-btn-inner">
+          <img src="images/compass-scroll.png" alt="Go to top" class="compass-icon-img" />
+        </div>
+      </button>
+      `;
+      document.body.insertAdjacentHTML('beforeend', scrollToTopHTML);
+    }
+
     // Initialize Event Listeners
     initHeaderEvents();
     initRevealObserver();
+    initScrollToTop();
     // Update any static year elements
     document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
   }
@@ -207,6 +224,47 @@
         }
       });
     }
+  }
+
+  function initScrollToTop() {
+    if (currentPath.includes('admin')) return;
+    const scrollBtn = document.getElementById('scrollToTop');
+    const circle = document.getElementById('scrollProgressCircle');
+    if (!scrollBtn || !circle) return;
+
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius; // 2 * PI * 26 = ~163.36
+
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    circle.style.strokeDashoffset = circumference;
+
+    function updateScrollProgress() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+      if (scrollHeight > 0) {
+        const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+        const offset = circumference - (progress * circumference);
+        circle.style.strokeDashoffset = offset;
+      }
+
+      if (scrollTop > 220) {
+        scrollBtn.classList.add('show');
+      } else {
+        scrollBtn.classList.remove('show');
+      }
+    }
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
+    scrollBtn.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
   }
 
   function initRevealObserver() {
