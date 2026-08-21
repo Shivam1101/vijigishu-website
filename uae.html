@@ -124,20 +124,21 @@
     /* Key Highlights Grid at Bottom */
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
       margin-top: 40px;
     }
     .highlight-card {
       background: var(--white);
       border: 1px solid rgba(56, 103, 58, 0.08);
-      border-radius: 20px;
-      padding: 28px 24px;
+      border-radius: 16px;
+      padding: 24px 16px;
       transition: all 0.3s var(--ease);
       box-shadow: 0 4px 15px rgba(0,0,0,0.01);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
@@ -145,22 +146,23 @@
       transform: translateY(-5px);
       border-color: var(--sage);
       box-shadow: 0 12px 30px rgba(56, 103, 58, 0.08);
+      background: #F9FAF7;
     }
     .highlight-card-icon {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
+      font-size: 1.6rem;
+      margin-bottom: 14px;
       background: rgba(159, 194, 140, 0.15);
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       display: grid;
       place-items: center;
     }
     .highlight-card-text {
-      font-size: 0.95rem;
-      font-weight: 600;
+      font-size: 0.82rem;
+      font-weight: 700;
       color: var(--navy);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     /* ─── ITINERARY ─── */
@@ -397,7 +399,7 @@
         width: 180px;
       }
       .highlights-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 16px;
       }
     }
@@ -412,6 +414,10 @@
       .acc-header { padding: 20px; }
       .acc-body { padding: 0 20px 24px 20px; }
       #about-cta { padding: 48px 0; }
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
     }
     @media (max-width: 560px) {
       .highlights-grid {
@@ -455,11 +461,6 @@
       <span style="color:var(--white)">UAE</span>
     </div>
     <h1>UAE <em>Immersion</em></h1>
-    <p class="page-hero-sub">Where innovation meets discipline — step into one of the world's most dynamic business and technological hubs.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">🗓️ 5 Nights / 6 Days</div>
-      <div class="hero-meta-item">📍 Dubai & Abu Dhabi</div>
-    </div>
   </div>
 </div>
 
@@ -472,7 +473,6 @@
         <h2 class="section-heading" style="margin-bottom: 24px;">Discover the Future of<br><span>Global Business</span></h2>
         <p class="overview-text-lead">Step into one of the world’s most dynamic business hubs with our UAE Immersion Program.</p>
         <p class="overview-text">Designed for students and future leaders, this experience blends industry exposure, academic learning, and cultural exploration. From global financial markets to cutting-edge innovation hubs, UAE offers a powerful environment to understand how modern businesses operate on a global scale.</p>
-        <a href="contact.html" class="btn btn-primary" style="margin-top: 16px;">Talk to a Travel Expert →</a>
       </div>
       <div class="overview-right reveal reveal-delay-2">
         <div class="glance-box">
@@ -496,8 +496,8 @@
     <!-- ===== KEY HIGHLIGHTS ─── -->
     <div class="highlights-container reveal" style="margin-top: 80px;">
       <div style="text-align: center; margin-bottom: 40px;">
-        <div class="tag" style="background: rgba(56,103,58,0.08); color: var(--green);">Highlights</div>
-        <h3 class="section-heading" style="font-size: 2rem;">Key <span>Highlights</span></h3>
+        <div class="tag">Highlights</div>
+        <h2 class="section-heading">Key <span>Highlights</span></h2>
       </div>
       <div class="highlights-grid">
         <div class="highlight-card">
