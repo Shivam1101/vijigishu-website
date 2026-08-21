@@ -56,20 +56,39 @@
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
     /* ─── PAGE HERO ─── */
-    .page-hero { position: relative; height: 560px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero { position: relative; height: 380px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
     .page-hero-img { position: absolute; inset: 0; }
     .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 14s ease-in-out infinite alternate; }
     @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
-    
-    .page-hero-content { position: relative; z-index: 2; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
-    .page-hero-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: rgba(255,255,255,.5); margin-bottom: 20px; }
-    .page-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: color .25s; }
-    .page-hero-breadcrumb a:hover { color: var(--sage); }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
-    .page-hero h1 em { color: var(--sage); font-style: italic; }
-    .page-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,.65); max-width: 500px; line-height: 1.7; margin-bottom: 28px; }
-    .hero-meta { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-meta-item { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 100px; padding: 8px 20px; color: var(--white); font-size: .85rem; font-weight: 600; backdrop-filter: blur(10px); }
+
+    /* Breadcrumbs below banner */
+    .breadcrumb-container {
+      padding: 24px 0 0;
+      background: var(--white);
+    }
+    .page-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    .page-breadcrumb a {
+      color: var(--gray);
+      transition: color 0.25s var(--ease);
+      text-decoration: none;
+    }
+    .page-breadcrumb a:hover {
+      color: var(--green);
+    }
+    .page-breadcrumb span {
+      color: var(--gray);
+    }
+    .page-breadcrumb span.current {
+      color: var(--navy);
+      font-weight: 600;
+    }
 
     /* ─── OVERVIEW ─── */
     #overview { padding: 96px 0; background: var(--white); }
@@ -406,7 +425,7 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .page-hero { height: 320px; }
+      .page-hero { height: 220px; }
       .incl-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .incl-card { padding: 24px 16px; }
       .footer-grid { grid-template-columns: 1fr; }
@@ -451,16 +470,18 @@
   <div class="page-hero-img">
     <img src="images/Dubai-GIP.webp" alt="UAE Immersion" fetchpriority="high" />
   </div>
-  
-  <div class="page-hero-content">
-    <div class="page-hero-breadcrumb">
+</div>
+
+<!-- ===== BREADCRUMBS ===== -->
+<div class="breadcrumb-container">
+  <div class="container">
+    <div class="page-breadcrumb">
       <a href="index.html">Home</a>
       <span>›</span>
       <a href="immersion-programs.html">Immersion Programs</a>
       <span>›</span>
-      <span style="color:var(--white)">UAE</span>
+      <span class="current">UAE</span>
     </div>
-    <h1>UAE <em>Immersion</em></h1>
   </div>
 </div>
 
@@ -496,7 +517,7 @@
     <!-- ===== KEY HIGHLIGHTS ─── -->
     <div class="highlights-container reveal" style="margin-top: 80px;">
       <div style="text-align: center; margin-bottom: 40px;">
-        <div class="tag">Highlights</div>
+        <div class="tag">Core Focus</div>
         <h2 class="section-heading">Key <span>Highlights</span></h2>
       </div>
       <div class="highlights-grid">
@@ -535,7 +556,6 @@
     <div class="itin-header reveal">
       <div class="tag">Schedule</div>
       <h2 class="section-heading">Indicative <span>Itinerary</span></h2>
-      <p style="color:var(--gray);margin-top:12px;">A well-balanced schedule mixing academic learning, industry exposure, and cultural sightseeing.</p>
     </div>
     <div class="itin-container reveal reveal-delay-1">
       <div class="accordion">
