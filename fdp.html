@@ -3,22 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Faculty Development Programs (FDP) – Vijigishu</title>
-  <meta name="description" content="Empowering educators with global pedagogical tools, international university exchanges, and industry-academia best practices." />
+  <title>International Conference – Vijigishu</title>
+  <meta name="description" content="VEPL facilitates international conferences and global immersion programs that provide participants with valuable exposure to emerging technologies, innovation ecosystems, and industry practices." />
   <link rel="canonical" href="https://vijigishu.co.in/fdp" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
-  
-  
-  
-  
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
-  
-  
   <style>
     /* ─── Reset & Design Tokens ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,25 +41,7 @@
     .btn-green { background: var(--sage); color: var(--navy); }
     .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
-    /* ─── NAVBAR ─── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
-    nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
-    .nav-cta { background: var(--sage); color: var(--navy) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
-    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
-    .nav-cta::after { display: none !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
-    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; border-bottom: 1px solid rgba(0,0,0,.06); padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
-    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
-
-    /* ─── PAGE HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ─── */
+    /* ─── PAGE HERO BANNER ─── */
     .page-hero {
       position: relative;
       height: 560px;
@@ -75,18 +50,17 @@
     }
     .page-hero-img { position: absolute; inset: 0; }
     .page-hero-img img { width: 100%; height: 100%; object-fit: cover; }
-    
 
-    /* ─── PAGE HEADER & BREADCRUMB BELOW BANNER ─── */
+    /* ─── PAGE HEADER & BREADCRUMB (LEFT ALIGNED) ─── */
     .page-header-section {
       padding: 40px 0 24px;
       background: var(--white);
-      text-align: center;
+      text-align: left;
     }
     .page-breadcrumb {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 8px;
       font-size: .84rem;
       color: var(--gray);
@@ -101,6 +75,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       color: var(--navy);
       line-height: 1.15;
+      text-align: left;
     }
     .page-header-section h1 span {
       color: var(--green);
@@ -109,34 +84,33 @@
 
     /* ─── EXACT STAGING CONTENT SECTION ─── */
     #content-section {
-      padding: 60px 0 90px;
+      padding: 40px 0 80px;
       background: var(--off);
     }
     .content-intro {
-      max-width: 900px;
-      margin: 0 auto 40px;
       background: var(--white);
       border-radius: 20px;
-      padding: 28px 32px;
+      padding: 32px 36px;
       border: 1.5px solid #E2E8F0;
       box-shadow: 0 6px 24px rgba(0,0,0,0.03);
+      margin-bottom: 40px;
     }
     .content-intro p {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--navy);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     .overview-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 32px;
       align-items: start;
     }
     .overview-card {
       background: var(--white);
       border-radius: 24px;
-      padding: 28px 32px;
+      padding: 32px;
       border: 1.5px solid #E2E8F0;
       box-shadow: 0 8px 30px rgba(0,0,0,0.03);
     }
@@ -174,38 +148,78 @@
       margin-top: 2px;
     }
 
-    /* RIGHT CARD */
+    /* RIGHT CARD (INCLUSIONS DESIGN) */
     .experience-card {
       background: rgba(159, 194, 140, 0.25);
       border: 1.5px solid rgba(56, 103, 58, 0.2);
       border-radius: 24px;
-      padding: 28px 32px;
+      padding: 32px;
+    }
+    .inclusions-subtext {
+      font-size: 0.88rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 18px;
     }
 
-    /* ─── FOOTER ─── */
-    footer { background: var(--dark); padding: 80px 0 32px; }
-    .footer-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr; gap: 40px; align-items: start; }
-    .footer-mascot-wrap { position: relative; display: flex; justify-content: flex-end; margin-bottom: -22px; z-index: 3; }
-    .footer-mascot-img { max-height: 280px; width: auto; object-fit: contain; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5)); }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .footer-tagline { color: rgba(255,255,255,.45); font-size: .9rem; line-height: 1.7; max-width: 300px; }
-    .footer-col-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-links a { color: rgba(255,255,255,.55); font-size: .9rem; transition: color .25s; }
-    .footer-links a:hover { color: var(--sage); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
+    /* ─── HOW IT WORKS SECTION ─── */
+    #how-it-works-section {
+      padding: 80px 0;
+      background: var(--white);
+    }
+    .hiw-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .hiw-card {
+      background: var(--off);
+      border: 1.5px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .hiw-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border-color: var(--green);
+    }
+    .hiw-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--green);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+    .hiw-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .hiw-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
 
     @media (max-width: 1024px) {
       .overview-grid { grid-template-columns: 1fr; gap: 32px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hiw-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
       .page-hero { height: 260px; }
-      .overview-card, .experience-card { padding: 24px 20px; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .overview-card, .experience-card, .content-intro { padding: 24px 20px; }
+      .hiw-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
@@ -215,15 +229,14 @@
 <!-- ===== GLOBAL HEADER ===== -->
 <header id="global-header"></header>
 
-<!-- ===== HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ===== -->
+<!-- ===== HERO BANNER ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
-    <img src="images/Immersion-Program-Banner.webp" alt="Faculty Development Program" fetchpriority="high" />
+    <img src="images/Immersion-Program-Banner.webp" alt="Special Learning Tours - International Conference" fetchpriority="high" />
   </div>
-  
 </div>
 
-<!-- ===== PAGE HEADER & BREADCRUMB BELOW BANNER ===== -->
+<!-- ===== PAGE HEADER & BREADCRUMB BELOW BANNER (LEFT ALIGNED) ===== -->
 <div class="page-header-section">
   <div class="container">
     <div class="page-breadcrumb">
@@ -231,9 +244,9 @@
       <span>›</span>
       <a href="immersion-programs">Immersion Programs</a>
       <span>›</span>
-      <span style="color:var(--navy); font-weight: 600;">Special Learning Tours - Faculty Development Program</span>
+      <span style="color:var(--navy); font-weight: 600;">Special Learning Tours - International Conference</span>
     </div>
-    <h1>Special Learning Tours - Faculty Development <span>Program</span></h1>
+    <h1>Special Learning Tours - <span>International Conference</span></h1>
   </div>
 </div>
 
@@ -241,33 +254,100 @@
 <section id="content-section">
   <div class="container">
     
-    <!-- PROGRAM OVERVIEW PARAGRAPH -->
+    <!-- PROGRAM OVERVIEW PARAGRAPHS -->
     <div class="content-intro">
-      <p>The Faculty Development Program (FDP) provides a unique opportunity for faculty members to collaborate with top-tier international institutions and immerse themselves in the latest education, management, and architecture trends.</p>
+      <p>VEPL facilitates international conferences and global immersion programs that provide participants with valuable exposure to emerging technologies, innovation ecosystems, industry practices, research trends, and cross-cultural learning experiences. These programs are designed for students, professionals, academicians, entrepreneurs, and industry leaders who aspire to expand their global perspective and professional network.</p>
+      <p style="margin-top: 14px;">Our international conference programs combine academic learning, industry interaction, networking opportunities, and experiential travel into one enriching experience. Participants get the opportunity to attend keynote sessions, expert talks, panel discussions, workshops, and collaborative forums led by renowned global experts and industry professionals.</p>
     </div>
 
     <div class="overview-grid">
       
-      <!-- LEFT COLUMN: WHAT WE OFFER -->
+      <!-- LEFT COLUMN: PROGRAM HIGHLIGHTS -->
       <div class="overview-card">
-        <h3 class="highlights-title">What We Offer</h3>
+        <h3 class="highlights-title">Program Highlights</h3>
         <ul class="highlights-list">
-          <li>Networking opportunities with entrepreneurs, and top level management executives of leading global companies.</li>
-          <li>Interactive workshops in top QS-ranked universities and leading global institutions across Europe and Asia.</li>
-          <li>Participate in workshops, seminars, and hands-on learning experiences</li>
-          <li>Engage in peer-to-peer learning and a cultural exchange</li>
+          <li>Participation in prestigious international conferences and summits</li>
+          <li>Exposure to global trends in AI, technology, business, education, and innovation</li>
+          <li>Interactive keynote sessions, workshops, and panel discussions</li>
+          <li>Networking opportunities with international delegates and industry experts</li>
+          <li>Industry visits and experiential learning opportunities</li>
+          <li>Cultural exposure and global collaboration experiences</li>
+          <li>Professional development and knowledge enhancement</li>
+          <li>End-to-end travel and event coordination by VEPL</li>
         </ul>
       </div>
 
-      <!-- RIGHT COLUMN: PROGRAM HIGHLIGHTS -->
+      <!-- RIGHT COLUMN: INCLUSIONS -->
       <div class="experience-card">
-        <h3 class="highlights-title">Program Highlights</h3>
+        <h3 class="highlights-title">Inclusions</h3>
+        <p class="inclusions-subtext">Depending on the program and destination, inclusions may cover:</p>
         <ul class="highlights-list">
-          <li>Explore emerging technologies such as Drone Technology and Artificial Intelligence, along with hands-on exposure to modern AI tools and industry applications.</li>
-          <li>Engage in discussions around Management &amp; Entrepreneurship, Strategic Management, Innovation, Growth Mindset, and Design Thinking to address modern-day challenges and opportunities.</li>
-          <li>Interact with academicians from international universities, gain valuable industry insights, and experience meaningful cultural and local engagement.</li>
-          <li>Participate in mindfulness and stress management sessions designed to promote personal well-being, productivity, and work-life balance.</li>
+          <li>Conference registration and participation</li>
+          <li>Hotel accommodation</li>
+          <li>Airport transfers and local transportation</li>
+          <li>Conference venue transfers</li>
+          <li>Visa guidance and assistance</li>
+          <li>Selected meals during the program</li>
+          <li>Travel kits and event materials</li>
+          <li>On-ground support by experienced coordinators</li>
+          <li>Guided immersion and networking activities</li>
         </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS SECTION ===== -->
+<section id="how-it-works-section">
+  <div class="container">
+    <div class="hiw-header">
+      <div class="tag">Process</div>
+      <h2 class="section-heading">How It <span>Works</span></h2>
+    </div>
+
+    <div class="hiw-grid">
+      
+      <div class="hiw-card">
+        <div class="hiw-num">1</div>
+        <div class="hiw-title">Explore Our Programs</div>
+        <div class="hiw-desc">Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution’s vision and learning goals.</div>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-num">2</div>
+        <div class="hiw-title">Connect With Our Program Experts</div>
+        <div class="hiw-desc">Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</div>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-num">3</div>
+        <div class="hiw-title">Customize Your Experience</div>
+        <div class="hiw-desc">Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</div>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-num">4</div>
+        <div class="hiw-title">Finalize the Program</div>
+        <div class="hiw-desc">Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</div>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-num">5</div>
+        <div class="hiw-title">Pre-Departure Orientation</div>
+        <div class="hiw-desc">Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</div>
+      </div>
+
+      <div class="hiw-card">
+        <div class="hiw-num">6</div>
+        <div class="hiw-title">Experience Global Exposure &amp; Exploration</div>
+        <div class="hiw-desc">Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</div>
+      </div>
+
+      <div class="hiw-card" style="grid-column: span 1;">
+        <div class="hiw-num">7</div>
+        <div class="hiw-title">Reflect, Share &amp; Grow</div>
+        <div class="hiw-desc">At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</div>
       </div>
 
     </div>
