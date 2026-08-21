@@ -258,7 +258,6 @@
       background: var(--white);
     }
     
-    /* Option 3: Hover Visual Slide-out */
     .option-slide-out {
       height: 100%;
       width: 100%;
@@ -268,7 +267,7 @@
       display: grid;
       grid-template-columns: 1fr;
       box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      transition: box-shadow 0.6s ease-in-out, transform 0.6s ease-in-out;
+      transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .option-slide-out:hover {
       transform: translateY(-6px);
@@ -279,7 +278,7 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 1;
     }
     .option-slide-out:hover .slide-out-image {
@@ -296,7 +295,7 @@
       justify-content: space-between;
       background: linear-gradient(to top, rgba(13,14,46,0.85) 0%, rgba(13,14,46,0.3) 100%);
       color: var(--white);
-      transition: background 0.6s ease-in-out;
+      transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .slide-out-bottom {
       display: flex;
@@ -318,7 +317,7 @@
       font-size: 1.5rem;
       color: var(--white);
       margin-bottom: 16px;
-      transition: transform 0.6s ease-in-out, background 0.6s ease-in-out, color 0.6s ease-in-out, border-color 0.6s ease-in-out;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .option-slide-out:hover .slide-out-icon {
       transform: scale(1.1);
@@ -331,7 +330,7 @@
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 6px;
-      transition: color 0.5s ease-in-out;
+      transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .option-slide-out:hover .slide-out-text h3 {
       color: var(--theme-accent);
@@ -340,7 +339,7 @@
       max-height: 0;
       opacity: 0;
       overflow: hidden;
-      transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
+      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .option-slide-out:hover .slide-out-details {
       max-height: 240px;
@@ -375,7 +374,7 @@
       flex-shrink: 0;
     }
     .slide-out-dest-item span {
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
     }
     .slide-out-link {
       color: var(--white);
@@ -384,7 +383,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: gap 0.5s ease-in-out, color 0.5s ease-in-out;
+      transition: gap 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .option-slide-out:hover .slide-out-link {
       color: var(--theme-accent);
