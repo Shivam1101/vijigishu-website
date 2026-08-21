@@ -186,26 +186,90 @@
       line-height: 1.5;
     }
 
-    /* ─── SECTION 2: HOW IT WORKS ─── */
-    #process { padding: 80px 0; background: var(--white); }
-    .process-header { text-align: center; margin-bottom: 48px; }
-    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .step-item-card {
-      background: var(--off);
-      border-radius: 20px;
-      padding: 24px 20px;
-      border: 1.5px solid #E2E8F0;
+    /* ─── SECTION 2: HOW IT WORKS – HORIZONTAL SNAKE TIMELINE ─── */
+    #process { padding: 80px 0; background: #f8faf8; }
+    .process-header { text-align: center; margin-bottom: 60px; }
+
+    .timeline-snake { display: flex; flex-direction: column; gap: 0; }
+    .timeline-row { display: flex; align-items: stretch; position: relative; }
+    .timeline-row.reverse { flex-direction: row-reverse; }
+
+    .tl-step {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 0 16px; position: relative;
     }
-    .step-item-card b {
-      display: block;
-      font-size: .98rem;
-      color: var(--navy);
-      margin-bottom: 8px;
+    /* Horizontal connector between steps in same row */
+    .tl-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 27px; right: -2px;
+      width: 4px; height: 2px;
+      background: none;
     }
-    .step-item-card p {
-      font-size: .84rem;
-      color: var(--gray);
-      line-height: 1.6;
+
+    /* Full horizontal line drawn via .tl-connector spans */
+    .tl-hline {
+      position: absolute;
+      top: 27px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), var(--sage));
+      z-index: 0;
+    }
+    /* Line from step1→2: starts at center of step1, ends at center of step2 */
+    .timeline-row:not(.reverse) .tl-hline { left: 16.66%; right: 16.66%; }
+    .timeline-row.reverse .tl-hline { left: 16.66%; right: 16.66%; }
+
+    .tl-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%);
+      color: #fff; font-size: 1.2rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 2;
+      box-shadow: 0 4px 16px rgba(46,83,48,.25);
+    }
+    .tl-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(135,169,116,.15);
+      display: flex; align-items: center; justify-content: center;
+      margin: 10px auto 6px; font-size: 1.15rem;
+    }
+    .tl-card {
+      background: #fff; border: 1.5px solid #e2ead8;
+      border-radius: 18px; padding: 18px 16px 20px;
+      margin-top: 12px; width: 100%; text-align: left;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .tl-card:hover { box-shadow: 0 10px 32px rgba(46,83,48,.12); transform: translateY(-4px); }
+    .tl-card h4 { font-size: .92rem; font-weight: 700; color: var(--navy); margin: 0 0 8px; line-height: 1.35; }
+    .tl-card p { font-size: .82rem; color: var(--gray); line-height: 1.65; margin: 0; }
+
+    /* Snake drop connectors between rows */
+    .snake-connector { position: relative; height: 48px; width: 100%; }
+    .snake-connector.right-drop::before {
+      content: ''; position: absolute;
+      right: calc(16.67% - 28px); top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--green), var(--sage));
+    }
+    .snake-connector.left-drop::before {
+      content: ''; position: absolute;
+      left: calc(16.67% - 28px); top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--green), var(--sage));
+    }
+
+    /* Step 7 centered */
+    .timeline-row.single { justify-content: center; }
+    .timeline-row.single .tl-step { flex: 0 0 33.33%; max-width: 360px; }
+
+    @media (max-width: 1024px) {
+      .timeline-row, .timeline-row.reverse, .timeline-row.single {
+        flex-direction: column; align-items: center;
+      }
+      .tl-step { width: 100%; max-width: 480px; padding: 0 0 32px; }
+      .snake-connector { display: none; }
+      .tl-hline { display: none; }
     }
 
     /* ─── FOOTER ─── */
@@ -224,7 +288,6 @@
 
     @media (max-width: 1024px) {
       .overview-grid { grid-template-columns: 1fr; gap: 32px; }
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
@@ -232,7 +295,6 @@
       .hamburger { display: flex; }
       .page-hero { height: 260px; }
       .overview-card, .experience-card { padding: 24px 20px; }
-      .steps-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -321,42 +383,99 @@
       <h2 class="section-heading">How It <span>Works</span></h2>
     </div>
 
-    <div class="steps-grid">
-      <div class="step-item-card">
-        <b>1. Explore Our Programs</b>
-        <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution’s vision and learning goals.</p>
+    <div class="timeline-snake">
+
+      <!-- ── ROW 1: Steps 1 → 2 → 3 (Left to Right) ── -->
+      <div class="timeline-row">
+        <!-- Horizontal line between the 3 circles -->
+        <div class="tl-hline"></div>
+
+        <!-- Step 1 -->
+        <div class="tl-step">
+          <div class="tl-num">1</div>
+          <div class="tl-icon">🔍</div>
+          <div class="tl-card">
+            <h4>Explore Our Programs</h4>
+            <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="tl-step">
+          <div class="tl-num">2</div>
+          <div class="tl-icon">🤝</div>
+          <div class="tl-card">
+            <h4>Connect With Our Program Experts</h4>
+            <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="tl-step">
+          <div class="tl-num">3</div>
+          <div class="tl-icon">✏️</div>
+          <div class="tl-card">
+            <h4>Customize Your Experience</h4>
+            <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="step-item-card">
-        <b>2. Connect With Our Program Experts</b>
-        <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
+      <!-- ── SNAKE DROP: Right side (Step 3 → Step 4) ── -->
+      <div class="snake-connector right-drop"></div>
+
+      <!-- ── ROW 2: Steps 4 → 5 → 6 (Right to Left — reversed) ── -->
+      <div class="timeline-row reverse">
+        <!-- Horizontal line between circles -->
+        <div class="tl-hline"></div>
+
+        <!-- Step 6 (renders first visually on right due to flex-direction: row-reverse) -->
+        <div class="tl-step">
+          <div class="tl-num">6</div>
+          <div class="tl-icon">🌍</div>
+          <div class="tl-card">
+            <h4>Experience Global Exposure &amp; Exploration</h4>
+            <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="tl-step">
+          <div class="tl-num">5</div>
+          <div class="tl-icon">🧭</div>
+          <div class="tl-card">
+            <h4>Pre-Departure Orientation</h4>
+            <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 (renders last visually on left due to flex-direction: row-reverse) -->
+        <div class="tl-step">
+          <div class="tl-num">4</div>
+          <div class="tl-icon">📋</div>
+          <div class="tl-card">
+            <h4>Finalize the Program</h4>
+            <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="step-item-card">
-        <b>3. Customize Your Experience</b>
-        <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
+      <!-- ── SNAKE DROP: Left side (Step 6 → Step 7) ── -->
+      <div class="snake-connector left-drop"></div>
+
+      <!-- ── ROW 3: Step 7 (Centered) ── -->
+      <div class="timeline-row single">
+        <div class="tl-step">
+          <div class="tl-num">7</div>
+          <div class="tl-icon">🌱</div>
+          <div class="tl-card">
+            <h4>Reflect, Share &amp; Grow</h4>
+            <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
+          </div>
+        </div>
       </div>
 
-      <div class="step-item-card">
-        <b>4. Finalize the Program</b>
-        <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
-      </div>
-
-      <div class="step-item-card">
-        <b>5. Pre-Departure Orientation</b>
-        <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
-      </div>
-
-      <div class="step-item-card">
-        <b>6. Experience Global Exposure &amp; Exploration</b>
-        <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
-      </div>
-
-      <div class="step-item-card" style="grid-column: span 2;">
-        <b>7. Reflect, Share &amp; Grow</b>
-        <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
-      </div>
-    </div>
+    </div><!-- /.timeline-snake -->
   </div>
 </section>
 
