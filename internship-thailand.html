@@ -137,18 +137,60 @@
       margin-top: 1px;
     }
 
-    /* EXPERIENCE RIGHT CARD (INCLUSIONS DESIGN FROM FDP PAGE) */
+    /* EXPERIENCE RIGHT CARD */
     .experience-card {
-      background: rgba(159, 194, 140, 0.25);
-      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      background: var(--off);
+      border: 1px solid rgba(0,0,0,0.04);
       border-radius: 24px;
-      padding: 32px;
+      padding: 36px 32px;
     }
     .experience-main-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: var(--navy);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    .exp-item {
+      margin-bottom: 22px;
+      background: var(--white);
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .exp-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56,103,58,0.08);
+    }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-item-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .exp-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(56,103,58,0.1);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .exp-item-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .exp-item-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.6;
+      padding-left: 48px;
     }
 
     /* ─── SECTION 2: PROGRAM DETAILS (CLEAN PILL) ─── */
@@ -440,11 +482,30 @@
       <!-- RIGHT COLUMN: WHAT YOU'LL EXPERIENCE -->
       <div class="experience-card reveal reveal-delay-2">
         <h3 class="experience-main-title">What You’ll Experience</h3>
-        <ul class="highlights-list">
-          <li><strong>Practical Industry Learning:</strong> Work on real-world projects and gain exposure to modern technologies, innovation, and professional work environments.</li>
-          <li><strong>International Exposure:</strong> Experience Thailand’s growing innovation ecosystem while learning in a multicultural and globally connected environment.</li>
-          <li><strong>Professional Development:</strong> Develop communication, collaboration, problem-solving, and leadership skills through experiential learning and project-based exposure.</li>
-        </ul>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">🏭</div>
+            <div class="exp-item-title">Practical Industry Learning</div>
+          </div>
+          <div class="exp-item-desc">Work on real-world projects and gain exposure to modern technologies, innovation, and professional work environments.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">🌐</div>
+            <div class="exp-item-title">International Exposure</div>
+          </div>
+          <div class="exp-item-desc">Experience Thailand’s growing innovation ecosystem while learning in a multicultural and globally connected environment.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">✨</div>
+            <div class="exp-item-title">Professional Development</div>
+          </div>
+          <div class="exp-item-desc">Develop communication, collaboration, problem-solving, and leadership skills through experiential learning and project-based exposure.</div>
+        </div>
       </div>
 
     </div>
