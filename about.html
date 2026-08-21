@@ -360,7 +360,9 @@
       grid-template-columns: auto 1fr;
       align-items: center;
       gap: 40px;
-      padding: 48px 56px;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
     .bubble-mascot-wrapper {
       z-index: 2;
@@ -373,11 +375,11 @@
     }
     .speech-bubble-body {
       position: relative;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 40px 48px;
+      background: var(--navy) !important;
+      border-radius: 28px;
+      padding: 56px 64px;
       z-index: 2;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 40px rgba(27,28,74,0.15);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .bubble-content {
@@ -393,7 +395,7 @@
       transform: translateY(-50%) rotate(45deg);
       width: 24px;
       height: 24px;
-      background: var(--white);
+      background: var(--navy);
       border-radius: 3px 0 0 0;
     }
     .opt-bubble:hover .bubble-mascot-wrapper {
@@ -410,7 +412,18 @@
       grid-template-columns: 1.2fr 0.8fr;
       align-items: center;
       gap: 40px;
-      padding: 56px 64px;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .opt-portal .about-cta-h2 {
+      color: var(--navy) !important;
+    }
+    .opt-portal .about-cta-h2 em {
+      color: var(--green) !important;
+    }
+    .opt-portal .about-cta-sub {
+      color: var(--gray) !important;
     }
     .portal-wrapper {
       display: flex;
@@ -419,8 +432,8 @@
       z-index: 2;
     }
     .portal-shape {
-      width: 170px;
-      height: 170px;
+      width: 240px; /* Increased size from 170px */
+      height: 240px; /* Increased size from 170px */
       background: rgba(255,255,255,0.06);
       border: 3px solid var(--sage);
       border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
@@ -433,7 +446,7 @@
       transition: border-color 0.4s, background 0.4s;
     }
     .mascot-img-portal {
-      width: 130px;
+      width: 190px; /* Increased size from 130px */
       height: auto;
       transition: transform 0.5s ease;
     }
@@ -877,12 +890,12 @@
             <div class="bubble-arrow"></div>
             <div class="bubble-content">
               <div class="about-cta-left">
-                <h2 class="about-cta-h2" style="color: var(--navy); margin-bottom: 8px;">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
-                <p class="about-cta-sub" style="color: var(--gray);">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+                <h2 class="about-cta-h2" style="margin-bottom: 8px;">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+                <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
               </div>
               <div class="about-cta-right">
                 <a href="immersion-programs.html" class="btn btn-green" style="text-align: center;">Explore Programs →</a>
-                <a href="index.html#cta" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy); text-align: center;">Contact Our Team</a>
+                <a href="index.html#cta" class="btn btn-outline" style="text-align: center;">Contact Our Team</a>
               </div>
             </div>
           </div>
@@ -898,7 +911,7 @@
             <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
             <div class="about-cta-right" style="flex-direction: row; margin-top: 24px; justify-content: flex-start;">
               <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
-              <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
+              <a href="index.html#cta" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">Contact Our Team</a>
             </div>
           </div>
           <div class="portal-wrapper">
