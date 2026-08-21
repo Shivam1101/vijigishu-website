@@ -81,138 +81,114 @@
     .highlight-icon { margin-top: 3px; color: var(--green); font-size: 1.1rem; flex-shrink: 0; }
     .highlight-text { font-size: .95rem; color: var(--navy); line-height: 1.5; font-weight: 500; }
 
-    /* ─── DESTINATIONS (VARIATION 2 & 3) ─── */
-    #destinations { padding: 96px 0; background: var(--off); }
-    .dest-header { text-align: center; margin-bottom: 48px; }
-    .label-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--green);
-      background: rgba(56, 103, 58, 0.08);
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 14px;
-    }
-
-    /* Variation 2: Infinite Marquee Ticker Loop */
-    .ticker-wrapper {
-      overflow: hidden;
-      white-space: nowrap;
+    /* ─── DESTINATIONS (GLASSMORPHISM STRIPS) ─── */
+    #destinations {
+      padding: 96px 0;
+      background: radial-gradient(circle at 10% 20%, rgba(56, 103, 58, 0.06) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 80%, rgba(27, 28, 74, 0.05) 0%, transparent 45%),
+                  var(--off);
       position: relative;
-      background: var(--white);
-      border: 1px solid rgba(27, 28, 74, 0.05);
-      border-radius: 16px;
-      padding: 18px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-      margin-bottom: 24px;
     }
-    .ticker-wrapper::before,
-    .ticker-wrapper::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .ticker-wrapper::before {
-      left: 0;
-      background: linear-gradient(to right, var(--white), transparent);
-    }
-    .ticker-wrapper::after {
-      right: 0;
-      background: linear-gradient(to left, var(--white), transparent);
-    }
-    .ticker-track {
-      display: inline-flex;
-      animation: tickerLoop 30s linear infinite;
-      gap: 30px;
-      padding-left: 30px;
-    }
-    .ticker-wrapper:hover .ticker-track {
-      animation-play-state: paused;
-    }
-    .ticker-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--navy);
-    }
-    .ticker-item span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-    @keyframes tickerLoop {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Variation 3: Split Minimal Grid Strips */
+    .dest-header { text-align: center; margin-bottom: 48px; }
+    
     .strip-container {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: 40px;
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .strip-row {
       display: grid;
-      grid-template-columns: 180px 1fr;
+      grid-template-columns: 210px 1fr;
       align-items: center;
-      background: var(--white);
-      border: 1px solid rgba(27, 28, 74, 0.05);
-      border-radius: 16px;
-      padding: 16px 24px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-      gap: 20px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 32px 0 rgba(27, 28, 74, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 20px 28px;
+      gap: 24px;
+      transition: all 0.35s var(--ease);
+    }
+    .strip-row:hover {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(56, 103, 58, 0.25);
+      box-shadow: 0 16px 40px 0 rgba(27, 28, 74, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
+      transform: translateY(-2px);
     }
     .strip-label {
       font-weight: 800;
       font-size: 0.85rem;
       color: var(--navy);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       border-right: 2px solid rgba(27, 28, 74, 0.08);
-      padding-right: 16px;
+      padding-right: 20px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+    .strip-label span.icon-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: rgba(56, 103, 58, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
     }
     .strip-places-scroll {
       display: flex;
-      gap: 24px;
+      align-items: center;
+      gap: 12px;
       overflow-x: auto;
-      scrollbar-width: none;
+      padding: 4px 2px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(56, 103, 58, 0.2) transparent;
+      -webkit-overflow-scrolling: touch;
     }
     .strip-places-scroll::-webkit-scrollbar {
-      display: none;
+      height: 4px;
+    }
+    .strip-places-scroll::-webkit-scrollbar-thumb {
+      background: rgba(56, 103, 58, 0.2);
+      border-radius: 4px;
     }
     .strip-place {
       font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--gray);
+      font-size: 0.92rem;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(27, 28, 74, 0.06);
+      padding: 7px 16px;
+      border-radius: 100px;
       white-space: nowrap;
-      transition: color 0.25s var(--ease);
+      transition: all 0.25s var(--ease);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .strip-place:hover {
-      color: var(--green);
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56, 103, 58, 0.2);
     }
     @media (max-width: 768px) {
       .strip-row {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 14px;
+        padding: 18px 20px;
       }
       .strip-label {
         border-right: none;
         border-bottom: 2px solid rgba(27, 28, 74, 0.08);
         padding-right: 0;
-        padding-bottom: 8px;
+        padding-bottom: 12px;
       }
     }
 
@@ -499,61 +475,12 @@
       <h2 class="section-heading">Program <span>Destinations</span></h2>
     </div>
     
-    <!-- VARIATION 2: Continuous Infinite Ticker -->
-    <div class="reveal" style="margin-bottom: 36px;">
-      <div class="label-badge">International Hubs</div>
-      <div class="ticker-wrapper">
-        <div class="ticker-track">
-          <div class="ticker-item">Vietnam</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Malaysia</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Singapore</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Thailand</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Dubai</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Indonesia</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Europe</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">South Korea</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Japan</div><div class="ticker-item"><span class="dot"></span></div>
-          <!-- Duplicate for seamless continuous loop -->
-          <div class="ticker-item">Vietnam</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Malaysia</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Singapore</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Thailand</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Dubai</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Indonesia</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Europe</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">South Korea</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Japan</div>
-        </div>
-      </div>
-
-      <div class="label-badge" style="margin-top: 10px;">Domestic (India)</div>
-      <div class="ticker-wrapper">
-        <div class="ticker-track" style="animation-direction: reverse; animation-duration: 25s;">
-          <div class="ticker-item">Jaipur</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Mysore &amp; Bengaluru</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Chandigarh</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Manali &amp; Shimla</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Delhi &amp; Agra</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Ahmedabad</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Pune &amp; Mumbai</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Goa</div><div class="ticker-item"><span class="dot"></span></div>
-          <!-- Duplicate for seamless continuous loop -->
-          <div class="ticker-item">Jaipur</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Mysore &amp; Bengaluru</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Chandigarh</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Manali &amp; Shimla</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Delhi &amp; Agra</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Ahmedabad</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Pune &amp; Mumbai</div><div class="ticker-item"><span class="dot"></span></div>
-          <div class="ticker-item">Goa</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- VARIATION 3: Split Flex Strips -->
-    <div class="strip-container reveal reveal-delay-1">
+    <div class="strip-container reveal">
       <div class="strip-row">
-        <div class="strip-label"><span>🌐</span> International</div>
+        <div class="strip-label">
+          <span class="icon-badge">🌐</span>
+          <span>International</span>
+        </div>
         <div class="strip-places-scroll">
           <span class="strip-place">Vietnam</span>
           <span class="strip-place">Malaysia</span>
@@ -568,7 +495,10 @@
       </div>
 
       <div class="strip-row">
-        <div class="strip-label"><span>🏠</span> Domestic</div>
+        <div class="strip-label">
+          <span class="icon-badge">📍</span>
+          <span>Domestic</span>
+        </div>
         <div class="strip-places-scroll">
           <span class="strip-place">Jaipur</span>
           <span class="strip-place">Mysore &amp; Bengaluru</span>
