@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -186,198 +186,267 @@
       line-height: 1.5;
     }
 
-    /* â”€â”€â”€ SECTION 2: HOW IT WORKS â€“ VERTICAL ALTERNATING TIMELINE â”€â”€â”€ */
+    /* ─── SECTION 2: HOW IT WORKS – SPLIT INFOGRAPHIC TIMELINE ─── */
     #process {
-      padding: 90px 0 100px;
-      background: linear-gradient(160deg, #f0f6ef 0%, #fafcfa 60%, #eef4f5 100%);
+      padding: 80px 0;
+      background: #FFFFFF;
       position: relative;
-      overflow: hidden;
     }
-    #process::before {
-      content: '';
-      position: absolute;
-      top: -120px; right: -120px;
-      width: 420px; height: 420px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(135,169,116,.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    #process::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -80px;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(46,83,48,.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .process-header { text-align: center; margin-bottom: 72px; }
-
-    /* â”€â”€ Vertical spine wrapper â”€â”€ */
-    .vtl-wrap {
-      position: relative;
-      max-width: 960px;
+    .process-container {
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
-    /* The central vertical spine line */
-    .vtl-wrap::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0; bottom: 0;
-      width: 3px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg,
-        var(--green) 0%,
-        var(--sage) 40%,
-        #a8c899 80%,
-        transparent 100%);
-      border-radius: 4px;
-      z-index: 0;
+    .process-wrapper {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E2E8F0;
     }
-
-    /* â”€â”€ Each timeline item â”€â”€ */
-    .vtl-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0;
-      position: relative;
-      margin-bottom: 52px;
-    }
-    .vtl-item:last-child { margin-bottom: 0; }
-
-    /* LEFT side: card on left, orb on spine */
-    .vtl-item.left  { flex-direction: row; }
-    /* RIGHT side: card on right, orb on spine */
-    .vtl-item.right { flex-direction: row-reverse; }
-
-    /* â”€â”€ Card â”€â”€ */
-    .vtl-card {
-      flex: 1;
-      background: #fff;
-      border-radius: 20px;
-      padding: 26px 28px;
-      box-shadow: 0 4px 24px rgba(46,83,48,.08);
-      border: 1.5px solid #deebd4;
-      position: relative;
-      transition: box-shadow .35s ease, transform .35s ease;
-      z-index: 1;
-    }
-    .vtl-item.left  .vtl-card { margin-right: 44px; }
-    .vtl-item.right .vtl-card { margin-left:  44px; }
-
-    .vtl-card:hover {
-      box-shadow: 0 16px 48px rgba(46,83,48,.16);
-      transform: translateY(-5px);
-    }
-
-    /* Pointer arrow on the card pointing toward the spine */
-    .vtl-card::after {
-      content: '';
-      position: absolute;
-      top: 28px;
-      width: 0; height: 0;
-    }
-    .vtl-item.left  .vtl-card::after {
-      right: -10px;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid #fff;
-      filter: drop-shadow(2px 0 3px rgba(46,83,48,.08));
-    }
-    .vtl-item.right .vtl-card::after {
-      left: -10px;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 10px solid #fff;
-      filter: drop-shadow(-2px 0 3px rgba(46,83,48,.08));
-    }
-
-    /* â”€â”€ Card internals â”€â”€ */
-    .vtl-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .vtl-icon-badge {
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, rgba(46,83,48,.1) 0%, rgba(135,169,116,.15) 100%);
-    }
-    .vtl-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin: 0;
-      line-height: 1.3;
-    }
-    .vtl-card p {
-      font-size: .855rem;
-      color: #556;
-      line-height: 1.72;
-      margin: 0;
-    }
-
-    /* Step tag pill */
-    .vtl-step-tag {
-      display: inline-block;
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--green);
-      background: rgba(46,83,48,.08);
-      border-radius: 30px;
-      padding: 3px 10px;
-      margin-bottom: 8px;
-    }
-
-    /* â”€â”€ Central orb (number circle on the spine) â”€â”€ */
-    .vtl-orb-wrap {
-      position: absolute;
-      left: 50%;
-      top: 20px;
-      transform: translateX(-50%);
-      z-index: 3;
+    .process-sidebar {
+      background: #2b2d2f;
+      padding: 60px 40px;
+      color: #fff;
       display: flex;
       flex-direction: column;
-      align-items: center;
-    }
-    .vtl-orb {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%);
-      color: #fff;
-      font-size: 1.15rem;
-      font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 0 5px rgba(135,169,116,.2), 0 6px 20px rgba(46,83,48,.3);
+      justify-content: flex-start;
       position: relative;
-      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .vtl-item:hover .vtl-orb {
-      transform: scale(1.12);
-      box-shadow: 0 0 0 8px rgba(135,169,116,.25), 0 8px 28px rgba(46,83,48,.35);
+    .process-sidebar::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: 0;
+      width: 4px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .process-sidebar .tag {
+      background: rgba(234, 160, 53, 0.15);
+      color: #eaa035;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      align-self: flex-start;
+      margin-bottom: 24px;
+    }
+    .process-sidebar h2 {
+      font-size: 2.2rem;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+    .process-sidebar h2 span {
+      color: #74c25c;
+    }
+    .process-sidebar p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #a0a5aa;
+    }
+    .process-content {
+      background: #f8fafc;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
     }
 
-    /* â”€â”€ Responsive: collapse to single column on mobile â”€â”€ */
-    @media (max-width: 768px) {
-      .vtl-wrap::before { left: 24px; }
-      .vtl-item.left,
-      .vtl-item.right { flex-direction: column; padding-left: 64px; }
-      .vtl-item.left  .vtl-card,
-      .vtl-item.right .vtl-card { margin: 0; }
-      .vtl-card::after { display: none; }
-      .vtl-orb-wrap { left: 24px; top: 0; transform: translateX(-50%); }
-      .vtl-step-tag { display: none; }
+    /* --- INFOGRAPHIC CARDS --- */
+    .info-card {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      border: 1px solid #eef2f6;
+      position: relative;
+      padding-left: 90px; /* Space for ribbon and circle icon */
+      padding-right: 24px;
+      min-height: 100px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     }
 
-    /* â”€â”€â”€ FOOTER â”€â”€â”€ */
+    /* Ribbon tab sticking out on the left edge */
+    .info-ribbon {
+      position: absolute;
+      left: -12px;
+      top: 36px;
+      width: 44px;
+      height: 32px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      z-index: 1;
+    }
+    /* Ribbon bottom-left fold effect */
+    .info-ribbon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 0;
+      height: 0;
+      border-top: 8px solid rgba(0,0,0,0.3);
+      border-left: 8px solid transparent;
+    }
+
+    /* Overlapping Circle Badge containing the Icon */
+    .info-circle {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+      border: 3px solid;
+    }
+
+    /* Main card text content */
+    .info-body {
+      flex: 1;
+      padding: 18px 20px 18px 10px;
+    }
+    .info-body h4 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+      transition: color 0.3s;
+    }
+    .info-body p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #64748b;
+      margin: 0;
+    }
+
+    /* Right column vertical separator */
+    .info-sep {
+      width: 1px;
+      height: 48px;
+      background: #e2e8f0;
+      margin: 0 24px;
+      flex-shrink: 0;
+    }
+
+    /* Step number layout */
+    .info-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      min-width: 44px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      flex-shrink: 0;
+    }
+
+    /* --- Accent Theme Colors --- */
+    /* Step 1: Orange */
+    .theme-orange .info-ribbon { background: #EAA035; }
+    .theme-orange .info-circle { border-color: #EAA035; }
+    .theme-orange .info-body h4 { color: #D38012; }
+    .theme-orange .info-num { color: #EAA035; }
+
+    /* Step 2: Green */
+    .theme-green .info-ribbon { background: #74C25C; }
+    .theme-green .info-circle { border-color: #74C25C; }
+    .theme-green .info-body h4 { color: #58A042; }
+    .theme-green .info-num { color: #74C25C; }
+
+    /* Step 3: Teal */
+    .theme-teal .info-ribbon { background: #17B09F; }
+    .theme-teal .info-circle { border-color: #17B09F; }
+    .theme-teal .info-body h4 { color: #128D80; }
+    .theme-teal .info-num { color: #17B09F; }
+
+    /* Step 4: Sky Blue */
+    .theme-blue .info-ribbon { background: #2B80B9; }
+    .theme-blue .info-circle { border-color: #2B80B9; }
+    .theme-blue .info-body h4 { color: #21628E; }
+    .theme-blue .info-num { color: #2B80B9; }
+
+    /* Step 5: Indigo */
+    .theme-indigo .info-ribbon { background: #4956A3; }
+    .theme-indigo .info-circle { border-color: #4956A3; }
+    .theme-indigo .info-body h4 { color: #36407B; }
+    .theme-indigo .info-num { color: #4956A3; }
+
+    /* Step 6: Coral Red */
+    .theme-coral .info-ribbon { background: #E75A6C; }
+    .theme-coral .info-circle { border-color: #E75A6C; }
+    .theme-coral .info-body h4 { color: #BE3D4E; }
+    .theme-coral .info-num { color: #E75A6C; }
+
+    /* Step 7: Purple */
+    .theme-purple .info-ribbon { background: #8E44AD; }
+    .theme-purple .info-circle { border-color: #8E44AD; }
+    .theme-purple .info-body h4 { color: #6D3088; }
+    .theme-purple .info-num { color: #8E44AD; }
+
+    /* --- Responsive design --- */
+    @media (max-width: 991px) {
+      .process-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .process-sidebar {
+        padding: 45px 30px;
+        text-align: center;
+        align-items: center;
+      }
+      .process-sidebar::after {
+        display: none;
+      }
+      .process-content {
+        padding: 40px 24px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .info-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+        padding-top: 80px;
+        padding-bottom: 20px;
+      }
+      .info-ribbon {
+        top: 24px;
+        left: -8px;
+        height: 28px;
+        width: 40px;
+      }
+      .info-circle {
+        left: 16px;
+        top: 14px;
+        transform: none;
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+      }
+      .info-sep {
+        display: none;
+      }
+      .info-num {
+        align-self: flex-end;
+        margin-top: 10px;
+      }
+    }
+
+    /* ─── FOOTER ─── */
     footer { background: var(--dark); padding: 80px 0 32px; }
     .footer-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr; gap: 40px; align-items: start; }
     .footer-mascot-wrap { position: relative; display: flex; justify-content: flex-end; margin-bottom: -22px; z-index: 3; }
@@ -482,110 +551,106 @@
 
 <!-- ===== HOW IT WORKS SECTION ===== -->
 <section id="process">
-  <div class="container">
-    <div class="process-header">
-      <div class="tag">How It Works</div>
-      <h2 class="section-heading">Your Journey With <span>Us</span></h2>
-      <p style="color:var(--gray);max-width:560px;margin:14px auto 0;font-size:.95rem;line-height:1.7;">
-        From first discovery to lasting growth â€” every step is thoughtfully designed for a seamless, impactful experience.
-      </p>
-    </div>
+  <div class="process-container">
+    <div class="process-wrapper">
+      
+      <!-- LEFT SIDEBAR -->
+      <div class="process-sidebar">
+        <div class="tag">How It Works</div>
+        <h2>Your Journey With <span>Us</span></h2>
+        <p>From first discovery to lasting growth — every step is thoughtfully designed to ensure a seamless, highly impactful global immersion program for your institution.</p>
+      </div>
 
-    <div class="vtl-wrap">
+      <!-- RIGHT INFOGRAPHIC CONTENT -->
+      <div class="process-content">
 
-      <!-- Step 1 â€” LEFT -->
-      <div class="vtl-item left">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 01</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">ðŸ”</div>
+        <!-- Step 1 -->
+        <div class="info-card theme-orange">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">🔍</div>
+          <div class="info-body">
             <h4>Explore Our Programs</h4>
+            <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
           </div>
-          <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">01</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">1</div></div>
-      </div>
 
-      <!-- Step 2 â€” RIGHT -->
-      <div class="vtl-item right">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 02</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">ðŸ¤</div>
+        <!-- Step 2 -->
+        <div class="info-card theme-green">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">🤝</div>
+          <div class="info-body">
             <h4>Connect With Our Program Experts</h4>
+            <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
           </div>
-          <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">02</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">2</div></div>
-      </div>
 
-      <!-- Step 3 â€” LEFT -->
-      <div class="vtl-item left">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 03</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">âœï¸</div>
+        <!-- Step 3 -->
+        <div class="info-card theme-teal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">✏️</div>
+          <div class="info-body">
             <h4>Customize Your Experience</h4>
+            <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
           </div>
-          <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">03</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">3</div></div>
-      </div>
 
-      <!-- Step 4 â€” RIGHT -->
-      <div class="vtl-item right">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 04</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">ðŸ“‹</div>
+        <!-- Step 4 -->
+        <div class="info-card theme-blue">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">📋</div>
+          <div class="info-body">
             <h4>Finalize the Program</h4>
+            <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
           </div>
-          <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">04</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">4</div></div>
-      </div>
 
-      <!-- Step 5 â€” LEFT -->
-      <div class="vtl-item left">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 05</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">ðŸ§­</div>
+        <!-- Step 5 -->
+        <div class="info-card theme-indigo">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">🧭</div>
+          <div class="info-body">
             <h4>Pre-Departure Orientation</h4>
+            <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
           </div>
-          <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">05</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">5</div></div>
-      </div>
 
-      <!-- Step 6 â€” RIGHT -->
-      <div class="vtl-item right">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 06</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">ðŸŒ</div>
+        <!-- Step 6 -->
+        <div class="info-card theme-coral">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">🌍</div>
+          <div class="info-body">
             <h4>Experience Global Exposure &amp; Exploration</h4>
+            <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
           </div>
-          <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">06</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">6</div></div>
-      </div>
 
-      <!-- Step 7 â€” LEFT -->
-      <div class="vtl-item left">
-        <div class="vtl-card">
-          <span class="vtl-step-tag">Step 07</span>
-          <div class="vtl-card-header">
-            <div class="vtl-icon-badge">ðŸŒ±</div>
+        <!-- Step 7 -->
+        <div class="info-card theme-purple">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">🌱</div>
+          <div class="info-body">
             <h4>Reflect, Share &amp; Grow</h4>
+            <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
           </div>
-          <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
+          <div class="info-sep"></div>
+          <div class="info-num">07</div>
         </div>
-        <div class="vtl-orb-wrap"><div class="vtl-orb">7</div></div>
-      </div>
 
-    </div><!-- /.vtl-wrap -->
-  </div>
+      </div><!-- /.process-content -->
+    </div><!-- /.process-wrapper -->
+  </div><!-- /.process-container -->
 </section>
 
 <!-- ===== GLOBAL FOOTER ===== -->
