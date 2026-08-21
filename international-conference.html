@@ -281,11 +281,35 @@
       padding-left: 90px; /* Space for ribbon and circle icon */
       padding-right: 24px;
       min-height: 100px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     }
-    .info-card:hover {
-      transform: translateY(-3px);
+    
+    /* Reveal Animation States */
+    .info-card.reveal {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .info-card.reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .info-card.reveal.visible:hover {
+      transform: translateY(-4px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+    
+    /* Staggered entrance delays */
+    .info-card.reveal:nth-child(1) { transition-delay: 0.05s; }
+    .info-card.reveal:nth-child(2) { transition-delay: 0.15s; }
+    .info-card.reveal:nth-child(3) { transition-delay: 0.25s; }
+    .info-card.reveal:nth-child(4) { transition-delay: 0.35s; }
+    .info-card.reveal:nth-child(5) { transition-delay: 0.45s; }
+    .info-card.reveal:nth-child(6) { transition-delay: 0.55s; }
+    .info-card.reveal:nth-child(7) { transition-delay: 0.65s; }
+    
+    /* Reset delays once visible so hover remains snappy */
+    .info-card.reveal.visible {
+      transition-delay: 0s !important;
     }
 
     /* Ribbon tab sticking out on the left edge */
@@ -562,7 +586,7 @@
       <div class="process-content">
 
         <!-- Step 1 -->
-        <div class="info-card theme-green">
+        <div class="info-card theme-green reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">01</div>
           <div class="info-body">
@@ -574,7 +598,7 @@
         </div>
 
         <!-- Step 2 -->
-        <div class="info-card theme-sage">
+        <div class="info-card theme-sage reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">02</div>
           <div class="info-body">
@@ -586,7 +610,7 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="info-card theme-gold">
+        <div class="info-card theme-gold reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">03</div>
           <div class="info-body">
@@ -598,7 +622,7 @@
         </div>
 
         <!-- Step 4 -->
-        <div class="info-card theme-navy">
+        <div class="info-card theme-navy reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">04</div>
           <div class="info-body">
@@ -610,7 +634,7 @@
         </div>
 
         <!-- Step 5 -->
-        <div class="info-card theme-green">
+        <div class="info-card theme-green reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">05</div>
           <div class="info-body">
@@ -622,7 +646,7 @@
         </div>
 
         <!-- Step 6 -->
-        <div class="info-card theme-sage">
+        <div class="info-card theme-sage reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">06</div>
           <div class="info-body">
@@ -634,7 +658,7 @@
         </div>
 
         <!-- Step 7 -->
-        <div class="info-card theme-gold">
+        <div class="info-card theme-gold reveal">
           <div class="info-ribbon"></div>
           <div class="info-circle">07</div>
           <div class="info-body">
