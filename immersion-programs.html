@@ -267,7 +267,7 @@
       display: grid;
       grid-template-columns: 1fr;
       box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: box-shadow 0.45s ease, transform 0.45s ease;
     }
     .option-slide-out:hover {
       transform: translateY(-6px);
@@ -278,7 +278,7 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.5s ease, opacity 0.5s ease;
       z-index: 1;
     }
     .option-slide-out:hover .slide-out-image {
@@ -295,7 +295,7 @@
       justify-content: space-between;
       background: linear-gradient(to top, rgba(13,14,46,0.85) 0%, rgba(13,14,46,0.3) 100%);
       color: var(--white);
-      transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.45s ease;
     }
     .slide-out-bottom {
       display: flex;
@@ -317,7 +317,7 @@
       font-size: 1.5rem;
       color: var(--white);
       margin-bottom: 16px;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.45s ease, background 0.45s ease, color 0.45s ease, border-color 0.45s ease;
     }
     .option-slide-out:hover .slide-out-icon {
       transform: scale(1.1);
@@ -330,7 +330,7 @@
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 6px;
-      transition: color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: color 0.45s ease;
     }
     .option-slide-out:hover .slide-out-text h3 {
       color: var(--theme-accent);
@@ -339,7 +339,7 @@
       max-height: 0;
       opacity: 0;
       overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: max-height 0.45s ease, opacity 0.45s ease;
     }
     .option-slide-out:hover .slide-out-details {
       max-height: 240px;
@@ -383,7 +383,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: gap 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: gap 0.45s ease, color 0.45s ease;
     }
     .option-slide-out:hover .slide-out-link {
       color: var(--theme-accent);
