@@ -190,34 +190,18 @@
       border-radius: 50%;
       z-index: 1;
       pointer-events: none;
-      animation: pulseGlow 4s ease-in-out infinite alternate;
     }
 
     .mascot-cutout-img {
       width: 100vw;
-      max-width: 1400px;
+      max-width: 1920px;
       min-width: 950px;
       height: auto;
       display: block;
       object-fit: contain;
       position: relative;
       z-index: 2;
-      animation: gentleBob 5s ease-in-out infinite;
       filter: drop-shadow(0 15px 30px rgba(27, 28, 74, 0.08));
-    }
-
-    @keyframes gentleBob {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-7px);
-      }
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
-      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
     }
 
     /* Minimal Bottom Copyright */
