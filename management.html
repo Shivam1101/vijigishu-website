@@ -81,7 +81,7 @@
     .highlight-icon { margin-top: 3px; color: var(--green); font-size: 1.1rem; flex-shrink: 0; }
     .highlight-text { font-size: .95rem; color: var(--navy); line-height: 1.5; font-weight: 500; }
 
-    /* ─── DESTINATIONS (GLASSMORPHISM STRIPS) ─── */
+    /* ─── DESTINATIONS (GLASSMORPHISM STRIPS - NO SCROLL) ─── */
     #destinations {
       padding: 96px 0;
       background: radial-gradient(circle at 10% 20%, rgba(56, 103, 58, 0.06) 0%, transparent 45%),
@@ -94,26 +94,26 @@
     .strip-container {
       display: flex;
       flex-direction: column;
-      gap: 22px;
-      max-width: 1100px;
+      gap: 20px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     .strip-row {
       display: grid;
-      grid-template-columns: 210px 1fr;
+      grid-template-columns: 190px 1fr;
       align-items: center;
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(16px) saturate(180%);
       -webkit-backdrop-filter: blur(16px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.85);
       box-shadow: 0 8px 32px 0 rgba(27, 28, 74, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
       border-radius: 20px;
-      padding: 20px 28px;
-      gap: 24px;
+      padding: 18px 26px;
+      gap: 20px;
       transition: all 0.35s var(--ease);
     }
     .strip-row:hover {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       border-color: rgba(56, 103, 58, 0.25);
       box-shadow: 0 16px 40px 0 rgba(27, 28, 74, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 1);
       transform: translateY(-2px);
@@ -125,7 +125,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
       border-right: 2px solid rgba(27, 28, 74, 0.08);
-      padding-right: 20px;
+      padding-right: 18px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -141,35 +141,22 @@
       font-size: 1.1rem;
       flex-shrink: 0;
     }
-    .strip-places-scroll {
+    .strip-places {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 12px;
-      overflow-x: auto;
-      padding: 4px 2px;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(56, 103, 58, 0.2) transparent;
-      -webkit-overflow-scrolling: touch;
-    }
-    .strip-places-scroll::-webkit-scrollbar {
-      height: 4px;
-    }
-    .strip-places-scroll::-webkit-scrollbar-thumb {
-      background: rgba(56, 103, 58, 0.2);
-      border-radius: 4px;
+      gap: 10px;
     }
     .strip-place {
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--navy);
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.75);
       border: 1px solid rgba(27, 28, 74, 0.06);
-      padding: 7px 16px;
+      padding: 7px 15px;
       border-radius: 100px;
       white-space: nowrap;
       transition: all 0.25s var(--ease);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
     .strip-place:hover {
       background: var(--green);
@@ -178,7 +165,7 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(56, 103, 58, 0.2);
     }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .strip-row {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -188,7 +175,7 @@
         border-right: none;
         border-bottom: 2px solid rgba(27, 28, 74, 0.08);
         padding-right: 0;
-        padding-bottom: 12px;
+        padding-bottom: 10px;
       }
     }
 
@@ -481,7 +468,7 @@
           <span class="icon-badge">🌐</span>
           <span>International</span>
         </div>
-        <div class="strip-places-scroll">
+        <div class="strip-places">
           <span class="strip-place">Vietnam</span>
           <span class="strip-place">Malaysia</span>
           <span class="strip-place">Singapore</span>
@@ -499,7 +486,7 @@
           <span class="icon-badge">📍</span>
           <span>Domestic</span>
         </div>
-        <div class="strip-places-scroll">
+        <div class="strip-places">
           <span class="strip-place">Jaipur</span>
           <span class="strip-place">Mysore &amp; Bengaluru</span>
           <span class="strip-place">Chandigarh</span>
