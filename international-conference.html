@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>International Conference Program – Vijigishu</title>
+  <title>International Conference Program â€“ Vijigishu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   
   <style>
-    /* ─── Reset & Design Tokens ─── */
+    /* â”€â”€â”€ Reset & Design Tokens â”€â”€â”€ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --navy:  #1B1C4A;
@@ -38,7 +38,7 @@
     .btn-green { background: var(--sage); color: var(--navy); }
     .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
-    /* ─── NAVBAR ─── */
+    /* â”€â”€â”€ NAVBAR â”€â”€â”€ */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
     nav.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,.08); }
     .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
@@ -56,7 +56,7 @@
     .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; border-bottom: 1px solid rgba(0,0,0,.06); padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
-    /* ─── PAGE HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) ─── */
+    /* â”€â”€â”€ PAGE HERO BANNER (IMAGE ONLY - NO TEXT OVERLAY) â”€â”€â”€ */
     .page-hero {
       position: relative;
       height: 380px;
@@ -67,7 +67,7 @@
     .page-hero-img img { width: 100%; height: 100%; object-fit: cover; }
     .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,14,46,0.1) 0%, rgba(13,14,46,0.25) 100%); }
 
-    /* ─── PAGE HEADER & BREADCRUMB BELOW BANNER ─── */
+    /* â”€â”€â”€ PAGE HEADER & BREADCRUMB BELOW BANNER â”€â”€â”€ */
     .page-header-section {
       padding: 40px 0 24px;
       background: var(--white);
@@ -97,7 +97,7 @@
       font-style: italic;
     }
 
-    /* ─── SECTION 1: OVERVIEW & HIGHLIGHTS ─── */
+    /* â”€â”€â”€ SECTION 1: OVERVIEW & HIGHLIGHTS â”€â”€â”€ */
     #overview-section {
       padding: 60px 0 80px;
       background: var(--off);
@@ -152,7 +152,7 @@
       line-height: 1.55;
     }
     .highlights-list li::before {
-      content: '✓';
+      content: 'âœ“';
       display: inline-grid;
       place-items: center;
       width: 22px;
@@ -186,93 +186,198 @@
       line-height: 1.5;
     }
 
-    /* ─── SECTION 2: HOW IT WORKS – HORIZONTAL SNAKE TIMELINE ─── */
-    #process { padding: 80px 0; background: #f8faf8; }
-    .process-header { text-align: center; margin-bottom: 60px; }
-
-    .timeline-snake { display: flex; flex-direction: column; gap: 0; }
-    .timeline-row { display: flex; align-items: stretch; position: relative; }
-    .timeline-row.reverse { flex-direction: row-reverse; }
-
-    .tl-step {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-      padding: 0 16px; position: relative;
+    /* â”€â”€â”€ SECTION 2: HOW IT WORKS â€“ VERTICAL ALTERNATING TIMELINE â”€â”€â”€ */
+    #process {
+      padding: 90px 0 100px;
+      background: linear-gradient(160deg, #f0f6ef 0%, #fafcfa 60%, #eef4f5 100%);
+      position: relative;
+      overflow: hidden;
     }
-    /* Horizontal connector between steps in same row */
-    .tl-step:not(:last-child)::after {
+    #process::before {
       content: '';
       position: absolute;
-      top: 27px; right: -2px;
-      width: 4px; height: 2px;
-      background: none;
+      top: -120px; right: -120px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(135,169,116,.12) 0%, transparent 70%);
+      pointer-events: none;
     }
-
-    /* Full horizontal line drawn via .tl-connector spans */
-    .tl-hline {
+    #process::after {
+      content: '';
       position: absolute;
-      top: 27px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--green), var(--sage));
+      bottom: -80px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46,83,48,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .process-header { text-align: center; margin-bottom: 72px; }
+
+    /* â”€â”€ Vertical spine wrapper â”€â”€ */
+    .vtl-wrap {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    /* The central vertical spine line */
+    .vtl-wrap::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 3px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg,
+        var(--green) 0%,
+        var(--sage) 40%,
+        #a8c899 80%,
+        transparent 100%);
+      border-radius: 4px;
       z-index: 0;
     }
-    /* Line from step1→2: starts at center of step1, ends at center of step2 */
-    .timeline-row:not(.reverse) .tl-hline { left: 16.66%; right: 16.66%; }
-    .timeline-row.reverse .tl-hline { left: 16.66%; right: 16.66%; }
 
-    .tl-num {
-      width: 56px; height: 56px; border-radius: 50%;
+    /* â”€â”€ Each timeline item â”€â”€ */
+    .vtl-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      position: relative;
+      margin-bottom: 52px;
+    }
+    .vtl-item:last-child { margin-bottom: 0; }
+
+    /* LEFT side: card on left, orb on spine */
+    .vtl-item.left  { flex-direction: row; }
+    /* RIGHT side: card on right, orb on spine */
+    .vtl-item.right { flex-direction: row-reverse; }
+
+    /* â”€â”€ Card â”€â”€ */
+    .vtl-card {
+      flex: 1;
+      background: #fff;
+      border-radius: 20px;
+      padding: 26px 28px;
+      box-shadow: 0 4px 24px rgba(46,83,48,.08);
+      border: 1.5px solid #deebd4;
+      position: relative;
+      transition: box-shadow .35s ease, transform .35s ease;
+      z-index: 1;
+    }
+    .vtl-item.left  .vtl-card { margin-right: 44px; }
+    .vtl-item.right .vtl-card { margin-left:  44px; }
+
+    .vtl-card:hover {
+      box-shadow: 0 16px 48px rgba(46,83,48,.16);
+      transform: translateY(-5px);
+    }
+
+    /* Pointer arrow on the card pointing toward the spine */
+    .vtl-card::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      width: 0; height: 0;
+    }
+    .vtl-item.left  .vtl-card::after {
+      right: -10px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid #fff;
+      filter: drop-shadow(2px 0 3px rgba(46,83,48,.08));
+    }
+    .vtl-item.right .vtl-card::after {
+      left: -10px;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #fff;
+      filter: drop-shadow(-2px 0 3px rgba(46,83,48,.08));
+    }
+
+    /* â”€â”€ Card internals â”€â”€ */
+    .vtl-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .vtl-icon-badge {
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(46,83,48,.1) 0%, rgba(135,169,116,.15) 100%);
+    }
+    .vtl-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0;
+      line-height: 1.3;
+    }
+    .vtl-card p {
+      font-size: .855rem;
+      color: #556;
+      line-height: 1.72;
+      margin: 0;
+    }
+
+    /* Step tag pill */
+    .vtl-step-tag {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(46,83,48,.08);
+      border-radius: 30px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+    }
+
+    /* â”€â”€ Central orb (number circle on the spine) â”€â”€ */
+    .vtl-orb-wrap {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .vtl-orb {
+      width: 52px; height: 52px;
+      border-radius: 50%;
       background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%);
-      color: #fff; font-size: 1.2rem; font-weight: 800;
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 800;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; position: relative; z-index: 2;
-      box-shadow: 0 4px 16px rgba(46,83,48,.25);
+      box-shadow: 0 0 0 5px rgba(135,169,116,.2), 0 6px 20px rgba(46,83,48,.3);
+      position: relative;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
-    .tl-icon {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: rgba(135,169,116,.15);
-      display: flex; align-items: center; justify-content: center;
-      margin: 10px auto 6px; font-size: 1.15rem;
-    }
-    .tl-card {
-      background: #fff; border: 1.5px solid #e2ead8;
-      border-radius: 18px; padding: 18px 16px 20px;
-      margin-top: 12px; width: 100%; text-align: left;
-      transition: box-shadow .3s, transform .3s;
-    }
-    .tl-card:hover { box-shadow: 0 10px 32px rgba(46,83,48,.12); transform: translateY(-4px); }
-    .tl-card h4 { font-size: .92rem; font-weight: 700; color: var(--navy); margin: 0 0 8px; line-height: 1.35; }
-    .tl-card p { font-size: .82rem; color: var(--gray); line-height: 1.65; margin: 0; }
-
-    /* Snake drop connectors between rows */
-    .snake-connector { position: relative; height: 48px; width: 100%; }
-    .snake-connector.right-drop::before {
-      content: ''; position: absolute;
-      right: calc(16.67% - 28px); top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--green), var(--sage));
-    }
-    .snake-connector.left-drop::before {
-      content: ''; position: absolute;
-      left: calc(16.67% - 28px); top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--green), var(--sage));
+    .vtl-item:hover .vtl-orb {
+      transform: scale(1.12);
+      box-shadow: 0 0 0 8px rgba(135,169,116,.25), 0 8px 28px rgba(46,83,48,.35);
     }
 
-    /* Step 7 centered */
-    .timeline-row.single { justify-content: center; }
-    .timeline-row.single .tl-step { flex: 0 0 33.33%; max-width: 360px; }
-
-    @media (max-width: 1024px) {
-      .timeline-row, .timeline-row.reverse, .timeline-row.single {
-        flex-direction: column; align-items: center;
-      }
-      .tl-step { width: 100%; max-width: 480px; padding: 0 0 32px; }
-      .snake-connector { display: none; }
-      .tl-hline { display: none; }
+    /* â”€â”€ Responsive: collapse to single column on mobile â”€â”€ */
+    @media (max-width: 768px) {
+      .vtl-wrap::before { left: 24px; }
+      .vtl-item.left,
+      .vtl-item.right { flex-direction: column; padding-left: 64px; }
+      .vtl-item.left  .vtl-card,
+      .vtl-item.right .vtl-card { margin: 0; }
+      .vtl-card::after { display: none; }
+      .vtl-orb-wrap { left: 24px; top: 0; transform: translateX(-50%); }
+      .vtl-step-tag { display: none; }
     }
 
-    /* ─── FOOTER ─── */
+    /* â”€â”€â”€ FOOTER â”€â”€â”€ */
     footer { background: var(--dark); padding: 80px 0 32px; }
     .footer-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr; gap: 40px; align-items: start; }
     .footer-mascot-wrap { position: relative; display: flex; justify-content: flex-end; margin-bottom: -22px; z-index: 3; }
@@ -318,9 +423,9 @@
   <div class="container">
     <div class="page-breadcrumb">
       <a href="index.html">Home</a>
-      <span>›</span>
+      <span>â€º</span>
       <a href="immersion-programs.html">Immersion Programs</a>
-      <span>›</span>
+      <span>â€º</span>
       <span style="color:var(--navy); font-weight: 600;">Special Learning Tours - International Conference</span>
     </div>
     <h1>Special Learning Tours - International <span>Conference</span></h1>
@@ -380,102 +485,106 @@
   <div class="container">
     <div class="process-header">
       <div class="tag">How It Works</div>
-      <h2 class="section-heading">How It <span>Works</span></h2>
+      <h2 class="section-heading">Your Journey With <span>Us</span></h2>
+      <p style="color:var(--gray);max-width:560px;margin:14px auto 0;font-size:.95rem;line-height:1.7;">
+        From first discovery to lasting growth â€” every step is thoughtfully designed for a seamless, impactful experience.
+      </p>
     </div>
 
-    <div class="timeline-snake">
+    <div class="vtl-wrap">
 
-      <!-- ── ROW 1: Steps 1 → 2 → 3 (Left to Right) ── -->
-      <div class="timeline-row">
-        <!-- Horizontal line between the 3 circles -->
-        <div class="tl-hline"></div>
-
-        <!-- Step 1 -->
-        <div class="tl-step">
-          <div class="tl-num">1</div>
-          <div class="tl-icon">🔍</div>
-          <div class="tl-card">
+      <!-- Step 1 â€” LEFT -->
+      <div class="vtl-item left">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 01</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">ðŸ”</div>
             <h4>Explore Our Programs</h4>
-            <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
           </div>
+          <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
         </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">1</div></div>
+      </div>
 
-        <!-- Step 2 -->
-        <div class="tl-step">
-          <div class="tl-num">2</div>
-          <div class="tl-icon">🤝</div>
-          <div class="tl-card">
+      <!-- Step 2 â€” RIGHT -->
+      <div class="vtl-item right">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 02</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">ðŸ¤</div>
             <h4>Connect With Our Program Experts</h4>
-            <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
           </div>
+          <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
         </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">2</div></div>
+      </div>
 
-        <!-- Step 3 -->
-        <div class="tl-step">
-          <div class="tl-num">3</div>
-          <div class="tl-icon">✏️</div>
-          <div class="tl-card">
+      <!-- Step 3 â€” LEFT -->
+      <div class="vtl-item left">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 03</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">âœï¸</div>
             <h4>Customize Your Experience</h4>
-            <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
           </div>
+          <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
         </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">3</div></div>
       </div>
 
-      <!-- ── SNAKE DROP: Right side (Step 3 → Step 4) ── -->
-      <div class="snake-connector right-drop"></div>
-
-      <!-- ── ROW 2: Steps 4 → 5 → 6 (Right to Left — reversed) ── -->
-      <div class="timeline-row reverse">
-        <!-- Horizontal line between circles -->
-        <div class="tl-hline"></div>
-
-        <!-- Step 6 (renders first visually on right due to flex-direction: row-reverse) -->
-        <div class="tl-step">
-          <div class="tl-num">6</div>
-          <div class="tl-icon">🌍</div>
-          <div class="tl-card">
-            <h4>Experience Global Exposure &amp; Exploration</h4>
-            <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
-          </div>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="tl-step">
-          <div class="tl-num">5</div>
-          <div class="tl-icon">🧭</div>
-          <div class="tl-card">
-            <h4>Pre-Departure Orientation</h4>
-            <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
-          </div>
-        </div>
-
-        <!-- Step 4 (renders last visually on left due to flex-direction: row-reverse) -->
-        <div class="tl-step">
-          <div class="tl-num">4</div>
-          <div class="tl-icon">📋</div>
-          <div class="tl-card">
+      <!-- Step 4 â€” RIGHT -->
+      <div class="vtl-item right">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 04</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">ðŸ“‹</div>
             <h4>Finalize the Program</h4>
-            <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
           </div>
+          <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
         </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">4</div></div>
       </div>
 
-      <!-- ── SNAKE DROP: Left side (Step 6 → Step 7) ── -->
-      <div class="snake-connector left-drop"></div>
+      <!-- Step 5 â€” LEFT -->
+      <div class="vtl-item left">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 05</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">ðŸ§­</div>
+            <h4>Pre-Departure Orientation</h4>
+          </div>
+          <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
+        </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">5</div></div>
+      </div>
 
-      <!-- ── ROW 3: Step 7 (Centered) ── -->
-      <div class="timeline-row single">
-        <div class="tl-step">
-          <div class="tl-num">7</div>
-          <div class="tl-icon">🌱</div>
-          <div class="tl-card">
+      <!-- Step 6 â€” RIGHT -->
+      <div class="vtl-item right">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 06</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">ðŸŒ</div>
+            <h4>Experience Global Exposure &amp; Exploration</h4>
+          </div>
+          <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
+        </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">6</div></div>
+      </div>
+
+      <!-- Step 7 â€” LEFT -->
+      <div class="vtl-item left">
+        <div class="vtl-card">
+          <span class="vtl-step-tag">Step 07</span>
+          <div class="vtl-card-header">
+            <div class="vtl-icon-badge">ðŸŒ±</div>
             <h4>Reflect, Share &amp; Grow</h4>
-            <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
           </div>
+          <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
         </div>
+        <div class="vtl-orb-wrap"><div class="vtl-orb">7</div></div>
       </div>
 
-    </div><!-- /.timeline-snake -->
+    </div><!-- /.vtl-wrap -->
   </div>
 </section>
 
