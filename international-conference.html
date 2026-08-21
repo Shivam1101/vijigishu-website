@@ -311,7 +311,7 @@
       border-left: 8px solid transparent;
     }
 
-    /* Overlapping Circle Badge containing the Icon */
+    /* Overlapping Circle Badge containing the Step Number */
     .info-circle {
       position: absolute;
       left: 16px;
@@ -324,7 +324,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.35rem;
+      font-family: 'Playfair Display', serif; /* Elegant numbers */
+      font-weight: 700;
+      font-size: 1.25rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       z-index: 2;
       border: 3px solid;
@@ -359,40 +361,34 @@
       flex-shrink: 0;
     }
 
-    /* Step number layout */
-    .info-num {
+    /* Step icon layout */
+    .info-icon {
       font-size: 1.8rem;
-      font-weight: 800;
       min-width: 44px;
       text-align: center;
-      font-family: 'Playfair Display', serif; /* Consistent layout style */
       flex-shrink: 0;
     }
 
     /* --- Brand Cohesive Accent Theme Colors --- */
     /* Theme: Brand Green */
     .theme-green .info-ribbon { background: var(--green); }
-    .theme-green .info-circle { border-color: var(--green); }
+    .theme-green .info-circle { border-color: var(--green); color: var(--green); }
     .theme-green .info-body h4 { color: var(--green); }
-    .theme-green .info-num { color: var(--green); }
 
     /* Theme: Brand Sage */
     .theme-sage .info-ribbon { background: #87A974; }
-    .theme-sage .info-circle { border-color: #87A974; }
+    .theme-sage .info-circle { border-color: #87A974; color: #5B8049; }
     .theme-sage .info-body h4 { color: #5B8049; }
-    .theme-sage .info-num { color: #87A974; }
 
     /* Theme: Brand Gold */
     .theme-gold .info-ribbon { background: var(--gold); }
-    .theme-gold .info-circle { border-color: var(--gold); }
+    .theme-gold .info-circle { border-color: var(--gold); color: #B38622; }
     .theme-gold .info-body h4 { color: #B38622; }
-    .theme-gold .info-num { color: var(--gold); }
 
     /* Theme: Brand Navy */
     .theme-navy .info-ribbon { background: var(--navy); }
-    .theme-navy .info-circle { border-color: var(--navy); }
+    .theme-navy .info-circle { border-color: var(--navy); color: var(--navy); }
     .theme-navy .info-body h4 { color: var(--navy); }
-    .theme-navy .info-num { color: var(--navy); }
 
     @media (max-width: 991px) {
       .process-wrapper {
@@ -568,85 +564,85 @@
         <!-- Step 1 -->
         <div class="info-card theme-green">
           <div class="info-ribbon"></div>
-          <div class="info-circle">🔍</div>
+          <div class="info-circle">01</div>
           <div class="info-body">
             <h4>Explore Our Programs</h4>
             <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">01</div>
+          <div class="info-icon">🔍</div>
         </div>
 
         <!-- Step 2 -->
         <div class="info-card theme-sage">
           <div class="info-ribbon"></div>
-          <div class="info-circle">🤝</div>
+          <div class="info-circle">02</div>
           <div class="info-body">
             <h4>Connect With Our Program Experts</h4>
             <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">02</div>
+          <div class="info-icon">🤝</div>
         </div>
 
         <!-- Step 3 -->
         <div class="info-card theme-gold">
           <div class="info-ribbon"></div>
-          <div class="info-circle">✏️</div>
+          <div class="info-circle">03</div>
           <div class="info-body">
             <h4>Customize Your Experience</h4>
             <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">03</div>
+          <div class="info-icon">✏️</div>
         </div>
 
         <!-- Step 4 -->
         <div class="info-card theme-navy">
           <div class="info-ribbon"></div>
-          <div class="info-circle">📋</div>
+          <div class="info-circle">04</div>
           <div class="info-body">
             <h4>Finalize the Program</h4>
             <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">04</div>
+          <div class="info-icon">📋</div>
         </div>
 
         <!-- Step 5 -->
         <div class="info-card theme-green">
           <div class="info-ribbon"></div>
-          <div class="info-circle">🧭</div>
+          <div class="info-circle">05</div>
           <div class="info-body">
             <h4>Pre-Departure Orientation</h4>
             <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">05</div>
+          <div class="info-icon">🧭</div>
         </div>
 
         <!-- Step 6 -->
         <div class="info-card theme-sage">
           <div class="info-ribbon"></div>
-          <div class="info-circle">🌍</div>
+          <div class="info-circle">06</div>
           <div class="info-body">
             <h4>Experience Global Exposure &amp; Exploration</h4>
             <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">06</div>
+          <div class="info-icon">🌍</div>
         </div>
 
         <!-- Step 7 -->
         <div class="info-card theme-gold">
           <div class="info-ribbon"></div>
-          <div class="info-circle">🌱</div>
+          <div class="info-circle">07</div>
           <div class="info-body">
             <h4>Reflect, Share &amp; Grow</h4>
             <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
           </div>
           <div class="info-sep"></div>
-          <div class="info-num">07</div>
+          <div class="info-icon">🌱</div>
         </div>
 
       </div><!-- /.process-content -->
