@@ -74,7 +74,7 @@
 
     /* ─── PAGE TITLE BELOW BANNER (CENTERED) ─── */
     .page-header-section {
-      padding: 40px 0 20px;
+      padding: 40px 0 10px;
       background: var(--white);
       text-align: center;
     }
@@ -89,9 +89,59 @@
       font-style: italic;
     }
 
-    /* ─── REDESIGNED CONTACT SECTION ─── */
+    /* ─── INTERACTIVE DESIGN VARIATION SWITCHER ─── */
+    .variation-switcher-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px auto 35px;
+      padding: 8px 12px;
+      background: #FFFFFF;
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      border-radius: 100px;
+      max-width: fit-content;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      flex-wrap: wrap;
+    }
+    .switcher-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--navy);
+      padding-left: 8px;
+    }
+    .switcher-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .switcher-btn {
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid transparent;
+      background: #F1F5F9;
+      color: var(--navy);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s var(--ease);
+    }
+    .switcher-btn:hover {
+      background: rgba(159, 194, 140, 0.3);
+      color: var(--navy);
+    }
+    .switcher-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(27, 28, 74, 0.25);
+    }
+
+    /* ─── MAIN CONTACT SECTION ─── */
     #contact-section {
-      padding: 50px 0 90px;
+      padding: 10px 0 90px;
       background: var(--off);
     }
     .contact-wrapper {
@@ -101,148 +151,414 @@
       align-items: stretch;
     }
 
-    /* Contact Left Info Card */
-    .contact-info {
-      background: linear-gradient(145deg, var(--dark) 0%, var(--navy) 100%);
+    /* Container for variations */
+    .contact-info-panel {
+      display: none;
+      animation: fadeIn 0.4s var(--ease);
+    }
+    .contact-info-panel.active {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       VARIATION 1: DARK LUXURY BENTO (Midnight Navy & Glow)
+       ═══════════════════════════════════════════════════════ */
+    .v1-card {
+      background: linear-gradient(155deg, #090A21 0%, #15163E 100%);
       color: var(--white);
-      padding: 48px 40px;
+      padding: 44px 38px;
       border-radius: 28px;
-      border: 1.5px solid rgba(159, 194, 140, 0.2);
-      box-shadow: 0 20px 50px rgba(13, 14, 46, 0.15);
+      border: 1.5px solid rgba(159, 194, 140, 0.25);
+      box-shadow: 0 20px 50px rgba(9, 10, 33, 0.25);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
     }
-    .contact-info::before {
+    .v1-card::before {
       content: '';
       position: absolute;
-      bottom: -80px;
-      right: -80px;
-      width: 260px;
-      height: 260px;
+      bottom: -70px;
+      right: -70px;
+      width: 250px;
+      height: 250px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(159,194,140,.18) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(159,194,140,.2) 0%, transparent 70%);
       pointer-events: none;
     }
-    .contact-info-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.2rem);
-      margin-bottom: 12px;
-      line-height: 1.2;
-      color: var(--white);
-    }
-    .contact-info-title span {
-      color: var(--sage);
-      font-style: italic;
-    }
-    .contact-info-sub {
-      color: rgba(255,255,255,.7);
-      font-size: .95rem;
-      line-height: 1.65;
-      margin-bottom: 36px;
-    }
-
-    .info-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      flex-grow: 1;
-    }
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 16px 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s var(--ease);
-    }
-    .info-item:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(159, 194, 140, 0.4);
-      transform: translateX(4px);
-    }
-    .info-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(159, 194, 140, 0.15);
-      color: var(--sage);
-      display: grid;
-      place-items: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .info-label {
-      font-size: .72rem;
+    .v1-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(56, 103, 58, 0.3);
+      border: 1px solid rgba(159, 194, 140, 0.35);
+      border-radius: 100px;
+      font-size: 0.72rem;
       font-weight: 800;
       color: var(--sage);
       text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 4px;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
     }
-    .info-value {
-      font-size: .95rem;
+    .v1-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px #4ade80;
+    }
+    .v1-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.2rem);
+      margin-bottom: 18px;
+      line-height: 1.18;
       color: var(--white);
-      line-height: 1.55;
-      font-weight: 500;
     }
-    .info-value a {
-      color: inherit;
-      transition: color .2s;
-    }
-    .info-value a:hover {
+    .v1-title span {
       color: var(--sage);
+      font-style: italic;
     }
-
-    .contact-top-socials {
+    .v1-social-strip {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
+      gap: 10px;
+      margin-bottom: 26px;
     }
-    .contact-social-btn {
+    .v1-social-btn {
       width: 42px;
       height: 42px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       display: grid;
       place-items: center;
-      color: var(--white);
+      color: #FFFFFF;
       transition: all 0.3s var(--ease);
-      flex-shrink: 0;
     }
-    .contact-social-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-    .contact-social-btn:hover {
+    .v1-social-btn svg { width: 18px; height: 18px; }
+    .v1-social-btn:hover {
       background: var(--sage);
       border-color: var(--sage);
       color: var(--navy);
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(159, 194, 140, 0.35);
+      box-shadow: 0 8px 20px rgba(159, 194, 140, 0.4);
     }
-
-    .hours-badge {
-      display: inline-flex;
+    .v1-bento-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .v1-bento-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all 0.3s var(--ease);
+    }
+    .v1-bento-item:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(159, 194, 140, 0.35);
+      transform: translateX(4px);
+    }
+    .v1-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(159, 194, 140, 0.16);
+      color: var(--sage);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .v1-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .v1-val {
+      font-size: 0.94rem;
+      color: #FFFFFF;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .v1-val a { color: inherit; transition: color 0.2s; }
+    .v1-val a:hover { color: var(--sage); }
+    .v1-footer-tag {
+      margin-top: 24px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
       align-items: center;
       gap: 8px;
-      margin-top: 24px;
-      padding: 8px 16px;
-      background: rgba(56, 103, 58, 0.25);
-      border: 1px solid rgba(159, 194, 140, 0.3);
-      border-radius: 100px;
-      font-size: 0.8rem;
-      color: var(--sage);
-      font-weight: 600;
     }
 
-    /* Contact Right Form Card */
+    /* ═══════════════════════════════════════════════════════
+       VARIATION 2: SCANDINAVIAN SAGE EDITORIAL (Light & Architectural)
+       ═══════════════════════════════════════════════════════ */
+    .v2-card {
+      background: rgba(159, 194, 140, 0.22);
+      border: 1.5px solid rgba(56, 103, 58, 0.25);
+      border-radius: 28px;
+      padding: 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      box-shadow: 0 16px 40px rgba(56, 103, 58, 0.08);
+      position: relative;
+    }
+    .v2-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 16px;
+    }
+    .v2-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+      color: var(--navy);
+      line-height: 1.15;
+    }
+    .v2-title span {
+      color: var(--green);
+      font-style: italic;
+    }
+    .v2-social-cluster {
+      display: flex;
+      gap: 8px;
+    }
+    .v2-social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid rgba(56, 103, 58, 0.3);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      transition: all 0.25s var(--ease);
+    }
+    .v2-social-icon svg { width: 16px; height: 16px; }
+    .v2-social-icon:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+    }
+    .v2-directory {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .v2-dir-item {
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 18px 22px;
+      border: 1.5px solid rgba(56, 103, 58, 0.18);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 4px 12px rgba(27, 28, 74, 0.02);
+    }
+    .v2-dir-item:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.12);
+    }
+    .v2-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green);
+      background: rgba(56, 103, 58, 0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .v2-info-title {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .v2-info-body {
+      font-size: 0.95rem;
+      color: var(--navy);
+      line-height: 1.5;
+      font-weight: 600;
+    }
+    .v2-info-body a { color: inherit; }
+    .v2-info-body a:hover { color: var(--green); }
+    .v2-footer-btn {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      transition: all 0.3s var(--ease);
+    }
+    .v2-footer-btn:hover {
+      background: var(--green);
+      transform: translateY(-2px);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       VARIATION 3: INTERACTIVE QUICK-CONNECT HUB (Dual-Tone Island)
+       ═══════════════════════════════════════════════════════ */
+    .v3-card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 16px 45px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .v3-header {
+      background: #0F1035;
+      color: #FFFFFF;
+      padding: 32px 32px 24px;
+      position: relative;
+    }
+    .v3-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .v3-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .v3-live-clock {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      color: #4ade80;
+      font-weight: 600;
+      background: rgba(74, 222, 128, 0.12);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .v3-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #FFFFFF;
+    }
+    .v3-title span {
+      color: var(--sage);
+      font-style: italic;
+    }
+    .v3-social-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .v3-social-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      transition: all 0.25s var(--ease);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .v3-social-item:hover {
+      background: var(--sage);
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+    .v3-social-item svg { width: 17px; height: 17px; }
+    .v3-body {
+      padding: 28px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .v3-action-tile {
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: #F8FAFC;
+      border: 1.5px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.25s var(--ease);
+    }
+    .v3-action-tile:hover {
+      border-color: var(--green);
+      background: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(56, 103, 58, 0.1);
+      transform: translateX(4px);
+    }
+    .v3-tile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(56, 103, 58, 0.1);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .v3-tile-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+    .v3-tile-val {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       CONTACT RIGHT FORM (SUBTLE INPUT BORDERS & CONTROLS)
+       ═══════════════════════════════════════════════════════ */
     .contact-form-wrap {
       background: var(--white);
       border-radius: 28px;
@@ -267,7 +583,6 @@
       line-height: 1.5;
     }
 
-    /* Form Inputs with Subtle Borders */
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -416,7 +731,6 @@
       transform: scale(1.08);
     }
 
-    /* Success Icon Style */
     .popup-icon-wrap {
       width: 80px;
       height: 80px;
@@ -493,7 +807,6 @@
 
     @media (max-width: 1024px) {
       .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
-      .contact-info { padding: 40px 32px; }
       .contact-form-wrap { padding: 40px 32px; }
     }
     @media (max-width: 768px) {
@@ -512,7 +825,7 @@
 <!-- ===== GLOBAL HEADER ===== -->
 <header id="global-header"></header>
 
-<!-- ===== PAGE HERO (IMAGE ONLY, NO OVERLAY, NO ZOOM) ===== -->
+<!-- ===== PAGE HERO (CONTAINED BANNER IMAGE) ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
     <img src="images/Contact-us-1.webp" alt="Contact Vijigishu Educational Travel" fetchpriority="high" />
@@ -523,6 +836,16 @@
 <div class="page-header-section">
   <div class="container">
     <h1>Get in <span>Touch</span></h1>
+    
+    <!-- VARIATION SWITCHER -->
+    <div class="variation-switcher-wrap">
+      <span class="switcher-label">Design Variation:</span>
+      <div class="switcher-tabs">
+        <button type="button" class="switcher-btn active" onclick="switchContactVariation(1)">1. Dark Luxury Bento</button>
+        <button type="button" class="switcher-btn" onclick="switchContactVariation(2)">2. Sage Editorial</button>
+        <button type="button" class="switcher-btn" onclick="switchContactVariation(3)">3. Quick-Connect Hub</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -531,76 +854,222 @@
   <div class="container">
     <div class="contact-wrapper reveal">
       
-      <!-- Contact Info (Left) -->
-      <div class="contact-info">
-        <div>
-          <div class="tag" style="background: rgba(159, 194, 140, 0.15); color: var(--sage); margin-bottom: 16px;">Direct Advisory</div>
-          <h2 class="contact-info-title" style="margin-bottom: 18px;">Let's start the <span>Journey</span></h2>
-          
-          <!-- Top Social Media Connect Strip -->
-          <div class="contact-top-socials">
-            <a href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/vijigishu_official?igsh=cWc1ejBqdmZ3djRv" target="_blank" rel="noopener" class="contact-social-btn" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" rel="noopener" class="contact-social-btn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-            <a href="https://youtube.com/@vijigishueducation?si=LATkWNQpwHbw_ppp" target="_blank" rel="noopener" class="contact-social-btn" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+      <!-- LEFT COLUMN: 3 INTERCHANGEABLE DESIGN VARIATIONS -->
+      <div class="contact-left-col">
+        
+        <!-- ═════════════════════════════════════════════════════════
+             VARIATION 1: DARK LUXURY BENTO (Midnight Navy & Glow)
+             ═════════════════════════════════════════════════════════ -->
+        <div id="variation1" class="contact-info-panel active">
+          <div class="v1-card">
+            <div>
+              <div class="v1-status-pill">
+                <span class="v1-status-dot"></span>
+                <span>Advisors Active Now</span>
+              </div>
+              <h2 class="v1-title">Let's start the <span>Journey</span></h2>
+              
+              <!-- Top Social Media Strip -->
+              <div class="v1-social-strip">
+                <a href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" rel="noopener" class="v1-social-btn" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/vijigishu_official?igsh=cWc1ejBqdmZ3djRv" target="_blank" rel="noopener" class="v1-social-btn" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" rel="noopener" class="v1-social-btn" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://youtube.com/@vijigishueducation?si=LATkWNQpwHbw_ppp" target="_blank" rel="noopener" class="v1-social-btn" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+                </a>
+              </div>
+
+              <!-- Bento Items -->
+              <div class="v1-bento-grid">
+                <div class="v1-bento-item">
+                  <div class="v1-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </div>
+                  <div>
+                    <div class="v1-label">Call Our Advisors</div>
+                    <div class="v1-val">
+                      <a href="tel:02079626639">020 7962 6639</a> &bull; <a href="tel:7588522386">7588522386</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="v1-bento-item">
+                  <div class="v1-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <div>
+                    <div class="v1-label">Email Inquiries</div>
+                    <div class="v1-val">
+                      <a href="mailto:info@vijigishu.co.in">info@vijigishu.co.in</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="v1-bento-item">
+                  <div class="v1-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div>
+                    <div class="v1-label">Headquarters</div>
+                    <div class="v1-val" style="font-size: 0.88rem;">
+                      A9- 3rd floor, Mark Park building, Pandurang Colony, Near Dr. Kalmadi Shamrao Jr. College, Erandwane, Pune 411038
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="v1-footer-tag">
+              <span>⚡</span>
+              <span>Guaranteed response within 24 business hours.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═════════════════════════════════════════════════════════
+             VARIATION 2: SCANDINAVIAN SAGE EDITORIAL (Light & Architectural)
+             ═════════════════════════════════════════════════════════ -->
+        <div id="variation2" class="contact-info-panel">
+          <div class="v2-card">
+            <div>
+              <div class="v2-top-header">
+                <div>
+                  <div class="tag" style="background: rgba(56, 103, 58, 0.15); color: var(--green); margin-bottom: 8px;">Direct Desk</div>
+                  <h2 class="v2-title">Let's start the <span>Journey</span></h2>
+                </div>
+                <!-- Top-Right Social Cluster -->
+                <div class="v2-social-cluster">
+                  <a href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" rel="noopener" class="v2-social-icon" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  </a>
+                  <a href="https://www.instagram.com/vijigishu_official?igsh=cWc1ejBqdmZ3djRv" target="_blank" rel="noopener" class="v2-social-icon" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+                  </a>
+                  <a href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" rel="noopener" class="v2-social-icon" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  </a>
+                  <a href="https://youtube.com/@vijigishueducation?si=LATkWNQpwHbw_ppp" target="_blank" rel="noopener" class="v2-social-icon" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Numbered Directory List -->
+              <div class="v2-directory">
+                <div class="v2-dir-item">
+                  <div class="v2-num">01</div>
+                  <div>
+                    <div class="v2-info-title">Voice Telephony</div>
+                    <div class="v2-info-body">
+                      <a href="tel:02079626639">020 7962 6639</a> &bull; <a href="tel:7588522386">7588522386</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="v2-dir-item">
+                  <div class="v2-num">02</div>
+                  <div>
+                    <div class="v2-info-title">Official Inquiries</div>
+                    <div class="v2-info-body">
+                      <a href="mailto:info@vijigishu.co.in">info@vijigishu.co.in</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="v2-dir-item">
+                  <div class="v2-num">03</div>
+                  <div>
+                    <div class="v2-info-title">Registered Office</div>
+                    <div class="v2-info-body" style="font-size: 0.88rem; font-weight: 500;">
+                      A9- 3rd floor, Mark Park building, Pandurang Colony, Near Dr. Kalmadi Shamrao Jr. College, Erandwane, Pune 411038
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/917588522386" target="_blank" class="v2-footer-btn">
+              <span>Chat Directly on WhatsApp</span>
+              <span>→</span>
             </a>
           </div>
+        </div>
 
-          <div class="info-list">
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              </div>
-              <div>
-                <div class="info-label">Call Our Advisors</div>
-                <div class="info-value">
-                  <a href="tel:02079626639">020 7962 6639</a> &bull; <a href="tel:7588522386">7588522386</a>
+        <!-- ═════════════════════════════════════════════════════════
+             VARIATION 3: INTERACTIVE QUICK-CONNECT HUB (Dual-Tone Island)
+             ═════════════════════════════════════════════════════════ -->
+        <div id="variation3" class="contact-info-panel">
+          <div class="v3-card">
+            <div class="v3-header">
+              <div class="v3-header-top">
+                <div class="v3-tag">Vijigishu Central Desk</div>
+                <div class="v3-live-clock" id="puneClock">
+                  <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
+                  <span>Pune HQ: Open</span>
                 </div>
+              </div>
+              <h2 class="v3-title">Let's start the <span>Journey</span></h2>
+              
+              <!-- Top Social Bar -->
+              <div class="v3-social-bar">
+                <a href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" rel="noopener" class="v3-social-item" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/vijigishu_official?igsh=cWc1ejBqdmZ3djRv" target="_blank" rel="noopener" class="v3-social-item" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" rel="noopener" class="v3-social-item" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://youtube.com/@vijigishueducation?si=LATkWNQpwHbw_ppp" target="_blank" rel="noopener" class="v3-social-item" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+                </a>
               </div>
             </div>
-            
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div>
-                <div class="info-label">Email Inquiries</div>
-                <div class="info-value">
-                  <a href="mailto:info@vijigishu.co.in">info@vijigishu.co.in</a>
+
+            <div class="v3-body">
+              <a href="tel:02079626639" class="v3-action-tile">
+                <div class="v3-tile-icon">📞</div>
+                <div>
+                  <div class="v3-tile-title">Voice Connect</div>
+                  <div class="v3-tile-val">020 7962 6639 &bull; 7588522386</div>
+                </div>
+              </a>
+
+              <a href="mailto:info@vijigishu.co.in" class="v3-action-tile">
+                <div class="v3-tile-icon">✉️</div>
+                <div>
+                  <div class="v3-tile-title">Electronic Mail</div>
+                  <div class="v3-tile-val">info@vijigishu.co.in</div>
+                </div>
+              </a>
+
+              <div class="v3-action-tile">
+                <div class="v3-tile-icon">📍</div>
+                <div>
+                  <div class="v3-tile-title">HQ Campus</div>
+                  <div class="v3-tile-val" style="font-size: 0.84rem; font-weight: 500;">
+                    Mark Park bldg, Erandwane, Pune 411038
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div>
-                <div class="info-label">Our Address</div>
-                <div class="info-value">
-                  A9- 3rd floor, Mark Park building, Pandurang Colony, Near Dr. Kalmadi Shamrao Jr. College, Erandwane, Pune 411038
-                </div>
+
+              <div style="font-size: 0.8rem; color: var(--gray); text-align: center;">
+                🕒 Office hours: 9:30 AM – 6:30 PM IST (Mon – Sat)
               </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div class="hours-badge">
-            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ade80;"></span>
-            Mon – Sat: 9:30 AM – 6:30 PM IST
-          </div>
-        </div>
       </div>
 
-      <!-- Contact Form (Right) -->
+      <!-- RIGHT COLUMN: CONTACT FORM (SUBTLE INPUT BORDERS) -->
       <div class="contact-form-wrap">
         <h3 class="form-title">Send Us a Message</h3>
         <p class="form-sub">Fill in the details below and our educational travel specialists will connect with you promptly.</p>
@@ -700,7 +1169,7 @@
   </div>
 </div>
 
-<!-- ===== ELITE CIRCLE CTA ===== -->
+<!-- ===== ELITE CIRCLE CTA (PARALLAX) ===== -->
 <section id="elite-cta">
   <div class="container">
     <div class="elite-inner reveal">
@@ -729,6 +1198,18 @@
   }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  // Live Design Variation Switcher
+  function switchContactVariation(num) {
+    document.querySelectorAll('.switcher-btn').forEach((btn, idx) => {
+      btn.classList.toggle('active', idx === (num - 1));
+    });
+    document.querySelectorAll('.contact-info-panel').forEach(panel => {
+      panel.classList.remove('active');
+    });
+    const selected = document.getElementById('variation' + num);
+    if (selected) selected.classList.add('active');
+  }
+
   // Modal helpers
   function openPopup(modalId) {
     const modal = document.getElementById(modalId);
@@ -746,12 +1227,9 @@
     }
   }
 
-  // Dismiss on backdrop click or Escape
   document.querySelectorAll('.popup-modal').forEach(modal => {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closePopup(modal.id);
-      }
+      if (e.target === modal) closePopup(modal.id);
     });
   });
 
@@ -766,7 +1244,6 @@
   const submitBtn = document.getElementById('submitBtn');
   const accessKeyInput = document.getElementById('accessKey');
 
-  // CONFIGURATION: Google Sheets / Web3Forms keys (if configured)
   const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
   const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
 
@@ -776,7 +1253,7 @@
       
       const originalBtnHTML = submitBtn.innerHTML;
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Sending...</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="animate-spin"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"/></svg>`;
+      submitBtn.innerHTML = `<span>Sending...</span>`;
 
       const isGoogleSheets = GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE';
       const isWeb3Forms = !isGoogleSheets && accessKeyInput && accessKeyInput.value !== 'YOUR_ACCESS_KEY_HERE';
@@ -802,7 +1279,6 @@
             throw new Error(data.message || 'Error sending message.');
           }
         } else {
-          // Default client simulation / fallback if no backend key configured
           setTimeout(() => {
             contactForm.reset();
             openPopup('contactSuccessModal');
