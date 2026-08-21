@@ -306,13 +306,21 @@ footer#site-footer::before {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(24px) scale(0.8) !important;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2) !important;
   padding: 0 !important;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease) !important;
+  transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease) !important;
 }
-.scroll-to-top:hover {
+.scroll-to-top.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1) !important;
+}
+.scroll-to-top.show:hover {
   transform: translateY(-4px) scale(1.08) !important;
   box-shadow: 0 14px 36px rgba(56, 103, 58, 0.35) !important;
 }

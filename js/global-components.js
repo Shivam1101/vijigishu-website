@@ -290,7 +290,8 @@
         needle.style.transform = `rotate(${progress * 360}deg)`;
       }
 
-      if (scrollTop > 220) {
+      // Show button only after scrolling past the normal threshold (450px)
+      if (scrollTop > 450) {
         scrollBtn.classList.add('show');
       } else {
         scrollBtn.classList.remove('show');
