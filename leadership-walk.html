@@ -389,21 +389,22 @@
       z-index: 2;
     }
     .portal-shape {
-      width: 360px;
-      height: 360px;
+      width: 420px;
+      height: 420px;
       background: rgba(27,28,74,0.02);
       border: 3px solid var(--sage);
       border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
       display: grid;
       place-items: center;
-      overflow: visible;
+      overflow: hidden;
       position: relative;
-      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
+      box-shadow: inset 0 0 24px rgba(159,194,140,0.18), 0 12px 30px rgba(0,0,0,0.06);
       animation: morph 8s ease-in-out infinite;
       transition: border-color 0.4s, background 0.4s;
     }
     .mascot-img-portal {
       max-height: 390px;
+      max-width: 90%;
       width: auto;
       object-fit: contain;
       transition: transform 0.5s ease;
@@ -413,7 +414,7 @@
       background: rgba(27,28,74,0.05);
     }
     .opt-portal:hover .mascot-img-portal {
-      transform: scale(1.12) rotate(-3deg);
+      transform: scale(1.08) rotate(-2deg);
     }
     @keyframes morph {
       0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
@@ -432,16 +433,17 @@
     @media (max-width: 1024px) {
       .story-grid { grid-template-columns: 1fr; gap: 48px; }
       .story-float-card { bottom: -20px; left: 20px; right: 20px; max-width: none; }
-      .rg-grid { grid-template-columns: repeat(2, 1fr); }
-      .rg-item.large { grid-column: span 1; grid-row: span 1; aspect-ratio: 4/3; }
       .opt-portal { grid-template-columns: 1fr; gap: 30px; text-align: center; }
       .about-cta-left { text-align: center; }
       .about-cta-right { justify-content: center; }
+      .portal-shape { width: 340px; height: 340px; }
+      .mascot-img-portal { max-height: 310px; }
     }
     @media (max-width: 768px) {
       .page-hero { height: 320px; }
-      .rg-grid { grid-template-columns: 1fr; }
       .about-cta-right { flex-direction: column; }
+      .portal-shape { width: 280px; height: 280px; }
+      .mascot-img-portal { max-height: 250px; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
