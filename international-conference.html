@@ -201,7 +201,8 @@
       display: grid;
       grid-template-columns: 340px 1fr;
       border-radius: 24px;
-      align-items: start; /* Enable sticky alignment */
+      align-items: stretch; /* Make both columns same height */
+      overflow: hidden; /* Restore clean border radius clipping */
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
       border: 1px solid #E2E8F0;
     }
@@ -209,14 +210,7 @@
       background: var(--navy); /* Primary Navy brand color */
       padding: 60px 40px;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      position: sticky;
-      top: 96px; /* Stick below global sticky navbar */
-      align-self: start;
-      border-top-left-radius: 24px;
-      border-bottom-left-radius: 24px;
+      position: relative;
     }
     .process-sidebar::after {
       content: '';
@@ -224,6 +218,14 @@
       top: 0; bottom: 0; right: 0;
       width: 4px;
       background: rgba(255, 255, 255, 0.05);
+    }
+    /* Sticky inner content wrapper */
+    .sidebar-sticky-inner {
+      position: sticky;
+      top: 100px; /* Sticks below sticky header + padding offset */
+      align-self: start;
+      display: flex;
+      flex-direction: column;
     }
     .process-sidebar .tag {
       background: rgba(159, 194, 140, 0.15);
@@ -262,8 +264,6 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
-      border-top-right-radius: 24px;
-      border-bottom-right-radius: 24px;
     }
 
     /* --- INFOGRAPHIC CARDS --- */
@@ -399,16 +399,15 @@
       .process-sidebar {
         padding: 45px 30px;
         text-align: center;
-        align-items: center;
+      }
+      .sidebar-sticky-inner {
         position: static;
-        border-radius: 24px 24px 0 0;
       }
       .process-sidebar::after {
         display: none;
       }
       .process-content {
         padding: 40px 24px;
-        border-radius: 0 0 24px 24px;
       }
     }
 
@@ -553,9 +552,11 @@
       
       <!-- LEFT SIDEBAR -->
       <div class="process-sidebar">
-        <div class="tag">How It Works</div>
-        <h2>Your Journey With <span>Us</span></h2>
-        <p>From first discovery to lasting growth — every step is thoughtfully designed to ensure a seamless, highly impactful global immersion program for your institution.</p>
+        <div class="sidebar-sticky-inner">
+          <div class="tag">How It Works</div>
+          <h2>Your Journey With <span>Us</span></h2>
+          <p>From first discovery to lasting growth — every step is thoughtfully designed to ensure a seamless, highly impactful global immersion program for your institution.</p>
+        </div>
       </div>
 
       <!-- RIGHT INFOGRAPHIC CONTENT -->
