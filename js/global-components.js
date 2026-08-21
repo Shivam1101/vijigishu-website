@@ -3,11 +3,13 @@
  * Dynamically injects Header Navbar and Footer across all website pages.
  */
 (function () {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const rawPath = window.location.pathname.split('/').pop() || 'index';
+  const currentPath = rawPath.replace(/\.html$/, '') || 'index';
 
   function isActive(page) {
-    if (page === 'index.html' && (currentPath === '' || currentPath === 'index.html')) return 'active';
-    if (currentPath.includes(page)) return 'active';
+    const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
+    if (clean === 'index' && (currentPath === '' || currentPath === 'index')) return 'active';
+    if (currentPath === clean) return 'active';
     return '';
   }
 
@@ -15,16 +17,16 @@
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="logo-wrap">
+      <a href="/" class="logo-wrap">
         <img src="images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
       </a>
       <div class="nav-links">
-        <a href="index.html" class="${isActive('index.html')}">Home</a>
-        <a href="about.html" class="${isActive('about.html')}">About Us</a>
-        <a href="immersion-programs.html" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-        <a href="leadership-walk.html" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
-        <a href="gallery.html" class="${isActive('gallery.html')}">Gallery</a>
-        <a href="contact.html" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
+        <a href="/" class="${isActive('index.html')}">Home</a>
+        <a href="about" class="${isActive('about.html')}">About Us</a>
+        <a href="immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
+        <a href="leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+        <a href="gallery" class="${isActive('gallery.html')}">Gallery</a>
+        <a href="contact" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
       </div>
       <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -32,12 +34,12 @@
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="${isActive('index.html')}">Home</a>
-    <a href="about.html" class="${isActive('about.html')}">About Us</a>
-    <a href="immersion-programs.html" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-    <a href="leadership-walk.html" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
-    <a href="gallery.html" class="${isActive('gallery.html')}">Gallery</a>
-    <a href="contact.html" class="${isActive('contact.html')}">Contact Us</a>
+    <a href="/" class="${isActive('index.html')}">Home</a>
+    <a href="about" class="${isActive('about.html')}">About Us</a>
+    <a href="immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
+    <a href="leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+    <a href="gallery" class="${isActive('gallery.html')}">Gallery</a>
+    <a href="contact" class="${isActive('contact.html')}">Contact Us</a>
   </div>
   `;
 
@@ -50,7 +52,7 @@
         <!-- COLUMN 1: BRAND & SOCIALS -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <a href="index.html" style="text-decoration: none; display: inline-block;">
+            <a href="/" style="text-decoration: none; display: inline-block;">
               <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
             </a>
           </div>
@@ -74,10 +76,10 @@
         <div>
           <div class="footer-col-title">Quick Links</div>
           <div class="footer-links">
-            <a href="immersion-programs.html">Programs</a>
-            <a href="leadership-walk.html">Leadership walk</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Cancellation &amp; Refund process</a>
+            <a href="immersion-programs">Programs</a>
+            <a href="leadership-walk">Leadership walk</a>
+            <a href="gallery">Gallery</a>
+            <a href="contact">Cancellation &amp; Refund process</a>
           </div>
         </div>
 
@@ -85,12 +87,12 @@
         <div>
           <div class="footer-col-title">Destinations</div>
           <div class="footer-links">
-            <a href="singapore-indonesia.html">Singapore</a>
-            <a href="japan.html">Japan</a>
-            <a href="south-korea.html">South Korea</a>
-            <a href="europe.html">Europe</a>
-            <a href="malaysia-singapore.html">Malaysia</a>
-            <a href="uae.html">UAE / Dubai</a>
+            <a href="singapore-indonesia">Singapore</a>
+            <a href="japan">Japan</a>
+            <a href="south-korea">South Korea</a>
+            <a href="europe">Europe</a>
+            <a href="malaysia-singapore">Malaysia</a>
+            <a href="uae">UAE / Dubai</a>
           </div>
         </div>
 

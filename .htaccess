@@ -1,0 +1,24 @@
+# Apache & LiteSpeed Configuration for Vijigishu Website
+Options -MultiViews
+RewriteEngine On
+
+# Ensure HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 1. Custom 404 Error Page
+ErrorDocument 404 /404.html
+
+# 2. Redirect direct requests from /page.html to /page (301 Permanent SEO Redirect)
+RewriteCond %{THE_REQUEST} s/+(.+?).html[s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 3. Internally resolve /page to /page.html if the HTML file exists
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# 4. If neither file nor directory exists, display 404.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /404.html [L]
