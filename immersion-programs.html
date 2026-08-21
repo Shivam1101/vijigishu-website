@@ -425,37 +425,234 @@
     .ip-cta-sub { color: rgba(255,255,255,.6); font-size: .95rem; line-height: 1.65; max-width: 480px; }
     .ip-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
 
-    /* ─── PROCESS STEPS ─── */
-    #process { padding: 80px 0; background: var(--white); }
-    .process-header { text-align: center; margin-bottom: 56px; }
-    .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
-    .steps-grid::before {
+    /* ─── SECTION: HOW IT WORKS – SPLIT INFOGRAPHIC TIMELINE ─── */
+    #process {
+      padding: 80px 0;
+      background: #FFFFFF;
+      position: relative;
+    }
+    .process-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .process-wrapper {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      border-radius: 24px;
+      overflow: hidden;
+      align-items: stretch; /* Make both columns same height */
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E2E8F0;
+    }
+    .process-sidebar {
+      background: var(--navy); /* Primary Navy brand color */
+      padding: 60px 40px;
+      color: #fff;
+      position: relative;
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+    }
+    .process-sidebar::after {
       content: '';
       position: absolute;
-      top: 36px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--green), var(--sage));
-      z-index: 0;
+      top: 0; bottom: 0; right: 0;
+      width: 4px;
+      background: rgba(255, 255, 255, 0.05);
     }
-    .step-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; position: relative; z-index: 1; }
-    .step-num {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 3px solid var(--green);
-      display: grid;
-      place-items: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--green);
+    /* Sticky inner content wrapper */
+    .sidebar-sticky-inner {
+      position: sticky;
+      top: 100px; /* Sticks below sticky header + padding offset */
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+    }
+    .process-sidebar .tag {
+      background: rgba(159, 194, 140, 0.15);
+      color: var(--sage); /* Brand sage green */
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      align-self: flex-start;
+      margin-bottom: 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .process-sidebar h2 {
+      font-family: 'Playfair Display', serif; /* Consistent heading font */
+      font-size: 2.2rem;
+      color: #fff;
+      line-height: 1.25;
       margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(56,103,58,.15);
+      font-weight: 700;
     }
-    .step-title { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .step-desc { font-size: .8rem; color: var(--gray); line-height: 1.55; }
+    .process-sidebar h2 span {
+      color: var(--sage); /* Brand sage green accent */
+      font-style: italic;
+    }
+    .process-sidebar p {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .process-content {
+      background: var(--off); /* Brand off-white */
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+
+    /* --- INFOGRAPHIC CARDS --- */
+    .info-card {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      border: 1px solid #eef2f6;
+      position: relative;
+      padding-left: 90px; /* Space for ribbon and circle icon */
+      padding-right: 24px;
+      min-height: 100px;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    
+    /* Reveal Animation States */
+    .info-card.reveal {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .info-card.reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .info-card.reveal.visible:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+    
+    /* Staggered entrance delays */
+    .info-card.reveal:nth-child(1) { transition-delay: 0.05s; }
+    .info-card.reveal:nth-child(2) { transition-delay: 0.15s; }
+    .info-card.reveal:nth-child(3) { transition-delay: 0.25s; }
+    .info-card.reveal:nth-child(4) { transition-delay: 0.35s; }
+    .info-card.reveal:nth-child(5) { transition-delay: 0.45s; }
+    .info-card.reveal:nth-child(6) { transition-delay: 0.55s; }
+    .info-card.reveal:nth-child(7) { transition-delay: 0.65s; }
+    
+    /* Reset delays once visible so hover remains snappy */
+    .info-card.reveal.visible {
+      transition-delay: 0s !important;
+    }
+
+    /* Ribbon tab sticking out on the left edge */
+    .info-ribbon {
+      position: absolute;
+      left: -12px;
+      top: 36px;
+      width: 44px;
+      height: 32px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      z-index: 1;
+    }
+    /* Ribbon bottom-left fold effect */
+    .info-ribbon::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 100%;
+      width: 0;
+      height: 0;
+      border-top: 8px solid rgba(0,0,0,0.3);
+      border-left: 8px solid transparent;
+    }
+
+    /* Overlapping Circle Badge containing the Step Number */
+    .info-circle {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif; /* Elegant numbers */
+      font-weight: 700;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 2;
+      border: 3px solid;
+    }
+
+    /* Main card text content */
+    .info-body {
+      flex: 1;
+      padding: 18px 20px 18px 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .info-body h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+      transition: color 0.3s;
+    }
+    .info-body p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    /* Right column vertical separator */
+    .info-sep {
+      width: 1px;
+      height: 48px;
+      background: #e2e8f0;
+      margin: 0 24px;
+      flex-shrink: 0;
+    }
+
+    /* Step icon layout */
+    .info-icon {
+      font-size: 1.8rem;
+      min-width: 44px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* --- Brand Cohesive Accent Theme Colors --- */
+    /* Theme: Brand Green */
+    .theme-green .info-ribbon { background: var(--green); }
+    .theme-green .info-circle { border-color: var(--green); color: var(--green); }
+    .theme-green .info-body h4 { color: var(--green); }
+
+    /* Theme: Brand Sage */
+    .theme-sage .info-ribbon { background: #87A974; }
+    .theme-sage .info-circle { border-color: #87A974; color: #5B8049; }
+    .theme-sage .info-body h4 { color: #5B8049; }
+
+    /* Theme: Brand Gold */
+    .theme-gold .info-ribbon { background: var(--gold); }
+    .theme-gold .info-circle { border-color: var(--gold); color: #B38622; }
+    .theme-gold .info-body h4 { color: #B38622; }
+
+    /* Theme: Brand Navy */
+    .theme-navy .info-ribbon { background: var(--navy); }
+    .theme-navy .info-circle { border-color: var(--navy); color: var(--navy); }
+    .theme-navy .info-body h4 { color: var(--navy); }
 
     /* ─── FOOTER ─── */
     footer { background: var(--dark); padding: 80px 0 32px; }
@@ -520,10 +717,27 @@
     @media (max-width: 1024px) {
       .programs-scroll { grid-template-columns: repeat(2, 1fr); }
       .disc-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-      .steps-grid::before { display: none; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
       .ip-cta-inner { grid-template-columns: 1fr; padding: 40px 36px; }
+    }
+    @media (max-width: 991px) {
+      .process-wrapper {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+      .process-sidebar {
+        padding: 45px 30px;
+        text-align: center;
+      }
+      .sidebar-sticky-inner {
+        position: static;
+      }
+      .process-sidebar::after {
+        display: none;
+      }
+      .process-content {
+        padding: 40px 24px;
+      }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -532,9 +746,38 @@
       .programs-scroll { grid-template-columns: 1fr; }
       .disc-card { grid-template-columns: 1fr; }
       .disc-img img { height: 200px; }
-      .steps-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .internship-accordion-item { padding: 20px; }
+    }
+    @media (max-width: 576px) {
+      .info-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+        padding-top: 80px;
+        padding-bottom: 20px;
+      }
+      .info-ribbon {
+        top: 24px;
+        left: -8px;
+        height: 28px;
+        width: 40px;
+      }
+      .info-circle {
+        left: 16px;
+        top: 14px;
+        transform: none;
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+      }
+      .info-sep {
+        display: none;
+      }
+      .info-icon {
+        align-self: flex-end;
+        margin-top: 10px;
+      }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
@@ -843,42 +1086,7 @@
   </div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
-<section id="process">
-  <div class="container">
-    <div class="process-header reveal">
-      <div class="tag">How It Works</div>
-      <h2 class="section-heading">Your Journey in <span>5 Simple Steps</span></h2>
-    </div>
-    <div class="steps-grid">
-      <div class="step-item reveal">
-        <div class="step-num">1</div>
-        <div class="step-title">Choose a Program</div>
-        <div class="step-desc">Browse by destination, discipline, or duration to find your fit.</div>
-      </div>
-      <div class="step-item reveal reveal-delay-1">
-        <div class="step-num">2</div>
-        <div class="step-title">Customise It</div>
-        <div class="step-desc">Tailor the itinerary, group size, and academic focus to your institution.</div>
-      </div>
-      <div class="step-item reveal reveal-delay-2">
-        <div class="step-num">3</div>
-        <div class="step-title">Visa &amp; Docs</div>
-        <div class="step-desc">We handle complete visa assistance and all documentation support.</div>
-      </div>
-      <div class="step-item reveal reveal-delay-3">
-        <div class="step-num">4</div>
-        <div class="step-title">Pre-departure Briefing</div>
-        <div class="step-desc">Students receive detailed itinerary, packing guidance, and cultural prep.</div>
-      </div>
-      <div class="step-item reveal" style="transition-delay:.4s">
-        <div class="step-num">5</div>
-        <div class="step-title">Experience &amp; Return</div>
-        <div class="step-desc">Our tour leaders travel with your group from take-off to touchdown.</div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES ===== -->
 <section id="internship">
@@ -1007,6 +1215,112 @@
 
     </div>
   </div>
+</section>
+
+<!-- ===== HOW IT WORKS SECTION ===== -->
+<section id="process">
+  <div class="process-container">
+    <div class="process-wrapper">
+      
+      <!-- LEFT SIDEBAR -->
+      <div class="process-sidebar">
+        <div class="sidebar-sticky-inner">
+          <div class="tag">How It Works</div>
+          <h2>Your Journey With <span>Us</span></h2>
+          <p>From first discovery to lasting growth — every step is thoughtfully designed to ensure a seamless, highly impactful global immersion program for your institution.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT INFOGRAPHIC CONTENT -->
+      <div class="process-content">
+
+        <!-- Step 1 -->
+        <div class="info-card theme-green reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">01</div>
+          <div class="info-body">
+            <h4>Explore Our Programs</h4>
+            <p>Browse through our global immersion programs designed across diverse destinations, industries, and learning experiences. From academic engagements to industry exposure and cultural exploration, discover programs that align with your institution's vision and learning goals.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">🔍</div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="info-card theme-sage reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">02</div>
+          <div class="info-body">
+            <h4>Connect With Our Program Experts</h4>
+            <p>Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">🤝</div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="info-card theme-gold reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">03</div>
+          <div class="info-body">
+            <h4>Customize Your Experience</h4>
+            <p>Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">✏️</div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="info-card theme-navy reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">04</div>
+          <div class="info-body">
+            <h4>Finalize the Program</h4>
+            <p>Once the itinerary and program structure are approved, our team manages the planning process, including accommodations, transportation, academic engagements, industry visits, and travel coordination to ensure a seamless experience.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">📋</div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="info-card theme-green reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">05</div>
+          <div class="info-body">
+            <h4>Pre-Departure Orientation</h4>
+            <p>Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">🧭</div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="info-card theme-sage reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">06</div>
+          <div class="info-body">
+            <h4>Experience Global Exposure &amp; Exploration</h4>
+            <p>Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure designed to broaden perspectives beyond the classroom.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">🌍</div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="info-card theme-gold reveal">
+          <div class="info-ribbon"></div>
+          <div class="info-circle">07</div>
+          <div class="info-body">
+            <h4>Reflect, Share &amp; Grow</h4>
+            <p>At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
+          </div>
+          <div class="info-sep"></div>
+          <div class="info-icon">🌱</div>
+        </div>
+
+      </div><!-- /.process-content -->
+    </div><!-- /.process-wrapper -->
+  </div><!-- /.process-container -->
 </section>
 
 <!-- ===== CTA BANNER ===== -->
