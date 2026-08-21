@@ -268,7 +268,7 @@
       display: grid;
       grid-template-columns: 1fr;
       box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+      transition: box-shadow 0.6s ease-in-out, transform 0.6s ease-in-out;
     }
     .option-slide-out:hover {
       transform: translateY(-6px);
@@ -279,7 +279,7 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
       z-index: 1;
     }
     .option-slide-out:hover .slide-out-image {
@@ -296,7 +296,7 @@
       justify-content: space-between;
       background: linear-gradient(to top, rgba(13,14,46,0.85) 0%, rgba(13,14,46,0.3) 100%);
       color: var(--white);
-      transition: background 0.4s;
+      transition: background 0.6s ease-in-out;
     }
     .slide-out-bottom {
       display: flex;
@@ -318,7 +318,7 @@
       font-size: 1.5rem;
       color: var(--white);
       margin-bottom: 16px;
-      transition: transform 0.4s var(--ease), background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
+      transition: transform 0.6s ease-in-out, background 0.6s ease-in-out, color 0.6s ease-in-out, border-color 0.6s ease-in-out;
     }
     .option-slide-out:hover .slide-out-icon {
       transform: scale(1.1);
@@ -331,7 +331,7 @@
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 6px;
-      transition: color 0.3s;
+      transition: color 0.5s ease-in-out;
     }
     .option-slide-out:hover .slide-out-text h3 {
       color: var(--theme-accent);
@@ -340,7 +340,7 @@
       max-height: 0;
       opacity: 0;
       overflow: hidden;
-      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s var(--ease);
+      transition: max-height 0.7s ease-in-out, opacity 0.7s ease-in-out;
     }
     .option-slide-out:hover .slide-out-details {
       max-height: 240px;
@@ -384,7 +384,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: gap 0.25s, color 0.3s;
+      transition: gap 0.5s ease-in-out, color 0.5s ease-in-out;
     }
     .option-slide-out:hover .slide-out-link {
       color: var(--theme-accent);
