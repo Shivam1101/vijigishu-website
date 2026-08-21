@@ -102,4 +102,33 @@ Run a local web server to preview changes:
 ```bash
 npx http-server . -p 3000
 ```
+
+---
+
+## 🎨 Design System (Branding & Identity)
+
+This project follows a strict color palette and typography rules to maintain a professional, high-end educational branding image.
+
+### 1. Color Palette (Visual Swatches)
+
+Below is the official branding color palette. The visual colors are rendered directly using inline SVG swatches.
+
+| Visual Swatch | Color Name | HEX Code | CSS Variable | Purpose & Usage |
+| :---: | :--- | :---: | :--- | :--- |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" fill="#1B1C4A" rx="4" /></svg> | **Navy Blue** | `#1B1C4A` | `--navy` | Primary brand color, headers, text headers, deep background blocks |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" fill="#38673A" rx="4" /></svg> | **Forest Green** | `#38673A` | `--green` | Accent/Action color, primary tags, active states, key icons |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" fill="#9FC28C" rx="4" /></svg> | **Sage Green** | `#9FC28C` | `--sage` | Secondary accent, border trims, decorative sub-headings |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" fill="#D4A840" rx="4" /></svg> | **Branding Gold** | `#D4A840` | `--gold` | Premium highlighting, timelines, specialty badges |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" fill="#0D0E2E" rx="4" /></svg> | **Dark Space** | `#0D0E2E` | `--dark` | Section dark background mode (e.g. "How It Works" timeline) |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" fill="#F6F7F2" rx="4" /></svg> | **Off-White Cream** | `#F6F7F2` | `--off` | Secondary canvas background, card grids backdrops |
+| <svg width="48" height="24" style="vertical-align:middle; border-radius:4px;"><rect width="48" height="24" stroke="#CCCCCC" stroke-width="1" fill="#FFFFFF" rx="4" /></svg> | **Pure White** | `#FFFFFF` | `--white` | Clean white content cards & primary body backgrounds |
+
+### 2. Typography Styles
+
+* **Primary Heading Font**: `'Playfair Display', serif`
+  * *Usage*: Section Headings (`h2`), Page Titles (`h1`), high-impact italic emphasis.
+  * *Feel*: Elegant, editorial, prestigious, representing high-quality global academics.
+* **Primary Body Font**: `'Plus Jakarta Sans', sans-serif`
+  * *Usage*: Body text (`p`), destination tags, navigation links, forms, descriptions.
+  * *Feel*: Modern, clean, highly legible, clean geometric rendering.
 Then open `http://localhost:3000` in your browser.

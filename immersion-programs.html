@@ -230,8 +230,25 @@
 
     /* ─── DISCIPLINES ─── */
     #disciplines { padding: 100px 0; background: var(--white); }
-    .disc-intro { max-width: 640px; margin-bottom: 56px; }
+    .disc-intro { max-width: 640px; margin-bottom: 0; }
     .disc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    
+    /* Header layout with bell icon aligned to far right on the same line */
+    .sec-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+      width: 100%;
+    }
+    .sec-header .enquiry-bell-btn {
+      position: relative;
+      margin-bottom: 6px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
     
     /* Base wrapper dimensions for grid cards */
     .disc-card-wrapper {
@@ -241,259 +258,7 @@
       background: var(--white);
     }
     
-    /* ──────────────────────────────────────────────────────────
-       OPTION 1: SLIDE-UP FROSTED PANEL (Management)
-       ────────────────────────────────────────────────────────── */
-    .option-slide-up {
-      height: 100%;
-      width: 100%;
-      border-radius: 28px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-    }
-    .option-slide-up:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0,0,0,.12);
-    }
-    .slide-up-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.6s var(--ease);
-    }
-    .option-slide-up:hover .slide-up-bg {
-      transform: scale(1.08);
-    }
-    .slide-up-initial {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13,14,46,0.85) 0%, rgba(13,14,46,0.3) 60%, rgba(13,14,46,0.1) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 40px;
-      color: var(--white);
-      transition: opacity 0.4s;
-    }
-    .option-slide-up:hover .slide-up-initial {
-      opacity: 0;
-    }
-    .slide-up-icon {
-      width: 50px; height: 50px;
-      border-radius: 12px;
-      background: var(--sage);
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .slide-up-initial h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-    .slide-up-panel {
-      position: absolute;
-      inset: 0;
-      background: rgba(13, 14, 46, 0.88);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: var(--white);
-      transform: translateY(100%);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .option-slide-up:hover .slide-up-panel {
-      transform: translateY(0);
-    }
-    .slide-up-panel h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--sage);
-      margin-bottom: 8px;
-    }
-    .slide-up-panel p {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 20px;
-    }
-    .slide-up-destinations {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .slide-up-dest-item {
-      display: flex;
-      gap: 12px;
-      font-size: 0.82rem;
-    }
-    .slide-up-dest-item strong {
-      color: var(--sage);
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
-      min-width: 90px;
-      flex-shrink: 0;
-    }
-    .slide-up-dest-item span {
-      color: rgba(255,255,255,0.85);
-    }
-    .slide-up-link {
-      color: var(--sage);
-      font-weight: 700;
-      font-size: 0.88rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.25s;
-    }
-    .slide-up-link:hover {
-      gap: 12px;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       OPTION 2: 3D CARD FLIP (Architecture & Design)
-       ────────────────────────────────────────────────────────── */
-    .option-card-flip {
-      perspective: 1000px;
-      height: 100%;
-      width: 100%;
-    }
-    .flip-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      transform-style: preserve-3d;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      border-radius: 28px;
-    }
-    .option-card-flip:hover .flip-inner {
-      transform: rotateY(180deg);
-      box-shadow: 0 20px 45px rgba(0,0,0,.12);
-    }
-    .flip-front, .flip-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border-radius: 28px;
-      overflow: hidden;
-    }
-    .flip-front {
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 40px;
-      color: var(--white);
-    }
-    .flip-front::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(13,14,46,0.8) 0%, rgba(13,14,46,0.2) 60%);
-      z-index: 1;
-    }
-    .flip-front-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .flip-icon {
-      width: 50px; height: 50px;
-      border-radius: 12px;
-      background: var(--gold);
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .flip-front h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-    .flip-back {
-      background: var(--navy);
-      color: var(--white);
-      transform: rotateY(180deg);
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: left;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .flip-back h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .flip-back p {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 20px;
-    }
-    .flip-destinations {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .flip-dest-item {
-      display: flex;
-      gap: 12px;
-      font-size: 0.82rem;
-    }
-    .flip-dest-item strong {
-      color: var(--gold);
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
-      min-width: 90px;
-      flex-shrink: 0;
-    }
-    .flip-dest-item span {
-      color: rgba(255,255,255,0.85);
-    }
-    .flip-link {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.88rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.25s;
-    }
-    .flip-link:hover {
-      gap: 12px;
-    }
-
-    /* ──────────────────────────────────────────────────────────
-       OPTION 3: HOVER VISUAL SLIDE-OUT / EXPAND (Engineering)
-       ────────────────────────────────────────────────────────── */
+    /* Option 3: Hover Visual Slide-out */
     .option-slide-out {
       height: 100%;
       width: 100%;
@@ -514,7 +279,7 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      transition: transform 0.6s var(--ease);
+      transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
       z-index: 1;
     }
     .option-slide-out:hover .slide-out-image {
@@ -529,44 +294,62 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: linear-gradient(to top, rgba(13,14,46,0.8) 0%, rgba(13,14,46,0.3) 100%);
+      background: linear-gradient(to top, rgba(13,14,46,0.85) 0%, rgba(13,14,46,0.3) 100%);
       color: var(--white);
       transition: background 0.4s;
     }
+    .slide-out-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      text-align: left;
+    }
     .option-slide-out:hover .slide-out-content {
-      background: rgba(13,14,46,0.92);
+      background: var(--theme-overlay);
     }
     .slide-out-icon {
       width: 50px; height: 50px;
       border-radius: 12px;
-      background: var(--green);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       display: grid;
       place-items: center;
       font-size: 1.5rem;
       color: var(--white);
       margin-bottom: 16px;
-      transition: transform 0.4s;
+      transition: transform 0.4s var(--ease), background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease);
     }
     .option-slide-out:hover .slide-out-icon {
       transform: scale(1.1);
+      background: var(--theme-accent);
+      color: var(--navy);
+      border-color: var(--theme-accent);
     }
     .slide-out-text h3 {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       font-weight: 700;
       margin-bottom: 6px;
+      transition: color 0.3s;
+    }
+    .option-slide-out:hover .slide-out-text h3 {
+      color: var(--theme-accent);
     }
     .slide-out-details {
-      display: none;
-      animation: fadeIn 0.4s forwards;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s var(--ease);
     }
     .option-slide-out:hover .slide-out-details {
-      display: block;
+      max-height: 240px;
+      opacity: 1;
     }
     .slide-out-desc {
       font-size: 0.88rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       margin-bottom: 20px;
     }
     .slide-out-destinations {
@@ -581,9 +364,10 @@
       display: flex;
       gap: 12px;
       font-size: 0.82rem;
+      text-align: left;
     }
     .slide-out-dest-item strong {
-      color: var(--sage);
+      color: var(--theme-accent);
       text-transform: uppercase;
       font-size: 0.72rem;
       letter-spacing: 0.05em;
@@ -594,148 +378,50 @@
       color: rgba(255,255,255,0.85);
     }
     .slide-out-link {
-      color: var(--sage);
+      color: var(--white);
       font-weight: 700;
       font-size: 0.88rem;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: gap 0.25s;
+      transition: gap 0.25s, color 0.3s;
     }
-    .slide-out-link:hover {
+    .option-slide-out:hover .slide-out-link {
+      color: var(--theme-accent);
       gap: 12px;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* ──────────────────────────────────────────────────────────
-       OPTION 4: MODERN SLIDE DRAWER (School Programs)
-       ────────────────────────────────────────────────────────── */
-    .option-slide-drawer {
-      height: 100%;
-      width: 100%;
-      border-radius: 28px;
-      overflow: hidden;
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
-      background: var(--white);
+    
+    /* Theme color mappings (Option 3 overlays) */
+    .theme-navy {
+      --theme-overlay: rgba(27, 28, 74, 0.94);
+      --theme-accent: var(--sage);
     }
-    .option-slide-drawer:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    .theme-gold {
+      --theme-overlay: rgba(168, 128, 32, 0.95);
+      --theme-accent: #FFF59D;
     }
-    .drawer-img {
-      overflow: hidden;
+    .theme-green {
+      --theme-overlay: rgba(56, 103, 58, 0.94);
+      --theme-accent: var(--sage);
     }
-    .drawer-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-    .option-slide-drawer:hover .drawer-img img {
-      transform: scale(1.05);
-    }
-    .drawer-body {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--white);
-    }
-    .drawer-icon {
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      background: rgba(56,103,58,.1);
-      display: grid;
-      place-items: center;
-      font-size: 1.3rem;
-      color: var(--green);
-      margin-bottom: 12px;
-    }
-    .drawer-name {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 6px;
-      font-family: 'Playfair Display', serif;
-    }
-    .drawer-sub {
-      font-size: 0.84rem;
-      color: var(--gray);
-      line-height: 1.5;
-    }
-    .drawer-trigger {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--off);
-      padding: 8px 14px;
-      border-radius: 10px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-top: 12px;
-      cursor: pointer;
-      border: 1px solid rgba(0,0,0,0.03);
-      transition: all 0.25s;
-    }
-    .option-slide-drawer:hover .drawer-trigger {
-      background: rgba(56, 103, 58, 0.06);
-      color: var(--green);
-    }
-    .drawer-badge {
-      background: var(--green);
-      color: var(--white);
-      font-size: 0.62rem;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 100px;
-    }
-    .option-slide-drawer:hover .drawer-badge {
-      background: var(--sage);
-      color: var(--navy);
-    }
-    .drawer-expanded-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      font-size: 0.72rem;
-      color: var(--gray);
-      line-height: 1.45;
-      padding: 0 4px;
-    }
-    .option-slide-drawer:hover .drawer-expanded-content {
-      max-height: 110px;
-      margin-top: 10px;
-      border-top: 1px dashed rgba(0,0,0,0.06);
-      padding-top: 10px;
-    }
-    .drawer-explore {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--green);
-      font-size: 0.85rem;
-      font-weight: 700;
-      transition: gap .25s;
-      margin-top: 12px;
-    }
-    .option-slide-drawer:hover .drawer-explore {
-      gap: 12px;
+    .theme-sage {
+      --theme-overlay: rgba(85, 116, 74, 0.95);
+      --theme-accent: #E8F5E9;
     }
     
-    /* Responsive grid styles */
     @media (max-width: 991px) {
       .disc-grid { grid-template-columns: 1fr; gap: 32px; }
       .disc-card-wrapper { height: 400px; }
-      .option-slide-drawer { grid-template-columns: 1fr; }
-      .drawer-img { display: none; }
+      .sec-header {
+        margin-bottom: 32px;
+      }
+      .sec-header .enquiry-bell-btn {
+        margin-top: 8px;
+      }
     }
     /* ─── INTERNSHIPS, FACULTY DEVELOPMENT & CONFERENCES ─── */
     #internship {
@@ -1274,8 +960,7 @@
 <!-- ===== BEST SELLING (OUR MOST POPULAR DESTINATIONS) ===== -->
 <section id="best-selling">
   <div class="container">
-    <!-- HEADING WITH ANIMATED BELL ENQUIRY ICON ON FAR RIGHT -->
-    <div class="sec-header reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div class="sec-header reveal">
       <div>
         <div class="tag">Best Selling</div>
         <h2 class="section-heading">Our Most Popular <span>Destinations</span></h2>
@@ -1386,7 +1071,7 @@
 <section id="disciplines">
   <div class="container">
     <!-- HEADING WITH ANIMATED BELL ENQUIRY ICON ON FAR RIGHT -->
-    <div class="sec-header reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 48px;">
+    <div class="sec-header reveal">
       <div class="disc-intro">
         <div class="tag">Academic Disciplines</div>
         <h2 class="section-heading">Programs Tailored to<br><span>Your Field of Study</span></h2>
@@ -1403,65 +1088,30 @@
 
     <div class="disc-grid">
 
-      <!-- Card 1: Management (Option 1: Slide-up Frosted Panel) -->
+      <!-- Card 1: Management (Option 3 with theme-navy overlay) -->
       <div id="management" class="disc-card-wrapper reveal">
-        <div class="option-slide-up">
-          <div class="slide-up-bg" style="background-image: url('images/mangement-2-scaled.webp');"></div>
-          <div class="slide-up-initial">
-            <div class="slide-up-icon">💼</div>
-            <h3>Management</h3>
-          </div>
-          <div class="slide-up-panel">
-            <div>
-              <h4>Management</h4>
-              <p>Learn how the world does business globally.</p>
-              <div class="slide-up-destinations">
-                <div class="slide-up-dest-item">
-                  <strong>✈️ Global:</strong>
-                  <span>Vietnam · Malaysia · Singapore · Dubai · Japan · South Korea · Europe</span>
-                </div>
-                <div class="slide-up-dest-item">
-                  <strong>🏠 India:</strong>
-                  <span>Jaipur · Mumbai · Goa · Delhi · Bengaluru · Ahmedabad</span>
-                </div>
-              </div>
-            </div>
-            <a href="management.html" target="_blank" class="slide-up-link">
-              Explore Program
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Architecture & Design (Option 2: 3D Card Flip) -->
-      <div id="architecture" class="disc-card-wrapper reveal reveal-delay-1">
-        <div class="option-card-flip">
-          <div class="flip-inner">
-            <!-- Front -->
-            <div class="flip-front" style="background-image: url('images/archi-scaled.webp');">
-              <div class="flip-front-content">
-                <div class="flip-icon">🏛️</div>
-                <h3>Architecture &amp; Design</h3>
-              </div>
-            </div>
-            <!-- Back -->
-            <div class="flip-back">
-              <div>
-                <h4>Architecture &amp; Design</h4>
-                <p>Step beyond textbooks — experience how design lives in the real world.</p>
-                <div class="flip-destinations">
-                  <div class="flip-dest-item">
-                    <strong>✈️ Global:</strong>
-                    <span>Vietnam · Japan · Malaysia · Dubai · Europe · South Korea</span>
-                  </div>
-                  <div class="flip-dest-item">
-                    <strong>🏠 India:</strong>
-                    <span>Chandigarh · Mysore · Bengaluru · Ahmedabad · Goa</span>
+        <div class="option-slide-out theme-navy">
+          <div class="slide-out-image" style="background-image: url('images/mangement-2-scaled.webp');"></div>
+          <div class="slide-out-content">
+            <div class="slide-out-icon">💼</div>
+            <div class="slide-out-bottom">
+              <div class="slide-out-text">
+                <h3>Management</h3>
+                <div class="slide-out-details">
+                  <p class="slide-out-desc">Learn how the world does business globally.</p>
+                  <div class="slide-out-destinations">
+                    <div class="slide-out-dest-item">
+                      <strong>✈️ Global:</strong>
+                      <span>Vietnam · Malaysia · Singapore · Dubai · Japan · South Korea · Europe</span>
+                    </div>
+                    <div class="slide-out-dest-item">
+                      <strong>🏠 India:</strong>
+                      <span>Jaipur · Mumbai · Goa · Delhi · Bengaluru · Ahmedabad</span>
+                    </div>
                   </div>
                 </div>
               </div>
-              <a href="architecture-design.html" target="_blank" class="flip-link">
+              <a href="management.html" target="_blank" class="slide-out-link">
                 Explore Program
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
@@ -1470,64 +1120,98 @@
         </div>
       </div>
 
-      <!-- Card 3: Engineering (Option 3: Hover Visual Slide-out) -->
-      <div id="engineering" class="disc-card-wrapper reveal">
-        <div class="option-slide-out">
-          <div class="slide-out-image" style="background-image: url('images/engg-2-scaled.webp');"></div>
+      <!-- Card 2: Architecture & Design (Option 3 with theme-gold overlay) -->
+      <div id="architecture" class="disc-card-wrapper reveal reveal-delay-1">
+        <div class="option-slide-out theme-gold">
+          <div class="slide-out-image" style="background-image: url('images/archi-scaled.webp');"></div>
           <div class="slide-out-content">
-            <div class="slide-out-icon">⚙️</div>
-            <div class="slide-out-text">
-              <h3>Engineering</h3>
-              
-              <!-- Hidden details that reveal on hover -->
-              <div class="slide-out-details">
-                <p class="slide-out-desc">Engineering is best understood when seen in action.</p>
-                <div class="slide-out-destinations">
-                  <div class="slide-out-dest-item">
-                    <strong>✈️ Global:</strong>
-                    <span>Japan · Malaysia · Singapore · Dubai · Europe · South Korea</span>
-                  </div>
-                  <div class="slide-out-dest-item">
-                    <strong>🏠 India:</strong>
-                    <span>Pune · Mumbai · Bengaluru · Delhi · Manali &amp; Shimla</span>
+            <div class="slide-out-icon">🏛️</div>
+            <div class="slide-out-bottom">
+              <div class="slide-out-text">
+                <h3>Architecture &amp; Design</h3>
+                <div class="slide-out-details">
+                  <p class="slide-out-desc">Step beyond textbooks — experience how design lives in the real world.</p>
+                  <div class="slide-out-destinations">
+                    <div class="slide-out-dest-item">
+                      <strong>✈️ Global:</strong>
+                      <span>Vietnam · Japan · Malaysia · Dubai · Europe · South Korea</span>
+                    </div>
+                    <div class="slide-out-dest-item">
+                      <strong>🏠 India:</strong>
+                      <span>Chandigarh · Mysore · Bengaluru · Ahmedabad · Goa</span>
+                    </div>
                   </div>
                 </div>
               </div>
+              <a href="architecture-design.html" target="_blank" class="slide-out-link">
+                Explore Program
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
-            <a href="engineering.html" target="_blank" class="slide-out-link">
-              Explore Program
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
           </div>
         </div>
       </div>
 
-      <!-- Card 4: School Programs (Option 4: Slide Drawer - Refined Horizontal Split) -->
-      <div id="school" class="disc-card-wrapper reveal reveal-delay-1">
-        <div class="option-slide-drawer">
-          <div class="drawer-img">
-            <img src="images/School.webp" alt="School Programs" loading="lazy" />
-          </div>
-          <div class="drawer-body">
-            <div>
-              <div class="drawer-icon">🎒</div>
-              <div class="drawer-name">School Programs</div>
-              <div class="drawer-sub">Early exposure creates confident future leaders.</div>
-              
-              <!-- Slide Drawer Trigger -->
-              <div class="drawer-trigger">
-                <span>📍 View Locations</span>
-                <span class="drawer-badge">13 Cities</span>
+      <!-- Card 3: Engineering (Option 3 with theme-green overlay) -->
+      <div id="engineering" class="disc-card-wrapper reveal">
+        <div class="option-slide-out theme-green">
+          <div class="slide-out-image" style="background-image: url('images/engg-2-scaled.webp');"></div>
+          <div class="slide-out-content">
+            <div class="slide-out-icon">⚙️</div>
+            <div class="slide-out-bottom">
+              <div class="slide-out-text">
+                <h3>Engineering</h3>
+                <div class="slide-out-details">
+                  <p class="slide-out-desc">Engineering is best understood when seen in action.</p>
+                  <div class="slide-out-destinations">
+                    <div class="slide-out-dest-item">
+                      <strong>✈️ Global:</strong>
+                      <span>Japan · Malaysia · Singapore · Dubai · Europe · South Korea</span>
+                    </div>
+                    <div class="slide-out-dest-item">
+                      <strong>🏠 India:</strong>
+                      <span>Pune · Mumbai · Bengaluru · Delhi · Manali &amp; Shimla</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="drawer-expanded-content">
-                <p><strong>✈️ Global:</strong> Vietnam · Malaysia · Singapore · Dubai · Indonesia · Europe · Japan</p>
-                <p style="margin-top: 6px;"><strong>🏠 India:</strong> Jaipur · Agra · Shimla · Goa · Mumbai · Bengaluru</p>
-              </div>
+              <a href="engineering.html" target="_blank" class="slide-out-link">
+                Explore Program
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
-            <a href="school-programs.html" target="_blank" class="drawer-explore">
-              Explore More
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: School Programs (Option 3 with theme-sage overlay) -->
+      <div id="school" class="disc-card-wrapper reveal reveal-delay-1">
+        <div class="option-slide-out theme-sage">
+          <div class="slide-out-image" style="background-image: url('images/School.webp');"></div>
+          <div class="slide-out-content">
+            <div class="slide-out-icon">🎒</div>
+            <div class="slide-out-bottom">
+              <div class="slide-out-text">
+                <h3>School Programs</h3>
+                <div class="slide-out-details">
+                  <p class="slide-out-desc">Early exposure creates confident future leaders.</p>
+                  <div class="slide-out-destinations">
+                    <div class="slide-out-dest-item">
+                      <strong>✈️ Global:</strong>
+                      <span>Vietnam · Malaysia · Singapore · Dubai · Indonesia · Europe · Japan</span>
+                    </div>
+                    <div class="slide-out-dest-item">
+                      <strong>🏠 India:</strong>
+                      <span>Jaipur · Agra · Shimla · Goa · Mumbai · Bengaluru</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="school-programs.html" target="_blank" class="slide-out-link">
+                Explore Program
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1538,8 +1222,7 @@
 <!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES ===== -->
 <section id="internship">
   <div class="container">
-    <!-- HEADING WITH ANIMATED BELL ENQUIRY ICON ON FAR RIGHT -->
-    <div class="sec-header reveal" style="display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 48px;">
+    <div class="sec-header reveal">
       <div>
         <div class="tag">Special Learning Tours</div>
         <h2 class="section-heading">Internships, Faculty Development<br>and <span>Conferences</span></h2>
