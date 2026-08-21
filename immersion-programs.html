@@ -239,6 +239,7 @@
       grid-template-columns: 1fr 1fr;
       box-shadow: 0 4px 24px rgba(0,0,0,.07);
       transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+      background: var(--white);
     }
     .disc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.12); }
     .disc-img { overflow: hidden; }
@@ -262,13 +263,119 @@
     }
     .disc-name { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
     .disc-sub { font-size: .84rem; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
-    .disc-dest-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
-    .disc-dest-item { display: flex; align-items: flex-start; gap: 8px; font-size: .78rem; color: var(--gray); }
-    .disc-dest-icon { font-size: .9rem; flex-shrink: 0; margin-top: 1px; }
-    .disc-dest-label { font-weight: 700; color: var(--navy); font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: 2px; }
     .disc-explore { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: .85rem; font-weight: 700; transition: gap .25s; }
     .disc-card:hover .disc-explore { gap: 12px; }
 
+    /* ─── ACADEMIC CARD VARIATIONS ─── */
+    
+    /* --- VARIATION A: PILLS (Management) --- */
+    .var-a-destinations { margin-top: 12px; }
+    .var-a-dest-group { display: flex; flex-direction: column; gap: 4px; }
+    .var-a-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--navy); letter-spacing: 0.05em; }
+    .var-a-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+    .var-a-pill {
+      background: rgba(56, 103, 58, 0.05);
+      color: var(--green);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 100px;
+      border: 1px solid rgba(56, 103, 58, 0.08);
+      white-space: nowrap;
+    }
+    .var-a-pill.domestic {
+      background: rgba(212, 168, 64, 0.05);
+      color: #B38622;
+      border-color: rgba(212, 168, 64, 0.08);
+    }
+
+    /* --- VARIATION B: TWO COLUMN GRID (Architecture) --- */
+    .var-b-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+      border-top: 1px dashed rgba(0,0,0,0.06);
+      padding-top: 12px;
+    }
+    .var-b-col { display: flex; flex-direction: column; gap: 4px; }
+    .var-b-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--green); letter-spacing: 0.05em; }
+    .var-b-list { font-size: 0.74rem; color: var(--gray); line-height: 1.4; }
+
+    /* --- VARIATION C: ACCENT BORDER & FLAT LISTS (Engineering) --- */
+    .disc-card-var-c {
+      border-left: 4px solid var(--green) !important;
+    }
+    .var-c-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .var-c-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.74rem;
+      color: var(--gray);
+      line-height: 1.45;
+    }
+    .var-c-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .var-c-dot.green { background: var(--green); }
+    .var-c-dot.gold { background: var(--gold); }
+
+    /* --- VARIATION D: SLIDE DRAWER (School Programs) --- */
+    .var-d-drawer {
+      margin-top: 12px;
+      position: relative;
+    }
+    .var-d-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--off);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--navy);
+      transition: all 0.25s;
+    }
+    .disc-card:hover .var-d-trigger {
+      background: rgba(56, 103, 58, 0.06);
+      color: var(--green);
+    }
+    .var-d-badge {
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 100px;
+    }
+    .disc-card-var-d:hover .var-d-badge {
+      background: var(--sage);
+      color: var(--navy);
+    }
+    .var-d-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      font-size: 0.72rem;
+      color: var(--gray);
+      line-height: 1.45;
+      padding: 0 4px;
+    }
+    .disc-card-var-d:hover .var-d-content {
+      max-height: 80px;
+      margin-top: 8px;
+    }
     /* ─── INTERNSHIPS, FACULTY DEVELOPMENT & CONFERENCES ─── */
     #internship {
       padding: 90px 0;
@@ -922,7 +1029,6 @@
       <div class="disc-intro">
         <div class="tag">Academic Disciplines</div>
         <h2 class="section-heading">Programs Tailored to<br><span>Your Field of Study</span></h2>
-        
       </div>
 
       <!-- ANIMATED BELL ENQUIRY ICON REDIRECTING TO CONTACT PAGE -->
@@ -936,8 +1042,8 @@
 
     <div class="disc-grid">
 
-      <!-- Management Card -->
-      <div id="management" class="disc-card reveal">
+      <!-- Management Card (Variation A: Destination Pills) -->
+      <div id="management" class="disc-card disc-card-var-a reveal">
         <div class="disc-img">
           <img src="images/mangement-2-scaled.webp" alt="Management" loading="lazy" />
         </div>
@@ -945,23 +1051,33 @@
           <div>
             <div class="disc-icon">💼</div>
             <div class="disc-name">Management</div>
-            <div class="disc-sub">Learn how the world does business globally. Real boardrooms, real insights.</div>
-            <div class="disc-dest-row">
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">✈️</span>
-                <div>
-                  <span class="disc-dest-label">International</span>
-                  Vietnam · Malaysia · Singapore · Dubai · Japan · South Korea · Europe
+            <div class="disc-sub">Learn how the world does business globally.</div>
+            
+            <div class="var-a-destinations">
+              <div class="var-a-dest-group">
+                <span class="var-a-label">International:</span>
+                <div class="var-a-pills">
+                  <span class="var-a-pill">Vietnam</span>
+                  <span class="var-a-pill">Singapore</span>
+                  <span class="var-a-pill">Malaysia</span>
+                  <span class="var-a-pill">Dubai</span>
+                  <span class="var-a-pill">Japan</span>
+                  <span class="var-a-pill">+2 More</span>
                 </div>
               </div>
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">🏠</span>
-                <div>
-                  <span class="disc-dest-label">Domestic</span>
-                  Jaipur · Mumbai · Goa · Delhi · Bengaluru · Ahmedabad
+              <div class="var-a-dest-group" style="margin-top: 10px;">
+                <span class="var-a-label">Domestic:</span>
+                <div class="var-a-pills">
+                  <span class="var-a-pill domestic">Jaipur</span>
+                  <span class="var-a-pill domestic">Mumbai</span>
+                  <span class="var-a-pill domestic">Goa</span>
+                  <span class="var-a-pill domestic">Delhi</span>
+                  <span class="var-a-pill domestic">Bengaluru</span>
+                  <span class="var-a-pill domestic">+1 More</span>
                 </div>
               </div>
             </div>
+
           </div>
           <a href="management.html" target="_blank" class="disc-explore">
             Explore More
@@ -970,8 +1086,8 @@
         </div>
       </div>
 
-      <!-- Architecture & Design Card -->
-      <div id="architecture" class="disc-card reveal reveal-delay-1">
+      <!-- Architecture & Design Card (Variation B: Two Column Grid) -->
+      <div id="architecture" class="disc-card disc-card-var-b reveal reveal-delay-1">
         <div class="disc-img">
           <img src="images/archi-scaled.webp" alt="Architecture & Design" loading="lazy" />
         </div>
@@ -980,22 +1096,18 @@
             <div class="disc-icon">🏛️</div>
             <div class="disc-name">Architecture &amp; Design</div>
             <div class="disc-sub">Step beyond textbooks — experience how design lives in the real world.</div>
-            <div class="disc-dest-row">
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">✈️</span>
-                <div>
-                  <span class="disc-dest-label">International</span>
-                  Vietnam · Japan · Malaysia · Dubai · Europe · South Korea
-                </div>
+            
+            <div class="var-b-grid">
+              <div class="var-b-col">
+                <span class="var-b-title">✈️ Global</span>
+                <span class="var-b-list">Vietnam · Japan · Malaysia · Dubai · Europe · South Korea</span>
               </div>
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">🏠</span>
-                <div>
-                  <span class="disc-dest-label">Domestic</span>
-                  Chandigarh · Mysore · Bengaluru · Ahmedabad · Goa
-                </div>
+              <div class="var-b-col">
+                <span class="var-b-title">🏠 India</span>
+                <span class="var-b-list">Chandigarh · Mysore · Bengaluru · Ahmedabad · Goa</span>
               </div>
             </div>
+
           </div>
           <a href="architecture-design.html" target="_blank" class="disc-explore">
             Explore More
@@ -1004,8 +1116,8 @@
         </div>
       </div>
 
-      <!-- Engineering Card -->
-      <div id="engineering" class="disc-card reveal">
+      <!-- Engineering Card (Variation C: Accent Border & Clean Lists) -->
+      <div id="engineering" class="disc-card disc-card-var-c reveal">
         <div class="disc-img">
           <img src="images/engg-2-scaled.webp" alt="Engineering" loading="lazy" />
         </div>
@@ -1013,23 +1125,19 @@
           <div>
             <div class="disc-icon">⚙️</div>
             <div class="disc-name">Engineering</div>
-            <div class="disc-sub">Engineering is best understood when seen in action — factories, labs, and tech hubs.</div>
-            <div class="disc-dest-row">
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">✈️</span>
-                <div>
-                  <span class="disc-dest-label">International</span>
-                  Japan · Malaysia · Singapore · Dubai · Europe · South Korea
-                </div>
+            <div class="disc-sub">Engineering is best understood when seen in action.</div>
+            
+            <div class="var-c-bullets">
+              <div class="var-c-item">
+                <span class="var-c-dot green"></span>
+                <span><strong>International:</strong> Japan, Malaysia, Singapore, Dubai, Europe</span>
               </div>
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">🏠</span>
-                <div>
-                  <span class="disc-dest-label">Domestic</span>
-                  Pune · Mumbai · Bengaluru · Delhi · Manali &amp; Shimla
-                </div>
+              <div class="var-c-item">
+                <span class="var-c-dot gold"></span>
+                <span><strong>Domestic:</strong> Pune, Mumbai, Bengaluru, Delhi, Shimla</span>
               </div>
             </div>
+
           </div>
           <a href="engineering.html" target="_blank" class="disc-explore">
             Explore More
@@ -1038,8 +1146,8 @@
         </div>
       </div>
 
-      <!-- School Programs Card -->
-      <div id="school" class="disc-card reveal reveal-delay-1">
+      <!-- School Programs Card (Variation D: Minimal with Slide Drawer) -->
+      <div id="school" class="disc-card disc-card-var-d reveal reveal-delay-1">
         <div class="disc-img">
           <img src="images/School.webp" alt="School Programs" loading="lazy" />
         </div>
@@ -1047,23 +1155,19 @@
           <div>
             <div class="disc-icon">🎒</div>
             <div class="disc-name">School Programs</div>
-            <div class="disc-sub">Early exposure creates confident future leaders. Curated for young minds.</div>
-            <div class="disc-dest-row">
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">✈️</span>
-                <div>
-                  <span class="disc-dest-label">International</span>
-                  Vietnam · Malaysia · Singapore · Dubai · Indonesia · Europe · Japan
-                </div>
+            <div class="disc-sub">Early exposure creates confident future leaders.</div>
+            
+            <div class="var-d-drawer">
+              <div class="var-d-trigger">
+                <span>📍 View Locations</span>
+                <span class="var-d-badge">13 Cities</span>
               </div>
-              <div class="disc-dest-item">
-                <span class="disc-dest-icon">🏠</span>
-                <div>
-                  <span class="disc-dest-label">Domestic</span>
-                  Jaipur · Agra · Shimla · Goa · Mumbai · Bengaluru
-                </div>
+              <div class="var-d-content">
+                <p style="margin-top: 8px;"><strong>Global:</strong> Vietnam, Singapore, Malaysia, Dubai, Indonesia, Europe, Japan</p>
+                <p style="margin-top: 4px;"><strong>Domestic:</strong> Jaipur, Agra, Shimla, Goa, Mumbai, Bengaluru</p>
               </div>
             </div>
+
           </div>
           <a href="school-programs.html" target="_blank" class="disc-explore">
             Explore More
@@ -1075,9 +1179,6 @@
     </div>
   </div>
 </section>
-
-
-
 <!-- ===== INTERNSHIPS, FACULTY DEVELOPMENT AND CONFERENCES ===== -->
 <section id="internship">
   <div class="container">
