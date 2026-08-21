@@ -175,7 +175,41 @@
           <circle class="progress-ring-circle" id="scrollProgressCircle" cx="30" cy="30" r="26" />
         </svg>
         <div class="compass-btn-inner">
-          <img src="images/compass-scroll.png" alt="Go to top" class="compass-icon-img" />
+          <svg class="compass-svg" viewBox="0 0 100 100" width="100%" height="100%">
+            <!-- Compass Dial Face -->
+            <circle cx="50" cy="50" r="48" fill="#2B62A4" stroke="#1D4475" stroke-width="1.5" />
+            <circle cx="50" cy="50" r="43.5" fill="#F4C74D" stroke="#DDA82B" stroke-width="2" />
+            <circle cx="50" cy="50" r="38" fill="#E6B435" />
+            
+            <!-- Dial Star Background -->
+            <polygon points="50,15 53.5,46.5 50,50 46.5,46.5" fill="#D39E22" />
+            <polygon points="50,85 53.5,53.5 50,50 46.5,53.5" fill="#D39E22" />
+            <polygon points="15,50 46.5,46.5 50,50 46.5,53.5" fill="#D39E22" />
+            <polygon points="85,50 53.5,46.5 50,50 53.5,53.5" fill="#D39E22" />
+            <polygon points="25,25 48,46.5 50,50 46.5,48" fill="#CB951C" />
+            <polygon points="75,25 53.5,48 50,50 52,46.5" fill="#CB951C" />
+            <polygon points="75,75 52,53.5 50,50 53.5,52" fill="#CB951C" />
+            <polygon points="25,75 46.5,52 50,50 48,53.5" fill="#CB951C" />
+
+            <!-- Direction Labels (Fixed) -->
+            <text x="50" y="27" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">N</text>
+            <text x="77" y="53.5" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">E</text>
+            <text x="50" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">S</text>
+            <text x="23" y="53.5" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">W</text>
+
+            <!-- Rotating Compass Needle (Option 2) -->
+            <g id="compassNeedle" class="compass-needle-group">
+              <!-- North Green Pointer -->
+              <polygon points="50,14 43.5,50 50,50" fill="#46B45C" />
+              <polygon points="50,14 56.5,50 50,50" fill="#2C8840" />
+              <!-- South Red Pointer -->
+              <polygon points="50,86 43.5,50 50,50" fill="#EA4D3D" />
+              <polygon points="50,86 56.5,50 50,50" fill="#C42E21" />
+              <!-- Center Pivot Pin -->
+              <circle cx="50" cy="50" r="7.5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="0.8" />
+              <circle cx="50" cy="50" r="4.2" fill="#E2AC2E" stroke="#C49120" stroke-width="0.8" />
+            </g>
+          </svg>
         </div>
       </button>
       `;
@@ -230,6 +264,7 @@
     if (currentPath.includes('admin')) return;
     const scrollBtn = document.getElementById('scrollToTop');
     const circle = document.getElementById('scrollProgressCircle');
+    const needle = document.getElementById('compassNeedle');
     if (!scrollBtn || !circle) return;
 
     const radius = circle.r.baseVal.value;
@@ -242,10 +277,16 @@
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
+      let progress = 0;
       if (scrollHeight > 0) {
-        const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+        progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
         const offset = circumference - (progress * circumference);
         circle.style.strokeDashoffset = offset;
+      }
+
+      // Rotate only the needle arrow as user scrolls
+      if (needle) {
+        needle.style.transform = `rotate(${progress * 360}deg)`;
       }
 
       if (scrollTop > 220) {
@@ -260,6 +301,13 @@
     updateScrollProgress();
 
     scrollBtn.addEventListener('click', function () {
+      if (needle) {
+        needle.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        needle.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+          needle.style.transition = 'transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1)';
+        }, 850);
+      }
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
