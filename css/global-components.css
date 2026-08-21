@@ -265,6 +265,15 @@ footer#site-footer::before {
   position: relative; /* Ensure absolute children layout correctly */
 }
 
+/* Ensure no zoom effect on all banner images */
+.page-hero-img img,
+.hero-img img,
+.page-hero img,
+.hero-video {
+  animation: none !important;
+  transform: none !important;
+}
+
 /* Minimal Gradient Border below all Hero Banners */
 .page-hero::after,
 .blog-hero::after,
