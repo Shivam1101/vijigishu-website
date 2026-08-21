@@ -202,7 +202,6 @@
       grid-template-columns: 340px 1fr;
       border-radius: 24px;
       align-items: stretch; /* Make both columns same height */
-      overflow: hidden; /* Restore clean border radius clipping */
       box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
       border: 1px solid #E2E8F0;
     }
@@ -211,6 +210,8 @@
       padding: 60px 40px;
       color: #fff;
       position: relative;
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
     }
     .process-sidebar::after {
       content: '';
@@ -264,6 +265,8 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
     }
 
     /* --- INFOGRAPHIC CARDS --- */
