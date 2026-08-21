@@ -43,17 +43,34 @@
     .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
     .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
 
-    /* ─── PAGE HERO (CLEAN BANNER IMAGE ONLY, NO ZOOM) ─── */
+    /* ─── PAGE HERO (CONTAINED BANNER IMAGE) ─── */
     .page-hero {
       position: relative;
-      height: 550px;
+      height: auto;
+      min-height: auto;
       overflow: hidden;
       margin-top: 72px;
       display: flex;
       align-items: center;
+      justify-content: center;
+      background: var(--off);
     }
-    .page-hero-img { position: absolute; inset: 0; }
-    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: none !important; transform: none !important; }
+    .page-hero-img {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .page-hero-img img {
+      width: 100%;
+      height: auto;
+      max-height: 540px;
+      object-fit: contain;
+      animation: none !important;
+      transform: none !important;
+      display: block;
+    }
 
     /* ─── PAGE TITLE BELOW BANNER (CENTERED) ─── */
     .page-header-section {
@@ -440,7 +457,8 @@
       .contact-form-wrap { padding: 40px 32px; }
     }
     @media (max-width: 768px) {
-      .page-hero { height: 320px; }
+      .page-hero { height: auto; }
+      .page-hero-img img { max-height: 280px; }
       .form-grid { grid-template-columns: 1fr; }
       .popup-card { padding: 36px 24px 28px; }
       .popup-actions { flex-direction: column; }
