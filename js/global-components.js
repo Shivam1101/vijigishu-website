@@ -174,6 +174,7 @@
           <circle class="progress-ring-bg" cx="30" cy="30" r="26" />
           <circle class="progress-ring-circle" id="scrollProgressCircle" cx="30" cy="30" r="26" />
         </svg>
+        <span class="compass-tooltip">Navigate to top</span>
         <div class="compass-btn-inner">
           <svg class="compass-svg" viewBox="0 0 100 100" width="100%" height="100%">
             <!-- Compass Dial Face -->
