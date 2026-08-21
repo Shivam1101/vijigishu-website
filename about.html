@@ -277,159 +277,196 @@
     .about-cta-sub { color: rgba(255,255,255,.65); font-size: .95rem; line-height: 1.65; margin: 0; }
     .about-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; }
 
-    /* --- OPTION 1: Split Grid (Foreground Mascot) --- */
-    .opt-split {
+    /* --- OPTION 5: Isometric 3D Badge --- */
+    .opt-isometric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+      padding: 56px 64px;
+      overflow: visible !important;
+    }
+    .mascot-badge-3d {
+      position: absolute;
+      left: -35px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-10deg);
+      width: 130px;
+      height: 130px;
+      border-radius: 32px;
+      background: var(--white);
+      border: 4px solid var(--sage);
+      box-shadow: -8px 12px 0px rgba(0,0,0,0.15), 0 15px 30px rgba(27,28,74,0.25);
+      display: grid;
+      place-items: center;
+      z-index: 10;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+    }
+    .mascot-img-isometric {
+      width: 100px;
+      height: auto;
+    }
+    .opt-isometric:hover .mascot-badge-3d {
+      transform: translateY(-55%) rotate(-5deg) scale(1.08);
+      box-shadow: -12px 18px 0px rgba(0,0,0,0.12), 0 20px 40px rgba(27,28,74,0.35);
+    }
+
+    /* --- OPTION 6: Center Divider Split --- */
+    .opt-symmetrical {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto 1fr;
+      align-items: center;
+      gap: 32px;
+      padding: 56px 48px;
+    }
+    .sym-text {
+      text-align: left;
+      z-index: 2;
+    }
+    .sym-divider-left, .sym-divider-right {
+      width: 1px;
+      height: 90px;
+      background: rgba(255,255,255,0.15);
+      z-index: 2;
+    }
+    .sym-mascot {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(159,194,140,0.15) 0%, transparent 70%);
+      display: grid;
+      place-items: center;
+      z-index: 2;
+      transition: transform 0.4s ease;
+    }
+    .mascot-img-symmetrical {
+      width: 95px;
+      height: auto;
+    }
+    .sym-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+      z-index: 2;
+    }
+    .opt-symmetrical:hover .sym-mascot {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    /* --- OPTION 7: Mascot Speech Bubble --- */
+    .opt-bubble {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 40px;
+      padding: 48px 56px;
+    }
+    .bubble-mascot-wrapper {
+      z-index: 2;
+      transition: transform 0.4s ease;
+    }
+    .mascot-img-bubble {
+      width: 120px;
+      height: auto;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+    .speech-bubble-body {
+      position: relative;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 48px;
+      z-index: 2;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .bubble-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 32px;
+    }
+    .bubble-arrow {
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 24px;
+      height: 24px;
+      background: var(--white);
+      border-radius: 3px 0 0 0;
+    }
+    .opt-bubble:hover .bubble-mascot-wrapper {
+      transform: scale(1.08) translateY(-4px);
+    }
+    .opt-bubble:hover .speech-bubble-body {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+    }
+
+    /* --- OPTION 8: Mascot Portal Window --- */
+    .opt-portal {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       align-items: center;
       gap: 40px;
       padding: 56px 64px;
     }
-    .opt-split::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 90% 50%, rgba(159,194,140,0.15) 0%, transparent 60%);
-    }
-    .about-cta-mascot-wrapper {
-      position: relative;
+    .portal-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 2;
     }
-    .mascot-circle-bg {
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(159,194,140,0.2) 0%, transparent 70%);
-    }
-    .mascot-img-foreground {
-      width: 200px;
-      height: auto;
-      position: relative;
-      z-index: 3;
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
-      transition: transform 0.45s ease;
-    }
-    .opt-split:hover .mascot-img-foreground {
-      transform: translateY(-8px) scale(1.05);
-    }
-
-    /* --- OPTION 2: Background Watermark --- */
-    .opt-watermark {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      align-items: center;
-      gap: 40px;
-      padding: 64px 80px;
-      background: linear-gradient(135deg, #1B1C4A 0%, #0d0e2e 100%) !important;
-    }
-    .mascot-img-watermark {
-      position: absolute;
-      right: 25%;
-      bottom: -40px;
-      width: 280px;
-      height: auto;
-      opacity: 0.06;
-      z-index: 1;
-      pointer-events: none;
-      filter: grayscale(1) brightness(1.8);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .opt-watermark:hover .mascot-img-watermark {
-      opacity: 0.12;
-      transform: scale(1.08) rotate(3deg);
-    }
-
-    /* --- OPTION 3: Peeking Badge --- */
-    .opt-peeking {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      align-items: center;
-      gap: 40px;
-      padding: 56px 64px;
-      overflow: visible !important;
-    }
-    .opt-peeking::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 100% 50%, rgba(56,103,58,0.2) 0%, transparent 50%);
-    }
-    .mascot-img-peeking {
-      position: absolute;
-      top: -85px;
-      right: 80px;
-      width: 135px;
-      height: auto;
-      z-index: 10;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
-      transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform-origin: bottom center;
-    }
-    .opt-peeking:hover .mascot-img-peeking {
-      transform: translateY(-10px) rotate(-4deg) scale(1.1);
-    }
-
-    /* --- OPTION 4: Left Mascot Host --- */
-    .opt-host {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 32px;
-      padding: 48px 56px;
-    }
-    .opt-host::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 0% 50%, rgba(159,194,140,0.15) 0%, transparent 40%);
-    }
-    .about-cta-host-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
+    .portal-shape {
+      width: 170px;
+      height: 170px;
       background: rgba(255,255,255,0.06);
-      border: 2px solid rgba(159,194,140,0.3);
+      border: 3px solid var(--sage);
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
       display: grid;
       place-items: center;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: inset 0 0 20px rgba(159,194,140,0.2), 0 10px 25px rgba(0,0,0,0.15);
+      animation: morph 8s ease-in-out infinite;
       transition: border-color 0.4s, background 0.4s;
-      z-index: 2;
     }
-    .mascot-img-host {
-      width: 85px;
+    .mascot-img-portal {
+      width: 130px;
       height: auto;
-      object-fit: contain;
-      transition: transform 0.45s ease;
+      transition: transform 0.5s ease;
     }
-    .opt-host:hover .about-cta-host-avatar {
-      border-color: var(--sage);
-      background: rgba(255,255,255,0.1);
+    .opt-portal:hover .portal-shape {
+      border-color: var(--green);
+      background: rgba(255,255,255,0.12);
     }
-    .opt-host:hover .mascot-img-host {
-      transform: scale(1.1) translateY(-2px);
+    .opt-portal:hover .mascot-img-portal {
+      transform: scale(1.12) rotate(-3deg);
+    }
+    @keyframes morph {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
+      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
     }
 
     @media (max-width: 991px) {
-      .opt-split, .opt-watermark, .opt-peeking, .opt-host {
+      .opt-isometric, .opt-symmetrical, .opt-bubble, .opt-portal {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 40px 32px;
         text-align: center;
       }
-      .about-cta-left { text-align: center; }
+      .about-cta-left { text-align: center; padding-left: 0 !important; }
       .about-cta-right { flex-direction: row; justify-content: center; width: 100%; }
       .about-cta-right .btn { flex: 1; text-align: center; justify-content: center; }
-      .mascot-img-peeking { display: none; }
-      .opt-host {
-        display: flex;
-        flex-direction: column;
-      }
+      .mascot-badge-3d { display: none; }
+      .sym-divider-left, .sym-divider-right { display: none; }
+      .opt-symmetrical { display: flex; flex-direction: column; }
+      .opt-bubble { display: flex; flex-direction: column; }
+      .bubble-arrow { display: none; }
+      .speech-bubble-body { padding: 32px 24px; }
+      .bubble-content { grid-template-columns: 1fr; }
     }
 /* ─── FOOTER (GRADIENT DESIGN) ─── */
     footer {
@@ -785,16 +822,77 @@
   <div class="container">
     
     <div class="about-cta-section-header reveal">
-      <h2>Mascot Design Options</h2>
-      <p>Compare the 4 layout options below incorporating the Vijigishu lion mascot. Hover on desktop to see hover animations.</p>
+      <h2>Mascot Design Options (New Concepts)</h2>
+      <p>Compare the 4 brand new layout concepts below incorporating the Vijigishu lion mascot.</p>
     </div>
 
     <div class="cta-variation-container">
       
-      <!-- Option 1 CONTAINER -->
+      <!-- Option 5: Isometric 3D Badge -->
       <div class="cta-var-box reveal">
-        <div class="cta-var-label">Option 1: Modern Split Grid (Foreground Mascot Hero)</div>
-        <div class="about-cta-inner opt-split">
+        <div class="cta-var-label">Option 5: Floating 3D Badge (Isometric Overlap)</div>
+        <div class="about-cta-inner opt-isometric">
+          <div class="mascot-badge-3d">
+            <img src="images/vijigishu-lion-mascot.png" class="mascot-img-isometric" alt="Lion Mascot" />
+          </div>
+          <div class="about-cta-left" style="padding-left: 120px;">
+            <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+            <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+          </div>
+          <div class="about-cta-right">
+            <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
+            <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Option 6: Center Divider Split -->
+      <div class="cta-var-box reveal">
+        <div class="cta-var-label">Option 6: Center Divider Split (Symmetrical Anchor)</div>
+        <div class="about-cta-inner opt-symmetrical">
+          <div class="sym-text">
+            <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+            <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+          </div>
+          <div class="sym-divider-left"></div>
+          <div class="sym-mascot">
+            <img src="images/vijigishu-lion-mascot.png" class="mascot-img-symmetrical" alt="Lion Mascot" />
+          </div>
+          <div class="sym-divider-right"></div>
+          <div class="sym-actions">
+            <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
+            <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Option 7: Mascot Speech Bubble -->
+      <div class="cta-var-box reveal">
+        <div class="cta-var-label">Option 7: Mascot Speech Bubble (Interactive Greeting)</div>
+        <div class="about-cta-inner opt-bubble">
+          <div class="bubble-mascot-wrapper">
+            <img src="images/vijigishu-lion-mascot.png" class="mascot-img-bubble" alt="Lion Mascot" />
+          </div>
+          <div class="speech-bubble-body">
+            <div class="bubble-arrow"></div>
+            <div class="bubble-content">
+              <div class="about-cta-left">
+                <h2 class="about-cta-h2" style="color: var(--navy); margin-bottom: 8px;">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+                <p class="about-cta-sub" style="color: var(--gray);">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+              </div>
+              <div class="about-cta-right">
+                <a href="immersion-programs.html" class="btn btn-green" style="text-align: center;">Explore Programs →</a>
+                <a href="index.html#cta" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy); text-align: center;">Contact Our Team</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Option 8: Mascot Portal Window -->
+      <div class="cta-var-box reveal">
+        <div class="cta-var-label">Option 8: Mascot Portal Window (Organic Blob Clip)</div>
+        <div class="about-cta-inner opt-portal">
           <div class="about-cta-left">
             <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
             <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
@@ -803,59 +901,10 @@
               <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
             </div>
           </div>
-          <div class="about-cta-mascot-wrapper">
-            <div class="mascot-circle-bg"></div>
-            <img src="images/vijigishu-lion-mascot.png" class="mascot-img-foreground" alt="Lion Mascot" />
-          </div>
-        </div>
-      </div>
-
-      <!-- Option 2 CONTAINER -->
-      <div class="cta-var-box reveal">
-        <div class="cta-var-label">Option 2: Mascot Background Watermark (Sleek Overlay)</div>
-        <div class="about-cta-inner opt-watermark">
-          <div class="about-cta-left">
-            <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
-            <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
-          </div>
-          <div class="about-cta-right">
-            <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
-            <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
-          </div>
-          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-watermark" alt="Lion Mascot" />
-        </div>
-      </div>
-
-      <!-- Option 3 CONTAINER -->
-      <div class="cta-var-box reveal">
-        <div class="cta-var-label">Option 3: Mascot Peeking Badge (Playful & Overlapping)</div>
-        <div class="about-cta-inner opt-peeking">
-          <div class="about-cta-left">
-            <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
-            <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
-          </div>
-          <div class="about-cta-right">
-            <a href="immersion-programs.html" class="btn btn-green">Explore Programs →</a>
-            <a href="index.html#cta" class="btn btn-outline">Contact Our Team</a>
-          </div>
-          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-peeking" alt="Lion Mascot" />
-        </div>
-      </div>
-
-      <!-- Option 4 CONTAINER -->
-      <div class="cta-var-box reveal">
-        <div class="cta-var-label">Option 4: Mascot Hosting Left Banner (Friendly Mascot Frame)</div>
-        <div class="about-cta-inner opt-host">
-          <div class="about-cta-host-avatar">
-            <img src="images/vijigishu-lion-mascot.png" class="mascot-img-host" alt="Lion Mascot" />
-          </div>
-          <div class="about-cta-left">
-            <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
-            <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
-          </div>
-          <div class="about-cta-right">
-            <a href="immersion-programs.html" class="btn btn-green" style="white-space: nowrap;">Explore Programs →</a>
-            <a href="index.html#cta" class="btn btn-outline" style="white-space: nowrap;">Contact Our Team</a>
+          <div class="portal-wrapper">
+            <div class="portal-shape">
+              <img src="images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
+            </div>
           </div>
         </div>
       </div>
