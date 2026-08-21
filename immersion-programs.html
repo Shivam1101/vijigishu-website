@@ -229,152 +229,513 @@
     .prog-card:hover .prog-link { gap: 12px; }
 
     /* ─── DISCIPLINES ─── */
-    #disciplines { padding: 80px 0; background: var(--white); }
-    .disc-intro { max-width: 640px; margin-bottom: 0; }
-    .disc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .disc-card {
-      border-radius: 24px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      box-shadow: 0 4px 24px rgba(0,0,0,.07);
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    #disciplines { padding: 100px 0; background: var(--white); }
+    .disc-intro { max-width: 640px; margin-bottom: 56px; }
+    .disc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+    
+    /* Base wrapper dimensions for grid cards */
+    .disc-card-wrapper {
+      height: 420px;
+      border-radius: 28px;
+      position: relative;
       background: var(--white);
     }
-    .disc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.12); }
-    .disc-img { overflow: hidden; }
-    .disc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
-    .disc-card:hover .disc-img img { transform: scale(1.06); }
-    .disc-body {
-      padding: 28px 24px;
-      background: var(--white);
+    
+    /* ──────────────────────────────────────────────────────────
+       OPTION 1: SLIDE-UP FROSTED PANEL (Management)
+       ────────────────────────────────────────────────────────── */
+    .option-slide-up {
+      height: 100%;
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+    .option-slide-up:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+    .slide-up-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s var(--ease);
+    }
+    .option-slide-up:hover .slide-up-bg {
+      transform: scale(1.08);
+    }
+    .slide-up-initial {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,14,46,0.85) 0%, rgba(13,14,46,0.3) 60%, rgba(13,14,46,0.1) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      color: var(--white);
+      transition: opacity 0.4s;
+    }
+    .option-slide-up:hover .slide-up-initial {
+      opacity: 0;
+    }
+    .slide-up-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      background: var(--sage);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .slide-up-initial h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .slide-up-panel {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 14, 46, 0.88);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 40px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      color: var(--white);
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .disc-icon {
-      width: 48px; height: 48px;
-      border-radius: 14px;
+    .option-slide-up:hover .slide-up-panel {
+      transform: translateY(0);
+    }
+    .slide-up-panel h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+    .slide-up-panel p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .slide-up-destinations {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .slide-up-dest-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+    .slide-up-dest-item strong {
+      color: var(--sage);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .slide-up-dest-item span {
+      color: rgba(255,255,255,0.85);
+    }
+    .slide-up-link {
+      color: var(--sage);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.25s;
+    }
+    .slide-up-link:hover {
+      gap: 12px;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       OPTION 2: 3D CARD FLIP (Architecture & Design)
+       ────────────────────────────────────────────────────────── */
+    .option-card-flip {
+      perspective: 1000px;
+      height: 100%;
+      width: 100%;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      border-radius: 28px;
+    }
+    .option-card-flip:hover .flip-inner {
+      transform: rotateY(180deg);
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 28px;
+      overflow: hidden;
+    }
+    .flip-front {
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      color: var(--white);
+    }
+    .flip-front::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,14,46,0.8) 0%, rgba(13,14,46,0.2) 60%);
+      z-index: 1;
+    }
+    .flip-front-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .flip-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      background: var(--gold);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+    .flip-front h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .flip-back {
+      background: var(--navy);
+      color: var(--white);
+      transform: rotateY(180deg);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .flip-back h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .flip-back p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .flip-destinations {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .flip-dest-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+    .flip-dest-item strong {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .flip-dest-item span {
+      color: rgba(255,255,255,0.85);
+    }
+    .flip-link {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.25s;
+    }
+    .flip-link:hover {
+      gap: 12px;
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       OPTION 3: HOVER VISUAL SLIDE-OUT / EXPAND (Engineering)
+       ────────────────────────────────────────────────────────── */
+    .option-slide-out {
+      height: 100%;
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+    .option-slide-out:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+    .slide-out-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s var(--ease);
+      z-index: 1;
+    }
+    .option-slide-out:hover .slide-out-image {
+      transform: scale(1.05) translateY(-20px);
+      opacity: 0.15;
+    }
+    .slide-out-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(to top, rgba(13,14,46,0.8) 0%, rgba(13,14,46,0.3) 100%);
+      color: var(--white);
+      transition: background 0.4s;
+    }
+    .option-slide-out:hover .slide-out-content {
+      background: rgba(13,14,46,0.92);
+    }
+    .slide-out-icon {
+      width: 50px; height: 50px;
+      border-radius: 12px;
+      background: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 16px;
+      transition: transform 0.4s;
+    }
+    .option-slide-out:hover .slide-out-icon {
+      transform: scale(1.1);
+    }
+    .slide-out-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .slide-out-details {
+      display: none;
+      animation: fadeIn 0.4s forwards;
+    }
+    .option-slide-out:hover .slide-out-details {
+      display: block;
+    }
+    .slide-out-desc {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+    .slide-out-destinations {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .slide-out-dest-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.82rem;
+    }
+    .slide-out-dest-item strong {
+      color: var(--sage);
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .slide-out-dest-item span {
+      color: rgba(255,255,255,0.85);
+    }
+    .slide-out-link {
+      color: var(--sage);
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.25s;
+    }
+    .slide-out-link:hover {
+      gap: 12px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ──────────────────────────────────────────────────────────
+       OPTION 4: MODERN SLIDE DRAWER (School Programs)
+       ────────────────────────────────────────────────────────── */
+    .option-slide-drawer {
+      height: 100%;
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+      background: var(--white);
+    }
+    .option-slide-drawer:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+    .drawer-img {
+      overflow: hidden;
+    }
+    .drawer-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .option-slide-drawer:hover .drawer-img img {
+      transform: scale(1.05);
+    }
+    .drawer-body {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--white);
+    }
+    .drawer-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
       background: rgba(56,103,58,.1);
       display: grid;
       place-items: center;
       font-size: 1.3rem;
-      margin-bottom: 14px;
-    }
-    .disc-name { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
-    .disc-sub { font-size: .84rem; color: var(--gray); line-height: 1.6; margin-bottom: 14px; }
-    .disc-explore { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-size: .85rem; font-weight: 700; transition: gap .25s; }
-    .disc-card:hover .disc-explore { gap: 12px; }
-
-    /* ─── ACADEMIC CARD VARIATIONS ─── */
-    
-    /* --- VARIATION A: PILLS (Management) --- */
-    .var-a-destinations { margin-top: 12px; }
-    .var-a-dest-group { display: flex; flex-direction: column; gap: 4px; }
-    .var-a-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--navy); letter-spacing: 0.05em; }
-    .var-a-pills { display: flex; flex-wrap: wrap; gap: 4px; }
-    .var-a-pill {
-      background: rgba(56, 103, 58, 0.05);
       color: var(--green);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 2px 7px;
-      border-radius: 100px;
-      border: 1px solid rgba(56, 103, 58, 0.08);
-      white-space: nowrap;
+      margin-bottom: 12px;
     }
-    .var-a-pill.domestic {
-      background: rgba(212, 168, 64, 0.05);
-      color: #B38622;
-      border-color: rgba(212, 168, 64, 0.08);
+    .drawer-name {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-family: 'Playfair Display', serif;
     }
-
-    /* --- VARIATION B: TWO COLUMN GRID (Architecture) --- */
-    .var-b-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 14px;
-      border-top: 1px dashed rgba(0,0,0,0.06);
-      padding-top: 12px;
-    }
-    .var-b-col { display: flex; flex-direction: column; gap: 4px; }
-    .var-b-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--green); letter-spacing: 0.05em; }
-    .var-b-list { font-size: 0.74rem; color: var(--gray); line-height: 1.4; }
-
-    /* --- VARIATION C: ACCENT BORDER & FLAT LISTS (Engineering) --- */
-    .disc-card-var-c {
-      border-left: 4px solid var(--green) !important;
-    }
-    .var-c-bullets {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 14px;
-    }
-    .var-c-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.74rem;
+    .drawer-sub {
+      font-size: 0.84rem;
       color: var(--gray);
-      line-height: 1.45;
+      line-height: 1.5;
     }
-    .var-c-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      margin-top: 5px;
-      flex-shrink: 0;
-    }
-    .var-c-dot.green { background: var(--green); }
-    .var-c-dot.gold { background: var(--gold); }
-
-    /* --- VARIATION D: SLIDE DRAWER (School Programs) --- */
-    .var-d-drawer {
-      margin-top: 12px;
-      position: relative;
-    }
-    .var-d-trigger {
+    .drawer-trigger {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: var(--off);
-      padding: 8px 12px;
-      border-radius: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
       font-size: 0.76rem;
       font-weight: 700;
       color: var(--navy);
+      margin-top: 12px;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.03);
       transition: all 0.25s;
     }
-    .disc-card:hover .var-d-trigger {
+    .option-slide-drawer:hover .drawer-trigger {
       background: rgba(56, 103, 58, 0.06);
       color: var(--green);
     }
-    .var-d-badge {
+    .drawer-badge {
       background: var(--green);
       color: var(--white);
       font-size: 0.62rem;
       font-weight: 700;
-      padding: 1px 6px;
+      padding: 2px 7px;
       border-radius: 100px;
     }
-    .disc-card-var-d:hover .var-d-badge {
+    .option-slide-drawer:hover .drawer-badge {
       background: var(--sage);
       color: var(--navy);
     }
-    .var-d-content {
+    .drawer-expanded-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease-out;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       font-size: 0.72rem;
       color: var(--gray);
       line-height: 1.45;
       padding: 0 4px;
     }
-    .disc-card-var-d:hover .var-d-content {
-      max-height: 80px;
-      margin-top: 8px;
+    .option-slide-drawer:hover .drawer-expanded-content {
+      max-height: 110px;
+      margin-top: 10px;
+      border-top: 1px dashed rgba(0,0,0,0.06);
+      padding-top: 10px;
+    }
+    .drawer-explore {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--green);
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: gap .25s;
+      margin-top: 12px;
+    }
+    .option-slide-drawer:hover .drawer-explore {
+      gap: 12px;
+    }
+    
+    /* Responsive grid styles */
+    @media (max-width: 991px) {
+      .disc-grid { grid-template-columns: 1fr; gap: 32px; }
+      .disc-card-wrapper { height: 400px; }
+      .option-slide-drawer { grid-template-columns: 1fr; }
+      .drawer-img { display: none; }
     }
     /* ─── INTERNSHIPS, FACULTY DEVELOPMENT & CONFERENCES ─── */
     #internship {
@@ -1042,137 +1403,132 @@
 
     <div class="disc-grid">
 
-      <!-- Management Card (Variation A: Destination Pills) -->
-      <div id="management" class="disc-card disc-card-var-a reveal">
-        <div class="disc-img">
-          <img src="images/mangement-2-scaled.webp" alt="Management" loading="lazy" />
-        </div>
-        <div class="disc-body">
-          <div>
-            <div class="disc-icon">💼</div>
-            <div class="disc-name">Management</div>
-            <div class="disc-sub">Learn how the world does business globally.</div>
-            
-            <div class="var-a-destinations">
-              <div class="var-a-dest-group">
-                <span class="var-a-label">International:</span>
-                <div class="var-a-pills">
-                  <span class="var-a-pill">Vietnam</span>
-                  <span class="var-a-pill">Singapore</span>
-                  <span class="var-a-pill">Malaysia</span>
-                  <span class="var-a-pill">Dubai</span>
-                  <span class="var-a-pill">Japan</span>
-                  <span class="var-a-pill">+2 More</span>
+      <!-- Card 1: Management (Option 1: Slide-up Frosted Panel) -->
+      <div id="management" class="disc-card-wrapper reveal">
+        <div class="option-slide-up">
+          <div class="slide-up-bg" style="background-image: url('images/mangement-2-scaled.webp');"></div>
+          <div class="slide-up-initial">
+            <div class="slide-up-icon">💼</div>
+            <h3>Management</h3>
+          </div>
+          <div class="slide-up-panel">
+            <div>
+              <h4>Management</h4>
+              <p>Learn how the world does business globally.</p>
+              <div class="slide-up-destinations">
+                <div class="slide-up-dest-item">
+                  <strong>✈️ Global:</strong>
+                  <span>Vietnam · Malaysia · Singapore · Dubai · Japan · South Korea · Europe</span>
                 </div>
-              </div>
-              <div class="var-a-dest-group" style="margin-top: 10px;">
-                <span class="var-a-label">Domestic:</span>
-                <div class="var-a-pills">
-                  <span class="var-a-pill domestic">Jaipur</span>
-                  <span class="var-a-pill domestic">Mumbai</span>
-                  <span class="var-a-pill domestic">Goa</span>
-                  <span class="var-a-pill domestic">Delhi</span>
-                  <span class="var-a-pill domestic">Bengaluru</span>
-                  <span class="var-a-pill domestic">+1 More</span>
+                <div class="slide-up-dest-item">
+                  <strong>🏠 India:</strong>
+                  <span>Jaipur · Mumbai · Goa · Delhi · Bengaluru · Ahmedabad</span>
                 </div>
               </div>
             </div>
-
+            <a href="management.html" target="_blank" class="slide-up-link">
+              Explore Program
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
-          <a href="management.html" target="_blank" class="disc-explore">
-            Explore More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
         </div>
       </div>
 
-      <!-- Architecture & Design Card (Variation B: Two Column Grid) -->
-      <div id="architecture" class="disc-card disc-card-var-b reveal reveal-delay-1">
-        <div class="disc-img">
-          <img src="images/archi-scaled.webp" alt="Architecture & Design" loading="lazy" />
-        </div>
-        <div class="disc-body">
-          <div>
-            <div class="disc-icon">🏛️</div>
-            <div class="disc-name">Architecture &amp; Design</div>
-            <div class="disc-sub">Step beyond textbooks — experience how design lives in the real world.</div>
-            
-            <div class="var-b-grid">
-              <div class="var-b-col">
-                <span class="var-b-title">✈️ Global</span>
-                <span class="var-b-list">Vietnam · Japan · Malaysia · Dubai · Europe · South Korea</span>
-              </div>
-              <div class="var-b-col">
-                <span class="var-b-title">🏠 India</span>
-                <span class="var-b-list">Chandigarh · Mysore · Bengaluru · Ahmedabad · Goa</span>
+      <!-- Card 2: Architecture & Design (Option 2: 3D Card Flip) -->
+      <div id="architecture" class="disc-card-wrapper reveal reveal-delay-1">
+        <div class="option-card-flip">
+          <div class="flip-inner">
+            <!-- Front -->
+            <div class="flip-front" style="background-image: url('images/archi-scaled.webp');">
+              <div class="flip-front-content">
+                <div class="flip-icon">🏛️</div>
+                <h3>Architecture &amp; Design</h3>
               </div>
             </div>
-
+            <!-- Back -->
+            <div class="flip-back">
+              <div>
+                <h4>Architecture &amp; Design</h4>
+                <p>Step beyond textbooks — experience how design lives in the real world.</p>
+                <div class="flip-destinations">
+                  <div class="flip-dest-item">
+                    <strong>✈️ Global:</strong>
+                    <span>Vietnam · Japan · Malaysia · Dubai · Europe · South Korea</span>
+                  </div>
+                  <div class="flip-dest-item">
+                    <strong>🏠 India:</strong>
+                    <span>Chandigarh · Mysore · Bengaluru · Ahmedabad · Goa</span>
+                  </div>
+                </div>
+              </div>
+              <a href="architecture-design.html" target="_blank" class="flip-link">
+                Explore Program
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
           </div>
-          <a href="architecture-design.html" target="_blank" class="disc-explore">
-            Explore More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
         </div>
       </div>
 
-      <!-- Engineering Card (Variation C: Accent Border & Clean Lists) -->
-      <div id="engineering" class="disc-card disc-card-var-c reveal">
-        <div class="disc-img">
-          <img src="images/engg-2-scaled.webp" alt="Engineering" loading="lazy" />
-        </div>
-        <div class="disc-body">
-          <div>
-            <div class="disc-icon">⚙️</div>
-            <div class="disc-name">Engineering</div>
-            <div class="disc-sub">Engineering is best understood when seen in action.</div>
-            
-            <div class="var-c-bullets">
-              <div class="var-c-item">
-                <span class="var-c-dot green"></span>
-                <span><strong>International:</strong> Japan, Malaysia, Singapore, Dubai, Europe</span>
-              </div>
-              <div class="var-c-item">
-                <span class="var-c-dot gold"></span>
-                <span><strong>Domestic:</strong> Pune, Mumbai, Bengaluru, Delhi, Shimla</span>
+      <!-- Card 3: Engineering (Option 3: Hover Visual Slide-out) -->
+      <div id="engineering" class="disc-card-wrapper reveal">
+        <div class="option-slide-out">
+          <div class="slide-out-image" style="background-image: url('images/engg-2-scaled.webp');"></div>
+          <div class="slide-out-content">
+            <div class="slide-out-icon">⚙️</div>
+            <div class="slide-out-text">
+              <h3>Engineering</h3>
+              
+              <!-- Hidden details that reveal on hover -->
+              <div class="slide-out-details">
+                <p class="slide-out-desc">Engineering is best understood when seen in action.</p>
+                <div class="slide-out-destinations">
+                  <div class="slide-out-dest-item">
+                    <strong>✈️ Global:</strong>
+                    <span>Japan · Malaysia · Singapore · Dubai · Europe · South Korea</span>
+                  </div>
+                  <div class="slide-out-dest-item">
+                    <strong>🏠 India:</strong>
+                    <span>Pune · Mumbai · Bengaluru · Delhi · Manali &amp; Shimla</span>
+                  </div>
+                </div>
               </div>
             </div>
-
+            <a href="engineering.html" target="_blank" class="slide-out-link">
+              Explore Program
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
-          <a href="engineering.html" target="_blank" class="disc-explore">
-            Explore More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
         </div>
       </div>
 
-      <!-- School Programs Card (Variation D: Minimal with Slide Drawer) -->
-      <div id="school" class="disc-card disc-card-var-d reveal reveal-delay-1">
-        <div class="disc-img">
-          <img src="images/School.webp" alt="School Programs" loading="lazy" />
-        </div>
-        <div class="disc-body">
-          <div>
-            <div class="disc-icon">🎒</div>
-            <div class="disc-name">School Programs</div>
-            <div class="disc-sub">Early exposure creates confident future leaders.</div>
-            
-            <div class="var-d-drawer">
-              <div class="var-d-trigger">
+      <!-- Card 4: School Programs (Option 4: Slide Drawer - Refined Horizontal Split) -->
+      <div id="school" class="disc-card-wrapper reveal reveal-delay-1">
+        <div class="option-slide-drawer">
+          <div class="drawer-img">
+            <img src="images/School.webp" alt="School Programs" loading="lazy" />
+          </div>
+          <div class="drawer-body">
+            <div>
+              <div class="drawer-icon">🎒</div>
+              <div class="drawer-name">School Programs</div>
+              <div class="drawer-sub">Early exposure creates confident future leaders.</div>
+              
+              <!-- Slide Drawer Trigger -->
+              <div class="drawer-trigger">
                 <span>📍 View Locations</span>
-                <span class="var-d-badge">13 Cities</span>
+                <span class="drawer-badge">13 Cities</span>
               </div>
-              <div class="var-d-content">
-                <p style="margin-top: 8px;"><strong>Global:</strong> Vietnam, Singapore, Malaysia, Dubai, Indonesia, Europe, Japan</p>
-                <p style="margin-top: 4px;"><strong>Domestic:</strong> Jaipur, Agra, Shimla, Goa, Mumbai, Bengaluru</p>
+              <div class="drawer-expanded-content">
+                <p><strong>✈️ Global:</strong> Vietnam · Malaysia · Singapore · Dubai · Indonesia · Europe · Japan</p>
+                <p style="margin-top: 6px;"><strong>🏠 India:</strong> Jaipur · Agra · Shimla · Goa · Mumbai · Bengaluru</p>
               </div>
             </div>
-
+            <a href="school-programs.html" target="_blank" class="drawer-explore">
+              Explore More
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
-          <a href="school-programs.html" target="_blank" class="disc-explore">
-            Explore More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
         </div>
       </div>
 
