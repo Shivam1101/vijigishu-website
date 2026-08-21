@@ -25,7 +25,7 @@ nav#navbar {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 2px 20px rgba(0,0,0,.05);
-  border-bottom: 1px solid rgba(27, 28, 74, 0.06);
+  border-bottom: 1px solid rgb(27 28 74 / 23%);
   transition: background .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
 }
 nav#navbar.scrolled {
@@ -273,7 +273,8 @@ footer#site-footer::before {
   position: absolute;
   bottom: 0; left: 0;
   width: 100%;
-  height: 4px; /* minimal subtle strip */
+  height: 1px; /* minimal subtle strip */
+  opacity: .5;
   background: linear-gradient(90deg, var(--navy) 0%, var(--green) 50%, var(--sage) 100%);
   z-index: 10;
   pointer-events: none;
