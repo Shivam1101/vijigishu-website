@@ -131,7 +131,7 @@
     </div>
   </footer>
   <div class="footer-bottom-bar">
-    © 2026 Vijigishu Education Pvt. Ltd. All rights reserved.
+    © ${new Date().getFullYear()} Vijigishu Education Pvt. Ltd. All rights reserved.
   </div>
   `;
 
@@ -167,6 +167,8 @@
     // Initialize Event Listeners
     initHeaderEvents();
     initRevealObserver();
+    // Update any static year elements
+    document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
   }
 
   if (document.readyState === 'loading') {

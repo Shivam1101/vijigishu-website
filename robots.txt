@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /main-admin.html
+Disallow: /login.html
+
+Sitemap: https://vijigishu.co.in/sitemap.xml
