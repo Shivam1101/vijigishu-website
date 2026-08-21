@@ -56,20 +56,39 @@
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
     /* ─── PAGE HERO ─── */
-    .page-hero { position: relative; height: 560px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero { position: relative; height: 380px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
     .page-hero-img { position: absolute; inset: 0; }
     .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: slowZoom 14s ease-in-out infinite alternate; }
     @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
-    
-    .page-hero-content { position: relative; z-index: 2; max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 24px; }
-    .page-hero-breadcrumb { display: flex; align-items: center; gap: 8px; font-size: .8rem; color: rgba(255,255,255,.5); margin-bottom: 20px; }
-    .page-hero-breadcrumb a { color: rgba(255,255,255,.5); transition: color .25s; }
-    .page-hero-breadcrumb a:hover { color: var(--sage); }
-    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 4rem); color: var(--white); line-height: 1.1; margin-bottom: 18px; }
-    .page-hero h1 em { color: var(--sage); font-style: italic; }
-    .page-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,.65); max-width: 500px; line-height: 1.7; margin-bottom: 28px; }
-    .hero-meta { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-meta-item { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 100px; padding: 8px 20px; color: var(--white); font-size: .85rem; font-weight: 600; backdrop-filter: blur(10px); }
+
+    /* Breadcrumbs below banner */
+    .breadcrumb-container {
+      padding: 24px 0 0;
+      background: var(--white);
+    }
+    .page-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    .page-breadcrumb a {
+      color: var(--gray);
+      transition: color 0.25s var(--ease);
+      text-decoration: none;
+    }
+    .page-breadcrumb a:hover {
+      color: var(--green);
+    }
+    .page-breadcrumb span {
+      color: var(--gray);
+    }
+    .page-breadcrumb span.current {
+      color: var(--navy);
+      font-weight: 600;
+    }
 
     /* ─── OVERVIEW ─── */
     #overview { padding: 96px 0; background: var(--white); }
@@ -77,31 +96,149 @@
     .overview-left {}
     .overview-text { font-size: 1.05rem; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
     .overview-text-lead { font-size: 1.2rem; color: var(--navy); font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
-    .highlights-box { background: var(--off); border-radius: 24px; padding: 40px; border: 1px solid rgba(0,0,0,.03); }
-    .highlights-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 24px; }
-    .highlight-list { display: flex; flex-direction: column; gap: 16px; }
-    .highlight-item { display: flex; align-items: flex-start; gap: 12px; }
-    .highlight-icon { margin-top: 3px; color: var(--green); font-size: 1.1rem; flex-shrink: 0; }
-    .highlight-text { font-size: .95rem; color: var(--navy); line-height: 1.5; font-weight: 500; }
+    
+    /* Glance Box (At a Glance) */
+    .glance-box {
+      background: #F4F6F9;
+      border: 1px solid rgba(27, 28, 74, 0.08);
+      border-radius: 24px;
+      padding: 36px 32px;
+      box-shadow: 0 10px 30px rgba(27, 28, 74, 0.02);
+    }
+    .glance-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+    .glance-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(27, 28, 74, 0.06);
+      gap: 16px;
+    }
+    .glance-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .glance-row:first-of-type {
+      padding-top: 0;
+    }
+    .glance-label {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--gray);
+    }
+    .glance-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-align: right;
+      max-width: 60%;
+    }
+
+    /* Key Highlights Grid at Bottom */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .highlight-card {
+      background: var(--white);
+      border: 1px solid rgba(56, 103, 58, 0.08);
+      border-radius: 16px;
+      padding: 24px 16px;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--sage);
+      box-shadow: 0 12px 30px rgba(56, 103, 58, 0.08);
+      background: #F9FAF7;
+    }
+    .highlight-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      background: rgba(159, 194, 140, 0.15);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+    .highlight-card-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.45;
+    }
 
     /* ─── ITINERARY ─── */
     #itinerary { padding: 80px 0; background: var(--off); }
-    .itin-container { max-width: 800px; margin: 0 auto; }
+    .itin-container { max-width: 1200px; margin: 0 auto; }
+    .itin-grid { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: start; }
     .itin-header { text-align: center; margin-bottom: 56px; }
-    .accordion { display: flex; flex-direction: column; gap: 16px; }
-    .acc-item { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.04); }
-    .acc-header { padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; transition: background .3s; }
-    .acc-header:hover { background: rgba(56,103,58,.03); }
-    .acc-title { font-weight: 700; color: var(--navy); font-size: 1.05rem; display: flex; align-items: center; gap: 12px; }
-    .acc-title span { color: var(--green); font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; font-style: italic; }
-    .acc-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--off); display: grid; place-items: center; color: var(--green); font-size: 1.2rem; transition: transform .3s var(--ease); }
-    .acc-item.open .acc-icon { transform: rotate(45deg); background: var(--green); color: var(--white); }
-    .acc-body { display: none; padding: 0 32px 32px 64px; }
+    .accordion { display: flex; flex-direction: column; gap: 14px; }
+    .acc-item {
+      border: 1px solid rgb(27 28 74 / 12%);
+      border-radius: 14px;
+      background: var(--white);
+      transition: border-color .3s, box-shadow .3s;
+      overflow: hidden;
+    }
+    .acc-item.open {
+      border-color: var(--green);
+      box-shadow: 0 8px 30px rgb(56 103 58 / 6%);
+    }
+    .acc-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      transition: color .3s;
+    }
+    .acc-title { font-weight: 700; color: var(--navy); font-size: .98rem; display: flex; align-items: center; gap: 12px; }
+    .acc-title span { color: var(--green); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 800; font-style: italic; }
+    .acc-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgb(27 28 74 / 6%);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      transition: background .3s, transform .3s, color .3s;
+      flex-shrink: 0;
+    }
+    .acc-item.open .acc-icon {
+      background: var(--green);
+      transform: rotate(45deg);
+      color: var(--white);
+    }
+    .acc-icon svg { width: 14px; height: 14px; }
+    .acc-icon svg path { stroke: var(--white); }
+    .acc-body {
+      display: none;
+      padding: 0 24px 20px 24px;
+    }
     .acc-item.open .acc-body { display: block; animation: fadeIn .4s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     .acc-body ul { display: flex; flex-direction: column; gap: 12px; }
-    .acc-body li { position: relative; font-size: .95rem; color: var(--gray); line-height: 1.6; padding-left: 20px; }
-    .acc-body li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+    .acc-body li { position: relative; font-size: .92rem; color: var(--gray); line-height: 1.65; padding-left: 20px; }
+    .acc-body li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
 
     /* ─── INCLUSIONS ─── */
     #inclusions { padding: 80px 0; background: var(--navy); color: var(--white); }
@@ -114,50 +251,9 @@
     .incl-icon svg { width: 24px; height: 24px; }
     .incl-title { font-size: .95rem; font-weight: 600; color: var(--white); line-height: 1.4; }
 
-    /* ─── CTA BANNER ─── */
-    #ip-cta { padding: 80px 0; background: var(--off); position: relative; overflow: hidden; }
-    .ip-cta-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; background: var(--navy); border-radius: 28px; padding: 56px 64px; position: relative; overflow: hidden; }
-    .ip-cta-inner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(56,103,58,.3) 0%, transparent 60%); }
-    .ip-cta-left { position: relative; z-index: 2; }
-    .ip-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white); margin-bottom: 12px; line-height: 1.2; }
-    .ip-cta-h2 em { color: var(--sage); font-style: italic; }
-    .ip-cta-sub { color: rgba(255,255,255,.6); font-size: .95rem; line-height: 1.65; max-width: 480px; }
-    .ip-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
-    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
-    .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
-
     /* ─── FOOTER ─── */
     footer { background: var(--dark); padding: 80px 0 32px; }
-    
-    .footer-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 0;
-    }
-    .footer-mascot-wrap {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      align-items: start;
-      margin-bottom: -22px;
-      z-index: 3;
-    }
-    .footer-mascot-img {
-      max-height: 280px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
-      transition: transform 0.3s var(--ease, ease);
-    }
-    .footer-mascot-img:hover {
-      transform: scale(1.04);
-    }
-
-    .footer-grid_old { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 64px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 64px; }
     .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .footer-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1rem; }
     .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); font-weight: 800; }
@@ -166,13 +262,8 @@
     .footer-links { display: flex; flex-direction: column; gap: 12px; }
     .footer-links a { color: rgba(255,255,255,.5); font-size: .88rem; transition: color .25s; }
     .footer-links a:hover { color: var(--sage); }
-    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.5; margin-bottom: 12px; }
-    .footer-contact-item span { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
-    .footer-bottom-links { display: flex; gap: 24px; }
-    .footer-bottom-links a { color: rgba(255,255,255,.3); font-size: .82rem; transition: color .25s; }
-    .footer-bottom-links a:hover { color: var(--sage); }
 
     /* ─── Reveal ─── */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -181,23 +272,148 @@
     .reveal-delay-2 { transition-delay: .2s; }
     .reveal-delay-3 { transition-delay: .3s; }
 
+    /* ─── CTA PANEL ─── */
+    #about-cta {
+      padding: 80px 0;
+      background: var(--off);
+      position: relative;
+      overflow: hidden;
+    }
+    #about-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400' fill='none'%3E%3Cpath d='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' stroke='rgba(159,194,140,0.48)' stroke-width='2' stroke-linecap='round' stroke-dasharray='6 8'/%3E%3Cpath d='M-8,-6 L10,0 L-8,6 L-4,0 Z' fill='rgba(56,103,58,0.75)'%3E%3CanimateMotion path='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' dur='15s' repeatCount='indefinite' rotate='auto' /%3E%3C/path%3E%3Ccircle cx='200' cy='150' r='140' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ccircle cx='200' cy='150' r='90' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='200' y1='0' x2='200' y2='300' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='50' y1='150' x2='350' y2='150' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ctext x='190' y='38' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EN 18° 30' 13%22%3C/text%3E%3Ctext x='190' y='54' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EE 73° 49' 44%22%3C/text%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .about-cta-inner {
+      background: transparent;
+      border-radius: 0;
+      position: relative;
+      overflow: visible;
+      box-shadow: none;
+      transition: none;
+      z-index: 2;
+    }
+    .about-cta-left { position: relative; z-index: 2; text-align: left; }
+    .about-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--navy) !important; margin-bottom: 12px; line-height: 1.2; }
+    .about-cta-h2 em { color: var(--green) !important; font-style: italic; }
+    .about-cta-sub { color: var(--gray) !important; font-size: .95rem; line-height: 1.65; margin: 0; }
+    .about-cta-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 28px;
+      justify-content: flex-start;
+    }
+    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+
+    /* --- Mascot Portal Window --- */
+    .opt-portal {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 40px;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .portal-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+    .portal-shape {
+      width: 300px;
+      height: 300px;
+      background: rgba(27,28,74,0.02);
+      border: 3px solid var(--sage);
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
+      animation: morph 8s ease-in-out infinite;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .mascot-img-portal {
+      width: 232px;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    .opt-portal:hover .portal-shape {
+      border-color: var(--green);
+      background: rgba(27,28,74,0.05);
+    }
+    .opt-portal:hover .mascot-img-portal {
+      transform: scale(1.12) rotate(-3deg);
+    }
+    @keyframes morph {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
+      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+    }
+
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
       .overview-split { grid-template-columns: 1fr; gap: 48px; }
       .incl-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .ip-cta-inner { grid-template-columns: 1fr; padding: 40px 36px; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .itin-grid { grid-template-columns: 1fr; gap: 32px; }
+      .opt-portal {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 0 !important;
+        text-align: center;
+      }
+      .about-cta-left { text-align: center; padding-left: 0 !important; }
+      .about-cta-right { flex-direction: row; justify-content: center; width: 100%; gap: 12px; margin-top: 24px; }
+      .about-cta-right .btn { flex: 1; max-width: 220px; text-align: center; justify-content: center; }
+      .portal-shape {
+        width: 240px;
+        height: 240px;
+      }
+      .mascot-img-portal {
+        width: 180px;
+      }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .page-hero { height: 400px; }
       .incl-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .incl-card { padding: 24px 16px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .acc-header { padding: 20px; }
       .acc-body { padding: 0 20px 24px 20px; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      #about-cta { padding: 48px 0; }
+    }
+    @media (max-width: 560px) {
+      .highlights-grid { grid-template-columns: 1fr; gap: 12px; }
+      .incl-grid { grid-template-columns: 1fr; gap: 12px; }
+      .about-cta-right {
+        flex-direction: column !important;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .about-cta-right .btn {
+        flex: none;
+        max-width: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
@@ -210,22 +426,19 @@
 <!-- ===== PAGE HERO ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
-    <img src="images/Singapore.webp" alt="Singapore & Indonesia Immersion" fetchpriority="high" />
+    <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Indonesia-Singapore-GIP.webp" alt="Singapore & Indonesia Immersion" fetchpriority="high" />
   </div>
-  
-  <div class="page-hero-content">
-    <div class="page-hero-breadcrumb">
+</div>
+
+<!-- ===== BREADCRUMBS ===== -->
+<div class="breadcrumb-container">
+  <div class="container">
+    <div class="page-breadcrumb">
       <a href="index.html">Home</a>
       <span>›</span>
       <a href="immersion-programs.html">Immersion Programs</a>
       <span>›</span>
-      <span style="color:var(--white)">Singapore & Indonesia</span>
-    </div>
-    <h1>Singapore & <em>Indonesia</em></h1>
-    <p class="page-hero-sub">Where culture meets real-world learning across two vibrant nations — from Singapore's smart city innovation to Batam's emerging trade hub.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item">🗓️ 6 Nights / 7 Days</div>
-      <div class="hero-meta-item">📍 Singapore & Batam Island</div>
+      <span class="current">Singapore & Indonesia</span>
     </div>
   </div>
 </div>
@@ -237,39 +450,50 @@
       <div class="overview-left reveal">
         <div class="tag">Program Overview</div>
         <h2 class="section-heading" style="margin-bottom: 24px;">Discover the Future of<br><span>Global Business</span></h2>
-        <p class="overview-text-lead">A dual-nation immersion combining Singapore's cutting-edge smart city infrastructure with Indonesia's emerging manufacturing and trade hub.</p>
-        <p class="overview-text">This program takes students across two vibrant Southeast Asian nations. Experience Singapore's world-ranked universities, multinational headquarters, and iconic landmarks alongside Indonesia's Batam Island — a thriving free trade zone. From the futuristic Gardens by the Bay to the historic Barelang Bridge, students gain exposure to cross-border trade, innovation ecosystems, and diverse cultural heritage.</p>
-        <a href="contact.html" class="btn btn-primary" style="margin-top: 16px;">Talk to a Travel Expert →</a>
+        <p class="overview-text-lead">Explore the intersection of technology, infrastructure, culture, and innovation through our Indonesia & Singapore Immersion Program.</p>
+        <p class="overview-text">This program is designed for students across disciplines, offering exposure to industrial operations, smart city systems, global businesses, and cultural ecosystems. From emerging industrial hubs in Indonesia to advanced urban systems in Singapore, participants gain a well-rounded global perspective.</p>
       </div>
       <div class="overview-right reveal reveal-delay-2">
-        <div class="highlights-box">
-          <h3 class="highlights-title">Key Highlights</h3>
-          <div class="highlight-list">
-            <div class="highlight-item">
-              <div class="highlight-icon">✓</div>
-              <div class="highlight-text">Dual-nation experience: Singapore & Indonesia (Batam)</div>
+        <div class="glance-box">
+          <div class="glance-tag">At a Glance</div>
+          
+          <div class="glance-row" style="flex-direction: column; align-items: flex-start; gap: 8px; border-bottom: none; padding-bottom: 0;">
+            <div style="display: flex; width: 100%; justify-content: space-between; align-items: center;">
+              <div class="glance-label">Duration</div>
+              <div class="glance-value">4 Nights / 5 Days</div>
             </div>
-            <div class="highlight-item">
-              <div class="highlight-icon">✓</div>
-              <div class="highlight-text">High-speed ferry crossing between two countries</div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-icon">✓</div>
-              <div class="highlight-text">University sessions at premier Singapore institutions</div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-icon">✓</div>
-              <div class="highlight-text">Industry visits to innovation hubs & free trade zones</div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-icon">✓</div>
-              <div class="highlight-text">Sentosa Island & Universal Studios experience</div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-icon">✓</div>
-              <div class="highlight-text">Gardens by the Bay & smart city exploration</div>
+            <div style="display: flex; width: 100%; justify-content: space-between; align-items: flex-start; gap: 16px;">
+              <div class="glance-label">Destinations</div>
+              <div class="glance-value">📍 Indonesia & Singapore</div>
             </div>
           </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== KEY HIGHLIGHTS ─── -->
+    <div class="highlights-container reveal" style="margin-top: 80px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <div class="tag">Core Focus</div>
+        <h2 class="section-heading">Key <span>Highlights</span></h2>
+      </div>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-card-icon">⚙️</div>
+          <div class="highlight-card-text">Understand real-world applications of technology, design, and business systems</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-icon">💡</div>
+          <div class="highlight-card-text">Exposure to manufacturing, urban planning, logistics & innovation ecosystems</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-icon">🏦</div>
+          <div class="highlight-card-text">Learn how global cities are designed, built, and managed</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-icon">🌍</div>
+          <div class="highlight-card-text">Experience cross-cultural environments and global work practices</div>
         </div>
       </div>
     </div>
@@ -282,108 +506,74 @@
     <div class="itin-header reveal">
       <div class="tag">Schedule</div>
       <h2 class="section-heading">Indicative <span>Itinerary</span></h2>
-      <p style="color:var(--gray);margin-top:12px;">A well-balanced schedule mixing academic learning, industry exposure, and cultural sightseeing.</p>
     </div>
     <div class="itin-container reveal reveal-delay-1">
       <div class="accordion">
-        
         <div class="acc-item open">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 1</span> – Arrival & Welcome</div>
-            <div class="acc-icon">+</div>
+            <div class="acc-title"><span>Day 1</span> – Arrival & Transfer to Indonesia</div>
+            <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="acc-body">
             <ul>
-              <li>Arrival at Singapore Changi</li>
-              <li>Ferry to Batam Island (Indonesia)</li>
-              <li>Hotel check-in & welcome dinner</li>
+              <li>Arrival in Singapore</li>
+              <li>Ferry transfer to Batam (Indonesia)</li>
+              <li>Hotel check-in</li>
+              <li>Evening at beachside leisure</li>
             </ul>
           </div>
         </div>
-
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 2</span> – Industry & Culture in Batam</div>
-            <div class="acc-icon">+</div>
+            <div class="acc-title"><span>Day 2</span> – Industry + Cultural Exploration</div>
+            <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="acc-body">
             <ul>
-              <li>Batam Free Trade Zone / manufacturing visit</li>
-              <li>Barelang Bridge & Maha Vihara Temple</li>
-              <li>Cross-border trade session</li>
+              <li>Industry visit</li>
+              <li>Guided city tour (temples, mosques, local markets)</li>
+              <li>Cultural exposure & exploration</li>
             </ul>
           </div>
         </div>
-
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 3</span> – Return to Singapore</div>
-            <div class="acc-icon">+</div>
+            <div class="acc-title"><span>Day 3</span> – Transition to Singapore</div>
+            <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="acc-body">
             <ul>
-              <li>Return ferry to Singapore</li>
-              <li>Merlion Park & Marina Bay</li>
-              <li>Gardens by the Bay (Supertree Grove light show)</li>
+              <li>Ferry transfer to Singapore</li>
+              <li>Visit Sentosa Island</li>
+              <li>Experience Wings of Time show</li>
             </ul>
           </div>
         </div>
-
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 4</span> – Academic Immersion</div>
-            <div class="acc-icon">+</div>
+            <div class="acc-title"><span>Day 4</span> – Academic + Industry Learning</div>
+            <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="acc-body">
             <ul>
-              <li>University immersion session + certificate</li>
-              <li>URA Centre smart city exhibition</li>
+              <li>University session</li>
+              <li>Industry visit</li>
+              <li>Explore local markets (Bugis Street)</li>
             </ul>
           </div>
         </div>
-
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 5</span> – Innovation & Culture</div>
-            <div class="acc-icon">+</div>
+            <div class="acc-title"><span>Day 5</span> – City & Departure</div>
+            <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="acc-body">
             <ul>
-              <li>Innovation hub visit (NEWater Centre)</li>
-              <li>Financial district tour</li>
-              <li>Chinatown cultural discovery</li>
+              <li>Singapore city tour (Merlion Park, Chinatown, Little India, etc.)</li>
+              <li>Airport transfer</li>
             </ul>
           </div>
         </div>
-
-        <div class="acc-item">
-          <div class="acc-header">
-            <div class="acc-title"><span>Day 6</span> – Sentosa Experience</div>
-            <div class="acc-icon">+</div>
-          </div>
-          <div class="acc-body">
-            <ul>
-              <li>Full day Sentosa Island — Universal Studios</li>
-              <li>Wings of Time show</li>
-              <li>Farewell dinner</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <div class="acc-header">
-            <div class="acc-title"><span>Day 7</span> – Departure</div>
-            <div class="acc-icon">+</div>
-          </div>
-          <div class="acc-body">
-            <ul>
-              <li>Free time for shopping (Orchard Road)</li>
-              <li>Jewel Changi Airport (Rain Vortex)</li>
-              <li>Departure</li>
-            </ul>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -394,66 +584,70 @@
   <div class="container">
     <div class="incl-header reveal">
       <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage)">What's Included</div>
-      <h2 class="section-heading">Program <span>Inclusions</span></h2>
+      <h2 class="section-heading"><span style="color: var(--sage);">Inclusions</span></h2>
     </div>
     <div class="incl-grid">
       
       <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></div>
-        <div class="incl-title">Economy Airfare</div>
+        <div class="incl-title">Airfare (Ex-Mumbai)</div>
       </div>
+      
       <div class="incl-card reveal reveal-delay-1">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg></div>
-        <div class="incl-title">3★ Hotel Accommodation<br>(Twin/Triple Sharing) — Batam & Singapore</div>
+        <div class="incl-title">3★ hotel accommodation (4 nights)</div>
       </div>
+      
       <div class="incl-card reveal reveal-delay-2">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
-        <div class="incl-title">All Meals<br>(Breakfast, Lunch, Dinner)</div>
+        <div class="incl-title">All Meals (Breakfast, Lunch, Dinner)</div>
       </div>
+      
       <div class="incl-card reveal reveal-delay-3">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1h11A2.5 2.5 0 0120 3.5v13.5M12 7v6M9 10h6"></path></svg></div>
-        <div class="incl-title">Visa & Travel<br>Insurance (Singapore & Indonesia)</div>
-      </div>
-      <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
-        <div class="incl-title">Singapore ⇄ Batam Ferry Tickets<br>+ Airport Transfers</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-1">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg></div>
-        <div class="incl-title">Sightseeing &<br>Entry Tickets (Gardens, Sentosa, etc.)</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-2">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
-        <div class="incl-title">University Sessions<br>+ Certificate</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19H2V5h20v14zM6 12h4M14 12h4M10 16h4"></path></svg></div>
-        <div class="incl-title">Industry Visits</div>
-      </div>
-      <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="9" r="3"/></svg></div>
-        <div class="incl-title">Guided City Tours</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-1">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="incl-title">Tour Leader Support</div>
+        <div class="incl-title">Singapore & Indonesia Visa & Travel Insurance</div>
       </div>
 
+      <div class="incl-card reveal">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
+        <div class="incl-title">Ferry Tickets & Airport transfers / Local transportation</div>
+      </div>
+
+      <div class="incl-card reveal reveal-delay-1">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg></div>
+        <div class="incl-title">City tours, Sentosa Island, & Wings of Time show</div>
+      </div>
+
+      <div class="incl-card reveal reveal-delay-2">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
+        <div class="incl-title">University Sessions + Certificate & Industry Visits</div>
+      </div>
+
+      <div class="incl-card reveal reveal-delay-3">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="incl-title">Orientation, Tour Leader Support, & Post-tour reports</div>
+      </div>
+      
     </div>
   </div>
 </section>
 
 <!-- ===== CTA ===== -->
-<section id="ip-cta">
+<section id="about-cta">
   <div class="container">
-    <div class="ip-cta-inner reveal">
-      <div class="ip-cta-left">
-        <h2 class="ip-cta-h2">Ready to <em>Design</em> Your<br>Institution's Program?</h2>
-        <p class="ip-cta-sub">Talk to our experts to customize this itinerary based on your students' academic needs and budget.</p>
+    <div class="about-cta-inner opt-portal reveal">
+      <div class="about-cta-left">
+        <h2 class="about-cta-h2">Ready to <em>Design</em> Your<br>Institution's Program?</h2>
+        <p class="about-cta-sub">Talk to our experts to customize this itinerary based on your students' academic needs and budget.</p>
+        <div class="about-cta-right">
+          <a href="contact.html" class="btn btn-green">Request a Quote →</a>
+          <a href="contact.html" class="btn btn-outline">Talk to an Expert</a>
+        </div>
       </div>
-      <div class="ip-cta-right">
-        <a href="contact.html" class="btn btn-green">Request a Quote →</a>
-        <a href="contact.html" class="btn btn-outline">Talk to an Expert</a>
+      <div class="portal-wrapper">
+        <div class="portal-shape">
+          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
+        </div>
       </div>
     </div>
   </div>
@@ -464,15 +658,16 @@
 
 <script src="js/global-components.js"></script>
 <script>
-  // Accordion
+  // Scope-aware Accordion
   const accHeaders = document.querySelectorAll('.acc-header');
   accHeaders.forEach(header => {
     header.addEventListener('click', () => {
       const item = header.parentElement;
+      const accordion = item.parentElement;
       const isOpen = item.classList.contains('open');
       
-      // Close all others
-      document.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
+      // Close all others in the same accordion container
+      accordion.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
       
       // Toggle current
       if (!isOpen) {
