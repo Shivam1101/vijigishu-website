@@ -166,12 +166,15 @@
 
     /* ─── BOOKMARK FILTER BAR ─── */
     .filter-bar {
-      background: var(--white);
-      border-bottom: 1px solid rgba(0,0,0,.06);
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(27, 28, 74, 0.12);
       position: sticky;
       top: 72px;
-      z-index: 90;
-      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      z-index: 990;
+      box-shadow: 0 4px 20px rgba(0,0,0,.04);
+      width: 100%;
     }
     .filter-inner {
       max-width: 1200px;
@@ -179,23 +182,26 @@
       padding: 0 24px;
       display: flex;
       align-items: center;
-      gap: 0;
+      gap: 8px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      flex-wrap: nowrap;
     }
     .filter-inner::-webkit-scrollbar { display: none; }
     .filter-btn {
       white-space: nowrap;
-      padding: 18px 24px;
+      flex-shrink: 0;
+      padding: 16px 20px;
       font-size: .88rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--gray);
       border: none;
       background: none;
       cursor: pointer;
       font-family: inherit;
       border-bottom: 3px solid transparent;
-      transition: color .25s, border-color .25s;
+      transition: all .25s var(--ease);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -203,6 +209,17 @@
     }
     .filter-btn:hover { color: var(--navy); }
     .filter-btn.active { color: var(--green); border-bottom-color: var(--green); }
+
+    /* Scroll Margin Offset for Sticky Header (72px) + Sticky Filter Bar (~54px) */
+    #best-selling,
+    #disciplines,
+    #process,
+    #internship,
+    #special-tours,
+    #fdp,
+    #conferences {
+      scroll-margin-top: 140px;
+    }
 
     /* ─── BEST SELLING SECTION ─── */
     #best-selling { padding: 60px 0; background: var(--off); }
@@ -991,6 +1008,28 @@
       }
     }
     @media (max-width: 768px) {
+      .filter-bar {
+        top: 72px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      }
+      .filter-inner {
+        padding: 0 16px;
+        gap: 4px;
+      }
+      .filter-btn {
+        padding: 12px 14px;
+        font-size: 0.8rem;
+        gap: 6px;
+      }
+      #best-selling,
+      #disciplines,
+      #process,
+      #internship,
+      #special-tours,
+      #fdp,
+      #conferences {
+        scroll-margin-top: 130px;
+      }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .page-hero { height: 260px; }
@@ -1654,6 +1693,14 @@
       el.classList.add('active');
     }
   }
+  // Keep active filter button in view during horizontal scroll on mobile
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setTimeout(() => {
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }, 50);
+    });
+  });
 </script>
 </body>
 </html>
