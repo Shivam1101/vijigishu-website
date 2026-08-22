@@ -18,15 +18,15 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="/" class="logo-wrap">
-        <img src="images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+        <img src="/images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
       </a>
       <div class="nav-links">
         <a href="/" class="${isActive('index.html')}">Home</a>
-        <a href="about" class="${isActive('about.html')}">About Us</a>
-        <a href="immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-        <a href="leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
-        <a href="gallery" class="${isActive('gallery.html')}">Gallery</a>
-        <a href="contact" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
+        <a href="/about" class="${isActive('about.html')}">About Us</a>
+        <a href="/immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
+        <a href="/leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+        <a href="/gallery" class="${isActive('gallery.html')}">Gallery</a>
+        <a href="/contact" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
       </div>
       <div class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
@@ -35,11 +35,11 @@
   </nav>
   <div class="mobile-menu" id="mobileMenu">
     <a href="/" class="${isActive('index.html')}">Home</a>
-    <a href="about" class="${isActive('about.html')}">About Us</a>
-    <a href="immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-    <a href="leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
-    <a href="gallery" class="${isActive('gallery.html')}">Gallery</a>
-    <a href="contact" class="${isActive('contact.html')}">Contact Us</a>
+    <a href="/about" class="${isActive('about.html')}">About Us</a>
+    <a href="/immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
+    <a href="/leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+    <a href="/gallery" class="${isActive('gallery.html')}">Gallery</a>
+    <a href="/contact" class="${isActive('contact.html')}">Contact Us</a>
   </div>
   `;
 
@@ -53,7 +53,7 @@
         <div class="footer-brand">
           <div class="footer-logo">
             <a href="/" style="text-decoration: none; display: inline-block;">
-              <img src="images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
+              <img src="/images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
             </a>
           </div>
           <div class="footer-socials">
@@ -76,10 +76,10 @@
         <div>
           <div class="footer-col-title">Quick Links</div>
           <div class="footer-links">
-            <a href="immersion-programs">Programs</a>
-            <a href="leadership-walk">Leadership walk</a>
-            <a href="gallery">Gallery</a>
-            <a href="contact">Cancellation &amp; Refund process</a>
+            <a href="/immersion-programs">Programs</a>
+            <a href="/leadership-walk">Leadership walk</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/contact">Cancellation &amp; Refund process</a>
           </div>
         </div>
 
@@ -87,12 +87,12 @@
         <div>
           <div class="footer-col-title">Destinations</div>
           <div class="footer-links">
-            <a href="singapore-indonesia">Singapore</a>
-            <a href="japan">Japan</a>
-            <a href="south-korea">South Korea</a>
-            <a href="europe">Europe</a>
-            <a href="malaysia-singapore">Malaysia</a>
-            <a href="uae">UAE / Dubai</a>
+            <a href="/immersion-programs/singapore-indonesia">Singapore</a>
+            <a href="/immersion-programs/japan">Japan</a>
+            <a href="/immersion-programs/south-korea">South Korea</a>
+            <a href="/immersion-programs/europe">Europe</a>
+            <a href="/immersion-programs/malaysia-singapore">Malaysia</a>
+            <a href="/immersion-programs/uae">UAE / Dubai</a>
           </div>
         </div>
 

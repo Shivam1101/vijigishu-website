@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>International Internship Program – THAILAND – Vijigishu</title>
+  <meta name="description" content="Experience practical learning and international exposure through our Thailand International Internship Program." />
+  <link rel="canonical" href="https://vijigishu.co.in/internship-thailand" />
+  <link rel="icon" type="image/png" href="../images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="../images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="../images/admin-profile-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Design Tokens ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green); background: transparent; padding: 0; margin-bottom: 12px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── PAGE HERO BANNER ─── */
+    .page-hero {
+      position: relative;
+      height: 550px;
+      overflow: hidden;
+      margin-top: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .page-hero-img { position: absolute; inset: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ─── BREADCRUMBS BELOW BANNER ─── */
+    .breadcrumb-container { padding: 24px 0 12px;
+      background: var(--white);
+    }
+    .page-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    .page-breadcrumb a {
+      color: var(--gray);
+      transition: color 0.25s var(--ease);
+      text-decoration: none;
+    }
+    .page-breadcrumb a:hover {
+      color: var(--green);
+    }
+    .page-breadcrumb span {
+      color: var(--gray);
+    }
+    .page-breadcrumb span.current {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* ─── SECTION 1: OVERVIEW & EXPERIENCE ─── */
+    #overview-section {
+      padding: 60px 0 60px;
+      background: var(--white);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .overview-card {
+      background: var(--white);
+    }
+    .overview-text-lead {
+      font-size: 1.18rem;
+      color: var(--navy);
+      font-weight: 600;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .overview-text {
+      color: var(--gray);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .highlights-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-top: 24px;
+      margin-bottom: 16px;
+    }
+    .highlights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .highlights-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .95rem;
+      color: var(--navy);
+      line-height: 1.55;
+      font-weight: 500;
+    }
+    .highlight-icon {
+      color: var(--green);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* EXPERIENCE RIGHT CARD */
+    .experience-card {
+      background: rgba(159, 194, 140, 0.25);
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      border-radius: 24px;
+      padding: 32px;
+    }
+    .experience-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .exp-item {
+      margin-bottom: 22px;
+      background: var(--white);
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .exp-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56,103,58,0.08);
+    }
+    .exp-item:last-child { margin-bottom: 0; }
+    .exp-item-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .exp-item-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(56,103,58,0.1);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .exp-item-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .exp-item-desc {
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.6;
+      padding-left: 48px;
+    }
+
+    /* ─── SECTION 2: PROGRAM DETAILS (CLEAN PILL) ─── */
+    #program-details-section {
+      padding: 70px 0;
+      background: linear-gradient(135deg, rgba(56, 103, 58, 0.08) 0%, rgba(159, 194, 140, 0.18) 50%, rgba(56, 103, 58, 0.06) 100%), var(--off);
+      position: relative;
+    }
+    .details-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .details-row {
+      display: flex;
+      justify-content: center;
+      max-width: 650px;
+      margin: 0 auto 36px;
+    }
+    .detail-pill-box {
+      width: 100%;
+      background: linear-gradient(270deg, rgba(255, 255, 255, 0.95) 0%, rgba(159, 194, 140, 0.25) 50%, rgba(56, 103, 58, 0.12) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(56, 103, 58, 0.06);
+      transition: all 0.3s var(--ease);
+    }
+    .detail-pill-box:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 103, 58, 0.35);
+      box-shadow: 0 16px 36px rgba(56, 103, 58, 0.12);
+    }
+    .detail-icon-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(56, 103, 58, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      color: var(--green);
+    }
+    .detail-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .detail-tag {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+    }
+    .detail-main-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .details-action-wrap {
+      text-align: center;
+    }
+
+    /* ─── SECTION 3: PROGRAM INCLUSIONS (EXACT MANAGEMENT PAGE DESIGN) ─── */
+    #inclusions {
+      padding: 60px 0;
+      background: var(--navy);
+      color: var(--white);
+    }
+    .incl-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .incl-header .section-heading {
+      color: var(--white);
+    }
+    .incl-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .incl-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      transition: transform .3s, background .3s;
+    }
+    .incl-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.08);
+    }
+    .incl-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: var(--sage);
+      flex-shrink: 0;
+    }
+    .incl-title {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    /* ─── CTA PANEL (ABOUT US MASCOT CTA) ─── */
+    #about-cta {
+      padding: 60px 0;
+      background: var(--off);
+      position: relative;
+      overflow: hidden;
+    }
+    #about-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400' fill='none'%3E%3Cpath d='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' stroke='rgba(159,194,140,0.48)' stroke-width='2' stroke-linecap='round' stroke-dasharray='6 8'/%3E%3Cpath d='M-8,-6 L10,0 L-8,6 L-4,0 Z' fill='rgba(56,103,58,0.75)'%3E%3CanimateMotion path='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' dur='15s' repeatCount='indefinite' rotate='auto' /%3E%3C/path%3E%3Ccircle cx='200' cy='150' r='140' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ccircle cx='200' cy='150' r='90' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='200' y1='0' x2='200' y2='300' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='50' y1='150' x2='350' y2='150' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ctext x='190' y='38' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EN 18° 30' 13%22%3C/text%3E%3Ctext x='190' y='54' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EE 73° 49' 44%22%3C/text%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .about-cta-inner {
+      background: transparent;
+      border-radius: 0;
+      position: relative;
+      overflow: visible;
+      box-shadow: none;
+      transition: none;
+      z-index: 2;
+    }
+    .about-cta-left { position: relative; z-index: 2; text-align: left; }
+    .about-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--navy) !important; margin-bottom: 12px; line-height: 1.2; }
+    .about-cta-h2 em { color: var(--green) !important; font-style: italic; }
+    .about-cta-sub { color: var(--gray) !important; font-size: .95rem; line-height: 1.65; margin: 0; }
+    .about-cta-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 28px;
+      justify-content: flex-start;
+    }
+    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+
+    /* --- Mascot Portal Window --- */
+    .opt-portal {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 40px;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .portal-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+    .portal-shape {
+      width: 300px;
+      height: 300px;
+      background: rgba(27,28,74,0.02);
+      border: 3px solid var(--sage);
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
+      animation: morph 8s ease-in-out infinite;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .mascot-img-portal {
+      width: 232px;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    .opt-portal:hover .portal-shape {
+      border-color: var(--green);
+      background: rgba(27,28,74,0.05);
+    }
+    .opt-portal:hover .mascot-img-portal {
+      transform: scale(1.12) rotate(-3deg);
+    }
+    @keyframes morph {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
+      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+    }
+
+    /* ─── Reveal ─── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .incl-grid { grid-template-columns: repeat(2, 1fr); }
+      .opt-portal {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+      .about-cta-left { text-align: center; }
+      .about-cta-right { justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { height: 320px; }
+      .incl-grid { grid-template-columns: 1fr; gap: 16px; }
+      .about-cta-right { flex-direction: column; }
+    }
+  </style>
+  <link rel="stylesheet" href="../css/global-components.css" />
+</head>
+<body>
+
+<!-- ===== GLOBAL HEADER ===== -->
+<header id="global-header"></header>
+
+<!-- ===== HERO BANNER ===== -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="../images/Immersion-Program-Banner.webp" alt="International Internship Program – THAILAND" fetchpriority="high" />
+  </div>
+</div>
+
+<!-- ===== BREADCRUMB BELOW BANNER ===== -->
+<div class="breadcrumb-container">
+  <div class="container">
+    <div class="page-breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/immersion-programs">Immersion Programs</a>
+      <span>›</span>
+      <span class="current">International Internship Program – THAILAND</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OVERVIEW & EXPERIENCE SECTION ===== -->
+<section id="overview-section">
+  <div class="container">
+    <div class="overview-grid">
+      
+      <!-- LEFT COLUMN: OVERVIEW & HIGHLIGHTS -->
+      <div class="overview-card reveal">
+        <div class="tag">Program Overview</div>
+        <h2 class="section-heading" style="margin-bottom: 24px;">International Internship Program – <span>THAILAND</span></h2>
+        <p class="overview-text-lead">Experience practical learning and international exposure through our Thailand International Internship Program.</p>
+        <p class="overview-text">This program is designed to provide students with hands-on experience, real-world industry interaction, and exposure to innovation-driven environments in Thailand. Combining practical learning with global exposure, the program helps students build professional skills, industry understanding, and international perspectives.</p>
+
+        <h3 class="highlights-title">Program Highlights</h3>
+        <ul class="highlights-list">
+          <li><span class="highlight-icon">✓</span> International internship opportunity in Thailand</li>
+          <li><span class="highlight-icon">✓</span> Hands-on project experience</li>
+          <li><span class="highlight-icon">✓</span> Exposure to innovation and technology-driven environments</li>
+          <li><span class="highlight-icon">✓</span> Industry interaction and professional mentorship</li>
+          <li><span class="highlight-icon">✓</span> Global learning and networking opportunities</li>
+          <li><span class="highlight-icon">✓</span> Experiential and research-focused learning</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT COLUMN: WHAT YOU'LL EXPERIENCE -->
+      <div class="experience-card reveal reveal-delay-2">
+        <h3 class="experience-main-title">What You’ll Experience</h3>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">🏭</div>
+            <div class="exp-item-title">Practical Industry Learning</div>
+          </div>
+          <div class="exp-item-desc">Work on real-world projects and gain exposure to modern technologies, innovation, and professional work environments.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">🌐</div>
+            <div class="exp-item-title">International Exposure</div>
+          </div>
+          <div class="exp-item-desc">Experience Thailand’s growing innovation ecosystem while learning in a multicultural and globally connected environment.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-item-header">
+            <div class="exp-item-icon">✨</div>
+            <div class="exp-item-title">Professional Development</div>
+          </div>
+          <div class="exp-item-desc">Develop communication, collaboration, problem-solving, and leadership skills through experiential learning and project-based exposure.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAM DETAILS ===== -->
+<section id="program-details-section">
+  <div class="container">
+    <div class="details-header reveal">
+      <div class="tag">At a Glance</div>
+      <h2 class="section-heading">Program <span>Details</span></h2>
+    </div>
+
+    <div class="details-row reveal">
+      <div class="detail-pill-box">
+        <div class="detail-icon-circle">⏱️</div>
+        <div class="detail-info">
+          <span class="detail-tag">Duration &amp; Format</span>
+          <span class="detail-main-text">1 Month in Thailand + 2 Months Online Internship</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="details-action-wrap reveal">
+      <a href="contact?type=internship-thailand" class="btn btn-green" style="padding: 16px 40px; font-size: 1rem;">
+        Apply Now! →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PROGRAM INCLUSIONS (EXACT 5 ITEMS IN MANAGEMENT PAGE DESIGN) ===== -->
+<section id="inclusions">
+  <div class="container">
+    <div class="incl-header reveal">
+      <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage)">What's Included</div>
+      <h2 class="section-heading">Program <span>Inclusions</span></h2>
+    </div>
+    <div class="incl-grid">
+      
+      <div class="incl-card reveal">
+        <div class="incl-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg>
+        </div>
+        <div class="incl-title">Accommodation Assistance</div>
+      </div>
+
+      <div class="incl-card reveal">
+        <div class="incl-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div class="incl-title">Internship Opportunity</div>
+      </div>
+
+      <div class="incl-card reveal">
+        <div class="incl-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="incl-title">International Exposure</div>
+      </div>
+
+      <div class="incl-card reveal">
+        <div class="incl-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        </div>
+        <div class="incl-title">Professional Mentorship</div>
+      </div>
+
+      <div class="incl-card reveal">
+        <div class="incl-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="incl-title">Local Support &amp; Coordination</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA PANEL (ABOUT US MASCOT CTA) ===== -->
+<section id="about-cta">
+  <div class="container">
+    <div class="about-cta-inner opt-portal reveal">
+      <div class="about-cta-left">
+        <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+        <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+        <div class="about-cta-right">
+          <a href="immersion-programs" class="btn btn-green">Explore Programs →</a>
+          <a href="contact" class="btn btn-outline">Contact Our Team</a>
+        </div>
+      </div>
+      <div class="portal-wrapper">
+        <div class="portal-shape">
+          <img src="../images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GLOBAL FOOTER ===== -->
+<footer id="global-footer"></footer>
+
+<script src="../js/global-components.js"></script>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty Development Program – Vijigishu</title>
+  <meta name="description" content="The Faculty Development Program (FDP) provides a unique opportunity for faculty members to collaborate with top-tier international institutions." />
+  <link rel="canonical" href="https://vijigishu.co.in/fdp" />
+  <link rel="icon" type="image/png" href="../images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="../images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="../images/admin-profile-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Design Tokens ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green); background: transparent; padding: 0; margin-bottom: 12px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+
+    /* ─── PAGE HERO BANNER ─── */
+    .page-hero {
+      position: relative;
+      height: 560px;
+      overflow: hidden;
+      margin-top: 72px;
+    }
+    .page-hero-img { position: absolute; inset: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ─── PAGE HEADER & BREADCRUMB (LEFT ALIGNED) ─── */
+    .page-header-section {
+      padding: 40px 0 24px;
+      background: var(--white);
+      text-align: left;
+    }
+    .page-breadcrumb {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      font-size: .84rem;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .page-breadcrumb a { color: var(--gray); transition: color .25s; }
+    .page-breadcrumb a:hover { color: var(--green); }
+    .page-breadcrumb span { color: var(--green); }
+
+    .page-header-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      line-height: 1.15;
+      text-align: left;
+    }
+    .page-header-section h1 span {
+      color: var(--green);
+      font-style: italic;
+    }
+
+    /* ─── EXACT STAGING CONTENT SECTION ─── */
+    #content-section {
+      padding: 40px 0 60px;
+      background: var(--off);
+    }
+    .content-intro {
+      padding: 0;
+      margin-bottom: 36px;
+    }
+    .content-intro p {
+      font-size: 1.05rem;
+      color: var(--navy);
+      line-height: 1.7;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .overview-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 28px 32px;
+      border: 1.5px solid #E2E8F0;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.03);
+    }
+    .highlights-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .highlights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .highlights-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .92rem;
+      color: var(--navy);
+      line-height: 1.6;
+    }
+    .highlights-list li::before {
+      content: '\2713';
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(56,103,58,0.12);
+      color: var(--green);
+      font-weight: 800;
+      font-size: .75rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* RIGHT CARD (FDP INCLUSIONS DESIGN) */
+    .experience-card {
+      background: rgba(159, 194, 140, 0.25);
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      border-radius: 24px;
+      padding: 28px 32px;
+    }
+
+    @media (max-width: 1024px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { height: 260px; }
+      .overview-card, .experience-card { padding: 24px 20px; }
+    }
+  </style>
+  <link rel="stylesheet" href="../css/global-components.css" />
+</head>
+<body>
+
+<!-- ===== GLOBAL HEADER ===== -->
+<header id="global-header"></header>
+
+<!-- ===== HERO BANNER ===== -->
+<div class="page-hero">
+  <div class="page-hero-img">
+    <img src="../images/Immersion-Program-Banner.webp" alt="Faculty Development Program" fetchpriority="high" />
+  </div>
+</div>
+
+<!-- ===== PAGE HEADER & BREADCRUMB BELOW BANNER (LEFT ALIGNED) ===== -->
+<div class="page-header-section">
+  <div class="container">
+    <div class="page-breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/immersion-programs">Immersion Programs</a>
+      <span>›</span>
+      <span style="color:var(--navy); font-weight: 600;">Special Learning Tours - Faculty Development Program</span>
+    </div>
+    <h1>Special Learning Tours - Faculty Development <span>Program</span></h1>
+  </div>
+</div>
+
+<!-- ===== EXACT STAGING CONTENT ===== -->
+<section id="content-section">
+  <div class="container">
+    
+    <!-- PROGRAM OVERVIEW PARAGRAPH -->
+    <div class="content-intro">
+      <p>The Faculty Development Program (FDP) provides a unique opportunity for faculty members to collaborate with top-tier international institutions and immerse themselves in the latest education, management, and architecture trends.</p>
+    </div>
+
+    <div class="overview-grid">
+      
+      <!-- LEFT COLUMN: WHAT WE OFFER -->
+      <div class="overview-card">
+        <h3 class="highlights-title">What We Offer:</h3>
+        <ul class="highlights-list">
+          <li>Networking opportunities with entrepreneurs, and top level management executives of leading global companies.</li>
+          <li>Interactive workshops in top QS-ranked universities and leading global institutions across Europe and Asia.</li>
+          <li>Participate in workshops, seminars, and hands-on learning experiences</li>
+          <li>Engage in peer-to-peer learning and a cultural exchange</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT COLUMN: PROGRAM HIGHLIGHTS -->
+      <div class="experience-card">
+        <h3 class="highlights-title">Program Highlights</h3>
+        <ul class="highlights-list">
+          <li>Explore emerging technologies such as Drone Technology and Artificial Intelligence, along with hands-on exposure to modern AI tools and industry applications.</li>
+          <li>Engage in discussions around Management &amp; Entrepreneurship, Strategic Management, Innovation, Growth Mindset, and Design Thinking to address modern-day challenges and opportunities.</li>
+          <li>Interact with academicians from international universities, gain valuable industry insights, and experience meaningful cultural and local engagement.</li>
+          <li>Participate in mindfulness and stress management sessions designed to promote personal well-being, productivity, and work-life balance.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GLOBAL FOOTER ===== -->
+<footer id="global-footer"></footer>
+
+<script src="../js/global-components.js"></script>
+</body>
+</html>

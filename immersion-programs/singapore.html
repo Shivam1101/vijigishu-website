@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UAE Immersion Program (Dubai & Abu Dhabi) – Vijigishu</title>
-  <meta name="description" content="Discover futuristic infrastructure, smart cities, luxury retail, and global finance in Dubai and Abu Dhabi with Vijigishu." />
-  <link rel="canonical" href="https://vijigishu.co.in/uae" />
-  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
-  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
-  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
-  
-  
-  
-  
+  <title>Singapore Immersion Program – Vijigishu</title>
+  <meta name="description" content="Recognized as one of the world's most innovative and future-ready nations, explore smart city development, global business ecosystems, and world-class universities in Singapore with Vijigishu." />
+  <link rel="canonical" href="https://vijigishu.co.in/singapore" />
+  <link rel="icon" type="image/png" href="../images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="../images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="../images/admin-profile-icon.png" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,40 +41,13 @@
     .btn-green { background: var(--sage); color: var(--navy); }
     .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
-    /* ─── NAVBAR ─── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
-    nav.scrolled, nav#navbar.scrolled {
-      background: rgba(255,255,255,.98);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 4px 25px rgb(0 0 0 / 21%);
-      border-bottom-color: rgb(27 28 74 / 24%);
-    }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1.1rem; }
-    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
-    .nav-cta { background: var(--sage); color: var(--navy) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
-    .nav-cta:hover { background: var(--green); color: var(--white) !important; }
-    .nav-cta::after { display: none !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
-    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
-    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
-
     /* ─── PAGE HERO ─── */
-    .page-hero { position: relative; height: 550px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero { position: relative; height: 550px; display: flex; align-items: center; overflow: hidden; }
     .page-hero-img { position: absolute; inset: 0; }
     .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: none; }
 
     /* Breadcrumbs below banner */
-    .breadcrumb-container { padding: 24px 0 12px;
-      background: var(--white);
-    }
+    .breadcrumb-container { padding: 24px 0 12px; background: var(--white); }
     .page-breadcrumb {
       display: flex;
       align-items: center;
@@ -106,9 +75,9 @@
     /* ─── OVERVIEW ─── */
     #overview { padding: 36px 0 60px; background: var(--white); }
     .overview-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: flex-start; }
-    .overview-left {}
     .overview-text { font-size: 1.05rem; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
     .overview-text-lead { font-size: 1.2rem; color: var(--navy); font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
+    
     /* Glance Box (At a Glance) */
     .glance-box {
       background: rgb(159 194 140 / 35%);
@@ -353,54 +322,6 @@
       100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
     }
 
-    /* ─── FOOTER ─── */
-    footer { background: var(--dark); padding: 60px 0 32px; }
-    
-    .footer-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 0;
-    }
-    .footer-mascot-wrap {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      align-items: start;
-      margin-bottom: -22px;
-      z-index: 3;
-    }
-    .footer-mascot-img {
-      max-height: 280px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
-      transition: transform 0.3s var(--ease, ease);
-    }
-    .footer-mascot-img:hover {
-      transform: scale(1.04);
-    }
-
-    .footer-grid_old { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 64px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .footer-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1rem; }
-    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); font-weight: 800; }
-    .footer-tagline { color: rgba(255,255,255,.4); font-size: .88rem; line-height: 1.7; max-width: 300px; }
-    .footer-col-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-links a { color: rgba(255,255,255,.5); font-size: .88rem; transition: color .25s; }
-    .footer-links a:hover { color: var(--sage); }
-    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.5; margin-bottom: 12px; }
-    .footer-contact-item span { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
-    .footer-bottom-links { display: flex; gap: 24px; }
-    .footer-bottom-links a { color: rgba(255,255,255,.3); font-size: .82rem; transition: color .25s; }
-    .footer-bottom-links a:hover { color: var(--sage); }
-
     /* ─── Reveal ─── */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -412,7 +333,6 @@
     @media (max-width: 1024px) {
       .overview-split { grid-template-columns: 1fr; gap: 48px; }
       .incl-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
       .opt-portal {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -435,12 +355,9 @@
       }
     }
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
+      .page-hero { height: 280px; }
       .incl-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
       .incl-card { padding: 24px 16px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
       .acc-header { padding: 20px; }
       .acc-body { padding: 0 20px 24px 20px; }
       #about-cta { padding: 48px 0; }
@@ -468,7 +385,7 @@
         justify-content: center;
       }
     }
-  
+
     /* ═════════════════════════════════════════════════════════════════
        ICON-ONLY DESTINATION SPEED DIAL FAB (7 Destinations)
        ═════════════════════════════════════════════════════════════════ */
@@ -624,7 +541,7 @@
       .fab-action-item { width: 36px; height: 36px; font-size: 1rem; }
     }
   </style>
-  <link rel="stylesheet" href="css/global-components.css" />
+  <link rel="stylesheet" href="../css/global-components.css" />
 </head>
 <body>
 
@@ -634,7 +551,7 @@
 <!-- ===== PAGE HERO ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
-    <img src="images/Dubai-GIP.webp" alt="UAE Immersion" fetchpriority="high" />
+    <img src="https://staging.vijigishu.co.in/wp-content/uploads/2026/06/Singapore.webp" alt="Singapore Immersion" fetchpriority="high" />
   </div>
 </div>
 
@@ -644,9 +561,9 @@
     <div class="page-breadcrumb">
       <a href="/">Home</a>
       <span>›</span>
-      <a href="immersion-programs">Immersion Programs</a>
+      <a href="/immersion-programs">Immersion Programs</a>
       <span>›</span>
-      <span class="current">UAE</span>
+      <span class="current">Singapore</span>
     </div>
   </div>
 </div>
@@ -657,24 +574,24 @@
     <div class="overview-split">
       <div class="overview-left reveal">
         <div class="tag">Program Overview</div>
-        <h2 class="section-heading" style="margin-bottom: 24px;">Discover the Future of<br><span>Global Business</span></h2>
-        <p class="overview-text-lead">Step into one of the world’s most dynamic business hubs with our UAE Immersion Program.</p>
-        <p class="overview-text">Designed for students and future leaders, this experience blends industry exposure, academic learning, and cultural exploration. From global financial markets to cutting-edge innovation hubs, UAE offers a powerful environment to understand how modern businesses operate on a global scale.</p>
+        <h2 class="section-heading" style="margin-bottom: 24px;">Discover the Future of<br><span>Innovation &amp; Smart Cities</span></h2>
+        <p class="overview-text-lead">Recognized as one of the world's most innovative and future-ready nations, Singapore offers students a unique blend of academic excellence, industry exposure, and cultural diversity.</p>
+        <p class="overview-text">Through immersive learning experiences, students gain insights into global business ecosystems, smart city development, sustainability practices, and innovation-driven industries while exploring one of Asia's most dynamic destinations.</p>
       </div>
       <div class="overview-right reveal reveal-delay-2">
         <div class="glance-box">
           <div class="glance-tag">At a Glance</div>
           <div class="glance-row">
             <div class="glance-label">Duration</div>
-            <div class="glance-value">5 Nights / 6 Days</div>
+            <div class="glance-value">4 Nights / 5 Days</div>
           </div>
           <div class="glance-row">
             <div class="glance-label">Destinations</div>
-            <div class="glance-value">📍 Dubai & Abu Dhabi</div>
+            <div class="glance-value">📍 Singapore City &amp; Sentosa Island</div>
           </div>
           <div class="glance-row">
             <div class="glance-label">Who it's for</div>
-            <div class="glance-value">Students & Future Leaders</div>
+            <div class="glance-value">Students &amp; Future Leaders</div>
           </div>
         </div>
       </div>
@@ -688,28 +605,28 @@
       </div>
       <div class="highlights-grid">
         <div class="highlight-card">
-          <div class="highlight-card-icon">📊</div>
-          <div class="highlight-card-text">Understand global business ecosystems in the Middle East</div>
+          <div class="highlight-card-icon">🎓</div>
+          <div class="highlight-card-text">Academic session with a leading international institution</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-card-icon">🚀</div>
-          <div class="highlight-card-text">Exposure to finance, logistics, entrepreneurship & innovation sectors</div>
+          <div class="highlight-card-text">Industry immersion across innovation, technology, and sustainability sectors</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-icon">🏙️</div>
+          <div class="highlight-card-text">Exposure to Singapore's smart city infrastructure and global business ecosystem</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-card-icon">💡</div>
-          <div class="highlight-card-text">Learn from real-world industry leaders and experts</div>
+          <div class="highlight-card-text">Experiential learning through real-world industry and cultural interactions</div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-card-icon">🌏</div>
+          <div class="highlight-card-text">Exploration of Singapore's multicultural heritage and iconic landmarks</div>
         </div>
         <div class="highlight-card">
           <div class="highlight-card-icon">🤝</div>
-          <div class="highlight-card-text">Experience international work culture and operations</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-card-icon">🎯</div>
-          <div class="highlight-card-text">Develop global mindset, adaptability, and leadership skills</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-card-icon">🎓</div>
-          <div class="highlight-card-text">Certification from an international university session</div>
+          <div class="highlight-card-text">Networking and global learning opportunities</div>
         </div>
       </div>
     </div>
@@ -728,7 +645,7 @@
         
         <div class="acc-item open">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 1</span> – Arrival & City Exploration</div>
+            <div class="acc-title"><span>Day 1</span> – Mumbai → Singapore | Arrival &amp; City Exploration</div>
             <div class="acc-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
@@ -737,16 +654,19 @@
           </div>
           <div class="acc-body">
             <ul>
-              <li>Arrival in Dubai</li>
-              <li>Guided city tour (Palm Jumeirah, Dubai Frame, Museum of the Future, etc.)</li>
-              <li>Hotel check-in & welcome dinner</li>
+              <li>Depart from Mumbai International Airport for Singapore</li>
+              <li>Arrive at Singapore Changi Airport</li>
+              <li>Meet &amp; greet by local representative</li>
+              <li>Transfer to hotel and check-in</li>
+              <li>Guided city tour covering: Merlion Park, Singapore Flyer (Photo Stop), Orchard Road, Chinatown, Suntec City</li>
+              <li>Overnight stay at the hotel</li>
             </ul>
           </div>
         </div>
 
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 2</span> – Learning + Desert Experience</div>
+            <div class="acc-title"><span>Day 2</span> – Academic Engagement &amp; Industry Immersion</div>
             <div class="acc-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
@@ -755,15 +675,18 @@
           </div>
           <div class="acc-body">
             <ul>
-              <li>University session</li>
-              <li>Desert Safari with BBQ dinner</li>
+              <li>Breakfast at the hotel</li>
+              <li>Academic session at a leading international institution</li>
+              <li>Interactive learning and global knowledge exchange</li>
+              <li>Industry Visit 1 (subject to availability)</li>
+              <li>Overnight stay at the hotel</li>
             </ul>
           </div>
         </div>
 
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 3</span> – Industry + Networking</div>
+            <div class="acc-title"><span>Day 3</span> – Industry Exposure &amp; Cultural Experience</div>
             <div class="acc-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
@@ -772,16 +695,18 @@
           </div>
           <div class="acc-body">
             <ul>
-              <li>University session</li>
-              <li>Industry visit</li>
-              <li>Dhow Cruise with dinner</li>
+              <li>Breakfast at the hotel</li>
+              <li>Industry Visit 2 (subject to availability)</li>
+              <li>Learn about innovation, sustainability, and global business practices</li>
+              <li>Visit Bugis Street and experience Singapore's local culture</li>
+              <li>Overnight stay at the hotel</li>
             </ul>
           </div>
         </div>
 
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 4</span> – Deep Industry Exposure</div>
+            <div class="acc-title"><span>Day 4</span> – Sentosa Island Experience</div>
             <div class="acc-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
@@ -790,15 +715,19 @@
           </div>
           <div class="acc-body">
             <ul>
-              <li>Two industry visits</li>
-              <li>Networking & learning sessions</li>
+              <li>Breakfast at the hotel</li>
+              <li>Explore Sentosa Island</li>
+              <li>Free time to enjoy attractions and experiences</li>
+              <li>Optional visit to Universal Studios Singapore</li>
+              <li>Wings of Time Show</li>
+              <li>Overnight stay at the hotel</li>
             </ul>
           </div>
         </div>
 
         <div class="acc-item">
           <div class="acc-header">
-            <div class="acc-title"><span>Day 5</span> – Abu Dhabi Visit</div>
+            <div class="acc-title"><span>Day 5</span> – Singapore → Mumbai | Departure</div>
             <div class="acc-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
@@ -807,26 +736,11 @@
           </div>
           <div class="acc-body">
             <ul>
-              <li>Visit Sheikh Zayed Grand Mosque</li>
-              <li>Explore BAPS Temple & city landmarks</li>
-              <li>Optional visit to Ferrari World Abu Dhabi</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="acc-item">
-          <div class="acc-header">
-            <div class="acc-title"><span>Day 6</span> – Departure</div>
-            <div class="acc-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-          <div class="acc-body">
-            <ul>
-              <li>Free time for shopping (Gold Souk / local markets)</li>
-              <li>Airport transfer</li>
+              <li>Breakfast at the hotel</li>
+              <li>Check-out from the hotel</li>
+              <li>Free time for shopping and exploration</li>
+              <li>Transfer to Singapore Changi Airport</li>
+              <li>Arrive in Mumbai with valuable global exposure and unforgettable memories</li>
             </ul>
           </div>
         </div>
@@ -847,45 +761,37 @@
       
       <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></div>
-        <div class="incl-title">Economy Airfare</div>
+        <div class="incl-title">Flights<br>(Roundtrip Airfare)</div>
       </div>
       <div class="incl-card reveal reveal-delay-1">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg></div>
-        <div class="incl-title">3★ Hotel Accommodation<br>(Twin/Triple Sharing)</div>
+        <div class="incl-title">Accommodation<br>(Hotel Stay)</div>
       </div>
       <div class="incl-card reveal reveal-delay-2">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
-        <div class="incl-title">All Meals<br>(Breakfast, Lunch, Dinner)</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1h11A2.5 2.5 0 0120 3.5v13.5M12 7v6M9 10h6"></path></svg></div>
-        <div class="incl-title">Visa & Travel<br>Insurance</div>
-      </div>
-      <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
-        <div class="incl-title">Airport Transfers &<br>Local Transportation</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-1">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg></div>
-        <div class="incl-title">Sightseeing &<br>Entry Tickets</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-2">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 22s4-4 10-4 10 4 10 4M12 2v14M12 5l6 3-6 3"></path></svg></div>
-        <div class="incl-title">Desert Safari &<br>Dhow Cruise</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="9" r="3"/></svg></div>
-        <div class="incl-title">Guided City Tours<br>(Dubai & Abu Dhabi)</div>
-      </div>
-      <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
-        <div class="incl-title">University Sessions<br>+ Certificate</div>
+        <div class="incl-title">Academic Sessions<br>&amp; Certification</div>
+      </div>
+      <div class="incl-card reveal reveal-delay-3">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19H2V5h20v14zM6 12h4M14 12h4M10 16h4"></path></svg></div>
+        <div class="incl-title">Industry Visits<br>&amp; Tech Hubs</div>
+      </div>
+      <div class="incl-card reveal">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
+        <div class="incl-title">Meals<br>(As per Itinerary)</div>
       </div>
       <div class="incl-card reveal reveal-delay-1">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19H2V5h20v14zM6 12h4M14 12h4M10 16h4"></path></svg></div>
-        <div class="incl-title">Industry Visits</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1h11A2.5 2.5 0 0120 3.5v13.5M12 7v6M9 10h6"></path></svg></div>
+        <div class="incl-title">Visa Assistance</div>
       </div>
       <div class="incl-card reveal reveal-delay-2">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+        <div class="incl-title">Travel Insurance</div>
+      </div>
+      <div class="incl-card reveal reveal-delay-3">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
+        <div class="incl-title">Transportation<br>(AC Coach Transfers)</div>
+      </div>
+      <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
         <div class="incl-title">Tour Leader Support</div>
       </div>
@@ -908,14 +814,12 @@
       </div>
       <div class="portal-wrapper">
         <div class="portal-shape">
-          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
+          <img src="../images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ===== GLOBAL FOOTER ===== -->
 
 <!-- ===== DESTINATION SWITCHER SPEED DIAL FAB ===== -->
 <div id="floating-fab-menu">
@@ -931,10 +835,6 @@
 
   <!-- Pop-out Destination Actions -->
   <div class="fab-actions" id="fabActions">
-    <a href="/immersion-programs/singapore" class="fab-action-item" aria-label="Singapore Immersion">
-      <span>🦁</span>
-      <div class="fab-action-label">Singapore Immersion <span class="arr">→</span></div>
-    </a>
     <a href="/immersion-programs/japan" class="fab-action-item" aria-label="Japan Immersion">
       <span>⛩️</span>
       <div class="fab-action-label">Japan Immersion <span class="arr">→</span></div>
@@ -946,6 +846,10 @@
     <a href="/immersion-programs/europe" class="fab-action-item" aria-label="Europe Immersion">
       <span>🏰</span>
       <div class="fab-action-label">Europe Immersion <span class="arr">→</span></div>
+    </a>
+    <a href="/immersion-programs/uae" class="fab-action-item" aria-label="UAE Immersion">
+      <span>🕌</span>
+      <div class="fab-action-label">UAE Immersion <span class="arr">→</span></div>
     </a>
     <a href="/immersion-programs/malaysia-singapore" class="fab-action-item" aria-label="Malaysia & Singapore">
       <span>🏙️</span>
@@ -960,7 +864,7 @@
 
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js"></script>
+<script src="../js/global-components.js"></script>
 <script>
   // Accordion
   const accHeaders = document.querySelectorAll('.acc-header');
@@ -986,6 +890,42 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Destination Speed Dial FAB
+  (function() {
+    const fabMenu = document.getElementById('floating-fab-menu');
+    const fabBtn = document.getElementById('fabToggleBtn');
+    let closeTimer = null;
+
+    if (!fabMenu || !fabBtn) return;
+
+    function openMenu() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      fabMenu.classList.add('is-open');
+    }
+
+    function scheduleCloseMenu() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(() => {
+        fabMenu.classList.remove('is-open');
+      }, 350);
+    }
+
+    fabMenu.addEventListener('mouseenter', openMenu);
+    fabMenu.addEventListener('mouseleave', scheduleCloseMenu);
+
+    fabBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (closeTimer) clearTimeout(closeTimer);
+      fabMenu.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!fabMenu.contains(e.target)) {
+        fabMenu.classList.remove('is-open');
+      }
+    });
+  })();
 </script>
 </body>
 </html>
