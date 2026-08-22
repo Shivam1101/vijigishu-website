@@ -236,14 +236,18 @@
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,.06);
       transition: transform .35s var(--ease), box-shadow .35s var(--ease);
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
+      display: flex !important;
+      flex-direction: column !important;
+      text-decoration: none !important;
+      color: inherit !important;
+      cursor: pointer !important;
       position: relative;
+      user-select: none;
+      touch-action: manipulation;
     }
-    
+    .prog-card * {
+      pointer-events: none;
+    }
     .prog-card:hover .prog-name {
       color: var(--green);
     }
@@ -1855,5 +1859,17 @@
     }
   }
 </script>
+
+  <script>
+    // Ensure all Best Selling cards are 100% clickable on all devices & browsers
+    document.querySelectorAll('.prog-card').forEach(function(card) {
+      card.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
