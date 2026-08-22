@@ -85,14 +85,58 @@
     }
 
     /* ─── COUNTRY FILTERS & MINIMAL GALLERY MASONRY ─── */
-    #gallery { padding: 50px 0 60px; }
-    .country-filters-wrap { text-align: center; margin-bottom: 40px; }
-    .gallery-filters { display: inline-flex; justify-content: center; flex-wrap: wrap; gap: 8px; background: var(--white); padding: 8px 12px; border-radius: 100px; box-shadow: 0 4px 25px rgba(0,0,0,.05); border: 1px solid rgba(0,0,0,.06); }
-    .filter-btn { padding: 10px 22px; border-radius: 100px; background: transparent; border: none; font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--gray); cursor: pointer; transition: all .3s var(--ease); display: inline-flex; align-items: center; gap: 8px; }
-    .filter-btn svg { flex-shrink: 0; border-radius: 50%; }
-    .filter-btn:hover { color: var(--navy); background: rgba(0,0,0,.04); }
-    .filter-btn.active { background: var(--green); color: var(--white); box-shadow: 0 6px 20px rgba(56,103,58,.25); }
-    .filter-btn.active stroke { stroke: var(--white); }
+    #gallery { padding: 40px 0 60px; }
+    .country-filters-wrap {
+      text-align: center;
+      margin-bottom: 36px;
+      padding: 0 16px;
+    }
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 960px;
+      margin: 0 auto;
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+    .filter-btn {
+      padding: 10px 20px;
+      border-radius: 100px;
+      background: var(--white);
+      border: 1.5px solid rgba(27, 28, 74, 0.12);
+      font-family: inherit;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      transition: all .25s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      touch-action: manipulation;
+      user-select: none;
+    }
+    .filter-btn svg {
+      flex-shrink: 0;
+      border-radius: 50%;
+    }
+    .filter-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.15);
+    }
+    .filter-btn.active {
+      background: var(--green);
+      color: var(--white);
+      border-color: var(--green);
+      box-shadow: 0 8px 24px rgba(56, 103, 58, 0.3);
+    }
 
     .masonry-grid {
       column-count: 3;
@@ -101,13 +145,18 @@
     .masonry-item {
       break-inside: avoid;
       margin-bottom: 24px;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
       position: relative;
-      cursor: pointer;
-      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      cursor: pointer !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
       background: var(--white);
-      transition: transform .4s var(--ease), opacity .4s var(--ease);
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+      touch-action: manipulation;
+    }
+    .masonry-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 36px rgba(27, 28, 74, 0.15);
     }
     .masonry-item img {
       width: 100%;
@@ -115,16 +164,19 @@
       display: block;
       transition: transform .6s var(--ease);
     }
+    .masonry-item:hover img {
+      transform: scale(1.04);
+    }
     
     /* Subtle Gradient Glassmorphic Flag Badge */
     .masonry-item-badge {
       position: absolute;
       top: 14px;
       left: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 100px;
       padding: 6px 8px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
@@ -142,41 +194,110 @@
     .masonry-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(13,14,46,0.3);
+      background: rgba(13,14,46,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
-      transition: opacity .35s var(--ease);
+      transition: opacity .3s var(--ease);
+      z-index: 2;
     }
     .masonry-zoom-icon {
       width: 44px;
       height: 44px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.95);
       border-radius: 50%;
       display: grid;
       place-items: center;
       color: var(--navy);
       box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      transform: scale(0.75);
-      transition: transform .35s var(--ease);
+      transform: scale(0.8);
+      transition: transform .3s var(--ease);
     }
-    .masonry-title { display: none !important; }
-    .masonry-item:hover img { transform: scale(1.05); }
     .masonry-item:hover .masonry-overlay { opacity: 1; }
     .masonry-item:hover .masonry-zoom-icon { transform: scale(1); }
 
-    /* ─── LIGHTBOX MODAL WITH NAVIGATION ─── */
-    .lightbox { display: none; position: fixed; z-index: 1000; inset: 0; width: 100%; height: 100%; background-color: rgba(13,14,46,0.96); backdrop-filter: blur(12px); flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
-    .lightbox-img-wrap { position: relative; max-width: 90vw; max-height: 80vh; display: flex; flex-direction: column; align-items: center; }
-    .lightbox-content { max-width: 100%; max-height: 72vh; border-radius: 12px; object-fit: contain; box-shadow: 0 25px 60px rgba(0,0,0,.5); }
-    .lightbox-caption { display: none !important; }
-    .lightbox-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; color: var(--white); font-size: 1.5rem; display: grid; place-items: center; cursor: pointer; transition: all .3s; z-index: 1001; }
-    .lightbox-nav-btn:hover { background: var(--green); border-color: var(--sage); color: var(--white); }
+    /* ─── LIGHTBOX MODAL WITH ULTRA HIGH Z-INDEX ─── */
+    .lightbox {
+      display: none;
+      position: fixed !important;
+      z-index: 9999999 !important;
+      inset: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      background: rgba(13,14,46,0.96) !important;
+      backdrop-filter: blur(14px) !important;
+      -webkit-backdrop-filter: blur(14px) !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open {
+      display: flex !important;
+    }
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 90vw;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-content {
+      max-width: 100%;
+      max-height: 78vh;
+      border-radius: 14px;
+      object-fit: contain;
+      box-shadow: 0 25px 70px rgba(0,0,0,.6);
+      display: block;
+    }
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.6rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all .25s;
+      z-index: 10000001;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .lightbox-nav-btn:hover {
+      background: var(--green);
+      border-color: var(--sage);
+      color: var(--white);
+      transform: translateY(-50%) scale(1.08);
+    }
     .lightbox-prev { left: 24px; }
     .lightbox-next { right: 24px; }
-    .lightbox-close { position: absolute; top: 24px; right: 32px; color: var(--white); font-size: 36px; font-weight: 300; transition: color .3s; cursor: pointer; line-height: 1; z-index: 1002; }
-    .lightbox-close:hover { color: var(--sage); }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: var(--white);
+      font-size: 38px;
+      font-weight: 300;
+      transition: color .25s, transform .25s;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 10000002;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .lightbox-close:hover {
+      color: var(--sage);
+      transform: scale(1.15);
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -221,41 +342,40 @@
     
     @media (max-width: 768px) {
       .country-filters-wrap {
-        margin-bottom: 28px;
-        padding: 0 12px;
+        margin-bottom: 24px;
+        padding: 0 10px;
       }
       .gallery-filters {
         display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        scroll-behavior: smooth !important;
-        scrollbar-width: none !important;
-        max-width: 100% !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        overflow-x: visible !important;
         width: 100% !important;
-        padding: 8px 12px !important;
-        border-radius: 100px !important;
-        justify-content: flex-start !important;
-        gap: 8px !important;
-        box-sizing: border-box !important;
-      }
-      .gallery-filters::-webkit-scrollbar {
-        display: none !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
       }
       .filter-btn {
-        padding: 8px 18px !important;
-        font-size: 0.82rem !important;
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
+        padding: 7px 14px !important;
+        font-size: 0.78rem !important;
+        gap: 6px !important;
+        border-radius: 100px !important;
+      }
+      .filter-btn svg {
+        width: 16px !important;
+        height: 16px !important;
       }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .page-hero { height: 260px; }
       .masonry-grid { column-count: 1; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .lightbox-nav-btn { width: 38px; height: 38px; font-size: 1.2rem; }
+      .lightbox-nav-btn { width: 42px; height: 42px; font-size: 1.3rem; }
       .lightbox-prev { left: 10px; }
       .lightbox-next { right: 10px; }
+      .lightbox-close { top: 16px; right: 20px; font-size: 32px; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
@@ -339,13 +459,17 @@
 
   // Render Filter Buttons
   const galleryFilters = document.getElementById('galleryFilters');
-  categoriesList.forEach((cat, idx) => {
-    const btn = document.createElement('button');
-    btn.className = `filter-btn ${idx === 0 ? 'active' : ''}`;
-    btn.setAttribute('data-filter', cat.key);
-    btn.innerHTML = `${cat.icon} <span>${cat.label}</span>`;
-    galleryFilters.appendChild(btn);
-  });
+  if (galleryFilters) {
+    galleryFilters.innerHTML = '';
+    categoriesList.forEach((cat, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `filter-btn ${idx === 0 ? 'active' : ''}`;
+      btn.setAttribute('data-filter', cat.key);
+      btn.innerHTML = `${cat.icon} <span>${cat.label}</span>`;
+      galleryFilters.appendChild(btn);
+    });
+  }
 
   // Gallery Country Data Mapping (Dynamic with localStorage sync)
   const defaultPresetItems = [
@@ -376,8 +500,12 @@
       localStorage.setItem('vijigishu_gallery_items', JSON.stringify(defaultPresetItems));
       return defaultPresetItems.map(item => ({ ...item, icon: countryIcons[item.country] }));
     }
-    const parsed = JSON.parse(raw);
-    return parsed.map(item => ({ ...item, icon: countryIcons[item.country] }));
+    try {
+      const parsed = JSON.parse(raw);
+      return parsed.map(item => ({ ...item, icon: countryIcons[item.country] }));
+    } catch(e) {
+      return defaultPresetItems.map(item => ({ ...item, icon: countryIcons[item.country] }));
+    }
   }
 
   let galleryItems = loadGalleryItems();
@@ -396,7 +524,7 @@
       const card = document.createElement('div');
       card.className = 'masonry-item reveal visible';
       card.setAttribute('data-country', item.country);
-      card.style.transitionDelay = `${(index % 4) * 0.08}s`;
+      card.setAttribute('data-index', index);
       card.innerHTML = `
         <div class="masonry-item-badge">${item.icon}</div>
         <img src="${item.src}" loading="lazy" alt="${item.title}" />
@@ -406,7 +534,10 @@
           </div>
         </div>
       `;
-      card.addEventListener('click', () => openLightbox(index));
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(index);
+      });
       masonryGrid.appendChild(card);
     });
   }
@@ -417,7 +548,7 @@
   // Country Filter Buttons Listener
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.filter-btn');
-    if (btn) {
+    if (btn && btn.closest('#galleryFilters')) {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filterValue = btn.getAttribute('data-filter');
@@ -433,8 +564,10 @@
   const lightboxClose = document.getElementById("lightboxClose");
 
   function openLightbox(index) {
+    if (!currentFilteredList[index]) return;
     currentLightboxIndex = index;
     updateLightboxContent();
+    lightbox.classList.add('open');
     lightbox.style.display = "flex";
     document.body.style.overflow = "hidden";
   }
@@ -447,45 +580,44 @@
   }
 
   function closeLightboxModal() {
+    lightbox.classList.remove('open');
     lightbox.style.display = "none";
     document.body.style.overflow = "auto";
   }
 
-  lightboxClose.addEventListener('click', closeLightboxModal);
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox || e.target.classList.contains('lightbox-img-wrap')) {
-      closeLightboxModal();
-    }
-  });
-
-  lightboxPrev.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentLightboxIndex = (currentLightboxIndex - 1 + currentFilteredList.length) % currentFilteredList.length;
-    updateLightboxContent();
-  });
-
-  lightboxNext.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentLightboxIndex = (currentLightboxIndex + 1) % currentFilteredList.length;
-    updateLightboxContent();
-  });
-
-  // Keyboard navigation for Lightbox
-  window.addEventListener('keydown', (e) => {
-    if (lightbox.style.display === 'flex') {
-      if (e.key === 'ArrowLeft') lightboxPrev.click();
-      if (e.key === 'ArrowRight') lightboxNext.click();
-      if (e.key === 'Escape') closeLightboxModal();
-    }
-  });
-
-  // Scroll reveal observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightboxModal);
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-img-wrap')) {
+        closeLightboxModal();
+      }
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+
+  if (lightboxPrev) {
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentFilteredList.length) % currentFilteredList.length;
+      updateLightboxContent();
+    });
+  }
+
+  if (lightboxNext) {
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentFilteredList.length;
+      updateLightboxContent();
+    });
+  }
+
+  // Keyboard navigation for lightbox
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex' || lightbox.classList.contains('open')) {
+      if (e.key === 'Escape') closeLightboxModal();
+      if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
+      if (e.key === 'ArrowRight' && lightboxNext) lightboxNext.click();
+    }
+  });
 </script>
 </body>
 </html>
