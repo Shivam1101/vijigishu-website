@@ -13,12 +13,10 @@
 
   const assetBase = isSubFolder ? '../' : './';
   
-  // Smart Universal URL Resolver
-  // If the browsing environment uses .html filenames (static servers, file protocol, or explicit .html paths),
-  // links preserve .html with accurate relative paths so 404s never occur.
-  // If clean URLs are in effect, root-relative clean paths are used.
-  
-  let urlHome, urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact;
+  // 1. Permanent Bulletproof URL Mapper
+  // - Homepage URL from ANY page must strictly navigate to the root website (never to immersion-programs).
+  let urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
+  let urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact;
   let urlDestSingapore, urlDestJapan, urlDestKorea, urlDestEurope, urlDestMalaysia, urlDestUAE;
 
   if (hasHtmlExt) {
@@ -74,7 +72,7 @@
     return '';
   }
 
-  // 1. Render Header Navbar HTML
+  // 2. Render Header Navbar HTML
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
@@ -114,7 +112,7 @@
   </div>
   `;
 
-  // 2. Render Footer HTML & Bottom Bar
+  // 3. Render Footer HTML & Bottom Bar
   const footerHTML = `
   <footer id="site-footer">
     <div class="container">
@@ -218,7 +216,7 @@
   </div>
   `;
 
-  // 3. Auto-Inject into DOM
+  // 4. Auto-Inject into DOM
   function injectComponents() {
     // Inject Header
     const headerContainer = document.getElementById('global-header');

@@ -105,18 +105,13 @@
     }
 
     /* ─── NAVBAR ─── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; padding: 0 24px; transition: background .4s var(--ease), box-shadow .4s var(--ease); }
-    nav.scrolled, nav#navbar.scrolled {
-      background: rgba(255,255,255,.98);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 4px 25px rgb(0 0 0 / 21%);
-      border-bottom-color: rgb(27 28 74 / 24%);
-    }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1.1rem; }
-    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); transition: color .3s; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
+    
+    
+    
+    
+    
+    
+    
     .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
@@ -126,7 +121,7 @@
     .nav-cta::after { display: none !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
-    .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; border-bottom: 1px solid rgba(0,0,0,.06); padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+    
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
     .mobile-menu a:last-child { border-bottom: none; }
 
@@ -1142,7 +1137,7 @@
       #conferences {
         scroll-margin-top: 130px;
       }
-      .nav-links { display: none; }
+      
       .hamburger { display: flex; }
       .page-hero { height: 260px; }
       .programs-scroll { grid-template-columns: 1fr; }
