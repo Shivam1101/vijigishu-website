@@ -424,7 +424,7 @@
     }
   
     /* ═════════════════════════════════════════════════════════════════
-       ICON-ONLY DESTINATION SPEED DIAL FAB
+       ICON-ONLY DESTINATION SPEED DIAL FAB (7 Destinations)
        ═════════════════════════════════════════════════════════════════ */
     #floating-fab-menu {
       position: fixed;
@@ -434,7 +434,7 @@
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       padding: 12px;
       margin: -12px;
       pointer-events: auto;
@@ -501,7 +501,7 @@
     .fab-actions {
       display: flex;
       flex-direction: column-reverse;
-      gap: 10px;
+      gap: 8px;
       align-items: center;
       opacity: 0;
       visibility: hidden;
@@ -520,8 +520,8 @@
     /* Individual action circle button */
     .fab-action-item {
       position: relative;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #FFFFFF;
       border: 1.5px solid rgba(56, 103, 58, 0.22);
@@ -561,6 +561,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      z-index: 10;
     }
     .fab-action-label span.arr {
       color: var(--sage);
@@ -572,11 +573,10 @@
     }
 
     @media (max-width: 768px) {
-      #floating-fab-menu { bottom: 16px; left: 16px; }
+      #floating-fab-menu { bottom: 16px; left: 16px; gap: 6px; }
       .fab-main-btn { width: 44px; height: 44px; }
-      .fab-action-item { width: 38px; height: 38px; font-size: 1rem; }
+      .fab-action-item { width: 36px; height: 36px; font-size: 1rem; }
     }
-
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
 </head>
@@ -854,13 +854,25 @@
 
   <!-- Pop-out Destination Actions -->
   <div class="fab-actions" id="fabActions">
-    <a href="uae" class="fab-action-item" aria-label="UAE Immersion">
-      <span>🕌</span>
-      <div class="fab-action-label">UAE Immersion <span class="arr">→</span></div>
+    <a href="singapore" class="fab-action-item" aria-label="Singapore Immersion">
+      <span>🇸🇬</span>
+      <div class="fab-action-label">Singapore Immersion <span class="arr">→</span></div>
+    </a>
+    <a href="japan" class="fab-action-item" aria-label="Japan Immersion">
+      <span>🇯🇵</span>
+      <div class="fab-action-label">Japan Immersion <span class="arr">→</span></div>
+    </a>
+    <a href="south-korea" class="fab-action-item" aria-label="South Korea Immersion">
+      <span>🇰🇷</span>
+      <div class="fab-action-label">South Korea Immersion <span class="arr">→</span></div>
     </a>
     <a href="europe" class="fab-action-item" aria-label="Europe Immersion">
       <span>🏰</span>
       <div class="fab-action-label">Europe Immersion <span class="arr">→</span></div>
+    </a>
+    <a href="uae" class="fab-action-item" aria-label="UAE Immersion">
+      <span>🕌</span>
+      <div class="fab-action-label">UAE Immersion <span class="arr">→</span></div>
     </a>
     <a href="singapore-indonesia" class="fab-action-item" aria-label="Singapore & Indonesia">
       <span>🌴</span>
