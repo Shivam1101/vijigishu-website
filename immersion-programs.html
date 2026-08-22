@@ -446,8 +446,24 @@
     }
     
     @media (max-width: 991px) {
-      .disc-grid { grid-template-columns: 1fr; gap: 32px; }
-      .disc-card-wrapper { height: 400px; }
+      .disc-grid { grid-template-columns: 1fr; gap: 28px; }
+      .disc-card-wrapper {
+        height: auto;
+        min-height: 380px;
+      }
+      .option-slide-out {
+        height: auto;
+        min-height: 380px;
+      }
+      .slide-out-content {
+        padding: 32px 24px;
+        min-height: 380px;
+      }
+      .option-slide-out:hover .slide-out-details,
+      .option-slide-out:active .slide-out-details {
+        max-height: 420px;
+        opacity: 1;
+      }
       .sec-header {
         margin-bottom: 32px;
       }
@@ -1008,6 +1024,56 @@
       }
     }
     @media (max-width: 768px) {
+      /* Fix Academic Disciplines Card Clipping on Mobile */
+      .disc-card-wrapper {
+        height: auto !important;
+        min-height: 360px;
+        border-radius: 22px;
+      }
+      .option-slide-out {
+        height: auto !important;
+        min-height: 360px;
+        border-radius: 22px;
+      }
+      .slide-out-content {
+        padding: 24px 20px !important;
+        min-height: 360px;
+        justify-content: flex-end;
+      }
+      .slide-out-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+      .slide-out-text h3 {
+        font-size: 1.5rem;
+        margin-bottom: 4px;
+      }
+      .slide-out-desc {
+        font-size: 0.84rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+      .slide-out-destinations {
+        padding-top: 10px;
+        margin-bottom: 14px;
+        gap: 6px;
+      }
+      .slide-out-dest-item {
+        font-size: 0.78rem;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .slide-out-dest-item strong {
+        min-width: auto;
+      }
+      .option-slide-out:hover .slide-out-details,
+      .option-slide-out:active .slide-out-details,
+      .option-slide-out.active .slide-out-details {
+        max-height: 460px;
+        opacity: 1;
+      }
       .filter-bar {
         top: 72px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -1732,6 +1798,20 @@
   }, { threshold: 0.05 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Academic Disciplines Mobile Tap Handler
+  if (window.innerWidth <= 991) {
+    document.querySelectorAll('.option-slide-out').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return; // allow clicking explore button
+        const isOpen = this.classList.contains('active');
+        document.querySelectorAll('.option-slide-out').forEach(c => c.classList.remove('active'));
+        if (!isOpen) {
+          this.classList.add('active');
+        }
+      });
+    });
+  }
 
   // Internship Accordion Toggle Function
   function toggleInternshipAccordion(el) {
