@@ -14,7 +14,7 @@
   const assetBase = isSubFolder ? '../' : './';
   
   // 1. Permanent Bulletproof URL Mapper
-  // - Homepage URL from ANY page must strictly navigate to the root website (never to immersion-programs).
+  // Logo & Home link ALWAYS resolves to root homepage ('/'), never to any subfolder.
   let urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
   let urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact;
   let urlDestSingapore, urlDestJapan, urlDestKorea, urlDestEurope, urlDestMalaysia, urlDestUAE;
@@ -76,13 +76,13 @@
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="${urlHome}" class="logo-wrap" aria-label="Vijigishu Home">
+      <a href="${urlHome}" class="logo-wrap" id="siteLogoLink" aria-label="Vijigishu Home">
         <img 
-          src="${assetBase}images/logo-of-vijigishu_2-1.webp" 
+          src="/images/logo-of-vijigishu_2-1.webp" 
           onerror="
-            if (!this.dataset.step) { this.dataset.step='1'; this.src='/images/logo-of-vijigishu_2-1.webp'; }
-            else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; }
-            else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='/images/logo-of-vijigishu_2-1.png'; }
+            if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-1.webp'; }
+            else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-1.png'; }
+            else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; }
             else if (this.dataset.step==='3') { this.dataset.step='4'; this.src='https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png'; }
           " 
           alt="Vijigishu Educational Travel" 
@@ -123,11 +123,11 @@
           <div class="footer-logo">
             <a href="${urlHome}" style="text-decoration: none; display: inline-block;">
               <img 
-                src="${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp" 
+                src="/images/logo-of-vijigishu_2-white-01-scaled.webp" 
                 onerror="
-                  if (!this.dataset.step) { this.dataset.step='1'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.webp'; }
-                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; }
-                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp'; }
+                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; }
                   else if (this.dataset.step==='3') { this.dataset.step='4'; this.src='https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png'; }
                 " 
                 alt="Vijigishu Educational Travel" 
@@ -313,6 +313,16 @@
         nav.classList.toggle('scrolled', window.scrollY > 40);
       }, { passive: true });
     }
+
+    // Explicit Logo Root Redirection Handler
+    // Guarantees clicking the logo anywhere in the website redirects directly to the true root Homepage.
+    document.querySelectorAll('.logo-wrap').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
+        window.location.href = targetHome;
+      });
+    });
 
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
