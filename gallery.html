@@ -217,6 +217,7 @@
     .masonry-item:hover .masonry-overlay { opacity: 1; }
     .masonry-item:hover .masonry-zoom-icon { transform: scale(1); }
 
+    
     /* ─── LIGHTBOX MODAL WITH ULTRA HIGH Z-INDEX ─── */
     .lightbox {
       display: none;
@@ -278,8 +279,47 @@
       color: var(--white);
       transform: translateY(-50%) scale(1.08);
     }
-    .lightbox-prev { left: 24px; }
-    .lightbox-next { right: 24px; }
+    .lightbox-prev { left: 28px; }
+    .lightbox-next { right: 28px; }
+    .lightbox-nav-container {
+      display: contents;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox {
+        padding: 50px 16px 20px !important;
+        justify-content: center !important;
+      }
+      .lightbox-img-wrap {
+        max-width: 96vw !important;
+        max-height: 68vh !important;
+        margin-bottom: 16px !important;
+      }
+      .lightbox-content {
+        max-height: 64vh !important;
+      }
+      .lightbox-nav-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 28px !important;
+        width: 100% !important;
+        z-index: 10000001 !important;
+      }
+      .lightbox-nav-btn {
+        position: static !important;
+        transform: none !important;
+        width: 48px !important;
+        height: 48px !important;
+        font-size: 1.5rem !important;
+        background: rgba(255, 255, 255, 0.22) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
+      }
+      .lightbox-nav-btn:active {
+        transform: scale(0.92) !important;
+      }
+    }
     .lightbox-close {
       position: absolute;
       top: 24px;
@@ -304,6 +344,11 @@
       color: #FFFFFF;
       transform: scale(1.1);
       box-shadow: 0 8px 24px rgba(56, 103, 58, 0.4);
+    }
+    .lightbox-close svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
     }
     .lightbox-close svg {
       width: 20px;
@@ -436,10 +481,12 @@
       <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
   </button>
-  <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
-  <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next">›</button>
   <div class="lightbox-img-wrap">
     <img class="lightbox-content" id="lightbox-img" alt="Gallery Photo" />
+  </div>
+  <div class="lightbox-nav-container">
+    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+    <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next">›</button>
   </div>
 </div>
 
