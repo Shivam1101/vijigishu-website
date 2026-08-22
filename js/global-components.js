@@ -285,45 +285,57 @@
     }
   }
 
-  function initScrollToTop() {
+    function initScrollToTop() {
     if (currentPath.includes('admin')) return;
     const scrollBtn = document.getElementById('scrollToTop');
     const circle = document.getElementById('scrollProgressCircle');
     const needle = document.getElementById('compassNeedle');
     if (!scrollBtn || !circle) return;
 
-    const radius = circle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius; // 2 * PI * 26 = ~163.36
+    function getCircumference() {
+      const radius = circle.r?.baseVal?.value || 26;
+      return 2 * Math.PI * radius;
+    }
 
+    let circumference = getCircumference();
     circle.style.strokeDasharray = `${circumference} ${circumference}`;
     circle.style.strokeDashoffset = circumference;
 
     function updateScrollProgress() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const scrollHeight = (document.documentElement.scrollHeight || document.body.scrollHeight) - window.innerHeight;
+
+      circumference = getCircumference();
+      circle.style.strokeDasharray = `${circumference} ${circumference}`;
 
       if (scrollHeight > 0) {
-        const progress = scrollTop / scrollHeight;
+        const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
         const offset = circumference - (progress * circumference);
         circle.style.strokeDashoffset = offset;
 
-        // Rotate needle slightly based on scroll direction
+        // Rotate needle based on scroll
         if (needle) {
           const rotationAngle = (progress * 360) % 360;
           needle.style.transform = `rotate(${rotationAngle}deg)`;
         }
       }
 
-      if (scrollTop > 280) {
+      if (scrollTop > 200) {
         scrollBtn.classList.add('visible');
+        scrollBtn.classList.add('show');
       } else {
         scrollBtn.classList.remove('visible');
+        scrollBtn.classList.remove('show');
       }
     }
 
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('touchmove', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress, { passive: true });
+    updateScrollProgress();
 
-    scrollBtn.addEventListener('click', function () {
+    scrollBtn.addEventListener('click', function (e) {
+      e.preventDefault();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'

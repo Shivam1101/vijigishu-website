@@ -348,7 +348,8 @@ footer#site-footer::before {
   padding: 0 !important;
   transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease), transform 0.35s var(--ease), box-shadow 0.35s var(--ease) !important;
 }
-.scroll-to-top.show {
+.scroll-to-top.show,
+.scroll-to-top.visible {
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
@@ -447,22 +448,54 @@ footer#site-footer::before {
   transform: translateY(-50%) translateX(0);
 }
 
-@media (max-width: 640px) {
+
+@media (max-width: 768px) {
   .compass-tooltip {
     display: none !important;
   }
   .scroll-to-top {
     bottom: 20px !important;
-    right: 20px !important;
-    width: 52px !important;
-    height: 52px !important;
+    right: 18px !important;
+    width: 50px !important;
+    height: 50px !important;
+    touch-action: manipulation !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28) !important;
+  }
+  .scroll-to-top:active {
+    transform: scale(0.92) !important;
   }
   .progress-ring {
-    width: 52px;
-    height: 52px;
+    width: 50px !important;
+    height: 50px !important;
+  }
+  .progress-ring circle {
+    cx: 25 !important;
+    cy: 25 !important;
+    r: 21.5 !important;
   }
   .compass-btn-inner {
-    width: 40px;
-    height: 40px;
+    width: 38px !important;
+    height: 38px !important;
+  }
+}
+@media (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 18px !important;
+    right: 16px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .progress-ring {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .progress-ring circle {
+    cx: 24 !important;
+    cy: 24 !important;
+    r: 20.5 !important;
+  }
+  .compass-btn-inner {
+    width: 36px !important;
+    height: 36px !important;
   }
 }
