@@ -4,348 +4,231 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Singapore Immersion Program – Vijigishu</title>
+  <meta name="description" content="Recognized as one of the world's most innovative and future-ready nations, explore smart city development, global business ecosystems, and world-class universities in Singapore with Vijigishu." />
+  <link rel="canonical" href="https://vijigishu.co.in/singapore" />
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
   <style>
-    /* ─── Variables & Resets ─── */
-    :root {
-      --navy: #1B1C4A;
-      --navy-light: #252866;
-      --green: #38673A;
-      --sage: #9FC28C;
-      --off: #FAFBF9;
-      --white: #FFFFFF;
-      --gray: #6B7280;
-      --gray-light: #E5E7EB;
-      --border: rgba(27,28,74,0.08);
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
-    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--navy); overflow-x: hidden; }
+    :root {
+      --navy:  #1B1C4A;
+      --green: #38673A;
+      --sage:  #9FC28C;
+      --gold:  #D4A840;
+      --white: #FFFFFF;
+      --off:   #F6F7F2;
+      --gray:  #7B7B8F;
+      --dark:  #0D0E2E;
+      --ease:  cubic-bezier(.25,.46,.45,.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag { display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green); background: transparent; padding: 0; margin-bottom: 12px; }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; color: var(--navy); }
+    .section-heading span { color: var(--green); font-style: italic; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
+    .btn-green { background: var(--sage); color: var(--navy); }
+    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
-    /* ─── Hero Banner ─── */
-    .page-hero {
-      position: relative;
-      height: 380px;
-      overflow: hidden;
-      background: var(--navy);
-    }
-    .page-hero-img {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    .page-hero-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      transition: transform 1.2s var(--ease);
-    }
-    .page-hero:hover .page-hero-img img {
-      transform: scale(1.03);
-    }
+    /* ─── PAGE HERO ─── */
+    .page-hero { position: relative; height: 550px; display: flex; align-items: center; overflow: hidden; }
+    .page-hero-img { position: absolute; inset: 0; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: none; }
 
-    /* ─── Breadcrumbs ─── */
-    .breadcrumb-container {
-      padding: 24px 0 12px;
-      background: var(--white);
-    }
+    /* Breadcrumbs below banner */
+    .breadcrumb-container { padding: 24px 0 12px; background: var(--white); }
     .page-breadcrumb {
       display: flex;
       align-items: center;
       gap: 8px;
       font-size: 0.85rem;
-      font-weight: 500;
       color: var(--gray);
+      font-weight: 500;
     }
     .page-breadcrumb a {
       color: var(--gray);
+      transition: color 0.25s var(--ease);
       text-decoration: none;
-      transition: color 0.2s;
     }
     .page-breadcrumb a:hover {
       color: var(--green);
     }
+    .page-breadcrumb span {
+      color: var(--gray);
+    }
     .page-breadcrumb span.current {
-      color: var(--green);
-      font-weight: 600;
-    }
-
-    /* ─── Common Typography ─── */
-    .tag {
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 12px;
-      display: inline-block;
-      padding: 0;
-      background: transparent;
-      border: none;
-    }
-    .section-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 2.6rem);
-      line-height: 1.2;
       color: var(--navy);
-    }
-    .section-heading span {
-      color: var(--green);
-      font-style: italic;
+      font-weight: 600;
     }
 
-    /* ─── Overview Section ─── */
-    #overview {
-      padding: 36px 0 60px;
-      background: var(--white);
-    }
-    .overview-split {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-    .overview-text-lead {
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--green);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .overview-text {
-      color: #4B5563;
-      font-size: .95rem;
-      line-height: 1.75;
-      margin-bottom: 16px;
-    }
+    /* ─── OVERVIEW ─── */
+    #overview { padding: 36px 0 60px; background: var(--white); }
+    .overview-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: flex-start; }
+    .overview-text { font-size: 1.05rem; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
+    .overview-text-lead { font-size: 1.2rem; color: var(--navy); font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
     
-    /* ─── Glance Box ─── */
+    /* Glance Box (At a Glance) */
     .glance-box {
       background: rgb(159 194 140 / 35%);
-      border-radius: 20px;
+      border: 1.5px solid rgba(56, 103, 58, 0.2);
+      border-radius: 24px;
       padding: 32px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      position: sticky;
-      top: 100px;
+      box-shadow: 0 10px 30px rgba(27, 28, 74, 0.02);
     }
     .glance-tag {
-      font-size: .75rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: .08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--green);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .glance-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
+      align-items: flex-start;
+      padding: 12px 0;
       border-bottom: none;
+      gap: 16px;
+    }
+    .glance-row:last-child {
+      padding-bottom: 0;
+    }
+    .glance-row:first-of-type {
+      padding-top: 0;
     }
     .glance-label {
-      font-size: .85rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 500;
       color: var(--gray);
     }
     .glance-value {
-      font-size: .95rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--navy);
+      text-align: right;
+      max-width: 60%;
     }
 
-    /* ─── Highlights ─── */
-    .highlights-container {
-      margin-top: 60px;
-    }
+    /* Key Highlights Grid at Bottom */
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 40px;
     }
     .highlight-card {
-      background: var(--off);
-      border-radius: 16px;
-      padding: 24px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      transition: all .3s var(--ease);
-    }
-    .highlight-card:hover {
       background: var(--white);
-      border-color: var(--green);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
-    .highlight-card-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .highlight-card-text {
-      font-size: .9rem;
-      font-weight: 600;
-      color: var(--navy);
-      line-height: 1.5;
-    }
-
-    /* ─── Itinerary Section ─── */
-    #itinerary {
-      padding: 60px 0;
-      background: var(--off);
-    }
-    .itin-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .itin-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .accordion {
+      border: 1px solid rgba(56, 103, 58, 0.08);
+      border-radius: 16px;
+      padding: 24px 16px;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.01);
       display: flex;
       flex-direction: column;
-      gap: 16px;
-    }
-    .acc-item {
-      background: var(--white);
-      border-radius: 16px;
-      border: 1px solid var(--border);
+      align-items: center;
+      text-align: center;
+      position: relative;
       overflow: hidden;
-      transition: all .3s var(--ease);
+    }
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--sage);
+      box-shadow: 0 12px 30px rgba(56, 103, 58, 0.08);
+      background: #F9FAF7;
+    }
+    .highlight-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      background: rgba(159, 194, 140, 0.15);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+    }
+    .highlight-card-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+
+    /* ─── ITINERARY ─── */
+    #itinerary { padding: 60px 0; background: var(--off); }
+    .itin-container { max-width: 800px; margin: 0 auto; }
+    .itin-header { text-align: center; margin-bottom: 56px; }
+    .accordion { display: flex; flex-direction: column; gap: 14px; }
+    .acc-item {
+      border: 1px solid rgb(27 28 74 / 12%);
+      border-radius: 14px;
+      background: var(--white);
+      transition: border-color .3s, box-shadow .3s;
+      overflow: hidden;
     }
     .acc-item.open {
       border-color: var(--green);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 30px rgb(56 103 58 / 6%);
     }
     .acc-header {
       padding: 20px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       cursor: pointer;
       user-select: none;
+      transition: color .3s;
     }
-    .acc-title {
-      font-size: .95rem;
-      font-weight: 700;
-      color: var(--navy);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .acc-title span {
-      background: rgba(56,103,58,0.1);
-      color: var(--green);
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: .8rem;
-    }
+    .acc-title { font-weight: 700; color: var(--navy); font-size: .98rem; display: flex; align-items: center; gap: 12px; }
+    .acc-title span { color: var(--green); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 800; font-style: italic; }
     .acc-icon {
-      width: 28px;
-      height: 28px;
+      width: 28px; height: 28px;
       border-radius: 50%;
-      background: var(--off);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .3s var(--ease);
-    }
-    .acc-icon svg {
-      width: 14px;
-      height: 14px;
-      stroke: var(--navy);
+      background: rgb(27 28 74 / 6%);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      transition: background .3s, transform .3s, color .3s;
+      flex-shrink: 0;
     }
     .acc-item.open .acc-icon {
-      transform: rotate(45deg);
       background: var(--green);
+      transform: rotate(45deg);
+      color: var(--white);
     }
-    .acc-item.open .acc-icon svg {
-      stroke: var(--white);
-    }
+    .acc-icon svg { width: 14px; height: 14px; }
+    .acc-item.open .acc-icon svg path { stroke: var(--white); }
     .acc-body {
-      padding: 0 24px 24px;
       display: none;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
+      padding: 0 24px 20px 24px;
     }
-    .acc-item.open .acc-body {
-      display: block;
-    }
-    .acc-body ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .acc-body li {
-      position: relative;
-      padding-left: 20px;
-      font-size: .9rem;
-      color: var(--gray);
-      line-height: 1.6;
-    }
-    .acc-body li::before {
-      content: '•';
-      color: var(--green);
-      position: absolute;
-      left: 0;
-      top: -2px;
-      font-size: 1.2rem;
-    }
+    .acc-item.open .acc-body { display: block; animation: fadeIn .4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .acc-body ul { display: flex; flex-direction: column; gap: 12px; }
+    .acc-body li { position: relative; font-size: .92rem; color: var(--gray); line-height: 1.65; padding-left: 20px; }
+    .acc-body li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
 
-    /* ─── Inclusions ─── */
-    #inclusions {
-      padding: 60px 0;
-      background: var(--white);
-    }
-    .incl-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .incl-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .incl-card {
-      background: var(--off);
-      border-radius: 14px;
-      padding: 20px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      transition: all .2s;
-    }
-    .incl-card:hover {
-      border-color: var(--green);
-      background: var(--white);
-      transform: translateY(-2px);
-    }
-    .incl-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(56,103,58,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--green);
-    }
-    .incl-title {
-      font-size: .88rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1.3;
-    }
+    /* ─── INCLUSIONS ─── */
+    #inclusions { padding: 60px 0; background: var(--navy); color: var(--white); }
+    .incl-header { text-align: center; margin-bottom: 56px; }
+    .incl-header .section-heading { color: var(--white); }
+    .incl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .incl-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 32px 24px; text-align: center; transition: transform .3s, background .3s; }
+    .incl-card:hover { transform: translateY(-5px); background: rgba(255,255,255,.08); }
+    .incl-icon { width: 52px; height: 52px; margin: 0 auto 20px; display: grid; place-items: center; border-radius: 50%; background: rgba(255,255,255,.1); color: var(--sage); flex-shrink: 0; }
+    .incl-icon svg { width: 24px; height: 24px; }
+    .incl-title { font-size: .95rem; font-weight: 600; color: var(--white); line-height: 1.4; }
 
     /* ─── CTA PANEL ─── */
     #about-cta {
@@ -388,6 +271,8 @@
       margin-top: 28px;
       justify-content: flex-start;
     }
+    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
 
     /* --- Mascot Portal Window --- */
     .opt-portal {
@@ -437,24 +322,6 @@
       100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
     }
 
-    /* ─── Buttons ─── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: 100px;
-      font-size: .9rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all .25s var(--ease);
-      cursor: pointer;
-    }
-    .btn-green { background: var(--green); color: var(--white); }
-    .btn-green:hover { background: #284c2a; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56,103,58,0.25); }
-    .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
-    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
-
     /* ─── Reveal ─── */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -464,18 +331,47 @@
 
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
-      .overview-split { grid-template-columns: 1fr; gap: 40px; }
-      .opt-portal { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-      .about-cta-left { text-align: center; }
-      .about-cta-right { justify-content: center; }
+      .overview-split { grid-template-columns: 1fr; gap: 48px; }
+      .incl-grid { grid-template-columns: repeat(2, 1fr); }
+      .opt-portal {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 0 !important;
+        text-align: center;
+      }
+      .about-cta-left { text-align: center; padding-left: 0 !important; }
+      .about-cta-right { flex-direction: row; justify-content: center; width: 100%; gap: 12px; margin-top: 24px; }
+      .about-cta-right .btn { flex: 1; max-width: 220px; text-align: center; justify-content: center; }
+      .portal-shape {
+        width: 240px;
+        height: 240px;
+      }
+      .mascot-img-portal {
+        width: 180px;
+      }
+      .highlights-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
     }
     @media (max-width: 768px) {
       .page-hero { height: 280px; }
-      .highlights-grid { grid-template-columns: 1fr; }
-      .incl-grid { grid-template-columns: 1fr 1fr; }
+      .incl-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .incl-card { padding: 24px 16px; }
+      .acc-header { padding: 20px; }
+      .acc-body { padding: 0 20px 24px 20px; }
+      #about-cta { padding: 48px 0; }
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
     }
     @media (max-width: 560px) {
-      .incl-grid { grid-template-columns: 1fr; }
+      .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .incl-grid { grid-template-columns: 1fr; gap: 12px; }
       .about-cta-right {
         flex-direction: column !important;
         align-items: stretch;
@@ -857,50 +753,46 @@
 <section id="inclusions">
   <div class="container">
     <div class="incl-header reveal">
-      <div class="tag">What's Covered</div>
-      <h2 class="section-heading">Program <span>Inclusions</span></h2>
+      <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage)">What's Included</div>
+      <h2 class="section-heading"><span style="color: var(--sage);">Inclusions</span></h2>
     </div>
     <div class="incl-grid">
       
       <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></div>
-        <div class="incl-title">Roundtrip Airfare<br>(Flights)</div>
+        <div class="incl-title">Flights<br>(Roundtrip Airfare)</div>
       </div>
       <div class="incl-card reveal reveal-delay-1">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg></div>
-        <div class="incl-title">Quality Hotel<br>Accommodation</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-2">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
-        <div class="incl-title">Daily Meals<br>(Breakfast &amp; Dinner)</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1h11A2.5 2.5 0 0120 3.5v13.5M12 7v6M9 10h6"></path></svg></div>
-        <div class="incl-title">Visa Assistance &amp;<br>Travel Insurance</div>
-      </div>
-      <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
-        <div class="incl-title">Airport Transfers &amp;<br>Local AC Transport</div>
-      </div>
-      <div class="incl-card reveal reveal-delay-1">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg></div>
-        <div class="incl-title">Sightseeing &amp;<br>Entry Tickets</div>
+        <div class="incl-title">Accommodation<br>(Hotel Stay)</div>
       </div>
       <div class="incl-card reveal reveal-delay-2">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
-        <div class="incl-title">Academic Session<br>+ Certification</div>
+        <div class="incl-title">Academic Sessions<br>&amp; Certification</div>
       </div>
       <div class="incl-card reveal reveal-delay-3">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19H2V5h20v14zM6 12h4M14 12h4M10 16h4"></path></svg></div>
-        <div class="incl-title">Industry Visits &amp;<br>Corporate Immersion</div>
+        <div class="incl-title">Industry Visits<br>&amp; Tech Hubs</div>
       </div>
       <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="9" r="3"/></svg></div>
-        <div class="incl-title">Guided City Tours &amp;<br>Sentosa Experience</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
+        <div class="incl-title">Meals<br>(As per Itinerary)</div>
       </div>
       <div class="incl-card reveal reveal-delay-1">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1h11A2.5 2.5 0 0120 3.5v13.5M12 7v6M9 10h6"></path></svg></div>
+        <div class="incl-title">Visa Assistance</div>
+      </div>
+      <div class="incl-card reveal reveal-delay-2">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+        <div class="incl-title">Travel Insurance</div>
+      </div>
+      <div class="incl-card reveal reveal-delay-3">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
+        <div class="incl-title">Transportation<br>(AC Coach Transfers)</div>
+      </div>
+      <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="incl-title">Full-time Tour<br>Leader Support</div>
+        <div class="incl-title">Tour Leader Support</div>
       </div>
 
     </div>
