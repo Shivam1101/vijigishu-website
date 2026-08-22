@@ -23,10 +23,15 @@
     <div class="nav-inner">
       <a href="${homeUrl}" class="logo-wrap" aria-label="Vijigishu Home">
         <img 
-          src="${assetBase}images/logo-of-vijigishu_2-1.webp" 
-          onerror="this.onerror=null; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; if(!this.complete){this.src='/images/logo-of-vijigishu_2-1.webp';}" 
+          src="/images/logo-of-vijigishu_2-1.webp" 
+          onerror="
+            if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-1.webp'; }
+            else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-1.png'; }
+            else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; }
+            else { this.src='https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png'; }
+          " 
           alt="Vijigishu Educational Travel" 
-          style="height: 46px; max-height: 46px; width: auto; max-width: 180px; object-fit: contain; display: block;" 
+          style="height: 46px; max-height: 46px; width: auto; max-width: 190px; object-fit: contain; display: block;" 
         />
       </a>
       <div class="nav-links">
@@ -63,8 +68,13 @@
           <div class="footer-logo">
             <a href="/" style="text-decoration: none; display: inline-block;">
               <img 
-                src="${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp" 
-                onerror="this.onerror=null; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; if(!this.complete){this.src='/images/logo-of-vijigishu_2-white-01-scaled.webp';}" 
+                src="/images/logo-of-vijigishu_2-white-01-scaled.webp" 
+                onerror="
+                  if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp'; }
+                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  else { this.src='https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png'; }
+                " 
                 alt="Vijigishu Educational Travel" 
                 style="height: 65px; width: auto; object-fit: contain;" 
               />

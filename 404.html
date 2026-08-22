@@ -230,7 +230,17 @@
   <!-- Top Centered Brand Header -->
   <header class="top-header">
     <a href="/" class="brand-logo" aria-label="Vijigishu Home">
-      <img src="images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Education Private Limited" />
+      <img 
+        src="/images/logo-of-vijigishu_2-1.webp" 
+        onerror="
+          if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='images/logo-of-vijigishu_2-1.webp'; }
+          else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='../images/logo-of-vijigishu_2-1.webp'; }
+          else if (!this.dataset.tried3) { this.dataset.tried3='1'; this.src='/images/logo-of-vijigishu_2-1.png'; }
+          else if (!this.dataset.tried4) { this.dataset.tried4='1'; this.src='images/logo-of-vijigishu_2-1.png'; }
+          else { this.src='https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png'; }
+        " 
+        alt="Vijigishu Education Private Limited" 
+      />
     </a>
   </header>
 
@@ -256,7 +266,17 @@
 
   <!-- Fullscreen Edge-to-Edge Mascot Section -->
   <div class="mascot-wide-wrapper">
-    <img src="images/404-mascot.png" alt="Lost Connection Lion Mascot" class="mascot-cutout-img" />
+    <img 
+      src="/images/404-mascot.png" 
+      onerror="
+        if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='images/404-mascot.png'; }
+        else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='../images/404-mascot.png'; }
+        else if (!this.dataset.tried3) { this.dataset.tried3='1'; this.src='/images/404-mascot-wide.png'; }
+        else { this.src='images/404-mascot-wide.png'; }
+      " 
+      alt="Lost Connection Lion Mascot" 
+      class="mascot-cutout-img" 
+    />
   </div>
 
   <!-- Minimal Footer -->
