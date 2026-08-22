@@ -76,7 +76,7 @@
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="${urlHome}" class="logo-wrap" id="siteLogoLink" aria-label="Vijigishu Home">
+      <a href="${urlHome}" class="logo-wrap" id="siteLogoLink" onclick="window.location.href='${urlHome}'; return false;" aria-label="Vijigishu Home">
         <img 
           src="/images/logo-of-vijigishu_2-1.webp" 
           onerror="
@@ -121,7 +121,7 @@
         <!-- COLUMN 1: BRAND & SOCIALS -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <a href="${urlHome}" style="text-decoration: none; display: inline-block;">
+            <a href="${urlHome}" onclick="window.location.href='${urlHome}'; return false;" style="text-decoration: none; display: inline-block;">
               <img 
                 src="/images/logo-of-vijigishu_2-white-01-scaled.webp" 
                 onerror="
@@ -313,16 +313,6 @@
         nav.classList.toggle('scrolled', window.scrollY > 40);
       }, { passive: true });
     }
-
-    // Explicit Logo Root Redirection Handler
-    // Guarantees clicking the logo anywhere in the website redirects directly to the true root Homepage.
-    document.querySelectorAll('.logo-wrap').forEach(function(el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
-        window.location.href = targetHome;
-      });
-    });
 
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
