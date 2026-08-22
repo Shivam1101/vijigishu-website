@@ -554,35 +554,128 @@
       font-size: .85rem;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* ─── CTA PANEL (MATCHING ABOUT US PORTAL DESIGN) ─── */
     #ip-cta {
       padding: 60px 0;
       background: var(--off);
       position: relative;
       overflow: hidden;
     }
-    .ip-cta-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 40px;
-      background: var(--navy);
-      border-radius: 28px;
-      padding: 56px 64px;
-      position: relative;
-      overflow: hidden;
-    }
-    .ip-cta-inner::before {
+    #ip-cta::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(56,103,58,.3) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 1;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400' fill='none'%3E%3Cpath d='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' stroke='rgba(159,194,140,0.48)' stroke-width='2' stroke-linecap='round' stroke-dasharray='6 8'/%3E%3Cpath d='M-8,-6 L10,0 L-8,6 L-4,0 Z' fill='rgba(56,103,58,0.75)'%3E%3CanimateMotion path='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' dur='15s' repeatCount='indefinite' rotate='auto' /%3E%3C/path%3E%3Ccircle cx='200' cy='150' r='140' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ccircle cx='200' cy='150' r='90' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='200' y1='0' x2='200' y2='300' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='50' y1='150' x2='350' y2='150' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ctext x='190' y='38' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EN 18° 30' 13%22%3C/text%3E%3Ctext x='190' y='54' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EE 73° 49' 44%22%3C/text%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
-    .ip-cta-left { position: relative; z-index: 2; }
-    .ip-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white); margin-bottom: 12px; line-height: 1.2; }
-    .ip-cta-h2 em { color: var(--sage); font-style: italic; }
-    .ip-cta-sub { color: rgba(255,255,255,.6); font-size: .95rem; line-height: 1.65; max-width: 480px; }
-    .ip-cta-right { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0; }
+    .ip-cta-inner {
+      background: transparent;
+      border-radius: 0;
+      position: relative;
+      overflow: visible;
+      box-shadow: none;
+      transition: none;
+      z-index: 2;
+    }
+    .ip-cta-left { position: relative; z-index: 2; text-align: left; }
+    .ip-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--navy) !important; margin-bottom: 12px; line-height: 1.2; }
+    .ip-cta-h2 em { color: var(--green) !important; font-style: italic; }
+    .ip-cta-sub { color: var(--gray) !important; font-size: .95rem; line-height: 1.65; margin: 0; }
+    .ip-cta-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      margin-top: 28px;
+      justify-content: flex-start;
+    }
+
+    /* --- Mascot Portal Window --- */
+    .opt-portal {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 40px;
+      padding: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .portal-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+    .portal-shape {
+      width: 300px;
+      height: 300px;
+      background: rgba(27,28,74,0.02);
+      border: 3px solid var(--sage);
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
+      animation: morph 8s ease-in-out infinite;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .mascot-img-portal {
+      width: 232px;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    .opt-portal:hover .portal-shape {
+      border-color: var(--green);
+      background: rgba(27,28,74,0.05);
+    }
+    .opt-portal:hover .mascot-img-portal {
+      transform: scale(1.12) rotate(-3deg);
+    }
+    @keyframes morph {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
+      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+    }
+
+    @media (max-width: 991px) {
+      .opt-portal {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 0 !important;
+        text-align: center;
+      }
+      .ip-cta-left { text-align: center; padding-left: 0 !important; }
+      .ip-cta-right { flex-direction: row; justify-content: center; width: 100%; gap: 12px; margin-top: 24px; }
+      .ip-cta-right .btn { flex: 1; max-width: 220px; text-align: center; justify-content: center; }
+      .portal-shape {
+        width: 240px;
+        height: 240px;
+      }
+      .mascot-img-portal {
+        width: 180px;
+      }
+    }
+    @media (max-width: 560px) {
+      .ip-cta-right {
+        flex-direction: column !important;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .ip-cta-right .btn {
+        flex: none;
+        max-width: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
 
     /* ─── SECTION: HOW IT WORKS – TIMELINE LAYOUT ─── */
     #process {
@@ -1477,14 +1570,19 @@
 <!-- ===== CTA BANNER ===== -->
 <section id="ip-cta">
   <div class="container">
-    <div class="ip-cta-inner reveal">
+    <div class="ip-cta-inner opt-portal reveal">
       <div class="ip-cta-left">
         <h2 class="ip-cta-h2">Ready to Design a <em>Custom Immersion?</em></h2>
         <p class="ip-cta-sub">We work directly with Indian universities, colleges, and schools to build custom itineraries tailored to your academic calendar and budget.</p>
+        <div class="ip-cta-right">
+          <a href="contact" class="btn btn-green">Plan a Group Program →</a>
+          <a href="tel:7588522386" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">📞 Call Our Academic Team</a>
+        </div>
       </div>
-      <div class="ip-cta-right">
-        <a href="contact" class="btn btn-green">Plan a Group Program →</a>
-        <a href="tel:+919876543210" class="btn btn-outline" style="justify-content: center;">📞 Call Our Academic Team</a>
+      <div class="portal-wrapper">
+        <div class="portal-shape">
+          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
+        </div>
       </div>
     </div>
   </div>
