@@ -1,6 +1,14 @@
 # Vijigishu Educational Travel - Server Routing & Clean URLs
 DirectoryIndex index.html
 
+# Enable Cross-Origin Resource Sharing (CORS) for external crawlers, tools & preview engines
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, HEAD"
+  Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  Header set Access-Control-Max-Age "86400"
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
