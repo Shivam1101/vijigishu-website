@@ -4,11 +4,19 @@
  */
 (function () {
   const isSubFolder = window.location.pathname.includes('/immersion-programs/');
+  const isFileProtocol = window.location.protocol === 'file:';
   const rawPath = window.location.pathname.split('/').pop() || 'index';
   const currentPath = rawPath.replace(/\.html$/, '') || 'index';
 
   const assetBase = isSubFolder ? '../' : '';
-  const homeUrl = '/';
+  
+  // Robust Universal URL mapper for both web servers and offline file viewing
+  const urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
+  const urlAbout = isFileProtocol ? (isSubFolder ? '../about.html' : 'about.html') : '/about';
+  const urlImmersion = isFileProtocol ? (isSubFolder ? '../immersion-programs.html' : 'immersion-programs.html') : '/immersion-programs';
+  const urlLeadership = isFileProtocol ? (isSubFolder ? '../leadership-walk.html' : 'leadership-walk.html') : '/leadership-walk';
+  const urlGallery = isFileProtocol ? (isSubFolder ? '../gallery.html' : 'gallery.html') : '/gallery';
+  const urlContact = isFileProtocol ? (isSubFolder ? '../contact.html' : 'contact.html') : '/contact';
 
   function isActive(page) {
     const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
@@ -21,7 +29,7 @@
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="${homeUrl}" class="logo-wrap" aria-label="Vijigishu Home">
+      <a href="${urlHome}" class="logo-wrap" aria-label="Vijigishu Home">
         <img 
           src="/images/logo-of-vijigishu_2-1.webp" 
           onerror="
@@ -35,12 +43,12 @@
         />
       </a>
       <div class="nav-links">
-        <a href="/" class="${isActive('index.html')}">Home</a>
-        <a href="/about" class="${isActive('about.html')}">About Us</a>
-        <a href="/immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-        <a href="/leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
-        <a href="/gallery" class="${isActive('gallery.html')}">Gallery</a>
-        <a href="/contact" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
+        <a href="${urlHome}" class="${isActive('index.html')}">Home</a>
+        <a href="${urlAbout}" class="${isActive('about.html')}">About Us</a>
+        <a href="${urlImmersion}" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
+        <a href="${urlLeadership}" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+        <a href="${urlGallery}" class="${isActive('gallery.html')}">Gallery</a>
+        <a href="${urlContact}" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
       </div>
       <div class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
         <span></span><span></span><span></span>
@@ -48,12 +56,12 @@
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/" class="${isActive('index.html')}">Home</a>
-    <a href="/about" class="${isActive('about.html')}">About Us</a>
-    <a href="/immersion-programs" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-    <a href="/leadership-walk" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
-    <a href="/gallery" class="${isActive('gallery.html')}">Gallery</a>
-    <a href="/contact" class="${isActive('contact.html')}">Contact Us</a>
+    <a href="${urlHome}" class="${isActive('index.html')}">Home</a>
+    <a href="${urlAbout}" class="${isActive('about.html')}">About Us</a>
+    <a href="${urlImmersion}" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
+    <a href="${urlLeadership}" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+    <a href="${urlGallery}" class="${isActive('gallery.html')}">Gallery</a>
+    <a href="${urlContact}" class="${isActive('contact.html')}">Contact Us</a>
   </div>
   `;
 
@@ -66,7 +74,7 @@
         <!-- COLUMN 1: BRAND & SOCIALS -->
         <div class="footer-brand">
           <div class="footer-logo">
-            <a href="/" style="text-decoration: none; display: inline-block;">
+            <a href="${urlHome}" style="text-decoration: none; display: inline-block;">
               <img 
                 src="/images/logo-of-vijigishu_2-white-01-scaled.webp" 
                 onerror="
@@ -285,7 +293,7 @@
     }
   }
 
-    function initScrollToTop() {
+  function initScrollToTop() {
     if (currentPath.includes('admin')) return;
     const scrollBtn = document.getElementById('scrollToTop');
     const circle = document.getElementById('scrollProgressCircle');
