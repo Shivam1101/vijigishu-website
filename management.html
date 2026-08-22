@@ -406,7 +406,7 @@
     }
 
     /* ═════════════════════════════════════════════════════════════════
-       DISCIPLINE SWITCHER SPEED DIAL FAB (Management Page)
+       ICON-ONLY SPEED DIAL FAB (Management Page)
        ═════════════════════════════════════════════════════════════════ */
     #floating-fab-menu {
       position: fixed;
@@ -415,104 +415,148 @@
       z-index: 9990;
       display: flex;
       flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: 8px;
+      align-items: center;
+      gap: 12px;
       padding: 12px;
       margin: -12px;
       pointer-events: auto;
     }
     .fab-main-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
       background: linear-gradient(135deg, #1B1C4A 0%, #0D0E2E 100%);
       color: #FFFFFF;
-      border: 1.5px solid rgba(159, 194, 140, 0.4);
-      padding: 10px 16px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.84rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      border: 1.5px solid rgba(159, 194, 140, 0.45);
+      display: grid;
+      place-items: center;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(27, 28, 74, 0.35);
-      transition: all 0.25s var(--ease);
-      font-family: inherit;
-      user-select: none;
+      box-shadow: 0 10px 25px rgba(27, 28, 74, 0.35);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      z-index: 2;
+    }
+    .fab-main-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--sage);
+      transition: transform 0.3s var(--ease), stroke 0.3s;
     }
     .fab-main-btn:hover,
     #floating-fab-menu.is-open .fab-main-btn {
       background: var(--green);
       border-color: var(--sage);
-      box-shadow: 0 12px 32px rgba(56, 103, 58, 0.45);
+      transform: scale(1.06);
+      box-shadow: 0 12px 30px rgba(56, 103, 58, 0.45);
     }
-    .fab-icon-bubble {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(159, 194, 140, 0.2);
-      display: grid;
-      place-items: center;
-      color: var(--sage);
-      flex-shrink: 0;
+    .fab-main-btn:hover svg,
+    #floating-fab-menu.is-open .fab-main-btn svg {
+      stroke: #FFFFFF;
+      transform: rotate(45deg);
     }
-    .fab-icon-bubble svg {
-      width: 12px;
-      height: 12px;
-      display: block;
+
+    /* Main FAB Tooltip on hover */
+    .fab-main-tip {
+      position: absolute;
+      left: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%) translateX(-6px);
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      border: 1px solid rgba(159, 194, 140, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s var(--ease);
     }
-    .fab-dropdown {
-      width: 240px;
-      background: #FFFFFF;
-      border: 1.5px solid rgba(56, 103, 58, 0.22);
-      border-radius: 16px;
-      padding: 8px;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.18);
+    #floating-fab-menu:not(.is-open) .fab-main-btn:hover .fab-main-tip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* Pop-out actions stack */
+    .fab-actions {
       display: flex;
-      flex-direction: column;
-      gap: 6px;
+      flex-direction: column-reverse;
+      gap: 10px;
+      align-items: center;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: translateY(8px) scale(0.96);
-      transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s;
+      transform: translateY(12px) scale(0.9);
+      transition: opacity 0.25s var(--ease), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.25s;
     }
-    #floating-fab-menu:hover .fab-dropdown,
-    #floating-fab-menu.is-open .fab-dropdown {
+    #floating-fab-menu:hover .fab-actions,
+    #floating-fab-menu.is-open .fab-actions {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
       transform: translateY(0) scale(1);
     }
-    .fab-card-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 9px 12px;
-      border-radius: 10px;
-      background: #FAFBF9;
-      border: 1px solid rgba(56, 103, 58, 0.1);
-      transition: all 0.2s var(--ease);
+
+    /* Individual action circle button */
+    .fab-action-item {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid rgba(56, 103, 58, 0.22);
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
       text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      transition: all 0.25s var(--ease);
+      cursor: pointer;
     }
-    .fab-card-item:hover {
+    .fab-action-item:hover {
       background: rgba(159, 194, 140, 0.25);
       border-color: var(--green);
-      transform: translateX(4px);
+      transform: scale(1.12);
+      box-shadow: 0 8px 24px rgba(56, 103, 58, 0.25);
     }
-    .fab-item-icon {
-      font-size: 1.1rem;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-    .fab-item-title {
-      font-size: 0.82rem;
+
+    /* Action Name Tooltip on individual icon hover */
+    .fab-action-label {
+      position: absolute;
+      left: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%) translateX(-8px);
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 7px 14px;
+      border-radius: 10px;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--navy);
-      line-height: 1.2;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      border: 1px solid rgba(159, 194, 140, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s var(--ease);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .fab-action-label span.arr {
+      color: var(--sage);
+      font-weight: 800;
+    }
+    .fab-action-item:hover .fab-action-label {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
     }
 
     @media (max-width: 768px) {
       #floating-fab-menu { bottom: 16px; left: 16px; }
-      .fab-dropdown { width: 220px; }
+      .fab-main-btn { width: 44px; height: 44px; }
+      .fab-action-item { width: 38px; height: 38px; font-size: 1rem; }
     }
   
   </style>
@@ -743,28 +787,29 @@
 
 <!-- ===== DISCIPLINE SWITCHER SPEED DIAL FAB ===== -->
 <div id="floating-fab-menu">
+  <!-- Main Icon Button -->
   <button class="fab-main-btn" id="fabToggleBtn" aria-label="Switch Discipline">
-    <span class="fab-icon-bubble">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-        <polyline points="2 17 12 22 22 17"></polyline>
-        <polyline points="2 12 12 17 22 12"></polyline>
-      </svg>
-    </span>
-    <span>Switch Discipline ▾</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+      <polyline points="2 17 12 22 22 17"></polyline>
+      <polyline points="2 12 12 17 22 12"></polyline>
+    </svg>
+    <div class="fab-main-tip">Switch Discipline</div>
   </button>
-  <div class="fab-dropdown" id="fabDropdown">
-    <a href="architecture-design" class="fab-card-item">
-      <span class="fab-item-icon">🏛️</span>
-      <span class="fab-item-title">Architecture &amp; Design</span>
+
+  <!-- Pop-out Icon Actions -->
+  <div class="fab-actions" id="fabActions">
+    <a href="architecture-design" class="fab-action-item" aria-label="Architecture & Design">
+      <span>🏛️</span>
+      <div class="fab-action-label">Architecture &amp; Design <span class="arr">→</span></div>
     </a>
-    <a href="engineering" class="fab-card-item">
-      <span class="fab-item-icon">⚙️</span>
-      <span class="fab-item-title">Engineering</span>
+    <a href="engineering" class="fab-action-item" aria-label="Engineering">
+      <span>⚙️</span>
+      <div class="fab-action-label">Engineering <span class="arr">→</span></div>
     </a>
-    <a href="school-programs" class="fab-card-item">
-      <span class="fab-item-icon">🎓</span>
-      <span class="fab-item-title">School Programs</span>
+    <a href="school-programs" class="fab-action-item" aria-label="School Programs">
+      <span>🎓</span>
+      <div class="fab-action-label">School Programs <span class="arr">→</span></div>
     </a>
   </div>
 </div>
