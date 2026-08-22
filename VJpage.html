@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vijigishu – Page Directory (VJpage)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --navy: #1B1C4A;
+      --green: #38673A;
+      --sage: #9FC28C;
+      --sage-light: rgba(159, 194, 140, 0.2);
+      --gray-dark: #334155;
+      --gray-muted: #64748B;
+      --border: #E2E8F0;
+      --radius: 16px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 12px 32px rgba(27, 28, 74, 0.08);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--navy);
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-title span {
+      color: var(--green);
+      font-style: italic;
+    }
+
+    .badge-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--sage-light);
+      border: 1px solid rgba(56, 103, 58, 0.2);
+      color: var(--green);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    /* Search & Filter Toolbar */
+    .controls-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-muted);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 11px 16px 11px 42px;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--navy);
+      background: #FAFBFD;
+      transition: all 0.2s var(--ease);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--green);
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(56, 103, 58, 0.12);
+    }
+
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cat-btn {
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: #FAFBFD;
+      color: var(--gray-dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      font-family: inherit;
+    }
+
+    .cat-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: #FFFFFF;
+    }
+
+    .cat-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    /* Section Groups */
+    .section-group {
+      margin-top: 36px;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.01em;
+    }
+
+    .section-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: #EDF2F7;
+      color: var(--gray-muted);
+    }
+
+    /* Page Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .page-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s var(--ease);
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--sage-light);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      border: 1px solid rgba(56, 103, 58, 0.15);
+    }
+
+    .card-info {
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .page-card:hover .card-title {
+      color: var(--green);
+    }
+
+    .card-desc {
+      font-size: 0.84rem;
+      color: var(--gray-muted);
+      line-height: 1.45;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px solid #F1F5F9;
+      font-size: 0.78rem;
+    }
+
+    .file-path {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--gray-muted);
+      font-weight: 600;
+      background: #F8FAFC;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .open-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--green);
+      font-weight: 700;
+      transition: transform 0.2s var(--ease);
+    }
+
+    .page-card:hover .open-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Empty State */
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--card-bg);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      margin-top: 30px;
+    }
+
+    .empty-state h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .empty-state p {
+      color: var(--gray-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Quick Footer */
+    .quick-footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-muted);
+    }
+
+    .quick-footer a {
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .quick-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 24px 16px 60px; }
+      .grid { grid-template-columns: 1fr; }
+      .controls-panel { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header>
+    <div class="brand-row">
+      <div class="brand-logo">
+        <span style="font-size: 1.8rem;">🧭</span>
+        <div>
+          <h1 class="brand-title">Vijigishu <span>Pages Directory</span></h1>
+        </div>
+      </div>
+      <div class="badge-count">
+        <span>⚡</span>
+        <span id="totalCount">22 Pages Available</span>
+      </div>
+    </div>
+
+    <!-- Controls Panel -->
+    <div class="controls-panel">
+      <div class="search-wrapper">
+        <div class="search-icon">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search any page name, discipline, or path..." />
+      </div>
+
+      <div class="category-pills">
+        <button class="cat-btn active" data-cat="all">All Pages</button>
+        <button class="cat-btn" data-cat="core">Core &amp; Brand</button>
+        <button class="cat-btn" data-cat="discipline">Disciplines</button>
+        <button class="cat-btn" data-cat="destination">Destinations</button>
+        <button class="cat-btn" data-cat="special">Special Programs</button>
+        <button class="cat-btn" data-cat="blog">Blog &amp; Media</button>
+        <button class="cat-btn" data-cat="tools">Tools &amp; Admin</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: Core & Brand Pages -->
+  <section class="section-group" data-category="core">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Core &amp; Brand Pages</h2>
+      <span class="section-badge">5 Pages</span>
+    </div>
+    <div class="grid">
+      <a href="index.html" class="page-card" target="_blank" data-title="Homepage" data-keywords="home main hero index landing">
+        <div class="card-top">
+          <div class="icon-box">🏠</div>
+          <div class="card-info">
+            <div class="card-title">Homepage</div>
+            <div class="card-desc">Main portal featuring hero video, programs overview, testimonials, and contact.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">index.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="about.html" class="page-card" target="_blank" data-title="About Us" data-keywords="about directors team leadership cornell maha 60 mission vision">
+        <div class="card-top">
+          <div class="icon-box">🪔</div>
+          <div class="card-info">
+            <div class="card-title">About Us</div>
+            <div class="card-desc">Brand ethos, leadership directors, Cornell recognition, and morphing lion portal.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">about.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="contact.html" class="page-card" target="_blank" data-title="Contact Us" data-keywords="contact form address email phone advisory map inquiry">
+        <div class="card-top">
+          <div class="icon-box">📞</div>
+          <div class="card-info">
+            <div class="card-title">Contact Us</div>
+            <div class="card-desc">Creative white hub with social links, direct channel cards, and interactive inquiry form.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">contact.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="gallery.html" class="page-card" target="_blank" data-title="Media & Gallery" data-keywords="gallery photos video media memories events moments">
+        <div class="card-top">
+          <div class="icon-box">📸</div>
+          <div class="card-info">
+            <div class="card-title">Media &amp; Gallery</div>
+            <div class="card-desc">Curated student tour photos, real immersion snapshots, and video highlights.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">gallery.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="404.html" class="page-card" target="_blank" data-title="404 Not Found" data-keywords="404 error missing page">
+        <div class="card-top">
+          <div class="icon-box">⚠️</div>
+          <div class="card-info">
+            <div class="card-title">404 Error Page</div>
+            <div class="card-desc">Branded not found screen with helpful navigation back to safe pages.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">404.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 2: Immersion Hub & Disciplines -->
+  <section class="section-group" data-category="discipline">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Immersion Programs &amp; Disciplines</h2>
+      <span class="section-badge">5 Pages</span>
+    </div>
+    <div class="grid">
+      <a href="immersion-programs.html" class="page-card" target="_blank" data-title="Immersion Programs Hub" data-keywords="immersion programs hub filter best selling timeline custom">
+        <div class="card-top">
+          <div class="icon-box">🌐</div>
+          <div class="card-info">
+            <div class="card-title">Immersion Programs Hub</div>
+            <div class="card-desc">Comprehensive catalog with dynamic filter pills, process timeline, and custom CTA.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">immersion-programs.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="management.html" class="page-card" target="_blank" data-title="Management Immersion" data-keywords="management business mba finance bba boardrooms corporate fab">
+        <div class="card-top">
+          <div class="icon-box">💼</div>
+          <div class="card-info">
+            <div class="card-title">Management Immersion</div>
+            <div class="card-desc">Real boardrooms, fintech, global Fortune 500 visits, with Speed Dial FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">management.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="architecture-design.html" class="page-card" target="_blank" data-title="Architecture & Design" data-keywords="architecture design urban planning studios gaudi stepwells le corbusier">
+        <div class="card-top">
+          <div class="icon-box">🏛️</div>
+          <div class="card-info">
+            <div class="card-title">Architecture &amp; Design</div>
+            <div class="card-desc">Measured drawings, biophilic structures, spatial storytelling, with Speed Dial FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">architecture-design.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="engineering.html" class="page-card" target="_blank" data-title="Engineering Immersion" data-keywords="engineering robotics industry 4.0 automation manufacturing aerospace labs">
+        <div class="card-top">
+          <div class="icon-box">⚙️</div>
+          <div class="card-info">
+            <div class="card-title">Engineering Immersion</div>
+            <div class="card-desc">State-of-the-art manufacturing plants, robotics, green energy, with Speed Dial FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">engineering.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="school-programs.html" class="page-card" target="_blank" data-title="School Immersion Programs" data-keywords="school k12 stem ib cambridge edu tourism young minds">
+        <div class="card-top">
+          <div class="icon-box">🎓</div>
+          <div class="card-info">
+            <div class="card-title">School Programs</div>
+            <div class="card-desc">STEM, global citizenship, inquiry-based travel for K-12, with Speed Dial FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">school-programs.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 3: Curated Destination Itineraries -->
+  <section class="section-group" data-category="destination">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Curated Destination Itineraries</h2>
+      <span class="section-badge">4 Pages</span>
+    </div>
+    <div class="grid">
+      <a href="uae.html" class="page-card" target="_blank" data-title="UAE Immersion" data-keywords="uae dubai abu dhabi desert safari dhow cruise glance itinerary">
+        <div class="card-top">
+          <div class="icon-box">🕌</div>
+          <div class="card-info">
+            <div class="card-title">UAE Immersion</div>
+            <div class="card-desc">5N/6D Dubai &amp; Abu Dhabi business hubs, Museum of the Future, with Destination FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">uae.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="europe.html" class="page-card" target="_blank" data-title="Europe Immersion" data-keywords="europe france germany italy switzerland stock exchange bmw welt">
+        <div class="card-top">
+          <div class="icon-box">🏰</div>
+          <div class="card-info">
+            <div class="card-title">Europe Immersion</div>
+            <div class="card-desc">9N/10D multi-country tour across France, Germany, Italy &amp; Switzerland with Destination FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">europe.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="malaysia-singapore.html" class="page-card" target="_blank" data-title="Malaysia & Singapore" data-keywords="malaysia singapore kuala lumpur genting twin towers marina bay">
+        <div class="card-top">
+          <div class="icon-box">🏙️</div>
+          <div class="card-info">
+            <div class="card-title">Malaysia &amp; Singapore</div>
+            <div class="card-desc">6N/7D ASEAN economic corridor, Petronas Towers, Sentosa &amp; MDIS with Destination FAB.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">malaysia-singapore.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="singapore-indonesia.html" class="page-card" target="_blank" data-title="Singapore & Indonesia" data-keywords="singapore indonesia batam island biophilic gardens by the bay">
+        <div class="card-top">
+          <div class="icon-box">🌴</div>
+          <div class="card-info">
+            <div class="card-title">Singapore &amp; Indonesia</div>
+            <div class="card-desc">5N/6D smart city governance, Gardens by the Bay, Batam Island cultural exchange.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">singapore-indonesia.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 4: Internships & Special Programs -->
+  <section class="section-group" data-category="special">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Internships &amp; Special Learning Programs</h2>
+      <span class="section-badge">5 Pages</span>
+    </div>
+    <div class="grid">
+      <a href="internship-malaysia.html" class="page-card" target="_blank" data-title="Internship Malaysia" data-keywords="internship malaysia work placement career certificate kuala lumpur">
+        <div class="card-top">
+          <div class="icon-box">💼</div>
+          <div class="card-info">
+            <div class="card-title">Internship – Malaysia</div>
+            <div class="card-desc">Structured global internship placements with live corporate projects in Malaysia.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">internship-malaysia.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="internship-thailand.html" class="page-card" target="_blank" data-title="Internship Thailand" data-keywords="internship thailand bangkok hospitality business projects">
+        <div class="card-top">
+          <div class="icon-box">🐘</div>
+          <div class="card-info">
+            <div class="card-title">Internship – Thailand</div>
+            <div class="card-desc">Global training, industry immersion, and mentored project experience in Bangkok.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">internship-thailand.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="fdp.html" class="page-card" target="_blank" data-title="Faculty Development Program" data-keywords="fdp faculty development academic teaching research pedagogy">
+        <div class="card-top">
+          <div class="icon-box">👨‍🏫</div>
+          <div class="card-info">
+            <div class="card-title">Faculty Development (FDP)</div>
+            <div class="card-desc">Pedagogical innovation and international academic best-practice workshops for educators.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">fdp.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="international-conference.html" class="page-card" target="_blank" data-title="Conferences & Seminars" data-keywords="international conference seminars research papers academic summits">
+        <div class="card-top">
+          <div class="icon-box">📑</div>
+          <div class="card-info">
+            <div class="card-title">International Conferences</div>
+            <div class="card-desc">Academic symposia, research paper publications, and global multidisciplinary summits.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">international-conference.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="leadership-walk.html" class="page-card" target="_blank" data-title="Leadership Walks" data-keywords="leadership walk transformational spiritual retreat self discovery">
+        <div class="card-top">
+          <div class="icon-box">🌄</div>
+          <div class="card-info">
+            <div class="card-title">Transformational Leadership Walks</div>
+            <div class="card-desc">Experiential journeys fostering introspection, mindfulness, resilience, and vision.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">leadership-walk.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 5: Blog & Content -->
+  <section class="section-group" data-category="blog">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Blog &amp; Knowledge Hub</h2>
+      <span class="section-badge">2 Pages</span>
+    </div>
+    <div class="grid">
+      <a href="blog.html" class="page-card" target="_blank" data-title="Blog Archive" data-keywords="blog articles insights news edu tourism trends">
+        <div class="card-top">
+          <div class="icon-box">📰</div>
+          <div class="card-info">
+            <div class="card-title">Blog Insights Archive</div>
+            <div class="card-desc">Thought leadership articles on experiential learning, global education, and career growth.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">blog.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="blog-single.html" class="page-card" target="_blank" data-title="Blog Article" data-keywords="blog post article single reading template">
+        <div class="card-top">
+          <div class="icon-box">✍️</div>
+          <div class="card-info">
+            <div class="card-title">Blog Article Template</div>
+            <div class="card-desc">Standard reading layout for full-length articles with author bio and related posts.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">blog-single.html</span>
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 6: Verification Tools & Admin -->
+  <section class="section-group" data-category="tools">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Verification Tools &amp; Admin</h2>
+      <span class="section-badge">2 Tools</span>
+    </div>
+    <div class="grid">
+      <a href="page-verify.html" class="page-card" target="_blank" data-title="Staging Verification Tool" data-keywords="page verify staging audit test diff comparison">
+        <div class="card-top">
+          <div class="icon-box">🔍</div>
+          <div class="card-info">
+            <div class="card-title">Staging Verification Suite</div>
+            <div class="card-desc">Interactive comparison tool to cross-check staging vs local content &amp; images with checklist.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">page-verify.html</span>
+          <span class="open-arrow">Open Tool ↗</span>
+        </div>
+      </a>
+
+      <a href="main-admin.html" class="page-card" target="_blank" data-title="Admin Dashboard" data-keywords="admin dashboard management portal control panel login">
+        <div class="card-top">
+          <div class="icon-box">⚙️</div>
+          <div class="card-info">
+            <div class="card-title">Admin Dashboard</div>
+            <div class="card-desc">Management portal and system controls interface.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="file-path">main-admin.html</span>
+          <span class="open-arrow">Open Admin ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="emptyState">
+    <h3>No matching pages found</h3>
+    <p>Try searching for another keyword like "management", "uae", "contact", or "internship".</p>
+  </div>
+
+  <!-- Quick Footer -->
+  <footer class="quick-footer">
+    <p>Vijigishu Edu Tourism · Local Development Server · <a href="/">Go to Home</a></p>
+  </footer>
+</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const catButtons = document.querySelectorAll('.cat-btn');
+  const cards = document.querySelectorAll('.page-card');
+  const sectionGroups = document.querySelectorAll('.section-group');
+  const emptyState = document.getElementById('emptyState');
+  const totalCount = document.getElementById('totalCount');
+
+  let currentCategory = 'all';
+
+  function filterPages() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    sectionGroups.forEach(group => {
+      const groupCat = group.getAttribute('data-category');
+      let groupHasVisibleCards = false;
+
+      const groupCards = group.querySelectorAll('.page-card');
+      groupCards.forEach(card => {
+        const title = (card.getAttribute('data-title') || '').toLowerCase();
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const path = (card.querySelector('.file-path')?.textContent || '').toLowerCase();
+
+        const matchesQuery = !query || title.includes(query) || keywords.includes(query) || path.includes(query);
+        const matchesCat = currentCategory === 'all' || groupCat === currentCategory;
+
+        if (matchesQuery && matchesCat) {
+          card.style.display = 'flex';
+          groupHasVisibleCards = true;
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (groupHasVisibleCards) {
+        group.style.display = 'block';
+      } else {
+        group.style.display = 'none';
+      }
+    });
+
+    if (visibleCount === 0) {
+      emptyState.style.display = 'block';
+    } else {
+      emptyState.style.display = 'none';
+    }
+
+    totalCount.textContent = `${visibleCount} Page${visibleCount === 1 ? '' : 's'} Shown`;
+  }
+
+  // Search input event
+  searchInput.addEventListener('input', filterPages);
+
+  // Category buttons
+  catButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.getAttribute('data-cat');
+      filterPages();
+    });
+  });
+
+  // Initial count
+  filterPages();
+</script>
+</body>
+</html>
