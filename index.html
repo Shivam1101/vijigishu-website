@@ -259,6 +259,9 @@
       box-shadow: 0 4px 24px rgba(0,0,0,.06);
       transition: transform .35s var(--ease), box-shadow .35s var(--ease);
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     .program-card:hover {
       transform: translateY(-8px);
@@ -268,6 +271,7 @@
       position: relative;
       height: 200px;
       overflow: hidden;
+      flex-shrink: 0;
     }
     .program-img img {
       width: 100%; height: 100%;
@@ -285,7 +289,12 @@
       padding: 4px 12px;
       border-radius: 100px;
     }
-    .program-body { padding: 20px; }
+    .program-body {
+      padding: 22px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
     .program-duration {
       font-size: .78rem;
       color: var(--green);
@@ -304,7 +313,8 @@
       font-size: .85rem;
       color: var(--gray);
       line-height: 1.6;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+      flex-grow: 1;
     }
     .program-link {
       display: inline-flex;
@@ -314,6 +324,9 @@
       font-size: .85rem;
       font-weight: 700;
       transition: gap .25s;
+      margin-top: auto;
+      text-decoration: none;
+      align-self: flex-start;
     }
     .program-card:hover .program-link { gap: 12px; }
     .program-link svg { transition: transform .25s; }
@@ -1015,7 +1028,7 @@
           <div class="program-duration">4 Nights / 5 Days</div>
           <div class="program-name">Singapore</div>
           <div class="program-desc">One of the world's most future-ready nations — a smart city classroom.</div>
-          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+          <a href="singapore" class="program-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1031,7 +1044,7 @@
           <div class="program-duration">6 Nights / 7 Days</div>
           <div class="program-name">Japan</div>
           <div class="program-desc">High tech meets ancient tradition — robotics, Bullet Trains &amp; culture.</div>
-          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+          <a href="japan" class="program-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1047,7 +1060,7 @@
           <div class="program-duration">6 Nights / 7 Days</div>
           <div class="program-name">South Korea</div>
           <div class="program-desc">From Samsung to Hyundai — see how global innovation is engineered.</div>
-          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+          <a href="south-korea" class="program-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1064,7 +1077,7 @@
           <div class="program-duration">8 – 11 Days</div>
           <div class="program-name">Europe</div>
           <div class="program-desc">Innovation, history, design and global systems — the ultimate immersion.</div>
-          <a href="https://staging.vijigishu.co.in/japan-2/" target="_blank" class="program-link">
+          <a href="europe" class="program-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7"/>
