@@ -3,12 +3,12 @@
  * Dynamically injects Header Navbar and Footer across all website pages.
  */
 (function () {
-  const isSubFolder = window.location.pathname.includes('/immersion-programs/');
+  const isSubFolder = window.location.pathname.toLowerCase().includes('/immersion-programs');
   const isFileProtocol = window.location.protocol === 'file:';
   const rawPath = window.location.pathname.split('/').pop() || 'index';
   const currentPath = rawPath.replace(/\.html$/, '') || 'index';
 
-  const assetBase = isSubFolder ? '../' : '';
+  const assetBase = isSubFolder ? '../' : './';
   
   // Robust Universal URL mapper for both web servers and offline file viewing
   const urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
@@ -25,18 +25,18 @@
     return '';
   }
 
-  // 1. Render Header Navbar HTML
+  // 1. Render Header Navbar HTML with instant accurate relative base
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
       <a href="${urlHome}" class="logo-wrap" aria-label="Vijigishu Home">
         <img 
-          src="/images/logo-of-vijigishu_2-1.webp" 
+          src="${assetBase}images/logo-of-vijigishu_2-1.webp" 
           onerror="
-            if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-1.webp'; }
-            else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-1.png'; }
-            else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; }
-            else { this.src='https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png'; }
+            if (!this.dataset.step) { this.dataset.step='1'; this.src='/images/logo-of-vijigishu_2-1.webp'; }
+            else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; }
+            else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='/images/logo-of-vijigishu_2-1.png'; }
+            else if (this.dataset.step==='3') { this.dataset.step='4'; this.src='https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png'; }
           " 
           alt="Vijigishu Educational Travel" 
           style="height: 46px; max-height: 46px; width: auto; max-width: 190px; object-fit: contain; display: block;" 
@@ -65,7 +65,7 @@
   </div>
   `;
 
-  // 2. Render Footer HTML & Bottom Bar
+  // 2. Render Footer HTML & Bottom Bar with instant accurate relative base
   const footerHTML = `
   <footer id="site-footer">
     <div class="container">
@@ -76,12 +76,12 @@
           <div class="footer-logo">
             <a href="${urlHome}" style="text-decoration: none; display: inline-block;">
               <img 
-                src="/images/logo-of-vijigishu_2-white-01-scaled.webp" 
+                src="${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp" 
                 onerror="
-                  if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp'; }
-                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.png'; }
-                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; }
-                  else { this.src='https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  if (!this.dataset.step) { this.dataset.step='1'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.webp'; }
+                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  else if (this.dataset.step==='3') { this.dataset.step='4'; this.src='https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png'; }
                 " 
                 alt="Vijigishu Educational Travel" 
                 style="height: 65px; width: auto; object-fit: contain;" 
