@@ -249,45 +249,44 @@
     if (!currentPath.includes('admin') && !document.getElementById('scrollToTop') && document.body) {
       const scrollToTopHTML = `
       <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top" title="Go to top">
-        <svg class="progress-ring" viewBox="0 0 60 60" width="100%" height="100%">
-          <circle class="progress-ring-bg" cx="30" cy="30" r="26" />
-          <circle class="progress-ring-circle" id="scrollProgressCircle" cx="30" cy="30" r="26" transform="rotate(-90 30 30)" />
-        </svg>
         <span class="compass-tooltip">Navigate to top</span>
-        <div class="compass-btn-inner">
-          <svg class="compass-svg" viewBox="0 0 100 100" width="100%" height="100%">
-            <!-- Compass Dial Face -->
-            <circle cx="50" cy="50" r="48" fill="#2B62A4" stroke="#1D4475" stroke-width="1.5" />
-            <circle cx="50" cy="50" r="43.5" fill="#F4C74D" stroke="#DDA82B" stroke-width="2" />
-            <circle cx="50" cy="50" r="38" fill="#E6B435" />
-            
-            <!-- Dial Star Background -->
-            <polygon points="50,15 53.5,46.5 50,50 46.5,46.5" fill="#D39E22" />
-            <polygon points="50,85 53.5,53.5 50,50 46.5,53.5" fill="#D39E22" />
-            <polygon points="15,50 46.5,46.5 50,50 46.5,53.5" fill="#D39E22" />
-            <polygon points="85,50 53.5,46.5 50,50 53.5,53.5" fill="#D39E22" />
-            <polygon points="25,25 48,46.5 50,50 46.5,48" fill="#CB951C" />
-            <polygon points="75,25 51.5,48 50,50 53.5,46.5" fill="#CB951C" />
-            <polygon points="25,75 48,51.5 50,50 46.5,53.5" fill="#CB951C" />
-            <polygon points="75,75 53.5,53.5 50,50 51.5,51.5" fill="#CB951C" />
-            
-            <!-- Dial Cardinal Markers -->
-            <text x="50" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF" text-anchor="middle">N</text>
-            <text x="50" y="81" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">S</text>
-            <text x="77" y="53.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">E</text>
-            <text x="23" y="53.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">W</text>
+        <svg class="scroll-compass-svg" viewBox="0 0 100 100" width="100%" height="100%">
+          <!-- Outer Progress Ring Track (Concentric r=46) -->
+          <circle class="progress-ring-bg" cx="50" cy="50" r="46" />
+          <!-- Animated Progress Circle (Concentric r=46, starts at 12 o'clock) -->
+          <circle class="progress-ring-circle" id="scrollProgressCircle" cx="50" cy="50" r="46" transform="rotate(-90 50 50)" />
+          
+          <!-- Inner Compass Dial Body -->
+          <circle cx="50" cy="50" r="39" fill="#2B62A4" stroke="#1D4475" stroke-width="1.5" />
+          <circle cx="50" cy="50" r="35" fill="#F4C74D" stroke="#DDA82B" stroke-width="1.8" />
+          <circle cx="50" cy="50" r="30" fill="#E6B435" />
+          
+          <!-- Dial Star Points -->
+          <polygon points="50,22 52.8,47.2 50,50 47.2,47.2" fill="#D39E22" />
+          <polygon points="50,78 52.8,52.8 50,50 47.2,52.8" fill="#D39E22" />
+          <polygon points="22,50 47.2,47.2 50,50 47.2,52.8" fill="#D39E22" />
+          <polygon points="78,50 52.8,47.2 50,50 52.8,52.8" fill="#D39E22" />
+          <polygon points="30,30 48.4,47.2 50,50 47.2,48.4" fill="#CB951C" />
+          <polygon points="70,30 51.2,48.4 50,50 52.8,47.2" fill="#CB951C" />
+          <polygon points="30,70 48.4,51.2 50,50 47.2,52.8" fill="#CB951C" />
+          <polygon points="70,70 52.8,52.8 50,50 51.2,51.2" fill="#CB951C" />
+          
+          <!-- Dial Cardinal Markers -->
+          <text x="50" y="31.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9" fill="#FFFFFF" text-anchor="middle">N</text>
+          <text x="50" y="74.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="7.5" fill="rgba(255,255,255,0.75)" text-anchor="middle">S</text>
+          <text x="71.5" y="52.8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="7.5" fill="rgba(255,255,255,0.75)" text-anchor="middle">E</text>
+          <text x="28.5" y="52.8" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="7.5" fill="rgba(255,255,255,0.75)" text-anchor="middle">W</text>
 
-            <!-- Rotating Compass Needle -->
-            <g id="compassNeedle" class="compass-needle-group">
-              <polygon points="50,14 43.5,50 50,50" fill="#46B45C" />
-              <polygon points="50,14 56.5,50 50,50" fill="#2C8840" />
-              <polygon points="50,86 43.5,50 50,50" fill="#EA4D3D" />
-              <polygon points="50,86 56.5,50 50,50" fill="#C42E21" />
-              <circle cx="50" cy="50" r="7.5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="0.8" />
-              <circle cx="50" cy="50" r="4.2" fill="#E2AC2E" stroke="#C49120" stroke-width="0.8" />
-            </g>
-          </svg>
-        </div>
+          <!-- Rotating Compass Needle -->
+          <g id="compassNeedle" class="compass-needle-group">
+            <polygon points="50,21 44.8,50 50,50" fill="#46B45C" />
+            <polygon points="50,21 55.2,50 50,50" fill="#2C8840" />
+            <polygon points="50,79 44.8,50 50,50" fill="#EA4D3D" />
+            <polygon points="50,79 55.2,50 50,50" fill="#C42E21" />
+            <circle cx="50" cy="50" r="6" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="0.8" />
+            <circle cx="50" cy="50" r="3.2" fill="#E2AC2E" stroke="#C49120" stroke-width="0.8" />
+          </g>
+        </svg>
       </button>
       `;
       document.body.insertAdjacentHTML('beforeend', scrollToTopHTML);
@@ -342,7 +341,7 @@
     if (!scrollBtn || !circle) return;
 
     function getCircumference() {
-      const radius = 26;
+      const radius = 46;
       return 2 * Math.PI * radius;
     }
 
