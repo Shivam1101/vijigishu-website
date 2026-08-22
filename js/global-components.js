@@ -3,20 +3,69 @@
  * Dynamically injects Header Navbar and Footer across all website pages.
  */
 (function () {
-  const isSubFolder = window.location.pathname.toLowerCase().includes('/immersion-programs');
+  const pathname = window.location.pathname.toLowerCase();
+  const isSubFolder = pathname.includes('/immersion-programs');
   const isFileProtocol = window.location.protocol === 'file:';
+  const hasHtmlExt = pathname.endsWith('.html') || pathname.includes('.html') || isFileProtocol;
+  
   const rawPath = window.location.pathname.split('/').pop() || 'index';
   const currentPath = rawPath.replace(/\.html$/, '') || 'index';
 
   const assetBase = isSubFolder ? '../' : './';
   
-  // Robust Universal URL mapper for both web servers and offline file viewing
-  const urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
-  const urlAbout = isFileProtocol ? (isSubFolder ? '../about.html' : 'about.html') : '/about';
-  const urlImmersion = isFileProtocol ? (isSubFolder ? '../immersion-programs.html' : 'immersion-programs.html') : '/immersion-programs';
-  const urlLeadership = isFileProtocol ? (isSubFolder ? '../leadership-walk.html' : 'leadership-walk.html') : '/leadership-walk';
-  const urlGallery = isFileProtocol ? (isSubFolder ? '../gallery.html' : 'gallery.html') : '/gallery';
-  const urlContact = isFileProtocol ? (isSubFolder ? '../contact.html' : 'contact.html') : '/contact';
+  // Smart Universal URL Resolver
+  // If the browsing environment uses .html filenames (static servers, file protocol, or explicit .html paths),
+  // links preserve .html with accurate relative paths so 404s never occur.
+  // If clean URLs are in effect, root-relative clean paths are used.
+  
+  let urlHome, urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact;
+  let urlDestSingapore, urlDestJapan, urlDestKorea, urlDestEurope, urlDestMalaysia, urlDestUAE;
+
+  if (hasHtmlExt) {
+    if (isSubFolder) {
+      urlHome = '../index.html';
+      urlAbout = '../about.html';
+      urlImmersion = '../immersion-programs.html';
+      urlLeadership = '../leadership-walk.html';
+      urlGallery = '../gallery.html';
+      urlContact = '../contact.html';
+
+      urlDestSingapore = 'singapore-indonesia.html';
+      urlDestJapan = 'japan.html';
+      urlDestKorea = 'south-korea.html';
+      urlDestEurope = 'europe.html';
+      urlDestMalaysia = 'malaysia-singapore.html';
+      urlDestUAE = 'uae.html';
+    } else {
+      urlHome = 'index.html';
+      urlAbout = 'about.html';
+      urlImmersion = 'immersion-programs.html';
+      urlLeadership = 'leadership-walk.html';
+      urlGallery = 'gallery.html';
+      urlContact = 'contact.html';
+
+      urlDestSingapore = 'immersion-programs/singapore-indonesia.html';
+      urlDestJapan = 'immersion-programs/japan.html';
+      urlDestKorea = 'immersion-programs/south-korea.html';
+      urlDestEurope = 'immersion-programs/europe.html';
+      urlDestMalaysia = 'immersion-programs/malaysia-singapore.html';
+      urlDestUAE = 'immersion-programs/uae.html';
+    }
+  } else {
+    urlHome = '/';
+    urlAbout = '/about';
+    urlImmersion = '/immersion-programs';
+    urlLeadership = '/leadership-walk';
+    urlGallery = '/gallery';
+    urlContact = '/contact';
+
+    urlDestSingapore = '/immersion-programs/singapore-indonesia';
+    urlDestJapan = '/immersion-programs/japan';
+    urlDestKorea = '/immersion-programs/south-korea';
+    urlDestEurope = '/immersion-programs/europe';
+    urlDestMalaysia = '/immersion-programs/malaysia-singapore';
+    urlDestUAE = '/immersion-programs/uae';
+  }
 
   function isActive(page) {
     const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
@@ -25,7 +74,7 @@
     return '';
   }
 
-  // 1. Render Header Navbar HTML with instant accurate relative base
+  // 1. Render Header Navbar HTML
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
@@ -65,7 +114,7 @@
   </div>
   `;
 
-  // 2. Render Footer HTML & Bottom Bar with instant accurate relative base
+  // 2. Render Footer HTML & Bottom Bar
   const footerHTML = `
   <footer id="site-footer">
     <div class="container">
@@ -108,10 +157,10 @@
         <div>
           <div class="footer-col-title">Quick Links</div>
           <div class="footer-links">
-            <a href="/immersion-programs">Programs</a>
-            <a href="/leadership-walk">Leadership walk</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/contact">Cancellation &amp; Refund process</a>
+            <a href="${urlImmersion}">Programs</a>
+            <a href="${urlLeadership}">Leadership walk</a>
+            <a href="${urlGallery}">Gallery</a>
+            <a href="${urlContact}">Cancellation &amp; Refund process</a>
           </div>
         </div>
 
@@ -119,12 +168,12 @@
         <div>
           <div class="footer-col-title">Destinations</div>
           <div class="footer-links">
-            <a href="/immersion-programs/singapore-indonesia">Singapore</a>
-            <a href="/immersion-programs/japan">Japan</a>
-            <a href="/immersion-programs/south-korea">South Korea</a>
-            <a href="/immersion-programs/europe">Europe</a>
-            <a href="/immersion-programs/malaysia-singapore">Malaysia</a>
-            <a href="/immersion-programs/uae">UAE / Dubai</a>
+            <a href="${urlDestSingapore}">Singapore</a>
+            <a href="${urlDestJapan}">Japan</a>
+            <a href="${urlDestKorea}">South Korea</a>
+            <a href="${urlDestEurope}">Europe</a>
+            <a href="${urlDestMalaysia}">Malaysia</a>
+            <a href="${urlDestUAE}">UAE / Dubai</a>
           </div>
         </div>
 
@@ -230,15 +279,12 @@
             <text x="77" y="53.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">E</text>
             <text x="23" y="53.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">W</text>
 
-            <!-- Rotating Compass Needle (Option 2) -->
+            <!-- Rotating Compass Needle -->
             <g id="compassNeedle" class="compass-needle-group">
-              <!-- North Green Pointer -->
               <polygon points="50,14 43.5,50 50,50" fill="#46B45C" />
               <polygon points="50,14 56.5,50 50,50" fill="#2C8840" />
-              <!-- South Red Pointer -->
               <polygon points="50,86 43.5,50 50,50" fill="#EA4D3D" />
               <polygon points="50,86 56.5,50 50,50" fill="#C42E21" />
-              <!-- Center Pivot Pin -->
               <circle cx="50" cy="50" r="7.5" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="0.8" />
               <circle cx="50" cy="50" r="4.2" fill="#E2AC2E" stroke="#C49120" stroke-width="0.8" />
             </g>
@@ -253,7 +299,6 @@
     initHeaderEvents();
     initRevealObserver();
     initScrollToTop();
-    // Update any static year elements
     document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
   }
 
@@ -264,7 +309,6 @@
   }
 
   function initHeaderEvents() {
-    // Navbar scroll background effect
     const nav = document.getElementById('navbar');
     if (nav) {
       window.addEventListener('scroll', function () {
@@ -272,7 +316,6 @@
       }, { passive: true });
     }
 
-    // Hamburger Mobile Menu toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if (hamburger && mobileMenu) {
@@ -321,7 +364,6 @@
         const offset = circumference - (progress * circumference);
         circle.style.strokeDashoffset = offset;
 
-        // Rotate needle based on scroll
         if (needle) {
           const rotationAngle = (progress * 360) % 360;
           needle.style.transform = `rotate(${rotationAngle}deg)`;
