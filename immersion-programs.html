@@ -236,7 +236,23 @@
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,.06);
       transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
       cursor: pointer;
+      position: relative;
+    }
+    
+    .prog-card:hover .prog-name {
+      color: var(--green);
+    }
+    .prog-card:hover .prog-link {
+      color: var(--green);
+      gap: 10px;
+    }
+    .prog-card:hover .prog-link svg {
+      transform: translateX(4px);
     }
     .prog-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(27, 28, 74, 0.22); }
     .prog-img { position: relative; height: 200px; overflow: hidden; }
@@ -1198,8 +1214,8 @@
 
     <div class="programs-scroll">
 
-      <!-- UAE CARD -->
-      <div class="prog-card reveal">
+      <!-- UAE CARD (ENTIRE CARD CLICKABLE) -->
+      <a href="/immersion-programs/uae" class="prog-card reveal" aria-label="Explore UAE Immersion Program">
         <div class="prog-img">
           <img src="images/1-elementor-io-optimized.webp" alt="UAE" loading="lazy" />
           <span class="prog-chip">🔥 Top Pick</span>
@@ -1213,15 +1229,15 @@
           </div>
           <div class="prog-name">UAE</div>
           <div class="prog-tagline">Where innovation meets discipline — the future of global business.</div>
-          <a href="/immersion-programs/uae" class="prog-link">
+          <span class="prog-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
 
-      <!-- EUROPE CARD -->
-      <div class="prog-card reveal reveal-delay-1">
+      <!-- EUROPE CARD (ENTIRE CARD CLICKABLE) -->
+      <a href="/immersion-programs/europe" class="prog-card reveal reveal-delay-1" aria-label="Explore Europe Immersion Program">
         <div class="prog-img">
           <img src="images/2-elementor-io-optimized.webp" alt="Europe" loading="lazy" />
           <span class="prog-chip">✨ Premium</span>
@@ -1235,15 +1251,15 @@
           </div>
           <div class="prog-name">Europe</div>
           <div class="prog-tagline">Where culture meets real-world learning across iconic cities.</div>
-          <a href="/immersion-programs/europe" class="prog-link">
+          <span class="prog-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
 
-      <!-- MALAYSIA & SINGAPORE CARD -->
-      <div class="prog-card reveal reveal-delay-2">
+      <!-- MALAYSIA & SINGAPORE CARD (ENTIRE CARD CLICKABLE) -->
+      <a href="/immersion-programs/malaysia-singapore" class="prog-card reveal reveal-delay-2" aria-label="Explore Malaysia & Singapore Immersion Program">
         <div class="prog-img">
           <img src="images/4-elementor-io-optimized.webp" alt="Malaysia & Singapore" loading="lazy" />
         </div>
@@ -1256,15 +1272,15 @@
           </div>
           <div class="prog-name">Malaysia &amp; Singapore</div>
           <div class="prog-tagline">Global giants, booming growth — two nations, one journey.</div>
-          <a href="/immersion-programs/malaysia-singapore" class="prog-link">
+          <span class="prog-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
 
-      <!-- SINGAPORE & INDONESIA CARD -->
-      <div class="prog-card reveal reveal-delay-3">
+      <!-- SINGAPORE & INDONESIA CARD (ENTIRE CARD CLICKABLE) -->
+      <a href="/immersion-programs/singapore-indonesia" class="prog-card reveal reveal-delay-3" aria-label="Explore Singapore & Indonesia Immersion Program">
         <div class="prog-img">
           <img src="images/3-elementor-io-optimized.webp" alt="Singapore & Indonesia" loading="lazy" />
         </div>
@@ -1277,12 +1293,12 @@
           </div>
           <div class="prog-name">Singapore &amp; Indonesia</div>
           <div class="prog-tagline">Where culture meets real-world learning across two vibrant nations.</div>
-          <a href="/immersion-programs/singapore-indonesia" class="prog-link">
+          <span class="prog-link">
             Explore Program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>

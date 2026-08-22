@@ -218,7 +218,36 @@
       .masonry-grid { column-count: 2; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
+    
     @media (max-width: 768px) {
+      .country-filters-wrap {
+        margin-bottom: 28px;
+        padding: 0 12px;
+      }
+      .gallery-filters {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+        scrollbar-width: none !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 8px 12px !important;
+        border-radius: 100px !important;
+        justify-content: flex-start !important;
+        gap: 8px !important;
+        box-sizing: border-box !important;
+      }
+      .gallery-filters::-webkit-scrollbar {
+        display: none !important;
+      }
+      .filter-btn {
+        padding: 8px 18px !important;
+        font-size: 0.82rem !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+      }
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .page-hero { height: 260px; }

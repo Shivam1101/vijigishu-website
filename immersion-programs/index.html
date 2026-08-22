@@ -236,7 +236,23 @@
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,.06);
       transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
       cursor: pointer;
+      position: relative;
+    }
+    
+    .prog-card:hover .prog-name {
+      color: var(--green);
+    }
+    .prog-card:hover .prog-link {
+      color: var(--green);
+      gap: 10px;
+    }
+    .prog-card:hover .prog-link svg {
+      transform: translateX(4px);
     }
     .prog-card:hover { transform: translateY(-8px); box-shadow: 0 24px 60px rgba(27, 28, 74, 0.22); }
     .prog-img { position: relative; height: 200px; overflow: hidden; }
