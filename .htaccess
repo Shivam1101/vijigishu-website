@@ -1,24 +1,20 @@
-# Apache & LiteSpeed Configuration for Vijigishu Website
-Options -MultiViews
-RewriteEngine On
+# Vijigishu Educational Travel - Server Routing & Clean URLs
+DirectoryIndex index.html
 
-# Ensure HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-# 1. Custom 404 Error Page
-ErrorDocument 404 /404.html
+  # Serve existing files and directories directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
 
-# 2. Redirect direct requests from /page.html to /page (301 Permanent SEO Redirect)
-RewriteCond %{THE_REQUEST} s/+(.+?).html[s?] [NC]
-RewriteRule ^ /%1 [R=301,L]
+  # Clean URL rewrites: if /about requested, serve /about.html
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^([^/]+)/?$ $1.html [L]
 
-# 3. Internally resolve /page to /page.html if the HTML file exists
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
-
-# 4. If neither file nor directory exists, display 404.html
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /404.html [L]
+  # Subfolder clean URL rewrites: if /immersion-programs/uae requested, serve /immersion-programs/uae.html
+  RewriteCond %{DOCUMENT_ROOT}/immersion-programs/$1.html -f
+  RewriteRule ^immersion-programs/([^/]+)/?$ immersion-programs/$1.html [L]
+</IfModule>
