@@ -41,11 +41,36 @@ nav#navbar.scrolled {
   justify-content: space-between;
   height: 72px;
 }
+
 .logo-wrap {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  flex-shrink: 0;
+  z-index: 10;
+}
+.logo-wrap img {
+  height: 46px;
+  max-height: 46px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 768px) {
+  .logo-wrap {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .logo-wrap img {
+    height: 40px !important;
+    max-height: 40px !important;
+    width: auto !important;
+    max-width: 160px !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
 }
 .nav-links {
   display: flex;

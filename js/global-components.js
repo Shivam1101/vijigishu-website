@@ -3,8 +3,12 @@
  * Dynamically injects Header Navbar and Footer across all website pages.
  */
 (function () {
+  const isSubFolder = window.location.pathname.includes('/immersion-programs/');
   const rawPath = window.location.pathname.split('/').pop() || 'index';
   const currentPath = rawPath.replace(/\.html$/, '') || 'index';
+
+  const assetBase = isSubFolder ? '../' : '';
+  const homeUrl = '/';
 
   function isActive(page) {
     const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
@@ -17,8 +21,13 @@
   const headerHTML = `
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="/" class="logo-wrap">
-        <img src="/images/logo-of-vijigishu_2-1.webp" alt="Vijigishu Educational Travel" style="height: 48px; width: auto; object-fit: contain;" />
+      <a href="${homeUrl}" class="logo-wrap" aria-label="Vijigishu Home">
+        <img 
+          src="${assetBase}images/logo-of-vijigishu_2-1.webp" 
+          onerror="this.onerror=null; this.src='${assetBase}images/logo-of-vijigishu_2-1.png'; if(!this.complete){this.src='/images/logo-of-vijigishu_2-1.webp';}" 
+          alt="Vijigishu Educational Travel" 
+          style="height: 46px; max-height: 46px; width: auto; max-width: 180px; object-fit: contain; display: block;" 
+        />
       </a>
       <div class="nav-links">
         <a href="/" class="${isActive('index.html')}">Home</a>
@@ -28,7 +37,7 @@
         <a href="/gallery" class="${isActive('gallery.html')}">Gallery</a>
         <a href="/contact" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
       </div>
-      <div class="hamburger" id="hamburger">
+      <div class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -53,7 +62,12 @@
         <div class="footer-brand">
           <div class="footer-logo">
             <a href="/" style="text-decoration: none; display: inline-block;">
-              <img src="/images/logo-of-vijigishu_2-white-01-scaled.webp" alt="Vijigishu Educational Travel" style="height: 65px; width: auto; object-fit: contain;" />
+              <img 
+                src="${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp" 
+                onerror="this.onerror=null; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; if(!this.complete){this.src='/images/logo-of-vijigishu_2-white-01-scaled.webp';}" 
+                alt="Vijigishu Educational Travel" 
+                style="height: 65px; width: auto; object-fit: contain;" 
+              />
             </a>
           </div>
           <div class="footer-socials">
@@ -188,15 +202,15 @@
             <polygon points="15,50 46.5,46.5 50,50 46.5,53.5" fill="#D39E22" />
             <polygon points="85,50 53.5,46.5 50,50 53.5,53.5" fill="#D39E22" />
             <polygon points="25,25 48,46.5 50,50 46.5,48" fill="#CB951C" />
-            <polygon points="75,25 53.5,48 50,50 52,46.5" fill="#CB951C" />
-            <polygon points="75,75 52,53.5 50,50 53.5,52" fill="#CB951C" />
-            <polygon points="25,75 46.5,52 50,50 48,53.5" fill="#CB951C" />
-
-            <!-- Direction Labels (Fixed) -->
-            <text x="50" y="27" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">N</text>
-            <text x="77" y="53.5" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">E</text>
-            <text x="50" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">S</text>
-            <text x="23" y="53.5" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="9.5" fill="#FFFFFF">W</text>
+            <polygon points="75,25 51.5,48 50,50 53.5,46.5" fill="#CB951C" />
+            <polygon points="25,75 48,51.5 50,50 46.5,53.5" fill="#CB951C" />
+            <polygon points="75,75 53.5,53.5 50,50 51.5,51.5" fill="#CB951C" />
+            
+            <!-- Dial Cardinal Markers -->
+            <text x="50" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF" text-anchor="middle">N</text>
+            <text x="50" y="81" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">S</text>
+            <text x="77" y="53.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">E</text>
+            <text x="23" y="53.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">W</text>
 
             <!-- Rotating Compass Needle (Option 2) -->
             <g id="compassNeedle" class="compass-needle-group">
@@ -278,38 +292,28 @@
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
 
-      let progress = 0;
       if (scrollHeight > 0) {
-        progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+        const progress = scrollTop / scrollHeight;
         const offset = circumference - (progress * circumference);
         circle.style.strokeDashoffset = offset;
+
+        // Rotate needle slightly based on scroll direction
+        if (needle) {
+          const rotationAngle = (progress * 360) % 360;
+          needle.style.transform = `rotate(${rotationAngle}deg)`;
+        }
       }
 
-      // Rotate only the needle arrow as user scrolls
-      if (needle) {
-        needle.style.transform = `rotate(${progress * 360}deg)`;
-      }
-
-      // Show button only after scrolling past the normal threshold (450px)
-      if (scrollTop > 450) {
-        scrollBtn.classList.add('show');
+      if (scrollTop > 280) {
+        scrollBtn.classList.add('visible');
       } else {
-        scrollBtn.classList.remove('show');
+        scrollBtn.classList.remove('visible');
       }
     }
 
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    window.addEventListener('resize', updateScrollProgress, { passive: true });
-    updateScrollProgress();
 
     scrollBtn.addEventListener('click', function () {
-      if (needle) {
-        needle.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        needle.style.transform = 'rotate(0deg)';
-        setTimeout(() => {
-          needle.style.transition = 'transform 0.15s cubic-bezier(0.2, 0.8, 0.4, 1)';
-        }, 850);
-      }
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -319,30 +323,15 @@
 
   function initRevealObserver() {
     const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length === 0) return;
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.05 });
-
-      reveals.forEach(el => {
-        // If already in viewport on load, immediately show
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          el.classList.add('visible');
-        } else {
-          observer.observe(el);
+    if (!reveals.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
       });
-    } else {
-      reveals.forEach(el => el.classList.add('visible'));
-    }
+    }, { threshold: 0.08 });
+    reveals.forEach(el => observer.observe(el));
   }
-
 })();
