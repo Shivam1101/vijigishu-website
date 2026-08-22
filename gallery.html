@@ -283,20 +283,32 @@
     .lightbox-close {
       position: absolute;
       top: 24px;
-      right: 32px;
-      color: var(--white);
-      font-size: 38px;
-      font-weight: 300;
-      transition: color .25s, transform .25s;
+      right: 28px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
       cursor: pointer;
-      line-height: 1;
       z-index: 10000002;
-      user-select: none;
+      transition: all 0.25s var(--ease);
       touch-action: manipulation;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
     }
     .lightbox-close:hover {
-      color: var(--sage);
-      transform: scale(1.15);
+      background: var(--green);
+      border-color: var(--sage);
+      color: #FFFFFF;
+      transform: scale(1.1);
+      box-shadow: 0 8px 24px rgba(56, 103, 58, 0.4);
+    }
+    .lightbox-close svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
     }
 
     /* ─── FOOTER ─── */
@@ -375,7 +387,7 @@
       .lightbox-nav-btn { width: 42px; height: 42px; font-size: 1.3rem; }
       .lightbox-prev { left: 10px; }
       .lightbox-next { right: 10px; }
-      .lightbox-close { top: 16px; right: 20px; font-size: 32px; }
+      .lightbox-close { top: 16px !important; right: 16px !important; width: 40px !important; height: 40px !important; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css" />
@@ -418,7 +430,12 @@
 
 <!-- LIGHTBOX MODAL WITH NEXT/PREV ARROWS -->
 <div id="lightbox" class="lightbox">
-  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox" title="Close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
   <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
   <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next">›</button>
   <div class="lightbox-img-wrap">
@@ -608,6 +625,42 @@
       currentLightboxIndex = (currentLightboxIndex + 1) % currentFilteredList.length;
       updateLightboxContent();
     });
+  }
+
+  
+  // Mobile Touch Swipe Gesture Support
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipeGesture();
+    }, { passive: true });
+  }
+
+  function handleSwipeGesture() {
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    // Detect horizontal swipe with minimum 40px threshold and more horizontal than vertical movement
+    if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX < 0) {
+        // Swiped Left -> Next Image
+        if (lightboxNext) lightboxNext.click();
+      } else {
+        // Swiped Right -> Previous Image
+        if (lightboxPrev) lightboxPrev.click();
+      }
+    }
   }
 
   // Keyboard navigation for lightbox
