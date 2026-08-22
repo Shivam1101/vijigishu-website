@@ -353,6 +353,149 @@
       .grid { grid-template-columns: 1fr; }
       .controls-panel { flex-direction: column; align-items: stretch; }
     }
+  
+    /* ═════════════════════════════════════════════════════════════════
+       COMPLETE SITE URL DIRECTORY SECTION (AT LAST)
+       ═════════════════════════════════════════════════════════════════ */
+    .url-directory-section {
+      margin-top: 64px;
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+    }
+    .url-dir-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .url-dir-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .url-dir-title span {
+      color: var(--green);
+      font-style: italic;
+    }
+    .btn-copy-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      font-family: inherit;
+    }
+    .btn-copy-all:hover {
+      background: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(56, 103, 58, 0.25);
+    }
+    .url-group-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin: 24px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .url-group-title:first-of-type {
+      margin-top: 0;
+    }
+    .url-list-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+    }
+    .url-row {
+      background: #F8FAFC;
+      border-radius: 10px;
+      transition: all 0.2s var(--ease);
+    }
+    .url-row:hover {
+      background: #F1F5F9;
+      transform: translateX(4px);
+    }
+    .url-row td {
+      padding: 12px 16px;
+      font-size: 0.88rem;
+    }
+    .url-row td:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      font-weight: 700;
+      color: var(--navy);
+      width: 28%;
+      white-space: nowrap;
+    }
+    .url-row td:nth-child(2) {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--green);
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .url-row td:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      text-align: right;
+      width: 150px;
+      white-space: nowrap;
+    }
+    .btn-copy-single {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      color: var(--navy);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn-copy-single:hover {
+      border-color: var(--green);
+      color: var(--green);
+      background: var(--sage-light);
+    }
+    .link-open-btn {
+      color: var(--gray-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 6px 8px;
+      transition: color 0.2s;
+    }
+    .link-open-btn:hover {
+      color: var(--green);
+    }
+    @media (max-width: 768px) {
+      .url-directory-section { padding: 24px 16px; }
+      .url-row td { display: block; width: 100% !important; text-align: left !important; padding: 8px 12px; }
+      .url-row td:first-child { padding-bottom: 2px; }
+      .url-row td:nth-child(2) { padding-top: 0; padding-bottom: 6px; }
+      .url-row td:last-child { padding-top: 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -819,6 +962,272 @@
   </div>
 
   <!-- Quick Footer -->
+  
+  <!-- =================================================================
+       COMPLETE SITE URL DIRECTORY (FULL PRODUCTION URLS)
+       ================================================================= -->
+  <section class="url-directory-section" id="urlDirectory">
+    <div class="url-dir-header">
+      <div>
+        <h2 class="url-dir-title">🔗 Complete Site <span>URL Directory</span></h2>
+        <p style="color: var(--gray-muted); font-size: 0.88rem; margin-top: 4px;">Full production URLs for all live website pages (no localhost).</p>
+      </div>
+      <button class="btn-copy-all" id="copyAllUrlsBtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy All URLs
+      </button>
+    </div>
+
+    <!-- Group 1: Core Pages -->
+    <div class="url-group-title">🏠 Core Pages</div>
+    <table class="url-list-table">
+      <tr class="url-row">
+        <td>Home Page</td>
+        <td class="url-text">https://vijigishu.co.in/</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/')">Copy</button>
+          <a href="/" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>About Us</td>
+        <td class="url-text">https://vijigishu.co.in/about</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/about')">Copy</button>
+          <a href="about.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Immersion Programs Hub</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs')">Copy</button>
+          <a href="immersion-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Leadership Walk</td>
+        <td class="url-text">https://vijigishu.co.in/leadership-walk</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/leadership-walk')">Copy</button>
+          <a href="leadership-walk.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Gallery</td>
+        <td class="url-text">https://vijigishu.co.in/gallery</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/gallery')">Copy</button>
+          <a href="gallery.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Contact Us</td>
+        <td class="url-text">https://vijigishu.co.in/contact</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/contact')">Copy</button>
+          <a href="contact.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Blog Index</td>
+        <td class="url-text">https://vijigishu.co.in/blog</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/blog')">Copy</button>
+          <a href="blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Blog Single Article</td>
+        <td class="url-text">https://vijigishu.co.in/blog-single</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/blog-single')">Copy</button>
+          <a href="blog-single.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>404 Error Page</td>
+        <td class="url-text">https://vijigishu.co.in/404</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/404')">Copy</button>
+          <a href="404.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Group 2: Academic Disciplines -->
+    <div class="url-group-title">🎓 Academic Discipline Programs</div>
+    <table class="url-list-table">
+      <tr class="url-row">
+        <td>Management Immersion</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/management</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/management')">Copy</button>
+          <a href="immersion-programs/management.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Architecture &amp; Design</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/architecture-design</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/architecture-design')">Copy</button>
+          <a href="immersion-programs/architecture-design.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Engineering Immersion</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/engineering</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/engineering')">Copy</button>
+          <a href="immersion-programs/engineering.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>School Programs</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/school-programs</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/school-programs')">Copy</button>
+          <a href="immersion-programs/school-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Group 3: Global Destinations -->
+    <div class="url-group-title">✈️ Global Destination Programs</div>
+    <table class="url-list-table">
+      <tr class="url-row">
+        <td>UAE Immersion (Dubai &amp; Abu Dhabi)</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/uae</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/uae')">Copy</button>
+          <a href="immersion-programs/uae.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Singapore Immersion</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/singapore</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/singapore')">Copy</button>
+          <a href="immersion-programs/singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Japan Immersion (Tokyo &amp; Osaka)</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/japan</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/japan')">Copy</button>
+          <a href="immersion-programs/japan.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>South Korea Immersion (Seoul &amp; Busan)</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/south-korea</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/south-korea')">Copy</button>
+          <a href="immersion-programs/south-korea.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Europe Immersion (GIP)</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/europe</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/europe')">Copy</button>
+          <a href="immersion-programs/europe.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Malaysia &amp; Singapore Immersion</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/malaysia-singapore</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/malaysia-singapore')">Copy</button>
+          <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Singapore &amp; Indonesia Immersion</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/singapore-indonesia</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/singapore-indonesia')">Copy</button>
+          <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Group 4: Internships & Specialized Learning -->
+    <div class="url-group-title">🤝 Internships, FDP &amp; Conferences</div>
+    <table class="url-list-table">
+      <tr class="url-row">
+        <td>Malaysia International Internship</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/internship-malaysia</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/internship-malaysia')">Copy</button>
+          <a href="immersion-programs/internship-malaysia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Thailand International Internship</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/internship-thailand</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/internship-thailand')">Copy</button>
+          <a href="immersion-programs/internship-thailand.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Faculty Development Programs (FDP)</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/fdp</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/fdp')">Copy</button>
+          <a href="immersion-programs/fdp.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>International Academic Conferences</td>
+        <td class="url-text">https://vijigishu.co.in/immersion-programs/international-conference</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/immersion-programs/international-conference')">Copy</button>
+          <a href="immersion-programs/international-conference.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Group 5: Portals & Verification -->
+    <div class="url-group-title">🔐 Portals &amp; Verification</div>
+    <table class="url-list-table">
+      <tr class="url-row">
+        <td>Admin Dashboard</td>
+        <td class="url-text">https://vijigishu.co.in/main-admin</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/main-admin')">Copy</button>
+          <a href="main-admin.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Admin Login</td>
+        <td class="url-text">https://vijigishu.co.in/login</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/login')">Copy</button>
+          <a href="login.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>Certificate Verification Portal</td>
+        <td class="url-text">https://vijigishu.co.in/page-verify</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/page-verify')">Copy</button>
+          <a href="page-verify.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+      <tr class="url-row">
+        <td>VJpage Directory (This Page)</td>
+        <td class="url-text">https://vijigishu.co.in/VJpage</td>
+        <td>
+          <button class="btn-copy-single" onclick="copySingleUrl(this, 'https://vijigishu.co.in/VJpage')">Copy</button>
+          <a href="VJpage.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+        </td>
+      </tr>
+    </table>
+  </section>
+
   <footer class="quick-footer">
     <p>Vijigishu Edu Tourism · Local Development Server · <a href="/">Go to Home</a></p>
   </footer>
@@ -891,6 +1300,40 @@
 
   // Initial count
   filterPages();
+
+  // Copy single URL helper
+  function copySingleUrl(btn, url) {
+    navigator.clipboard.writeText(url).then(() => {
+      const originalText = btn.textContent;
+      btn.textContent = 'Copied! ✓';
+      btn.style.background = 'var(--green)';
+      btn.style.color = '#FFFFFF';
+      btn.style.borderColor = 'var(--green)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.style.borderColor = '';
+      }, 1500);
+    });
+  }
+
+  // Copy All URLs button
+  document.getElementById('copyAllUrlsBtn')?.addEventListener('click', function() {
+    const urls = Array.from(document.querySelectorAll('.url-text')).map(el => el.textContent.trim());
+    const textToCopy = urls.join('\n');
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      const btn = document.getElementById('copyAllUrlsBtn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span>All Copied to Clipboard! ✓</span>';
+      btn.style.background = 'var(--green)';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+      }, 2000);
+    });
+  });
+
 </script>
 </body>
 </html>
