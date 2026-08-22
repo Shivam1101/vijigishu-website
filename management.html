@@ -912,61 +912,13 @@
   </div>
 </section>
 
-<!-- ===== DISCIPLINE FLOATING MENU VARIATIONS ===== -->
-
-<!-- 1. Top Demo Switcher Toolbar (To easily test and compare all 3 variations live) -->
-<div class="discipline-demo-bar" id="disciplineDemoBar">
-  <span class="demo-bar-label">Test Menu:</span>
-  <button class="demo-tab-btn active" onclick="switchMenuMode('all')">Show All</button>
-  <button class="demo-tab-btn" onclick="switchMenuMode('dock')">1. Bottom Dock</button>
-  <button class="demo-tab-btn" onclick="switchMenuMode('rail')">2. Side Rail</button>
-  <button class="demo-tab-btn" onclick="switchMenuMode('fab')">3. Speed Dial</button>
-</div>
-
-<!-- Variation 1: Floating Glassmorphic Bottom Pill Dock -->
-<div id="floating-dock-bottom" class="menu-variation">
-  <div class="dock-label">
-    <span>🧭</span>
-    <span>Other Programs:</span>
-  </div>
-  <a href="architecture-design" class="dock-chip" title="Architecture & Design Immersion">
-    <span>🏛️</span>
-    <span>Architecture &amp; Design</span>
-  </a>
-  <a href="engineering" class="dock-chip" title="Engineering Immersion">
-    <span>⚙️</span>
-    <span>Engineering</span>
-  </a>
-  <a href="school-programs" class="dock-chip" title="School Immersion Programs">
-    <span>🎓</span>
-    <span>School Programs</span>
-  </a>
-</div>
-
-<!-- Variation 2: Minimalist Vertical Edge Rail -->
-<div id="floating-rail-side" class="menu-variation">
-  <a href="management" class="rail-item active" title="Current: Management Immersion">
-    <span>💼</span>
-    <div class="rail-tooltip">Management <span style="color:var(--sage);">(Current)</span></div>
-  </a>
-  <a href="architecture-design" class="rail-item" title="Explore Architecture & Design">
-    <span>🏛️</span>
-    <div class="rail-tooltip">Architecture &amp; Design <span class="arr">→</span></div>
-  </a>
-  <a href="engineering" class="rail-item" title="Explore Engineering Immersion">
-    <span>⚙️</span>
-    <div class="rail-tooltip">Engineering Immersion <span class="arr">→</span></div>
-  </a>
-  <a href="school-programs" class="rail-item" title="Explore School Programs">
-    <span>🎓</span>
-    <div class="rail-tooltip">School Programs <span class="arr">→</span></div>
-  </a>
-</div>
-
-<!-- Variation 3: Discipline Switcher Speed Dial FAB -->
-<div id="floating-fab-menu" class="menu-variation">
+<!-- ===== DISCIPLINE SWITCHER SPEED DIAL FAB ===== -->
+<div id="floating-fab-menu">
   <div class="fab-dropdown">
-    <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--green); letter-spacing: 0.08em; padding: 4px 6px;">Switch Discipline</div>
+    <div class="fab-header-tag">
+      <span>Switch Discipline</span>
+      <span style="font-size: 0.76rem; color: var(--navy); font-weight: 700;">3 Programs</span>
+    </div>
     <a href="architecture-design" class="fab-card-item">
       <div class="fab-item-icon">🏛️</div>
       <div>
@@ -989,8 +941,14 @@
       </div>
     </a>
   </div>
-  <button class="fab-main-btn" onclick="toggleFabMenu(event)">
-    <span class="fab-icon-bubble">🧭</span>
+  <button class="fab-main-btn" onclick="toggleFabMenu(event)" aria-label="Switch Discipline">
+    <span class="fab-icon-bubble">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+        <polyline points="2 17 12 22 22 17"></polyline>
+        <polyline points="2 12 12 17 22 12"></polyline>
+      </svg>
+    </span>
     <span>Switch Discipline ▾</span>
   </button>
 </div>
@@ -1009,35 +967,7 @@
   }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Floating Menu Mode Switcher (For live testing)
-  function switchMenuMode(mode) {
-    document.querySelectorAll('.demo-tab-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-
-    const dock = document.getElementById('floating-dock-bottom');
-    const rail = document.getElementById('floating-rail-side');
-    const fab = document.getElementById('floating-fab-menu');
-
-    if (mode === 'all') {
-      dock.style.display = 'flex';
-      rail.style.display = 'flex';
-      fab.style.display = 'block';
-    } else if (mode === 'dock') {
-      dock.style.display = 'flex';
-      rail.style.display = 'none';
-      fab.style.display = 'none';
-    } else if (mode === 'rail') {
-      dock.style.display = 'none';
-      rail.style.display = 'flex';
-      fab.style.display = 'none';
-    } else if (mode === 'fab') {
-      dock.style.display = 'none';
-      rail.style.display = 'none';
-      fab.style.display = 'block';
-    }
-  }
-
-  // FAB Menu Toggle
+  // Speed Dial FAB Toggle & Hover Support
   function toggleFabMenu(e) {
     e.stopPropagation();
     document.getElementById('floating-fab-menu').classList.toggle('active');
