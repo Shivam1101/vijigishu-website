@@ -249,9 +249,9 @@
     if (!currentPath.includes('admin') && !document.getElementById('scrollToTop') && document.body) {
       const scrollToTopHTML = `
       <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top" title="Go to top">
-        <svg class="progress-ring" width="60" height="60" viewBox="0 0 60 60">
+        <svg class="progress-ring" viewBox="0 0 60 60" width="100%" height="100%">
           <circle class="progress-ring-bg" cx="30" cy="30" r="26" />
-          <circle class="progress-ring-circle" id="scrollProgressCircle" cx="30" cy="30" r="26" />
+          <circle class="progress-ring-circle" id="scrollProgressCircle" cx="30" cy="30" r="26" transform="rotate(-90 30 30)" />
         </svg>
         <span class="compass-tooltip">Navigate to top</span>
         <div class="compass-btn-inner">
@@ -342,7 +342,7 @@
     if (!scrollBtn || !circle) return;
 
     function getCircumference() {
-      const radius = circle.r?.baseVal?.value || 26;
+      const radius = 26;
       return 2 * Math.PI * radius;
     }
 
