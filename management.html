@@ -914,34 +914,7 @@
 
 <!-- ===== DISCIPLINE SWITCHER SPEED DIAL FAB ===== -->
 <div id="floating-fab-menu">
-  <div class="fab-dropdown">
-    <div class="fab-header-tag">
-      <span>Switch Discipline</span>
-      <span style="font-size: 0.76rem; color: var(--navy); font-weight: 700;">3 Programs</span>
-    </div>
-    <a href="architecture-design" class="fab-card-item">
-      <div class="fab-item-icon">🏛️</div>
-      <div>
-        <div class="fab-item-title">Architecture &amp; Design</div>
-        <div class="fab-item-sub">Studios, heritage &amp; modernism</div>
-      </div>
-    </a>
-    <a href="engineering" class="fab-card-item">
-      <div class="fab-item-icon">⚙️</div>
-      <div>
-        <div class="fab-item-title">Engineering</div>
-        <div class="fab-item-sub">Robotics, Industry 4.0 &amp; labs</div>
-      </div>
-    </a>
-    <a href="school-programs" class="fab-card-item">
-      <div class="fab-item-icon">🎓</div>
-      <div>
-        <div class="fab-item-title">School Programs</div>
-        <div class="fab-item-sub">STEM, citizenship &amp; leadership</div>
-      </div>
-    </a>
-  </div>
-  <button class="fab-main-btn" onclick="toggleFabMenu(event)" aria-label="Switch Discipline">
+  <button class="fab-main-btn" id="fabToggleBtn" aria-label="Switch Discipline">
     <span class="fab-icon-bubble">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -951,6 +924,20 @@
     </span>
     <span>Switch Discipline ▾</span>
   </button>
+  <div class="fab-dropdown" id="fabDropdown">
+    <a href="architecture-design" class="fab-card-item">
+      <span class="fab-item-icon">🏛️</span>
+      <span class="fab-item-title">Architecture &amp; Design</span>
+    </a>
+    <a href="engineering" class="fab-card-item">
+      <span class="fab-item-icon">⚙️</span>
+      <span class="fab-item-title">Engineering</span>
+    </a>
+    <a href="school-programs" class="fab-card-item">
+      <span class="fab-item-icon">🎓</span>
+      <span class="fab-item-title">School Programs</span>
+    </a>
+  </div>
 </div>
 
 <!-- ===== GLOBAL FOOTER ===== -->
@@ -967,18 +954,35 @@
   }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Speed Dial FAB Toggle & Hover Support
-  function toggleFabMenu(e) {
-    e.stopPropagation();
-    document.getElementById('floating-fab-menu').classList.toggle('active');
-  }
+  // Speed Dial FAB: robust hover + click handling
+  const fabMenu = document.getElementById('floating-fab-menu');
+  const fabBtn = document.getElementById('fabToggleBtn');
+  let closeTimer = null;
 
-  document.addEventListener('click', (e) => {
-    const fab = document.getElementById('floating-fab-menu');
-    if (fab && !fab.contains(e.target)) {
-      fab.classList.remove('active');
-    }
-  });
+  if (fabMenu && fabBtn) {
+    fabMenu.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      fabMenu.classList.add('is-open');
+    });
+
+    fabMenu.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        fabMenu.classList.remove('is-open');
+      }, 200);
+    });
+
+    fabBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearTimeout(closeTimer);
+      fabMenu.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!fabMenu.contains(e.target)) {
+        fabMenu.classList.remove('is-open');
+      }
+    });
+  }
 </script>
 </body>
 </html>
