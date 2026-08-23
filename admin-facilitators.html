@@ -262,7 +262,7 @@
 <div class="content-box">
   <div class="card-box-title">
     <span>Academic Facilitators &amp; University Partner Logos (<span id="facCount">0</span>)</span>
-    <button class="btn btn-outline" onclick="resetFacilitatorsToDefault()" title="Reset to original 14 university partner logos">↺ Reset Defaults</button>
+    
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;" id="adminFacGrid"></div>
@@ -417,12 +417,7 @@
     }
   }
 
-  function resetFacilitatorsToDefault() {
-    if (confirm('Reset to default 14 university partner logos?')) {
-      saveFacilitators(DEFAULT_FACILITATORS);
-      showToast('Facilitators reset to default.');
-    }
-  }
+  
 
   document.addEventListener('DOMContentLoaded', renderFacilitators);
 </script>

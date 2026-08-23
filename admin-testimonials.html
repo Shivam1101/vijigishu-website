@@ -262,7 +262,7 @@
 <div class="content-box">
   <div class="card-box-title">
     <span>Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)</span>
-    <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original 11 student reviews">↺ Reset Defaults</button>
+    
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;" id="adminTestiGrid"></div>
@@ -294,8 +294,17 @@
       </div>
 
       <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Photo Image Path / URL</label>
-        <input type="text" id="testiImgInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. images/Singapore-1.webp" />
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Faculty Photo *</label>
+        <div class="upload-dropzone" style="margin-bottom: 8px;">
+          <input type="file" id="testiFileInput" accept="image/*" onchange="handleTestiFileUpload(event)" />
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">📸</div>
+          <div style="font-size: 0.82rem; font-weight: 600; color: var(--navy);">Click or Drag to Upload Photo</div>
+          <div style="font-size: 0.72rem; color: var(--gray);">PNG, JPG, WebP</div>
+        </div>
+        <input type="hidden" id="testiImgInput" value="" />
+        <div id="testiPreviewWrap" style="display: none; text-align: center; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid var(--border);">
+          <img id="testiPreviewImg" src="" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sage);" />
+        </div>
       </div>
 
       <div>
@@ -376,9 +385,10 @@
   function openNewTestimonialModal() {
     document.getElementById('editTestiId').value = '';
     document.getElementById('testiNameInput').value = '';
-    
     document.getElementById('testiStarsInput').value = '5';
     document.getElementById('testiImgInput').value = 'images/Random-1.webp';
+    document.getElementById('testiPreviewImg').src = 'images/Random-1.webp';
+    document.getElementById('testiPreviewWrap').style.display = 'block';
     document.getElementById('testiTextInput').value = '';
     document.getElementById('testiModalTitle').textContent = 'Add New Testimonial';
     document.getElementById('testiModal').classList.add('active');
@@ -389,9 +399,10 @@
     if (!item) return;
     document.getElementById('editTestiId').value = item.id;
     document.getElementById('testiNameInput').value = item.name || '';
-    
     document.getElementById('testiStarsInput').value = item.stars || 5;
     document.getElementById('testiImgInput').value = item.img || '';
+    document.getElementById('testiPreviewImg').src = item.img || 'images/Singapore.webp';
+    document.getElementById('testiPreviewWrap').style.display = item.img ? 'block' : 'none';
     document.getElementById('testiTextInput').value = item.text || '';
     document.getElementById('testiModalTitle').textContent = 'Edit Testimonial';
     document.getElementById('testiModal').classList.add('active');
@@ -399,6 +410,20 @@
 
   function closeTestiModal() {
     document.getElementById('testiModal').classList.remove('active');
+  }
+
+  
+  function handleTestiFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const dataUrl = evt.target.result;
+      document.getElementById('testiImgInput').value = dataUrl;
+      document.getElementById('testiPreviewImg').src = dataUrl;
+      document.getElementById('testiPreviewWrap').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
   }
 
   function saveTestimonialData() {
@@ -433,12 +458,7 @@
     }
   }
 
-  function resetTestimonialsToDefault() {
-    if (confirm('Reset testimonials to default 11 reviews?')) {
-      saveTestimonials(DEFAULT_TESTIMONIALS);
-      showToast('Testimonials reset to default.');
-    }
-  }
+  
 
   document.addEventListener('DOMContentLoaded', renderTestimonials);
 </script>

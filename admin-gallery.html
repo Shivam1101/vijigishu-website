@@ -262,7 +262,7 @@
 <div class="content-box">
   <div class="card-box-title">
     <span>Gallery Highlights Photos (<span id="galleryCount">0</span>)</span>
-    <button class="btn btn-outline" onclick="resetGalleryToDefault()" title="Reset to preset photos">↺ Reset Defaults</button>
+    
   </div>
 
   <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;" id="adminGalleryFilters">
@@ -490,12 +490,7 @@
     }
   }
 
-  function resetGalleryToDefault() {
-    if (confirm('Reset gallery to default 19 photos?')) {
-      saveGalleryItems(DEFAULT_GALLERY);
-      showToast('Gallery reset to default.');
-    }
-  }
+  
 
   document.addEventListener('DOMContentLoaded', renderGallery);
 </script>
