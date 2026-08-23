@@ -48,7 +48,7 @@
 
     .hero-interactive-toolbar { display: flex !important; align-items: center; justify-content: flex-start !important; gap: 12px; flex-wrap: wrap; background: rgba(255,255,255,0.08); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 100px; width: max-content; margin: 0 !important; }
 
-    .audio-player-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--green); color: var(--white); border: none; padding: 8px 18px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 14px rgba(56,103,58,0.4); }
+    .audio-player-btn { display: none !important; }
     .audio-player-btn:hover { background: #2A4F2C; transform: translateY(-1px); }
     
     .audio-waves { display: inline-flex; align-items: center; gap: 2px; height: 14px; }
@@ -127,16 +127,6 @@
       <p class="article-hero-excerpt">Inside the DIFC and ADGM innovation hubs: exploring algorithmic finance, tokenized real-world assets, and sovereign digital currencies in the Middle East.</p>
 
       <div class="hero-interactive-toolbar">
-        <button class="audio-player-btn" onclick="toggleAudioNarration()">
-          <span id="audioBtnIcon">▶</span>
-          <span id="audioBtnText">Listen to Article</span>
-          <div class="audio-waves paused" id="audioWaveVisualizer">
-            <div class="audio-wave-bar"></div>
-            <div class="audio-wave-bar"></div>
-            <div class="audio-wave-bar"></div>
-          </div>
-        </button>
-
         <button class="pdf-download-btn" id="pdfExportBtn" onclick="generateEditorialPDF()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           <span id="pdfBtnLabel">Save PDF Briefing</span>

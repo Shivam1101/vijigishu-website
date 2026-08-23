@@ -174,12 +174,7 @@
       margin: 0 !important;
     }
 
-    .audio-player-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--green); color: #FFFFFF; border: none;
-      padding: 7px 18px; border-radius: 100px; font-size: 0.8rem; font-weight: 700;
-      cursor: pointer; transition: all 0.25s var(--ease);
-    }
+    .audio-player-btn { display: none !important; }
     .audio-player-btn:hover {
       background: var(--sage); color: var(--navy); transform: scale(1.02);
     }
@@ -640,16 +635,6 @@
       <div class="hero-interactive-toolbar">
         
         <!-- Feature 1: Audio / Voice Narration Player -->
-        <button class="audio-player-btn" id="audioPlayerToggle" onclick="toggleAudioNarration()">
-          <span id="audioBtnIcon">▶</span>
-          <span id="audioBtnText">Listen to Article</span>
-          <div class="audio-waves paused" id="audioWaveVisualizer">
-            <div class="audio-wave-bar"></div>
-            <div class="audio-wave-bar"></div>
-            <div class="audio-wave-bar"></div>
-          </div>
-        </button>
-
         <!-- Feature 3: Download / Print Article as PDF -->
         <button class="pdf-download-btn" id="pdfExportBtn" onclick="generateEditorialPDF()" title="Download PDF Executive Briefing">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
