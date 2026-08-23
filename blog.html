@@ -176,10 +176,12 @@
     
     
     
-    /* ─── DYNAMIC ASYMMETRICAL VISUAL GRID (100%, 2-SPAN, & 1-SPAN) ─── */
+    
+    /* ─── AUTOMATED DENSE-PACKED VISUAL MASONRY (ZERO GAPS) ─── */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense; /* Automatically backfills all spaces with zero white space */
       gap: 24px;
       margin-bottom: 80px;
     }
@@ -201,33 +203,28 @@
       transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
       text-decoration: none;
       box-sizing: border-box;
-      min-height: 380px;
     }
     .visual-blog-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 45px rgba(13,14,46,0.18);
     }
 
-    /* Card Spans */
+    /* Automated Span & Height Configurations */
     .card-span-standard {
       grid-column: span 4;
-      height: 380px;
+      height: 360px;
     }
     .card-span-tall {
       grid-column: span 4;
       height: 440px;
     }
-    .card-span-compact {
-      grid-column: span 4;
-      height: 320px;
-    }
     .card-span-double {
       grid-column: span 8;
-      height: 420px;
+      height: 400px;
     }
     .card-span-full {
       grid-column: span 12;
-      height: 400px;
+      height: 390px;
     }
 
     /* Background Image & Zoom */
@@ -245,13 +242,13 @@
       transform: scale(1.08);
     }
 
-    /* Dark Contrast Bottom Gradient Overlay */
+    /* Contrast Gradient Overlay */
     .visual-card-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, 
-        rgba(13,14,46,0.12) 0%, 
-        rgba(13,14,46,0.3) 35%, 
+        rgba(13,14,46,0.1) 0%, 
+        rgba(13,14,46,0.28) 35%, 
         rgba(7,8,26,0.82) 70%, 
         rgba(7,8,26,0.98) 100%
       );
@@ -260,14 +257,14 @@
     }
     .visual-blog-card:hover .visual-card-overlay {
       background: linear-gradient(180deg, 
-        rgba(13,14,46,0.06) 0%, 
+        rgba(13,14,46,0.05) 0%, 
         rgba(13,14,46,0.2) 30%, 
         rgba(7,8,26,0.88) 65%, 
         rgba(7,8,26,0.99) 100%
       );
     }
 
-    /* Top Tags (Category & Read Limit) */
+    /* Top Tags */
     .visual-card-top {
       position: relative;
       z-index: 3;
@@ -325,7 +322,7 @@
       max-width: 80%;
     }
     .card-span-double .visual-card-title {
-      font-size: 1.55rem;
+      font-size: 1.5rem;
     }
 
     /* Minimal Circular Arrow */
@@ -354,12 +351,12 @@
     }
 
     @media (max-width: 1024px) {
-      .card-span-double, .card-span-standard, .card-span-tall, .card-span-compact { grid-column: span 6; }
+      .card-span-double, .card-span-standard, .card-span-tall { grid-column: span 6; }
       .card-span-full { grid-column: span 12; }
     }
     @media (max-width: 680px) {
       .blog-grid { grid-template-columns: 1fr; }
-      .card-span-double, .card-span-full, .card-span-standard, .card-span-tall, .card-span-compact {
+      .card-span-double, .card-span-full, .card-span-standard, .card-span-tall {
         grid-column: span 1;
         height: 360px;
       }
@@ -557,9 +554,10 @@
   
   
   
+  
   function renderBlogs() {
     const grid = document.getElementById('blogGrid');
-    const BLOG_DATA_VERSION = 'v7_dynamic_spans';
+    const BLOG_DATA_VERSION = 'v8_automated_dense_grid';
     let list = DEFAULT_BLOGS;
 
     try {
@@ -592,24 +590,13 @@
       return;
     }
 
+    // Automated span assigner (generates balanced 12-col dense layout with zero gaps)
+    // Dynamic cycle: [Double (8) + Standard (4)], [Full (12)], [Standard (4) + Standard (4) + Standard (4)], [Standard (4) + Double (8)]
+    const spanRhythm = ['card-span-double', 'card-span-standard', 'card-span-full', 'card-span-standard', 'card-span-tall', 'card-span-standard', 'card-span-standard', 'card-span-double'];
+
     grid.innerHTML = filtered.map((b, idx) => {
       const cardImage = b.image || 'images/blog-single-placeholder.png';
-      
-      // Determine span class (respect admin layoutSpan if present, else fallback)
-      let spanClass = 'card-span-standard';
-      if (b.layoutSpan === 'full') {
-        spanClass = 'card-span-full';
-      } else if (b.layoutSpan === 'double') {
-        spanClass = 'card-span-double';
-      } else if (b.layoutSpan === 'tall') {
-        spanClass = 'card-span-tall';
-      } else if (b.layoutSpan === 'compact') {
-        spanClass = 'card-span-compact';
-      } else {
-        // Organic default distribution
-        const fallbackClasses = ['card-span-double', 'card-span-standard', 'card-span-standard', 'card-span-full', 'card-span-standard', 'card-span-double', 'card-span-standard', 'card-span-standard'];
-        spanClass = fallbackClasses[idx % fallbackClasses.length];
-      }
+      const spanClass = spanRhythm[idx % spanRhythm.length];
 
       return `
         <a href="blog-single.html?id=${b.id}" class="visual-blog-card ${spanClass}" title="${escapeHtml(b.title)}">
