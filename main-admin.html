@@ -6,7 +6,234 @@
     if (localStorage.getItem('vijigishu_admin_logged_in') !== 'true') {
       window.location.href = 'login.html';
     }
-  </script>
+  
+  // ===== TESTIMONIALS CMS CONTROLLER =====
+  const defaultTestimonialsData = [
+  {
+    "id": "testi-1",
+    "name": "Shaanya",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Random-2.webp",
+    "text": "Dear Vijigishu Team, I would like to sincerely thank you for organizing such a wonderful and exciting trip. The entire experience was exceptionally well-managed, thoroughly enjoyable, and truly memorable for me. I genuinely appreciate all the hard work and dedication put in by your team to make this trip so special and memorable."
+  },
+  {
+    "id": "testi-2",
+    "name": "Jamila Gangardiwala",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Random-1.webp",
+    "text": "My experience with Vijigishu Company has been highly enriching and professionally rewarding. The organization has provided me with valuable exposure, enabling me to enhance my skills and gain practical insights that have significantly contributed to my overall development. I am grateful for the opportunities, knowledge, and experiences I have gained."
+  },
+  {
+    "id": "testi-3",
+    "name": "Dr. VIJAYA KUMAR THOTA",
+    "role": "Faculty",
+    "stars": 5,
+    "img": "images/Singapore-1.webp",
+    "text": "Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution. From seamless airport and ferry transfers to comfortable accommodation in both Batam and Singapore, every arrangement reflected professionalism and attention to detail. The hospitality extended throughout the trip ensured students felt safe, well-guided, and cared for at every stage."
+  },
+  {
+    "id": "testi-4",
+    "name": "Sai Vamshi Akkem",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Malaysia-1.webp",
+    "text": "The trip was really awesome, we all enjoyed travelling to 3 countries: Malaysia, Indonesia and Singapore. One of my best lifelong experiences. Thank you Vijigishu for providing this option."
+  },
+  {
+    "id": "testi-5",
+    "name": "Garima Goyal",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Singapore-2.webp",
+    "text": "My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia."
+  },
+  {
+    "id": "testi-6",
+    "name": "Sana Fatima",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Malaysia-1.webp",
+    "text": "The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives through the university and industry visits. It was all possible with the help of Vijigishu."
+  },
+  {
+    "id": "testi-7",
+    "name": "Mrunal Joshi",
+    "role": "Faculty",
+    "stars": 5,
+    "img": "images/Dubai-2.webp",
+    "text": "Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students."
+  },
+  {
+    "id": "testi-8",
+    "name": "Tanya Sinha",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Untitled-design-2.png",
+    "text": "We had an absolutely wonderful 6-day experience in UAE. All thanks to the Vijigishu team from the moment we landed till our departure, everything was amazing. The team was highly professional and very friendly and also cared about us in all moments."
+  },
+  {
+    "id": "testi-9",
+    "name": "Mayur Deshmukh",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Dubai-1.webp",
+    "text": "A big shoutout to Vijigishu for organizing such a smooth and memorable Dubai trip for us students. Everything was well managed - stay, travel, food, and experiences so we never had to worry about a thing. The team was super supportive, friendly, and always ready to help."
+  },
+  {
+    "id": "testi-10",
+    "name": "Nakul Jadav",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Dubai-3.webp",
+    "text": "Our recent student tour to Dubai with Vijigishu Organization was an unforgettable experience! Everything was perfectly managed, from travel arrangements to accommodation and sightseeing. Highly recommend Vijigishu Organization for student tours."
+  },
+  {
+    "id": "testi-11",
+    "name": "Amitesh Chakraborty",
+    "role": "Student",
+    "stars": 5,
+    "img": "images/Dubai-2.webp",
+    "text": "Vijigishu Education Pvt. Ltd. flawlessly executed our 6-day, 5-night college tour to Dubai. The itinerary was perfectly balanced, combining educational and recreational activities. Accommodations, food and transport were top-notch, and their team was professional and highly attentive."
+  }
+];
+
+  function getTestimonials() {
+    try {
+      const raw = localStorage.getItem('vijigishu_testimonials');
+      if (raw) return JSON.parse(raw);
+    } catch(e) {}
+    localStorage.setItem('vijigishu_testimonials', JSON.stringify(defaultTestimonialsData));
+    return defaultTestimonialsData;
+  }
+
+  function saveTestimonials(list) {
+    localStorage.setItem('vijigishu_testimonials', JSON.stringify(list));
+    renderAdminTestimonials();
+  }
+
+  function renderAdminTestimonials() {
+    const list = getTestimonials();
+    const countEl = document.getElementById('testiCount');
+    if (countEl) countEl.textContent = list.length;
+
+    const grid = document.getElementById('adminTestiGrid');
+    if (!grid) return;
+
+    if (!list.length) {
+      grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--gray);">No testimonials available. Click "+ Add Testimonial" or "Reset Defaults".</div>';
+      return;
+    }
+
+    grid.innerHTML = list.map((t, idx) => `
+      <div class="admin-item-card" style="padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="${t.img || 'images/Singapore.webp'}" onerror="this.src='images/Singapore.webp';" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sage);" />
+            <div>
+              <div style="font-weight: 800; font-size: 0.92rem; color: var(--navy);">${escapeHtml(t.name)}</div>
+              <div style="font-size: 0.75rem; color: var(--green); font-weight: 600;">${escapeHtml(t.role || 'Student')} · ${'⭐'.repeat(t.stars || 5)}</div>
+            </div>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--gray); line-height: 1.5; max-height: 120px; overflow-y: auto; margin-bottom: 14px; padding-right: 4px;">
+            "${escapeHtml(t.text)}"
+          </p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border);">
+          <span style="font-size: 0.72rem; color: var(--gray); font-weight: 600;">#${idx + 1}</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="openEditTestimonialModal('${t.id}')">✏️ Edit</button>
+            <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem;" onclick="confirmDeleteTestimonial('${t.id}', '${escapeHtml(t.name)}')">🗑 Delete</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openNewTestimonialModal() {
+    document.getElementById('editTestiId').value = '';
+    document.getElementById('testiNameInput').value = '';
+    document.getElementById('testiRoleInput').value = 'Student';
+    document.getElementById('testiStarsInput').value = '5';
+    document.getElementById('testiImgInput').value = 'images/Random-1.webp';
+    document.getElementById('testiTextInput').value = '';
+    document.getElementById('testiModalTitle').textContent = 'Add New Testimonial';
+    document.getElementById('testiModal').classList.add('active');
+  }
+
+  function openEditTestimonialModal(id) {
+    const list = getTestimonials();
+    const item = list.find(x => x.id === id);
+    if (!item) return;
+
+    document.getElementById('editTestiId').value = item.id;
+    document.getElementById('testiNameInput').value = item.name || '';
+    document.getElementById('testiRoleInput').value = item.role || 'Student';
+    document.getElementById('testiStarsInput').value = item.stars || 5;
+    document.getElementById('testiImgInput').value = item.img || '';
+    document.getElementById('testiTextInput').value = item.text || '';
+    document.getElementById('testiModalTitle').textContent = 'Edit Testimonial';
+    document.getElementById('testiModal').classList.add('active');
+  }
+
+  function closeTestiModal() {
+    document.getElementById('testiModal').classList.remove('active');
+  }
+
+  function saveTestimonialData() {
+    const id = document.getElementById('editTestiId').value;
+    const name = document.getElementById('testiNameInput').value.trim();
+    const role = document.getElementById('testiRoleInput').value.trim();
+    const stars = parseInt(document.getElementById('testiStarsInput').value) || 5;
+    const img = document.getElementById('testiImgInput').value.trim() || 'images/Singapore.webp';
+    const text = document.getElementById('testiTextInput').value.trim();
+
+    if (!name || !text) {
+      alert('Please provide both student name and review message.');
+      return;
+    }
+
+    const list = getTestimonials();
+    if (id) {
+      // Edit
+      const idx = list.findIndex(x => x.id === id);
+      if (idx !== -1) {
+        list[idx] = { ...list[idx], name, role, stars, img, text };
+      }
+    } else {
+      // Create
+      const newId = 'testi-' + Date.now();
+      list.unshift({ id: newId, name, role, stars, img, text });
+    }
+
+    saveTestimonials(list);
+    closeTestiModal();
+    showToastAlert('Testimonial saved successfully!');
+  }
+
+  function confirmDeleteTestimonial(id, name) {
+    if (confirm(`Are you sure you want to delete the testimonial from "${name}"?`)) {
+      const list = getTestimonials().filter(x => x.id !== id);
+      saveTestimonials(list);
+      showToastAlert('Testimonial deleted.');
+    }
+  }
+
+  function resetTestimonialsToDefault() {
+    if (confirm('Reset all testimonials to the original 11 student reviews? Any manual additions will be restored.')) {
+      saveTestimonials(defaultTestimonialsData);
+      showToastAlert('Testimonials reset to default.');
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Portal – Vijigishu</title>
   <meta name="description" content="Vijigishu administration portal." />
@@ -577,6 +804,10 @@
           <span>Blog Manager</span>
         </button>
 
+        <button class="menu-btn" id="menuBtnTestimonials" title="Testimonials Manager" onclick="switchAdminSection('testimonials')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>Testimonials</span>
+        </button>
         <button class="menu-btn" id="menuBtnGallery" title="Gallery Manager" onclick="switchAdminSection('gallery')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           <span>Gallery Manager</span>
@@ -839,7 +1070,27 @@
       </div>
     </div>
 
-  </main>
+  
+    <!-- ===== TESTIMONIALS MANAGEMENT SECTION ===== -->
+    <div id="sectionTestimonials" style="display: none;">
+      
+      <div class="content-box">
+        <div class="card-box-title">
+          <span>Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)</span>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original 11 testimonials">↺ Reset Defaults</button>
+            <button class="btn btn-green" onclick="openNewTestimonialModal()">+ Add Testimonial</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;" id="adminTestiGrid">
+          <!-- Dynamically Injected -->
+        </div>
+      </div>
+
+    </div>
+
+</main>
 </div>
 
 <!-- ========================================== -->
@@ -1571,5 +1822,55 @@
   // Initial Load
   renderTable();
 </script>
+
+<!-- Testimonial Edit/Create Modal -->
+<div class="modal-backdrop" id="testiModal">
+  <div class="modal-card" style="max-width: 520px; text-align: left;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 class="modal-title" id="testiModalTitle" style="font-size: 1.25rem; margin: 0;">Add New Testimonial</h3>
+      <button onclick="closeTestiModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray);">✕</button>
+    </div>
+
+    <input type="hidden" id="editTestiId" value="" />
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Faculty Name *</label>
+        <input type="text" id="testiNameInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Shaanya / Dr. Vijaya Kumar" />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div>
+          <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Role / Designation</label>
+          <input type="text" id="testiRoleInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Student / Faculty" />
+        </div>
+        <div>
+          <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Star Rating</label>
+          <select id="testiStarsInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
+            <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+            <option value="3">⭐⭐⭐ (3 Stars)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Photo Image Path / URL</label>
+        <input type="text" id="testiImgInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. images/Singapore-1.webp" />
+      </div>
+
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Review Message / Quote *</label>
+        <textarea id="testiTextInput" rows="4" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; resize: vertical;" placeholder="Write student's review experience here..."></textarea>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+      <button class="btn btn-outline" onclick="closeTestiModal()">Cancel</button>
+      <button class="btn btn-green" onclick="saveTestimonialData()">Save Testimonial</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
