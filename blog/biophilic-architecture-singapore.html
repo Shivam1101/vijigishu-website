@@ -178,21 +178,6 @@
       box-shadow: 0 4px 25px rgba(13,14,46,0.03);
     }
 
-    /* Metrics Ribbon */
-    .metrics-ribbon {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      background: #F8FAFC;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 32px;
-    }
-    .metric-item { text-align: center; }
-    .metric-val { font-size: 1.25rem; font-weight: 800; color: var(--green); margin-bottom: 2px; }
-    .metric-lbl { font-size: 0.76rem; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-
     .lead-paragraph {
       font-size: 1.12rem;
       font-weight: 500;
@@ -358,70 +343,124 @@
     .faq-item.active .faq-content { max-height: 200px; padding: 0 20px 18px; }
     .faq-item.active .faq-toggle-icon { transform: rotate(45deg); color: var(--navy); }
 
-    /* Related Programs Box */
-    .related-programs-box {
-      background: #F4F6F9;
-      border-radius: 18px;
-      padding: 32px;
-      margin: 40px 0 32px;
+    /* ─── LUXURY BOTTOM NEXT/PREV NAVIGATION ─── */
+    .editorial-nav-wrapper {
+      margin: 52px 0 20px;
     }
-    .related-programs-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      color: var(--navy);
-      margin-bottom: 18px;
-      font-weight: 700;
+    .editorial-nav-divider {
+      position: relative;
+      text-align: center;
+      margin-bottom: 28px;
     }
-    .related-programs-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .editorial-nav-divider::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      z-index: 1;
     }
-    .program-link-card {
+    .nav-divider-text {
+      position: relative;
+      z-index: 2;
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-      text-decoration: none;
-      display: block;
-      transition: all 0.25s;
+      padding: 0 18px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
     }
-    .program-link-card:hover {
-      border-color: var(--green);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(56,103,58,0.1);
-    }
-    .program-link-tag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; color: var(--green); letter-spacing: 0.06em; margin-bottom: 4px; }
-    .program-link-name { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-    .program-link-arrow { font-size: 0.78rem; font-weight: 700; color: var(--gray); }
 
-    /* Bottom Navigation */
-    .post-bottom-nav {
+    .editorial-nav-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      margin: 36px 0 20px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
     }
-    .nav-direction-card {
-      background: #FAFAFC;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 22px;
-      text-decoration: none;
+    .nav-card-item {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
-      transition: all 0.25s;
+      align-items: center;
+      gap: 18px;
+      background: #F8FAFC;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      padding: 22px 24px;
+      text-decoration: none;
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
     }
-    .nav-direction-card:hover {
+    .nav-card-item:hover {
       background: var(--white);
-      border-color: var(--navy);
-      transform: translateY(-2px);
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(56,103,58,0.08);
     }
-    .nav-dir-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); }
-    .nav-dir-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+    .nav-card-arrow-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      flex-shrink: 0;
+      transition: all 0.3s var(--ease);
+    }
+    .nav-card-item:hover .nav-card-arrow-circle {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--white);
+      transform: scale(1.06);
+    }
+    .nav-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .nav-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .nav-card-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--green);
+    }
+    .nav-card-bullet { font-size: 0.7rem; color: #CBD5E1; }
+    .nav-card-category {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gray);
+    }
+    .nav-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.2s;
+    }
+    .nav-card-item:hover .nav-card-title {
+      color: var(--green);
+    }
+    .nav-card-time {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--gray);
+    }
 
     .article-share-strip {
       display: flex;
@@ -586,7 +625,7 @@
       .editorial-content-box { padding: 28px 20px; }
       .hero-flex-container { flex-direction: column; align-items: flex-start; }
       .hero-right-actions { align-self: flex-start; }
-      .related-programs-grid, .post-bottom-nav, .metrics-ribbon { grid-template-columns: 1fr; }
+      .editorial-nav-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="stylesheet" href="../css/global-components.css?v=1787475903488" />
@@ -638,26 +677,7 @@
     <main>
       <div class="editorial-content-box">
         <div class="article-rendered-body" id="articleBodyText">
-          
-    <div class="metrics-ribbon">
-      
-        <div class="metric-item">
-          <div class="metric-val">-12°C Facade</div>
-          <div class="metric-lbl">Thermal Drop</div>
-        </div>
-      
-        <div class="metric-item">
-          <div class="metric-val">100% Skyrise</div>
-          <div class="metric-lbl">Green Plot Ratio</div>
-        </div>
-      
-        <div class="metric-item">
-          <div class="metric-val">URA & BCA</div>
-          <div class="metric-lbl">Field Masterclasses</div>
-        </div>
-      
-    </div>
-  <p class="lead-paragraph">As global urban centers face escalating climate pressures, traditional high-density concrete topologies are proving unsustainable. Singapore’s bold transformation into a 'City in Nature' provides an empirical blueprint for architects, urban planners, and environmental designers.</p><h2 id="sec-2">1. Mitigating the Urban Heat Island Effect</h2><p>Walking through iconic super-green structures such as Marina One, CapitaSpring, and Kampung Admiralty, our architecture cohorts evaluate how integrating living vegetation into exterior facades lowers ambient thermal radiation and operational HVAC energy consumption.</p>
+          <p class="lead-paragraph">As global urban centers face escalating climate pressures, traditional high-density concrete topologies are proving unsustainable. Singapore’s bold transformation into a 'City in Nature' provides an empirical blueprint for architects, urban planners, and environmental designers.</p><h2 id="sec-2">1. Mitigating the Urban Heat Island Effect</h2><p>Walking through iconic super-green structures such as Marina One, CapitaSpring, and Kampung Admiralty, our architecture cohorts evaluate how integrating living vegetation into exterior facades lowers ambient thermal radiation and operational HVAC energy consumption.</p>
         <div class="editorial-quote">
           <div class="quote-text">"Architecture in the 21st century must function as an ecological organism. Observing how vertical green envelopes create localized microclimates provides lessons no 2D blueprint can convey."</div>
           <div class="quote-actions">
@@ -715,31 +735,44 @@
       </div>
     </div>
   
-    <div class="related-programs-box">
-      <h3 class="related-programs-title">Explore Related Immersion Programs</h3>
-      <div class="related-programs-grid">
-        <a href="../architecture-design.html" class="program-link-card">
-          <div class="program-link-tag">Discipline Track</div>
-          <div class="program-link-name">Architecture & Design</div>
-          <div class="program-link-arrow">View Curriculum →</div>
+    <div class="editorial-nav-wrapper">
+      <div class="editorial-nav-divider">
+        <span class="nav-divider-text">Continue Reading</span>
+      </div>
+
+      <div class="editorial-nav-grid">
+        <!-- PREVIOUS BRIEFING -->
+        <a href="luxury-brand-management-paris-milan.html" class="nav-card-item nav-card-prev">
+          <div class="nav-card-arrow-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </div>
+          <div class="nav-card-body">
+            <div class="nav-card-meta">
+              <span class="nav-card-tag">Previous Briefing</span>
+              <span class="nav-card-bullet">·</span>
+              <span class="nav-card-category">Management</span>
+            </div>
+            <h4 class="nav-card-title">Haute Couture & Heritage Supply Chains: Inside the Luxury Brand Ecosystems of Paris & Milan</h4>
+            <div class="nav-card-time">6 min read</div>
+          </div>
         </a>
-        <a href="../singapore.html" class="program-link-card">
-          <div class="program-link-tag">Featured Destination</div>
-          <div class="program-link-name">Singapore City in Nature</div>
-          <div class="program-link-arrow">Explore Itinerary →</div>
+
+        <!-- NEXT BRIEFING -->
+        <a href="maglev-bullet-train-mobility-japan.html" class="nav-card-item nav-card-next">
+          <div class="nav-card-body" style="text-align: right;">
+            <div class="nav-card-meta" style="justify-content: flex-end;">
+              <span class="nav-card-category">Engineering</span>
+              <span class="nav-card-bullet">·</span>
+              <span class="nav-card-tag">Next Briefing</span>
+            </div>
+            <h4 class="nav-card-title">Next-Gen Mobility: Magnetic Levitation, Shinkansen Rail Engineering, and Hydrogen Fuel Cells</h4>
+            <div class="nav-card-time">5 min read</div>
+          </div>
+          <div class="nav-card-arrow-circle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
         </a>
       </div>
-    </div>
-  
-    <div class="post-bottom-nav">
-      <a href="luxury-brand-management-paris-milan.html" class="nav-direction-card prev-card">
-        <span class="nav-dir-label">← Previous Briefing</span>
-        <span class="nav-dir-title">Haute Couture & Heritage Supply Chains: Inside the Luxury Brand Ecosystems of Paris & Milan</span>
-      </a>
-      <a href="maglev-bullet-train-mobility-japan.html" class="nav-direction-card next-card">
-        <span class="nav-dir-label">Next Briefing →</span>
-        <span class="nav-dir-title">Next-Gen Mobility: Magnetic Levitation, Shinkansen Rail Engineering, and Hydrogen Fuel Cells</span>
-      </a>
     </div>
   
         </div>
@@ -819,7 +852,7 @@
         <div class="brochure-cta-tag">Faculty & Deans</div>
         <div class="brochure-cta-title">Curate an Immersion for Your Institution</div>
         <div class="brochure-cta-desc">Download our comprehensive curriculum syllabus and academic partner list for Architecture.</div>
-        <a href="../architecture-design.html" class="brochure-cta-btn">View Program Syllabus →</a>
+        <a href="../contact.html" class="brochure-cta-btn">Request Faculty Brochure →</a>
       </div>
     </aside>
   </div>
