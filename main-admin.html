@@ -362,6 +362,15 @@
 
           <!-- Category -->
           <div>
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Card Display Format (Masonry Grid) *</label>
+            <select id="postLayoutSpan" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
+              <option value="standard">Standard (1 Grid Column)</option>
+              <option value="double">Double Width (Spans 2 Grid Columns)</option>
+              <option value="full">100% Full Width (Spans Entire Row)</option>
+              <option value="tall">Tall Format (Vertical Focus)</option>
+            </select>
+          </div>
+          <div>
             <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
             <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
               <option value="Management">Management</option>
@@ -737,6 +746,7 @@
     document.getElementById('postId').value = '';
     document.getElementById('postTitle').value = '';
     document.getElementById('postCategory').value = 'Management';
+    document.getElementById('postLayoutSpan').value = 'standard';
     document.getElementById('postAuthor').value = 'Vijigishu Team';
     document.getElementById('postAuthorBio').value = 'Academic Coordinator at Vijigishu Educational Travel.';
     document.getElementById('postImage').value = 'images/blog-single-placeholder.png';
@@ -761,6 +771,7 @@
     document.getElementById('postId').value = b.id;
     document.getElementById('postTitle').value = b.title || '';
     document.getElementById('postCategory').value = b.category || 'Management';
+    document.getElementById('postLayoutSpan').value = b.layoutSpan || 'standard';
     document.getElementById('postAuthor').value = b.author || '';
     document.getElementById('postAuthorBio').value = b.authorBio || '';
     document.getElementById('postImage').value = b.image || '';
@@ -780,6 +791,7 @@
     const id = document.getElementById('postId').value;
     const title = document.getElementById('postTitle').value.trim();
     const category = document.getElementById('postCategory').value;
+    const layoutSpan = document.getElementById('postLayoutSpan').value;
     const author = document.getElementById('postAuthor').value.trim();
     const authorBio = document.getElementById('postAuthorBio').value.trim();
     const image = document.getElementById('postImage').value.trim();
@@ -796,12 +808,12 @@
     if (id) {
       const idx = list.findIndex(x => x.id === id);
       if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, authorBio, image, excerpt, takeaways, content, slug, readTime };
+        list[idx] = { ...list[idx], title, category, layoutSpan, author, authorBio, image, excerpt, takeaways, content, slug, readTime };
       }
     } else {
       list.unshift({
         id: 'blog-' + Date.now(),
-        title, category, author, authorBio, image, excerpt, takeaways, content, slug, date, readTime
+        title, category, layoutSpan, author, authorBio, image, excerpt, takeaways, content, slug, date, readTime
       });
     }
     saveBlogs(list);

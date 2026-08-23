@@ -175,10 +175,12 @@
     
     
     
-    /* ─── ORGANIC RANDOM MASONRY VISUAL GRID ─── */
+    
+    /* ─── DYNAMIC ASYMMETRICAL VISUAL GRID (100%, 2-SPAN, & 1-SPAN) ─── */
     .blog-grid {
-      column-count: 3;
-      column-gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
       margin-bottom: 80px;
     }
 
@@ -195,24 +197,38 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 24px;
+      padding: 26px;
       transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
       text-decoration: none;
-      break-inside: avoid;
-      margin-bottom: 24px;
-      width: 100%;
       box-sizing: border-box;
+      min-height: 380px;
     }
     .visual-blog-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 20px 45px rgba(13,14,46,0.18);
     }
 
-    /* Organic Dynamic Heights */
-    .card-h-compact { height: 290px; }
-    .card-h-medium  { height: 370px; }
-    .card-h-tall    { height: 470px; }
-    .card-h-grande  { height: 420px; }
+    /* Card Spans */
+    .card-span-standard {
+      grid-column: span 4;
+      height: 380px;
+    }
+    .card-span-tall {
+      grid-column: span 4;
+      height: 440px;
+    }
+    .card-span-compact {
+      grid-column: span 4;
+      height: 320px;
+    }
+    .card-span-double {
+      grid-column: span 8;
+      height: 420px;
+    }
+    .card-span-full {
+      grid-column: span 12;
+      height: 400px;
+    }
 
     /* Background Image & Zoom */
     .visual-card-bg {
@@ -234,9 +250,9 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, 
-        rgba(13,14,46,0.15) 0%, 
+        rgba(13,14,46,0.12) 0%, 
         rgba(13,14,46,0.3) 35%, 
-        rgba(7,8,26,0.82) 72%, 
+        rgba(7,8,26,0.82) 70%, 
         rgba(7,8,26,0.98) 100%
       );
       z-index: 2;
@@ -244,9 +260,9 @@
     }
     .visual-blog-card:hover .visual-card-overlay {
       background: linear-gradient(180deg, 
-        rgba(13,14,46,0.08) 0%, 
+        rgba(13,14,46,0.06) 0%, 
         rgba(13,14,46,0.2) 30%, 
-        rgba(7,8,26,0.88) 68%, 
+        rgba(7,8,26,0.88) 65%, 
         rgba(7,8,26,0.99) 100%
       );
     }
@@ -292,7 +308,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
     .visual-card-title {
       font-family: 'Playfair Display', serif;
@@ -304,15 +320,18 @@
       text-shadow: 0 2px 10px rgba(0,0,0,0.6);
       flex: 1;
     }
-    .card-h-tall .visual-card-title,
-    .card-h-grande .visual-card-title {
+    .card-span-full .visual-card-title {
+      font-size: 1.75rem;
+      max-width: 80%;
+    }
+    .card-span-double .visual-card-title {
       font-size: 1.55rem;
     }
 
     /* Minimal Circular Arrow */
     .visual-card-arrow {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(10px);
@@ -334,14 +353,16 @@
       box-shadow: 0 6px 20px rgba(56,103,58,0.5);
     }
 
-    @media (max-width: 991px) {
-      .blog-grid { column-count: 2; column-gap: 20px; }
-      .card-h-tall { height: 380px; }
-      .card-h-grande { height: 350px; }
+    @media (max-width: 1024px) {
+      .card-span-double, .card-span-standard, .card-span-tall, .card-span-compact { grid-column: span 6; }
+      .card-span-full { grid-column: span 12; }
     }
-    @media (max-width: 600px) {
-      .blog-grid { column-count: 1; }
-      .card-h-tall, .card-h-grande, .card-h-medium, .card-h-compact { height: 340px; }
+    @media (max-width: 680px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .card-span-double, .card-span-full, .card-span-standard, .card-span-tall, .card-span-compact {
+        grid-column: span 1;
+        height: 360px;
+      }
     }
 
     .empty-state { text-align: center; padding: 70px 20px; grid-column: 1 / -1; }
@@ -535,9 +556,10 @@
   
   
   
+  
   function renderBlogs() {
     const grid = document.getElementById('blogGrid');
-    const BLOG_DATA_VERSION = 'v6_random_masonry';
+    const BLOG_DATA_VERSION = 'v7_dynamic_spans';
     let list = DEFAULT_BLOGS;
 
     try {
@@ -570,15 +592,27 @@
       return;
     }
 
-    // Varied height distribution across masonry columns
-    const heightVariants = ['card-h-tall', 'card-h-compact', 'card-h-grande', 'card-h-medium', 'card-h-tall', 'card-h-compact', 'card-h-medium', 'card-h-grande'];
-
     grid.innerHTML = filtered.map((b, idx) => {
       const cardImage = b.image || 'images/blog-single-placeholder.png';
-      const heightClass = heightVariants[idx % heightVariants.length];
+      
+      // Determine span class (respect admin layoutSpan if present, else fallback)
+      let spanClass = 'card-span-standard';
+      if (b.layoutSpan === 'full') {
+        spanClass = 'card-span-full';
+      } else if (b.layoutSpan === 'double') {
+        spanClass = 'card-span-double';
+      } else if (b.layoutSpan === 'tall') {
+        spanClass = 'card-span-tall';
+      } else if (b.layoutSpan === 'compact') {
+        spanClass = 'card-span-compact';
+      } else {
+        // Organic default distribution
+        const fallbackClasses = ['card-span-double', 'card-span-standard', 'card-span-standard', 'card-span-full', 'card-span-standard', 'card-span-double', 'card-span-standard', 'card-span-standard'];
+        spanClass = fallbackClasses[idx % fallbackClasses.length];
+      }
 
       return `
-        <a href="blog-single.html?id=${b.id}" class="visual-blog-card ${heightClass}" title="${escapeHtml(b.title)}">
+        <a href="blog-single.html?id=${b.id}" class="visual-blog-card ${spanClass}" title="${escapeHtml(b.title)}">
           <img src="${cardImage}" alt="${escapeHtml(b.title)}" class="visual-card-bg" loading="lazy" onerror="this.src='images/blog-single-placeholder.png';" />
           <div class="visual-card-overlay"></div>
 
