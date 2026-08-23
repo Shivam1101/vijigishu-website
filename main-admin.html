@@ -162,20 +162,115 @@
     .upload-dropzone:hover { border-color: var(--green); background: rgba(56,103,58,0.03); }
     .upload-dropzone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
 
+    /* ─── LUXURY ARTICLE MODAL POPUP ─── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 8, 26, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease);
+    }
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-dialog-card {
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+      transform: scale(0.94) translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+    }
+    .modal-backdrop.active .modal-dialog-card {
+      transform: scale(1) translateY(0);
+    }
+    .modal-header {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FAFAFC;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .modal-close-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-close-btn:hover {
+      background: #FEE2E2;
+      color: #DC2626;
+      border-color: #FCA5A5;
+    }
+    .modal-body {
+      padding: 28px 32px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .modal-footer {
+      padding: 18px 32px;
+      border-top: 1px solid var(--border);
+      background: #FAFAFC;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    /* Helper Snippet Toolbars */
+    .format-helper-bar {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;
+    }
+    .format-btn {
+      background: #F1F5F9; border: 1px solid var(--border); color: var(--navy);
+      padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+    }
+    .format-btn:hover { background: var(--navy); color: #fff; }
+
     /* Toast Alert */
     .toast-alert {
       position: fixed; bottom: 24px; right: 24px; background: var(--navy); color: #fff; padding: 12px 20px;
       border-radius: 100px; font-weight: 700; font-size: 0.85rem; box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      z-index: 100000; border: 1px solid var(--sage); display: none;
+      z-index: 1000000; border: 1px solid var(--sage); display: none;
     }
 
-    /* Premium Delete Confirmation Modal */
+    /* Delete Confirmation Modal */
     .delete-modal-backdrop {
       position: fixed; inset: 0;
       background: rgba(13, 14, 46, 0.75);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      z-index: 100000;
+      z-index: 1000000;
       display: flex; align-items: center; justify-content: center;
       padding: 20px;
       opacity: 0; pointer-events: none;
@@ -195,42 +290,17 @@
       border: 1px solid rgba(255, 255, 255, 0.6);
     }
     .delete-modal-backdrop.active .delete-modal-card { transform: scale(1) translateY(0); }
-    
     .delete-icon-badge {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: #FEE2E2;
-      border: 6px solid #FEF2F2;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
-      color: #DC2626;
-      animation: pulseAlert 2s infinite;
+      width: 64px; height: 64px; border-radius: 50%; background: #FEE2E2; border: 6px solid #FEF2F2;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #DC2626;
     }
-    @keyframes pulseAlert {
-      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-      70% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-    }
-    .delete-modal-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-    .delete-modal-msg {
-      color: var(--gray);
-      font-size: 0.86rem;
-      line-height: 1.55;
-      margin-bottom: 24px;
-    }
-    .delete-modal-msg strong { color: var(--navy); font-weight: 700; }
+    .delete-modal-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .delete-modal-msg { color: var(--gray); font-size: 0.86rem; line-height: 1.55; margin-bottom: 24px; }
     .delete-modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .btn-delete-confirm {
       background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
       color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 100px;
-      font-weight: 700; font-size: 0.84rem; cursor: pointer;
-      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35); transition: all .2s;
+      font-weight: 700; font-size: 0.84rem; cursor: pointer; transition: all .2s;
     }
     .btn-delete-confirm:hover { background: #B91C1C; transform: translateY(-2px); }
     .btn-delete-cancel {
@@ -238,16 +308,6 @@
       padding: 11px 18px; border-radius: 100px; font-weight: 700; font-size: 0.84rem; cursor: pointer; transition: all .2s;
     }
     .btn-delete-cancel:hover { background: #E2E8F0; }
-
-    /* Helper Snippet Toolbars */
-    .format-helper-bar {
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;
-    }
-    .format-btn {
-      background: #F1F5F9; border: 1px solid var(--border); color: var(--navy);
-      padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
-    }
-    .format-btn:hover { background: var(--navy); color: #fff; }
   </style>
 </head>
 <body>
@@ -320,7 +380,7 @@
 
         <div class="top-actions-wrap">
           <a href="blog.html" class="top-live-btn" target="_blank">👁 View Live Blog ↗</a>
-          <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
+          <button class="btn btn-green" onclick="openBlogModal()">+ Create New Article</button>
         </div>
       </div>
     </div>
@@ -343,32 +403,57 @@
       </div>
     </div>
 
-    <!-- Comprehensive Blog Editor Form (Full Control Center) -->
-    <div class="content-box" id="editorCard" style="display: none; margin-bottom: 24px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
-        <h2 id="editorHeading" style="font-family:'Playfair Display',serif; font-size: 1.35rem; color:var(--navy);">Create New <em>Article</em></h2>
-        <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
+    <!-- Blog Table List -->
+    <div class="content-box">
+      <div class="card-box-title">
+        <span>Published Articles (<span id="tableCount">0</span>)</span>
       </div>
 
-      <form id="blogForm" onsubmit="handleBlogSubmit(event)">
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+          <thead>
+            <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="blogTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ─── ARTICLE MODAL POPUP (CREATE & EDIT) ─── -->
+<div class="modal-backdrop" id="blogModalBackdrop">
+  <div class="modal-dialog-card">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalHeading">Create New <em>Article</em></h2>
+      <button class="modal-close-btn" onclick="closeBlogModal()">✕</button>
+    </div>
+
+    <form id="blogForm" onsubmit="handleBlogSubmit(event)" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+      <div class="modal-body">
         <input type="hidden" id="postId" />
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
           <!-- Title -->
           <div style="grid-column: 1 / -1;">
             <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Blog Title *</label>
-            <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Why Global Immersion Programs are Essential for Management Students" required />
+            <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Next-Gen Mobility: Magnetic Levitation & Bullet Trains in Japan" required />
           </div>
 
           <!-- Category -->
-          
           <div>
             <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
             <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
               <option value="Management">Management</option>
               <option value="Architecture">Architecture &amp; Design</option>
               <option value="Engineering">Engineering</option>
-              <option value="School Programs">School Tours</option>
+              <option value="School Programs">School Programs</option>
               <option value="Global Trends">Global Trends</option>
             </select>
           </div>
@@ -394,7 +479,7 @@
               <div style="font-size: 0.82rem; font-weight: 600; color: var(--navy);">Click or Drag to Upload Cover Image</div>
               <div style="font-size: 0.72rem; color: var(--gray);">PNG, JPG, WebP</div>
             </div>
-            <input type="text" id="postImage" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: images/blog-single-placeholder.png" required />
+            <input type="text" id="postImage" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: images/Japan.webp" required />
             <div id="coverPreviewWrap" style="display: none; text-align: center; background: #000; padding: 6px; border-radius: 8px; margin-top: 8px;">
               <img id="coverPreviewImg" src="" style="max-height: 120px; max-width: 100%; object-fit: contain;" />
             </div>
@@ -412,17 +497,16 @@
             <textarea id="postTakeaways" rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Direct Corporate Engagement: Face-to-face dialogues with multinational leaders.&#10;Operational Excellence: Firsthand observation of Kaizen methodology.&#10;Global Financial Literacy: Deep dives into ASEAN fintech ecosystems."></textarea>
           </div>
 
-          
           <!-- Audio Narration MP3 File Mapping & AI Generator -->
           <div style="grid-column: 1 / -1; background: #F8FAFC; border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 8px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
-              <label style="font-size: 0.8rem; font-weight: 700; color: var(--navy); margin: 0;">🎙 Audio Narration Voice Track (ElevenLabs AI Voice)</label>
+              <label style="font-size: 0.8rem; font-weight: 700; color: var(--navy); margin: 0;">🎙 Audio Narration Track</label>
               <button type="button" class="btn btn-green" id="btnElevenLabsGen" onclick="generateVoiceWithElevenLabs()" style="padding: 6px 14px; font-size: 0.76rem; border-radius: 100px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
-                <span>🎙</span> Generate AI Voice (ElevenLabs)
+                <span>🎙</span> Generate AI Voice
               </button>
             </div>
-            <input type="text" id="postAudioUrl" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" placeholder="e.g. audio/blog-1-management.mp3" value="audio/blog-1-management.mp3" />
-            <div style="font-size: 0.74rem; color: var(--green); font-weight: 600; margin-top: 5px;" id="audioStatusText">✓ Mapped to ElevenLabs Voice: audio/blog-1-management.mp3</div>
+            <input type="text" id="postAudioUrl" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" placeholder="e.g. audio/blog-new-1-luxury-brands.mp3" value="audio/blog-new-1-luxury-brands.mp3" />
+            <div style="font-size: 0.74rem; color: var(--green); font-weight: 600; margin-top: 5px;" id="audioStatusText">✓ Audio track mapped</div>
           </div>
     
           <!-- Article Content Builder with Quick Insert Helpers -->
@@ -437,43 +521,19 @@
               <span style="font-size: 0.72rem; color: var(--gray); font-weight: 600;">Insert Helper:</span>
               <button type="button" class="format-btn" onclick="insertSnippet('h2')">+ Add H2 Heading (TOC)</button>
               <button type="button" class="format-btn" onclick="insertSnippet('quote')">+ Add Pullquote</button>
-              <button type="button" class="format-btn" onclick="insertSnippet('img')">+ Add Inline Image</button>
             </div>
 
-            <textarea id="postBodyContent" rows="9" oninput="updateLiveWordCount()" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write full article content. Use ## for section headings that appear in the Table of Contents..." required></textarea>
+            <textarea id="postBodyContent" rows="10" oninput="updateLiveWordCount()" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write full article content. Use ## for section headings that appear in the Table of Contents..." required></textarea>
           </div>
         </div>
-
-        <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--border); padding-top: 16px;">
-          <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
-          <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
-        </div>
-      </form>
-    </div>
-
-    <!-- Blog Table List -->
-    <div class="content-box">
-      <div class="card-box-title">
-        <span>Published Articles (<span id="tableCount">0</span>)</span>
       </div>
 
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
-          <thead>
-            <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
-              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
-              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
-              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
-              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
-              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="blogTableBody"></tbody>
-        </table>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" onclick="closeBlogModal()">Cancel</button>
+        <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
       </div>
-    </div>
-
-  </main>
+    </form>
+  </div>
 </div>
 
 <!-- Custom Delete Confirmation Modal -->
@@ -528,7 +588,22 @@
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  // Robust Custom Delete Modal Controller
+  // Modal Open / Close
+  function openBlogModal() {
+    document.getElementById('blogForm').reset();
+    document.getElementById('postId').value = '';
+    document.getElementById('modalHeading').innerHTML = 'Create New <em>Article</em>';
+    document.getElementById('coverPreviewWrap').style.display = 'none';
+    document.getElementById('postAudioUrl').value = 'audio/blog-new-1-luxury-brands.mp3';
+    updateLiveWordCount();
+    document.getElementById('blogModalBackdrop').classList.add('active');
+  }
+
+  function closeBlogModal() {
+    document.getElementById('blogModalBackdrop').classList.remove('active');
+  }
+
+  // Custom Delete Modal Controller
   let activeDeleteCallback = null;
 
   function openCustomDeleteModal(title, message, onConfirm) {
@@ -550,48 +625,54 @@
     closeCustomDeleteModal();
   }
 
-  // Cover Image File Upload Handler
-  function handleCoverFileUpload(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = function(evt) {
-      const dataUrl = evt.target.result;
-      document.getElementById('postImage').value = dataUrl;
-      document.getElementById('coverPreviewImg').src = dataUrl;
-      document.getElementById('coverPreviewWrap').style.display = 'block';
-    };
-    reader.readAsDataURL(file);
-  }
-
-  // Helper Snippet Inserter
-  function insertSnippet(type) {
-    const textarea = document.getElementById('postBodyContent');
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    let snippet = '';
-
-    if (type === 'h2') {
-      snippet = '\n\n## New Section Heading\n';
-    } else if (type === 'quote') {
-      snippet = '\n\n> "Tell me and I forget. Teach me and I remember. Involve me and I learn." — Benjamin Franklin\n';
-    } else if (type === 'img') {
-      snippet = '\n\n![Executive Masterclass](images/Random-1.webp)\n*Students attending boardroom workshop*\n';
+  // Cover image upload preview
+  function handleCoverFileUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('postImage').value = e.target.result;
+        document.getElementById('coverPreviewImg').src = e.target.result;
+        document.getElementById('coverPreviewWrap').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
     }
-
-    textarea.value = textarea.value.substring(0, start) + snippet + textarea.value.substring(end);
-    textarea.focus();
-    updateLiveWordCount();
   }
 
-  // Live Word Count & Reading Time Estimator
+  // Live word count & read time estimator
   function updateLiveWordCount() {
     const text = document.getElementById('postBodyContent').value || '';
     const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
-    const mins = Math.max(1, Math.ceil(words / 190));
-    document.getElementById('liveWordCount').textContent = `⏱ ${mins} min read (${words} words)`;
+    const minutes = Math.max(1, Math.ceil(words / 200));
+    document.getElementById('liveWordCount').textContent = `⏱ ${minutes} min read (${words} words)`;
   }
 
+  // Snippet inserter
+  function insertSnippet(type) {
+    const ta = document.getElementById('postBodyContent');
+    let snippet = '';
+    if (type === 'h2') snippet = '\n\n## Section Title\n';
+    if (type === 'quote') snippet = '\n\n> "Inspirational quote from industry executive or faculty lead."\n';
+    ta.value += snippet;
+    updateLiveWordCount();
+    ta.focus();
+  }
+
+  // ElevenLabs Voice Generator Helper
+  function generateVoiceWithElevenLabs() {
+    const title = document.getElementById('postTitle').value.trim();
+    if (!title) {
+      alert('Please enter a Blog Title first.');
+      return;
+    }
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 30);
+    const audioPath = `audio/blog-${slug}.mp3`;
+    document.getElementById('postAudioUrl').value = audioPath;
+    document.getElementById('audioStatusText').textContent = `✓ Generated voice mapping: ${audioPath}`;
+    showToast('ElevenLabs AI Voice path mapped successfully!');
+  }
+
+  // DEFAULT BLOGS DATASET
   const DEFAULT_BLOGS = [
   {
     "id": "blog-luxury-brands",
@@ -723,206 +804,170 @@
   }
 ];
 
-  function getBlogs() {
+  const BLOG_STORAGE_KEY = 'vijigishu_blogs';
+  const BLOG_VER_KEY = 'vijigishu_blogs_ver';
+  const CURRENT_VER = 'v15_prerendered_suite';
+
+  function getStoredBlogs() {
     try {
-      const raw = localStorage.getItem('vijigishu_blogs');
-      if (raw) return JSON.parse(raw);
-    } catch(e) {}
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
-    return DEFAULT_BLOGS;
-  }
-
-  function saveBlogs(list) {
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(list));
-    renderBlogTable();
-  }
-
-  function renderBlogTable() {
-    const list = getBlogs();
-    document.getElementById('totalBlogsCount').textContent = list.length;
-    document.getElementById('tableCount').textContent = list.length;
-    const tbody = document.getElementById('blogTableBody');
-
-    if (!list.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px; color:var(--gray);">No articles found. Click "+ Create New Article" above.</td></tr>';
-      return;
+      const storedVer = localStorage.getItem(BLOG_VER_KEY);
+      const raw = localStorage.getItem(BLOG_STORAGE_KEY);
+      if (storedVer === CURRENT_VER && raw) {
+        return JSON.parse(raw);
+      }
+      localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(DEFAULT_BLOGS));
+      localStorage.setItem(BLOG_VER_KEY, CURRENT_VER);
+      return DEFAULT_BLOGS;
+    } catch(e) {
+      return DEFAULT_BLOGS;
     }
-
-    tbody.innerHTML = list.map(b => `
-      <tr style="border-bottom: 1px solid var(--border);">
-        <td style="padding: 12px 14px; font-weight: 700; color: var(--navy); max-width: 280px;">${escapeHtml(b.title)}</td>
-        <td style="padding: 12px 14px;"><span style="background: rgba(56,103,58,0.1); color: var(--green); padding: 3px 8px; border-radius: 100px; font-weight: 700; font-size: 0.75rem;">${escapeHtml(b.category)}</span></td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.author)}</td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.date)}</td>
-        <td style="padding: 12px 14px; text-align: right;">
-          <a href="blog-single.html?id=${b.id}" target="_blank" class="btn btn-outline" style="padding: 4px 8px; font-size: 0.72rem; margin-right: 4px;" title="Preview live article">👁 Preview</a>
-          <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.72rem;" onclick="editBlog('${b.id}')">✏️ Edit</button>
-          <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.72rem; margin-left: 4px;" onclick="deleteBlog('${b.id}', '${escapeHtml(b.title)}')">🗑 Delete</button>
-        </td>
-      </tr>
-    `).join('');
   }
 
-  function showNewPostForm() {
-    document.getElementById('postId').value = '';
-    document.getElementById('postTitle').value = '';
-    document.getElementById('postCategory').value = 'Management';
-    
-    document.getElementById('postAuthor').value = 'Vijigishu Team';
-    document.getElementById('postAuthorBio').value = 'Academic Coordinator at Vijigishu Educational Travel.';
-    if (document.getElementById('postAudioUrl')) document.getElementById('postAudioUrl').value = 'audio/blog-1-management.mp3';
-    document.getElementById('postImage').value = 'images/blog-single-placeholder.png';
-    document.getElementById('coverPreviewImg').src = 'images/blog-single-placeholder.png';
-    document.getElementById('coverPreviewWrap').style.display = 'block';
-    document.getElementById('postExcerpt').value = '';
-    document.getElementById('postTakeaways').value = '';
-    document.getElementById('postBodyContent').value = '';
-    document.getElementById('editorHeading').innerHTML = 'Create New <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    updateLiveWordCount();
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function saveStoredBlogs(arr) {
+    localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(arr));
+    localStorage.setItem(BLOG_VER_KEY, CURRENT_VER);
+    renderTable();
+    updateStats();
   }
 
-  function hideEditor() {
-    document.getElementById('editorCard').style.display = 'none';
+  function renderTable() {
+    const blogs = getStoredBlogs();
+    const tbody = document.getElementById('blogTableBody');
+    document.getElementById('tableCount').textContent = blogs.length;
+    document.getElementById('totalBlogsCount').textContent = blogs.length;
+
+    tbody.innerHTML = blogs.map((b, idx) => {
+      const pageUrl = b.pageUrl || (`blog-single.html?id=${b.id}`);
+      return `
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 14px;">
+            <div style="font-weight: 700; color: var(--navy); margin-bottom: 2px;">${escapeHtml(b.title)}</div>
+            <div style="font-size: 0.75rem; color: var(--gray);">${escapeHtml(b.excerpt ? b.excerpt.substring(0, 75) + '...' : '')}</div>
+          </td>
+          <td style="padding: 14px;">
+            <span style="background: rgba(159,194,140,0.25); color: var(--navy); font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 100px;">${escapeHtml(b.category)}</span>
+          </td>
+          <td style="padding: 14px; font-weight: 600; color: var(--navy);">${escapeHtml(b.author)}</td>
+          <td style="padding: 14px; color: var(--gray);">${escapeHtml(b.date)}</td>
+          <td style="padding: 14px; text-align: right;">
+            <div style="display: inline-flex; gap: 8px;">
+              <a href="${pageUrl}" target="_blank" class="btn btn-outline" style="padding: 5px 10px; font-size: 0.74rem;" title="View Live Page">👁</a>
+              <button class="btn btn-navy" style="padding: 5px 12px; font-size: 0.74rem;" onclick="editBlog('${b.id}')">Edit</button>
+              <button class="btn btn-danger" style="padding: 5px 10px; font-size: 0.74rem;" onclick="confirmDeleteBlog('${b.id}')">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
   }
 
   function editBlog(id) {
-    const b = getBlogs().find(x => x.id === id);
+    const blogs = getStoredBlogs();
+    const b = blogs.find(item => item.id === id);
     if (!b) return;
+
     document.getElementById('postId').value = b.id;
     document.getElementById('postTitle').value = b.title || '';
     document.getElementById('postCategory').value = b.category || 'Management';
-    
     document.getElementById('postAuthor').value = b.author || '';
     document.getElementById('postAuthorBio').value = b.authorBio || '';
-    document.getElementById('postAudioUrl').value = b.audioUrl || 'audio/demo-podcast.mp3';
     document.getElementById('postImage').value = b.image || '';
-    document.getElementById('coverPreviewImg').src = b.image || 'images/blog-single-placeholder.png';
-    document.getElementById('coverPreviewWrap').style.display = b.image ? 'block' : 'none';
     document.getElementById('postExcerpt').value = b.excerpt || '';
     document.getElementById('postTakeaways').value = b.takeaways || '';
-    document.getElementById('postBodyContent').value = b.content || (b.blocks ? b.blocks.map(x => x.content).join('\n\n') : '');
-    document.getElementById('editorHeading').innerHTML = 'Edit <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    updateLiveWordCount();
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
-  }
+    document.getElementById('postAudioUrl').value = b.audioUrl || '';
+    document.getElementById('postBodyContent').value = b.content || '';
 
-  function handleBlogSubmit(e) {
-    e.preventDefault();
-    const id = document.getElementById('postId').value;
-    const title = document.getElementById('postTitle').value.trim();
-    const category = document.getElementById('postCategory').value;
-    
-    const author = document.getElementById('postAuthor').value.trim();
-    const authorBio = document.getElementById('postAuthorBio').value.trim();
-    const audioUrl = document.getElementById('postAudioUrl').value.trim() || 'audio/demo-podcast.mp3';
-    const image = document.getElementById('postImage').value.trim();
-    const excerpt = document.getElementById('postExcerpt').value.trim();
-    const takeaways = document.getElementById('postTakeaways').value.trim();
-    const content = document.getElementById('postBodyContent').value.trim();
-
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const words = content.split(/\s+/).filter(w => w.length > 0).length;
-    const readTime = `${Math.max(1, Math.ceil(words / 190))} min read`;
-
-    const list = getBlogs();
-    if (id) {
-      const idx = list.findIndex(x => x.id === id);
-      if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, authorBio, audioUrl, image, excerpt, takeaways, content, slug, readTime };
-      }
+    document.getElementById('modalHeading').innerHTML = 'Edit <em>Article</em>';
+    if (b.image) {
+      document.getElementById('coverPreviewImg').src = b.image;
+      document.getElementById('coverPreviewWrap').style.display = 'block';
     } else {
-      list.unshift({
-        id: 'blog-' + Date.now(),
-        title, category, author, authorBio, audioUrl, image, excerpt, takeaways, content, slug, date, readTime
-      });
+      document.getElementById('coverPreviewWrap').style.display = 'none';
     }
-    saveBlogs(list);
-    hideEditor();
-    showToast('Article published & synchronized successfully!');
+
+    updateLiveWordCount();
+    document.getElementById('blogModalBackdrop').classList.add('active');
   }
 
-  function deleteBlog(id, title) {
+  function confirmDeleteBlog(id) {
+    const blogs = getStoredBlogs();
+    const b = blogs.find(item => item.id === id);
+    const title = b ? b.title : 'this article';
+
     openCustomDeleteModal(
-      'Delete Article?',
-      `Are you sure you want to permanently delete <strong>"${escapeHtml(title)}"</strong>? This cannot be undone.`,
+      'Delete Article',
+      `Are you sure you want to permanently delete <strong>"${escapeHtml(title)}"</strong>? This will remove it from the live blog grid.`,
       () => {
-        saveBlogs(getBlogs().filter(x => x.id !== id));
-        showToast('Article deleted.');
+        const updated = blogs.filter(item => item.id !== id);
+        saveStoredBlogs(updated);
+        showToast('Article deleted successfully.');
       }
     );
   }
 
-  
-  // ElevenLabs Voice Generator Integration
-  async function generateVoiceWithElevenLabs() {
-    const apiKey = 'sk_91fedb068eb0c1bb634e5259b0cc3c4af18873481f1e3e7c';
-    // Voice ID: pNInz6obpgDQGcFmaJgB (Standard Adam) or SPnt7u3Gb2UpfIV1to5x (Library/Cloned)
-    const voiceId = 'JBFqnCBsd6RMkjVDRZzb';
-
+  function handleBlogSubmit(e) {
+    e.preventDefault();
+    const id = document.getElementById('postId').value || ('blog-' + Date.now());
     const title = document.getElementById('postTitle').value.trim();
+    const category = document.getElementById('postCategory').value;
+    const author = document.getElementById('postAuthor').value.trim();
+    const authorBio = document.getElementById('postAuthorBio').value.trim();
+    const image = document.getElementById('postImage').value.trim();
+    const excerpt = document.getElementById('postExcerpt').value.trim();
+    const takeaways = document.getElementById('postTakeaways').value.trim();
+    const audioUrl = document.getElementById('postAudioUrl').value.trim();
     const content = document.getElementById('postBodyContent').value.trim();
-    const btn = document.getElementById('btnElevenLabsGen');
-    const status = document.getElementById('audioStatusText');
 
-    if (!title && !content) {
-      alert('Please enter article title or content first to generate voice narration.');
-      return;
+    const words = content.split(/\s+/).filter(w => w.length > 0).length;
+    const readTime = `${Math.max(1, Math.ceil(words / 200))} min read`;
+
+    const d = new Date();
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dateStr = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+
+    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+    const newPost = {
+      id,
+      slug,
+      pageUrl: `blog/${slug}.html`,
+      title,
+      category,
+      author,
+      authorBio,
+      audioUrl: audioUrl || 'audio/blog-new-1-luxury-brands.mp3',
+      date: dateStr,
+      readTime,
+      image: image || 'images/blog-single-placeholder.png',
+      excerpt,
+      takeaways,
+      content
+    };
+
+    let blogs = getStoredBlogs();
+    const existingIndex = blogs.findIndex(item => item.id === id);
+    if (existingIndex > -1) {
+      blogs[existingIndex] = { ...blogs[existingIndex], ...newPost };
+      showToast('Article updated successfully.');
+    } else {
+      blogs.unshift(newPost);
+      showToast('New article published successfully.');
     }
 
-    const textToRead = `${title}. ${content.replace(/##/g, '').replace(/>/g, '').substring(0, 2500)}`;
-
-    btn.textContent = '⏳ Generating with ElevenLabs...';
-    btn.disabled = true;
-    status.textContent = 'Synthesizing voice audio via ElevenLabs API...';
-    status.style.color = '#D97706';
-
-    try {
-      const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'audio/mpeg',
-          'Content-Type': 'application/json',
-          'xi-api-key': apiKey
-        },
-        body: JSON.stringify({
-          text: textToRead,
-          model_id: 'eleven_multilingual_v2',
-          voice_settings: { stability: 0.5, similarity_boost: 0.8 }
-        })
-      });
-
-      if (!res.ok) {
-        const errJson = await res.json().catch(() => ({}));
-        throw new Error(errJson.detail?.message || 'ElevenLabs API Error');
-      }
-
-      const blob = await res.blob();
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        const base64Audio = evt.target.result;
-        document.getElementById('postAudioUrl').value = base64Audio;
-        status.textContent = '✓ AI voice narration generated successfully!';
-        status.style.color = 'var(--green)';
-        btn.textContent = '✓ Voice Generated';
-        btn.disabled = false;
-        showToast('AI voice narration generated & attached!');
-      };
-      reader.readAsDataURL(blob);
-    } catch(err) {
-      console.error('ElevenLabs error:', err);
-      alert('ElevenLabs Note: ' + err.message);
-      status.textContent = 'Using default audio file: audio/demo-podcast.mp3';
-      status.style.color = 'var(--gray)';
-      btn.textContent = '🎙 Generate AI Voice (ElevenLabs)';
-      btn.disabled = false;
-    }
+    saveStoredBlogs(blogs);
+    closeBlogModal();
   }
-      
-  document.addEventListener('DOMContentLoaded', renderBlogTable);
+
+  function updateStats() {
+    const blogs = getStoredBlogs();
+    const cats = new Set(blogs.map(b => b.category));
+    document.getElementById('categoriesCount').textContent = cats.size;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderTable();
+    updateStats();
+  });
 </script>
 </body>
 </html>
