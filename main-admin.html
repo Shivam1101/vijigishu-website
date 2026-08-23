@@ -393,7 +393,7 @@
               <div style="font-size: 0.82rem; font-weight: 600; color: var(--navy);">Click or Drag to Upload Cover Image</div>
               <div style="font-size: 0.72rem; color: var(--gray);">PNG, JPG, WebP</div>
             </div>
-            <input type="text" id="postImage" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: images/mangement-2-scaled.webp" required />
+            <input type="text" id="postImage" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: images/blog-single-placeholder.png" required />
             <div id="coverPreviewWrap" style="display: none; text-align: center; background: #000; padding: 6px; border-radius: 8px; margin-top: 8px;">
               <img id="coverPreviewImg" src="" style="max-height: 120px; max-width: 100%; object-fit: contain;" />
             </div>
@@ -588,7 +588,7 @@
       authorBio: "Senior Academic Advisor & Global Immersion Specialist at Vijigishu Educational Travel.",
       date: "Aug 18, 2026",
       readTime: "5 min read",
-      image: "images/mangement-2-scaled.webp",
+      image: "images/blog-single-placeholder.png",
       excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
       takeaways: "Direct Corporate Engagement: Face-to-face dialogues with multinational leaders.\nOperational Excellence: Firsthand observation of Kaizen methodology.\nGlobal Financial Literacy: Deep dives into ASEAN fintech ecosystems.",
       content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms.\n\n## 1. Experiential Exposure in World Financial Hubs\n\nDuring our Singapore & Europe Management Immersion programs, students engage in closed-door sessions with executive directors at global headquarters such as Boeing Regional HQ, Mercedes-Benz, and the Frankfurt Stock Exchange. Seeing trading floors live and hearing decision-makers analyze risk transforms student perspectives from passive theoretical observers to active industry strategists.\n\n## 2. Developing Cross-Cultural Leadership Intelligence\n\nNavigating international business requires cultural empathy. Interacting with faculties at Paris School of Business and Politecnico di Milano gives young leaders the confidence to negotiate, pitch, and collaborate in multicultural teams.\n\n## 3. Bridging Classroom Theory with Industry Reality\n\nExperiential travel does not replace traditional curriculum; it amplifies it. When students return to their home campuses after presenting business model canvases to international mentors, their grasp of economics, strategic management, and marketing reaches an entirely new dimension."
@@ -655,8 +655,8 @@
     document.getElementById('postCategory').value = 'Management';
     document.getElementById('postAuthor').value = 'Vijigishu Team';
     document.getElementById('postAuthorBio').value = 'Academic Coordinator at Vijigishu Educational Travel.';
-    document.getElementById('postImage').value = 'images/mangement-2-scaled.webp';
-    document.getElementById('coverPreviewImg').src = 'images/mangement-2-scaled.webp';
+    document.getElementById('postImage').value = 'images/blog-single-placeholder.png';
+    document.getElementById('coverPreviewImg').src = 'images/blog-single-placeholder.png';
     document.getElementById('coverPreviewWrap').style.display = 'block';
     document.getElementById('postExcerpt').value = '';
     document.getElementById('postTakeaways').value = '';
@@ -680,7 +680,7 @@
     document.getElementById('postAuthor').value = b.author || '';
     document.getElementById('postAuthorBio').value = b.authorBio || '';
     document.getElementById('postImage').value = b.image || '';
-    document.getElementById('coverPreviewImg').src = b.image || 'images/Singapore.webp';
+    document.getElementById('coverPreviewImg').src = b.image || 'images/blog-single-placeholder.png';
     document.getElementById('coverPreviewWrap').style.display = b.image ? 'block' : 'none';
     document.getElementById('postExcerpt').value = b.excerpt || '';
     document.getElementById('postTakeaways').value = b.takeaways || '';

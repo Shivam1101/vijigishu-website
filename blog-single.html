@@ -69,26 +69,34 @@
       position: relative;
       background: var(--dark);
       color: var(--white);
-      padding: 70px 0 60px;
+      min-height: 440px;
+      padding: 60px 0;
       overflow: hidden;
       display: flex;
       align-items: center;
     }
     .hero-backdrop-img {
-      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-      filter: blur(4px) brightness(0.28); transform: scale(1.08); z-index: 1;
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: right center; z-index: 1;
+      filter: brightness(0.95);
     }
     .hero-gradient-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(7,8,26,0.92) 0%, rgba(13,14,46,0.85) 50%, rgba(31,54,34,0.88) 100%);
+      background: linear-gradient(90deg, 
+        rgba(7,8,26,0.97) 0%, 
+        rgba(13,14,46,0.92) 42%, 
+        rgba(13,14,46,0.65) 68%, 
+        rgba(13,14,46,0.15) 85%, 
+        transparent 100%
+      );
       z-index: 2;
     }
     .hero-container-inner {
-      position: relative; z-index: 3; max-width: 980px; margin: 0 auto; text-align: center;
+      position: relative; z-index: 3; max-width: 660px; text-align: left; margin: 0;
     }
 
     .hero-badge-row {
-      display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: flex-start; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
     }
     .article-category-badge {
       background: rgba(159,194,140,0.2);
@@ -124,28 +132,28 @@
     .article-hero-title em { color: var(--sage); font-style: italic; }
 
     .article-hero-excerpt {
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: rgba(255,255,255,0.85);
-      line-height: 1.65;
-      max-width: 760px;
-      margin: 0 auto 28px;
+      line-height: 1.62;
+      max-width: 620px;
+      margin: 0 0 24px;
     }
 
     /* Interactive Audio & PDF Action Bar inside Hero */
     .hero-interactive-toolbar {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 14px;
+      justify-content: flex-start;
+      gap: 12px;
       flex-wrap: wrap;
       background: rgba(255,255,255,0.08);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,0.15);
-      padding: 10px 18px;
+      padding: 8px 16px;
       border-radius: 100px;
       width: max-content;
-      margin: 0 auto;
+      margin: 0;
     }
 
     .audio-player-btn {
@@ -586,7 +594,7 @@
 <!-- ===== IMMERSIVE CINEMATIC HERO BANNER ===== -->
 <div class="immersive-hero">
   <!-- Parallax Blurred Backdrop -->
-  <img id="heroBackdropImage" src="images/mangement-2-scaled.webp" alt="Cover" class="hero-backdrop-img" />
+  <img id="heroBackdropImage" src="images/blog-single-placeholder.png" onerror="this.src='images/blog-single-placeholder.png';" alt="Cover" class="hero-backdrop-img" />
   <div class="hero-gradient-overlay"></div>
 
   <div class="container">
@@ -940,7 +948,7 @@
       author: "Dr. Vijaya Kumar",
       date: "Aug 18, 2026",
       readTime: "5 min read",
-      image: "images/mangement-2-scaled.webp",
+      image: "images/blog-single-placeholder.png",
       excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
       content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
     },
