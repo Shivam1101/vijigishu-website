@@ -160,7 +160,7 @@
     .admin-item-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 3px 12px rgba(0,0,0,0.03); transition: transform .3s; }
     .admin-item-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
 
-    /* Modal */
+    /* General Form Modals */
     .modal-backdrop {
       position: fixed; inset: 0; background: rgba(13,14,46,.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px;
@@ -179,7 +179,7 @@
       border-radius: 100px; font-weight: 700; font-size: 0.85rem; box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       z-index: 100000; border: 1px solid var(--sage); display: none;
     }
-  
+
     /* Premium Delete Confirmation Modal */
     .delete-modal-backdrop {
       position: fixed; inset: 0;
@@ -272,10 +272,7 @@
       cursor: pointer;
       transition: all .2s;
     }
-    .btn-delete-cancel:hover {
-      background: #E2E8F0;
-    }
-
+    .btn-delete-cancel:hover { background: #E2E8F0; }
   </style>
 </head>
 <body>
@@ -326,8 +323,8 @@
   <main class="admin-main-content">
     <div class="admin-top-bar">
       <div class="admin-title">
-        <h1 id="pageTitleHeading">Testimonials <em>Management</em></h1>
-        <p id="pageSubHeading">Manage, edit, add, and delete student &amp; faculty reviews displayed on the website.</p>
+        <h1>Testimonials <em>Management</em></h1>
+        <p>Manage, edit, add, and delete student &amp; faculty reviews displayed on the website.</p>
       </div>
 
       <div class="top-right-column">
@@ -359,7 +356,6 @@
 <div class="content-box">
   <div class="card-box-title">
     <span>Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)</span>
-    
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;" id="adminTestiGrid"></div>
@@ -377,7 +373,7 @@
 
     <div style="display: flex; flex-direction: column; gap: 12px;">
       <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Faculty Name *</label>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Reviewer Name *</label>
         <input type="text" id="testiNameInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Shaanya / Dr. Vijaya Kumar" />
       </div>
 
@@ -391,7 +387,7 @@
       </div>
 
       <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Faculty Photo *</label>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Reviewer Photo *</label>
         <div class="upload-dropzone" style="margin-bottom: 8px;">
           <input type="file" id="testiFileInput" accept="image/*" onchange="handleTestiFileUpload(event)" />
           <div style="font-size: 1.5rem; margin-bottom: 4px;">📸</div>
@@ -417,19 +413,97 @@
   </div>
 </div>
 
+  </main>
+</div>
+
+<!-- Custom Delete Confirmation Modal (Native Confirm Replacement) -->
+<div class="delete-modal-backdrop" id="deleteConfirmModal">
+  <div class="delete-modal-card">
+    <div class="delete-icon-badge">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="3 6 5 6 21 6"></polyline>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        <line x1="10" y1="11" x2="10" y2="17"></line>
+        <line x1="14" y1="11" x2="14" y2="17"></line>
+      </svg>
+    </div>
+    <div class="delete-modal-title" id="deleteModalTitle">Confirm Deletion</div>
+    <div class="delete-modal-msg" id="deleteModalMessage">
+      Are you sure you want to permanently delete this item? This action cannot be undone.
+    </div>
+    <div class="delete-modal-actions">
+      <button type="button" class="btn-delete-cancel" onclick="closeCustomDeleteModal()">Cancel</button>
+      <button type="button" class="btn-delete-confirm" onclick="executeCustomDelete()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-alert" id="toastAlert"></div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('adminSidebar').classList.toggle('collapsed');
+  }
+  function toggleProfileDropdown() {
+    document.getElementById('profileDropdown').classList.toggle('active');
+  }
+  document.addEventListener('click', (e) => {
+    const p = document.querySelector('.admin-profile-container');
+    if (p && !p.contains(e.target)) {
+      document.getElementById('profileDropdown').classList.remove('active');
+    }
+  });
+  function logoutAdmin() {
+    localStorage.removeItem('vijigishu_admin_logged_in');
+    window.location.href = 'login.html';
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toastAlert');
+    t.textContent = msg;
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 3500);
+  }
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Robust Custom Delete Modal Controller
+  let activeDeleteCallback = null;
+
+  function openCustomDeleteModal(title, message, onConfirm) {
+    document.getElementById('deleteModalTitle').textContent = title || 'Confirm Deletion';
+    document.getElementById('deleteModalMessage').innerHTML = message || 'Are you sure you want to delete this item?';
+    activeDeleteCallback = onConfirm;
+    document.getElementById('deleteConfirmModal').classList.add('active');
+  }
+
+  function closeCustomDeleteModal() {
+    document.getElementById('deleteConfirmModal').classList.remove('active');
+    activeDeleteCallback = null;
+  }
+
+  function executeCustomDelete() {
+    if (typeof activeDeleteCallback === 'function') {
+      activeDeleteCallback();
+    }
+    closeCustomDeleteModal();
+  }
+</script>
+
 <script>
   const DEFAULT_TESTIMONIALS = [
-    { id: 'testi-1', name: 'Shaanya', role: 'Student', stars: 5, img: 'images/Random-2.webp', text: 'Dear Vijigishu Team, I would like to sincerely thank you for organizing such a wonderful and exciting trip. The entire experience was exceptionally well-managed, thoroughly enjoyable, and truly memorable for me.' },
-    { id: 'testi-2', name: 'Jamila Gangardiwala', role: 'Student', stars: 5, img: 'images/Random-1.webp', text: 'My experience with Vijigishu Company has been highly enriching and professionally rewarding. The organization has provided me with valuable exposure, enabling me to enhance my skills and gain practical insights.' },
-    { id: 'testi-3', name: 'Dr. VIJAYA KUMAR THOTA', role: 'Faculty', stars: 5, img: 'images/Singapore-1.webp', text: 'Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution.' },
-    { id: 'testi-4', name: 'Sai Vamshi Akkem', role: 'Student', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip was really awesome, we all enjoyed travelling to 3 countries: Malaysia, Indonesia and Singapore. One of my best lifelong experiences.' },
-    { id: 'testi-5', name: 'Garima Goyal', role: 'Student', stars: 5, img: 'images/Singapore-2.webp', text: 'My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia.' },
-    { id: 'testi-6', name: 'Sana Fatima', role: 'Student', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives.' },
-    { id: 'testi-7', name: 'Mrunal Joshi', role: 'Faculty', stars: 5, img: 'images/Dubai-2.webp', text: 'Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students.' },
-    { id: 'testi-8', name: 'Tanya Sinha', role: 'Student', stars: 5, img: 'images/Untitled-design-2.png', text: 'We had an absolutely wonderful 6-day experience in UAE. All thanks to the Vijigishu team from the moment we landed till our departure, everything was amazing.' },
-    { id: 'testi-9', name: 'Mayur Deshmukh', role: 'Student', stars: 5, img: 'images/Dubai-1.webp', text: 'A big shoutout to Vijigishu for organizing such a smooth and memorable Dubai trip for us students. Everything was well managed - stay, travel, food, and experiences.' },
-    { id: 'testi-10', name: 'Nakul Jadav', role: 'Student', stars: 5, img: 'images/Dubai-3.webp', text: 'Our recent student tour to Dubai with Vijigishu Organization was an unforgettable experience! Everything was perfectly managed.' },
-    { id: 'testi-11', name: 'Amitesh Chakraborty', role: 'Student', stars: 5, img: 'images/Dubai-2.webp', text: 'Vijigishu Education Pvt. Ltd. flawlessly executed our 6-day, 5-night college tour to Dubai. The itinerary was perfectly balanced.' }
+    { id: 'testi-1', name: 'Shaanya', stars: 5, img: 'images/Random-2.webp', text: 'Dear Vijigishu Team, I would like to sincerely thank you for organizing such a wonderful and exciting trip. The entire experience was exceptionally well-managed, thoroughly enjoyable, and truly memorable for me.' },
+    { id: 'testi-2', name: 'Jamila Gangardiwala', stars: 5, img: 'images/Random-1.webp', text: 'My experience with Vijigishu Company has been highly enriching and professionally rewarding. The organization has provided me with valuable exposure, enabling me to enhance my skills and gain practical insights.' },
+    { id: 'testi-3', name: 'Dr. VIJAYA KUMAR THOTA', stars: 5, img: 'images/Singapore-1.webp', text: 'Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution.' },
+    { id: 'testi-4', name: 'Sai Vamshi Akkem', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip was really awesome, we all enjoyed travelling to 3 countries: Malaysia, Indonesia and Singapore. One of my best lifelong experiences.' },
+    { id: 'testi-5', name: 'Garima Goyal', stars: 5, img: 'images/Singapore-2.webp', text: 'My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia.' },
+    { id: 'testi-6', name: 'Sana Fatima', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives.' },
+    { id: 'testi-7', name: 'Mrunal Joshi', stars: 5, img: 'images/Dubai-2.webp', text: 'Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students.' },
+    { id: 'testi-8', name: 'Tanya Sinha', stars: 5, img: 'images/Untitled-design-2.png', text: 'We had an absolutely wonderful 6-day experience in UAE. All thanks to the Vijigishu team from the moment we landed till our departure, everything was amazing.' },
+    { id: 'testi-9', name: 'Mayur Deshmukh', stars: 5, img: 'images/Dubai-1.webp', text: 'A big shoutout to Vijigishu for organizing such a smooth and memorable Dubai trip for us students. Everything was well managed - stay, travel, food, and experiences.' },
+    { id: 'testi-10', name: 'Nakul Jadav', stars: 5, img: 'images/Dubai-3.webp', text: 'Our recent student tour to Dubai with Vijigishu Organization was an unforgettable experience! Everything was perfectly managed.' },
+    { id: 'testi-11', name: 'Amitesh Chakraborty', stars: 5, img: 'images/Dubai-2.webp', text: 'Vijigishu Education Pvt. Ltd. flawlessly executed our 6-day, 5-night college tour to Dubai. The itinerary was perfectly balanced.' }
   ];
 
   function getTestimonials() {
@@ -451,7 +525,7 @@
     document.getElementById('testiCount').textContent = list.length;
     const grid = document.getElementById('adminTestiGrid');
     if (!list.length) {
-      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No testimonials found. Click "+ Add Testimonial" or "Reset Defaults".</div>';
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No testimonials found. Click "+ Add Testimonial" above.</div>';
       return;
     }
     grid.innerHTML = list.map((t, idx) => `
@@ -461,7 +535,7 @@
             <img src="${t.img || 'images/Singapore.webp'}" onerror="this.src='images/Singapore.webp';" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sage);" />
             <div>
               <div style="font-weight: 800; font-size: 0.92rem; color: var(--navy);">${escapeHtml((t.name || '').replace(/\s*\((Faculty|Student)\)/gi, ''))}</div>
-              <div style="font-size: 0.75rem; color: var(--green); font-weight: 600;">${escapeHtml(t.role || 'Student')} · ${'⭐'.repeat(t.stars || 5)}</div>
+              <div style="font-size: 0.75rem; color: var(--gold); font-weight: 700; margin-top: 2px;">${'⭐'.repeat(t.stars || 5)}</div>
             </div>
           </div>
           <p style="font-size: 0.82rem; color: var(--gray); line-height: 1.5; max-height: 120px; overflow-y: auto; margin-bottom: 14px;">
@@ -472,7 +546,7 @@
           <span style="font-size: 0.72rem; color: var(--gray); font-weight: 600;">#${idx + 1}</span>
           <div style="display: flex; gap: 8px;">
             <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="openEditTestiModal('${t.id}')">✏️ Edit</button>
-            <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem;" onclick="deleteTestimonial('${t.id}', '${escapeHtml((t.name || '').replace(/\s*\((Faculty|Student)\)/gi, ''))}')">🗑 Delete</button>
+            <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem;" onclick="deleteTestimonial('${t.id}', '${escapeHtml(t.name)}')">🗑 Delete</button>
           </div>
         </div>
       </div>
@@ -509,7 +583,6 @@
     document.getElementById('testiModal').classList.remove('active');
   }
 
-  
   function handleTestiFileUpload(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -526,22 +599,21 @@
   function saveTestimonialData() {
     const id = document.getElementById('editTestiId').value;
     const name = document.getElementById('testiNameInput').value.trim();
-    const role = "";
     const stars = parseInt(document.getElementById('testiStarsInput').value) || 5;
     const img = document.getElementById('testiImgInput').value.trim() || 'images/Singapore.webp';
     const text = document.getElementById('testiTextInput').value.trim();
 
     if (!name || !text) {
-      alert('Please enter student name and review quote.');
+      alert('Please enter reviewer name and review quote.');
       return;
     }
 
     const list = getTestimonials();
     if (id) {
       const idx = list.findIndex(x => x.id === id);
-      if (idx !== -1) list[idx] = { ...list[idx], name, role, stars, img, text };
+      if (idx !== -1) list[idx] = { ...list[idx], name, stars, img, text };
     } else {
-      list.unshift({ id: 'testi-' + Date.now(), name, role, stars, img, text });
+      list.unshift({ id: 'testi-' + Date.now(), name, stars, img, text });
     }
     saveTestimonials(list);
     closeTestiModal();
@@ -551,7 +623,7 @@
   function deleteTestimonial(id, name) {
     openCustomDeleteModal(
       'Delete Testimonial?',
-      `Are you sure you want to delete the review by <strong>"${name}"</strong>? This will remove it from the homepage slider.`,
+      `Are you sure you want to permanently delete the review by <strong>"${name}"</strong>? This will remove it from the live homepage.`,
       () => {
         saveTestimonials(getTestimonials().filter(x => x.id !== id));
         showToast('Testimonial deleted.');
@@ -559,66 +631,8 @@
     );
   }
 
-  
-
   document.addEventListener('DOMContentLoaded', renderTestimonials);
 </script>
 
-<!-- Premium Delete Confirmation Modal -->
-<div class="delete-modal-backdrop" id="deleteConfirmModal">
-  <div class="delete-modal-card">
-    <div class="delete-icon-badge">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="3 6 5 6 21 6"></polyline>
-        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-        <line x1="10" y1="11" x2="10" y2="17"></line>
-        <line x1="14" y1="11" x2="14" y2="17"></line>
-      </svg>
-    </div>
-    <div class="delete-modal-title" id="deleteModalTitle">Confirm Deletion</div>
-    <div class="delete-modal-msg" id="deleteModalMessage">
-      Are you sure you want to permanently delete this item? This action cannot be undone.
-    </div>
-    <div class="delete-modal-actions">
-      <button type="button" class="btn-delete-cancel" onclick="closeCustomDeleteModal()">Cancel</button>
-      <button type="button" class="btn-delete-confirm" id="deleteConfirmBtn">Yes, Delete</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
-
-  </main>
-</div>
-
-<div class="toast-alert" id="toastAlert"></div>
-
-<script>
-  function toggleSidebar() {
-    document.getElementById('adminSidebar').classList.toggle('collapsed');
-  }
-  function toggleProfileDropdown() {
-    document.getElementById('profileDropdown').classList.toggle('active');
-  }
-  document.addEventListener('click', (e) => {
-    const p = document.querySelector('.admin-profile-container');
-    if (p && !p.contains(e.target)) {
-      document.getElementById('profileDropdown').classList.remove('active');
-    }
-  });
-  function logoutAdmin() {
-    localStorage.removeItem('vijigishu_admin_logged_in');
-    window.location.href = 'login.html';
-  }
-  function showToast(msg) {
-    const t = document.getElementById('toastAlert');
-    t.textContent = msg;
-    t.style.display = 'block';
-    setTimeout(() => { t.style.display = 'none'; }, 3500);
-  }
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-</script>

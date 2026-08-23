@@ -160,7 +160,7 @@
     .admin-item-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 3px 12px rgba(0,0,0,0.03); transition: transform .3s; }
     .admin-item-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
 
-    /* Modal */
+    /* General Form Modals */
     .modal-backdrop {
       position: fixed; inset: 0; background: rgba(13,14,46,.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px;
@@ -179,7 +179,7 @@
       border-radius: 100px; font-weight: 700; font-size: 0.85rem; box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       z-index: 100000; border: 1px solid var(--sage); display: none;
     }
-  
+
     /* Premium Delete Confirmation Modal */
     .delete-modal-backdrop {
       position: fixed; inset: 0;
@@ -272,10 +272,7 @@
       cursor: pointer;
       transition: all .2s;
     }
-    .btn-delete-cancel:hover {
-      background: #E2E8F0;
-    }
-
+    .btn-delete-cancel:hover { background: #E2E8F0; }
   </style>
 </head>
 <body>
@@ -326,8 +323,8 @@
   <main class="admin-main-content">
     <div class="admin-top-bar">
       <div class="admin-title">
-        <h1 id="pageTitleHeading">Academic <em>Facilitators Logos</em></h1>
-        <p id="pageSubHeading">Manage, upload, edit, and delete partner university logos displayed on the homepage marquee.</p>
+        <h1>Academic <em>Facilitators Logos</em></h1>
+        <p>Manage, upload, edit, and delete partner university logos displayed on the homepage marquee.</p>
       </div>
 
       <div class="top-right-column">
@@ -358,8 +355,7 @@
     
 <div class="content-box">
   <div class="card-box-title">
-    <span>Academic Facilitators &amp; University Partner Logos (<span id="facCount">0</span>)</span>
-    
+    <span>Academic Facilitators &amp; Partner Logos (<span id="facCount">0</span>)</span>
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;" id="adminFacGrid"></div>
@@ -404,6 +400,84 @@
   </div>
 </div>
 
+  </main>
+</div>
+
+<!-- Custom Delete Confirmation Modal (Native Confirm Replacement) -->
+<div class="delete-modal-backdrop" id="deleteConfirmModal">
+  <div class="delete-modal-card">
+    <div class="delete-icon-badge">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="3 6 5 6 21 6"></polyline>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        <line x1="10" y1="11" x2="10" y2="17"></line>
+        <line x1="14" y1="11" x2="14" y2="17"></line>
+      </svg>
+    </div>
+    <div class="delete-modal-title" id="deleteModalTitle">Confirm Deletion</div>
+    <div class="delete-modal-msg" id="deleteModalMessage">
+      Are you sure you want to permanently delete this item? This action cannot be undone.
+    </div>
+    <div class="delete-modal-actions">
+      <button type="button" class="btn-delete-cancel" onclick="closeCustomDeleteModal()">Cancel</button>
+      <button type="button" class="btn-delete-confirm" onclick="executeCustomDelete()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-alert" id="toastAlert"></div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('adminSidebar').classList.toggle('collapsed');
+  }
+  function toggleProfileDropdown() {
+    document.getElementById('profileDropdown').classList.toggle('active');
+  }
+  document.addEventListener('click', (e) => {
+    const p = document.querySelector('.admin-profile-container');
+    if (p && !p.contains(e.target)) {
+      document.getElementById('profileDropdown').classList.remove('active');
+    }
+  });
+  function logoutAdmin() {
+    localStorage.removeItem('vijigishu_admin_logged_in');
+    window.location.href = 'login.html';
+  }
+  function showToast(msg) {
+    const t = document.getElementById('toastAlert');
+    t.textContent = msg;
+    t.style.display = 'block';
+    setTimeout(() => { t.style.display = 'none'; }, 3500);
+  }
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Robust Custom Delete Modal Controller
+  let activeDeleteCallback = null;
+
+  function openCustomDeleteModal(title, message, onConfirm) {
+    document.getElementById('deleteModalTitle').textContent = title || 'Confirm Deletion';
+    document.getElementById('deleteModalMessage').innerHTML = message || 'Are you sure you want to delete this item?';
+    activeDeleteCallback = onConfirm;
+    document.getElementById('deleteConfirmModal').classList.add('active');
+  }
+
+  function closeCustomDeleteModal() {
+    document.getElementById('deleteConfirmModal').classList.remove('active');
+    activeDeleteCallback = null;
+  }
+
+  function executeCustomDelete() {
+    if (typeof activeDeleteCallback === 'function') {
+      activeDeleteCallback();
+    }
+    closeCustomDeleteModal();
+  }
+</script>
+
 <script>
   const DEFAULT_FACILITATORS = Array.from({ length: 14 }, (_, i) => ({
     id: 'fac-' + (i + 1),
@@ -430,7 +504,7 @@
     document.getElementById('facCount').textContent = list.length;
     const grid = document.getElementById('adminFacGrid');
     if (!list.length) {
-      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No partner logos found. Click "+ Add Facilitator Logo" or "Reset Defaults".</div>';
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No partner logos found. Click "+ Add Facilitator Logo" above.</div>';
       return;
     }
     grid.innerHTML = list.map((item, idx) => `
@@ -518,66 +592,8 @@
     );
   }
 
-  
-
   document.addEventListener('DOMContentLoaded', renderFacilitators);
 </script>
 
-<!-- Premium Delete Confirmation Modal -->
-<div class="delete-modal-backdrop" id="deleteConfirmModal">
-  <div class="delete-modal-card">
-    <div class="delete-icon-badge">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="3 6 5 6 21 6"></polyline>
-        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-        <line x1="10" y1="11" x2="10" y2="17"></line>
-        <line x1="14" y1="11" x2="14" y2="17"></line>
-      </svg>
-    </div>
-    <div class="delete-modal-title" id="deleteModalTitle">Confirm Deletion</div>
-    <div class="delete-modal-msg" id="deleteModalMessage">
-      Are you sure you want to permanently delete this item? This action cannot be undone.
-    </div>
-    <div class="delete-modal-actions">
-      <button type="button" class="btn-delete-cancel" onclick="closeCustomDeleteModal()">Cancel</button>
-      <button type="button" class="btn-delete-confirm" id="deleteConfirmBtn">Yes, Delete</button>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
-
-  </main>
-</div>
-
-<div class="toast-alert" id="toastAlert"></div>
-
-<script>
-  function toggleSidebar() {
-    document.getElementById('adminSidebar').classList.toggle('collapsed');
-  }
-  function toggleProfileDropdown() {
-    document.getElementById('profileDropdown').classList.toggle('active');
-  }
-  document.addEventListener('click', (e) => {
-    const p = document.querySelector('.admin-profile-container');
-    if (p && !p.contains(e.target)) {
-      document.getElementById('profileDropdown').classList.remove('active');
-    }
-  });
-  function logoutAdmin() {
-    localStorage.removeItem('vijigishu_admin_logged_in');
-    window.location.href = 'login.html';
-  }
-  function showToast(msg) {
-    const t = document.getElementById('toastAlert');
-    t.textContent = msg;
-    t.style.display = 'block';
-    setTimeout(() => { t.style.display = 'none'; }, 3500);
-  }
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  }
-</script>
