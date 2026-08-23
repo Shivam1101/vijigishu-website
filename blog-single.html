@@ -879,11 +879,12 @@
     try {
       const storedVer = localStorage.getItem('vijigishu_blogs_ver');
       const raw = localStorage.getItem('vijigishu_blogs');
-      if (storedVer === 'v13_new_8_blogs_suite' && raw) {
-        list = JSON.parse(raw);
-      } else {
+      localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
+      localStorage.setItem('vijigishu_blogs_ver', 'v15_prerendered_suite_1787489948491');
+      list = DEFAULT_BLOGS;
+      if (false) {
         localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
-        localStorage.setItem('vijigishu_blogs_ver', 'v13_new_8_blogs_suite');
+        localStorage.setItem('vijigishu_blogs_ver', 'v15_prerendered_suite_1787489948491');
         list = DEFAULT_BLOGS;
       }
     } catch(e) {}
@@ -1163,7 +1164,7 @@
 
     let list = DEFAULT_BLOGS;
     try {
-      const BLOG_DATA_VERSION = 'v13_new_8_blogs_suite';
+      const BLOG_DATA_VERSION = 'v15_prerendered_suite_1787489948491';
       const storedVer = localStorage.getItem('vijigishu_blogs_ver');
       const raw = localStorage.getItem('vijigishu_blogs');
       if (storedVer === BLOG_DATA_VERSION && raw) {
