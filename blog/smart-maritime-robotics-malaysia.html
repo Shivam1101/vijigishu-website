@@ -22,6 +22,7 @@
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--off); color: var(--navy); line-height: 1.6; }
     .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
@@ -197,6 +198,7 @@
       margin: 38px 0 16px;
       font-weight: 700;
       line-height: 1.3;
+      scroll-margin-top: 110px;
     }
     .article-rendered-body h3 {
       font-family: 'Playfair Display', serif;
@@ -204,6 +206,7 @@
       color: var(--navy);
       margin: 28px 0 12px;
       font-weight: 700;
+      scroll-margin-top: 110px;
     }
     
     .editorial-quote {
@@ -226,6 +229,7 @@
       border-radius: 0 16px 16px 0;
       padding: 24px 28px;
       margin: 36px 0;
+      scroll-margin-top: 110px;
     }
     .takeaways-heading {
       font-weight: 800;
@@ -307,12 +311,7 @@
       object-fit: cover;
     }
 
-    /* Sticky Sidebar */
-    html { scroll-behavior: smooth; }
-    .article-rendered-body h2,
-    .article-rendered-body h3 {
-      scroll-margin-top: 110px;
-    }
+    /* Sticky Sidebar & Table of Contents */
     .single-blog-sidebar {
       position: sticky;
       top: 100px;
@@ -417,7 +416,7 @@
       <div class="editorial-content-box">
         <div class="article-rendered-body" id="articleBodyText">
           <p class="lead-paragraph">The Straits of Malacca carry over 25% of all global seaborne trade. Modernizing this critical bottleneck requires integrating industrial automation, cloud-based terminal operating systems (TOS), and autonomous heavy machinery at an unprecedented scale.</p><h2 id="sec-2">1. Inside Automated Container Terminals</h2><p>Visiting the Port of Tanjung Pelepas and Port Klang, engineering students observe automated stacking cranes and electric AGVs synchronizing seamlessly to load 20,000+ TEU mega-vessels without human yard intervention.</p><div class="editorial-quote">"A modern smart port is a live robotics symphony. Seeing optical scanners, LiDAR-equipped gantry cranes, and AI scheduling engines coordinate millions of freight containers is an unforgettable industrial immersion."</div><h2 id="sec-8">2. IoT Telemetry & Predictive Maintenance</h2><p>Students review data streams from thousands of vibration and thermal sensors mounted on high-capacity electric cranes, analyzing how predictive machine learning prevents catastrophic component failure.</p><h2 id="sec-12">3. Green Ports & Shore-to-Ship Power</h2><p>Technical briefings highlight alternative maritime power (AMP) systems that allow docked vessels to shut down diesel generators and plug directly into shore-based green energy grids.</p>
-    <div class="takeaways-callout">
+    <div class="takeaways-callout" id="sec-takeaways">
       <div class="takeaways-heading">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         Key Learning Takeaways
@@ -459,7 +458,25 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
           Table of Contents
         </div>
-        <ul id="tocList" style="list-style: none; padding: 0; margin: 0;"></ul>
+        <ul id="tocList" style="list-style: none; padding: 0; margin: 0;">
+          
+    <li class="toc-item active">
+      <a href="#sec-2" onclick="scrollToSection(event, 'sec-2')">1. Inside Automated Container Terminals</a>
+    </li>
+  
+    <li class="toc-item">
+      <a href="#sec-8" onclick="scrollToSection(event, 'sec-8')">2. IoT Telemetry & Predictive Maintenance</a>
+    </li>
+  
+    <li class="toc-item">
+      <a href="#sec-12" onclick="scrollToSection(event, 'sec-12')">3. Green Ports & Shore-to-Ship Power</a>
+    </li>
+  
+    <li class="toc-item">
+      <a href="#sec-takeaways" onclick="scrollToSection(event, 'sec-takeaways')">Key Takeaways</a>
+    </li>
+  
+        </ul>
       </div>
     </aside>
   </div>
@@ -469,21 +486,36 @@
 <script src="../js/global-components.js?v=1787475903488"></script>
 
 <script>
-  // Robust Dynamic Table of Contents & Smooth Scroll Spy
-  function initTableOfContents() {
+  // Smooth scroll helper
+  function scrollToSection(e, id) {
+    if (e) e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      history.pushState(null, null, '#' + id);
+    }
+  }
+
+  // Automatic Heading Indexer & Live Scroll Spy
+  function autoIndexTableOfContents() {
     const content = document.getElementById('articleBodyText');
     const tocList = document.getElementById('tocList');
     if (!content || !tocList) return;
 
-    const headings = content.querySelectorAll('h2, h3');
-    if (!headings.length) {
-      tocList.innerHTML = '<li style="font-size:0.8rem; color:var(--gray);">Overview Section</li>';
-      return;
-    }
+    const headings = content.querySelectorAll('h2, h3, .takeaways-callout');
+    if (!headings.length) return;
 
     tocList.innerHTML = '';
     headings.forEach((h, idx) => {
-      const headingId = h.id || ('heading-sec-' + (idx + 1));
+      let headingId = h.id;
+      let label = h.textContent.trim();
+
+      if (h.classList.contains('takeaways-callout')) {
+        headingId = headingId || 'sec-takeaways';
+        label = 'Key Takeaways';
+      } else {
+        headingId = headingId || ('heading-sec-' + (idx + 1));
+      }
       h.id = headingId;
 
       const li = document.createElement('li');
@@ -491,21 +523,14 @@
       
       const link = document.createElement('a');
       link.href = '#' + headingId;
-      link.textContent = h.textContent.trim();
-      link.onclick = (e) => {
-        e.preventDefault();
-        const target = document.getElementById(headingId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-          history.pushState(null, null, '#' + headingId);
-        }
-      };
+      link.textContent = label;
+      link.onclick = (e) => scrollToSection(e, headingId);
 
       li.appendChild(link);
       tocList.appendChild(li);
     });
 
-    // Active Highlight Observer on Scroll
+    // IntersectionObserver for active section spy
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -525,9 +550,7 @@
     headings.forEach(h => observer.observe(h));
   }
 
-  document.addEventListener('DOMContentLoaded', initTableOfContents);
-    }
-  });
+  document.addEventListener('DOMContentLoaded', autoIndexTableOfContents);
 
   // Reading progress bar
   window.addEventListener('scroll', () => {
