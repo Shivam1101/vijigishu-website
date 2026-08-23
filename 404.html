@@ -11,7 +11,7 @@
   <meta property="og:site_name" content="Vijigishu Educational Travel" />
   <meta property="og:url" content="https://vijigishu.co.in/404.html" />
   <meta property="og:title" content="404 - Page Not Found – Vijigishu" />
-  <meta property="og:description" content="The page you are looking for doesn" />
+  <meta property="og:description" content="The page you are looking for doesn't exist or has been moved." />
   <meta property="og:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -20,14 +20,14 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://vijigishu.co.in/404.html" />
   <meta name="twitter:title" content="404 - Page Not Found – Vijigishu" />
-  <meta name="twitter:description" content="The page you are looking for doesn" />
+  <meta name="twitter:description" content="The page you are looking for doesn't exist or has been moved." />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -41,8 +41,8 @@
       --ease:  cubic-bezier(.25,.46,.45,.94);
     }
     html, body {
-      height: 100vh;
-      max-height: 100vh;
+      min-height: 100vh;
+      min-height: 100dvh;
       margin: 0;
       padding: 0;
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -55,14 +55,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      overflow: hidden;
+      overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
 
     /* Top Brand Logo */
     .top-header {
       width: 100%;
-      padding: 32px 24px 0;
+      padding: 28px 24px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -70,7 +70,7 @@
       z-index: 10;
     }
     .brand-logo img {
-      height: 52px;
+      height: 48px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s var(--ease);
@@ -81,10 +81,10 @@
 
     /* Main Error Center Content */
     .error-content {
-      max-width: 740px;
+      max-width: 760px;
       width: 100%;
       text-align: center;
-      padding: 0 24px;
+      padding: 12px 24px 0;
       flex-shrink: 0;
       z-index: 5;
       display: flex;
@@ -94,12 +94,12 @@
 
     .code-404 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(4.2rem, 6.8vw, 5.8rem);
-      font-weight: 700;
+      font-size: clamp(3.8rem, 6.5vw, 5.6rem);
+      font-weight: 800;
       line-height: 1;
       letter-spacing: -2px;
-      margin-top: 8px;
-      margin-bottom: 8px;
+      margin-top: 4px;
+      margin-bottom: 6px;
       background: linear-gradient(135deg, #26542B 0%, #3B723F 42%, #BA9435 85%, #CF9F34 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -108,9 +108,9 @@
 
     .error-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+      font-size: clamp(1.75rem, 3.2vw, 2.4rem);
       color: var(--navy);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.22;
       font-weight: 700;
       letter-spacing: -0.5px;
@@ -124,9 +124,9 @@
 
     .error-desc {
       color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin: 0 auto 24px;
+      font-size: clamp(0.92rem, 1.4vw, 1.02rem);
+      line-height: 1.55;
+      margin: 0 auto 20px;
       max-width: 580px;
       font-weight: 400;
     }
@@ -136,7 +136,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       margin-bottom: 4px;
     }
@@ -144,11 +144,11 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 13px 30px;
+      gap: 8px;
+      padding: 12px 28px;
       border-radius: 100px;
-      font-weight: 600;
-      font-size: 0.92rem;
+      font-weight: 700;
+      font-size: 0.88rem;
       transition: all 0.28s var(--ease);
       cursor: pointer;
       border: none;
@@ -164,13 +164,10 @@
       transform: translateY(-2px);
       box-shadow: 0 14px 30px rgba(47, 99, 53, 0.32);
     }
-    .btn-primary svg {
-      opacity: 0.95;
-    }
     .btn-outline {
       background: var(--white);
       color: var(--navy);
-      border: 1.5px solid rgba(20, 21, 61, 0.12);
+      border: 1.5px solid rgba(20, 21, 61, 0.14);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
     }
     .btn-outline:hover {
@@ -180,64 +177,68 @@
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
     }
 
-    /* Upscaled Mascot Image - Seamless Fullscreen Wires */
+    /* ─── 100% RESPONSIVE FULL-WIDTH MASCOT SECTION ─── */
     .mascot-wide-wrapper {
+      width: 100%;
       width: 100vw;
-      max-width: 100%;
       flex: 1;
-      min-height: 0;
+      min-height: 180px;
       display: flex;
-      justify-content: center;
       align-items: flex-end;
+      justify-content: center;
       overflow: hidden;
       position: relative;
+      margin-top: 10px;
     }
 
     .mascot-cutout-img {
+      width: 100%;
       width: 100vw;
-      max-width: 1920px;
       height: 100%;
-      max-height: 44vh;
+      min-height: 180px;
+      max-height: 48vh;
       display: block;
       object-fit: cover;
       object-position: center bottom;
       image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
       position: relative;
       z-index: 2;
     }
 
-    /* Minimal Bottom Copyright */
+    /* Bottom Copyright */
     .bottom-bar {
       width: 100%;
       text-align: center;
-      padding: 12px 20px 20px;
-      font-size: 0.82rem;
+      padding: 10px 20px 18px;
+      font-size: 0.8rem;
       color: var(--light-gray);
       flex-shrink: 0;
       z-index: 10;
     }
 
-    @media (max-height: 700px) {
-      .top-header { padding: 18px 20px 0; }
-      .brand-logo img { height: 44px; }
-      .code-404 { font-size: 3.4rem; margin-top: 2px; margin-bottom: 4px; }
-      .error-title { font-size: 1.55rem; margin-bottom: 8px; }
-      .error-desc { font-size: 0.88rem; margin-bottom: 16px; line-height: 1.45; }
-      .btn { padding: 10px 24px; font-size: 0.85rem; }
-      .mascot-cutout-img { max-height: 38vh; }
-      .bottom-bar { padding: 6px 20px 12px; font-size: 0.76rem; }
+    @media (max-width: 991px) {
+      .top-header { padding: 22px 20px 0; }
+      .brand-logo img { height: 42px; }
+      .code-404 { font-size: 3.8rem; }
+      .error-title { font-size: 1.7rem; }
+      .error-desc { font-size: 0.92rem; margin-bottom: 18px; }
+      .btn { padding: 11px 24px; font-size: 0.85rem; }
+      .mascot-wide-wrapper { min-height: 160px; }
+      .mascot-cutout-img { min-height: 160px; max-height: 42vh; }
     }
 
-    @media (max-width: 768px) {
-      .top-header { padding: 24px 20px 0; }
-      .brand-logo img { height: 42px; }
-      .code-404 { font-size: 3.6rem; }
-      .error-title { font-size: 1.65rem; }
-      .error-desc { font-size: 0.92rem; margin-bottom: 18px; }
-      .btn-group { gap: 12px; }
-      .btn { padding: 11px 24px; font-size: 0.86rem; }
-      .mascot-cutout-img { width: 100%; max-width: 100vw; max-height: 36vh; }
+    @media (max-width: 600px) {
+      .top-header { padding: 18px 16px 0; }
+      .brand-logo img { height: 38px; }
+      .error-content { padding: 8px 16px 0; }
+      .code-404 { font-size: 3.2rem; margin-top: 2px; }
+      .error-title { font-size: 1.45rem; line-height: 1.25; }
+      .error-desc { font-size: 0.86rem; margin-bottom: 16px; line-height: 1.48; }
+      .btn-group { flex-direction: column; width: 100%; max-width: 280px; gap: 10px; }
+      .btn { width: 100%; justify-content: center; padding: 11px 20px; font-size: 0.82rem; }
+      .mascot-wide-wrapper { min-height: 140px; margin-top: 14px; }
+      .mascot-cutout-img { min-height: 140px; max-height: 38vh; }
+      .bottom-bar { padding: 8px 16px 14px; font-size: 0.74rem; }
     }
   </style>
 </head>
@@ -247,12 +248,10 @@
   <header class="top-header">
     <a href="/" class="brand-logo" aria-label="Vijigishu Home">
       <img 
-        src="/images/logo-of-vijigishu_2-1.webp" 
+        src="images/logo-of-vijigishu_2-1.webp" 
         onerror="
-          if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='images/logo-of-vijigishu_2-1.webp'; }
-          else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='../images/logo-of-vijigishu_2-1.webp'; }
-          else if (!this.dataset.tried3) { this.dataset.tried3='1'; this.src='/images/logo-of-vijigishu_2-1.png'; }
-          else if (!this.dataset.tried4) { this.dataset.tried4='1'; this.src='images/logo-of-vijigishu_2-1.png'; }
+          if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='/images/logo-of-vijigishu_2-1.webp'; }
+          else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='images/logo-of-vijigishu_2-1.png'; }
           else { this.src='https://staging.vijigishu.co.in/wp-content/uploads/2022/08/logo-of-vijigishu_2-1.png'; }
         " 
         alt="Vijigishu Education Private Limited" 
@@ -271,7 +270,7 @@
     
     <div class="btn-group">
       <a href="/" class="btn btn-primary">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
         Back to Home
       </a>
       <a href="immersion-programs" class="btn btn-outline">
@@ -283,12 +282,11 @@
   <!-- Fullscreen Edge-to-Edge Mascot Section -->
   <div class="mascot-wide-wrapper">
     <img 
-      src="/images/404-mascot.png" 
+      src="images/404-mascot.png" 
       onerror="
-        if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='images/404-mascot.png'; }
-        else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='../images/404-mascot.png'; }
-        else if (!this.dataset.tried3) { this.dataset.tried3='1'; this.src='/images/404-mascot-wide.png'; }
-        else { this.src='images/404-mascot-wide.png'; }
+        if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='/images/404-mascot.png'; }
+        else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='images/404-mascot-wide.png'; }
+        else { this.src='/images/404-mascot-wide.png'; }
       " 
       alt="Lost Connection Lion Mascot" 
       class="mascot-cutout-img" 
