@@ -32,11 +32,11 @@
       padding: 0;
     }
     html, body {
-      height: 100%;
-      min-height: 100vh;
-      min-height: 100dvh;
+      height: 100vh;
+      height: 100dvh;
       margin: 0;
       padding: 0;
+      overflow: hidden; /* Force absolutely no scroll on desktop */
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--navy);
       background: radial-gradient(circle at 50% 12%, rgba(159, 194, 140, 0.22) 0%, rgba(248, 250, 249, 0.98) 55%, #F8FAF9 100%);
@@ -55,7 +55,7 @@
       flex-shrink: 0;
     }
     .brand-logo img {
-      height: 48px;
+      height: 46px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s var(--ease);
@@ -71,19 +71,20 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 24px;
+      padding: 20px 24px;
       text-align: center;
       z-index: 5;
+      min-height: 0;
     }
 
     /* 404 Numeral */
     .code-404 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(4rem, 8vw, 6.5rem);
+      font-size: clamp(3.5rem, 7vw, 6rem);
       font-weight: 800;
       line-height: 1;
       letter-spacing: -2px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       background: linear-gradient(135deg, #0D0E2E 0%, #38673A 55%, #D4A840 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -93,7 +94,7 @@
     /* Main Heading */
     .error-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
       color: var(--navy);
       margin-bottom: 12px;
       line-height: 1.25;
@@ -109,8 +110,8 @@
     /* Subtitle */
     .error-desc {
       color: var(--gray);
-      font-size: clamp(1rem, 1.2vw, 1.15rem);
-      line-height: 1.6;
+      font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+      line-height: 1.5;
       margin: 0 auto 24px;
       max-width: 600px;
       font-weight: 500;
@@ -129,10 +130,10 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 28px;
+      padding: 12px 26px;
       border-radius: 100px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       letter-spacing: 0.01em;
       transition: all 0.25s var(--ease);
       cursor: pointer;
@@ -167,13 +168,15 @@
       margin-top: auto;
       text-align: center;
       line-height: 0;
+      flex-shrink: 1;
+      min-height: 0;
     }
     .mascot-cutout-img {
       width: 100%;
       max-width: 2560px;
       height: auto;
-      max-height: 40vh;
-      object-fit: contain; /* Prevents top cropping on desktop */
+      max-height: 32vh; /* Reduced to ensure it never overflows 100vh */
+      object-fit: contain;
       object-position: center bottom;
       display: inline-block;
     }
@@ -191,45 +194,30 @@
 
     /* ─── STANDARD MOBILE PRACTICES (<= 768px) ─── */
     @media (max-width: 768px) {
+      html, body {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow-y: auto; /* Allow natural scroll only on mobile if screen is tiny */
+      }
+      
       .top-header { padding: 24px 16px 0; }
-      .brand-logo img { height: 44px; } /* Larger logo on mobile */
+      .brand-logo img { height: 44px; } 
       
       .main-center-wrapper { padding: 32px 16px 16px; }
       
-      .code-404 {
-        font-size: 4.5rem; /* Massive, legible impact */
-        margin-bottom: 8px;
-      }
-      .error-title {
-        font-size: 1.7rem; /* Standard H1 sizing */
-        white-space: normal; /* Allow wrapping naturally */
-        margin-bottom: 12px;
-      }
-      .error-desc {
-        font-size: 1.05rem; /* Standard readable paragraph */
-        line-height: 1.5;
-        max-width: 95%;
-        margin-bottom: 32px;
-      }
+      .code-404 { font-size: 4.5rem; margin-bottom: 8px; }
+      .error-title { font-size: 1.7rem; white-space: normal; margin-bottom: 12px; }
+      .error-desc { font-size: 1.05rem; line-height: 1.5; max-width: 95%; margin-bottom: 32px; }
       
-      /* Stack buttons for easy thumb tapping */
-      .btn-group {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        gap: 12px;
-      }
-      .btn {
-        width: 100%;
-        padding: 14px 24px; /* Larger touch targets */
-        font-size: 1rem;
-      }
+      .btn-group { flex-direction: column; width: 100%; max-width: 320px; gap: 12px; }
+      .btn { width: 100%; padding: 14px 24px; font-size: 1rem; }
       
-      /* Mascot optimization for portrait */
       .mascot-cutout-img {
-        height: 32vh; /* Specific height ratio */
+        height: 32vh;
+        max-height: 250px;
         min-height: 200px;
-        object-fit: cover; /* Trims long side wires, focuses purely on the center lion */
+        object-fit: cover; 
       }
       
       .bottom-bar { font-size: 0.8rem; padding-bottom: 16px; }
