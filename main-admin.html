@@ -997,6 +997,7 @@
         </button>
       </div>
 
+      
       <div class="sidebar-menu">
         <div class="menu-heading">Modules</div>
         
@@ -1005,17 +1006,19 @@
           <span>Blog Manager</span>
         </button>
 
+        <button class="menu-btn" id="menuBtnGallery" title="Gallery Manager" onclick="switchAdminSection('gallery')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Gallery Manager</span>
+        </button>
+
         <button class="menu-btn" id="menuBtnTestimonials" title="Testimonials Manager" onclick="switchAdminSection('testimonials')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           <span>Testimonials</span>
         </button>
+
         <button class="menu-btn" id="menuBtnFacilitators" title="Academic Facilitators" onclick="switchAdminSection('facilitators')">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           <span>Facilitators</span>
-        </button>
-        <button class="menu-btn" id="menuBtnGallery" title="Gallery Manager" onclick="switchAdminSection('gallery')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Gallery Manager</span>
         </button>
       </div>
     </div>
@@ -1277,16 +1280,7 @@
 
   
     <!-- ===== TESTIMONIALS MANAGEMENT SECTION ===== -->
-    <div id="sectionTestimonials" style="display: none;">
-      
-      <div class="content-box">
-        <div class="card-box-title">
-          <span>Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)</span>
-          <div style="display: flex; gap: 10px;">
-            <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original 11 testimonials">↺ Reset Defaults</button>
-            <button class="btn btn-green" onclick="openNewTestimonialModal()">+ Add Testimonial</button>
-          </div>
-        </div>
+    
 
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;" id="adminTestiGrid">
           <!-- Dynamically Injected -->
@@ -1297,16 +1291,7 @@
 
 
     <!-- ===== ACADEMIC FACILITATORS MANAGEMENT SECTION ===== -->
-    <div id="sectionFacilitators" style="display: none;">
-      
-      <div class="content-box">
-        <div class="card-box-title">
-          <span>Our Academic Facilitators Logos (<span id="facCount">0</span>)</span>
-          <div style="display: flex; gap: 10px;">
-            <button class="btn btn-outline" onclick="resetFacilitatorsToDefault()" title="Reset to original 14 university partner logos">↺ Reset Defaults</button>
-            <button class="btn btn-green" onclick="openNewFacilitatorModal()">+ Add Facilitator Logo</button>
-          </div>
-        </div>
+    
 
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;" id="adminFacGrid">
           <!-- Dynamically Injected -->
@@ -1315,7 +1300,50 @@
 
     </div>
 
-</main>
+
+    <!-- ========================================== -->
+    <!-- 3. TESTIMONIALS MANAGEMENT PANEL -->
+    <!-- ========================================== -->
+    <div class="tab-panel" id="panelTestimonials">
+      <div class="content-box" style="background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border);">
+        <div class="card-box-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div style="font-size: 1.15rem; font-weight: 700; color: var(--navy);">
+            Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original student reviews">↺ Reset Defaults</button>
+            <button class="btn btn-green" onclick="openNewTestimonialModal()">+ Add Testimonial</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;" id="adminTestiGrid">
+          <!-- Dynamically Injected -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 4. ACADEMIC FACILITATORS MANAGEMENT PANEL -->
+    <!-- ========================================== -->
+    <div class="tab-panel" id="panelFacilitators">
+      <div class="content-box" style="background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border);">
+        <div class="card-box-title" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div style="font-size: 1.15rem; font-weight: 700; color: var(--navy);">
+            Academic Facilitators &amp; University Partner Logos (<span id="facCount">0</span>)
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button class="btn btn-outline" onclick="resetFacilitatorsToDefault()" title="Reset to original 14 logos">↺ Reset Defaults</button>
+            <button class="btn btn-green" onclick="openNewFacilitatorModal()">+ Add Facilitator Logo</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;" id="adminFacGrid">
+          <!-- Dynamically Injected -->
+        </div>
+      </div>
+    </div>
+
+  </main>
 </div>
 
 <!-- ========================================== -->
@@ -1397,44 +1425,77 @@
   }
 
   // Switch Sections via Left Sidebar Menu
+
+  // Universal Section / Tab Switcher
   function switchAdminSection(sectionKey) {
-    const menuBtnBlog = document.getElementById('menuBtnBlog');
-    const menuBtnGallery = document.getElementById('menuBtnGallery');
-    const panelBlog = document.getElementById('panelBlog');
-    const panelGallery = document.getElementById('panelGallery');
+    const panels = {
+      blog: document.getElementById('panelBlog'),
+      gallery: document.getElementById('panelGallery'),
+      testimonials: document.getElementById('panelTestimonials'),
+      facilitators: document.getElementById('panelFacilitators')
+    };
+
+    const buttons = {
+      blog: document.getElementById('menuBtnBlog'),
+      gallery: document.getElementById('menuBtnGallery'),
+      testimonials: document.getElementById('menuBtnTestimonials'),
+      facilitators: document.getElementById('menuBtnFacilitators')
+    };
+
     const topLiveSiteBtn = document.getElementById('topLiveSiteBtn');
     const topCreateBtn = document.getElementById('topCreateBtn');
     const mainHeading = document.getElementById('pageMainHeading');
     const subHeading = document.getElementById('pageSubHeading');
 
+    // Deactivate all panels & buttons
+    Object.keys(panels).forEach(k => {
+      if (panels[k]) panels[k].classList.remove('active');
+      if (buttons[k]) buttons[k].classList.remove('active');
+    });
+
+    // Activate target
+    if (panels[sectionKey]) panels[sectionKey].classList.add('active');
+    if (buttons[sectionKey]) buttons[sectionKey].classList.add('active');
+
     if (sectionKey === 'gallery') {
-      menuBtnBlog.classList.remove('active');
-      menuBtnGallery.classList.add('active');
-      panelBlog.classList.remove('active');
-      panelGallery.classList.add('active');
-      
       mainHeading.innerHTML = 'Gallery <em>Control Center</em>';
-      subHeading.textContent = 'Upload photos, assign mandatory country tags, and control live gallery display.';
-      
+      subHeading.textContent = 'Upload photos, assign country tags, and organize live gallery images.';
       topLiveSiteBtn.href = 'gallery.html';
       topLiveSiteBtn.innerHTML = '👁 View Live Gallery ↗';
       topCreateBtn.style.display = 'none';
       renderAdminGallery();
+    } else if (sectionKey === 'testimonials') {
+      mainHeading.innerHTML = 'Student &amp; Faculty <em>Testimonials</em>';
+      subHeading.textContent = 'Manage, add, edit, and delete student & faculty testimonials displayed on the website.';
+      topLiveSiteBtn.href = 'index.html#testimonials';
+      topLiveSiteBtn.innerHTML = '👁 View Live Testimonials ↗';
+      topCreateBtn.style.display = 'inline-flex';
+      topCreateBtn.innerHTML = '+ Add Testimonial';
+      topCreateBtn.onclick = openNewTestimonialModal;
+      renderAdminTestimonials();
+    } else if (sectionKey === 'facilitators') {
+      mainHeading.innerHTML = 'Academic <em>Facilitators Logos</em>';
+      subHeading.textContent = 'Manage, upload, edit, and delete partner university logos displayed on the homepage marquee.';
+      topLiveSiteBtn.href = 'index.html#partners';
+      topLiveSiteBtn.innerHTML = '👁 View Live Marquee ↗';
+      topCreateBtn.style.display = 'inline-flex';
+      topCreateBtn.innerHTML = '+ Add Facilitator Logo';
+      topCreateBtn.onclick = openNewFacilitatorModal;
+      renderAdminFacilitators();
     } else {
-      menuBtnGallery.classList.remove('active');
-      menuBtnBlog.classList.add('active');
-      panelGallery.classList.remove('active');
-      panelBlog.classList.add('active');
-      
+      // Default: blog
       mainHeading.innerHTML = 'Blog <em>Management</em>';
       subHeading.textContent = 'Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.';
-
       topLiveSiteBtn.href = 'blog.html';
       topLiveSiteBtn.innerHTML = '👁 View Live Blog ↗';
       topCreateBtn.style.display = 'inline-flex';
+      topCreateBtn.innerHTML = '+ Create New Article';
+      topCreateBtn.onclick = showNewPostForm;
       renderTable();
     }
   }
+
+  
 
   function showAlert(msg) {
     const alertBanner = document.getElementById('alertBanner');
