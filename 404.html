@@ -6,64 +6,56 @@
   <title>404 - Page Not Found – Vijigishu</title>
   <meta name="description" content="The page you are looking for doesn't exist or has been moved. Return to Vijigishu Educational Travel homepage." />
   <link rel="canonical" href="https://vijigishu.co.in/404" />
-  <!-- Open Graph / Facebook / WhatsApp -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Vijigishu Educational Travel" />
-  <meta property="og:url" content="https://vijigishu.co.in/404.html" />
-  <meta property="og:title" content="404 - Page Not Found – Vijigishu" />
-  <meta property="og:description" content="The page you are looking for doesn't exist or has been moved." />
-  <meta property="og:image" content="https://vijigishu.co.in/images/Singapore.webp" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://vijigishu.co.in/404.html" />
-  <meta name="twitter:title" content="404 - Page Not Found – Vijigishu" />
-  <meta name="twitter:description" content="The page you are looking for doesn't exist or has been moved." />
-  <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
+  
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:  #14153D;
-      --green: #2F6335;
-      --sage:  #A5C992;
-      --gold:  #C99F3B;
+      --navy: #0D0E2E;
+      --green: #38673A;
+      --sage: #9FC28C;
+      --gold: #D4A840;
       --white: #FFFFFF;
-      --gray:  #64748B;
+      --gray: #5A5B70;
       --light-gray: #94A3B8;
-      --ease:  cubic-bezier(.25,.46,.45,.94);
+      --off: #F8FAF9;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     html, body {
-      height: 100vh;
+      min-height: 100vh;
       min-height: 100dvh;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: var(--navy);
-      background: radial-gradient(circle at 50% 18%, rgba(165, 201, 146, 0.32) 0%, transparent 45%),
-                  radial-gradient(circle at 82% 22%, rgba(201, 159, 59, 0.16) 0%, transparent 40%),
-                  radial-gradient(circle at 18% 30%, rgba(47, 99, 53, 0.1) 0%, transparent 42%),
-                  #F8FAF9;
+      background: radial-gradient(circle at 50% 10%, rgba(159, 194, 140, 0.25) 0%, rgba(248, 250, 249, 0.95) 50%, #F8FAF9 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       overflow-x: hidden;
       text-align: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
     a { text-decoration: none; color: inherit; }
 
-    /* Top Brand Logo */
+    /* Top Brand Header */
     .top-header {
       width: 100%;
-      padding: 24px 20px 0;
+      padding: 30px 24px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -71,7 +63,7 @@
       z-index: 10;
     }
     .brand-logo img {
-      height: 42px;
+      height: 46px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s var(--ease);
@@ -80,7 +72,7 @@
       transform: scale(1.03);
     }
 
-    /* Main Error Center Content - Dead Center */
+    /* Main Error Center Content Area */
     .main-center-wrapper {
       width: 100%;
       flex: 1;
@@ -88,12 +80,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 10px 24px;
+      padding: 16px 24px 10px;
       z-index: 5;
     }
 
     .error-content {
-      max-width: 880px;
+      max-width: 820px;
       width: 100%;
       text-align: center;
       margin: 0 auto;
@@ -103,54 +95,56 @@
       justify-content: center;
     }
 
+    /* 404 Numeral */
     .code-404 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2rem, 5.2vw, 4.6rem);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(3.4rem, 6vw, 5.2rem);
       font-weight: 800;
       line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 6px;
-      background: linear-gradient(135deg, #26542B 0%, #3B723F 42%, #BA9435 85%, #CF9F34 100%);
+      letter-spacing: -1.5px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #0D0E2E 0%, #38673A 55%, #D4A840 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
 
-    /* Single-row Heading */
+    /* Main Single-row Heading */
     .error-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.35rem, 2.5vw, 2rem);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.45rem, 2.7vw, 2.15rem);
       color: var(--navy);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       line-height: 1.25;
       font-weight: 700;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.02em;
       text-align: center;
     }
     .error-title span {
       color: var(--green);
       font-style: italic;
-      display: inline;
       font-weight: 700;
+      display: inline;
     }
 
-    /* Single-line Concise Subtitle */
+    /* Single-line Subtitle */
     .error-desc {
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--gray);
-      font-size: clamp(0.85rem, 1.2vw, 0.94rem);
-      line-height: 1.45;
-      margin: 0 auto 18px;
-      max-width: 720px;
+      font-size: clamp(0.88rem, 1.25vw, 0.98rem);
+      line-height: 1.5;
+      margin: 0 auto 20px;
+      max-width: 620px;
       font-weight: 500;
       text-align: center;
     }
 
-    /* Compact Buttons Group */
+    /* Compact Premium Action Buttons */
     .btn-group {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
       margin: 0 auto;
     }
@@ -159,11 +153,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 8px 20px;
+      gap: 8px;
+      padding: 10px 22px;
       border-radius: 100px;
       font-weight: 700;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
       transition: all 0.25s var(--ease);
       cursor: pointer;
       border: none;
@@ -172,17 +167,17 @@
     .btn-primary {
       background: var(--navy);
       color: var(--white);
-      box-shadow: 0 6px 18px rgba(20, 21, 61, 0.18);
+      box-shadow: 0 6px 18px rgba(13, 14, 46, 0.2);
     }
     .btn-primary:hover {
       background: var(--green);
       transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(47, 99, 53, 0.28);
+      box-shadow: 0 10px 24px rgba(56, 103, 58, 0.3);
     }
     .btn-outline {
       background: var(--white);
       color: var(--navy);
-      border: 1px solid rgba(20, 21, 61, 0.15);
+      border: 1px solid var(--border, #CBD5E1);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
     }
     .btn-outline:hover {
@@ -192,7 +187,7 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
-    /* Full-Width Mascot Section Centered at Bottom */
+    /* Edge-to-Edge Mascot Section */
     .mascot-wide-wrapper {
       width: 100%;
       width: 100vw;
@@ -219,34 +214,35 @@
       z-index: 2;
     }
 
-    /* Bottom Copyright */
+    /* Minimal Footer */
     .bottom-bar {
       width: 100%;
       text-align: center;
-      padding: 6px 20px 12px;
-      font-size: 0.74rem;
+      padding: 8px 20px 14px;
+      font-size: 0.75rem;
+      font-weight: 500;
       color: var(--light-gray);
       flex-shrink: 0;
       z-index: 10;
     }
 
     @media (max-width: 991px) {
-      .top-header { padding: 18px 20px 0; }
-      .brand-logo img { height: 38px; }
+      .top-header { padding: 22px 20px 0; }
+      .brand-logo img { height: 40px; }
       .code-404 { font-size: 3.2rem; }
       .mascot-wide-wrapper { min-height: 140px; }
       .mascot-cutout-img { min-height: 140px; max-height: 40vh; }
     }
 
     @media (max-width: 600px) {
-      .top-header { padding: 14px 16px 0; }
-      .brand-logo img { height: 34px; }
-      .main-center-wrapper { padding: 8px 16px; }
+      .top-header { padding: 16px 16px 0; }
+      .brand-logo img { height: 36px; }
+      .main-center-wrapper { padding: 10px 16px; }
       .code-404 { font-size: 2.8rem; margin-bottom: 4px; }
-      .error-title { font-size: 1.22rem; line-height: 1.25; margin-bottom: 6px; }
-      .error-desc { font-size: 0.8rem; margin-bottom: 14px; }
+      .error-title { font-size: 1.25rem; line-height: 1.25; margin-bottom: 6px; }
+      .error-desc { font-size: 0.84rem; margin-bottom: 16px; }
       .btn-group { flex-direction: row; justify-content: center; gap: 8px; }
-      .btn { padding: 7px 16px; font-size: 0.74rem; }
+      .btn { padding: 8px 18px; font-size: 0.76rem; }
       .mascot-wide-wrapper { min-height: 120px; }
       .mascot-cutout-img { min-height: 120px; max-height: 36vh; }
       .bottom-bar { padding: 6px 16px 10px; font-size: 0.7rem; }
