@@ -3,33 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Details – Vijigishu Educational Travel</title>
-  <meta name="description" content="Read our in-depth analysis and student stories from global academic and industrial immersion tours." />
+  <title>Why Global Immersion Programs are Essential for Management Students – Vijigishu</title>
+  <meta name="description" content="Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership." />
   <link rel="canonical" href="https://vijigishu.co.in/blog-single" />
   <!-- Open Graph / Facebook / WhatsApp -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Vijigishu Educational Travel" />
   <meta property="og:url" content="https://vijigishu.co.in/blog-single.html" />
-  <meta property="og:title" content="Blog Details – Vijigishu Educational Travel" />
-  <meta property="og:description" content="Read our in-depth analysis and student stories from global academic and industrial immersion tours." />
-  <meta property="og:image" content="https://vijigishu.co.in/images/Singapore.webp" />
+  <meta property="og:title" content="Why Global Immersion Programs are Essential for Management Students – Vijigishu" />
+  <meta property="og:description" content="Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership." />
+  <meta property="og:image" content="https://vijigishu.co.in/images/mangement-2-scaled.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://vijigishu.co.in/blog-single.html" />
-  <meta name="twitter:title" content="Blog Details – Vijigishu Educational Travel" />
-  <meta name="twitter:description" content="Read our in-depth analysis and student stories from global academic and industrial immersion tours." />
-  <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
+  <meta name="twitter:title" content="Why Global Immersion Programs are Essential for Management Students – Vijigishu" />
+  <meta name="twitter:description" content="Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership." />
+  <meta name="twitter:image" content="https://vijigishu.co.in/images/mangement-2-scaled.webp" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
-  
-  
-  
-  
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -40,10 +36,11 @@
       --green: #38673A;
       --sage: #9FC28C;
       --gold: #D4A840;
-      --off: #F8F9FA;
+      --off: #F4F5F8;
       --dark: #07081A;
       --white: #FFFFFF;
       --gray: #5A5B70;
+      --border: #CBD5E1;
       --ease: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -53,304 +50,523 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--white);
       color: var(--navy);
-      line-height: 1.7;
+      line-height: 1.75;
       overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; height: auto; display: block; }
     
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .article-container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+    .content-container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
 
-    /* ─── NAVBAR ─── */
-    nav {
-      position: sticky; top: 0; left: 0; right: 0;
-      z-index: 999; padding: 0 24px;
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 2px 20px rgba(0,0,0,.05);
+    /* Reading Progress Bar */
+    .reading-progress {
+      position: fixed; top: 0; left: 0; height: 4px; background: var(--green);
+      width: 0%; z-index: 10000; transition: width 0.1s linear;
     }
-    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { width: 40px; height: 40px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1.1rem; }
-    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); }
-    .nav-links { display: flex; align-items: center; gap: 32px; }
-    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
-    .nav-links a:hover { color: var(--navy); }
-    .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
 
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
-    .mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--white); padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.1); flex-direction: column; gap: 16px; z-index: 998; }
-
-    /* ─── ARTICLE HEADER ─── */
-    .article-header { padding: 60px 0 40px; text-align: center; }
-    .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: .85rem; color: var(--gray); margin-bottom: 24px; font-weight: 600; }
-    .breadcrumb a:hover { color: var(--green); }
-    .post-badge { display: inline-block; background: rgba(56,103,58,.1); color: var(--green); padding: 4px 14px; border-radius: 100px; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; }
-    .article-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.2; color: var(--navy); margin-bottom: 24px; }
-    
-    .author-bar { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: .9rem; color: var(--gray); font-weight: 600; margin-bottom: 40px; }
-    .author-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: var(--sage); display: grid; place-items: center; font-weight: 800; font-size: 1.1rem; }
-    .author-info { text-align: left; }
-    .author-name { font-weight: 700; color: var(--navy); }
-    .author-meta { font-size: .8rem; color: var(--gray); }
-
-    /* Feature Banner */
-    .article-cover { margin-bottom: 56px; border-radius: 28px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.08); max-height: 480px; }
-    .article-cover img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* ─── ARTICLE BODY RENDERING ─── */
-    .article-body { font-size: 1.08rem; color: #2D2E45; line-height: 1.8; margin-bottom: 64px; }
-    .article-body p { margin-bottom: 28px; }
-    .article-body h2, .article-body h3 { font-family: 'Playfair Display', serif; color: var(--navy); margin: 44px 0 20px; line-height: 1.3; }
-    .article-body h2 { font-size: 2rem; }
-    .article-body h3 { font-size: 1.6rem; }
-    
-    .article-blockquote {
-      margin: 40px 0; padding: 32px 40px; background: var(--off);
-      border-left: 4px solid var(--green); border-radius: 0 16px 16px 0;
-      font-family: 'Playfair Display', serif; font-size: 1.35rem; font-style: italic; color: var(--navy); line-height: 1.5;
-    }
-    .article-inline-img { margin: 40px 0; border-radius: 20px; overflow: hidden; }
-    .article-inline-img img { width: 100%; border-radius: 20px; }
-    .img-caption { text-align: center; font-size: .85rem; color: var(--gray); margin-top: 10px; font-style: italic; }
-
-    .article-callout {
-      background: rgba(159,194,140,.15); border: 1px solid rgba(56,103,58,.2);
-      border-radius: 20px; padding: 28px; margin: 36px 0; color: var(--navy);
-    }
-    .article-callout h4 { font-weight: 800; margin-bottom: 8px; color: var(--green); display: flex; align-items: center; gap: 8px; }
-
-    /* Share & Author Card */
-    .article-footer { border-top: 1px solid rgba(0,0,0,.08); padding-top: 40px; margin-bottom: 80px; }
-    .share-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
-    .share-title { font-weight: 700; font-size: .9rem; color: var(--navy); }
-    .share-btns { display: flex; gap: 10px; }
-    .share-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--off); display: grid; place-items: center; color: var(--navy); transition: all .2s; cursor: pointer; border: none; }
-    .share-btn:hover { background: var(--navy); color: var(--sage); }
-
-    .author-card {
-      background: var(--off); border-radius: 24px; padding: 32px;
-      display: flex; align-items: center; gap: 24px;
-    }
-    .author-card-avatar { width: 70px; height: 70px; border-radius: 50%; background: var(--navy); color: var(--sage); display: grid; place-items: center; font-weight: 800; font-size: 1.8rem; flex-shrink: 0; }
-    .author-card-text h4 { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
-    .author-card-text p { font-size: .88rem; color: var(--gray); line-height: 1.5; margin: 0; }
-
-    /* Related Articles */
-    .related-section { background: var(--off); padding: 60px 0; }
-    .related-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--navy); margin-bottom: 32px; text-align: center; }
-    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .related-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,.03); transition: transform .3s; }
-    .related-card:hover { transform: translateY(-4px); }
-    .related-card img { height: 180px; width: 100%; object-fit: cover; }
-    .related-card-body { padding: 20px; }
-    .related-card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-top: 6px; line-height: 1.3; }
-
-    /* ─── FOOTER ─── */
-    footer { background: var(--dark); color: var(--white); padding: 60px 0 32px; }
-    
-    .footer-grid {
+    /* ─── SINGLE BLOG HERO BANNER ─── */
+    .single-hero {
+      background: linear-gradient(135deg, #0D0E2E 0%, #1B1C4A 60%, #223824 100%);
+      color: var(--white);
+      padding: 70px 0 60px;
       position: relative;
-      z-index: 2;
+      overflow: hidden;
+      text-align: center;
+    }
+    .single-hero::before {
+      content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px;
+      border-radius: 50%; background: radial-gradient(circle, rgba(159,194,140,.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .breadcrumb {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 0.84rem; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--sage); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--white); }
+    .single-tag {
+      display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+      color: var(--sage); padding: 5px 16px; border-radius: 100px; font-size: 0.76rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px;
+    }
+    .single-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      line-height: 1.22; max-width: 960px; margin: 0 auto 24px;
+    }
+    .single-title em { color: var(--sage); font-style: italic; }
+
+    .author-meta-bar {
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      font-size: 0.88rem; color: rgba(255,255,255,0.85); font-weight: 600;
+    }
+    .author-avatar-img {
+      width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+      border: 2px solid var(--sage);
+    }
+    .meta-divider { width: 4px; height: 4px; background: var(--sage); border-radius: 50%; }
+
+    /* ─── FEATURED COVER IMAGE ─── */
+    .article-cover-wrap {
+      max-width: 1060px; margin: -40px auto 50px; position: relative; z-index: 10;
+      border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(13,14,46,0.15);
+    }
+    .article-cover-wrap img { width: 100%; height: 460px; object-fit: cover; display: block; }
+
+    /* ─── ARTICLE EDITORIAL CONTENT ─── */
+    .editorial-wrapper {
       display: grid;
-      grid-template-columns: 1.8fr 1.1fr 1.1fr 1.8fr;
+      grid-template-columns: 1fr;
       gap: 40px;
-      align-items: start;
-      margin-bottom: 0;
+      margin-bottom: 70px;
     }
-    .footer-mascot-wrap {
-      position: relative;
-      display: flex;
-      justify-content: flex-end;
-      align-items: start;
-      margin-bottom: -22px;
-      z-index: 3;
+    .article-text-body {
+      font-size: 1.08rem;
+      color: #2D2E45;
+      line-height: 1.85;
     }
-    .footer-mascot-img {
-      max-height: 280px;
-      width: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5));
-      transition: transform 0.3s var(--ease, ease);
+    .article-text-body p { margin-bottom: 24px; }
+    
+    /* Lead paragraph */
+    .lead-p {
+      font-size: 1.24rem;
+      font-weight: 500;
+      color: var(--navy);
+      line-height: 1.7;
+      margin-bottom: 30px;
     }
-    .footer-mascot-img:hover {
-      transform: scale(1.04);
+    .lead-p::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.6rem;
+      float: left;
+      line-height: 0.85;
+      margin-right: 12px;
+      margin-top: 4px;
+      color: var(--green);
+      font-weight: 700;
     }
 
-    .footer-grid_old { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 60px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-    .footer-logo-icon { width: 36px; height: 36px; background: var(--sage); color: var(--navy); border-radius: 8px; display: grid; place-items: center; font-weight: 800; }
-    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 800; color: var(--white); }
-    .footer-tagline { color: rgba(255,255,255,.5); font-size: .88rem; line-height: 1.6; max-width: 300px; }
-    .footer-col-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--sage); margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-links a { color: rgba(255,255,255,.6); font-size: .88rem; transition: color .2s; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,.4); font-size: .82rem; }
+    .article-text-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--navy);
+      margin: 44px 0 18px;
+      line-height: 1.3;
+    }
+    .article-text-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin: 36px 0 16px;
+      line-height: 1.3;
+    }
+
+    /* Key Takeaways Callout */
+    .takeaways-box {
+      background: #F4F8F3;
+      border-left: 4px solid var(--green);
+      border-radius: 0 18px 18px 0;
+      padding: 28px 32px;
+      margin: 36px 0;
+    }
+    .takeaways-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--green);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .takeaways-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .takeaways-list li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 0.96rem;
+      color: var(--navy);
+    }
+    .takeaways-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    /* Pullquote */
+    .pullquote {
+      margin: 40px 0;
+      padding: 30px 40px;
+      background: var(--off);
+      border-radius: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.6;
+      border-left: 5px solid var(--sage);
+      position: relative;
+    }
+
+    /* Inline Image */
+    .inline-img-card {
+      margin: 40px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .inline-img-card img { width: 100%; height: 380px; object-fit: cover; }
+    .inline-caption {
+      text-align: center; font-size: 0.84rem; color: var(--gray);
+      padding: 10px 16px; background: #fafafa; font-style: italic;
+    }
+
+    /* Share & Tags */
+    .article-meta-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      margin-top: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .share-pill-group { display: flex; align-items: center; gap: 10px; }
+    .share-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--off); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--navy); transition: all 0.25s; cursor: pointer;
+    }
+    .share-btn:hover {
+      background: var(--green); color: var(--white); border-color: var(--green); transform: translateY(-2px);
+    }
+
+    /* Author Profile Card */
+    .author-card-box {
+      background: var(--off);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 40px;
+      border: 1px solid var(--border);
+    }
+    .author-card-avatar {
+      width: 76px; height: 76px; border-radius: 50%;
+      object-fit: cover; border: 3px solid var(--sage); flex-shrink: 0;
+    }
+    .author-card-info h4 {
+      font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: 4px;
+    }
+    .author-card-info p {
+      font-size: 0.88rem; color: var(--gray); margin: 0; line-height: 1.5;
+    }
+
+    /* ─── NEXT / PREVIOUS NAVIGATION ─── */
+    .article-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 60px 0 80px;
+    }
+    .article-nav-card {
+      background: var(--off);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .article-nav-card:hover {
+      background: var(--white);
+      border-color: var(--green);
+      box-shadow: 0 10px 30px rgba(13,14,46,0.08);
+      transform: translateY(-3px);
+    }
+    .nav-card-label {
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      color: var(--green); letter-spacing: 0.08em; margin-bottom: 8px;
+    }
+    .nav-card-title {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem;
+      font-weight: 700; color: var(--navy); line-height: 1.35;
+    }
+
+    /* ─── RELATED IMMERSIONS CTA BANNER ─── */
+    .immersion-cta-banner {
+      background: linear-gradient(135deg, #0D0E2E 0%, #1B1C4A 100%);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 48px;
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .immersion-cta-banner h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .immersion-cta-banner h3 em { color: var(--sage); font-style: italic; }
+    .immersion-cta-banner p {
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 0 auto 28px;
+      font-size: 1rem;
+    }
 
     @media (max-width: 768px) {
-      .related-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .author-card { flex-direction: column; text-align: center; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .article-cover-wrap { margin-top: 20px; border-radius: 16px; }
+      .article-cover-wrap img { height: 260px; }
+      .article-nav-grid { grid-template-columns: 1fr; }
+      .author-card-box { flex-direction: column; text-align: center; }
+      .immersion-cta-banner { padding: 32px 20px; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
 </head>
 <body>
 
+<div class="reading-progress" id="readingProgress"></div>
+
 <!-- ===== GLOBAL HEADER ===== -->
 <header id="global-header"></header>
 
-<!-- ===== MAIN ARTICLE HOLDER ===== -->
-<main id="articleContent">
-  <!-- Dynamically injected -->
-</main>
-
-<!-- ===== RELATED ARTICLES ===== -->
-<section class="related-section">
+<!-- ===== HERO BANNER ===== -->
+<div class="single-hero">
   <div class="container">
-    <h3 class="related-title">More <em>Stories</em> to Explore</h3>
-    <div class="related-grid" id="relatedGrid">
-      <!-- Dynamically injected -->
+    <div class="breadcrumb">
+      <a href="/">Home</a> <span>›</span>
+      <a href="blog.html">Blog</a> <span>›</span>
+      <span id="crumbTitle">Management Immersion</span>
+    </div>
+
+    <span class="single-tag" id="articleCategory">Management</span>
+
+    <h1 class="single-title" id="articleTitle">
+      Why Global Immersion Programs are Essential for <em>Management Students</em>
+    </h1>
+
+    <div class="author-meta-bar">
+      <img src="images/admin-profile-icon.png" alt="Author" class="author-avatar-img" />
+      <span id="articleAuthor">Dr. Vijaya Kumar</span>
+      <span class="meta-divider"></span>
+      <span id="articleDate">Aug 18, 2026</span>
+      <span class="meta-divider"></span>
+      <span id="articleReadTime">5 min read</span>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ===== FEATURED COVER IMAGE ===== -->
+<div class="container">
+  <div class="article-cover-wrap">
+    <img id="articleCoverImg" src="images/mangement-2-scaled.webp" alt="Article Cover" onerror="this.src='images/Singapore.webp';" />
+  </div>
+</div>
+
+<!-- ===== MAIN EDITORIAL CONTENT ===== -->
+<main class="content-container">
+  <article class="editorial-wrapper">
+    <div class="article-text-body" id="articleContent">
+      <p class="lead-p">
+        In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms.
+      </p>
+
+      <h2>1. Experiential Exposure in World Financial Hubs</h2>
+      <p>
+        During our Singapore &amp; Europe Management Immersion programs, students engage in closed-door sessions with executive directors at global headquarters such as Boeing Regional HQ, Mercedes-Benz, and the Frankfurt Stock Exchange. Seeing trading floors live and hearing decision-makers analyze risk transforms student perspectives from passive theoretical observers to active industry strategists.
+      </p>
+
+      <div class="takeaways-box">
+        <div class="takeaways-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Key Learning Outcomes
+        </div>
+        <ul class="takeaways-list">
+          <li><strong>Direct Corporate Engagement:</strong> Face-to-face dialogues with multinational Fortune 500 leaders.</li>
+          <li><strong>Operational Excellence:</strong> Firsthand observation of Kaizen methodology and Industry 4.0 automation.</li>
+          <li><strong>Global Financial Literacy:</strong> Deep dives into ASEAN fintech ecosystems and European regulatory compliance.</li>
+        </ul>
+      </div>
+
+      <h2>2. Developing Cross-Cultural Leadership Intelligence</h2>
+      <p>
+        Navigating international business requires cultural empathy. Interacting with faculties at Paris School of Business and Politecnico di Milano gives young leaders the confidence to negotiate, pitch, and collaborate in multicultural teams.
+      </p>
+
+      <div class="pullquote">
+        "Tell me and I forget. Teach me and I remember. Involve me and I learn." — Benjamin Franklin
+      </div>
+
+      <div class="inline-img-card">
+        <img src="images/Random-1.webp" alt="Executive Masterclass" />
+        <div class="inline-caption">Students participating in an executive boardroom workshop during the European Immersion Tour.</div>
+      </div>
+
+      <h2>3. Bridging Classroom Theory with Industry Reality</h2>
+      <p>
+        Experiential travel does not replace traditional curriculum; it amplifies it. When students return to their home campuses after presenting business model canvases to international mentors, their grasp of economics, strategic management, and marketing reaches an entirely new dimension.
+      </p>
+    </div>
+
+    <!-- Article Footer Share & Bio -->
+    <div class="article-meta-footer">
+      <div style="font-weight: 700; font-size: 0.88rem; color: var(--navy);">Share this article:</div>
+      <div class="share-pill-group">
+        <button class="share-btn" onclick="shareWhatsApp()" title="Share on WhatsApp">💬</button>
+        <button class="share-btn" onclick="shareLinkedIn()" title="Share on LinkedIn">💼</button>
+        <button class="share-btn" onclick="shareTwitter()" title="Share on X">🐦</button>
+        <button class="share-btn" onclick="copyArticleLink()" title="Copy Link">🔗</button>
+      </div>
+    </div>
+
+    <!-- Author Profile Card -->
+    <div class="author-card-box">
+      <img src="images/admin-profile-icon.png" alt="Author" class="author-card-avatar" />
+      <div class="author-card-info">
+        <h4 id="authorCardName">Dr. Vijaya Kumar</h4>
+        <p>Senior Academic Advisor &amp; Global Immersion Specialist at Vijigishu Educational Travel. Passionate about empowering students through transformative experiential learning across 30+ countries.</p>
+      </div>
+    </div>
+
+    <!-- Next / Prev Article Cards -->
+    <div class="article-nav-grid">
+      <a href="blog.html" class="article-nav-card">
+        <span class="nav-card-label">← Previous Story</span>
+        <span class="nav-card-title">Observing Scale &amp; Bioclimatic Adaptability: Architecture in Singapore &amp; Japan</span>
+      </a>
+      <a href="blog.html" class="article-nav-card" style="text-align: right;">
+        <span class="nav-card-label">Next Story →</span>
+        <span class="nav-card-title">Industry 4.0 &amp; Automation: Engineering Journeys in Germany</span>
+      </a>
+    </div>
+
+    <!-- Immersion CTA Banner -->
+    <div class="immersion-cta-banner">
+      <h3>Ready to Empower Your <em>Students?</em></h3>
+      <p>Custom-curated global study tours, international internships, and faculty development programs tailored for premier institutions.</p>
+      <a href="contact.html" class="btn btn-green" style="background: var(--sage); color: var(--navy); padding: 12px 28px; border-radius: 100px; font-weight: 700;">Request Custom Itinerary ↗</a>
+    </div>
+  </article>
+</main>
 
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
 <script src="js/global-components.js?v=1787475903488"></script>
 <script>
+  // Reading Progress Bar
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('readingProgress').style.width = scrolled + '%';
+  });
 
-  // Get URL Param
-  const urlParams = new URLSearchParams(window.location.search);
-  const postId = urlParams.get('id') || urlParams.get('slug');
-
-  // Load from localStorage
-  function getBlogs() {
-    const data = localStorage.getItem('vijigishu_blogs');
-    if (data) {
-      try { return JSON.parse(data); } catch(e) {}
+  // Dynamic Blog Loader from URL Query
+  const DEFAULT_BLOGS = [
+    {
+      id: "blog-1",
+      title: "Why Global Immersion Programs are Essential for Management Students",
+      slug: "why-global-immersion-essential-management",
+      category: "Management",
+      author: "Dr. Vijaya Kumar",
+      date: "Aug 18, 2026",
+      readTime: "5 min read",
+      image: "images/mangement-2-scaled.webp",
+      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
+    },
+    {
+      id: "blog-2",
+      title: "Observing Scale & Bioclimatic Adaptability: Architecture in Singapore & Japan",
+      slug: "observing-scale-bioclimatic-architecture-singapore-japan",
+      category: "Architecture",
+      author: "Nakul Jadav",
+      date: "Aug 12, 2026",
+      readTime: "6 min read",
+      image: "images/archi-scaled.webp",
+      content: "Architecture is best studied through sight, sound, and touch. Observing structural engineering, materiality, and bioclimatic ventilation in person provides insights no drawing board can replicate."
     }
-    return [];
+  ];
+
+  function loadSingleBlog() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id') || 'blog-1';
+
+    let list = DEFAULT_BLOGS;
+    try {
+      const raw = localStorage.getItem('vijigishu_blogs');
+      if (raw) list = JSON.parse(raw);
+    } catch(e) {}
+
+    const post = list.find(b => b.id === id || b.slug === id) || list[0];
+    if (!post) return;
+
+    document.title = post.title + ' – Vijigishu';
+    document.getElementById('crumbTitle').textContent = post.category || 'Article';
+    document.getElementById('articleCategory').textContent = post.category || 'Article';
+    document.getElementById('articleTitle').innerHTML = post.title;
+    document.getElementById('articleAuthor').textContent = post.author || 'Vijigishu Editorial';
+    document.getElementById('authorCardName').textContent = post.author || 'Vijigishu Editorial';
+    document.getElementById('articleDate').textContent = post.date || 'Aug 2026';
+    document.getElementById('articleReadTime').textContent = post.readTime || '5 min read';
+    
+    if (post.image) {
+      document.getElementById('articleCoverImg').src = post.image;
+    }
+
+    if (post.content) {
+      const paragraphs = post.content.split('\n\n').filter(p => p.trim());
+      if (paragraphs.length > 0) {
+        document.getElementById('articleContent').innerHTML = `
+          <p class="lead-p">${paragraphs[0]}</p>
+          ${paragraphs.slice(1).map(p => `<p>${p}</p>`).join('')}
+          <div class="takeaways-box">
+            <div class="takeaways-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Key Takeaways
+            </div>
+            <ul class="takeaways-list">
+              <li>Firsthand global exposure bridges theory and practice.</li>
+              <li>Direct executive interactions cultivate international leadership confidence.</li>
+              <li>Experiential learning expands academic Horizons across 30+ countries.</li>
+            </ul>
+          </div>
+        `;
+      }
+    }
   }
 
-  function renderArticle() {
-    const blogs = getBlogs();
-    const articleContainer = document.getElementById('articleContent');
-
-    // Find post by ID or slug
-    const post = blogs.find(b => b.id === postId || b.slug === postId) || blogs[0];
-
-    if (!post) {
-      articleContainer.innerHTML = `
-        <div class="container" style="padding: 100px 20px; text-align: center;">
-          <h2 style="font-family:'Playfair Display',serif; font-size: 2.4rem;">Article Not Found</h2>
-          <p style="color:var(--gray); margin-top: 12px;">The blog article you are looking for does not exist or has been removed.</p>
-          <a href="blog" style="display:inline-block; margin-top: 24px; background:var(--navy); color:var(--white); padding: 12px 28px; border-radius: 100px; font-weight:700;">← Back to Blogs</a>
-        </div>
-      `;
-      return;
-    }
-
-    // Update document title
-    document.title = `${post.title} – Vijigishu Blogs`;
-
-    // Render Blocks HTML
-    const blocksHtml = (post.blocks || []).map(b => {
-      if (b.type === 'heading') return `<h2>${b.content}</h2>`;
-      if (b.type === 'paragraph') return `<p>${b.content}</p>`;
-      if (b.type === 'quote') return `<div class="article-blockquote">${b.content}</div>`;
-      if (b.type === 'callout') return `
-        <div class="article-callout">
-          <h4>💡 Key Takeaway</h4>
-          <p>${b.content}</p>
-        </div>
-      `;
-      if (b.type === 'image') return `
-        <div class="article-inline-img">
-          <img src="${b.content}" alt="Blog Image" />
-          ${b.caption ? `<div class="img-caption">${b.caption}</div>` : ''}
-        </div>
-      `;
-      return '';
-    }).join('');
-
-    // Author initial
-    const authorInit = (post.author || 'V').charAt(0);
-
-    articleContainer.innerHTML = `
-      <header class="article-header">
-        <div class="article-container">
-          <div class="breadcrumb">
-            <a href="/">Home</a> <span>›</span>
-            <a href="blog">Blogs</a> <span>›</span>
-            <span style="color:var(--navy);">${post.category}</span>
-          </div>
-          <span class="post-badge">${post.category}</span>
-          <h1 class="article-title">${post.title}</h1>
-          
-          <div class="author-bar">
-            <div class="author-avatar">${authorInit}</div>
-            <div class="author-info">
-              <div class="author-name">Written by ${post.author || 'Vijigishu Team'}</div>
-              <div class="author-meta">Published on ${post.date} • ${post.readTime || '5 min read'}</div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div class="article-container">
-        <div class="article-cover">
-          <img src="${post.image}" alt="${post.title}" />
-        </div>
-
-        <div class="article-body">
-          ${blocksHtml || `<p>${post.excerpt}</p>`}
-        </div>
-
-        <div class="article-footer">
-          <div class="share-bar">
-            <div class="share-title">Share this article</div>
-            <div class="share-btns">
-              <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Copy Link">🔗</button>
-              <button class="share-btn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href))" title="Share on LinkedIn">in</button>
-              <button class="share-btn" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href))" title="Share on X">𝕏</button>
-            </div>
-          </div>
-
-          <div class="author-card">
-            <div class="author-card-avatar">${authorInit}</div>
-            <div class="author-card-text">
-              <h4>${post.author || 'Vijigishu Editorial Team'}</h4>
-              <p>Specialists in international academic mobility, industrial immersions, and global experiential learning for Indian institutions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Render Related Articles (exclude current)
-    const related = blogs.filter(b => b.id !== post.id).slice(0, 3);
-    const relatedGrid = document.getElementById('relatedGrid');
-    relatedGrid.innerHTML = related.map(r => `
-      <article class="related-card">
-        <a href="blog-single.html?id=${r.id}">
-          <img src="${r.image}" alt="${r.title}" />
-          <div class="related-card-body">
-            <span class="post-badge" style="font-size:.7rem; padding: 2px 8px;">${r.category}</span>
-            <h4 class="related-card-title">${r.title}</h4>
-          </div>
-        </a>
-      </article>
-    `).join('');
+  function shareWhatsApp() {
+    window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href));
+  }
+  function shareLinkedIn() {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href));
+  }
+  function shareTwitter() {
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href));
+  }
+  function copyArticleLink() {
+    navigator.clipboard.writeText(window.location.href);
+    alert('Article link copied to clipboard!');
   }
 
-  renderArticle();
+  document.addEventListener('DOMContentLoaded', loadSingleBlog);
 </script>
 </body>
 </html>
