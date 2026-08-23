@@ -100,15 +100,16 @@ nav#navbar.scrolled {
 .nav-links a.active { color: var(--navy); }
 
 .nav-cta {
-  background: var(--sage) !important;
-  color: var(--navy) !important;
+  background: var(--green) !important;
+  color: var(--white) !important;
   padding: 8px 22px;
   border-radius: 100px;
   font-weight: 700 !important;
+  transition: all .25s var(--ease);
 }
 .nav-cta:hover {
-  background: var(--green) !important;
-  color: var(--white) !important;
+  background: var(--sage) !important;
+  color: var(--navy) !important;
 }
 .nav-cta::after { display: none !important; }
 
