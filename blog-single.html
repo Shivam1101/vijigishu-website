@@ -903,58 +903,7 @@
     headings.forEach(h => observer.observe(h));
   }
 
-  // Feature 1: Built-in Audio / Voice Narration Player (Web Speech API)
-  let isSpeaking = false;
-  let synthUtterance = null;
-
-  function toggleAudioNarration() {
-    if (!('speechSynthesis' in window)) {
-      alert('Speech synthesis is not supported in this browser.');
-      return;
-    }
-
-    const synth = window.speechSynthesis;
-    const btnText = document.getElementById('audioBtnText');
-    const btnIcon = document.getElementById('audioBtnIcon');
-    const visualizer = document.getElementById('audioWaveVisualizer');
-
-    if (isSpeaking) {
-      synth.cancel();
-      isSpeaking = false;
-      btnText.textContent = 'Listen to Article';
-      btnIcon.textContent = '▶';
-      visualizer.classList.add('paused');
-    } else {
-      const title = document.getElementById('articleTitle')?.textContent || '';
-      const text = document.getElementById('articleBodyText')?.textContent || '';
-      const fullTextToRead = `Article Title: ${title}. ${text}`;
-
-      synth.cancel(); // Clear any previous queue
-      synthUtterance = new SpeechSynthesisUtterance(fullTextToRead);
-      synthUtterance.rate = 0.95;
-      synthUtterance.pitch = 1.0;
-
-      synthUtterance.onend = () => {
-        isSpeaking = false;
-        btnText.textContent = 'Listen to Article';
-        btnIcon.textContent = '▶';
-        visualizer.classList.add('paused');
-      };
-
-      synthUtterance.onerror = () => {
-        isSpeaking = false;
-        btnText.textContent = 'Listen to Article';
-        btnIcon.textContent = '▶';
-        visualizer.classList.add('paused');
-      };
-
-      synth.speak(synthUtterance);
-      isSpeaking = true;
-      btnText.textContent = 'Pause Narration';
-      btnIcon.textContent = '⏸';
-      visualizer.classList.remove('paused');
-    }
-  }
+  
 
   // Default Fallback Articles
   const DEFAULT_BLOGS = [
@@ -1128,7 +1077,7 @@
 
     let list = DEFAULT_BLOGS;
     try {
-      const BLOG_DATA_VERSION = 'v10_explicit_audio_map';
+      const BLOG_DATA_VERSION = 'v11_pure_elevenlabs';
       const storedVer = localStorage.getItem('vijigishu_blogs_ver');
       const raw = localStorage.getItem('vijigishu_blogs');
       if (storedVer === BLOG_DATA_VERSION && raw) {
