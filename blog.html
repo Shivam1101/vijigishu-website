@@ -172,59 +172,97 @@
     .search-box svg { color: var(--gray); flex-shrink: 0; }
 
     
-    /* ─── TRUE PINTEREST MASONRY GRID (AS PER DIAGRAM) ─── */
+    
+    /* ─── 2 -> 1 -> 2 -> 1 RHYTHMIC MASONRY / EDITORIAL GRID ─── */
     .blog-grid {
-      column-count: 3;
-      column-gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
       margin-bottom: 80px;
     }
 
-    /* Editorial Card in Masonry Flow */
-    .editorial-blog-card {
-      break-inside: avoid;
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 24px;
+    /* Pair Cards (2 per row) */
+    .card-pair {
+      grid-column: span 6;
       background: var(--white);
       border-radius: 22px;
       overflow: hidden;
       border: 1px solid var(--border);
       box-shadow: 0 4px 20px rgba(13,14,46,0.04);
-      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.35s var(--ease);
       text-decoration: none;
-      vertical-align: top;
     }
-    .editorial-blog-card:hover {
+    .card-pair:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 36px rgba(13,14,46,0.1);
       border-color: var(--sage);
     }
-
-    /* Organic Masonry Image Height Variants */
-    .card-media-wrap {
+    .card-pair .card-media-wrap {
+      height: 250px;
       position: relative;
-      height: 220px;
       overflow: hidden;
       background: var(--dark);
     }
-    .card-tall .card-media-wrap {
-      height: 310px;
+
+    /* Single Wide Featured Showcase Card (1 per row) */
+    .card-single-wide {
+      grid-column: span 12;
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 25px rgba(13,14,46,0.05);
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: stretch;
+      transition: all 0.35s var(--ease);
+      text-decoration: none;
+      min-height: 340px;
     }
-    .card-compact .card-media-wrap {
-      height: 180px;
+    .card-single-wide:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(13,14,46,0.12);
+      border-color: var(--green);
+    }
+    .card-single-wide .card-media-wrap {
+      height: 100%;
+      min-height: 320px;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .card-single-wide .card-content-body {
+      padding: 36px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-single-wide .card-article-title {
+      font-size: 1.6rem;
+      line-height: 1.3;
+    }
+    .card-single-wide .card-article-excerpt {
+      -webkit-line-clamp: 3;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
     }
 
+    /* Shared Media & Typography Styles */
     .card-media-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s var(--ease);
     }
-    .editorial-blog-card:hover .card-media-img {
-      transform: scale(1.07);
+    .card-pair:hover .card-media-img,
+    .card-single-wide:hover .card-media-img {
+      transform: scale(1.06);
     }
 
-    /* Floating Badges */
     .card-tag-pill {
       position: absolute;
       top: 14px;
@@ -257,11 +295,12 @@
       z-index: 2;
     }
 
-    /* Card Body */
     .card-content-body {
-      padding: 22px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
     }
     
     .card-meta-line {
@@ -271,45 +310,49 @@
       font-size: 0.78rem;
       color: var(--gray);
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .card-meta-dot { width: 3px; height: 3px; background: var(--gray); border-radius: 50%; }
 
     .card-article-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.22rem;
+      font-size: 1.28rem;
       font-weight: 700;
       color: var(--navy);
       line-height: 1.35;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       transition: color 0.25s;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .editorial-blog-card:hover .card-article-title {
+    .card-pair:hover .card-article-title,
+    .card-single-wide:hover .card-article-title {
       color: var(--green);
     }
 
     .card-article-excerpt {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--gray);
-      line-height: 1.5;
-      margin-bottom: 18px;
+      line-height: 1.55;
+      margin-bottom: 20px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    /* Card Footer Action Strip */
     .card-action-strip {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--border);
-      padding-top: 14px;
+      padding-top: 16px;
       margin-top: auto;
     }
     .card-action-label {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--green);
       display: flex;
@@ -317,13 +360,14 @@
       gap: 6px;
       transition: gap 0.25s;
     }
-    .editorial-blog-card:hover .card-action-label {
+    .card-pair:hover .card-action-label,
+    .card-single-wide:hover .card-action-label {
       color: var(--navy);
       gap: 9px;
     }
     .card-action-arrow {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--off);
       border: 1px solid var(--border);
@@ -333,7 +377,8 @@
       color: var(--navy);
       transition: all 0.25s;
     }
-    .editorial-blog-card:hover .card-action-arrow {
+    .card-pair:hover .card-action-arrow,
+    .card-single-wide:hover .card-action-arrow {
       background: var(--green);
       color: var(--white);
       border-color: var(--green);
@@ -341,10 +386,9 @@
     }
 
     @media (max-width: 991px) {
-      .blog-grid { column-count: 2; column-gap: 20px; }
-    }
-    @media (max-width: 600px) {
-      .blog-grid { column-count: 1; }
+      .card-single-wide { grid-template-columns: 1fr; }
+      .card-single-wide .card-media-wrap { height: 240px; }
+      .card-pair { grid-column: span 12; }
     }
 
     .empty-state { text-align: center; padding: 70px 20px; grid-column: 1 / -1; }
@@ -535,9 +579,10 @@
   }
 
   
+  
   function renderBlogs() {
     const grid = document.getElementById('blogGrid');
-    const BLOG_DATA_VERSION = 'v3_8_articles';
+    const BLOG_DATA_VERSION = 'v4_2_1_rhythm';
     let list = DEFAULT_BLOGS;
 
     try {
@@ -570,15 +615,14 @@
       return;
     }
 
-    // Staggered height rhythm for Pinterest masonry
-    const rhythmClasses = ['card-tall', 'card-compact', '', 'card-tall', '', 'card-compact', 'card-tall', ''];
-
+    // 2 -> 1 -> 2 -> 1 Rhythm: [Pair, Pair, SingleWide, Pair, Pair, SingleWide...]
     grid.innerHTML = filtered.map((b, idx) => {
+      const isWide = (idx % 3 === 2);
       const cardImage = b.image || 'images/blog-single-placeholder.png';
-      const variantClass = rhythmClasses[idx % rhythmClasses.length];
+      const cardClass = isWide ? 'card-single-wide' : 'card-pair';
 
       return `
-        <a href="blog-single.html?id=${b.id}" class="editorial-blog-card ${variantClass}" title="${escapeHtml(b.title)}">
+        <a href="blog-single.html?id=${b.id}" class="${cardClass}" title="${escapeHtml(b.title)}">
           <div class="card-media-wrap">
             <img src="${cardImage}" alt="${escapeHtml(b.title)}" class="card-media-img" loading="lazy" onerror="this.src='images/blog-single-placeholder.png';" />
             <span class="card-tag-pill">${escapeHtml(b.category || 'Article')}</span>
@@ -597,7 +641,7 @@
             </div>
 
             <div class="card-action-strip">
-              <span class="card-action-label">Read Full Article →</span>
+              <span class="card-action-label">${isWide ? 'Explore Featured Story →' : 'Read Full Article →'}</span>
               <div class="card-action-arrow">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -610,6 +654,7 @@
       `;
     }).join('');
   }
+
   function setupEventListeners() {
     const pills = document.querySelectorAll('.pill');
     pills.forEach(pill => {
