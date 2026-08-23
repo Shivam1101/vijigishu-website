@@ -861,6 +861,84 @@
   }
 
   // Feature 2: Dynamic Table of Contents Generator
+  
+  // Feature 1: Pure ElevenLabs AI MP3 Audio Narration Player
+  let currentAudioInstance = null;
+  let isNarrationActive = false;
+  let currentAudioPath = '';
+
+  function toggleAudioNarration() {
+    const btnText = document.getElementById('audioBtnText');
+    const btnIcon = document.getElementById('audioBtnIcon');
+    const visualizer = document.getElementById('audioWaveVisualizer');
+
+    // Get current post's specific audio URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id') || 'blog-1';
+    let list = DEFAULT_BLOGS;
+    try {
+      const storedVer = localStorage.getItem('vijigishu_blogs_ver');
+      const raw = localStorage.getItem('vijigishu_blogs');
+      if (storedVer === 'v12_active_audio_engine' && raw) {
+        list = JSON.parse(raw);
+      } else {
+        localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
+        localStorage.setItem('vijigishu_blogs_ver', 'v12_active_audio_engine');
+        list = DEFAULT_BLOGS;
+      }
+    } catch(e) {}
+    
+    const post = list.find(b => b.id === id || b.slug === id) || list[0];
+    const targetAudioSrc = (post && post.audioUrl) ? post.audioUrl : 'audio/blog-1-management.mp3';
+
+    if (!currentAudioInstance || currentAudioPath !== targetAudioSrc) {
+      if (currentAudioInstance) {
+        currentAudioInstance.pause();
+        currentAudioInstance = null;
+      }
+      currentAudioPath = targetAudioSrc;
+      currentAudioInstance = new Audio(targetAudioSrc);
+
+      currentAudioInstance.onended = () => {
+        isNarrationActive = false;
+        if (btnText) btnText.textContent = 'Listen to Article';
+        if (btnIcon) btnIcon.textContent = '▶';
+        if (visualizer) visualizer.classList.add('paused');
+      };
+
+      currentAudioInstance.onerror = (e) => {
+        console.error('Audio playback error:', targetAudioSrc, e);
+        isNarrationActive = false;
+        if (btnText) btnText.textContent = 'Listen to Article';
+        if (btnIcon) btnIcon.textContent = '▶';
+        if (visualizer) visualizer.classList.add('paused');
+        alert('Could not load audio track: ' + targetAudioSrc);
+      };
+    }
+
+    if (isNarrationActive) {
+      currentAudioInstance.pause();
+      isNarrationActive = false;
+      if (btnText) btnText.textContent = 'Listen to Article';
+      if (btnIcon) btnIcon.textContent = '▶';
+      if (visualizer) visualizer.classList.add('paused');
+    } else {
+      currentAudioInstance.play().then(() => {
+        isNarrationActive = true;
+        if (btnText) btnText.textContent = 'Pause Narration';
+        if (btnIcon) btnIcon.textContent = '⏸';
+        if (visualizer) visualizer.classList.remove('paused');
+      }).catch(err => {
+        console.error('Playback failed:', err);
+        isNarrationActive = false;
+        if (btnText) btnText.textContent = 'Listen to Article';
+        if (btnIcon) btnIcon.textContent = '▶';
+        if (visualizer) visualizer.classList.add('paused');
+        alert('Audio error: ' + err.message);
+      });
+    }
+  }
+
   function generateTableOfContents() {
     const content = document.getElementById('articleBodyText');
     const tocList = document.getElementById('tocList');
@@ -1077,7 +1155,7 @@
 
     let list = DEFAULT_BLOGS;
     try {
-      const BLOG_DATA_VERSION = 'v11_pure_elevenlabs';
+      const BLOG_DATA_VERSION = 'v12_active_audio_engine';
       const storedVer = localStorage.getItem('vijigishu_blogs_ver');
       const raw = localStorage.getItem('vijigishu_blogs');
       if (storedVer === BLOG_DATA_VERSION && raw) {
