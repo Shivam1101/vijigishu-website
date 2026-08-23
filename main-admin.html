@@ -766,6 +766,7 @@
     
     document.getElementById('postAuthor').value = b.author || '';
     document.getElementById('postAuthorBio').value = b.authorBio || '';
+    document.getElementById('postAudioUrl').value = b.audioUrl || 'audio/demo-podcast.mp3';
     document.getElementById('postImage').value = b.image || '';
     document.getElementById('coverPreviewImg').src = b.image || 'images/blog-single-placeholder.png';
     document.getElementById('coverPreviewWrap').style.display = b.image ? 'block' : 'none';
@@ -786,6 +787,7 @@
     
     const author = document.getElementById('postAuthor').value.trim();
     const authorBio = document.getElementById('postAuthorBio').value.trim();
+    const audioUrl = document.getElementById('postAudioUrl').value.trim() || 'audio/demo-podcast.mp3';
     const image = document.getElementById('postImage').value.trim();
     const excerpt = document.getElementById('postExcerpt').value.trim();
     const takeaways = document.getElementById('postTakeaways').value.trim();
@@ -800,12 +802,12 @@
     if (id) {
       const idx = list.findIndex(x => x.id === id);
       if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, authorBio, image, excerpt, takeaways, content, slug, readTime };
+        list[idx] = { ...list[idx], title, category, author, authorBio, audioUrl, image, excerpt, takeaways, content, slug, readTime };
       }
     } else {
       list.unshift({
         id: 'blog-' + Date.now(),
-        title, category, author, authorBio, image, excerpt, takeaways, content, slug, date, readTime
+        title, category, author, authorBio, audioUrl, image, excerpt, takeaways, content, slug, date, readTime
       });
     }
     saveBlogs(list);
