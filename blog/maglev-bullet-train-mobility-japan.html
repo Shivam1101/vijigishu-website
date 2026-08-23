@@ -178,6 +178,21 @@
       box-shadow: 0 4px 25px rgba(13,14,46,0.03);
     }
 
+    /* Metrics Ribbon */
+    .metrics-ribbon {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 32px;
+    }
+    .metric-item { text-align: center; }
+    .metric-val { font-size: 1.25rem; font-weight: 800; color: var(--green); margin-bottom: 2px; }
+    .metric-lbl { font-size: 0.76rem; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
     .lead-paragraph {
       font-size: 1.12rem;
       font-weight: 500;
@@ -209,17 +224,47 @@
       scroll-margin-top: 110px;
     }
     
+    /* Interactive Editorial Quote */
     .editorial-quote {
+      position: relative;
       background: #FAFAFC;
       border-left: 4px solid var(--sage);
-      padding: 22px 28px;
+      padding: 24px 28px;
       border-radius: 0 16px 16px 0;
       margin: 32px 0;
+      box-shadow: 0 2px 12px rgba(13,14,46,0.02);
+    }
+    .quote-text {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1.15rem;
       color: var(--navy);
       line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .quote-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .quote-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--navy);
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quote-action-btn:hover {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
     }
     
     .takeaways-callout {
@@ -263,6 +308,121 @@
       font-weight: 800;
     }
 
+    /* FAQ Accordion */
+    .faq-section-wrap {
+      margin: 48px 0 36px;
+      border-top: 1px solid var(--border);
+      padding-top: 36px;
+      scroll-margin-top: 110px;
+    }
+    .faq-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: var(--navy);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .faq-accordion-group { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+    .faq-header {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .faq-toggle-icon { font-size: 1.2rem; font-weight: 400; color: var(--green); transition: transform 0.25s; }
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+      padding: 0 20px;
+      color: #3E3F56;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .faq-item.active { background: #FFFFFF; border-color: var(--sage); box-shadow: 0 4px 16px rgba(13,14,46,0.04); }
+    .faq-item.active .faq-content { max-height: 200px; padding: 0 20px 18px; }
+    .faq-item.active .faq-toggle-icon { transform: rotate(45deg); color: var(--navy); }
+
+    /* Related Programs Box */
+    .related-programs-box {
+      background: #F4F6F9;
+      border-radius: 18px;
+      padding: 32px;
+      margin: 40px 0 32px;
+    }
+    .related-programs-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+    .related-programs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .program-link-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.25s;
+    }
+    .program-link-card:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(56,103,58,0.1);
+    }
+    .program-link-tag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; color: var(--green); letter-spacing: 0.06em; margin-bottom: 4px; }
+    .program-link-name { font-size: 0.92rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .program-link-arrow { font-size: 0.78rem; font-weight: 700; color: var(--gray); }
+
+    /* Bottom Navigation */
+    .post-bottom-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 36px 0 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .nav-direction-card {
+      background: #FAFAFC;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 22px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.25s;
+    }
+    .nav-direction-card:hover {
+      background: var(--white);
+      border-color: var(--navy);
+      transform: translateY(-2px);
+    }
+    .nav-dir-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); }
+    .nav-dir-title { font-size: 0.88rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+
     .article-share-strip {
       display: flex;
       align-items: center;
@@ -301,7 +461,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
     .author-profile-avatar {
       width: 68px;
@@ -359,11 +519,74 @@
       font-weight: 700;
     }
 
+    /* Reading Progress Widget */
+    .progress-radial-widget {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .progress-circle-wrap { position: relative; width: 44px; height: 44px; }
+    .progress-svg { transform: rotate(-90deg); }
+    .progress-bg-circle { fill: none; stroke: #E2E8F0; stroke-width: 4; }
+    .progress-bar-circle { fill: none; stroke: var(--green); stroke-width: 4; stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.1s; stroke-linecap: round; }
+    .progress-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: var(--navy); }
+
+    /* Faculty Brochure CTA Widget */
+    .brochure-sidebar-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #17194A 100%);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 10px 25px rgba(13,14,46,0.15);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .brochure-cta-tag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; color: var(--sage); letter-spacing: 0.08em; margin-bottom: 6px; }
+    .brochure-cta-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .brochure-cta-desc { font-size: 0.8rem; color: rgba(255,255,255,0.75); margin-bottom: 18px; line-height: 1.5; }
+    .brochure-cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .brochure-cta-btn:hover { background: #2A4F2C; transform: translateY(-2px); }
+
+    /* Toast notification */
+    #copyToast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 12px 22px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      z-index: 100000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: all 0.3s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    #copyToast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
     @media (max-width: 991px) {
       .blog-layout-wrap { grid-template-columns: 1fr; }
       .editorial-content-box { padding: 28px 20px; }
       .hero-flex-container { flex-direction: column; align-items: flex-start; }
       .hero-right-actions { align-self: flex-start; }
+      .related-programs-grid, .post-bottom-nav, .metrics-ribbon { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="stylesheet" href="../css/global-components.css?v=1787475903488" />
@@ -415,7 +638,40 @@
     <main>
       <div class="editorial-content-box">
         <div class="article-rendered-body" id="articleBodyText">
-          <p class="lead-paragraph">Japan’s rail network represents the absolute pinnacle of precision mechanical engineering, fault-tolerant telemetry, and public transport safety. With zero passenger fatalities in over six decades of high-speed Shinkansen operations, it serves as the definitive case study for engineering students.</p><h2 id="sec-2">1. Physics of Superconducting Magnetic Levitation</h2><p>At the Yamanashi Maglev Test Center, engineering students witness linear motor propulsion and cryogenic superconducting magnets that suspend multi-ton train carriages 100 mm above guide tracks at speeds exceeding 500 km/h.</p><div class="editorial-quote">"High-speed transit is an interconnected ecosystem of aerodynamics, thermodynamics, and telemetry. Observing the integration of biomimetic nose cones and regenerative braking live on the test track redefines engineering education."</div><h2 id="sec-8">2. Seismic Telemetry & UrEDAS Automation</h2><p>Technical briefings explain Japan’s UrEDAS (Urgent Earthquake Detection and Alarm System), which automatically triggers emergency electromagnetic brakes on bullet trains seconds before P-waves strike ground tracks.</p><h2 id="sec-12">3. Industrial Cleanrooms & Factory Immersion</h2><p>Cohorts tour high-precision robotics assembly plants and Toyota hydrogen fuel cell laboratories, exploring how hydrogen combustion will power the zero-emission transit grids of tomorrow.</p>
+          
+    <div class="metrics-ribbon">
+      
+        <div class="metric-item">
+          <div class="metric-val">603 km/h Maglev</div>
+          <div class="metric-lbl">Speed Record</div>
+        </div>
+      
+        <div class="metric-item">
+          <div class="metric-val">0 Fatalities</div>
+          <div class="metric-lbl">Safety Track</div>
+        </div>
+      
+        <div class="metric-item">
+          <div class="metric-val">UrEDAS Seismic</div>
+          <div class="metric-lbl">Telemetry</div>
+        </div>
+      
+    </div>
+  <p class="lead-paragraph">Japan’s rail network represents the absolute pinnacle of precision mechanical engineering, fault-tolerant telemetry, and public transport safety. With zero passenger fatalities in over six decades of high-speed Shinkansen operations, it serves as the definitive case study for engineering students.</p><h2 id="sec-2">1. Physics of Superconducting Magnetic Levitation</h2><p>At the Yamanashi Maglev Test Center, engineering students witness linear motor propulsion and cryogenic superconducting magnets that suspend multi-ton train carriages 100 mm above guide tracks at speeds exceeding 500 km/h.</p>
+        <div class="editorial-quote">
+          <div class="quote-text">"High-speed transit is an interconnected ecosystem of aerodynamics, thermodynamics, and telemetry. Observing the integration of biomimetic nose cones and regenerative braking live on the test track redefines engineering education."</div>
+          <div class="quote-actions">
+            <button class="quote-action-btn" onclick="copyQuoteText(this)" title="Copy quote to clipboard">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Quote</span>
+            </button>
+            <button class="quote-action-btn" onclick="shareQuoteLinkedIn(this)" title="Share quote on LinkedIn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <span>Share Quote</span>
+            </button>
+          </div>
+        </div>
+      <h2 id="sec-8">2. Seismic Telemetry & UrEDAS Automation</h2><p>Technical briefings explain Japan’s UrEDAS (Urgent Earthquake Detection and Alarm System), which automatically triggers emergency electromagnetic brakes on bullet trains seconds before P-waves strike ground tracks.</p><h2 id="sec-12">3. Industrial Cleanrooms & Factory Immersion</h2><p>Cohorts tour high-precision robotics assembly plants and Toyota hydrogen fuel cell laboratories, exploring how hydrogen combustion will power the zero-emission transit grids of tomorrow.</p>
     <div class="takeaways-callout" id="sec-takeaways">
       <div class="takeaways-heading">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -424,6 +680,66 @@
       <ul class="takeaways-items">
         <li>Superconducting Maglev Physics: Electrodynamic suspension (EDS) enabling 603 km/h ground travel.</li><li>Biomimicry in High-Speed Rail: Kingfisher-inspired aerodynamic nose design eliminating tunnel sonic booms.</li><li>Smart Grid Automation: Real-time earthquake early-warning deceleration systems (UrEDAS).</li>
       </ul>
+    </div>
+  
+    <div class="faq-section-wrap" id="sec-faqs">
+      <h3 class="faq-main-title">Academic & Institutional FAQs</h3>
+      <div class="faq-accordion-group">
+        <div class="faq-item">
+          <button class="faq-header" onclick="toggleFaq(this)">
+            <span>How are academic credits & certifications structured for this immersion?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Every Vijigishu program is aligned with university ECTS/UGC guidelines, offering joint certificates of completion signed by international host institutions and corporate partner executives.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-header" onclick="toggleFaq(this)">
+            <span>What safety, insurance, and on-ground logistics support are provided?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>We provide 24/7 dedicated bilingual tour managers, comprehensive travel and medical insurance, vetted 4-star institutional accommodation, and private executive transit throughout the itinerary.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-header" onclick="toggleFaq(this)">
+            <span>Can this itinerary be customized for our department’s specific syllabus?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Yes. Our academic advisory team collaborates directly with Deans and Heads of Department to tailor plant visits, university lectures, and case-study workshops to match your exact semester syllabus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="related-programs-box">
+      <h3 class="related-programs-title">Explore Related Immersion Programs</h3>
+      <div class="related-programs-grid">
+        <a href="../engineering.html" class="program-link-card">
+          <div class="program-link-tag">Discipline Track</div>
+          <div class="program-link-name">Engineering Immersion</div>
+          <div class="program-link-arrow">View Curriculum →</div>
+        </a>
+        <a href="../japan.html" class="program-link-card">
+          <div class="program-link-tag">Featured Destination</div>
+          <div class="program-link-name">Japan High-Speed Rail</div>
+          <div class="program-link-arrow">Explore Itinerary →</div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="post-bottom-nav">
+      <a href="biophilic-architecture-singapore.html" class="nav-direction-card prev-card">
+        <span class="nav-dir-label">← Previous Briefing</span>
+        <span class="nav-dir-title">Engineering Living Architecture: Skyrise Greenery & Thermal Microclimates in Tropical Megacities</span>
+      </a>
+      <a href="space-stem-rocketry-school-tours.html" class="nav-direction-card next-card">
+        <span class="nav-dir-label">Next Briefing →</span>
+        <span class="nav-dir-title">Igniting Young Astrophysicists: Hands-On Rocketry & Orbital Dynamics for K-12 Innovators</span>
+      </a>
     </div>
   
         </div>
@@ -453,7 +769,22 @@
 
     <!-- SIDEBAR -->
     <aside class="single-blog-sidebar">
+      <!-- Reading Progress Circle Widget -->
       <div class="sidebar-widget">
+        <div class="progress-radial-widget">
+          <div class="progress-circle-wrap">
+            <svg class="progress-svg" width="44" height="44" viewBox="0 0 36 36">
+              <path class="progress-bg-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="progress-bar-circle" id="sidebarProgressCircle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            </svg>
+            <div class="progress-num" id="sidebarProgressPct">0%</div>
+          </div>
+          <div>
+            <div style="font-size:0.85rem; font-weight:700; color:var(--navy);">Article Progress</div>
+            <div style="font-size:0.75rem; color:var(--gray);">5 min read reading time</div>
+          </div>
+        </div>
+
         <div class="widget-title">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
           Table of Contents
@@ -476,11 +807,26 @@
       <a href="#sec-takeaways" onclick="scrollToSection(event, 'sec-takeaways')">Key Takeaways</a>
     </li>
   
+    <li class="toc-item">
+      <a href="#sec-faqs" onclick="scrollToSection(event, 'sec-faqs')">Academic FAQs</a>
+    </li>
+  
         </ul>
+      </div>
+
+      <!-- Faculty Brochure CTA Box -->
+      <div class="brochure-sidebar-cta">
+        <div class="brochure-cta-tag">Faculty & Deans</div>
+        <div class="brochure-cta-title">Curate an Immersion for Your Institution</div>
+        <div class="brochure-cta-desc">Download our comprehensive curriculum syllabus and academic partner list for Engineering.</div>
+        <a href="../engineering.html" class="brochure-cta-btn">View Program Syllabus →</a>
       </div>
     </aside>
   </div>
 </div>
+
+<!-- Toast element -->
+<div id="copyToast">Quote copied to clipboard!</div>
 
 <footer id="global-footer"></footer>
 <script src="../js/global-components.js?v=1787475903488"></script>
@@ -496,13 +842,49 @@
     }
   }
 
+  // Copy Quote Helper
+  function copyQuoteText(btn) {
+    const quoteBox = btn.closest('.editorial-quote');
+    const text = quoteBox.querySelector('.quote-text').innerText.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('Quote copied to clipboard!');
+    });
+  }
+
+  // Share Quote to LinkedIn
+  function shareQuoteLinkedIn(btn) {
+    const quoteBox = btn.closest('.editorial-quote');
+    const text = quoteBox.querySelector('.quote-text').innerText.trim();
+    const shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href);
+    window.open(shareUrl, '_blank');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('copyToast');
+    if (toast) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+  }
+
+  // FAQ Accordion Toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('active'));
+    if (!isOpen) {
+      item.classList.add('active');
+    }
+  }
+
   // Automatic Heading Indexer & Live Scroll Spy
   function autoIndexTableOfContents() {
     const content = document.getElementById('articleBodyText');
     const tocList = document.getElementById('tocList');
     if (!content || !tocList) return;
 
-    const headings = content.querySelectorAll('h2, h3, .takeaways-callout');
+    const headings = content.querySelectorAll('h2, h3, .takeaways-callout, .faq-section-wrap');
     if (!headings.length) return;
 
     tocList.innerHTML = '';
@@ -513,6 +895,9 @@
       if (h.classList.contains('takeaways-callout')) {
         headingId = headingId || 'sec-takeaways';
         label = 'Key Takeaways';
+      } else if (h.classList.contains('faq-section-wrap')) {
+        headingId = 'sec-faqs';
+        label = 'Academic FAQs';
       } else {
         headingId = headingId || ('heading-sec-' + (idx + 1));
       }
@@ -552,13 +937,21 @@
 
   document.addEventListener('DOMContentLoaded', autoIndexTableOfContents);
 
-  // Reading progress bar
+  // Reading progress bar & circular indicator
   window.addEventListener('scroll', () => {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
+    const scrolled = Math.min(100, Math.max(0, (winScroll / height) * 100));
+    
     const bar = document.getElementById('readingProgressBar');
     if (bar) bar.style.width = scrolled + '%';
+
+    const circle = document.getElementById('sidebarProgressCircle');
+    const pct = document.getElementById('sidebarProgressPct');
+    if (circle && pct) {
+      circle.style.strokeDashoffset = 100 - scrolled;
+      pct.textContent = Math.round(scrolled) + '%';
+    }
   });
 
   // Comprehensive Institutional PDF Generator (Captures Headings, Paragraphs, Quotes & Key Takeaways)
@@ -655,7 +1048,7 @@
 
             y += boxHeight + 16;
           } else if (el.classList.contains('editorial-quote')) {
-            const quoteText = el.innerText.trim();
+            const quoteText = el.querySelector('.quote-text')?.innerText.trim() || el.innerText.trim();
             const quoteLines = doc.splitTextToSize('"' + quoteText.replace(/^"/, '').replace(/"$/, '') + '"', contentWidth - 28);
             const quoteBoxHeight = (quoteLines.length * 14) + 18;
 
