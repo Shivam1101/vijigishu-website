@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>404 - Page Not Found – Vijigishu</title>
   <meta name="description" content="The page you are looking for doesn't exist or has been moved. Return to Vijigishu Educational Travel homepage." />
   <link rel="canonical" href="https://vijigishu.co.in/404" />
@@ -24,7 +24,6 @@
       --white: #FFFFFF;
       --gray: #5A5B70;
       --light-gray: #94A3B8;
-      --off: #F8FAF9;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
     *, *::before, *::after {
@@ -38,33 +37,25 @@
       min-height: 100dvh;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--navy);
       background: radial-gradient(circle at 50% 12%, rgba(159, 194, 140, 0.22) 0%, rgba(248, 250, 249, 0.98) 55%, #F8FAF9 100%);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      overflow-x: hidden;
-      text-align: center;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
     }
     a { text-decoration: none; color: inherit; }
 
     /* Top Brand Header */
     .top-header {
       width: 100%;
-      padding: 24px 20px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      padding: 32px 24px 0;
+      text-align: center;
       flex-shrink: 0;
-      z-index: 10;
     }
     .brand-logo img {
-      height: 44px;
+      height: 48px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s var(--ease);
@@ -75,92 +66,73 @@
 
     /* Main Error Center Content Area */
     .main-center-wrapper {
-      width: 100%;
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px 20px;
-      z-index: 5;
-    }
-
-    .error-content {
-      max-width: 780px;
-      width: 100%;
+      padding: 40px 24px;
       text-align: center;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      z-index: 5;
     }
 
     /* 404 Numeral */
     .code-404 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(3.2rem, 5.8vw, 5rem);
+      font-size: clamp(4rem, 8vw, 6.5rem);
       font-weight: 800;
       line-height: 1;
-      letter-spacing: -1.5px;
-      margin-bottom: 6px;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
       background: linear-gradient(135deg, #0D0E2E 0%, #38673A 55%, #D4A840 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
 
-    /* Main Single-row Heading */
+    /* Main Heading */
     .error-title {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.28rem, 2.6vw, 2.1rem);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
       color: var(--navy);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       line-height: 1.25;
       font-weight: 700;
       letter-spacing: -0.02em;
-      text-align: center;
-      display: inline-block;
-      white-space: nowrap;
     }
     .error-title span {
       color: var(--green);
       font-style: italic;
       font-weight: 700;
-      display: inline;
     }
 
-    /* Single-line Subtitle */
+    /* Subtitle */
     .error-desc {
-      font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--gray);
-      font-size: clamp(0.82rem, 1.2vw, 0.94rem);
-      line-height: 1.48;
-      margin: 0 auto 18px;
-      max-width: 580px;
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      line-height: 1.6;
+      margin: 0 auto 24px;
+      max-width: 600px;
       font-weight: 500;
-      text-align: center;
     }
 
-    /* Compact Premium Action Buttons */
+    /* Premium Action Buttons */
     .btn-group {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin: 0 auto;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 9px 20px;
+      gap: 8px;
+      padding: 12px 28px;
       border-radius: 100px;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 1rem;
       letter-spacing: 0.01em;
       transition: all 0.25s var(--ease);
       cursor: pointer;
@@ -170,18 +142,17 @@
     .btn-primary {
       background: var(--navy);
       color: var(--white);
-      box-shadow: 0 6px 16px rgba(13, 14, 46, 0.18);
+      box-shadow: 0 6px 16px rgba(13, 14, 46, 0.15);
     }
     .btn-primary:hover {
       background: var(--green);
       transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(56, 103, 58, 0.28);
+      box-shadow: 0 10px 22px rgba(56, 103, 58, 0.25);
     }
     .btn-outline {
       background: var(--white);
       color: var(--navy);
       border: 1.5px solid rgba(13, 14, 46, 0.15);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
     .btn-outline:hover {
       border-color: var(--navy);
@@ -193,105 +164,80 @@
     /* Edge-to-Edge Mascot Section */
     .mascot-wide-wrapper {
       width: 100%;
-      width: 100vw;
-      flex-shrink: 0;
-      min-height: 150px;
-      max-height: 38vh;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
+      margin-top: auto;
+      text-align: center;
+      line-height: 0;
     }
-
     .mascot-cutout-img {
       width: 100%;
-      width: 100vw;
-      height: 100%;
-      min-height: 150px;
-      max-height: 38vh;
-      display: block;
-      object-fit: cover;
+      max-width: 2560px;
+      height: auto;
+      max-height: 40vh;
+      object-fit: contain; /* Prevents top cropping on desktop */
       object-position: center bottom;
-      image-rendering: -webkit-optimize-contrast;
-      position: relative;
-      z-index: 2;
+      display: inline-block;
     }
 
     /* Minimal Footer */
     .bottom-bar {
       width: 100%;
       text-align: center;
-      padding: 6px 20px 12px;
-      font-size: 0.74rem;
+      padding: 12px 20px 16px;
+      font-size: 0.85rem;
       font-weight: 500;
       color: var(--light-gray);
       flex-shrink: 0;
-      z-index: 10;
     }
 
-    /* ─── MOBILE SPECIFIC REFINEMENT (<= 768px) ─── */
+    /* ─── STANDARD MOBILE PRACTICES (<= 768px) ─── */
     @media (max-width: 768px) {
-      .top-header { padding: 16px 16px 0; }
-      .brand-logo img { height: 36px; }
-      .main-center-wrapper { padding: 8px 16px; }
+      .top-header { padding: 24px 16px 0; }
+      .brand-logo img { height: 44px; } /* Larger logo on mobile */
+      
+      .main-center-wrapper { padding: 32px 16px 16px; }
       
       .code-404 {
-        font-size: 3.4rem;
-        margin-bottom: 4px;
+        font-size: 4.5rem; /* Massive, legible impact */
+        margin-bottom: 8px;
       }
       .error-title {
-        font-size: 1.15rem;
-        letter-spacing: -0.01em;
-        white-space: nowrap;
-        margin-bottom: 6px;
+        font-size: 1.7rem; /* Standard H1 sizing */
+        white-space: normal; /* Allow wrapping naturally */
+        margin-bottom: 12px;
       }
       .error-desc {
-        font-size: 0.8rem;
-        line-height: 1.45;
-        max-width: 320px;
-        margin-bottom: 14px;
+        font-size: 1.05rem; /* Standard readable paragraph */
+        line-height: 1.5;
+        max-width: 95%;
+        margin-bottom: 32px;
       }
+      
+      /* Stack buttons for easy thumb tapping */
       .btn-group {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        width: auto;
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        gap: 12px;
       }
       .btn {
-        padding: 8px 16px;
-        font-size: 0.75rem;
-        white-space: nowrap;
+        width: 100%;
+        padding: 14px 24px; /* Larger touch targets */
+        font-size: 1rem;
       }
-      .mascot-wide-wrapper {
-        min-height: 140px;
-        max-height: 32vh;
-      }
+      
+      /* Mascot optimization for portrait */
       .mascot-cutout-img {
-        min-height: 140px;
-        max-height: 32vh;
-        object-fit: cover;
-        object-position: center bottom;
+        height: 32vh; /* Specific height ratio */
+        min-height: 200px;
+        object-fit: cover; /* Trims long side wires, focuses purely on the center lion */
       }
-      .bottom-bar {
-        padding: 6px 16px 10px;
-        font-size: 0.68rem;
-      }
-    }
-
-    /* Extra Small Phones (<= 380px) */
-    @media (max-width: 380px) {
-      .brand-logo img { height: 32px; }
-      .code-404 { font-size: 2.9rem; }
-      .error-title { font-size: 1.02rem; }
-      .error-desc { font-size: 0.76rem; max-width: 280px; }
-      .btn { padding: 7px 14px; font-size: 0.72rem; }
+      
+      .bottom-bar { font-size: 0.8rem; padding-bottom: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Centered Brand Header -->
   <header class="top-header">
     <a href="/" class="brand-logo" aria-label="Vijigishu Home">
       <img 
@@ -306,28 +252,24 @@
     </a>
   </header>
 
-  <!-- Dead-Center Content Section -->
   <main class="main-center-wrapper">
-    <div class="error-content">
-      <div class="code-404">404</div>
-      <h1 class="error-title">
-        Oops! Looks like the <span>Connection is Lost</span>
-      </h1>
-      <p class="error-desc">We couldn't connect you to this page. The link may be broken, outdated, or moved.</p>
-      
-      <div class="btn-group">
-        <a href="/" class="btn btn-primary">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          Back to Home
-        </a>
-        <a href="immersion-programs" class="btn btn-outline">
-          Explore Programs →
-        </a>
-      </div>
+    <div class="code-404">404</div>
+    <h1 class="error-title">
+      Oops! Looks like the <span>Connection is Lost</span>
+    </h1>
+    <p class="error-desc">We couldn't connect you to this page. The link may be broken, outdated, or moved.</p>
+    
+    <div class="btn-group">
+      <a href="/" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Back to Home
+      </a>
+      <a href="immersion-programs" class="btn btn-outline">
+        Explore Programs →
+      </a>
     </div>
   </main>
 
-  <!-- Fullscreen Edge-to-Edge Mascot Section -->
   <div class="mascot-wide-wrapper">
     <img 
       src="images/404-mascot.png" 
@@ -341,7 +283,6 @@
     />
   </div>
 
-  <!-- Minimal Footer -->
   <footer class="bottom-bar">
     © <span class="year"></span> Vijigishu Education Pvt. Ltd. All rights reserved.
   </footer>
