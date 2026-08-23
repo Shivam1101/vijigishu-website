@@ -157,18 +157,7 @@
     /* Content Cards & Tables */
     .content-box { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
     .card-box-title { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; }
-    .admin-item-card { background: var(--white); border-radius: 14px; border: 1px solid var(--border); box-shadow: 0 3px 12px rgba(0,0,0,0.03); transition: transform .3s; }
-    .admin-item-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
-
-    /* General Form Modals */
-    .modal-backdrop {
-      position: fixed; inset: 0; background: rgba(13,14,46,.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px;
-      opacity: 0; pointer-events: none; transition: opacity .3s var(--ease);
-    }
-    .modal-backdrop.active { opacity: 1; pointer-events: auto; }
-    .modal-card { background: var(--white); border-radius: 24px; padding: 28px; max-width: 520px; width: 100%; box-shadow: 0 30px 80px rgba(0,0,0,.3); }
-
+    
     .upload-dropzone { border: 2px dashed #CBD5E1; border-radius: 12px; padding: 18px 12px; text-align: center; background: #F8FAFC; cursor: pointer; transition: all .3s; position: relative; margin-bottom: 10px; }
     .upload-dropzone:hover { border-color: var(--green); background: rgba(56,103,58,0.03); }
     .upload-dropzone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
@@ -235,44 +224,30 @@
       line-height: 1.55;
       margin-bottom: 24px;
     }
-    .delete-modal-msg strong {
-      color: var(--navy);
-      font-weight: 700;
-    }
-    .delete-modal-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .delete-modal-msg strong { color: var(--navy); font-weight: 700; }
+    .delete-modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .btn-delete-confirm {
       background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
-      color: #FFFFFF;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.84rem;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35);
-      transition: all .2s;
+      color: #FFFFFF; border: none; padding: 11px 18px; border-radius: 100px;
+      font-weight: 700; font-size: 0.84rem; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.35); transition: all .2s;
     }
-    .btn-delete-confirm:hover {
-      background: #B91C1C;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
-    }
+    .btn-delete-confirm:hover { background: #B91C1C; transform: translateY(-2px); }
     .btn-delete-cancel {
-      background: #F1F5F9;
-      color: var(--navy);
-      border: 1px solid var(--border);
-      padding: 11px 18px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.84rem;
-      cursor: pointer;
-      transition: all .2s;
+      background: #F1F5F9; color: var(--navy); border: 1px solid var(--border);
+      padding: 11px 18px; border-radius: 100px; font-weight: 700; font-size: 0.84rem; cursor: pointer; transition: all .2s;
     }
     .btn-delete-cancel:hover { background: #E2E8F0; }
+
+    /* Helper Snippet Toolbars */
+    .format-helper-bar {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px;
+    }
+    .format-btn {
+      background: #F1F5F9; border: 1px solid var(--border); color: var(--navy);
+      padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s;
+    }
+    .format-btn:hover { background: var(--navy); color: #fff; }
   </style>
 </head>
 <body>
@@ -301,17 +276,17 @@
           <span>Blog Manager</span>
         </a>
 
-        <a href="admin-gallery.html" class="menu-btn " title="Gallery Manager">
+        <a href="admin-gallery.html" class="menu-btn" title="Gallery Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           <span>Gallery Manager</span>
         </a>
 
-        <a href="admin-testimonials.html" class="menu-btn " title="Testimonials Manager">
+        <a href="admin-testimonials.html" class="menu-btn" title="Testimonials Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           <span>Testimonials</span>
         </a>
 
-        <a href="admin-facilitators.html" class="menu-btn " title="Academic Facilitators">
+        <a href="admin-facilitators.html" class="menu-btn" title="Academic Facilitators">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           <span>Facilitators</span>
         </a>
@@ -324,7 +299,7 @@
     <div class="admin-top-bar">
       <div class="admin-title">
         <h1>Blog <em>Management</em></h1>
-        <p>Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.</p>
+        <p>Create, edit, and publish dynamic articles synchronized with the live blog and single article templates.</p>
       </div>
 
       <div class="top-right-column">
@@ -344,113 +319,150 @@
         </div>
 
         <div class="top-actions-wrap">
-          
-    <a href="blog.html" class="top-live-btn" target="_blank">👁 View Live Blog ↗</a>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
-  
+          <a href="blog.html" class="top-live-btn" target="_blank">👁 View Live Blog ↗</a>
+          <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
         </div>
       </div>
     </div>
 
-    
-<!-- Stats Overview -->
-<div class="content-box" style="margin-bottom: 24px;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--navy);" id="totalBlogsCount">0</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Total Published Blogs</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--green);" id="categoriesCount">5</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Active Categories</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--sage);">Synchronized</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Storage Engine</div>
-    </div>
-  </div>
-</div>
-
-<!-- Blog Editor Modal / Form -->
-<div class="content-box" id="editorCard" style="display: none; margin-bottom: 24px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
-    <h2 id="editorHeading" style="font-family:'Playfair Display',serif; font-size: 1.35rem; color:var(--navy);">Create New <em>Article</em></h2>
-    <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
-  </div>
-
-  <form id="blogForm" onsubmit="handleBlogSubmit(event)">
-    <input type="hidden" id="postId" />
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Blog Title *</label>
-        <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Why Global Immersion Programs are Essential..." required />
-      </div>
-
-      <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
-        <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
-          <option value="Management">Management</option>
-          <option value="Architecture">Architecture &amp; Design</option>
-          <option value="Engineering">Engineering</option>
-          <option value="School Programs">School Tours</option>
-          <option value="Global Trends">Global Trends</option>
-        </select>
-      </div>
-
-      <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Author Name *</label>
-        <input type="text" id="postAuthor" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Dr. Vijaya Kumar" required />
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Cover Image URL *</label>
-        <input type="text" id="postImage" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="images/mangement-2-scaled.webp" required />
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Short Excerpt *</label>
-        <textarea id="postExcerpt" rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Brief overview for cards..." required></textarea>
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Full Article Content (Paragraphs) *</label>
-        <textarea id="postBodyContent" rows="7" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write complete article paragraphs here..." required></textarea>
+    <!-- Stats Overview -->
+    <div class="content-box" style="margin-bottom: 24px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--navy);" id="totalBlogsCount">0</div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Total Published Blogs</div>
+        </div>
+        <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--green);" id="categoriesCount">5</div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Active Categories</div>
+        </div>
+        <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
+          <div style="font-size: 1.8rem; font-weight: 800; color: var(--sage);">Sync Enabled</div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Storage &amp; TOC Engine</div>
+        </div>
       </div>
     </div>
 
-    <div style="display: flex; justify-content: flex-end; gap: 10px;">
-      <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
-      <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
+    <!-- Comprehensive Blog Editor Form (Full Control Center) -->
+    <div class="content-box" id="editorCard" style="display: none; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+        <h2 id="editorHeading" style="font-family:'Playfair Display',serif; font-size: 1.35rem; color:var(--navy);">Create New <em>Article</em></h2>
+        <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
+      </div>
+
+      <form id="blogForm" onsubmit="handleBlogSubmit(event)">
+        <input type="hidden" id="postId" />
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <!-- Title -->
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Blog Title *</label>
+            <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Why Global Immersion Programs are Essential for Management Students" required />
+          </div>
+
+          <!-- Category -->
+          <div>
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
+            <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
+              <option value="Management">Management</option>
+              <option value="Architecture">Architecture &amp; Design</option>
+              <option value="Engineering">Engineering</option>
+              <option value="School Programs">School Tours</option>
+              <option value="Global Trends">Global Trends</option>
+            </select>
+          </div>
+
+          <!-- Author Name -->
+          <div>
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Author Name *</label>
+            <input type="text" id="postAuthor" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Dr. Vijaya Kumar" required />
+          </div>
+
+          <!-- Author Bio -->
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Author Bio Description (Displays in Article Footer Card)</label>
+            <input type="text" id="postAuthorBio" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Senior Academic Advisor & Global Immersion Specialist at Vijigishu Educational Travel." />
+          </div>
+
+          <!-- Cover Image File Upload Dropzone + Path -->
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Featured Cover Image * (Drag &amp; Drop or Upload)</label>
+            <div class="upload-dropzone" style="margin-bottom: 8px;">
+              <input type="file" id="coverFileInput" accept="image/*" onchange="handleCoverFileUpload(event)" />
+              <div style="font-size: 1.5rem; margin-bottom: 4px;">📸</div>
+              <div style="font-size: 0.82rem; font-weight: 600; color: var(--navy);">Click or Drag to Upload Cover Image</div>
+              <div style="font-size: 0.72rem; color: var(--gray);">PNG, JPG, WebP</div>
+            </div>
+            <input type="text" id="postImage" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: images/mangement-2-scaled.webp" required />
+            <div id="coverPreviewWrap" style="display: none; text-align: center; background: #000; padding: 6px; border-radius: 8px; margin-top: 8px;">
+              <img id="coverPreviewImg" src="" style="max-height: 120px; max-width: 100%; object-fit: contain;" />
+            </div>
+          </div>
+
+          <!-- Short Excerpt -->
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Short Teaser Excerpt * (For Cards &amp; Hero Subtitle)</label>
+            <textarea id="postExcerpt" rows="2" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Brief overview for cards..." required></textarea>
+          </div>
+
+          <!-- Key Takeaways Callout Field -->
+          <div style="grid-column: 1 / -1;">
+            <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Key Takeaways Callout (One bullet point per line)</label>
+            <textarea id="postTakeaways" rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Direct Corporate Engagement: Face-to-face dialogues with multinational leaders.&#10;Operational Excellence: Firsthand observation of Kaizen methodology.&#10;Global Financial Literacy: Deep dives into ASEAN fintech ecosystems."></textarea>
+          </div>
+
+          <!-- Article Content Builder with Quick Insert Helpers -->
+          <div style="grid-column: 1 / -1;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy);">Article Paragraphs &amp; Subheadings * (Supports Table of Contents headings)</label>
+              <div id="liveWordCount" style="font-size: 0.75rem; color: var(--green); font-weight: 700;">⏱ 0 min read (0 words)</div>
+            </div>
+
+            <!-- Formatting helper snippets -->
+            <div class="format-helper-bar">
+              <span style="font-size: 0.72rem; color: var(--gray); font-weight: 600;">Insert Helper:</span>
+              <button type="button" class="format-btn" onclick="insertSnippet('h2')">+ Add H2 Heading (TOC)</button>
+              <button type="button" class="format-btn" onclick="insertSnippet('quote')">+ Add Pullquote</button>
+              <button type="button" class="format-btn" onclick="insertSnippet('img')">+ Add Inline Image</button>
+            </div>
+
+            <textarea id="postBodyContent" rows="9" oninput="updateLiveWordCount()" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write full article content. Use ## for section headings that appear in the Table of Contents..." required></textarea>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--border); padding-top: 16px;">
+          <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
+          <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
 
-<!-- Blog Table List -->
-<div class="content-box">
-  <div class="card-box-title">
-    <span>Published Articles (<span id="tableCount">0</span>)</span>
-  </div>
+    <!-- Blog Table List -->
+    <div class="content-box">
+      <div class="card-box-title">
+        <span>Published Articles (<span id="tableCount">0</span>)</span>
+      </div>
 
-  <div style="overflow-x: auto;">
-    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
-      <thead>
-        <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="blogTableBody"></tbody>
-    </table>
-  </div>
-</div>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+          <thead>
+            <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
+              <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="blogTableBody"></tbody>
+        </table>
+      </div>
+    </div>
 
   </main>
 </div>
 
-<!-- Custom Delete Confirmation Modal (Native Confirm Replacement) -->
+<!-- Custom Delete Confirmation Modal -->
 <div class="delete-modal-backdrop" id="deleteConfirmModal">
   <div class="delete-modal-card">
     <div class="delete-icon-badge">
@@ -523,9 +535,49 @@
     }
     closeCustomDeleteModal();
   }
-</script>
 
-<script>
+  // Cover Image File Upload Handler
+  function handleCoverFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const dataUrl = evt.target.result;
+      document.getElementById('postImage').value = dataUrl;
+      document.getElementById('coverPreviewImg').src = dataUrl;
+      document.getElementById('coverPreviewWrap').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Helper Snippet Inserter
+  function insertSnippet(type) {
+    const textarea = document.getElementById('postBodyContent');
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    let snippet = '';
+
+    if (type === 'h2') {
+      snippet = '\n\n## New Section Heading\n';
+    } else if (type === 'quote') {
+      snippet = '\n\n> "Tell me and I forget. Teach me and I remember. Involve me and I learn." — Benjamin Franklin\n';
+    } else if (type === 'img') {
+      snippet = '\n\n![Executive Masterclass](images/Random-1.webp)\n*Students attending boardroom workshop*\n';
+    }
+
+    textarea.value = textarea.value.substring(0, start) + snippet + textarea.value.substring(end);
+    textarea.focus();
+    updateLiveWordCount();
+  }
+
+  // Live Word Count & Reading Time Estimator
+  function updateLiveWordCount() {
+    const text = document.getElementById('postBodyContent').value || '';
+    const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const mins = Math.max(1, Math.ceil(words / 190));
+    document.getElementById('liveWordCount').textContent = `⏱ ${mins} min read (${words} words)`;
+  }
+
   const DEFAULT_BLOGS = [
     {
       id: "blog-1",
@@ -533,11 +585,13 @@
       slug: "why-global-immersion-essential-management",
       category: "Management",
       author: "Dr. Vijaya Kumar",
+      authorBio: "Senior Academic Advisor & Global Immersion Specialist at Vijigishu Educational Travel.",
       date: "Aug 18, 2026",
       readTime: "5 min read",
       image: "images/mangement-2-scaled.webp",
       excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
-      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
+      takeaways: "Direct Corporate Engagement: Face-to-face dialogues with multinational leaders.\nOperational Excellence: Firsthand observation of Kaizen methodology.\nGlobal Financial Literacy: Deep dives into ASEAN fintech ecosystems.",
+      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms.\n\n## 1. Experiential Exposure in World Financial Hubs\n\nDuring our Singapore & Europe Management Immersion programs, students engage in closed-door sessions with executive directors at global headquarters such as Boeing Regional HQ, Mercedes-Benz, and the Frankfurt Stock Exchange. Seeing trading floors live and hearing decision-makers analyze risk transforms student perspectives from passive theoretical observers to active industry strategists.\n\n## 2. Developing Cross-Cultural Leadership Intelligence\n\nNavigating international business requires cultural empathy. Interacting with faculties at Paris School of Business and Politecnico di Milano gives young leaders the confidence to negotiate, pitch, and collaborate in multicultural teams.\n\n## 3. Bridging Classroom Theory with Industry Reality\n\nExperiential travel does not replace traditional curriculum; it amplifies it. When students return to their home campuses after presenting business model canvases to international mentors, their grasp of economics, strategic management, and marketing reaches an entirely new dimension."
     },
     {
       id: "blog-2",
@@ -545,10 +599,12 @@
       slug: "observing-scale-bioclimatic-architecture-singapore-japan",
       category: "Architecture",
       author: "Nakul Jadav",
+      authorBio: "Architectural Lead & Cultural Documentation Specialist.",
       date: "Aug 12, 2026",
       readTime: "6 min read",
       image: "images/archi-scaled.webp",
       excerpt: "From Le Corbusier's modernism to Gardens by the Bay's vertical biophilia, explore how architectural study tours redefine spatial storytelling.",
+      takeaways: "Scale & Materiality: Documenting structural innovations across Tokyo and Singapore.\nBioclimatic Design: Sustainable passive cooling and vertical greenery studies.",
       content: "Architecture is best studied through sight, sound, and touch. Observing structural engineering, materiality, and bioclimatic ventilation in person provides insights no drawing board can replicate."
     }
   ];
@@ -585,8 +641,9 @@
         <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.author)}</td>
         <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.date)}</td>
         <td style="padding: 12px 14px; text-align: right;">
-          <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="editBlog('${b.id}')">✏️ Edit</button>
-          <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 6px;" onclick="deleteBlog('${b.id}', '${escapeHtml(b.title)}')">🗑 Delete</button>
+          <a href="blog-single.html?id=${b.id}" target="_blank" class="btn btn-outline" style="padding: 4px 8px; font-size: 0.72rem; margin-right: 4px;" title="Preview live article">👁 Preview</a>
+          <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.72rem;" onclick="editBlog('${b.id}')">✏️ Edit</button>
+          <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.72rem; margin-left: 4px;" onclick="deleteBlog('${b.id}', '${escapeHtml(b.title)}')">🗑 Delete</button>
         </td>
       </tr>
     `).join('');
@@ -597,11 +654,16 @@
     document.getElementById('postTitle').value = '';
     document.getElementById('postCategory').value = 'Management';
     document.getElementById('postAuthor').value = 'Vijigishu Team';
+    document.getElementById('postAuthorBio').value = 'Academic Coordinator at Vijigishu Educational Travel.';
     document.getElementById('postImage').value = 'images/mangement-2-scaled.webp';
+    document.getElementById('coverPreviewImg').src = 'images/mangement-2-scaled.webp';
+    document.getElementById('coverPreviewWrap').style.display = 'block';
     document.getElementById('postExcerpt').value = '';
+    document.getElementById('postTakeaways').value = '';
     document.getElementById('postBodyContent').value = '';
     document.getElementById('editorHeading').innerHTML = 'Create New <em>Article</em>';
     document.getElementById('editorCard').style.display = 'block';
+    updateLiveWordCount();
     window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
   }
 
@@ -616,11 +678,16 @@
     document.getElementById('postTitle').value = b.title || '';
     document.getElementById('postCategory').value = b.category || 'Management';
     document.getElementById('postAuthor').value = b.author || '';
+    document.getElementById('postAuthorBio').value = b.authorBio || '';
     document.getElementById('postImage').value = b.image || '';
+    document.getElementById('coverPreviewImg').src = b.image || 'images/Singapore.webp';
+    document.getElementById('coverPreviewWrap').style.display = b.image ? 'block' : 'none';
     document.getElementById('postExcerpt').value = b.excerpt || '';
+    document.getElementById('postTakeaways').value = b.takeaways || '';
     document.getElementById('postBodyContent').value = b.content || (b.blocks ? b.blocks.map(x => x.content).join('\n\n') : '');
     document.getElementById('editorHeading').innerHTML = 'Edit <em>Article</em>';
     document.getElementById('editorCard').style.display = 'block';
+    updateLiveWordCount();
     window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
   }
 
@@ -630,34 +697,38 @@
     const title = document.getElementById('postTitle').value.trim();
     const category = document.getElementById('postCategory').value;
     const author = document.getElementById('postAuthor').value.trim();
+    const authorBio = document.getElementById('postAuthorBio').value.trim();
     const image = document.getElementById('postImage').value.trim();
     const excerpt = document.getElementById('postExcerpt').value.trim();
+    const takeaways = document.getElementById('postTakeaways').value.trim();
     const content = document.getElementById('postBodyContent').value.trim();
 
     const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const words = content.split(/\s+/).filter(w => w.length > 0).length;
+    const readTime = `${Math.max(1, Math.ceil(words / 190))} min read`;
 
     const list = getBlogs();
     if (id) {
       const idx = list.findIndex(x => x.id === id);
       if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, image, excerpt, content, slug };
+        list[idx] = { ...list[idx], title, category, author, authorBio, image, excerpt, takeaways, content, slug, readTime };
       }
     } else {
       list.unshift({
         id: 'blog-' + Date.now(),
-        title, category, author, image, excerpt, content, slug, date, readTime: '5 min read'
+        title, category, author, authorBio, image, excerpt, takeaways, content, slug, date, readTime
       });
     }
     saveBlogs(list);
     hideEditor();
-    showToast('Article published successfully!');
+    showToast('Article published & synchronized successfully!');
   }
 
   function deleteBlog(id, title) {
     openCustomDeleteModal(
       'Delete Article?',
-      `Are you sure you want to permanently delete <strong>"${escapeHtml(title)}"</strong>? This action cannot be undone.`,
+      `Are you sure you want to permanently delete <strong>"${escapeHtml(title)}"</strong>? This cannot be undone.`,
       () => {
         saveBlogs(getBlogs().filter(x => x.id !== id));
         showToast('Article deleted.');
@@ -667,6 +738,5 @@
 
   document.addEventListener('DOMContentLoaded', renderBlogTable);
 </script>
-
 </body>
 </html>

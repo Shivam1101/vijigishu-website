@@ -957,6 +957,48 @@
     }
   ];
 
+  function parseMarkdownContent(rawText) {
+    if (!rawText) return '';
+    const lines = rawText.split('\n');
+    let htmlOut = '';
+    let inList = false;
+
+    lines.forEach((line, idx) => {
+      const trimmed = line.trim();
+      if (!trimmed) {
+        if (inList) { htmlOut += '</ul>'; inList = false; }
+        return;
+      }
+
+      if (trimmed.startsWith('### ')) {
+        if (inList) { htmlOut += '</ul>'; inList = false; }
+        const text = trimmed.substring(4);
+        htmlOut += `<h3 id="sec-sub-${idx}">${text}</h3>`;
+      } else if (trimmed.startsWith('## ')) {
+        if (inList) { htmlOut += '</ul>'; inList = false; }
+        const text = trimmed.substring(3);
+        htmlOut += `<h2 id="sec-${idx}">${text}</h2>`;
+      } else if (trimmed.startsWith('> ')) {
+        if (inList) { htmlOut += '</ul>'; inList = false; }
+        const text = trimmed.substring(2);
+        htmlOut += `<div class="editorial-quote">${text}</div>`;
+      } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+        if (!inList) { htmlOut += '<ul style="margin: 16px 0; padding-left: 24px; color: var(--navy);">'; inList = true; }
+        htmlOut += `<li style="margin-bottom: 6px;">${trimmed.substring(2)}</li>`;
+      } else {
+        if (inList) { htmlOut += '</ul>'; inList = false; }
+        if (idx === 0) {
+          htmlOut += `<p class="lead-paragraph">${trimmed}</p>`;
+        } else {
+          htmlOut += `<p>${trimmed}</p>`;
+        }
+      }
+    });
+
+    if (inList) htmlOut += '</ul>';
+    return htmlOut;
+  }
+
   function loadSingleBlog() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id') || 'blog-1';
@@ -976,34 +1018,39 @@
     if (post.excerpt) document.getElementById('articleExcerpt').textContent = post.excerpt;
     document.getElementById('articleAuthorName').textContent = post.author || 'Vijigishu Editorial';
     document.getElementById('authorProfileName').textContent = post.author || 'Vijigishu Editorial';
+    if (post.authorBio) {
+      document.querySelector('.author-profile-info p').textContent = post.authorBio;
+    }
     document.getElementById('articleDateText').textContent = post.date || 'Aug 2026';
     
     if (post.image) {
       document.getElementById('heroBackdropImage').src = post.image;
     }
 
+    // Render Body Content
     if (post.content) {
-      const paragraphs = post.content.split('\n\n').filter(p => p.trim());
-      if (paragraphs.length > 0) {
-        document.getElementById('articleBodyText').innerHTML = `
-          <p class="lead-paragraph">${paragraphs[0]}</p>
-          ${paragraphs.slice(1).map((p, i) => `
-            ${i === 1 ? '<h2 id="sec-deeper-insights">Deepening Strategic Intelligence</h2>' : ''}
-            <p>${p}</p>
-          `).join('')}
-          <div class="takeaways-callout">
-            <div class="takeaways-heading">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Key Learning Takeaways
+      let contentHtml = parseMarkdownContent(post.content);
+
+      // Render Key Takeaways callout if present
+      if (post.takeaways) {
+        const takeawayBullets = post.takeaways.split('\n').filter(t => t.trim());
+        if (takeawayBullets.length > 0) {
+          const takeawaysHtml = `
+            <div class="takeaways-callout">
+              <div class="takeaways-heading">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Key Learning Takeaways
+              </div>
+              <ul class="takeaways-items">
+                ${takeawayBullets.map(tb => `<li>${tb.trim()}</li>`).join('')}
+              </ul>
             </div>
-            <ul class="takeaways-items">
-              <li>Firsthand global exposure bridges theory and practice.</li>
-              <li>Direct executive interactions cultivate international leadership confidence.</li>
-              <li>Experiential learning expands academic horizons across 30+ countries.</li>
-            </ul>
-          </div>
-        `;
+          `;
+          contentHtml += takeawaysHtml;
+        }
       }
+
+      document.getElementById('articleBodyText').innerHTML = contentHtml;
     }
 
     // Auto calculate read time
@@ -1012,20 +1059,6 @@
 
     // Build Table of Contents
     generateTableOfContents();
-  }
-
-  function shareWhatsApp() {
-    window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href));
-  }
-  function shareLinkedIn() {
-    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href));
-  }
-  function shareTwitter() {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '&url=' + encodeURIComponent(window.location.href));
-  }
-  function copyArticleLink() {
-    navigator.clipboard.writeText(window.location.href);
-    alert('Article link copied to clipboard!');
   }
 
   document.addEventListener('DOMContentLoaded', loadSingleBlog);
