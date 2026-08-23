@@ -574,6 +574,7 @@
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -624,9 +625,9 @@
         </button>
 
         <!-- Feature 3: Download / Print Article as PDF -->
-        <button class="pdf-download-btn" onclick="window.print()" title="Print or Save Article as PDF Briefing">
+        <button class="pdf-download-btn" id="pdfExportBtn" onclick="generateEditorialPDF()" title="Download PDF Executive Briefing">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Save PDF Briefing
+          <span id="pdfBtnLabel">Save PDF Briefing</span>
         </button>
 
         <!-- Author Strip -->
@@ -1059,6 +1060,96 @@
 
     // Build Table of Contents
     generateTableOfContents();
+  }
+
+  
+  // Feature 3: Direct PDF Generation (Excludes global header, footer, sidebar, CTA)
+  function generateEditorialPDF() {
+    const btn = document.getElementById('pdfExportBtn');
+    const label = document.getElementById('pdfBtnLabel');
+    if (label) label.textContent = 'Generating PDF...';
+    if (btn) btn.style.opacity = '0.7';
+
+    const title = document.getElementById('articleTitle')?.innerText || 'Vijigishu Academic Briefing';
+    const category = document.getElementById('articleCategoryBadge')?.innerText || 'Academic Immersion';
+    const author = document.getElementById('articleAuthorName')?.innerText || 'Vijigishu Editorial';
+    const date = document.getElementById('articleDateText')?.innerText || 'Aug 2026';
+    const readTime = document.getElementById('articleCalcTime')?.innerText || '5 min read';
+    const contentHtml = document.getElementById('articleBodyText')?.innerHTML || '';
+
+    // Create a standalone, print-optimized document container
+    const pdfContainer = document.createElement('div');
+    pdfContainer.id = 'pdfRenderTemplate';
+    pdfContainer.style.position = 'absolute';
+    pdfContainer.style.left = '-9999px';
+    pdfContainer.style.top = '0';
+    pdfContainer.style.width = '750px';
+    pdfContainer.style.padding = '40px';
+    pdfContainer.style.background = '#FFFFFF';
+    pdfContainer.style.color = '#0D0E2E';
+    pdfContainer.style.fontFamily = "'Plus Jakarta Sans', Arial, sans-serif";
+    pdfContainer.style.lineHeight = '1.7';
+
+    pdfContainer.innerHTML = `
+      <!-- Letterhead Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #38673A; padding-bottom: 16px; margin-bottom: 28px;">
+        <div>
+          <div style="font-size: 1.15rem; font-weight: 800; color: #0D0E2E; letter-spacing: 0.05em;">VIJIGISHU EDUCATIONAL TRAVEL</div>
+          <div style="font-size: 0.75rem; color: #38673A; font-weight: 700; text-transform: uppercase;">Academic &amp; Industrial Immersion Programs</div>
+        </div>
+        <div style="text-align: right;">
+          <span style="background: rgba(56,103,58,0.1); color: #38673A; font-weight: 800; font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; text-transform: uppercase;">${category}</span>
+        </div>
+      </div>
+
+      <!-- Article Title & Meta -->
+      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.85rem; line-height: 1.28; color: #0D0E2E; margin-bottom: 14px;">${title}</h1>
+      
+      <div style="display: flex; gap: 16px; font-size: 0.8rem; color: #5A5B70; font-weight: 600; margin-bottom: 26px; border-bottom: 1px solid #E2E8F0; padding-bottom: 12px;">
+        <span><strong>Author:</strong> ${author}</span>
+        <span>·</span>
+        <span><strong>Published:</strong> ${date}</span>
+        <span>·</span>
+        <span><strong>Duration:</strong> ${readTime}</span>
+      </div>
+
+      <!-- Pure Article Body -->
+      <div style="font-size: 0.95rem; color: #2D2E45; line-height: 1.8;" class="pdf-body-rendered">
+        ${contentHtml}
+      </div>
+
+      <!-- Institutional Footer -->
+      <div style="margin-top: 40px; border-top: 1px solid #E2E8F0; padding-top: 14px; display: flex; justify-content: space-between; font-size: 0.74rem; color: #5A5B70;">
+        <span>Vijigishu Educational Travel · 30+ Global Destinations</span>
+        <span>www.vijigishu.co.in</span>
+      </div>
+    `;
+
+    document.body.appendChild(pdfContainer);
+
+    // Clean up inline buttons / social strips if copied into pdfContainer
+    pdfContainer.querySelectorAll('.article-share-strip, .author-profile-box, button').forEach(el => el.remove());
+
+    const cleanFilename = title.replace(/[^a-zA-Z0-9]/g, '-').substring(0, 40);
+
+    const opt = {
+      margin: [10, 10, 10, 10],
+      filename: `Vijigishu-Briefing-${cleanFilename}.pdf`,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, logging: false },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(pdfContainer).save().then(() => {
+      pdfContainer.remove();
+      if (label) label.textContent = 'Save PDF Briefing';
+      if (btn) btn.style.opacity = '1';
+    }).catch(err => {
+      console.error('PDF export failed:', err);
+      pdfContainer.remove();
+      if (label) label.textContent = 'Save PDF Briefing';
+      if (btn) btn.style.opacity = '1';
+    });
   }
 
   document.addEventListener('DOMContentLoaded', loadSingleBlog);
