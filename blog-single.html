@@ -95,16 +95,50 @@
     .immersive-hero .container {
       position: relative;
       z-index: 3;
-      display: block !important;
-      text-align: left !important;
+      display: flex !important;
+      align-items: flex-end !important;
+      justify-content: space-between !important;
+      gap: 32px;
+      flex-wrap: wrap;
     }
     .hero-container-inner {
       text-align: left !important;
       align-items: flex-start !important;
-      margin: 0 auto 0 0 !important;
-      max-width: 640px !important;
+      margin: 0 !important;
+      max-width: 680px !important;
       display: flex;
       flex-direction: column;
+      flex: 1;
+    }
+    .hero-right-actions {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-bottom: 8px;
+    }
+    .pdf-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #FFFFFF;
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 12px 22px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .pdf-download-btn:hover {
+      background: var(--green);
+      border-color: var(--green);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(56,103,58,0.4);
     }
 
     .hero-badge-row {
@@ -636,11 +670,6 @@
         
         <!-- Feature 1: Audio / Voice Narration Player -->
         <!-- Feature 3: Download / Print Article as PDF -->
-        <button class="pdf-download-btn" id="pdfExportBtn" onclick="generateEditorialPDF()" title="Download PDF Executive Briefing">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span id="pdfBtnLabel">Save PDF Briefing</span>
-        </button>
-
         <!-- Author Strip -->
         <div class="hero-meta-author">
           <img src="images/admin-profile-icon.png" alt="Author" class="hero-author-avatar" />
