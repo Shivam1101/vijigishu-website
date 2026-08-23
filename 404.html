@@ -162,23 +162,17 @@
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
     }
 
-    /* Edge-to-Edge Mascot Section */
+    /* Edge-to-Edge Mascot Section via CSS Background */
     .mascot-wide-wrapper {
       width: 100%;
+      height: 32vh; /* Defines the container height */
       margin-top: auto;
-      text-align: center;
-      line-height: 0;
       flex-shrink: 1;
       min-height: 0;
-    }
-    .mascot-cutout-img {
-      width: 100%;
-      max-width: 2560px;
-      height: auto;
-      max-height: 32vh; /* Reduced to ensure it never overflows 100vh */
-      object-fit: contain;
-      object-position: center bottom;
-      display: inline-block;
+      background-image: url('images/404-mascot.png');
+      background-size: contain; /* Prevents top cropping */
+      background-position: center bottom;
+      background-repeat: no-repeat;
     }
 
     /* Minimal Footer */
@@ -213,11 +207,11 @@
       .btn-group { flex-direction: column; width: 100%; max-width: 320px; gap: 12px; }
       .btn { width: 100%; padding: 14px 24px; font-size: 1rem; }
       
-      .mascot-cutout-img {
+      .mascot-wide-wrapper {
+        background-size: cover; /* Trims long side wires, focuses on lion */
         height: 32vh;
         max-height: 250px;
         min-height: 200px;
-        object-fit: cover; 
       }
       
       .bottom-bar { font-size: 0.8rem; padding-bottom: 16px; }
@@ -258,18 +252,7 @@
     </div>
   </main>
 
-  <div class="mascot-wide-wrapper">
-    <img 
-      src="images/404-mascot.png" 
-      onerror="
-        if (!this.dataset.tried1) { this.dataset.tried1='1'; this.src='/images/404-mascot.png'; }
-        else if (!this.dataset.tried2) { this.dataset.tried2='1'; this.src='images/404-mascot-wide.png'; }
-        else { this.src='/images/404-mascot-wide.png'; }
-      " 
-      alt="Lost Connection Lion Mascot" 
-      class="mascot-cutout-img" 
-    />
-  </div>
+  <div class="mascot-wide-wrapper" aria-label="Lost Connection Lion Mascot" role="img"></div>
 
   <footer class="bottom-bar">
     © <span class="year"></span> Vijigishu Education Pvt. Ltd. All rights reserved.
