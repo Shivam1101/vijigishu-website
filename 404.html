@@ -41,7 +41,7 @@
       --ease:  cubic-bezier(.25,.46,.45,.94);
     }
     html, body {
-      min-height: 100vh;
+      height: 100vh;
       min-height: 100dvh;
       margin: 0;
       padding: 0;
@@ -56,13 +56,14 @@
       align-items: center;
       justify-content: space-between;
       overflow-x: hidden;
+      text-align: center;
     }
     a { text-decoration: none; color: inherit; }
 
     /* Top Brand Logo */
     .top-header {
       width: 100%;
-      padding: 24px 24px 0;
+      padding: 24px 20px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -70,7 +71,7 @@
       z-index: 10;
     }
     .brand-logo img {
-      height: 44px;
+      height: 42px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s var(--ease);
@@ -79,43 +80,52 @@
       transform: scale(1.03);
     }
 
-    /* Main Error Center Content */
+    /* Main Error Center Content - Dead Center */
+    .main-center-wrapper {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      z-index: 5;
+    }
+
     .error-content {
       max-width: 880px;
       width: 100%;
       text-align: center;
-      padding: 8px 24px 0;
-      flex-shrink: 0;
-      z-index: 5;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
 
     .code-404 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+      font-size: clamp(3.2rem, 5.2vw, 4.6rem);
       font-weight: 800;
       line-height: 1;
       letter-spacing: -2px;
-      margin-top: 2px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       background: linear-gradient(135deg, #26542B 0%, #3B723F 42%, #BA9435 85%, #CF9F34 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       display: inline-block;
     }
 
-    /* 1. Single-row Heading */
+    /* Single-row Heading */
     .error-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
       color: var(--navy);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       line-height: 1.25;
       font-weight: 700;
       letter-spacing: -0.4px;
-      display: inline-block;
+      text-align: center;
     }
     .error-title span {
       color: var(--green);
@@ -124,30 +134,31 @@
       font-weight: 700;
     }
 
-    /* 2 & 3. Single-line Concise Subtitle */
+    /* Single-line Concise Subtitle */
     .error-desc {
       color: var(--gray);
       font-size: clamp(0.85rem, 1.2vw, 0.94rem);
       line-height: 1.45;
-      margin: 0 auto 16px;
+      margin: 0 auto 18px;
       max-width: 720px;
       font-weight: 500;
-      white-space: normal;
+      text-align: center;
     }
 
-    /* 4. Compact Button Sizing */
+    /* Compact Buttons Group */
     .btn-group {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 2px;
+      margin: 0 auto;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       padding: 8px 20px;
       border-radius: 100px;
@@ -181,26 +192,25 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
 
-    /* Full-Width Mascot Section */
+    /* Full-Width Mascot Section Centered at Bottom */
     .mascot-wide-wrapper {
       width: 100%;
       width: 100vw;
-      flex: 1;
-      min-height: 180px;
+      flex-shrink: 0;
+      min-height: 160px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
       overflow: hidden;
       position: relative;
-      margin-top: 8px;
     }
 
     .mascot-cutout-img {
       width: 100%;
       width: 100vw;
       height: 100%;
-      min-height: 180px;
-      max-height: 48vh;
+      min-height: 160px;
+      max-height: 44vh;
       display: block;
       object-fit: cover;
       object-position: center bottom;
@@ -213,8 +223,8 @@
     .bottom-bar {
       width: 100%;
       text-align: center;
-      padding: 8px 20px 14px;
-      font-size: 0.76rem;
+      padding: 6px 20px 12px;
+      font-size: 0.74rem;
       color: var(--light-gray);
       flex-shrink: 0;
       z-index: 10;
@@ -224,21 +234,21 @@
       .top-header { padding: 18px 20px 0; }
       .brand-logo img { height: 38px; }
       .code-404 { font-size: 3.2rem; }
-      .mascot-wide-wrapper { min-height: 150px; }
-      .mascot-cutout-img { min-height: 150px; max-height: 42vh; }
+      .mascot-wide-wrapper { min-height: 140px; }
+      .mascot-cutout-img { min-height: 140px; max-height: 40vh; }
     }
 
     @media (max-width: 600px) {
       .top-header { padding: 14px 16px 0; }
       .brand-logo img { height: 34px; }
-      .error-content { padding: 6px 16px 0; }
-      .code-404 { font-size: 2.8rem; margin-top: 2px; }
-      .error-title { font-size: 1.25rem; line-height: 1.25; }
-      .error-desc { font-size: 0.82rem; margin-bottom: 12px; }
+      .main-center-wrapper { padding: 8px 16px; }
+      .code-404 { font-size: 2.8rem; margin-bottom: 4px; }
+      .error-title { font-size: 1.22rem; line-height: 1.25; margin-bottom: 6px; }
+      .error-desc { font-size: 0.8rem; margin-bottom: 14px; }
       .btn-group { flex-direction: row; justify-content: center; gap: 8px; }
       .btn { padding: 7px 16px; font-size: 0.74rem; }
-      .mascot-wide-wrapper { min-height: 130px; margin-top: 10px; }
-      .mascot-cutout-img { min-height: 130px; max-height: 38vh; }
+      .mascot-wide-wrapper { min-height: 120px; }
+      .mascot-cutout-img { min-height: 120px; max-height: 36vh; }
       .bottom-bar { padding: 6px 16px 10px; font-size: 0.7rem; }
     }
   </style>
@@ -260,24 +270,26 @@
     </a>
   </header>
 
-  <!-- Centered Content Section -->
-  <section class="error-content">
-    <div class="code-404">404</div>
-    <h1 class="error-title">
-      Oops! Looks like the <span>Connection is Lost</span>
-    </h1>
-    <p class="error-desc">We couldn't connect you to this page. The link may be broken, outdated, or moved.</p>
-    
-    <div class="btn-group">
-      <a href="/" class="btn btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        Back to Home
-      </a>
-      <a href="immersion-programs" class="btn btn-outline">
-        Explore Programs →
-      </a>
+  <!-- Dead-Center Content Section -->
+  <main class="main-center-wrapper">
+    <div class="error-content">
+      <div class="code-404">404</div>
+      <h1 class="error-title">
+        Oops! Looks like the <span>Connection is Lost</span>
+      </h1>
+      <p class="error-desc">We couldn't connect you to this page. The link may be broken, outdated, or moved.</p>
+      
+      <div class="btn-group">
+        <a href="/" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Back to Home
+        </a>
+        <a href="immersion-programs" class="btn btn-outline">
+          Explore Programs →
+        </a>
+      </div>
     </div>
-  </section>
+  </main>
 
   <!-- Fullscreen Edge-to-Edge Mascot Section -->
   <div class="mascot-wide-wrapper">
