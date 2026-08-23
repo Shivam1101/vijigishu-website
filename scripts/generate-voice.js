@@ -5,7 +5,7 @@ const path = require('path');
 const API_KEY = process.env.ELEVENLABS_API_KEY || 'sk_91fedb068eb0c1bb634e5259b0cc3c4af18873481f1e3e7c';
 // Default standard male narrator: pNInz6obpgDQGcFmaJgB (Adam)
 // Or use your cloned Voice ID: SPnt7u3Gb2UpfIV1to5x (requires ElevenLabs paid plan)
-const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'pNInz6obpgDQGcFmaJgB';
+const VOICE_ID = process.env.ELEVENLABS_VOICE_ID || 'JBFqnCBsd6RMkjVDRZzb';
 
 async function generateAudio(text, outputFilename) {
   if (!text || !outputFilename) {
