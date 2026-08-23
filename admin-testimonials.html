@@ -262,10 +262,7 @@
 <div class="content-box">
   <div class="card-box-title">
     <span>Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)</span>
-    <div style="display: flex; gap: 10px;">
-      <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original 11 student reviews">↺ Reset Defaults</button>
-      <button class="btn btn-green" onclick="openNewTestimonialModal()">+ Add Testimonial</button>
-    </div>
+    <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original 11 student reviews">↺ Reset Defaults</button>
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;" id="adminTestiGrid"></div>
@@ -287,19 +284,13 @@
         <input type="text" id="testiNameInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Shaanya / Dr. Vijaya Kumar" />
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-        <div>
-          <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Role / Designation</label>
-          <input type="text" id="testiRoleInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Student / Faculty" />
-        </div>
-        <div>
-          <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Star Rating</label>
-          <select id="testiStarsInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
-            <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
-            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
-            <option value="3">⭐⭐⭐ (3 Stars)</option>
-          </select>
-        </div>
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Star Rating</label>
+        <select id="testiStarsInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
+          <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+          <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+          <option value="3">⭐⭐⭐ (3 Stars)</option>
+        </select>
       </div>
 
       <div>
@@ -385,7 +376,7 @@
   function openNewTestimonialModal() {
     document.getElementById('editTestiId').value = '';
     document.getElementById('testiNameInput').value = '';
-    document.getElementById('testiRoleInput').value = 'Student';
+    
     document.getElementById('testiStarsInput').value = '5';
     document.getElementById('testiImgInput').value = 'images/Random-1.webp';
     document.getElementById('testiTextInput').value = '';
@@ -398,7 +389,7 @@
     if (!item) return;
     document.getElementById('editTestiId').value = item.id;
     document.getElementById('testiNameInput').value = item.name || '';
-    document.getElementById('testiRoleInput').value = item.role || 'Student';
+    
     document.getElementById('testiStarsInput').value = item.stars || 5;
     document.getElementById('testiImgInput').value = item.img || '';
     document.getElementById('testiTextInput').value = item.text || '';
@@ -413,7 +404,7 @@
   function saveTestimonialData() {
     const id = document.getElementById('editTestiId').value;
     const name = document.getElementById('testiNameInput').value.trim();
-    const role = document.getElementById('testiRoleInput').value.trim();
+    const role = "";
     const stars = parseInt(document.getElementById('testiStarsInput').value) || 5;
     const img = document.getElementById('testiImgInput').value.trim() || 'images/Singapore.webp';
     const text = document.getElementById('testiTextInput').value.trim();
