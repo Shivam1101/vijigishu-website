@@ -162,13 +162,14 @@
       box-shadow: 0 12px 28px rgba(56,103,58,0.4);
     }
 
-    /* ─── MAIN EDITORIAL LAYOUT ─── */
+    /* ─── MAIN EDITORIAL LAYOUT (STRICT 2-COL GRID) ─── */
     .blog-layout-wrap {
       display: grid;
       grid-template-columns: 1fr 340px;
       gap: 48px;
       padding: 60px 0 80px;
       align-items: start;
+      width: 100%;
     }
     .editorial-content-box {
       background: var(--white);
@@ -209,24 +210,24 @@
       scroll-margin-top: 110px;
     }
     
-    /* ─── LUXURY INTERACTIVE EDITORIAL PULLQUOTE ─── */
+    /* Luxury Interactive Pullquote */
     .editorial-quote {
       position: relative;
       background: linear-gradient(135deg, #FBFDFB 0%, #F4F7F4 100%);
       border: 1px solid rgba(56,103,58,0.18);
       border-left: 5px solid var(--green);
       border-radius: 0 20px 20px 0;
-      padding: 32px 36px 26px 36px;
-      margin: 40px 0;
+      padding: 30px 34px 24px 34px;
+      margin: 36px 0;
       box-shadow: 0 4px 20px rgba(13,14,46,0.03);
       overflow: hidden;
     }
     .quote-watermark {
       position: absolute;
       top: 10px;
-      right: 24px;
+      right: 20px;
       font-family: 'Playfair Display', serif;
-      font-size: 5.5rem;
+      font-size: 5rem;
       line-height: 1;
       color: rgba(56,103,58,0.08);
       pointer-events: none;
@@ -242,7 +243,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--green);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .quote-tag-dot {
       width: 6px;
@@ -253,10 +254,10 @@
     .quote-text {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.22rem;
+      font-size: 1.18rem;
       color: var(--navy);
       line-height: 1.65;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       position: relative;
       z-index: 2;
     }
@@ -265,7 +266,7 @@
       align-items: center;
       justify-content: space-between;
       border-top: 1px dashed rgba(56,103,58,0.2);
-      padding-top: 16px;
+      padding-top: 14px;
       margin-top: 4px;
       flex-wrap: wrap;
       gap: 12px;
@@ -400,14 +401,14 @@
     .faq-item.active .faq-content { max-height: 200px; padding: 0 20px 18px; }
     .faq-item.active .faq-toggle-icon { transform: rotate(45deg); color: var(--navy); }
 
-    /* ─── LUXURY BOTTOM NEXT/PREV NAVIGATION ─── */
+    /* Next / Prev Navigation */
     .editorial-nav-wrapper {
-      margin: 52px 0 20px;
+      margin: 48px 0 10px;
     }
     .editorial-nav-divider {
       position: relative;
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .editorial-nav-divider::before {
       content: "";
@@ -434,20 +435,18 @@
     .editorial-nav-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 18px;
     }
     .nav-card-item {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
       background: #F8FAFC;
       border: 1.5px solid var(--border);
       border-radius: 18px;
-      padding: 22px 24px;
+      padding: 20px 22px;
       text-decoration: none;
       transition: all 0.3s var(--ease);
-      position: relative;
-      overflow: hidden;
     }
     .nav-card-item:hover {
       background: var(--white);
@@ -456,8 +455,8 @@
       box-shadow: 0 10px 30px rgba(56,103,58,0.08);
     }
     .nav-card-arrow-circle {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: var(--white);
       border: 1px solid var(--border);
@@ -474,50 +473,26 @@
       color: var(--white);
       transform: scale(1.06);
     }
-    .nav-card-body {
-      flex: 1;
-      min-width: 0;
-    }
-    .nav-card-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .nav-card-tag {
-      font-size: 0.68rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--green);
-    }
+    .nav-card-body { flex: 1; min-width: 0; }
+    .nav-card-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+    .nav-card-tag { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); }
     .nav-card-bullet { font-size: 0.7rem; color: #CBD5E1; }
-    .nav-card-category {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--gray);
-    }
+    .nav-card-category { font-size: 0.7rem; font-weight: 600; color: var(--gray); }
     .nav-card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 700;
       color: var(--navy);
       line-height: 1.35;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
       transition: color 0.2s;
     }
-    .nav-card-item:hover .nav-card-title {
-      color: var(--green);
-    }
-    .nav-card-time {
-      font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--gray);
-    }
+    .nav-card-item:hover .nav-card-title { color: var(--green); }
+    .nav-card-time { font-size: 0.74rem; font-weight: 600; color: var(--gray); }
 
     .article-share-strip {
       display: flex;
@@ -567,13 +542,15 @@
       object-fit: cover;
     }
 
-    /* Sticky Sidebar & Table of Contents */
+    /* ─── STICKY RIGHT SIDEBAR ─── */
     .single-blog-sidebar {
       position: sticky;
       top: 100px;
       display: flex;
       flex-direction: column;
       gap: 24px;
+      width: 340px;
+      align-self: start;
     }
     .sidebar-widget {
       background: var(--white);
@@ -679,6 +656,7 @@
 
     @media (max-width: 991px) {
       .blog-layout-wrap { grid-template-columns: 1fr; }
+      .single-blog-sidebar { width: 100%; position: static; }
       .editorial-content-box { padding: 28px 20px; }
       .hero-flex-container { flex-direction: column; align-items: flex-start; }
       .hero-right-actions { align-self: flex-start; }
@@ -731,11 +709,14 @@
 <!-- MAIN EDITORIAL CONTENT -->
 <div class="container">
   <div class="blog-layout-wrap">
+    <!-- LEFT MAIN COLUMN -->
     <main>
       <div class="editorial-content-box">
         <div class="article-rendered-body" id="articleBodyText">
-          <p class="lead-paragraph">Luxury brand management operates on a paradoxical set of business fundamentals: demand must be actively restricted to preserve prestige, pricing power defies conventional elasticity curves, and brand equity is rooted in artisanal heritage dating back centuries.</p><h2 id="sec-2">1. The Anatomy of Parisian Haute Couture Houses</h2><p>During our European Management Immersion cohort, students step inside premier fashion conglomerates and independent ateliers across Paris and Milan. Interacting with supply chain directors reveals how luxury houses balance hand-crafted leather goods with hyper-efficient automated fulfillment networks.</p>
-        
+          <p class="lead-paragraph">Luxury brand management operates on a paradoxical set of business fundamentals: demand must be actively restricted to preserve prestige, pricing power defies conventional elasticity curves, and brand equity is rooted in artisanal heritage dating back centuries.</p>
+<h2 id="heading-2">1. The Anatomy of Parisian Haute Couture Houses</h2>
+<p>During our European Management Immersion cohort, students step inside premier fashion conglomerates and independent ateliers across Paris and Milan. Interacting with supply chain directors reveals how luxury houses balance hand-crafted leather goods with hyper-efficient automated fulfillment networks.</p>
+
         <div class="editorial-quote">
           <div class="quote-watermark">“</div>
           <div class="quote-tag">
@@ -757,49 +738,95 @@
             </div>
           </div>
         </div>
-      
-    </div>
-  
-    <div class="editorial-nav-wrapper">
-      <div class="editorial-nav-divider">
-        <span class="nav-divider-text">Continue Reading</span>
+<h2 id="heading-8">2. Omnichannel Friction and Digital Authenticity</h2>
+<p>How do heritage houses adopt Web3 and blockchain without diluting the tactile allure of their physical boutiques? Students analyze real-time case studies at the Paris School of Business, examining digital product passports, VIP salon architectures, and private client relationship protocols.</p>
+<h2 id="heading-12">3. Experiential Takeaways for Future Business Leaders</h2>
+<p>Experiencing the European luxury corridor firsthand equips MBA and marketing cohorts with actionable frameworks in pricing strategy, global distribution governance, and sustainable material sourcing.</p>
+
+      <div class="takeaways-callout" id="sec-takeaways">
+        <div class="takeaways-heading">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Key Learning Takeaways
+        </div>
+        <ul class="takeaways-items">
+          <li>Heritage vs Scale: Balancing multi-generational artisanal exclusivity with global commercial expansion.</li><li>Supply Chain Traceability: Blockchain authentication combating counterfeit markets.</li><li>Direct Boardroom Dialogue: Executive briefings at Parisian couture ateliers and Milanese fashion houses.</li>
+        </ul>
       </div>
 
-      <div class="editorial-nav-grid">
-        <!-- PREVIOUS BRIEFING -->
-        <a href="transnational-accreditation-swiss-europe.html" class="nav-card-item nav-card-prev">
-          <div class="nav-card-arrow-circle">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    <div class="faq-section-wrap" id="sec-faqs">
+      <h3 class="faq-main-title">Academic & Institutional FAQs</h3>
+      <div class="faq-accordion-group">
+        <div class="faq-item">
+          <button class="faq-header" onclick="toggleFaq(this)">
+            <span>How are academic credits & certifications structured for this immersion?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Every Vijigishu program is aligned with university ECTS/UGC guidelines, offering joint certificates of completion signed by international host institutions and corporate partner executives.</p>
           </div>
-          <div class="nav-card-body">
-            <div class="nav-card-meta">
-              <span class="nav-card-tag">Previous Briefing</span>
-              <span class="nav-card-bullet">·</span>
-              <span class="nav-card-category">Global Trends</span>
-            </div>
-            <h4 class="nav-card-title">Global Pedagogy & Transnational Accreditation: Structuring Dual-Degree MOUs with European Universities</h4>
-            <div class="nav-card-time">6 min read</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-header" onclick="toggleFaq(this)">
+            <span>What safety, insurance, and on-ground logistics support are provided?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>We provide 24/7 dedicated bilingual tour managers, comprehensive travel and medical insurance, vetted 4-star institutional accommodation, and private executive transit throughout the itinerary.</p>
           </div>
-        </a>
-
-        <!-- NEXT BRIEFING -->
-        <a href="biophilic-architecture-singapore.html" class="nav-card-item nav-card-next">
-          <div class="nav-card-body" style="text-align: right;">
-            <div class="nav-card-meta" style="justify-content: flex-end;">
-              <span class="nav-card-category">Architecture</span>
-              <span class="nav-card-bullet">·</span>
-              <span class="nav-card-tag">Next Briefing</span>
-            </div>
-            <h4 class="nav-card-title">Engineering Living Architecture: Skyrise Greenery & Thermal Microclimates in Tropical Megacities</h4>
-            <div class="nav-card-time">7 min read</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-header" onclick="toggleFaq(this)">
+            <span>Can this itinerary be customized for our department’s specific syllabus?</span>
+            <span class="faq-toggle-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Yes. Our academic advisory team collaborates directly with Deans and Heads of Department to tailor plant visits, university lectures, and case-study workshops to match your exact semester syllabus.</p>
           </div>
-          <div class="nav-card-arrow-circle">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </div>
-        </a>
+        </div>
       </div>
     </div>
-  
+
+
+          <!-- Next / Prev Briefings -->
+          <div class="editorial-nav-wrapper">
+            <div class="editorial-nav-divider">
+              <span class="nav-divider-text">Continue Reading</span>
+            </div>
+
+            <div class="editorial-nav-grid">
+              <!-- PREVIOUS -->
+              <a href="transnational-accreditation-swiss-europe.html" class="nav-card-item nav-card-prev">
+                <div class="nav-card-arrow-circle">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                </div>
+                <div class="nav-card-body">
+                  <div class="nav-card-meta">
+                    <span class="nav-card-tag">Previous Briefing</span>
+                    <span class="nav-card-bullet">·</span>
+                    <span class="nav-card-category">Global Trends</span>
+                  </div>
+                  <h4 class="nav-card-title">Global Pedagogy & Transnational Accreditation: Structuring Dual-Degree MOUs with European Universities</h4>
+                  <div class="nav-card-time">6 min read</div>
+                </div>
+              </a>
+
+              <!-- NEXT -->
+              <a href="biophilic-architecture-singapore.html" class="nav-card-item nav-card-next">
+                <div class="nav-card-body" style="text-align: right;">
+                  <div class="nav-card-meta" style="justify-content: flex-end;">
+                    <span class="nav-card-category">Architecture</span>
+                    <span class="nav-card-bullet">·</span>
+                    <span class="nav-card-tag">Next Briefing</span>
+                  </div>
+                  <h4 class="nav-card-title">Engineering Living Architecture: Skyrise Greenery & Thermal Microclimates in Tropical Megacities</h4>
+                  <div class="nav-card-time">7 min read</div>
+                </div>
+                <div class="nav-card-arrow-circle">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="article-share-strip">
@@ -825,7 +852,7 @@
       </div>
     </main>
 
-    <!-- SIDEBAR -->
+    <!-- RIGHT STICKY SIDEBAR -->
     <aside class="single-blog-sidebar">
       <!-- Reading Progress Circle Widget -->
       <div class="sidebar-widget">
@@ -850,25 +877,20 @@
         <ul id="tocList" style="list-style: none; padding: 0; margin: 0;">
           
     <li class="toc-item active">
-      <a href="#sec-2" onclick="scrollToSection(event, 'sec-2')">1. The Anatomy of Parisian Haute Couture Houses</a>
+      <a href="#heading-2" onclick="scrollToSection(event, 'heading-2')">1. The Anatomy of Parisian Haute Couture Houses</a>
     </li>
-  
     <li class="toc-item">
-      <a href="#sec-8" onclick="scrollToSection(event, 'sec-8')">2. Omnichannel Friction and Digital Authenticity</a>
+      <a href="#heading-8" onclick="scrollToSection(event, 'heading-8')">2. Omnichannel Friction and Digital Authenticity</a>
     </li>
-  
     <li class="toc-item">
-      <a href="#sec-12" onclick="scrollToSection(event, 'sec-12')">3. Experiential Takeaways for Future Business Leaders</a>
+      <a href="#heading-12" onclick="scrollToSection(event, 'heading-12')">3. Experiential Takeaways for Future Business Leaders</a>
     </li>
-  
     <li class="toc-item">
       <a href="#sec-takeaways" onclick="scrollToSection(event, 'sec-takeaways')">Key Takeaways</a>
     </li>
-  
     <li class="toc-item">
       <a href="#sec-faqs" onclick="scrollToSection(event, 'sec-faqs')">Academic FAQs</a>
     </li>
-  
         </ul>
       </div>
 
@@ -936,44 +958,9 @@
     }
   }
 
-  // Automatic Heading Indexer & Live Scroll Spy
-  function autoIndexTableOfContents() {
-    const content = document.getElementById('articleBodyText');
-    const tocList = document.getElementById('tocList');
-    if (!content || !tocList) return;
-
-    const headings = content.querySelectorAll('h2, h3, .takeaways-callout, .faq-section-wrap');
-    if (!headings.length) return;
-
-    tocList.innerHTML = '';
-    headings.forEach((h, idx) => {
-      let headingId = h.id;
-      let label = h.textContent.trim();
-
-      if (h.classList.contains('takeaways-callout')) {
-        headingId = headingId || 'sec-takeaways';
-        label = 'Key Takeaways';
-      } else if (h.classList.contains('faq-section-wrap')) {
-        headingId = 'sec-faqs';
-        label = 'Academic FAQs';
-      } else {
-        headingId = headingId || ('heading-sec-' + (idx + 1));
-      }
-      h.id = headingId;
-
-      const li = document.createElement('li');
-      li.className = 'toc-item' + (idx === 0 ? ' active' : '');
-      
-      const link = document.createElement('a');
-      link.href = '#' + headingId;
-      link.textContent = label;
-      link.onclick = (e) => scrollToSection(e, headingId);
-
-      li.appendChild(link);
-      tocList.appendChild(li);
-    });
-
-    // IntersectionObserver for active section spy
+  // Active section spy
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('#articleBodyText h2, #articleBodyText h3, #sec-takeaways, #sec-faqs');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -991,9 +978,7 @@
     }, { rootMargin: '-90px 0px -65% 0px' });
 
     headings.forEach(h => observer.observe(h));
-  }
-
-  document.addEventListener('DOMContentLoaded', autoIndexTableOfContents);
+  });
 
   // Reading progress bar & circular indicator
   window.addEventListener('scroll', () => {
@@ -1012,7 +997,7 @@
     }
   });
 
-  // Comprehensive Institutional PDF Generator (Captures Headings, Paragraphs, Quotes & Key Takeaways)
+  // Institutional PDF Exporter
   function generateEditorialPDF() {
     const btn = document.getElementById('pdfExportBtn');
     const label = document.getElementById('pdfBtnLabel');
@@ -1071,7 +1056,7 @@
       doc.line(margin, y, pageWidth - margin, y);
       y += 18;
 
-      // Query ALL nodes in order: Paragraphs, Headings, Pullquotes, and Key Takeaways
+      // Query nodes inside articleBodyText
       const contentNode = document.getElementById('articleBodyText');
       if (contentNode) {
         const elements = contentNode.querySelectorAll('p, h2, h3, .editorial-quote, .takeaways-callout');
@@ -1143,7 +1128,7 @@
         });
       }
 
-      // Institutional Footer on all pages
+      // Institutional Footer
       const totalPages = doc.internal.getNumberOfPages();
       for (let i = 1; i <= totalPages; i++) {
         doc.setPage(i);
@@ -1157,7 +1142,6 @@
       }
 
       doc.save("Vijigishu-luxury-brand-management-paris-milan.pdf");
-
       if (label) label.textContent = 'Save PDF Briefing';
     } catch(err) {
       console.error('PDF error:', err);
