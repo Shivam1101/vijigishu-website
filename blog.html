@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog &amp; Insights – Vijigishu Educational Travel</title>
-  <meta name="description" content="Read the latest articles, student travel guides, global learning trends, and case studies on educational immersion programs." />
+  <title>Insights &amp; Stories – Vijigishu Educational Travel</title>
+  <meta name="description" content="Explore articles, guides, and trends in global educational travel, architecture study tours, and international student immersion programs." />
   <link rel="canonical" href="https://vijigishu.co.in/blog" />
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vijigishu Educational Travel" />
   <meta property="og:url" content="https://vijigishu.co.in/blog.html" />
-  <meta property="og:title" content="Blog &amp; Insights – Vijigishu Educational Travel" />
-  <meta property="og:description" content="Read the latest articles, student travel guides, global learning trends, and case studies on educational immersion programs." />
+  <meta property="og:title" content="Insights &amp; Stories – Vijigishu Educational Travel" />
+  <meta property="og:description" content="Explore articles, guides, and trends in global educational travel, architecture study tours, and international student immersion programs." />
   <meta property="og:image" content="https://vijigishu.co.in/images/blog-banner.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -19,16 +19,16 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://vijigishu.co.in/blog.html" />
-  <meta name="twitter:title" content="Blog &amp; Insights – Vijigishu Educational Travel" />
-  <meta name="twitter:description" content="Read the latest articles, student travel guides, global learning trends, and case studies on educational immersion programs." />
-  <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
+  <meta name="twitter:title" content="Insights &amp; Stories – Vijigishu Educational Travel" />
+  <meta name="twitter:description" content="Explore articles, guides, and trends in global educational travel, architecture study tours, and international student immersion programs." />
+  <meta name="twitter:image" content="https://vijigishu.co.in/images/blog-banner.png" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
   <style>
     :root {
@@ -36,11 +36,11 @@
       --green: #38673A;
       --sage: #9FC28C;
       --gold: #D4A840;
-      --off: #F4F5F8;
+      --off: #F8F9FA;
       --dark: #07081A;
       --white: #FFFFFF;
       --gray: #5A5B70;
-      --border: #CBD5E1;
+      --border: #E2E8F0;
       --ease: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -79,18 +79,21 @@
       object-position: center;
       display: block;
     }
+
+    /* ─── SECTION TITLE & INTRO ─── */
     .hero-title-section {
-      padding: 44px 0 20px;
+      padding: 44px 0 24px;
       text-align: center;
       background: var(--white);
+      border-bottom: 1px solid var(--border);
     }
     .blog-tag {
       display: inline-block;
       background: rgba(56, 103, 58, 0.08);
       border: 1px solid rgba(56, 103, 58, 0.2);
       color: var(--green);
-      font-size: .8rem;
-      font-weight: 700;
+      font-size: .78rem;
+      font-weight: 800;
       padding: 5px 16px;
       border-radius: 100px;
       letter-spacing: .06em;
@@ -99,10 +102,10 @@
     }
     .blog-hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 3.8vw, 3rem);
       color: var(--navy);
-      margin-bottom: 12px;
-      line-height: 1.18;
+      margin-bottom: 10px;
+      line-height: 1.2;
     }
     .blog-hero-title em { color: var(--green); font-style: italic; }
     .blog-hero-desc {
@@ -110,243 +113,240 @@
       font-size: .95rem;
       max-width: 620px;
       margin: 0 auto;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
-    /* ─── CATEGORY TABS & SEARCH (CLEANLY POSITIONED BELOW HERO) ─── */
+    /* ─── FILTER TABS & SEARCH BAR ─── */
     .filter-wrapper {
-      margin: 40px auto 44px;
-      background: var(--white); border-radius: 20px; padding: 14px 20px;
-      box-shadow: 0 10px 35px rgba(13,14,46,0.06);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-      position: relative; z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 36px 0 32px;
+      padding: 8px 0;
     }
-    .category-pills { display: flex; align-items: center; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
-    .category-pills::-webkit-scrollbar { display: none; }
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
     .pill {
-      padding: 8px 18px; border-radius: 100px; font-size: .84rem; font-weight: 600;
-      background: var(--off); color: var(--gray); border: 1px solid rgba(0,0,0,0.05); cursor: pointer; transition: all .25s var(--ease); white-space: nowrap;
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s var(--ease);
     }
-    .pill:hover, .pill.active { background: var(--navy); color: var(--white); border-color: var(--navy); box-shadow: 0 4px 12px rgba(13,14,46,0.2); }
+    .pill:hover, .pill.active {
+      background: var(--navy);
+      color: var(--white);
+      border-color: var(--navy);
+      box-shadow: 0 4px 14px rgba(13,14,46,0.18);
+    }
     
     .search-box {
-      display: flex; align-items: center; background: var(--off); border-radius: 100px;
-      padding: 6px 14px; border: 1px solid var(--border); flex-grow: 1; max-width: 260px;
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      border-radius: 100px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      flex-grow: 1;
+      max-width: 280px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-    .search-box input { border: none; background: transparent; outline: none; font-size: .85rem; color: var(--navy); width: 100%; padding: 4px 8px; }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: .85rem;
+      color: var(--navy);
+      width: 100%;
+      padding: 2px 8px;
+    }
     .search-box svg { color: var(--gray); flex-shrink: 0; }
 
-    
-    /* ─── CREATIVE ASYMMETRICAL MACHINERY GRID LAYOUT ─── */
+    /* ─── HIGH-END EDITORIAL CARD GRID ─── */
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
       margin-bottom: 80px;
     }
 
-    /* Base Visual Card */
-    .visual-blog-card {
-      position: relative;
-      border-radius: 24px;
+    /* Editorial Card */
+    .editorial-blog-card {
+      background: var(--white);
+      border-radius: 20px;
       overflow: hidden;
-      background: var(--dark);
-      box-shadow: 0 8px 30px rgba(13,14,46,0.08);
-      border: none !important;
-      outline: none;
-      cursor: pointer;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(13,14,46,0.04);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 28px;
-      transition: all 0.45s var(--ease);
+      transition: all 0.35s var(--ease);
       text-decoration: none;
-      min-height: 380px;
+      position: relative;
     }
-    .visual-blog-card:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 24px 50px rgba(13,14,46,0.22);
-    }
-
-    /* Machinery Span Layout Rules */
-    .card-span-hero {
-      grid-column: span 8;
-      min-height: 440px;
-    }
-    .card-span-tall {
-      grid-column: span 4;
-      min-height: 440px;
-    }
-    .card-span-medium {
-      grid-column: span 6;
-      min-height: 390px;
-    }
-    .card-span-third {
-      grid-column: span 4;
-      min-height: 380px;
+    .editorial-blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(13,14,46,0.1);
+      border-color: rgba(56,103,58,0.3);
     }
 
-    /* Background Image & Ambient Zoom */
-    .visual-card-bg {
-      position: absolute;
-      inset: 0;
+    /* Card Image Container */
+    .card-media-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .card-media-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      transition: transform 0.7s var(--ease), filter 0.5s ease;
-      z-index: 1;
+      transition: transform 0.6s var(--ease);
     }
-    .visual-blog-card:hover .visual-card-bg {
-      transform: scale(1.08);
+    .editorial-blog-card:hover .card-media-img {
+      transform: scale(1.06);
     }
 
-    /* Directional Contrast Gradient Overlay */
-    .visual-card-overlay {
+    /* Floating Tags on Image */
+    .card-tag-pill {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, 
-        rgba(7,8,26,0.1) 0%, 
-        rgba(7,8,26,0.4) 35%, 
-        rgba(7,8,26,0.85) 75%, 
-        rgba(7,8,26,0.98) 100%
-      );
-      z-index: 2;
-      transition: background 0.4s var(--ease);
-    }
-    .visual-blog-card:hover .visual-card-overlay {
-      background: linear-gradient(180deg, 
-        rgba(7,8,26,0.05) 0%, 
-        rgba(7,8,26,0.3) 30%, 
-        rgba(7,8,26,0.88) 70%, 
-        rgba(7,8,26,0.99) 100%
-      );
-    }
-
-    /* Top Tags & Time Bar */
-    .visual-card-top {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-    .visual-card-badge {
-      background: rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      color: #FFFFFF;
-      padding: 5px 14px;
-      border-radius: 100px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-    .visual-card-time {
-      background: rgba(0, 0, 0, 0.35);
+      top: 14px;
+      left: 14px;
+      background: rgba(13, 14, 46, 0.75);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       color: var(--sage);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      z-index: 2;
+    }
+    .card-read-pill {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 700;
       padding: 4px 10px;
       border-radius: 100px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      border: 1px solid rgba(159, 194, 140, 0.3);
+      z-index: 2;
     }
 
-    /* Bottom Info & Kinetic Arrow */
-    .visual-card-bottom {
-      position: relative;
-      z-index: 3;
+    /* Card Content Body */
+    .card-content-body {
+      padding: 24px;
       display: flex;
-      align-items: flex-end;
+      flex-direction: column;
+      flex-grow: 1;
       justify-content: space-between;
-      gap: 20px;
     }
-    .visual-card-info { flex: 1; }
     
-    .visual-card-meta {
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.75);
-      margin-bottom: 6px;
+    .card-meta-line {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--gray);
+      font-weight: 600;
+      margin-bottom: 10px;
     }
-    .visual-card-title {
+    .card-meta-dot { width: 3px; height: 3px; background: var(--gray); border-radius: 50%; }
+
+    .card-article-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.45rem;
-      line-height: 1.28;
+      font-size: 1.28rem;
       font-weight: 700;
-      color: #FFFFFF;
-      margin: 0 0 6px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 10px;
+      transition: color 0.25s;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .card-span-hero .visual-card-title {
-      font-size: 1.85rem;
+    .editorial-blog-card:hover .card-article-title {
+      color: var(--green);
     }
 
-    .visual-card-excerpt {
-      font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.82);
-      line-height: 1.45;
-      margin: 0;
+    .card-article-excerpt {
+      font-size: 0.86rem;
+      color: var(--gray);
+      line-height: 1.55;
+      margin-bottom: 20px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    /* Minimal Circular Arrow Action Button */
-    .visual-card-arrow {
-      width: 44px;
-      height: 44px;
+    /* Card Footer Action Strip */
+    .card-action-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: auto;
+    }
+    .card-action-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.25s;
+    }
+    .editorial-blog-card:hover .card-action-label {
+      color: var(--navy);
+      gap: 9px;
+    }
+    .card-action-arrow {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: var(--off);
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #FFFFFF;
-      flex-shrink: 0;
-      transition: all 0.3s var(--ease);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      color: var(--navy);
+      transition: all 0.25s;
     }
-    .visual-blog-card:hover .visual-card-arrow {
+    .editorial-blog-card:hover .card-action-arrow {
       background: var(--green);
+      color: var(--white);
       border-color: var(--green);
-      color: #FFFFFF;
-      transform: translate(3px, -3px);
-      box-shadow: 0 6px 20px rgba(56,103,58,0.5);
-    }
-
-    @media (max-width: 1024px) {
-      .card-span-hero, .card-span-tall, .card-span-medium, .card-span-third {
-        grid-column: span 6;
-        min-height: 380px;
-      }
-    }
-    @media (max-width: 768px) {
-      .blog-grid { grid-template-columns: 1fr; gap: 20px; }
-      .card-span-hero, .card-span-tall, .card-span-medium, .card-span-third {
-        grid-column: span 1;
-        min-height: 360px;
-      }
+      transform: translateX(3px);
     }
 
     .empty-state { text-align: center; padding: 70px 20px; grid-column: 1 / -1; }
     .empty-state h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 10px; }
 
-    @media (max-width: 900px) {
-      .visual-blog-card.featured-card { grid-column: span 1; height: 380px; }
+    @media (max-width: 1024px) {
+      .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    }
+    @media (max-width: 680px) {
       .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+      .page-hero { height: 260px; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
@@ -356,7 +356,6 @@
 <!-- ===== GLOBAL HEADER ===== -->
 <header id="global-header"></header>
 
-<!-- ===== BLOG HERO BANNER ===== -->
 <!-- ===== PAGE HERO BANNER IMAGE ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
@@ -391,7 +390,7 @@
   </div>
 </div>
 
-<!-- ===== MAIN VISUAL BLOG GRID ===== -->
+<!-- ===== MAIN EDITORIAL BLOG GRID ===== -->
 <main class="container">
   <div class="blog-grid" id="blogGrid">
     <!-- Rendered dynamically -->
@@ -403,6 +402,9 @@
 
 <script src="js/global-components.js?v=1787475903488"></script>
 <script>
+  let currentCategory = 'All';
+  let searchQuery = '';
+
   const DEFAULT_BLOGS = [
     {
       id: "blog-1",
@@ -412,9 +414,9 @@
       author: "Dr. Vijaya Kumar",
       date: "Aug 18, 2026",
       readTime: "5 min read",
-      featured: true,
-      image: "images/mangement-2-scaled.webp",
-      excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership."
+      image: "images/blog-single-placeholder.png",
+      excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
+      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
     },
     {
       id: "blog-2",
@@ -424,86 +426,82 @@
       author: "Nakul Jadav",
       date: "Aug 12, 2026",
       readTime: "6 min read",
-      featured: false,
       image: "images/archi-scaled.webp",
-      excerpt: "From Le Corbusier's modernism to Gardens by the Bay's vertical biophilia, explore how architectural study tours redefine spatial storytelling."
+      excerpt: "From Le Corbusier's modernism to Gardens by the Bay's vertical biophilia, explore how architectural study tours redefine spatial storytelling.",
+      content: "Architecture is best studied through sight, sound, and touch. Observing structural engineering, materiality, and bioclimatic ventilation in person provides insights no drawing board can replicate."
+    },
+    {
+      id: "blog-3",
+      title: "Industry 4.0 & Automation: Engineering Journeys Across Germany & South Korea",
+      slug: "industry-4-0-automation-engineering-germany-south-korea",
+      category: "Engineering",
+      author: "Neeraj Yadav",
+      date: "Aug 05, 2026",
+      readTime: "4 min read",
+      image: "images/engg-2-scaled.webp",
+      excerpt: "From robotic assembly lines at BMW Welt to semiconductor cleanrooms, experiential factory visits prepare engineers for next-gen manufacturing.",
+      content: "Engineering theory comes alive when students observe high-precision industrial robotics, green energy grids, and aerospace telemetry live in action."
     }
   ];
 
-  function getStoredBlogs() {
-    const data = localStorage.getItem('vijigishu_blogs');
-    if (!data) {
-      localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
-      return DEFAULT_BLOGS;
-    }
-    try {
-      const parsed = JSON.parse(data);
-      return (parsed && parsed.length) ? parsed : DEFAULT_BLOGS;
-    } catch(e) {
-      return DEFAULT_BLOGS;
-    }
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
-  let activeCategory = 'All';
-  let searchQuery = '';
-
   function renderBlogs() {
-    const blogs = getStoredBlogs();
     const grid = document.getElementById('blogGrid');
+    let list = DEFAULT_BLOGS;
+    try {
+      const raw = localStorage.getItem('vijigishu_blogs');
+      if (raw) list = JSON.parse(raw);
+    } catch(e) {}
 
-    const filtered = blogs.filter(post => {
-      const matchCat = (activeCategory === 'All') || (post.category && post.category.toLowerCase() === activeCategory.toLowerCase());
-      const matchSearch = !searchQuery || 
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-        (post.excerpt && post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (post.author && post.author.toLowerCase().includes(searchQuery.toLowerCase()));
+    let filtered = list.filter(b => {
+      const matchCat = currentCategory === 'All' || b.category.toLowerCase().includes(currentCategory.toLowerCase()) || currentCategory.toLowerCase().includes(b.category.toLowerCase());
+      const matchSearch = !searchQuery || b.title.toLowerCase().includes(searchQuery) || (b.excerpt && b.excerpt.toLowerCase().includes(searchQuery));
       return matchCat && matchSearch;
     });
 
-    if (filtered.length === 0) {
+    if (!filtered.length) {
       grid.innerHTML = `
         <div class="empty-state">
           <h3>No articles found</h3>
-          <p style="color:var(--gray);">Try adjusting your category filter or search query.</p>
+          <p style="color:var(--gray);">Try adjusting your search query or selecting a different category filter.</p>
         </div>
       `;
       return;
     }
 
-    grid.innerHTML = filtered.map((post, index) => {
-      const isFeatured = false;
-      const postUrl = `blog-single.html?id=${post.id || post.slug}`;
-      const fallbackImg = 'images/Singapore.webp';
-
+    grid.innerHTML = filtered.map(b => {
+      const cardImage = b.image || 'images/blog-single-placeholder.png';
       return `
-        <a href="${postUrl}" class="visual-blog-card ${isFeatured ? 'featured-card' : ''}">
-          <!-- Background Image -->
-          <img src="${post.image || fallbackImg}" alt="${escapeHtml(post.title)}" class="visual-card-bg" loading="lazy" onerror="this.src='${fallbackImg}';" />
-          
-          <!-- Cinematic Gradient Overlay -->
-          <div class="visual-card-overlay"></div>
-
-          <!-- Top Badge -->
-          <div class="visual-card-top">
-            <span class="visual-card-badge">${escapeHtml(post.category || 'Insights')}</span>
+        <a href="blog-single.html?id=${b.id}" class="editorial-blog-card" title="${escapeHtml(b.title)}">
+          <div class="card-media-wrap">
+            <img src="${cardImage}" alt="${escapeHtml(b.title)}" class="card-media-img" loading="lazy" onerror="this.src='images/blog-single-placeholder.png';" />
+            <span class="card-tag-pill">${escapeHtml(b.category || 'Article')}</span>
+            <span class="card-read-pill">${escapeHtml(b.readTime || '5 min read')}</span>
           </div>
 
-          <!-- Bottom Content: Title + Minimal Arrow -->
-          <div class="visual-card-bottom">
-            <div class="visual-card-info">
-              <h2 class="visual-card-title">${escapeHtml(post.title)}</h2>
-              <div class="visual-card-meta">
-                <span>${escapeHtml(post.date || 'Aug 2026')}</span>
-                <span class="visual-card-meta-dot"></span>
-                <span>${escapeHtml(post.readTime || '5 min read')}</span>
+          <div class="card-content-body">
+            <div>
+              <div class="card-meta-line">
+                <span>${escapeHtml(b.author || 'Vijigishu Team')}</span>
+                <span class="card-meta-dot"></span>
+                <span>${escapeHtml(b.date || 'Aug 2026')}</span>
               </div>
+              <h2 class="card-article-title">${escapeHtml(b.title)}</h2>
+              ${b.excerpt ? `<p class="card-article-excerpt">${escapeHtml(b.excerpt)}</p>` : ''}
             </div>
-            
-            <div class="visual-card-arrow" aria-label="Read article">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
+
+            <div class="card-action-strip">
+              <span class="card-action-label">Read Full Article →</span>
+              <div class="card-action-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
           </div>
         </a>
@@ -511,28 +509,28 @@
     }).join('');
   }
 
-  function escapeHtml(str) {
-    if (!str) return '';
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  function setupEventListeners() {
+    const pills = document.querySelectorAll('.pill');
+    pills.forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        pills.forEach(p => p.classList.remove('active'));
+        e.target.classList.add('active');
+        currentCategory = e.target.getAttribute('data-category');
+        renderBlogs();
+      });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      renderBlogs();
+    });
   }
 
-  // Filter Pills Event Binding
-  document.getElementById('categoryPills').addEventListener('click', (e) => {
-    const btn = e.target.closest('.pill');
-    if (!btn) return;
-    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    activeCategory = btn.getAttribute('data-category');
+  document.addEventListener('DOMContentLoaded', () => {
     renderBlogs();
+    setupEventListeners();
   });
-
-  // Search Input Event Binding
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    searchQuery = e.target.value.trim();
-    renderBlogs();
-  });
-
-  document.addEventListener('DOMContentLoaded', renderBlogs);
 </script>
 </body>
 </html>
