@@ -57,7 +57,6 @@
     img { max-width: 100%; height: auto; display: block; }
     
     .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
-    .article-container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
 
     /* Reading Progress Bar */
     .reading-progress-bar {
@@ -69,7 +68,7 @@
     .article-hero {
       background: linear-gradient(135deg, #0D0E2E 0%, #171842 55%, #1F3622 100%);
       color: var(--white);
-      padding: 48px 0 54px;
+      padding: 38px 0 42px;
       position: relative;
       overflow: hidden;
     }
@@ -82,7 +81,7 @@
     .hero-split-grid {
       display: grid;
       grid-template-columns: 1.25fr 1fr;
-      gap: 36px;
+      gap: 32px;
       align-items: center;
       position: relative;
       z-index: 2;
@@ -98,10 +97,10 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: rgba(255,255,255,0.65);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .article-breadcrumb a { color: var(--sage); transition: color 0.2s; }
     .article-breadcrumb a:hover { color: var(--white); }
@@ -113,32 +112,33 @@
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.22);
       color: var(--sage);
-      padding: 4px 12px;
+      padding: 3px 12px;
       border-radius: 100px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
+    /* Reduced Main Heading Font */
     .article-hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
-      line-height: 1.22;
+      font-size: clamp(1.5rem, 2.4vw, 2.05rem);
+      line-height: 1.26;
       color: var(--white);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       font-weight: 700;
     }
     .article-hero-title em { color: var(--sage); font-style: italic; }
 
     .article-hero-excerpt {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.6;
-      margin-bottom: 22px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.55;
+      margin-bottom: 18px;
       display: -webkit-box;
-      -webkit-line-clamp: 3;
+      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -147,15 +147,15 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: rgba(255,255,255,0.85);
       font-weight: 600;
-      padding-top: 14px;
+      padding-top: 12px;
       border-top: 1px solid rgba(255,255,255,0.12);
       width: 100%;
     }
     .author-thumb-img {
-      width: 38px; height: 38px; border-radius: 50%; object-fit: cover;
+      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
       border: 2px solid var(--sage);
     }
     .author-meta-dot { width: 4px; height: 4px; background: var(--sage); border-radius: 50%; }
@@ -165,11 +165,11 @@
       position: relative;
     }
     .hero-cover-frame {
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
       border: 1px solid rgba(255,255,255,0.15);
-      height: 310px;
+      height: 275px;
       position: relative;
       background: var(--dark);
     }
@@ -181,12 +181,12 @@
 
     /* ─── ARTICLE LAYOUT & SIDEBAR ─── */
     .article-main-wrap {
-      padding: 48px 0 80px;
+      padding: 40px 0 70px;
     }
     .article-layout-grid {
       display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 48px;
+      grid-template-columns: 1fr 310px;
+      gap: 40px;
       align-items: start;
     }
 
@@ -194,7 +194,7 @@
     .editorial-content-box {
       background: var(--white);
       border-radius: 24px;
-      padding: 44px 48px;
+      padding: 40px 44px;
       box-shadow: 0 4px 25px rgba(13,14,46,0.04);
       border: 1px solid var(--border);
     }
@@ -208,11 +208,11 @@
 
     /* Dropcap Lead Paragraph */
     .lead-paragraph {
-      font-size: 1.18rem;
+      font-size: 1.15rem;
       font-weight: 500;
       color: var(--navy);
       line-height: 1.68;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
     .lead-paragraph::first-letter {
       font-family: 'Playfair Display', serif;
@@ -227,16 +227,16 @@
 
     .article-body-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.75rem;
+      font-size: 1.7rem;
       color: var(--navy);
-      margin: 36px 0 16px;
+      margin: 34px 0 16px;
       line-height: 1.3;
     }
     .article-body-text h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
+      font-size: 1.32rem;
       color: var(--navy);
-      margin: 28px 0 14px;
+      margin: 26px 0 14px;
       line-height: 1.3;
     }
 
@@ -246,7 +246,7 @@
       border-left: 4px solid var(--green);
       border-radius: 0 16px 16px 0;
       padding: 24px 28px;
-      margin: 32px 0;
+      margin: 30px 0;
     }
     .takeaways-heading {
       font-weight: 800;
@@ -281,13 +281,13 @@
 
     /* Editorial Quote */
     .editorial-quote {
-      margin: 36px 0;
-      padding: 24px 30px;
+      margin: 34px 0;
+      padding: 22px 28px;
       background: var(--off);
       border-left: 4px solid var(--sage);
       border-radius: 0 16px 16px 0;
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-style: italic;
       color: var(--navy);
       line-height: 1.55;
@@ -295,22 +295,22 @@
 
     /* Inline Image Showcase */
     .inline-showcase {
-      margin: 36px 0;
+      margin: 34px 0;
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid var(--border);
     }
-    .inline-showcase img { width: 100%; height: 320px; object-fit: cover; }
+    .inline-showcase img { width: 100%; height: 300px; object-fit: cover; }
     .showcase-caption {
       text-align: center; font-size: 0.8rem; color: var(--gray);
       padding: 8px 14px; background: #fafafa; font-style: italic;
     }
 
-    /* Bottom Share Strip */
+    /* Bottom Share Strip with Real SVG Icons */
     .article-share-strip {
       border-top: 1px solid var(--border);
       padding-top: 24px;
-      margin-top: 40px;
+      margin-top: 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -318,35 +318,37 @@
       gap: 14px;
     }
     .share-icon-btn {
-      width: 38px; height: 38px; border-radius: 50%;
+      width: 40px; height: 40px; border-radius: 50%;
       background: var(--off); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
-      color: var(--navy); transition: all 0.2s; cursor: pointer;
+      color: var(--navy); transition: all 0.25s; cursor: pointer;
     }
+    .share-icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
     .share-icon-btn:hover {
       background: var(--green); color: var(--white); border-color: var(--green); transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56,103,58,0.3);
     }
 
     /* Author Bio Card */
     .author-profile-box {
       background: var(--off);
       border-radius: 20px;
-      padding: 24px;
+      padding: 22px;
       display: flex;
       align-items: center;
-      gap: 20px;
-      margin-top: 36px;
+      gap: 18px;
+      margin-top: 32px;
       border: 1px solid var(--border);
     }
     .author-profile-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
+      width: 60px; height: 60px; border-radius: 50%;
       object-fit: cover; border: 2px solid var(--sage); flex-shrink: 0;
     }
     .author-profile-info h4 {
-      font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 2px;
+      font-size: 1.02rem; font-weight: 800; color: var(--navy); margin-bottom: 2px;
     }
     .author-profile-info p {
-      font-size: 0.84rem; color: var(--gray); margin: 0; line-height: 1.45;
+      font-size: 0.82rem; color: var(--gray); margin: 0; line-height: 1.45;
     }
 
     /* ─── STICKY SIDEBAR ─── */
@@ -355,18 +357,18 @@
       top: 96px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 22px;
     }
     .sidebar-widget {
       background: var(--white);
       border-radius: 20px;
-      padding: 24px;
+      padding: 22px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 20px rgba(13,14,46,0.03);
     }
     .widget-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       color: var(--navy);
       margin-bottom: 14px;
       font-weight: 700;
@@ -390,10 +392,10 @@
     .sidebar-program-item:last-child { border-bottom: none; }
     .sidebar-program-item:hover { transform: translateX(4px); }
     .sidebar-program-thumb {
-      width: 46px; height: 46px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex-shrink: 0;
     }
     .sidebar-program-name {
-      font-size: 0.84rem; font-weight: 700; color: var(--navy); line-height: 1.3;
+      font-size: 0.82rem; font-weight: 700; color: var(--navy); line-height: 1.3;
     }
     .sidebar-program-cat {
       font-size: 0.7rem; color: var(--green); font-weight: 600;
@@ -403,14 +405,14 @@
     .article-nav-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 48px 0;
+      gap: 18px;
+      margin: 40px 0;
     }
     .article-nav-tile {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 20px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -423,50 +425,120 @@
       transform: translateY(-2px);
     }
     .nav-tile-hint {
-      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
-      color: var(--green); letter-spacing: 0.08em; margin-bottom: 6px;
+      font-size: 0.7rem; font-weight: 800; text-transform: uppercase;
+      color: var(--green); letter-spacing: 0.08em; margin-bottom: 4px;
     }
     .nav-tile-heading {
-      font-family: 'Playfair Display', serif; font-size: 1.02rem;
+      font-family: 'Playfair Display', serif; font-size: 0.98rem;
       font-weight: 700; color: var(--navy); line-height: 1.35;
     }
 
-    /* ─── RELATED IMMERSIONS CTA BANNER ─── */
-    .immersion-footer-cta {
-      background: linear-gradient(135deg, #0D0E2E 0%, #171842 100%);
-      color: var(--white);
-      border-radius: 24px;
-      padding: 40px;
-      text-align: center;
-      margin-bottom: 60px;
+    /* ─── ABOUT US STYLE MASCOT CTA BANNER ─── */
+    #blog-cta {
+      padding: 30px 0 70px;
+    }
+    .about-cta-inner {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 44px 50px;
+      box-shadow: 0 10px 40px rgba(13,14,46,0.05);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 36px;
       position: relative;
       overflow: hidden;
     }
-    .immersion-footer-cta h3 {
+    .about-cta-left { position: relative; z-index: 2; text-align: left; }
+    .about-cta-h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
-      margin-bottom: 8px;
+      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      color: var(--navy) !important;
+      margin-bottom: 10px;
+      line-height: 1.22;
     }
-    .immersion-footer-cta h3 em { color: var(--sage); font-style: italic; }
-    .immersion-footer-cta p {
-      color: rgba(255,255,255,0.8);
-      max-width: 560px;
-      margin: 0 auto 24px;
-      font-size: 0.95rem;
+    .about-cta-h2 em { color: var(--green) !important; font-style: italic; }
+    .about-cta-sub { color: var(--gray) !important; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+    
+    .about-cta-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      margin-top: 22px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+    .about-cta-right .btn-green {
+      background: var(--green); color: var(--white); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.85rem;
+    }
+    .about-cta-right .btn-green:hover {
+      background: var(--sage); color: var(--navy); transform: translateY(-2px);
+    }
+    .about-cta-right .btn-outline {
+      background: transparent; border: 1px solid var(--navy); color: var(--navy); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.85rem;
+    }
+    .about-cta-right .btn-outline:hover {
+      background: var(--navy); color: var(--white); transform: translateY(-2px);
+    }
+
+    /* Mascot Morphing Portal Shape */
+    .portal-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+    .portal-shape {
+      width: 240px;
+      height: 240px;
+      background: rgba(27,28,74,0.02);
+      border: 3px solid var(--sage);
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
+      animation: morphBlob 8s ease-in-out infinite;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .mascot-img-portal {
+      width: 190px;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    .about-cta-inner:hover .portal-shape {
+      border-color: var(--green);
+      background: rgba(27,28,74,0.05);
+    }
+    .about-cta-inner:hover .mascot-img-portal {
+      transform: scale(1.1) rotate(-3deg);
+    }
+    @keyframes morphBlob {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
+      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
     }
 
     @media (max-width: 1024px) {
-      .hero-split-grid { grid-template-columns: 1fr; gap: 24px; }
-      .hero-cover-frame { height: 260px; }
+      .hero-split-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hero-cover-frame { height: 240px; }
       .article-layout-grid { grid-template-columns: 1fr; }
-      .editorial-content-box { padding: 32px 24px; }
+      .editorial-content-box { padding: 30px 22px; }
       .article-sidebar { position: static; }
+      .about-cta-inner { grid-template-columns: 1fr; text-align: center; padding: 36px 24px; }
+      .about-cta-left { text-align: center; }
+      .about-cta-right { justify-content: center; }
+      .portal-shape { width: 200px; height: 200px; }
+      .mascot-img-portal { width: 155px; }
     }
     @media (max-width: 768px) {
-      .article-hero { padding: 36px 0 40px; }
+      .article-hero { padding: 30px 0 34px; }
       .article-nav-row { grid-template-columns: 1fr; }
       .author-profile-box { flex-direction: column; text-align: center; }
-      .immersion-footer-cta { padding: 28px 18px; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
@@ -571,14 +643,26 @@
           </p>
         </article>
 
-        <!-- Social Share Strip -->
+        <!-- Social Share Strip with Real SVGs -->
         <div class="article-share-strip">
           <div style="font-weight: 700; font-size: 0.85rem; color: var(--navy);">Share this insight:</div>
           <div style="display: flex; gap: 8px;">
-            <button class="share-icon-btn" onclick="shareWhatsApp()" title="Share on WhatsApp">💬</button>
-            <button class="share-icon-btn" onclick="shareLinkedIn()" title="Share on LinkedIn">💼</button>
-            <button class="share-icon-btn" onclick="shareTwitter()" title="Share on X">🐦</button>
-            <button class="share-icon-btn" onclick="copyArticleLink()" title="Copy Link">🔗</button>
+            <!-- WhatsApp -->
+            <button class="share-icon-btn" onclick="shareWhatsApp()" title="Share on WhatsApp" aria-label="Share on WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm0 18.15c-1.52 0-3-.41-4.3-1.18l-.31-.18-3.19.84.85-3.11-.2-.32c-.85-1.35-1.3-2.92-1.3-4.54 0-4.55 3.7-8.26 8.26-8.26 2.21 0 4.28.86 5.84 2.42 1.56 1.56 2.42 3.63 2.42 5.84 0 4.56-3.71 8.27-8.27 8.27zm4.53-6.2c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.18-.47-.3z"/></svg>
+            </button>
+            <!-- LinkedIn -->
+            <button class="share-icon-btn" onclick="shareLinkedIn()" title="Share on LinkedIn" aria-label="Share on LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.2a1.64 1.64 0 0 0-1.66 1.64 1.63 1.63 0 0 0 1.66 1.63 1.63 1.63 0 0 0 1.65-1.63A1.64 1.64 0 0 0 7.83 6.2z"/></svg>
+            </button>
+            <!-- X / Twitter -->
+            <button class="share-icon-btn" onclick="shareTwitter()" title="Share on X" aria-label="Share on X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </button>
+            <!-- Copy Link -->
+            <button class="share-icon-btn" onclick="copyArticleLink()" title="Copy Link" aria-label="Copy Article Link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            </button>
           </div>
         </div>
 
@@ -604,12 +688,6 @@
         </a>
       </div>
 
-      <!-- Footer CTA Banner -->
-      <div class="immersion-footer-cta">
-        <h3>Ready to Transform Your <em>Academic Curriculum?</em></h3>
-        <p>Custom-tailored international immersion tours, industry visits, and faculty development programs.</p>
-        <a href="contact.html" class="btn btn-green" style="background: var(--sage); color: var(--navy); padding: 11px 26px; border-radius: 100px; font-weight: 700;">Request Institutional Brochure ↗</a>
-      </div>
     </main>
 
     <!-- Right Sticky Sidebar -->
@@ -656,6 +734,27 @@
 
   </div>
 </div>
+
+<!-- ===== ABOUT US STYLE MASCOT CTA BANNER (FULL CONTAINER WIDTH) ===== -->
+<section id="blog-cta">
+  <div class="container">
+    <div class="about-cta-inner">
+      <div class="about-cta-left">
+        <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+        <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+        <div class="about-cta-right">
+          <a href="immersion-programs.html" class="btn-green">Explore Programs →</a>
+          <a href="contact.html" class="btn-outline">Contact Our Team</a>
+        </div>
+      </div>
+      <div class="portal-wrapper">
+        <div class="portal-shape">
+          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Vijigishu Lion Mascot" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
