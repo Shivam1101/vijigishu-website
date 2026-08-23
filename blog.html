@@ -173,7 +173,8 @@
 
     
     
-    /* ─── 2 -> 1 -> 2 -> 1 RHYTHMIC MASONRY / EDITORIAL GRID ─── */
+    
+    /* ─── MINIMAL FULL-BLEED VISUAL CARDS (2 -> 1 -> 2 -> 1 RHYTHM) ─── */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -181,214 +182,169 @@
       margin-bottom: 80px;
     }
 
-    /* Pair Cards (2 per row) */
-    .card-pair {
-      grid-column: span 6;
-      background: var(--white);
+    /* Base Visual Card */
+    .visual-blog-card {
+      position: relative;
       border-radius: 22px;
       overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 20px rgba(13,14,46,0.04);
+      background: var(--dark);
+      box-shadow: 0 10px 30px rgba(13,14,46,0.08);
+      border: none !important;
+      outline: none;
+      cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.35s var(--ease);
+      padding: 26px;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
       text-decoration: none;
     }
-    .card-pair:hover {
+    .visual-blog-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(13,14,46,0.1);
-      border-color: var(--sage);
-    }
-    .card-pair .card-media-wrap {
-      height: 250px;
-      position: relative;
-      overflow: hidden;
-      background: var(--dark);
+      box-shadow: 0 24px 50px rgba(13,14,46,0.22);
     }
 
-    /* Single Wide Featured Showcase Card (1 per row) */
+    /* Pair Card (2 per row) */
+    .card-pair {
+      grid-column: span 6;
+      height: 380px;
+    }
+
+    /* Single Wide Card (1 per row) */
     .card-single-wide {
       grid-column: span 12;
-      background: var(--white);
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 6px 25px rgba(13,14,46,0.05);
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      align-items: stretch;
-      transition: all 0.35s var(--ease);
-      text-decoration: none;
-      min-height: 340px;
-    }
-    .card-single-wide:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(13,14,46,0.12);
-      border-color: var(--green);
-    }
-    .card-single-wide .card-media-wrap {
-      height: 100%;
-      min-height: 320px;
-      position: relative;
-      overflow: hidden;
-      background: var(--dark);
-    }
-    .card-single-wide .card-content-body {
-      padding: 36px 38px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card-single-wide .card-article-title {
-      font-size: 1.6rem;
-      line-height: 1.3;
-    }
-    .card-single-wide .card-article-excerpt {
-      -webkit-line-clamp: 3;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      height: 420px;
     }
 
-    /* Shared Media & Typography Styles */
-    .card-media-img {
+    /* Full-bleed Background Image & Zoom */
+    .visual-card-bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s var(--ease);
+      object-position: center;
+      transition: transform 0.65s var(--ease);
+      z-index: 1;
     }
-    .card-pair:hover .card-media-img,
-    .card-single-wide:hover .card-media-img {
-      transform: scale(1.06);
+    .visual-blog-card:hover .visual-card-bg {
+      transform: scale(1.08);
     }
 
-    .card-tag-pill {
+    /* Dark Contrast Bottom Gradient Overlay */
+    .visual-card-overlay {
       position: absolute;
-      top: 14px;
-      left: 14px;
-      background: rgba(13, 14, 46, 0.78);
+      inset: 0;
+      background: linear-gradient(180deg, 
+        rgba(13,14,46,0.2) 0%, 
+        rgba(13,14,46,0.35) 40%, 
+        rgba(7,8,26,0.85) 75%, 
+        rgba(7,8,26,0.98) 100%
+      );
+      z-index: 2;
+      transition: background 0.4s var(--ease);
+    }
+    .visual-blog-card:hover .visual-card-overlay {
+      background: linear-gradient(180deg, 
+        rgba(13,14,46,0.1) 0%, 
+        rgba(13,14,46,0.25) 35%, 
+        rgba(7,8,26,0.9) 70%, 
+        rgba(7,8,26,0.99) 100%
+      );
+    }
+
+    /* Top Tags (Category & Read Limit) */
+    .visual-card-top {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+    .visual-blog-card:hover .visual-card-top {
+      opacity: 1;
+    }
+    .visual-card-badge {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .visual-card-time {
+      background: rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       color: var(--sage);
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
       padding: 4px 12px;
       border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.18);
-      z-index: 2;
-    }
-    .card-read-pill {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      color: #FFFFFF;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 100px;
-      z-index: 2;
+      border: 1px solid rgba(159, 194, 140, 0.3);
     }
 
-    .card-content-body {
-      padding: 24px;
+    /* Bottom Row: Heading + Minimal Circular Arrow */
+    .visual-card-bottom {
+      position: relative;
+      z-index: 3;
       display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+      align-items: flex-end;
       justify-content: space-between;
+      gap: 20px;
     }
-    
-    .card-meta-line {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--gray);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .card-meta-dot { width: 3px; height: 3px; background: var(--gray); border-radius: 50%; }
-
-    .card-article-title {
+    .visual-card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.28rem;
+      font-size: 1.45rem;
+      line-height: 1.28;
       font-weight: 700;
-      color: var(--navy);
-      line-height: 1.35;
-      margin-bottom: 10px;
-      transition: color 0.25s;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      color: #FFFFFF;
+      margin: 0;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      flex: 1;
     }
-    .card-pair:hover .card-article-title,
-    .card-single-wide:hover .card-article-title {
-      color: var(--green);
+    .card-single-wide .visual-card-title {
+      font-size: 1.85rem;
+      max-width: 85%;
     }
 
-    .card-article-excerpt {
-      font-size: 0.86rem;
-      color: var(--gray);
-      line-height: 1.55;
-      margin-bottom: 20px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .card-action-strip {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      padding-top: 16px;
-      margin-top: auto;
-    }
-    .card-action-label {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: gap 0.25s;
-    }
-    .card-pair:hover .card-action-label,
-    .card-single-wide:hover .card-action-label {
-      color: var(--navy);
-      gap: 9px;
-    }
-    .card-action-arrow {
-      width: 32px;
-      height: 32px;
+    /* Minimal Circular Arrow */
+    .visual-card-arrow {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: var(--off);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--navy);
-      transition: all 0.25s;
+      color: #FFFFFF;
+      flex-shrink: 0;
+      transition: all 0.3s var(--ease);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .card-pair:hover .card-action-arrow,
-    .card-single-wide:hover .card-action-arrow {
+    .visual-blog-card:hover .visual-card-arrow {
       background: var(--green);
-      color: var(--white);
       border-color: var(--green);
-      transform: translateX(3px);
+      color: #FFFFFF;
+      transform: translate(3px, -3px);
+      box-shadow: 0 6px 20px rgba(56,103,58,0.5);
     }
 
     @media (max-width: 991px) {
-      .card-single-wide { grid-template-columns: 1fr; }
-      .card-single-wide .card-media-wrap { height: 240px; }
-      .card-pair { grid-column: span 12; }
+      .card-single-wide { grid-column: span 12; height: 380px; }
+      .card-single-wide .visual-card-title { font-size: 1.45rem; }
+      .card-pair { grid-column: span 12; height: 360px; }
     }
 
     .empty-state { text-align: center; padding: 70px 20px; grid-column: 1 / -1; }
@@ -580,9 +536,10 @@
 
   
   
+  
   function renderBlogs() {
     const grid = document.getElementById('blogGrid');
-    const BLOG_DATA_VERSION = 'v4_2_1_rhythm';
+    const BLOG_DATA_VERSION = 'v5_minimal_cards';
     let list = DEFAULT_BLOGS;
 
     try {
@@ -615,39 +572,29 @@
       return;
     }
 
-    // 2 -> 1 -> 2 -> 1 Rhythm: [Pair, Pair, SingleWide, Pair, Pair, SingleWide...]
+    // 2 -> 1 -> 2 -> 1 Rhythmic Full-Bleed Cards
     grid.innerHTML = filtered.map((b, idx) => {
       const isWide = (idx % 3 === 2);
       const cardImage = b.image || 'images/blog-single-placeholder.png';
-      const cardClass = isWide ? 'card-single-wide' : 'card-pair';
+      const rhythmClass = isWide ? 'card-single-wide' : 'card-pair';
 
       return `
-        <a href="blog-single.html?id=${b.id}" class="${cardClass}" title="${escapeHtml(b.title)}">
-          <div class="card-media-wrap">
-            <img src="${cardImage}" alt="${escapeHtml(b.title)}" class="card-media-img" loading="lazy" onerror="this.src='images/blog-single-placeholder.png';" />
-            <span class="card-tag-pill">${escapeHtml(b.category || 'Article')}</span>
-            <span class="card-read-pill">${escapeHtml(b.readTime || '5 min read')}</span>
+        <a href="blog-single.html?id=${b.id}" class="visual-blog-card ${rhythmClass}" title="${escapeHtml(b.title)}">
+          <img src="${cardImage}" alt="${escapeHtml(b.title)}" class="visual-card-bg" loading="lazy" onerror="this.src='images/blog-single-placeholder.png';" />
+          <div class="visual-card-overlay"></div>
+
+          <div class="visual-card-top">
+            <span class="visual-card-badge">${escapeHtml(b.category || 'Article')}</span>
+            <span class="visual-card-time">${escapeHtml(b.readTime || '5 min read')}</span>
           </div>
 
-          <div class="card-content-body">
-            <div>
-              <div class="card-meta-line">
-                <span>${escapeHtml(b.author || 'Vijigishu Team')}</span>
-                <span class="card-meta-dot"></span>
-                <span>${escapeHtml(b.date || 'Aug 2026')}</span>
-              </div>
-              <h2 class="card-article-title">${escapeHtml(b.title)}</h2>
-              ${b.excerpt ? `<p class="card-article-excerpt">${escapeHtml(b.excerpt)}</p>` : ''}
-            </div>
-
-            <div class="card-action-strip">
-              <span class="card-action-label">${isWide ? 'Explore Featured Story →' : 'Read Full Article →'}</span>
-              <div class="card-action-arrow">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </div>
+          <div class="visual-card-bottom">
+            <h2 class="visual-card-title">${escapeHtml(b.title)}</h2>
+            <div class="visual-card-arrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
             </div>
           </div>
         </a>
