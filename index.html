@@ -1875,5 +1875,111 @@
 
   document.addEventListener('DOMContentLoaded', loadHomeTestimonials);
 
+
+  // Dynamic Academic Facilitators Sync
+  const defaultFacilitatorsList = [
+  {
+    "id": "fac-1",
+    "src": "partners/1.png",
+    "name": "Partner University 1"
+  },
+  {
+    "id": "fac-2",
+    "src": "partners/2.png",
+    "name": "Partner University 2"
+  },
+  {
+    "id": "fac-3",
+    "src": "partners/3.png",
+    "name": "Partner University 3"
+  },
+  {
+    "id": "fac-4",
+    "src": "partners/4.png",
+    "name": "Partner University 4"
+  },
+  {
+    "id": "fac-5",
+    "src": "partners/5.png",
+    "name": "Partner University 5"
+  },
+  {
+    "id": "fac-6",
+    "src": "partners/6.png",
+    "name": "Partner University 6"
+  },
+  {
+    "id": "fac-7",
+    "src": "partners/7.png",
+    "name": "Partner University 7"
+  },
+  {
+    "id": "fac-8",
+    "src": "partners/8.png",
+    "name": "Partner University 8"
+  },
+  {
+    "id": "fac-9",
+    "src": "partners/9.png",
+    "name": "Partner University 9"
+  },
+  {
+    "id": "fac-10",
+    "src": "partners/10.png",
+    "name": "Partner University 10"
+  },
+  {
+    "id": "fac-11",
+    "src": "partners/11.png",
+    "name": "Partner University 11"
+  },
+  {
+    "id": "fac-12",
+    "src": "partners/12.png",
+    "name": "Partner University 12"
+  },
+  {
+    "id": "fac-13",
+    "src": "partners/13.png",
+    "name": "Partner University 13"
+  },
+  {
+    "id": "fac-14",
+    "src": "partners/14.png",
+    "name": "Partner University 14"
+  }
+];
+
+  function loadAcademicFacilitators() {
+    let list = [];
+    try {
+      const raw = localStorage.getItem('vijigishu_facilitators');
+      if (raw) list = JSON.parse(raw);
+    } catch(e) {}
+
+    if (!list || !list.length) {
+      list = defaultFacilitatorsList;
+      try {
+        localStorage.setItem('vijigishu_facilitators', JSON.stringify(defaultFacilitatorsList));
+      } catch(e) {}
+    }
+
+    const track = document.querySelector('.partners-track');
+    if (!track) return;
+
+    // Render original items + duplicated items for infinite smooth marquee
+    const itemsHtml = list.map(item => `
+      <img class="partner-logo" src="${item.src}" alt="${item.name || 'Academic Partner'}" loading="lazy" onerror="this.src='images/Singapore.webp';" />
+    `).join('');
+
+    const loopHtml = list.map(item => `
+      <img class="partner-logo" src="${item.src}" alt="${item.name || 'Academic Partner'}" loading="lazy" aria-hidden="true" onerror="this.src='images/Singapore.webp';" />
+    `).join('');
+
+    track.innerHTML = itemsHtml + loopHtml;
+  }
+
+  document.addEventListener('DOMContentLoaded', loadAcademicFacilitators);
+
 </script>
 </body>
