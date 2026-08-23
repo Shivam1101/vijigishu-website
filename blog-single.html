@@ -64,129 +64,139 @@
       width: 0%; z-index: 10000; transition: width 0.1s linear;
     }
 
-    /* ─── MAGAZINE STYLE COMPACT HERO BANNER (SIDE-BY-SIDE) ─── */
-    .article-hero {
-      background: linear-gradient(135deg, #0D0E2E 0%, #171842 55%, #1F3622 100%);
+    /* ─── IMMERSIVE CINEMATIC HERO BANNER ─── */
+    .immersive-hero {
+      position: relative;
+      background: var(--dark);
       color: var(--white);
-      padding: 38px 0 42px;
-      position: relative;
+      padding: 70px 0 60px;
       overflow: hidden;
-    }
-    .article-hero::before {
-      content: ''; position: absolute; top: -80px; right: -80px; width: 350px; height: 350px;
-      border-radius: 50%; background: radial-gradient(circle, rgba(159,194,140,.2) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-split-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 1fr;
-      gap: 32px;
+      display: flex;
       align-items: center;
-      position: relative;
+    }
+    .hero-backdrop-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: blur(4px) brightness(0.28); transform: scale(1.08); z-index: 1;
+    }
+    .hero-gradient-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(7,8,26,0.92) 0%, rgba(13,14,46,0.85) 50%, rgba(31,54,34,0.88) 100%);
       z-index: 2;
     }
-
-    /* Left Info Column */
-    .hero-info-col {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    .hero-container-inner {
+      position: relative; z-index: 3; max-width: 980px; margin: 0 auto; text-align: center;
     }
-    .article-breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 12px;
-    }
-    .article-breadcrumb a { color: var(--sage); transition: color 0.2s; }
-    .article-breadcrumb a:hover { color: var(--white); }
 
+    .hero-badge-row {
+      display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    }
     .article-category-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(159,194,140,0.2);
+      border: 1px solid rgba(159,194,140,0.4);
       color: var(--sage);
-      padding: 3px 12px;
+      padding: 4px 14px;
       border-radius: 100px;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 12px;
+    }
+    .article-read-badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 5px;
     }
 
-    /* Reduced Main Heading Font */
     .article-hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 2.4vw, 2.05rem);
-      line-height: 1.26;
+      font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+      line-height: 1.25;
       color: var(--white);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       font-weight: 700;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
     .article-hero-title em { color: var(--sage); font-style: italic; }
 
     .article-hero-excerpt {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.55;
-      margin-bottom: 18px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0 auto 28px;
     }
 
-    .article-author-strip {
+    /* Interactive Audio & PDF Action Bar inside Hero */
+    .hero-interactive-toolbar {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.85);
-      font-weight: 600;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      width: 100%;
-    }
-    .author-thumb-img {
-      width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
-      border: 2px solid var(--sage);
-    }
-    .author-meta-dot { width: 4px; height: 4px; background: var(--sage); border-radius: 50%; }
-
-    /* Right Media Column */
-    .hero-media-col {
-      position: relative;
-    }
-    .hero-cover-frame {
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255,255,255,0.15);
-      height: 275px;
-      position: relative;
-      background: var(--dark);
+      padding: 10px 18px;
+      border-radius: 100px;
+      width: max-content;
+      margin: 0 auto;
     }
-    .hero-cover-frame img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-    .hero-cover-frame:hover img { transform: scale(1.04); }
 
-    /* ─── ARTICLE LAYOUT & SIDEBAR ─── */
+    .audio-player-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #FFFFFF; border: none;
+      padding: 7px 18px; border-radius: 100px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.25s var(--ease);
+    }
+    .audio-player-btn:hover {
+      background: var(--sage); color: var(--navy); transform: scale(1.02);
+    }
+    .audio-waves {
+      display: flex; align-items: center; gap: 2px; height: 14px;
+    }
+    .audio-wave-bar {
+      width: 3px; height: 100%; background: #FFFFFF; border-radius: 2px;
+      animation: wavePulse 1.2s ease-in-out infinite;
+    }
+    .audio-wave-bar:nth-child(2) { animation-delay: 0.2s; height: 60%; }
+    .audio-wave-bar:nth-child(3) { animation-delay: 0.4s; height: 80%; }
+    @keyframes wavePulse {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+    .audio-waves.paused .audio-wave-bar { animation: none; transform: scaleY(0.4); }
+
+    .pdf-download-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent; color: #FFFFFF; border: 1px solid rgba(255,255,255,0.3);
+      padding: 7px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: all 0.25s;
+    }
+    .pdf-download-btn:hover {
+      background: rgba(255,255,255,0.15); border-color: #FFFFFF;
+    }
+
+    .hero-meta-author {
+      display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: rgba(255,255,255,0.9); font-weight: 600;
+    }
+    .hero-author-avatar {
+      width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid var(--sage);
+    }
+
+    /* ─── ARTICLE LAYOUT & STICKY SIDEBAR ─── */
     .article-main-wrap {
-      padding: 40px 0 70px;
+      padding: 44px 0 70px;
     }
     .article-layout-grid {
       display: grid;
       grid-template-columns: 1fr 310px;
-      gap: 40px;
+      gap: 36px;
       align-items: start;
     }
 
@@ -227,17 +237,19 @@
 
     .article-body-text h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       color: var(--navy);
-      margin: 34px 0 16px;
+      margin: 36px 0 16px;
       line-height: 1.3;
+      scroll-margin-top: 100px;
     }
     .article-body-text h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.32rem;
+      font-size: 1.3rem;
       color: var(--navy);
       margin: 26px 0 14px;
       line-height: 1.3;
+      scroll-margin-top: 100px;
     }
 
     /* Key Takeaways Card */
@@ -300,7 +312,7 @@
       overflow: hidden;
       border: 1px solid var(--border);
     }
-    .inline-showcase img { width: 100%; height: 300px; object-fit: cover; }
+    .inline-showcase img { width: 100%; height: 320px; object-fit: cover; }
     .showcase-caption {
       text-align: center; font-size: 0.8rem; color: var(--gray);
       padding: 8px 14px; background: #fafafa; font-style: italic;
@@ -353,13 +365,13 @@
       font-size: 0.82rem; color: var(--gray); margin: 0; line-height: 1.45;
     }
 
-    /* ─── STICKY SIDEBAR ─── */
+    /* ─── STICKY SIDEBAR (WITH DYNAMIC TABLE OF CONTENTS) ─── */
     .article-sidebar {
       position: sticky;
       top: 96px;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
     }
     .sidebar-widget {
       background: var(--white);
@@ -379,6 +391,18 @@
     }
     .widget-title::after {
       content: ''; position: absolute; bottom: 0; left: 0; width: 32px; height: 2px; background: var(--green);
+    }
+
+    /* Dynamic Table of Contents (Feature 2) */
+    .toc-list {
+      list-style: none; display: flex; flex-direction: column; gap: 6px;
+    }
+    .toc-item a {
+      font-size: 0.82rem; color: var(--gray); font-weight: 600; display: block;
+      padding: 5px 8px; border-radius: 8px; transition: all 0.2s; line-height: 1.35;
+    }
+    .toc-item.active a, .toc-item a:hover {
+      color: var(--navy); background: rgba(159,194,140,0.18); font-weight: 700; padding-left: 12px;
     }
 
     /* Sidebar Programs Links */
@@ -408,7 +432,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
-      margin: 40px 0;
+      margin: 36px 0;
     }
     .article-nav-tile {
       background: var(--white);
@@ -435,52 +459,50 @@
       font-weight: 700; color: var(--navy); line-height: 1.35;
     }
 
-    /* ─── ABOUT US STYLE MASCOT CTA BANNER ─── */
-    #blog-cta {
-      padding: 30px 0 70px;
-    }
+    /* ─── ABOUT US STYLE MASCOT CTA BANNER (INSIDE MAIN COLUMN) ─── */
     .about-cta-inner {
       background: var(--white);
       border-radius: 28px;
-      padding: 44px 50px;
+      padding: 40px 44px;
       box-shadow: 0 10px 40px rgba(13,14,46,0.05);
       border: 1px solid var(--border);
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
       align-items: center;
-      gap: 36px;
+      gap: 32px;
       position: relative;
       overflow: hidden;
+      margin-top: 24px;
     }
     .about-cta-left { position: relative; z-index: 2; text-align: left; }
     .about-cta-h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
       color: var(--navy) !important;
       margin-bottom: 10px;
       line-height: 1.22;
     }
     .about-cta-h2 em { color: var(--green) !important; font-style: italic; }
-    .about-cta-sub { color: var(--gray) !important; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+    .about-cta-sub { color: var(--gray) !important; font-size: 0.9rem; line-height: 1.6; margin: 0; }
     
     .about-cta-right {
       position: relative;
       z-index: 2;
       display: flex;
       flex-direction: row;
-      gap: 14px;
-      margin-top: 22px;
+      gap: 12px;
+      margin-top: 20px;
       justify-content: flex-start;
       flex-wrap: wrap;
     }
     .about-cta-right .btn-green {
-      background: var(--green); color: var(--white); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.85rem;
+      background: var(--green); color: var(--white); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.84rem;
     }
     .about-cta-right .btn-green:hover {
       background: var(--sage); color: var(--navy); transform: translateY(-2px);
     }
     .about-cta-right .btn-outline {
-      background: transparent; border: 1px solid var(--navy); color: var(--navy); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.85rem;
+      background: transparent; border: 1px solid var(--navy); color: var(--navy); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.84rem;
     }
     .about-cta-right .btn-outline:hover {
       background: var(--navy); color: var(--white); transform: translateY(-2px);
@@ -494,8 +516,8 @@
       z-index: 2;
     }
     .portal-shape {
-      width: 240px;
-      height: 240px;
+      width: 220px;
+      height: 220px;
       background: rgba(27,28,74,0.02);
       border: 3px solid var(--sage);
       border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
@@ -508,7 +530,7 @@
       transition: border-color 0.4s, background 0.4s;
     }
     .mascot-img-portal {
-      width: 190px;
+      width: 175px;
       height: auto;
       transition: transform 0.5s ease;
     }
@@ -525,22 +547,30 @@
       100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
     }
 
+    /* ─── PRINT-FRIENDLY PDF STYLESHEET (FEATURE 3) ─── */
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      nav, header#global-header, footer#global-footer, .reading-progress-bar,
+      .article-sidebar, .article-nav-row, .about-cta-inner, .article-share-strip,
+      .hero-interactive-toolbar { display: none !important; }
+      .immersive-hero { background: none !important; color: #000 !important; padding: 20px 0 !important; }
+      .hero-backdrop-img, .hero-gradient-overlay { display: none !important; }
+      .article-hero-title { color: #000 !important; font-size: 24pt !important; }
+      .article-hero-excerpt { color: #444 !important; }
+      .article-main-wrap { padding: 0 !important; }
+      .article-layout-grid { grid-template-columns: 1fr !important; }
+      .editorial-content-box { border: none !important; box-shadow: none !important; padding: 0 !important; }
+    }
+
     @media (max-width: 1024px) {
-      .hero-split-grid { grid-template-columns: 1fr; gap: 20px; }
-      .hero-cover-frame { height: 240px; }
       .article-layout-grid { grid-template-columns: 1fr; }
       .editorial-content-box { padding: 30px 22px; }
       .article-sidebar { position: static; }
-      .about-cta-inner { grid-template-columns: 1fr; text-align: center; padding: 36px 24px; }
+      .about-cta-inner { grid-template-columns: 1fr; text-align: center; padding: 32px 20px; }
       .about-cta-left { text-align: center; }
       .about-cta-right { justify-content: center; }
-      .portal-shape { width: 200px; height: 200px; }
-      .mascot-img-portal { width: 155px; }
-    }
-    @media (max-width: 768px) {
-      .article-hero { padding: 30px 0 34px; }
-      .article-nav-row { grid-template-columns: 1fr; }
-      .author-profile-box { flex-direction: column; text-align: center; }
+      .portal-shape { width: 190px; height: 190px; }
+      .mascot-img-portal { width: 145px; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
@@ -552,51 +582,68 @@
 <!-- ===== GLOBAL HEADER ===== -->
 <header id="global-header"></header>
 
-<!-- ===== SPLIT COMPACT MAGAZINE HERO ===== -->
-<div class="article-hero">
+<!-- ===== IMMERSIVE CINEMATIC HERO BANNER ===== -->
+<div class="immersive-hero">
+  <!-- Parallax Blurred Backdrop -->
+  <img id="heroBackdropImage" src="images/mangement-2-scaled.webp" alt="Cover" class="hero-backdrop-img" />
+  <div class="hero-gradient-overlay"></div>
+
   <div class="container">
-    <div class="hero-split-grid">
+    <div class="hero-container-inner">
       
-      <!-- Left Column: Title, Category, Author Info -->
-      <div class="hero-info-col">
-        <div class="article-breadcrumb">
-          <a href="/">Home</a> <span>›</span>
-          <a href="blog.html">Blog</a> <span>›</span>
-          <span id="crumbCategory">Management</span>
-        </div>
-
+      <!-- Category & Dynamic Auto-Calculated Read Time Badge -->
+      <div class="hero-badge-row">
         <span class="article-category-badge" id="articleCategoryBadge">Management</span>
-
-        <h1 class="article-hero-title" id="articleTitle">
-          Why Global Immersion Programs are Essential for <em>Management Students</em>
-        </h1>
-
-        <p class="article-hero-excerpt" id="articleExcerpt">
-          Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.
-        </p>
-
-        <div class="article-author-strip">
-          <img src="images/admin-profile-icon.png" alt="Author" class="author-thumb-img" />
-          <span id="articleAuthorName">Dr. Vijaya Kumar</span>
-          <span class="author-meta-dot"></span>
-          <span id="articleDateText">Aug 18, 2026</span>
-          <span class="author-meta-dot"></span>
-          <span id="articleReadDuration">5 min read</span>
-        </div>
+        <span class="article-read-badge" id="articleReadBadge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span id="articleCalcTime">4 min read</span>
+        </span>
       </div>
 
-      <!-- Right Column: Framed Visual Cover Image -->
-      <div class="hero-media-col">
-        <div class="hero-cover-frame">
-          <img id="articleCoverPhoto" src="images/mangement-2-scaled.webp" alt="Article Cover" onerror="this.src='images/Singapore.webp';" />
+      <!-- Main Heading (Reduced & Balanced Font) -->
+      <h1 class="article-hero-title" id="articleTitle">
+        Why Global Immersion Programs are Essential for <em>Management Students</em>
+      </h1>
+
+      <p class="article-hero-excerpt" id="articleExcerpt">
+        Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.
+      </p>
+
+      <!-- Interactive Toolbar: Audio Narration + PDF Download + Author -->
+      <div class="hero-interactive-toolbar">
+        
+        <!-- Feature 1: Audio / Voice Narration Player -->
+        <button class="audio-player-btn" id="audioPlayerToggle" onclick="toggleAudioNarration()">
+          <span id="audioBtnIcon">▶</span>
+          <span id="audioBtnText">Listen to Article</span>
+          <div class="audio-waves paused" id="audioWaveVisualizer">
+            <div class="audio-wave-bar"></div>
+            <div class="audio-wave-bar"></div>
+            <div class="audio-wave-bar"></div>
+          </div>
+        </button>
+
+        <!-- Feature 3: Download / Print Article as PDF -->
+        <button class="pdf-download-btn" onclick="window.print()" title="Print or Save Article as PDF Briefing">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Save PDF Briefing
+        </button>
+
+        <!-- Author Strip -->
+        <div class="hero-meta-author">
+          <img src="images/admin-profile-icon.png" alt="Author" class="hero-author-avatar" />
+          <span id="articleAuthorName">Dr. Vijaya Kumar</span>
+          <span style="opacity: 0.5;">·</span>
+          <span id="articleDateText">Aug 18, 2026</span>
         </div>
+
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- ===== MAIN EDITORIAL CONTENT + SIDEBAR ===== -->
+<!-- ===== MAIN EDITORIAL CONTENT + STICKY SIDEBAR ===== -->
 <div class="container article-main-wrap">
   <div class="article-layout-grid">
     
@@ -608,7 +655,7 @@
             In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms.
           </p>
 
-          <h2>1. Experiential Exposure in World Financial Hubs</h2>
+          <h2 id="sec-1">1. Experiential Exposure in World Financial Hubs</h2>
           <p>
             During our Singapore &amp; Europe Management Immersion programs, students engage in closed-door sessions with executive directors at global headquarters such as Boeing Regional HQ, Mercedes-Benz, and the Frankfurt Stock Exchange. Seeing trading floors live and hearing decision-makers analyze risk transforms student perspectives from passive theoretical observers to active industry strategists.
           </p>
@@ -625,7 +672,7 @@
             </ul>
           </div>
 
-          <h2>2. Developing Cross-Cultural Leadership Intelligence</h2>
+          <h2 id="sec-2">2. Developing Cross-Cultural Leadership Intelligence</h2>
           <p>
             Navigating international business requires cultural empathy. Interacting with faculties at Paris School of Business and Politecnico di Milano gives young leaders the confidence to negotiate, pitch, and collaborate in multicultural teams.
           </p>
@@ -639,13 +686,13 @@
             <div class="showcase-caption">Students participating in an executive boardroom workshop during the European Immersion Tour.</div>
           </div>
 
-          <h2>3. Bridging Classroom Theory with Industry Reality</h2>
+          <h2 id="sec-3">3. Bridging Classroom Theory with Industry Reality</h2>
           <p>
             Experiential travel does not replace traditional curriculum; it amplifies it. When students return to their home campuses after presenting business model canvases to international mentors, their grasp of economics, strategic management, and marketing reaches an entirely new dimension.
           </p>
         </article>
 
-        <!-- Social Share Strip with Real SVGs -->
+        <!-- Social Share Strip with Clean Stroke SVGs -->
         <div class="article-share-strip">
           <div style="font-weight: 700; font-size: 0.85rem; color: var(--navy);">Share this insight:</div>
           <div style="display: flex; gap: 8px;">
@@ -693,9 +740,8 @@
         </a>
       </div>
 
-    
       <!-- Mascot CTA Banner Nested Directly Inside Main Column -->
-      <div class="about-cta-inner" style="margin-top: 20px;">
+      <div class="about-cta-inner">
         <div class="about-cta-left">
           <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
           <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
@@ -716,6 +762,14 @@
     <!-- Right Sticky Sidebar -->
     <aside class="article-sidebar">
       
+      <!-- Feature 2: Dynamic Table of Contents Widget -->
+      <div class="sidebar-widget">
+        <div class="widget-title">Table of Contents</div>
+        <ul class="toc-list" id="tocList">
+          <!-- Dynamically populated from article h2 / h3 tags -->
+        </ul>
+      </div>
+
       <!-- Featured Immersion Programs -->
       <div class="sidebar-widget">
         <div class="widget-title">Featured Immersions</div>
@@ -758,8 +812,6 @@
   </div>
 </div>
 
-
-
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
@@ -774,7 +826,110 @@
     if (bar) bar.style.width = scrolled + '%';
   });
 
-  // Dynamic Blog Loader from URL Query
+  // Feature 5: Dynamic Word Count & Reading Time Auto-Calculator
+  function calculateReadTime(text) {
+    const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const minutes = Math.max(1, Math.ceil(words / 190));
+    return `${minutes} min read (${words} words)`;
+  }
+
+  // Feature 2: Dynamic Table of Contents Generator
+  function generateTableOfContents() {
+    const content = document.getElementById('articleBodyText');
+    const tocList = document.getElementById('tocList');
+    if (!content || !tocList) return;
+
+    const headings = content.querySelectorAll('h2, h3');
+    if (!headings.length) {
+      tocList.innerHTML = '<li style="font-size:0.8rem; color:var(--gray);">Overview Section</li>';
+      return;
+    }
+
+    tocList.innerHTML = '';
+    headings.forEach((heading, idx) => {
+      if (!heading.id) {
+        heading.id = 'heading-sec-' + (idx + 1);
+      }
+      const li = document.createElement('li');
+      li.className = 'toc-item' + (idx === 0 ? ' active' : '');
+      li.innerHTML = `<a href="#${heading.id}">${heading.textContent.trim()}</a>`;
+      tocList.appendChild(li);
+    });
+
+    // Highlight active section on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.toc-item').forEach(item => {
+            const link = item.querySelector('a');
+            if (link && link.getAttribute('href') === '#' + id) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-80px 0px -60% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  }
+
+  // Feature 1: Built-in Audio / Voice Narration Player (Web Speech API)
+  let isSpeaking = false;
+  let synthUtterance = null;
+
+  function toggleAudioNarration() {
+    if (!('speechSynthesis' in window)) {
+      alert('Speech synthesis is not supported in this browser.');
+      return;
+    }
+
+    const synth = window.speechSynthesis;
+    const btnText = document.getElementById('audioBtnText');
+    const btnIcon = document.getElementById('audioBtnIcon');
+    const visualizer = document.getElementById('audioWaveVisualizer');
+
+    if (isSpeaking) {
+      synth.cancel();
+      isSpeaking = false;
+      btnText.textContent = 'Listen to Article';
+      btnIcon.textContent = '▶';
+      visualizer.classList.add('paused');
+    } else {
+      const title = document.getElementById('articleTitle')?.textContent || '';
+      const text = document.getElementById('articleBodyText')?.textContent || '';
+      const fullTextToRead = `Article Title: ${title}. ${text}`;
+
+      synth.cancel(); // Clear any previous queue
+      synthUtterance = new SpeechSynthesisUtterance(fullTextToRead);
+      synthUtterance.rate = 0.95;
+      synthUtterance.pitch = 1.0;
+
+      synthUtterance.onend = () => {
+        isSpeaking = false;
+        btnText.textContent = 'Listen to Article';
+        btnIcon.textContent = '▶';
+        visualizer.classList.add('paused');
+      };
+
+      synthUtterance.onerror = () => {
+        isSpeaking = false;
+        btnText.textContent = 'Listen to Article';
+        btnIcon.textContent = '▶';
+        visualizer.classList.add('paused');
+      };
+
+      synth.speak(synthUtterance);
+      isSpeaking = true;
+      btnText.textContent = 'Pause Narration';
+      btnIcon.textContent = '⏸';
+      visualizer.classList.remove('paused');
+    }
+  }
+
+  // Default Fallback Articles
   const DEFAULT_BLOGS = [
     {
       id: "blog-1",
@@ -816,17 +971,15 @@
     if (!post) return;
 
     document.title = post.title + ' – Vijigishu';
-    document.getElementById('crumbCategory').textContent = post.category || 'Article';
     document.getElementById('articleCategoryBadge').textContent = post.category || 'Article';
     document.getElementById('articleTitle').innerHTML = post.title;
     if (post.excerpt) document.getElementById('articleExcerpt').textContent = post.excerpt;
     document.getElementById('articleAuthorName').textContent = post.author || 'Vijigishu Editorial';
     document.getElementById('authorProfileName').textContent = post.author || 'Vijigishu Editorial';
     document.getElementById('articleDateText').textContent = post.date || 'Aug 2026';
-    document.getElementById('articleReadDuration').textContent = post.readTime || '5 min read';
     
     if (post.image) {
-      document.getElementById('articleCoverPhoto').src = post.image;
+      document.getElementById('heroBackdropImage').src = post.image;
     }
 
     if (post.content) {
@@ -834,11 +987,14 @@
       if (paragraphs.length > 0) {
         document.getElementById('articleBodyText').innerHTML = `
           <p class="lead-paragraph">${paragraphs[0]}</p>
-          ${paragraphs.slice(1).map(p => `<p>${p}</p>`).join('')}
+          ${paragraphs.slice(1).map((p, i) => `
+            ${i === 1 ? '<h2 id="sec-deeper-insights">Deepening Strategic Intelligence</h2>' : ''}
+            <p>${p}</p>
+          `).join('')}
           <div class="takeaways-callout">
             <div class="takeaways-heading">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-              Key Takeaways
+              Key Learning Takeaways
             </div>
             <ul class="takeaways-items">
               <li>Firsthand global exposure bridges theory and practice.</li>
@@ -849,6 +1005,13 @@
         `;
       }
     }
+
+    // Auto calculate read time
+    const fullArticleText = (post.title || '') + ' ' + (post.content || '') + ' ' + (post.excerpt || '');
+    document.getElementById('articleCalcTime').textContent = calculateReadTime(fullArticleText);
+
+    // Build Table of Contents
+    generateTableOfContents();
   }
 
   function shareWhatsApp() {
