@@ -308,6 +308,11 @@
     }
 
     /* Sticky Sidebar */
+    html { scroll-behavior: smooth; }
+    .article-rendered-body h2,
+    .article-rendered-body h3 {
+      scroll-margin-top: 110px;
+    }
     .single-blog-sidebar {
       position: sticky;
       top: 100px;
@@ -318,7 +323,7 @@
     .sidebar-widget {
       background: var(--white);
       border-radius: 20px;
-      padding: 28px;
+      padding: 24px 28px;
       border: 1px solid var(--border);
       box-shadow: 0 4px 20px rgba(13,14,46,0.03);
     }
@@ -336,12 +341,18 @@
     
     .toc-item a {
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--gray);
       display: block;
-      padding: 6px 0 6px 12px;
+      padding: 6px 0 6px 14px;
       border-left: 2px solid var(--border);
       transition: all 0.2s;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+    .toc-item a:hover {
+      color: var(--navy);
+      border-color: var(--sage);
     }
     .toc-item.active a {
       color: var(--green);
@@ -458,19 +469,63 @@
 <script src="../js/global-components.js?v=1787475903488"></script>
 
 <script>
-  // Dynamic Table of Contents
-  document.addEventListener('DOMContentLoaded', () => {
+  // Robust Dynamic Table of Contents & Smooth Scroll Spy
+  function initTableOfContents() {
     const content = document.getElementById('articleBodyText');
     const tocList = document.getElementById('tocList');
-    if (content && tocList) {
-      const headings = content.querySelectorAll('h2, h3');
-      headings.forEach((h, idx) => {
-        if (!h.id) h.id = 'sec-' + (idx + 1);
-        const li = document.createElement('li');
-        li.className = 'toc-item' + (idx === 0 ? ' active' : '');
-        li.innerHTML = '<a href="#' + h.id + '">' + h.textContent.trim() + '</a>';
-        tocList.appendChild(li);
+    if (!content || !tocList) return;
+
+    const headings = content.querySelectorAll('h2, h3');
+    if (!headings.length) {
+      tocList.innerHTML = '<li style="font-size:0.8rem; color:var(--gray);">Overview Section</li>';
+      return;
+    }
+
+    tocList.innerHTML = '';
+    headings.forEach((h, idx) => {
+      const headingId = h.id || ('heading-sec-' + (idx + 1));
+      h.id = headingId;
+
+      const li = document.createElement('li');
+      li.className = 'toc-item' + (idx === 0 ? ' active' : '');
+      
+      const link = document.createElement('a');
+      link.href = '#' + headingId;
+      link.textContent = h.textContent.trim();
+      link.onclick = (e) => {
+        e.preventDefault();
+        const target = document.getElementById(headingId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          history.pushState(null, null, '#' + headingId);
+        }
+      };
+
+      li.appendChild(link);
+      tocList.appendChild(li);
+    });
+
+    // Active Highlight Observer on Scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          document.querySelectorAll('.toc-item').forEach(item => {
+            const a = item.querySelector('a');
+            if (a && a.getAttribute('href') === '#' + currentId) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
       });
+    }, { rootMargin: '-90px 0px -65% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  }
+
+  document.addEventListener('DOMContentLoaded', initTableOfContents);
     }
   });
 

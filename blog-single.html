@@ -831,7 +831,8 @@
     }
   }
 
-  function generateTableOfContents() {
+  // Robust Dynamic Table of Contents & Smooth Scroll Spy
+  function initTableOfContents() {
     const content = document.getElementById('articleBodyText');
     const tocList = document.getElementById('tocList');
     if (!content || !tocList) return;
@@ -843,24 +844,37 @@
     }
 
     tocList.innerHTML = '';
-    headings.forEach((heading, idx) => {
-      if (!heading.id) {
-        heading.id = 'heading-sec-' + (idx + 1);
-      }
+    headings.forEach((h, idx) => {
+      const headingId = h.id || ('heading-sec-' + (idx + 1));
+      h.id = headingId;
+
       const li = document.createElement('li');
       li.className = 'toc-item' + (idx === 0 ? ' active' : '');
-      li.innerHTML = `<a href="#${heading.id}">${heading.textContent.trim()}</a>`;
+      
+      const link = document.createElement('a');
+      link.href = '#' + headingId;
+      link.textContent = h.textContent.trim();
+      link.onclick = (e) => {
+        e.preventDefault();
+        const target = document.getElementById(headingId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          history.pushState(null, null, '#' + headingId);
+        }
+      };
+
+      li.appendChild(link);
       tocList.appendChild(li);
     });
 
-    // Highlight active section on scroll
+    // Active Highlight Observer on Scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
+          const currentId = entry.target.getAttribute('id');
           document.querySelectorAll('.toc-item').forEach(item => {
-            const link = item.querySelector('a');
-            if (link && link.getAttribute('href') === '#' + id) {
+            const a = item.querySelector('a');
+            if (a && a.getAttribute('href') === '#' + currentId) {
               item.classList.add('active');
             } else {
               item.classList.remove('active');
@@ -868,7 +882,7 @@
           });
         }
       });
-    }, { rootMargin: '-80px 0px -60% 0px' });
+    }, { rootMargin: '-90px 0px -65% 0px' });
 
     headings.forEach(h => observer.observe(h));
   }
