@@ -634,6 +634,162 @@
     }
     .brochure-cta-btn:hover { background: #2A4F2C; transform: translateY(-2px); }
 
+    /* ─── OPTION 1: MOBILE FLOATING BOTTOM TOC PILL & BOTTOM SHEET ─── */
+    .mobile-toc-pill {
+      display: none;
+    }
+    .mobile-toc-backdrop {
+      display: none;
+    }
+    .mobile-toc-drawer {
+      display: none;
+    }
+
+    @media (max-width: 991px) {
+      .blog-layout-wrap { grid-template-columns: 1fr; }
+      .single-blog-sidebar { display: none; }
+      .editorial-content-box { padding: 28px 20px; }
+      .hero-flex-container { flex-direction: column; align-items: flex-start; }
+      .hero-right-actions { align-self: flex-start; }
+      .editorial-nav-grid { grid-template-columns: 1fr; }
+
+      /* Mobile Floating Pill */
+      .mobile-toc-pill {
+        display: inline-flex;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(13, 14, 46, 0.94);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        color: #FFFFFF;
+        border: 1px solid rgba(255,255,255,0.2);
+        padding: 11px 22px;
+        border-radius: 100px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        font-size: 0.82rem;
+        font-weight: 700;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        z-index: 9999;
+        transition: all 0.3s var(--ease);
+      }
+      .mobile-toc-pill:hover {
+        background: var(--navy);
+        transform: translateX(-50%) translateY(-2px);
+      }
+      .mobile-pill-badge {
+        background: var(--green);
+        color: #FFFFFF;
+        padding: 2px 8px;
+        border-radius: 100px;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+
+      /* Mobile Bottom Sheet Backdrop */
+      .mobile-toc-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(7, 8, 26, 0.65);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 100000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s var(--ease);
+      }
+      .mobile-toc-backdrop.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Mobile Bottom Sheet Drawer */
+      .mobile-toc-drawer {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-height: 80vh;
+        background: #FFFFFF;
+        border-radius: 28px 28px 0 0;
+        z-index: 100001;
+        transform: translateY(100%);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 20px 24px 36px;
+        box-shadow: 0 -12px 40px rgba(0,0,0,0.25);
+        overflow-y: auto;
+      }
+      .mobile-toc-drawer.active {
+        transform: translateY(0);
+      }
+      .drawer-handle-bar {
+        width: 44px;
+        height: 4px;
+        background: #CBD5E1;
+        border-radius: 4px;
+        margin: 0 auto 16px;
+      }
+      .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      .drawer-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .drawer-close-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #F1F5F9;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: var(--navy);
+        cursor: pointer;
+      }
+      .mobile-toc-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .mobile-toc-items li {
+        margin-bottom: 10px;
+      }
+      .mobile-toc-items a {
+        display: block;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: #F8FAFC;
+        border: 1px solid var(--border);
+        color: var(--navy);
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+      .mobile-toc-items a:hover,
+      .mobile-toc-items li.active a {
+        background: #F4F8F3;
+        border-color: var(--green);
+        color: var(--green);
+        font-weight: 700;
+      }
+    }
+
     /* Toast notification */
     #copyToast {
       position: fixed;
@@ -653,15 +809,6 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     }
     #copyToast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-
-    @media (max-width: 991px) {
-      .blog-layout-wrap { grid-template-columns: 1fr; }
-      .single-blog-sidebar { width: 100%; position: static; }
-      .editorial-content-box { padding: 28px 20px; }
-      .hero-flex-container { flex-direction: column; align-items: flex-start; }
-      .hero-right-actions { align-self: flex-start; }
-      .editorial-nav-grid { grid-template-columns: 1fr; }
-    }
   </style>
   <link rel="stylesheet" href="../css/global-components.css?v=1787475903488" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -852,7 +999,7 @@
       </div>
     </main>
 
-    <!-- RIGHT STICKY SIDEBAR -->
+    <!-- RIGHT STICKY SIDEBAR (DESKTOP) -->
     <aside class="single-blog-sidebar">
       <!-- Reading Progress Circle Widget -->
       <div class="sidebar-widget">
@@ -905,6 +1052,42 @@
   </div>
 </div>
 
+<!-- OPTION 1: MOBILE FLOATING BOTTOM TOC PILL -->
+<button class="mobile-toc-pill" onclick="openMobileToc()" id="mobileTocBtn">
+  <span>📑 Sections</span>
+  <span>·</span>
+  <span class="mobile-pill-badge" id="mobileTocPct">0%</span>
+  <span>▲</span>
+</button>
+
+<!-- MOBILE BOTTOM SHEET MODAL -->
+<div class="mobile-toc-backdrop" id="mobileTocBackdrop" onclick="closeMobileToc()"></div>
+<div class="mobile-toc-drawer" id="mobileTocDrawer">
+  <div class="drawer-handle-bar"></div>
+  <div class="drawer-header">
+    <div class="drawer-title">Table of Contents</div>
+    <button class="drawer-close-btn" onclick="closeMobileToc()">✕</button>
+  </div>
+  <ul class="mobile-toc-items" id="mobileTocList">
+    
+    <li class="toc-item active">
+      <a href="#heading-2" onclick="scrollToSection(event, 'heading-2')">1. Mitigating the Urban Heat Island Effect</a>
+    </li>
+    <li class="toc-item">
+      <a href="#heading-8" onclick="scrollToSection(event, 'heading-8')">2. On-Site Measured Documentation and Façade Analysis</a>
+    </li>
+    <li class="toc-item">
+      <a href="#heading-12" onclick="scrollToSection(event, 'heading-12')">3. Masterclasses with Urban Planning Authorities</a>
+    </li>
+    <li class="toc-item">
+      <a href="#sec-takeaways" onclick="scrollToSection(event, 'sec-takeaways')">Key Takeaways</a>
+    </li>
+    <li class="toc-item">
+      <a href="#sec-faqs" onclick="scrollToSection(event, 'sec-faqs')">Academic FAQs</a>
+    </li>
+  </ul>
+</div>
+
 <!-- Toast element -->
 <div id="copyToast">Quote copied to clipboard!</div>
 
@@ -912,9 +1095,21 @@
 <script src="../js/global-components.js?v=1787475903488"></script>
 
 <script>
+  // Mobile TOC Drawer Handlers
+  function openMobileToc() {
+    document.getElementById('mobileTocBackdrop')?.classList.add('active');
+    document.getElementById('mobileTocDrawer')?.classList.add('active');
+  }
+
+  function closeMobileToc() {
+    document.getElementById('mobileTocBackdrop')?.classList.remove('active');
+    document.getElementById('mobileTocDrawer')?.classList.remove('active');
+  }
+
   // Smooth scroll helper
   function scrollToSection(e, id) {
     if (e) e.preventDefault();
+    closeMobileToc();
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -965,7 +1160,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const currentId = entry.target.getAttribute('id');
-          document.querySelectorAll('.toc-item').forEach(item => {
+          document.querySelectorAll('.toc-item, .mobile-toc-items li').forEach(item => {
             const a = item.querySelector('a');
             if (a && a.getAttribute('href') === '#' + currentId) {
               item.classList.add('active');
@@ -991,9 +1186,15 @@
 
     const circle = document.getElementById('sidebarProgressCircle');
     const pct = document.getElementById('sidebarProgressPct');
+    const mobilePct = document.getElementById('mobileTocPct');
+    const rounded = Math.round(scrolled) + '%';
+
     if (circle && pct) {
       circle.style.strokeDashoffset = 100 - scrolled;
-      pct.textContent = Math.round(scrolled) + '%';
+      pct.textContent = rounded;
+    }
+    if (mobilePct) {
+      mobilePct.textContent = rounded;
     }
   });
 
