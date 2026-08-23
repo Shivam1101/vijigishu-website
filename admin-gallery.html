@@ -8,7 +8,7 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Management – Vijigishu Admin</title>
+  <title>Gallery Management – Vijigishu Admin</title>
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -202,12 +202,12 @@
       <div class="sidebar-menu">
         <div class="menu-heading">Modules</div>
         
-        <a href="admin-blog.html" class="menu-btn active" title="Blog Manager">
+        <a href="admin-blog.html" class="menu-btn " title="Blog Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <span>Blog Manager</span>
         </a>
 
-        <a href="admin-gallery.html" class="menu-btn " title="Gallery Manager">
+        <a href="admin-gallery.html" class="menu-btn active" title="Gallery Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           <span>Gallery Manager</span>
         </a>
@@ -229,8 +229,8 @@
   <main class="admin-main-content">
     <div class="admin-top-bar">
       <div class="admin-title">
-        <h1 id="pageTitleHeading">Blog <em>Management</em></h1>
-        <p id="pageSubHeading">Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.</p>
+        <h1 id="pageTitleHeading">Gallery <em>Control Center</em></h1>
+        <p id="pageSubHeading">Upload photos, assign country tags, and organize live gallery images.</p>
       </div>
 
       <div class="top-right-column">
@@ -251,246 +251,256 @@
 
         <div class="top-actions-wrap">
           
-    <a href="blog.html" class="top-live-btn" target="_blank">👁 View Live Blog ↗</a>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
+    <a href="gallery.html" class="top-live-btn" target="_blank">👁 View Live Gallery ↗</a>
+    <button class="btn btn-green" onclick="openNewGalleryModal()">+ Add Gallery Photo</button>
   
         </div>
       </div>
     </div>
 
     
-<!-- Stats Overview -->
-<div class="content-box" style="margin-bottom: 24px;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--navy);" id="totalBlogsCount">0</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Total Published Blogs</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--green);" id="categoriesCount">5</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Active Categories</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--sage);">Synchronized</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Storage Engine</div>
+<div class="content-box">
+  <div class="card-box-title">
+    <span>Gallery Highlights Photos (<span id="galleryCount">0</span>)</span>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-outline" onclick="resetGalleryToDefault()" title="Reset to preset photos">↺ Reset Defaults</button>
+      <button class="btn btn-green" onclick="openNewGalleryModal()">+ Add Gallery Photo</button>
     </div>
   </div>
+
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;" id="adminGalleryFilters">
+    <button class="btn btn-green" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('all')">All Countries</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('singapore')">Singapore</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('japan')">Japan</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('south-korea')">South Korea</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('europe')">Europe</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('malaysia')">Malaysia</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('uae')">UAE / Dubai</button>
+    <button class="btn btn-outline" style="font-size:0.75rem; padding:5px 12px;" onclick="filterAdminGallery('india')">India</button>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;" id="adminGalleryGrid"></div>
 </div>
 
-<!-- Blog Editor Modal / Form -->
-<div class="content-box" id="editorCard" style="display: none; margin-bottom: 24px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
-    <h2 id="editorHeading" style="font-family:'Playfair Display',serif; font-size: 1.35rem; color:var(--navy);">Create New <em>Article</em></h2>
-    <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
-  </div>
+<!-- Modal -->
+<div class="modal-backdrop" id="galleryModal">
+  <div class="modal-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 id="galleryModalTitle" style="font-family:'Playfair Display',serif; font-size: 1.3rem; margin: 0; color:var(--navy);">Add Gallery Photo</h3>
+      <button onclick="closeGalleryModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray);">✕</button>
+    </div>
 
-  <form id="blogForm" onsubmit="handleBlogSubmit(event)">
-    <input type="hidden" id="postId" />
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Blog Title *</label>
-        <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Why Global Immersion Programs are Essential..." required />
-      </div>
+    <input type="hidden" id="editGalleryIdx" />
 
+    <div style="display: flex; flex-direction: column; gap: 14px;">
       <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
-        <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
-          <option value="Management">Management</option>
-          <option value="Architecture">Architecture &amp; Design</option>
-          <option value="Engineering">Engineering</option>
-          <option value="School Programs">School Tours</option>
-          <option value="Global Trends">Global Trends</option>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Destination Country *</label>
+        <select id="galleryCountryInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
+          <option value="singapore">Singapore</option>
+          <option value="japan">Japan</option>
+          <option value="south-korea">South Korea</option>
+          <option value="europe">Europe</option>
+          <option value="malaysia">Malaysia</option>
+          <option value="uae">UAE / Dubai</option>
+          <option value="india">India</option>
         </select>
       </div>
 
       <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Author Name *</label>
-        <input type="text" id="postAuthor" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Dr. Vijaya Kumar" required />
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Photo Title / Description</label>
+        <input type="text" id="galleryTitleInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. National University of Singapore - Tech & Innovation Hub" />
       </div>
 
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Cover Image URL *</label>
-        <input type="text" id="postImage" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="images/mangement-2-scaled.webp" required />
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Upload Image File or Enter Path *</label>
+        <div class="upload-dropzone" style="margin-bottom: 8px;">
+          <input type="file" id="galleryFileInput" accept="image/*" onchange="handleGalleryFileUpload(event)" />
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">📸</div>
+          <div style="font-size: 0.82rem; font-weight: 600; color: var(--navy);">Click or Drag to Upload Photo</div>
+          <div style="font-size: 0.72rem; color: var(--gray);">PNG, JPG, WebP</div>
+        </div>
+        <input type="text" id="gallerySrcInput" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: images/Gallery-10-scaled.webp" />
       </div>
 
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Short Excerpt *</label>
-        <textarea id="postExcerpt" rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Brief overview for cards..." required></textarea>
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Full Article Content (Paragraphs) *</label>
-        <textarea id="postBodyContent" rows="7" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write complete article paragraphs here..." required></textarea>
+      <div id="galleryPreviewWrap" style="display: none; text-align: center; background: #000; padding: 6px; border-radius: 8px;">
+        <img id="galleryPreviewImg" src="" style="max-height: 120px; max-width: 100%; object-fit: contain;" />
       </div>
     </div>
 
-    <div style="display: flex; justify-content: flex-end; gap: 10px;">
-      <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
-      <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+      <button class="btn btn-outline" onclick="closeGalleryModal()">Cancel</button>
+      <button class="btn btn-green" onclick="saveGalleryData()">Save Photo</button>
     </div>
-  </form>
-</div>
-
-<!-- Blog Table List -->
-<div class="content-box">
-  <div class="card-box-title">
-    <span>Published Articles (<span id="tableCount">0</span>)</span>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
-  </div>
-
-  <div style="overflow-x: auto;">
-    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
-      <thead>
-        <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="blogTableBody"></tbody>
-    </table>
   </div>
 </div>
 
 <script>
-  const DEFAULT_BLOGS = [
-    {
-      id: "blog-1",
-      title: "Why Global Immersion Programs are Essential for Management Students",
-      slug: "why-global-immersion-essential-management",
-      category: "Management",
-      author: "Dr. Vijaya Kumar",
-      date: "Aug 18, 2026",
-      readTime: "5 min read",
-      image: "images/mangement-2-scaled.webp",
-      excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
-      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
-    },
-    {
-      id: "blog-2",
-      title: "Observing Scale & Bioclimatic Adaptability: Architecture in Singapore & Japan",
-      slug: "observing-scale-bioclimatic-architecture-singapore-japan",
-      category: "Architecture",
-      author: "Nakul Jadav",
-      date: "Aug 12, 2026",
-      readTime: "6 min read",
-      image: "images/archi-scaled.webp",
-      excerpt: "From Le Corbusier's modernism to Gardens by the Bay's vertical biophilia, explore how architectural study tours redefine spatial storytelling.",
-      content: "Architecture is best studied through sight, sound, and touch. Observing structural engineering, materiality, and bioclimatic ventilation in person provides insights no drawing board can replicate."
-    }
+  const DEFAULT_GALLERY = [
+    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
+    { src: 'images/Gallery-11-scaled.webp', country: 'japan', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
+    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
+    { src: 'images/Gallery-13-scaled.webp', country: 'europe', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
+    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
+    { src: 'images/Gallery-15-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
+    { src: 'images/Gallery-16-scaled.webp', country: 'india', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
+    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
+    { src: 'images/Gallery-19-scaled.webp', country: 'japan', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
+    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
+    { src: 'images/Gallery-22-scaled.webp', country: 'europe', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
+    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
+    { src: 'images/Gallery-25-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
+    { src: 'images/Gallery-30-scaled.webp', country: 'india', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
+    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
+    { src: 'images/Gallery-35-scaled.webp', country: 'japan', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
+    { src: 'images/Gallery-36-scaled.webp', country: 'europe', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
+    { src: 'images/Gallery-37-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
+    { src: 'images/Gallery-38-scaled.webp', country: 'india', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
   ];
 
-  function getBlogs() {
+  let currentCountryFilter = 'all';
+
+  function getGalleryItems() {
     try {
-      const raw = localStorage.getItem('vijigishu_blogs');
+      const raw = localStorage.getItem('vijigishu_gallery_items');
       if (raw) return JSON.parse(raw);
     } catch(e) {}
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
-    return DEFAULT_BLOGS;
+    localStorage.setItem('vijigishu_gallery_items', JSON.stringify(DEFAULT_GALLERY));
+    return DEFAULT_GALLERY;
   }
 
-  function saveBlogs(list) {
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(list));
-    renderBlogTable();
+  function saveGalleryItems(list) {
+    localStorage.setItem('vijigishu_gallery_items', JSON.stringify(list));
+    renderGallery();
   }
 
-  function renderBlogTable() {
-    const list = getBlogs();
-    document.getElementById('totalBlogsCount').textContent = list.length;
-    document.getElementById('tableCount').textContent = list.length;
-    const tbody = document.getElementById('blogTableBody');
+  function filterAdminGallery(country) {
+    currentCountryFilter = country;
+    document.querySelectorAll('#adminGalleryFilters button').forEach(b => {
+      if (b.getAttribute('onclick').includes(country)) {
+        b.className = 'btn btn-green';
+      } else {
+        b.className = 'btn btn-outline';
+      }
+    });
+    renderGallery();
+  }
 
-    if (!list.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px; color:var(--gray);">No articles found. Click "+ Create New Article".</td></tr>';
+  function renderGallery() {
+    const list = getGalleryItems();
+    document.getElementById('galleryCount').textContent = list.length;
+    const grid = document.getElementById('adminGalleryGrid');
+
+    const filtered = currentCountryFilter === 'all' ? list : list.filter(x => x.country === currentCountryFilter);
+
+    if (!filtered.length) {
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No photos in this category.</div>';
       return;
     }
 
-    tbody.innerHTML = list.map(b => `
-      <tr style="border-bottom: 1px solid var(--border);">
-        <td style="padding: 12px 14px; font-weight: 700; color: var(--navy); max-width: 280px;">${escapeHtml(b.title)}</td>
-        <td style="padding: 12px 14px;"><span style="background: rgba(56,103,58,0.1); color: var(--green); padding: 3px 8px; border-radius: 100px; font-weight: 700; font-size: 0.75rem;">${escapeHtml(b.category)}</span></td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.author)}</td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.date)}</td>
-        <td style="padding: 12px 14px; text-align: right;">
-          <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="editBlog('${b.id}')">✏️ Edit</button>
-          <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 6px;" onclick="deleteBlog('${b.id}', '${escapeHtml(b.title)}')">🗑 Delete</button>
-        </td>
-      </tr>
-    `).join('');
+    grid.innerHTML = filtered.map((item, idx) => {
+      const realIdx = list.indexOf(item);
+      return `
+        <div class="admin-item-card" style="overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <img src="${item.src}" alt="${escapeHtml(item.title)}" style="width: 100%; height: 130px; object-fit: cover;" onerror="this.src='images/Singapore.webp';" />
+            <div style="padding: 10px;">
+              <span style="font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--green); background: rgba(56,103,58,0.1); padding: 2px 8px; border-radius: 100px;">${item.country}</span>
+              <div style="font-weight: 700; font-size: 0.8rem; color: var(--navy); margin-top: 6px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${escapeHtml(item.title || 'Trip Highlight')}</div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; border-top: 1px solid var(--border); background: #fafafa;">
+            <span style="font-size: 0.7rem; color: var(--gray);">#${realIdx + 1}</span>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.72rem;" onclick="openEditGalleryModal(${realIdx})">✏️ Edit</button>
+              <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.72rem;" onclick="deleteGalleryPhoto(${realIdx})">🗑 Delete</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
   }
 
-  function showNewPostForm() {
-    document.getElementById('postId').value = '';
-    document.getElementById('postTitle').value = '';
-    document.getElementById('postCategory').value = 'Management';
-    document.getElementById('postAuthor').value = 'Vijigishu Team';
-    document.getElementById('postImage').value = 'images/mangement-2-scaled.webp';
-    document.getElementById('postExcerpt').value = '';
-    document.getElementById('postBodyContent').value = '';
-    document.getElementById('editorHeading').innerHTML = 'Create New <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function openNewGalleryModal() {
+    document.getElementById('editGalleryIdx').value = '';
+    document.getElementById('galleryCountryInput').value = 'singapore';
+    document.getElementById('galleryTitleInput').value = '';
+    document.getElementById('gallerySrcInput').value = '';
+    document.getElementById('galleryPreviewWrap').style.display = 'none';
+    document.getElementById('galleryModalTitle').textContent = 'Add Gallery Photo';
+    document.getElementById('galleryModal').classList.add('active');
   }
 
-  function hideEditor() {
-    document.getElementById('editorCard').style.display = 'none';
+  function openEditGalleryModal(idx) {
+    const list = getGalleryItems();
+    const item = list[idx];
+    if (!item) return;
+    document.getElementById('editGalleryIdx').value = idx;
+    document.getElementById('galleryCountryInput').value = item.country || 'singapore';
+    document.getElementById('galleryTitleInput').value = item.title || '';
+    document.getElementById('gallerySrcInput').value = item.src || '';
+    document.getElementById('galleryPreviewImg').src = item.src || '';
+    document.getElementById('galleryPreviewWrap').style.display = item.src ? 'block' : 'none';
+    document.getElementById('galleryModalTitle').textContent = 'Edit Gallery Photo';
+    document.getElementById('galleryModal').classList.add('active');
   }
 
-  function editBlog(id) {
-    const b = getBlogs().find(x => x.id === id);
-    if (!b) return;
-    document.getElementById('postId').value = b.id;
-    document.getElementById('postTitle').value = b.title || '';
-    document.getElementById('postCategory').value = b.category || 'Management';
-    document.getElementById('postAuthor').value = b.author || '';
-    document.getElementById('postImage').value = b.image || '';
-    document.getElementById('postExcerpt').value = b.excerpt || '';
-    document.getElementById('postBodyContent').value = b.content || (b.blocks ? b.blocks.map(x => x.content).join('\n\n') : '');
-    document.getElementById('editorHeading').innerHTML = 'Edit <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function closeGalleryModal() {
+    document.getElementById('galleryModal').classList.remove('active');
   }
 
-  function handleBlogSubmit(e) {
-    e.preventDefault();
-    const id = document.getElementById('postId').value;
-    const title = document.getElementById('postTitle').value.trim();
-    const category = document.getElementById('postCategory').value;
-    const author = document.getElementById('postAuthor').value.trim();
-    const image = document.getElementById('postImage').value.trim();
-    const excerpt = document.getElementById('postExcerpt').value.trim();
-    const content = document.getElementById('postBodyContent').value.trim();
+  function handleGalleryFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const dataUrl = evt.target.result;
+      document.getElementById('gallerySrcInput').value = dataUrl;
+      document.getElementById('galleryPreviewImg').src = dataUrl;
+      document.getElementById('galleryPreviewWrap').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
 
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  function saveGalleryData() {
+    const idxStr = document.getElementById('editGalleryIdx').value;
+    const country = document.getElementById('galleryCountryInput').value;
+    const title = document.getElementById('galleryTitleInput').value.trim();
+    const src = document.getElementById('gallerySrcInput').value.trim();
 
-    const list = getBlogs();
-    if (id) {
-      const idx = list.findIndex(x => x.id === id);
-      if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, image, excerpt, content, slug };
-      }
+    if (!src) {
+      alert('Please upload or enter photo image path.');
+      return;
+    }
+
+    const list = getGalleryItems();
+    if (idxStr !== '') {
+      const idx = parseInt(idxStr);
+      list[idx] = { src, country, label: country.toUpperCase(), title: title || (country + ' Journey Highlight') };
     } else {
-      list.unshift({
-        id: 'blog-' + Date.now(),
-        title, category, author, image, excerpt, content, slug, date, readTime: '5 min read'
-      });
+      list.unshift({ src, country, label: country.toUpperCase(), title: title || (country + ' Journey Highlight') });
     }
-    saveBlogs(list);
-    hideEditor();
-    showToast('Article published successfully!');
+    saveGalleryItems(list);
+    closeGalleryModal();
+    showToast('Gallery photo saved successfully!');
   }
 
-  function deleteBlog(id, title) {
-    if (confirm(`Delete article "${title}"?`)) {
-      saveBlogs(getBlogs().filter(x => x.id !== id));
-      showToast('Article deleted.');
+  function deleteGalleryPhoto(idx) {
+    if (confirm('Delete this photo from gallery?')) {
+      const list = getGalleryItems();
+      list.splice(idx, 1);
+      saveGalleryItems(list);
+      showToast('Photo deleted.');
     }
   }
 
-  document.addEventListener('DOMContentLoaded', renderBlogTable);
+  function resetGalleryToDefault() {
+    if (confirm('Reset gallery to default 19 photos?')) {
+      saveGalleryItems(DEFAULT_GALLERY);
+      showToast('Gallery reset to default.');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderGallery);
 </script>
 </body>
 </html>

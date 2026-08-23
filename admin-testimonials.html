@@ -8,7 +8,7 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Management – Vijigishu Admin</title>
+  <title>Testimonials Management – Vijigishu Admin</title>
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -202,7 +202,7 @@
       <div class="sidebar-menu">
         <div class="menu-heading">Modules</div>
         
-        <a href="admin-blog.html" class="menu-btn active" title="Blog Manager">
+        <a href="admin-blog.html" class="menu-btn " title="Blog Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <span>Blog Manager</span>
         </a>
@@ -212,7 +212,7 @@
           <span>Gallery Manager</span>
         </a>
 
-        <a href="admin-testimonials.html" class="menu-btn " title="Testimonials Manager">
+        <a href="admin-testimonials.html" class="menu-btn active" title="Testimonials Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           <span>Testimonials</span>
         </a>
@@ -229,8 +229,8 @@
   <main class="admin-main-content">
     <div class="admin-top-bar">
       <div class="admin-title">
-        <h1 id="pageTitleHeading">Blog <em>Management</em></h1>
-        <p id="pageSubHeading">Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.</p>
+        <h1 id="pageTitleHeading">Testimonials <em>Management</em></h1>
+        <p id="pageSubHeading">Manage, edit, add, and delete student &amp; faculty reviews displayed on the website.</p>
       </div>
 
       <div class="top-right-column">
@@ -251,246 +251,205 @@
 
         <div class="top-actions-wrap">
           
-    <a href="blog.html" class="top-live-btn" target="_blank">👁 View Live Blog ↗</a>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
+    <a href="index.html#testimonials" class="top-live-btn" target="_blank">👁 View Live Reviews ↗</a>
+    <button class="btn btn-green" onclick="openNewTestimonialModal()">+ Add Testimonial</button>
   
         </div>
       </div>
     </div>
 
     
-<!-- Stats Overview -->
-<div class="content-box" style="margin-bottom: 24px;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--navy);" id="totalBlogsCount">0</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Total Published Blogs</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--green);" id="categoriesCount">5</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Active Categories</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--sage);">Synchronized</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Storage Engine</div>
-    </div>
-  </div>
-</div>
-
-<!-- Blog Editor Modal / Form -->
-<div class="content-box" id="editorCard" style="display: none; margin-bottom: 24px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
-    <h2 id="editorHeading" style="font-family:'Playfair Display',serif; font-size: 1.35rem; color:var(--navy);">Create New <em>Article</em></h2>
-    <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
-  </div>
-
-  <form id="blogForm" onsubmit="handleBlogSubmit(event)">
-    <input type="hidden" id="postId" />
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Blog Title *</label>
-        <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Why Global Immersion Programs are Essential..." required />
-      </div>
-
-      <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
-        <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
-          <option value="Management">Management</option>
-          <option value="Architecture">Architecture &amp; Design</option>
-          <option value="Engineering">Engineering</option>
-          <option value="School Programs">School Tours</option>
-          <option value="Global Trends">Global Trends</option>
-        </select>
-      </div>
-
-      <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Author Name *</label>
-        <input type="text" id="postAuthor" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Dr. Vijaya Kumar" required />
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Cover Image URL *</label>
-        <input type="text" id="postImage" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="images/mangement-2-scaled.webp" required />
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Short Excerpt *</label>
-        <textarea id="postExcerpt" rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Brief overview for cards..." required></textarea>
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Full Article Content (Paragraphs) *</label>
-        <textarea id="postBodyContent" rows="7" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write complete article paragraphs here..." required></textarea>
-      </div>
-    </div>
-
-    <div style="display: flex; justify-content: flex-end; gap: 10px;">
-      <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
-      <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
-    </div>
-  </form>
-</div>
-
-<!-- Blog Table List -->
 <div class="content-box">
   <div class="card-box-title">
-    <span>Published Articles (<span id="tableCount">0</span>)</span>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
+    <span>Student &amp; Faculty Testimonials (<span id="testiCount">0</span>)</span>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-outline" onclick="resetTestimonialsToDefault()" title="Reset to original 11 student reviews">↺ Reset Defaults</button>
+      <button class="btn btn-green" onclick="openNewTestimonialModal()">+ Add Testimonial</button>
+    </div>
   </div>
 
-  <div style="overflow-x: auto;">
-    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
-      <thead>
-        <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="blogTableBody"></tbody>
-    </table>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px;" id="adminTestiGrid"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="testiModal">
+  <div class="modal-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 id="testiModalTitle" style="font-family:'Playfair Display',serif; font-size: 1.3rem; margin: 0; color:var(--navy);">Add Testimonial</h3>
+      <button onclick="closeTestiModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray);">✕</button>
+    </div>
+
+    <input type="hidden" id="editTestiId" />
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Student / Faculty Name *</label>
+        <input type="text" id="testiNameInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Shaanya / Dr. Vijaya Kumar" />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div>
+          <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Role / Designation</label>
+          <input type="text" id="testiRoleInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Student / Faculty" />
+        </div>
+        <div>
+          <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Star Rating</label>
+          <select id="testiStarsInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
+            <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
+            <option value="4">⭐⭐⭐⭐ (4 Stars)</option>
+            <option value="3">⭐⭐⭐ (3 Stars)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Photo Image Path / URL</label>
+        <input type="text" id="testiImgInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. images/Singapore-1.webp" />
+      </div>
+
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Review Message / Quote *</label>
+        <textarea id="testiTextInput" rows="4" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit; resize: vertical;" placeholder="Write review experience..."></textarea>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+      <button class="btn btn-outline" onclick="closeTestiModal()">Cancel</button>
+      <button class="btn btn-green" onclick="saveTestimonialData()">Save Testimonial</button>
+    </div>
   </div>
 </div>
 
 <script>
-  const DEFAULT_BLOGS = [
-    {
-      id: "blog-1",
-      title: "Why Global Immersion Programs are Essential for Management Students",
-      slug: "why-global-immersion-essential-management",
-      category: "Management",
-      author: "Dr. Vijaya Kumar",
-      date: "Aug 18, 2026",
-      readTime: "5 min read",
-      image: "images/mangement-2-scaled.webp",
-      excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
-      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
-    },
-    {
-      id: "blog-2",
-      title: "Observing Scale & Bioclimatic Adaptability: Architecture in Singapore & Japan",
-      slug: "observing-scale-bioclimatic-architecture-singapore-japan",
-      category: "Architecture",
-      author: "Nakul Jadav",
-      date: "Aug 12, 2026",
-      readTime: "6 min read",
-      image: "images/archi-scaled.webp",
-      excerpt: "From Le Corbusier's modernism to Gardens by the Bay's vertical biophilia, explore how architectural study tours redefine spatial storytelling.",
-      content: "Architecture is best studied through sight, sound, and touch. Observing structural engineering, materiality, and bioclimatic ventilation in person provides insights no drawing board can replicate."
-    }
+  const DEFAULT_TESTIMONIALS = [
+    { id: 'testi-1', name: 'Shaanya', role: 'Student', stars: 5, img: 'images/Random-2.webp', text: 'Dear Vijigishu Team, I would like to sincerely thank you for organizing such a wonderful and exciting trip. The entire experience was exceptionally well-managed, thoroughly enjoyable, and truly memorable for me.' },
+    { id: 'testi-2', name: 'Jamila Gangardiwala', role: 'Student', stars: 5, img: 'images/Random-1.webp', text: 'My experience with Vijigishu Company has been highly enriching and professionally rewarding. The organization has provided me with valuable exposure, enabling me to enhance my skills and gain practical insights.' },
+    { id: 'testi-3', name: 'Dr. VIJAYA KUMAR THOTA', role: 'Faculty', stars: 5, img: 'images/Singapore-1.webp', text: 'Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution.' },
+    { id: 'testi-4', name: 'Sai Vamshi Akkem', role: 'Student', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip was really awesome, we all enjoyed travelling to 3 countries: Malaysia, Indonesia and Singapore. One of my best lifelong experiences.' },
+    { id: 'testi-5', name: 'Garima Goyal', role: 'Student', stars: 5, img: 'images/Singapore-2.webp', text: 'My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia.' },
+    { id: 'testi-6', name: 'Sana Fatima', role: 'Student', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives.' },
+    { id: 'testi-7', name: 'Mrunal Joshi', role: 'Faculty', stars: 5, img: 'images/Dubai-2.webp', text: 'Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students.' },
+    { id: 'testi-8', name: 'Tanya Sinha', role: 'Student', stars: 5, img: 'images/Untitled-design-2.png', text: 'We had an absolutely wonderful 6-day experience in UAE. All thanks to the Vijigishu team from the moment we landed till our departure, everything was amazing.' },
+    { id: 'testi-9', name: 'Mayur Deshmukh', role: 'Student', stars: 5, img: 'images/Dubai-1.webp', text: 'A big shoutout to Vijigishu for organizing such a smooth and memorable Dubai trip for us students. Everything was well managed - stay, travel, food, and experiences.' },
+    { id: 'testi-10', name: 'Nakul Jadav', role: 'Student', stars: 5, img: 'images/Dubai-3.webp', text: 'Our recent student tour to Dubai with Vijigishu Organization was an unforgettable experience! Everything was perfectly managed.' },
+    { id: 'testi-11', name: 'Amitesh Chakraborty', role: 'Student', stars: 5, img: 'images/Dubai-2.webp', text: 'Vijigishu Education Pvt. Ltd. flawlessly executed our 6-day, 5-night college tour to Dubai. The itinerary was perfectly balanced.' }
   ];
 
-  function getBlogs() {
+  function getTestimonials() {
     try {
-      const raw = localStorage.getItem('vijigishu_blogs');
+      const raw = localStorage.getItem('vijigishu_testimonials');
       if (raw) return JSON.parse(raw);
     } catch(e) {}
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
-    return DEFAULT_BLOGS;
+    localStorage.setItem('vijigishu_testimonials', JSON.stringify(DEFAULT_TESTIMONIALS));
+    return DEFAULT_TESTIMONIALS;
   }
 
-  function saveBlogs(list) {
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(list));
-    renderBlogTable();
+  function saveTestimonials(list) {
+    localStorage.setItem('vijigishu_testimonials', JSON.stringify(list));
+    renderTestimonials();
   }
 
-  function renderBlogTable() {
-    const list = getBlogs();
-    document.getElementById('totalBlogsCount').textContent = list.length;
-    document.getElementById('tableCount').textContent = list.length;
-    const tbody = document.getElementById('blogTableBody');
-
+  function renderTestimonials() {
+    const list = getTestimonials();
+    document.getElementById('testiCount').textContent = list.length;
+    const grid = document.getElementById('adminTestiGrid');
     if (!list.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px; color:var(--gray);">No articles found. Click "+ Create New Article".</td></tr>';
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No testimonials found. Click "+ Add Testimonial" or "Reset Defaults".</div>';
       return;
     }
-
-    tbody.innerHTML = list.map(b => `
-      <tr style="border-bottom: 1px solid var(--border);">
-        <td style="padding: 12px 14px; font-weight: 700; color: var(--navy); max-width: 280px;">${escapeHtml(b.title)}</td>
-        <td style="padding: 12px 14px;"><span style="background: rgba(56,103,58,0.1); color: var(--green); padding: 3px 8px; border-radius: 100px; font-weight: 700; font-size: 0.75rem;">${escapeHtml(b.category)}</span></td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.author)}</td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.date)}</td>
-        <td style="padding: 12px 14px; text-align: right;">
-          <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="editBlog('${b.id}')">✏️ Edit</button>
-          <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 6px;" onclick="deleteBlog('${b.id}', '${escapeHtml(b.title)}')">🗑 Delete</button>
-        </td>
-      </tr>
+    grid.innerHTML = list.map((t, idx) => `
+      <div class="admin-item-card" style="padding: 16px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="${t.img || 'images/Singapore.webp'}" onerror="this.src='images/Singapore.webp';" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sage);" />
+            <div>
+              <div style="font-weight: 800; font-size: 0.92rem; color: var(--navy);">${escapeHtml(t.name)}</div>
+              <div style="font-size: 0.75rem; color: var(--green); font-weight: 600;">${escapeHtml(t.role || 'Student')} · ${'⭐'.repeat(t.stars || 5)}</div>
+            </div>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--gray); line-height: 1.5; max-height: 120px; overflow-y: auto; margin-bottom: 14px;">
+            "${escapeHtml(t.text)}"
+          </p>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border);">
+          <span style="font-size: 0.72rem; color: var(--gray); font-weight: 600;">#${idx + 1}</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="openEditTestiModal('${t.id}')">✏️ Edit</button>
+            <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem;" onclick="deleteTestimonial('${t.id}', '${escapeHtml(t.name)}')">🗑 Delete</button>
+          </div>
+        </div>
+      </div>
     `).join('');
   }
 
-  function showNewPostForm() {
-    document.getElementById('postId').value = '';
-    document.getElementById('postTitle').value = '';
-    document.getElementById('postCategory').value = 'Management';
-    document.getElementById('postAuthor').value = 'Vijigishu Team';
-    document.getElementById('postImage').value = 'images/mangement-2-scaled.webp';
-    document.getElementById('postExcerpt').value = '';
-    document.getElementById('postBodyContent').value = '';
-    document.getElementById('editorHeading').innerHTML = 'Create New <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function openNewTestimonialModal() {
+    document.getElementById('editTestiId').value = '';
+    document.getElementById('testiNameInput').value = '';
+    document.getElementById('testiRoleInput').value = 'Student';
+    document.getElementById('testiStarsInput').value = '5';
+    document.getElementById('testiImgInput').value = 'images/Random-1.webp';
+    document.getElementById('testiTextInput').value = '';
+    document.getElementById('testiModalTitle').textContent = 'Add New Testimonial';
+    document.getElementById('testiModal').classList.add('active');
   }
 
-  function hideEditor() {
-    document.getElementById('editorCard').style.display = 'none';
+  function openEditTestiModal(id) {
+    const item = getTestimonials().find(x => x.id === id);
+    if (!item) return;
+    document.getElementById('editTestiId').value = item.id;
+    document.getElementById('testiNameInput').value = item.name || '';
+    document.getElementById('testiRoleInput').value = item.role || 'Student';
+    document.getElementById('testiStarsInput').value = item.stars || 5;
+    document.getElementById('testiImgInput').value = item.img || '';
+    document.getElementById('testiTextInput').value = item.text || '';
+    document.getElementById('testiModalTitle').textContent = 'Edit Testimonial';
+    document.getElementById('testiModal').classList.add('active');
   }
 
-  function editBlog(id) {
-    const b = getBlogs().find(x => x.id === id);
-    if (!b) return;
-    document.getElementById('postId').value = b.id;
-    document.getElementById('postTitle').value = b.title || '';
-    document.getElementById('postCategory').value = b.category || 'Management';
-    document.getElementById('postAuthor').value = b.author || '';
-    document.getElementById('postImage').value = b.image || '';
-    document.getElementById('postExcerpt').value = b.excerpt || '';
-    document.getElementById('postBodyContent').value = b.content || (b.blocks ? b.blocks.map(x => x.content).join('\n\n') : '');
-    document.getElementById('editorHeading').innerHTML = 'Edit <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function closeTestiModal() {
+    document.getElementById('testiModal').classList.remove('active');
   }
 
-  function handleBlogSubmit(e) {
-    e.preventDefault();
-    const id = document.getElementById('postId').value;
-    const title = document.getElementById('postTitle').value.trim();
-    const category = document.getElementById('postCategory').value;
-    const author = document.getElementById('postAuthor').value.trim();
-    const image = document.getElementById('postImage').value.trim();
-    const excerpt = document.getElementById('postExcerpt').value.trim();
-    const content = document.getElementById('postBodyContent').value.trim();
+  function saveTestimonialData() {
+    const id = document.getElementById('editTestiId').value;
+    const name = document.getElementById('testiNameInput').value.trim();
+    const role = document.getElementById('testiRoleInput').value.trim();
+    const stars = parseInt(document.getElementById('testiStarsInput').value) || 5;
+    const img = document.getElementById('testiImgInput').value.trim() || 'images/Singapore.webp';
+    const text = document.getElementById('testiTextInput').value.trim();
 
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    if (!name || !text) {
+      alert('Please enter student name and review quote.');
+      return;
+    }
 
-    const list = getBlogs();
+    const list = getTestimonials();
     if (id) {
       const idx = list.findIndex(x => x.id === id);
-      if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, image, excerpt, content, slug };
-      }
+      if (idx !== -1) list[idx] = { ...list[idx], name, role, stars, img, text };
     } else {
-      list.unshift({
-        id: 'blog-' + Date.now(),
-        title, category, author, image, excerpt, content, slug, date, readTime: '5 min read'
-      });
+      list.unshift({ id: 'testi-' + Date.now(), name, role, stars, img, text });
     }
-    saveBlogs(list);
-    hideEditor();
-    showToast('Article published successfully!');
+    saveTestimonials(list);
+    closeTestiModal();
+    showToast('Testimonial saved successfully!');
   }
 
-  function deleteBlog(id, title) {
-    if (confirm(`Delete article "${title}"?`)) {
-      saveBlogs(getBlogs().filter(x => x.id !== id));
-      showToast('Article deleted.');
+  function deleteTestimonial(id, name) {
+    if (confirm(`Delete testimonial by "${name}"?`)) {
+      saveTestimonials(getTestimonials().filter(x => x.id !== id));
+      showToast('Testimonial deleted.');
     }
   }
 
-  document.addEventListener('DOMContentLoaded', renderBlogTable);
+  function resetTestimonialsToDefault() {
+    if (confirm('Reset testimonials to default 11 reviews?')) {
+      saveTestimonials(DEFAULT_TESTIMONIALS);
+      showToast('Testimonials reset to default.');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderTestimonials);
 </script>
 </body>
 </html>

@@ -8,7 +8,7 @@
     }
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Management – Vijigishu Admin</title>
+  <title>Academic Facilitators – Vijigishu Admin</title>
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -202,7 +202,7 @@
       <div class="sidebar-menu">
         <div class="menu-heading">Modules</div>
         
-        <a href="admin-blog.html" class="menu-btn active" title="Blog Manager">
+        <a href="admin-blog.html" class="menu-btn " title="Blog Manager">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           <span>Blog Manager</span>
         </a>
@@ -217,7 +217,7 @@
           <span>Testimonials</span>
         </a>
 
-        <a href="admin-facilitators.html" class="menu-btn " title="Academic Facilitators">
+        <a href="admin-facilitators.html" class="menu-btn active" title="Academic Facilitators">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           <span>Facilitators</span>
         </a>
@@ -229,8 +229,8 @@
   <main class="admin-main-content">
     <div class="admin-top-bar">
       <div class="admin-title">
-        <h1 id="pageTitleHeading">Blog <em>Management</em></h1>
-        <p id="pageSubHeading">Create, edit, and publish dynamic blog articles for Vijigishu Educational Travel.</p>
+        <h1 id="pageTitleHeading">Academic <em>Facilitators Logos</em></h1>
+        <p id="pageSubHeading">Manage, upload, edit, and delete partner university logos displayed on the homepage marquee.</p>
       </div>
 
       <div class="top-right-column">
@@ -251,246 +251,183 @@
 
         <div class="top-actions-wrap">
           
-    <a href="blog.html" class="top-live-btn" target="_blank">👁 View Live Blog ↗</a>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
+    <a href="index.html#partners" class="top-live-btn" target="_blank">👁 View Live Marquee ↗</a>
+    <button class="btn btn-green" onclick="openNewFacModal()">+ Add Facilitator Logo</button>
   
         </div>
       </div>
     </div>
 
     
-<!-- Stats Overview -->
-<div class="content-box" style="margin-bottom: 24px;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--navy);" id="totalBlogsCount">0</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Total Published Blogs</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--green);" id="categoriesCount">5</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Active Categories</div>
-    </div>
-    <div style="background: var(--off); padding: 18px; border-radius: 12px; border: 1px solid var(--border);">
-      <div style="font-size: 1.8rem; font-weight: 800; color: var(--sage);">Synchronized</div>
-      <div style="font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase;">Storage Engine</div>
-    </div>
-  </div>
-</div>
-
-<!-- Blog Editor Modal / Form -->
-<div class="content-box" id="editorCard" style="display: none; margin-bottom: 24px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
-    <h2 id="editorHeading" style="font-family:'Playfair Display',serif; font-size: 1.35rem; color:var(--navy);">Create New <em>Article</em></h2>
-    <button class="btn btn-outline" onclick="hideEditor()">✕ Cancel</button>
-  </div>
-
-  <form id="blogForm" onsubmit="handleBlogSubmit(event)">
-    <input type="hidden" id="postId" />
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Blog Title *</label>
-        <input type="text" id="postTitle" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem;" placeholder="e.g. Why Global Immersion Programs are Essential..." required />
-      </div>
-
-      <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Category *</label>
-        <select id="postCategory" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;" required>
-          <option value="Management">Management</option>
-          <option value="Architecture">Architecture &amp; Design</option>
-          <option value="Engineering">Engineering</option>
-          <option value="School Programs">School Tours</option>
-          <option value="Global Trends">Global Trends</option>
-        </select>
-      </div>
-
-      <div>
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Author Name *</label>
-        <input type="text" id="postAuthor" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Dr. Vijaya Kumar" required />
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Cover Image URL *</label>
-        <input type="text" id="postImage" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="images/mangement-2-scaled.webp" required />
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Short Excerpt *</label>
-        <textarea id="postExcerpt" rows="3" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; font-family: inherit;" placeholder="Brief overview for cards..." required></textarea>
-      </div>
-
-      <div style="grid-column: 1 / -1;">
-        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Full Article Content (Paragraphs) *</label>
-        <textarea id="postBodyContent" rows="7" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; font-family: inherit; line-height: 1.6;" placeholder="Write complete article paragraphs here..." required></textarea>
-      </div>
-    </div>
-
-    <div style="display: flex; justify-content: flex-end; gap: 10px;">
-      <button type="button" class="btn btn-outline" onclick="hideEditor()">Cancel</button>
-      <button type="submit" class="btn btn-green">Save &amp; Publish Article</button>
-    </div>
-  </form>
-</div>
-
-<!-- Blog Table List -->
 <div class="content-box">
   <div class="card-box-title">
-    <span>Published Articles (<span id="tableCount">0</span>)</span>
-    <button class="btn btn-green" onclick="showNewPostForm()">+ Create New Article</button>
+    <span>Academic Facilitators &amp; University Partner Logos (<span id="facCount">0</span>)</span>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-outline" onclick="resetFacilitatorsToDefault()" title="Reset to original 14 university partner logos">↺ Reset Defaults</button>
+      <button class="btn btn-green" onclick="openNewFacModal()">+ Add Facilitator Logo</button>
+    </div>
   </div>
 
-  <div style="overflow-x: auto;">
-    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
-      <thead>
-        <tr style="background: var(--off); border-bottom: 2px solid var(--border);">
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Article Title</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Category</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Author</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy);">Date</th>
-          <th style="padding: 12px 14px; font-weight: 700; color: var(--navy); text-align: right;">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="blogTableBody"></tbody>
-    </table>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;" id="adminFacGrid"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="facModal">
+  <div class="modal-card" style="max-width: 460px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <h3 id="facModalTitle" style="font-family:'Playfair Display',serif; font-size: 1.3rem; margin: 0; color:var(--navy);">Add Facilitator Logo</h3>
+      <button onclick="closeFacModal()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--gray);">✕</button>
+    </div>
+
+    <input type="hidden" id="editFacId" />
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">University / Partner Name *</label>
+        <input type="text" id="facNameInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Partner University 15 / Harvard" />
+      </div>
+
+      <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Upload Image File or Enter Path</label>
+        <div class="upload-dropzone" style="margin-bottom: 8px;">
+          <input type="file" id="facFileInput" accept="image/*" onchange="handleFacFileUpload(event)" />
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">📤</div>
+          <div style="font-size: 0.82rem; font-weight: 600; color: var(--navy);">Click or Drag to Upload Logo</div>
+          <div style="font-size: 0.72rem; color: var(--gray);">PNG, JPG, SVG, WebP</div>
+        </div>
+        <input type="text" id="facSrcInput" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.82rem;" placeholder="or path: partners/1.png" />
+      </div>
+
+      <div id="facPreviewWrap" style="display: none; text-align: center; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+        <img id="facPreviewImg" src="" style="max-height: 60px; max-width: 140px; object-fit: contain;" />
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+      <button class="btn btn-outline" onclick="closeFacModal()">Cancel</button>
+      <button class="btn btn-green" onclick="saveFacilitatorData()">Save Logo</button>
+    </div>
   </div>
 </div>
 
 <script>
-  const DEFAULT_BLOGS = [
-    {
-      id: "blog-1",
-      title: "Why Global Immersion Programs are Essential for Management Students",
-      slug: "why-global-immersion-essential-management",
-      category: "Management",
-      author: "Dr. Vijaya Kumar",
-      date: "Aug 18, 2026",
-      readTime: "5 min read",
-      image: "images/mangement-2-scaled.webp",
-      excerpt: "Discover how firsthand boardroom exposure, kaizen operations visits, and international market tours bridge the gap between classroom MBA theory and real-world business leadership.",
-      content: "In today’s hyper-connected global economy, textbook business case studies only tell half the story. To truly understand supply chain resilience, luxury brand equity, and ASEAN fintech growth, management students must step directly into global boardrooms."
-    },
-    {
-      id: "blog-2",
-      title: "Observing Scale & Bioclimatic Adaptability: Architecture in Singapore & Japan",
-      slug: "observing-scale-bioclimatic-architecture-singapore-japan",
-      category: "Architecture",
-      author: "Nakul Jadav",
-      date: "Aug 12, 2026",
-      readTime: "6 min read",
-      image: "images/archi-scaled.webp",
-      excerpt: "From Le Corbusier's modernism to Gardens by the Bay's vertical biophilia, explore how architectural study tours redefine spatial storytelling.",
-      content: "Architecture is best studied through sight, sound, and touch. Observing structural engineering, materiality, and bioclimatic ventilation in person provides insights no drawing board can replicate."
-    }
-  ];
+  const DEFAULT_FACILITATORS = Array.from({ length: 14 }, (_, i) => ({
+    id: 'fac-' + (i + 1),
+    src: 'partners/' + (i + 1) + '.png',
+    name: 'Partner University ' + (i + 1)
+  }));
 
-  function getBlogs() {
+  function getFacilitators() {
     try {
-      const raw = localStorage.getItem('vijigishu_blogs');
+      const raw = localStorage.getItem('vijigishu_facilitators');
       if (raw) return JSON.parse(raw);
     } catch(e) {}
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(DEFAULT_BLOGS));
-    return DEFAULT_BLOGS;
+    localStorage.setItem('vijigishu_facilitators', JSON.stringify(DEFAULT_FACILITATORS));
+    return DEFAULT_FACILITATORS;
   }
 
-  function saveBlogs(list) {
-    localStorage.setItem('vijigishu_blogs', JSON.stringify(list));
-    renderBlogTable();
+  function saveFacilitators(list) {
+    localStorage.setItem('vijigishu_facilitators', JSON.stringify(list));
+    renderFacilitators();
   }
 
-  function renderBlogTable() {
-    const list = getBlogs();
-    document.getElementById('totalBlogsCount').textContent = list.length;
-    document.getElementById('tableCount').textContent = list.length;
-    const tbody = document.getElementById('blogTableBody');
-
+  function renderFacilitators() {
+    const list = getFacilitators();
+    document.getElementById('facCount').textContent = list.length;
+    const grid = document.getElementById('adminFacGrid');
     if (!list.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px; color:var(--gray);">No articles found. Click "+ Create New Article".</td></tr>';
+      grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--gray);">No partner logos found. Click "+ Add Facilitator Logo" or "Reset Defaults".</div>';
       return;
     }
-
-    tbody.innerHTML = list.map(b => `
-      <tr style="border-bottom: 1px solid var(--border);">
-        <td style="padding: 12px 14px; font-weight: 700; color: var(--navy); max-width: 280px;">${escapeHtml(b.title)}</td>
-        <td style="padding: 12px 14px;"><span style="background: rgba(56,103,58,0.1); color: var(--green); padding: 3px 8px; border-radius: 100px; font-weight: 700; font-size: 0.75rem;">${escapeHtml(b.category)}</span></td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.author)}</td>
-        <td style="padding: 12px 14px; color: var(--gray);">${escapeHtml(b.date)}</td>
-        <td style="padding: 12px 14px; text-align: right;">
-          <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="editBlog('${b.id}')">✏️ Edit</button>
-          <button class="btn btn-danger" style="padding: 4px 10px; font-size: 0.75rem; margin-left: 6px;" onclick="deleteBlog('${b.id}', '${escapeHtml(b.title)}')">🗑 Delete</button>
-        </td>
-      </tr>
+    grid.innerHTML = list.map((item, idx) => `
+      <div class="admin-item-card" style="padding: 14px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;">
+        <div style="width: 100%; height: 80px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--border); padding: 6px;">
+          <img src="${item.src}" alt="${escapeHtml(item.name)}" style="max-height: 60px; max-width: 130px; object-fit: contain;" onerror="this.src='images/Singapore.webp';" />
+        </div>
+        <div style="font-weight: 700; font-size: 0.8rem; color: var(--navy); margin-bottom: 10px; word-break: break-word;">
+          ${escapeHtml(item.name || 'Partner ' + (idx + 1))}
+        </div>
+        <div style="display: flex; gap: 6px; width: 100%; justify-content: center; padding-top: 8px; border-top: 1px solid var(--border);">
+          <button class="btn btn-outline" style="padding: 4px 8px; font-size: 0.72rem;" onclick="openEditFacModal('${item.id}')">✏️ Edit</button>
+          <button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.72rem;" onclick="deleteFacilitator('${item.id}', '${escapeHtml(item.name)}')">🗑 Delete</button>
+        </div>
+      </div>
     `).join('');
   }
 
-  function showNewPostForm() {
-    document.getElementById('postId').value = '';
-    document.getElementById('postTitle').value = '';
-    document.getElementById('postCategory').value = 'Management';
-    document.getElementById('postAuthor').value = 'Vijigishu Team';
-    document.getElementById('postImage').value = 'images/mangement-2-scaled.webp';
-    document.getElementById('postExcerpt').value = '';
-    document.getElementById('postBodyContent').value = '';
-    document.getElementById('editorHeading').innerHTML = 'Create New <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function openNewFacModal() {
+    document.getElementById('editFacId').value = '';
+    document.getElementById('facNameInput').value = '';
+    document.getElementById('facSrcInput').value = '';
+    document.getElementById('facPreviewWrap').style.display = 'none';
+    document.getElementById('facModalTitle').textContent = 'Add Facilitator Logo';
+    document.getElementById('facModal').classList.add('active');
   }
 
-  function hideEditor() {
-    document.getElementById('editorCard').style.display = 'none';
+  function openEditFacModal(id) {
+    const item = getFacilitators().find(x => x.id === id);
+    if (!item) return;
+    document.getElementById('editFacId').value = item.id;
+    document.getElementById('facNameInput').value = item.name || '';
+    document.getElementById('facSrcInput').value = item.src || '';
+    document.getElementById('facPreviewImg').src = item.src || '';
+    document.getElementById('facPreviewWrap').style.display = item.src ? 'block' : 'none';
+    document.getElementById('facModalTitle').textContent = 'Edit Facilitator Logo';
+    document.getElementById('facModal').classList.add('active');
   }
 
-  function editBlog(id) {
-    const b = getBlogs().find(x => x.id === id);
-    if (!b) return;
-    document.getElementById('postId').value = b.id;
-    document.getElementById('postTitle').value = b.title || '';
-    document.getElementById('postCategory').value = b.category || 'Management';
-    document.getElementById('postAuthor').value = b.author || '';
-    document.getElementById('postImage').value = b.image || '';
-    document.getElementById('postExcerpt').value = b.excerpt || '';
-    document.getElementById('postBodyContent').value = b.content || (b.blocks ? b.blocks.map(x => x.content).join('\n\n') : '');
-    document.getElementById('editorHeading').innerHTML = 'Edit <em>Article</em>';
-    document.getElementById('editorCard').style.display = 'block';
-    window.scrollTo({ top: document.getElementById('editorCard').offsetTop - 20, behavior: 'smooth' });
+  function closeFacModal() {
+    document.getElementById('facModal').classList.remove('active');
   }
 
-  function handleBlogSubmit(e) {
-    e.preventDefault();
-    const id = document.getElementById('postId').value;
-    const title = document.getElementById('postTitle').value.trim();
-    const category = document.getElementById('postCategory').value;
-    const author = document.getElementById('postAuthor').value.trim();
-    const image = document.getElementById('postImage').value.trim();
-    const excerpt = document.getElementById('postExcerpt').value.trim();
-    const content = document.getElementById('postBodyContent').value.trim();
+  function handleFacFileUpload(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      const dataUrl = evt.target.result;
+      document.getElementById('facSrcInput').value = dataUrl;
+      document.getElementById('facPreviewImg').src = dataUrl;
+      document.getElementById('facPreviewWrap').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
 
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const date = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-    const list = getBlogs();
+  function saveFacilitatorData() {
+    const id = document.getElementById('editFacId').value;
+    const name = document.getElementById('facNameInput').value.trim();
+    const src = document.getElementById('facSrcInput').value.trim();
+    if (!src) {
+      alert('Please upload or enter a logo image path.');
+      return;
+    }
+    const list = getFacilitators();
     if (id) {
       const idx = list.findIndex(x => x.id === id);
-      if (idx !== -1) {
-        list[idx] = { ...list[idx], title, category, author, image, excerpt, content, slug };
-      }
+      if (idx !== -1) list[idx] = { ...list[idx], name: name || ('Partner ' + (idx + 1)), src };
     } else {
-      list.unshift({
-        id: 'blog-' + Date.now(),
-        title, category, author, image, excerpt, content, slug, date, readTime: '5 min read'
-      });
+      list.push({ id: 'fac-' + Date.now(), name: name || ('Partner ' + (list.length + 1)), src });
     }
-    saveBlogs(list);
-    hideEditor();
-    showToast('Article published successfully!');
+    saveFacilitators(list);
+    closeFacModal();
+    showToast('Facilitator logo saved successfully!');
   }
 
-  function deleteBlog(id, title) {
-    if (confirm(`Delete article "${title}"?`)) {
-      saveBlogs(getBlogs().filter(x => x.id !== id));
-      showToast('Article deleted.');
+  function deleteFacilitator(id, name) {
+    if (confirm(`Delete logo for "${name}"?`)) {
+      saveFacilitators(getFacilitators().filter(x => x.id !== id));
+      showToast('Facilitator logo deleted.');
     }
   }
 
-  document.addEventListener('DOMContentLoaded', renderBlogTable);
+  function resetFacilitatorsToDefault() {
+    if (confirm('Reset to default 14 university partner logos?')) {
+      saveFacilitators(DEFAULT_FACILITATORS);
+      showToast('Facilitators reset to default.');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', renderFacilitators);
 </script>
 </body>
 </html>
