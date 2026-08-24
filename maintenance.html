@@ -116,9 +116,9 @@
       flex-direction: column;
     }
 
-    /* Headers built into columns for mobile order preservation */
+    /* Headers built into columns for mobile order preservation (Solid Brand Navy) */
     .bp-header-left {
-      background: linear-gradient(90deg, var(--navy) 0%, var(--green) 55%, var(--sage) 100%);
+      background: var(--navy);
       color: var(--white);
       height: 56px;
       padding: 0 40px;
@@ -129,6 +129,7 @@
       font-size: 0.95rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .plane-icon {
       width: 18px;
@@ -137,7 +138,7 @@
       display: inline-block;
     }
     .bp-header-right {
-      background: linear-gradient(90deg, var(--navy) 0%, var(--green) 55%, var(--sage) 100%);
+      background: var(--navy);
       color: var(--white);
       height: 56px;
       padding: 0 24px;
@@ -147,6 +148,7 @@
       font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     
     /* Left Main Content Body */
@@ -223,6 +225,16 @@
     .stub-meta { text-align: left; }
     .stub-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
     .stub-val { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+    .stub-val-gradient {
+      font-size: 1.1rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--green) 50%, var(--sage) 100%);
+      -webkit-background-clip: text;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
     .barcode {
       width: 100%; height: 50px;
       background: repeating-linear-gradient(90deg, var(--navy), var(--navy) 2px, transparent 2px, transparent 5px, var(--navy) 5px, var(--navy) 6px, transparent 6px, transparent 9px, var(--navy) 9px, var(--navy) 13px, transparent 13px, transparent 15px);
@@ -347,12 +359,14 @@
             <div class="bp-stub">
               <div class="stub-meta">
                 <div class="stub-label">Destination</div>
-                <div class="stub-val">V-2.0</div>
+                <div class="stub-val" style="display: flex; align-items: center; gap: 3px;">
+                  <img src="images/admin-profile-icon.png" alt="V" style="height: 15px; width: 15px; object-fit: contain; vertical-align: middle;" />-2.0
+                </div>
               </div>
               
               <div class="stub-meta">
                 <div class="stub-label">Status</div>
-                <div class="stub-val" style="color:var(--green); font-weight:800;">BOARDING</div>
+                <div class="stub-val-gradient">MAINTENANCE</div>
               </div>
               
               <div class="barcode"></div>
