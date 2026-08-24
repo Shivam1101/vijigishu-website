@@ -296,39 +296,23 @@
         justify-content: center; 
         align-items: center; 
         gap: 20px;
-        background-color: var(--navy); /* Swapped to Navy background matching Vijigishu Air */
+        background-color: var(--white); /* Reverted back to white background */
         border-radius: 0 0 24px 24px; /* Round bottom corners of the ticket */
-      }
-      
-      /* Stub text color adaptations for Navy background */
-      .bp-stub .stub-val {
-        color: var(--white);
-      }
-      .bp-stub .stub-val-gradient {
-        background: linear-gradient(135deg, var(--white) 0%, var(--green) 50%, var(--sage) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-      
-      /* White barcode lines for contrast on Navy background */
-      .bp-stub .barcode { 
-        height: 40px; 
-        width: 140px; 
-        background: repeating-linear-gradient(90deg, var(--white), var(--white) 2px, transparent 2px, transparent 5px, var(--white) 5px, var(--white) 6px, transparent 6px, transparent 9px, var(--white) 9px, var(--white) 13px, transparent 13px, transparent 15px);
-        opacity: 0.9;
       }
       
       .mobile-bp-footer {
         display: block;
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 0.78rem;
+        font-size: 0.72rem;
         font-weight: 800;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--white); /* White text for mobile footer label */
-        opacity: 0.85;
-        margin-top: 4px;
+        color: var(--white);
+        background-color: var(--navy); /* Navy background only for the mobile boarding pass footer */
+        padding: 8px 18px;
+        border-radius: 100px;
+        opacity: 0.9;
+        margin-top: 8px;
       }
       
       /* Vertical divider transforms into a horizontal divider in the mobile stack */
