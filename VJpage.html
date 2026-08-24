@@ -491,9 +491,6 @@
       padding: 6px 8px;
       transition: color 0.2s;
     }
-    .link-open-btn:hover {
-      color: var(--green);
-    }
     @media (max-width: 768px) {
       .url-directory-section { padding: 24px 16px; }
       .url-row td { display: block; width: 100% !important; text-align: left !important; padding: 8px 12px; }
@@ -501,7 +498,31 @@
       .url-row td:nth-child(2) { padding-top: 0; padding-bottom: 6px; }
       .url-row td:last-child { padding-top: 0; }
     }
-
+    /* Collapsible Details/Summary styling */
+    .url-dir-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      list-style: none;
+      outline: none;
+    }
+    .url-dir-summary::-webkit-details-marker {
+      display: none;
+    }
+    .url-dir-summary-content {
+      flex: 1;
+    }
+    .url-dir-title .toggle-arrow {
+      font-size: 0.95rem;
+      margin-left: 8px;
+      color: var(--gray-muted);
+      transition: transform 0.25s var(--ease);
+      display: inline-block;
+    }
+    details[open] .url-dir-title .toggle-arrow {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
 <body>
@@ -547,7 +568,7 @@
   <section class="section-group" data-category="core">
     <div class="section-title-wrap">
       <h2 class="section-title">Core &amp; Brand Pages</h2>
-      <span class="section-badge">7 Pages</span>
+      <span class="section-badge">6 Pages</span>
     </div>
     <div class="grid">
       <a href="index.html" class="page-card" target="_blank" data-title="Homepage" data-keywords="home main hero index landing">
@@ -608,6 +629,19 @@
           <div class="card-info">
             <div class="card-title">404 Error Page</div>
             <div class="card-desc">Branded not found screen with helpful navigation back to safe pages.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Page ↗</span>
+        </div>
+      </a>
+
+      <a href="maintenance.html" class="page-card" target="_blank" data-title="Maintenance Page" data-keywords="maintenance down scheduled update repair delay ticket">
+        <div class="card-top">
+          <div class="icon-box">🔧</div>
+          <div class="card-info">
+            <div class="card-title">Maintenance Page</div>
+            <div class="card-desc">Brand-aligned scheduled maintenance screen with live clocks, background polling, and support options.</div>
           </div>
         </div>
         <div class="card-footer">
@@ -900,19 +934,19 @@
     </div>
   </section>
 
-  <!-- Section 6: Verification Tools & Admin -->
+  <!-- Section 6: Verification Tools & Admin CMS Suite -->
   <section class="section-group" data-category="tools">
     <div class="section-title-wrap">
-      <h2 class="section-title">Verification Tools &amp; Admin</h2>
-      <span class="section-badge">2 Tools</span>
+      <h2 class="section-title">Verification Tools &amp; Admin CMS Suite</h2>
+      <span class="section-badge">8 Pages/Tools</span>
     </div>
     <div class="grid">
-      <a href="page-verify.html" class="page-card" target="_blank" data-title="Staging Verification Tool" data-keywords="page verify staging audit test diff comparison">
+      <a href="page-verify.html" class="page-card" target="_blank" data-title="Staging Verification Tool" data-keywords="page verify staging audit test diff comparison checks link">
         <div class="card-top">
           <div class="icon-box">🔍</div>
           <div class="card-info">
             <div class="card-title">Staging Verification Suite</div>
-            <div class="card-desc">Interactive comparison tool to cross-check staging vs local content &amp; images with checklist.</div>
+            <div class="card-desc">Interactive comparison tool to cross-check staging vs local content &amp; images with audit checklists.</div>
           </div>
         </div>
         <div class="card-footer">
@@ -920,16 +954,94 @@
         </div>
       </a>
 
-      <a href="admin-blog.html" class="page-card" target="_blank" data-title="Admin Dashboard" data-keywords="admin dashboard management portal control panel login">
+      <a href="login.html" class="page-card" target="_blank" data-title="Portal Login" data-keywords="login credentials password authentication gateway admin student faculty">
         <div class="card-top">
-          <div class="icon-box">⚙️</div>
+          <div class="icon-box">🔐</div>
           <div class="card-info">
-            <div class="card-title">Admin Dashboard</div>
-            <div class="card-desc">Management portal and system controls interface.</div>
+            <div class="card-title">Portal Login Gateway</div>
+            <div class="card-desc">Universal authentication portal for students, facilitators, and system administrators.</div>
           </div>
         </div>
         <div class="card-footer">
-          <span class="open-arrow">Open Admin ↗</span>
+          <span class="open-arrow">Open Portal ↗</span>
+        </div>
+      </a>
+
+      <a href="admin.html" class="page-card" target="_blank" data-title="Admin Gateway Master Router" data-keywords="admin router master authentication gateway entry credentials">
+        <div class="card-top">
+          <div class="icon-box">🛡️</div>
+          <div class="card-info">
+            <div class="card-title">Admin Controller Gateway</div>
+            <div class="card-desc">Secondary gatekeeper and master routing panel for verified system administration paths.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Gateway ↗</span>
+        </div>
+      </a>
+
+      <a href="admin-dashboard.html" class="page-card" target="_blank" data-title="Admin Dashboard Hub" data-keywords="dashboard analytics overview control widgets status data">
+        <div class="card-top">
+          <div class="icon-box">📊</div>
+          <div class="card-info">
+            <div class="card-title">Admin Dashboard Hub</div>
+            <div class="card-desc">Central administration overview console displaying analytics, updates, and module shortcuts.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Dashboard ↗</span>
+        </div>
+      </a>
+
+      <a href="admin-blog.html" class="page-card" target="_blank" data-title="Admin Blog Manager" data-keywords="admin blog post write edit publish content news cms">
+        <div class="card-top">
+          <div class="icon-box">✍️</div>
+          <div class="card-info">
+            <div class="card-title">CMS Blog Manager</div>
+            <div class="card-desc">Content Management module to compose, edit, structure, and publish articles to the blog hub.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Manager ↗</span>
+        </div>
+      </a>
+
+      <a href="admin-facilitators.html" class="page-card" target="_blank" data-title="Admin Facilitator Manager" data-keywords="facilitators directors profiles edit add leaders bio directory">
+        <div class="card-top">
+          <div class="icon-box">👥</div>
+          <div class="card-info">
+            <div class="card-title">Facilitators Manager</div>
+            <div class="card-desc">CMS module to write, add, edit, or delete trip leaders and advisory facilitators directories.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Manager ↗</span>
+        </div>
+      </a>
+
+      <a href="admin-gallery.html" class="page-card" target="_blank" data-title="Admin Gallery CMS Manager" data-keywords="gallery photos upload media delete filter albums images">
+        <div class="card-top">
+          <div class="icon-box">🖼️</div>
+          <div class="card-info">
+            <div class="card-title">Gallery CMS Manager</div>
+            <div class="card-desc">Media Management module to upload snapshots, remove items, and categorize student travel albums.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Manager ↗</span>
+        </div>
+      </a>
+
+      <a href="admin-testimonials.html" class="page-card" target="_blank" data-title="Admin Testimonial CMS Manager" data-keywords="testimonials moderate approve feedback reviews feedback student quotes">
+        <div class="card-top">
+          <div class="icon-box">💬</div>
+          <div class="card-info">
+            <div class="card-title">Testimonials Manager</div>
+            <div class="card-desc">CMS module to review, approve, moderate, and publish reviews from students and academic partners.</div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="open-arrow">Open Manager ↗</span>
         </div>
       </a>
     </div>
@@ -943,269 +1055,321 @@
 
   <!-- Quick Footer -->
   
-    <!-- =================================================================
-       COMPLETE SITE URL DIRECTORY (CURRENT DOMAIN LIVE URLS)
+  <!-- =================================================================
+       COMPLETE SITE URL DIRECTORY (CURRENT DOMAIN LIVE URLS) - Collapsible Accordion Drop Down
        ================================================================= -->
   <section class="url-directory-section" id="urlDirectory">
-    <div class="url-dir-header">
-      <div>
-        <h2 class="url-dir-title">🔗 Complete Site <span>URL Directory</span></h2>
-        <p style="color: var(--gray-muted); font-size: 0.88rem; margin-top: 4px;">Dynamic live URLs for all pages on the current site environment.</p>
+    <details>
+      <summary class="url-dir-summary">
+        <div class="url-dir-summary-content">
+          <h2 class="url-dir-title">🔗 Complete Site <span>URL Directory</span> <span class="toggle-arrow">▼</span></h2>
+          <p style="color: var(--gray-muted); font-size: 0.88rem; margin-top: 4px; font-weight: 500;">Click to expand/collapse dynamic live URLs for all pages on the current site environment.</p>
+        </div>
+        <button class="btn-copy-all" id="copyAllUrlsBtn" onclick="event.stopPropagation();">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy All URLs
+        </button>
+      </summary>
+
+      <div class="url-dir-body" style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);">
+        <!-- Group 1: Core Pages -->
+        <div class="url-group-title">🏠 Core Pages</div>
+        <table class="url-list-table">
+          <tr class="url-row" data-path="/">
+            <td>Home Page</td>
+            <td class="url-text">/</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="/" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/about">
+            <td>About Us</td>
+            <td class="url-text">/about</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="about.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs">
+            <td>Immersion Programs Hub</td>
+            <td class="url-text">/immersion-programs</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/leadership-walk">
+            <td>Leadership Walk</td>
+            <td class="url-text">/leadership-walk</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="leadership-walk.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/gallery">
+            <td>Gallery</td>
+            <td class="url-text">/gallery</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="gallery.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/contact">
+            <td>Contact Us</td>
+            <td class="url-text">/contact</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="contact.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/blog">
+            <td>Blog Index</td>
+            <td class="url-text">/blog</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/blog-single">
+            <td>Blog Single Article</td>
+            <td class="url-text">/blog-single</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="blog-single.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/404">
+            <td>404 Error Page</td>
+            <td class="url-text">/404</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="404.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/maintenance">
+            <td>Maintenance Page</td>
+            <td class="url-text">/maintenance</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="maintenance.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Group 2: Academic Disciplines -->
+        <div class="url-group-title">🎓 Academic Discipline Programs</div>
+        <table class="url-list-table">
+          <tr class="url-row" data-path="/immersion-programs/management">
+            <td>Management Immersion</td>
+            <td class="url-text">/immersion-programs/management</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/management.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/architecture-design">
+            <td>Architecture &amp; Design</td>
+            <td class="url-text">/immersion-programs/architecture-design</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/architecture-design.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/engineering">
+            <td>Engineering Immersion</td>
+            <td class="url-text">/immersion-programs/engineering</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/engineering.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/school-programs">
+            <td>School Programs</td>
+            <td class="url-text">/immersion-programs/school-programs</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/school-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Group 3: Global Destinations -->
+        <div class="url-group-title">✈️ Global Destination Programs</div>
+        <table class="url-list-table">
+          <tr class="url-row" data-path="/immersion-programs/uae">
+            <td>UAE Immersion (Dubai &amp; Abu Dhabi)</td>
+            <td class="url-text">/immersion-programs/uae</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/uae.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/singapore">
+            <td>Singapore Immersion</td>
+            <td class="url-text">/immersion-programs/singapore</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/japan">
+            <td>Japan Immersion (Tokyo &amp; Osaka)</td>
+            <td class="url-text">/immersion-programs/japan</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/japan.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/south-korea">
+            <td>South Korea Immersion (Seoul &amp; Busan)</td>
+            <td class="url-text">/immersion-programs/south-korea</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/south-korea.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/europe">
+            <td>Europe Immersion (GIP)</td>
+            <td class="url-text">/immersion-programs/europe</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/europe.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/malaysia-singapore">
+            <td>Malaysia &amp; Singapore Immersion</td>
+            <td class="url-text">/immersion-programs/malaysia-singapore</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/singapore-indonesia">
+            <td>Singapore &amp; Indonesia Immersion</td>
+            <td class="url-text">/immersion-programs/singapore-indonesia</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Group 4: Internships & Specialized Learning -->
+        <div class="url-group-title">🤝 Internships, FDP &amp; Conferences</div>
+        <table class="url-list-table">
+          <tr class="url-row" data-path="/immersion-programs/internship-malaysia">
+            <td>Malaysia International Internship</td>
+            <td class="url-text">/immersion-programs/internship-malaysia</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/internship-malaysia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/internship-thailand">
+            <td>Thailand International Internship</td>
+            <td class="url-text">/immersion-programs/internship-thailand</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/internship-thailand.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/fdp">
+            <td>Faculty Development Programs (FDP)</td>
+            <td class="url-text">/immersion-programs/fdp</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/fdp.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/immersion-programs/international-conference">
+            <td>International Academic Conferences</td>
+            <td class="url-text">/immersion-programs/international-conference</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="immersion-programs/international-conference.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Group 5: Portals & Verification CMS -->
+        <div class="url-group-title">🔐 Portals, CMS &amp; Verification</div>
+        <table class="url-list-table">
+          <tr class="url-row" data-path="/login">
+            <td>Admin/User Login Portal</td>
+            <td class="url-text">/login</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="login.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/admin">
+            <td>Admin Gateway Master Router</td>
+            <td class="url-text">/admin</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="admin.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/admin-dashboard">
+            <td>Admin Dashboard Hub</td>
+            <td class="url-text">/admin-dashboard</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="admin-dashboard.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/admin-blog">
+            <td>CMS Blog Manager</td>
+            <td class="url-text">/admin-blog</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="admin-blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/admin-facilitators">
+            <td>Facilitators Manager</td>
+            <td class="url-text">/admin-facilitators</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="admin-facilitators.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/admin-gallery">
+            <td>Gallery CMS Manager</td>
+            <td class="url-text">/admin-gallery</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="admin-gallery.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/admin-testimonials">
+            <td>Testimonials CMS Manager</td>
+            <td class="url-text">/admin-testimonials</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="admin-testimonials.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/page-verify">
+            <td>Certificate Verification Portal</td>
+            <td class="url-text">/page-verify</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="page-verify.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+          <tr class="url-row" data-path="/VJpage">
+            <td>VJpage Directory (This Page)</td>
+            <td class="url-text">/VJpage</td>
+            <td>
+              <button class="btn-copy-single">Copy</button>
+              <a href="VJpage.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
+            </td>
+          </tr>
+        </table>
       </div>
-      <button class="btn-copy-all" id="copyAllUrlsBtn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copy All URLs
-      </button>
-    </div>
-
-    <!-- Group 1: Core Pages -->
-    <div class="url-group-title">🏠 Core Pages</div>
-    <table class="url-list-table">
-      <tr class="url-row" data-path="/">
-        <td>Home Page</td>
-        <td class="url-text">/</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="/" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/about">
-        <td>About Us</td>
-        <td class="url-text">/about</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="about.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs">
-        <td>Immersion Programs Hub</td>
-        <td class="url-text">/immersion-programs</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/leadership-walk">
-        <td>Leadership Walk</td>
-        <td class="url-text">/leadership-walk</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="leadership-walk.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/gallery">
-        <td>Gallery</td>
-        <td class="url-text">/gallery</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="gallery.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/contact">
-        <td>Contact Us</td>
-        <td class="url-text">/contact</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="contact.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/blog">
-        <td>Blog Index</td>
-        <td class="url-text">/blog</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/blog-single">
-        <td>Blog Single Article</td>
-        <td class="url-text">/blog-single</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="blog-single.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/404">
-        <td>404 Error Page</td>
-        <td class="url-text">/404</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="404.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-    </table>
-
-    <!-- Group 2: Academic Disciplines -->
-    <div class="url-group-title">🎓 Academic Discipline Programs</div>
-    <table class="url-list-table">
-      <tr class="url-row" data-path="/immersion-programs/management">
-        <td>Management Immersion</td>
-        <td class="url-text">/immersion-programs/management</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/management.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/architecture-design">
-        <td>Architecture &amp; Design</td>
-        <td class="url-text">/immersion-programs/architecture-design</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/architecture-design.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/engineering">
-        <td>Engineering Immersion</td>
-        <td class="url-text">/immersion-programs/engineering</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/engineering.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/school-programs">
-        <td>School Programs</td>
-        <td class="url-text">/immersion-programs/school-programs</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/school-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-    </table>
-
-    <!-- Group 3: Global Destinations -->
-    <div class="url-group-title">✈️ Global Destination Programs</div>
-    <table class="url-list-table">
-      <tr class="url-row" data-path="/immersion-programs/uae">
-        <td>UAE Immersion (Dubai &amp; Abu Dhabi)</td>
-        <td class="url-text">/immersion-programs/uae</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/uae.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/singapore">
-        <td>Singapore Immersion</td>
-        <td class="url-text">/immersion-programs/singapore</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/japan">
-        <td>Japan Immersion (Tokyo &amp; Osaka)</td>
-        <td class="url-text">/immersion-programs/japan</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/japan.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/south-korea">
-        <td>South Korea Immersion (Seoul &amp; Busan)</td>
-        <td class="url-text">/immersion-programs/south-korea</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/south-korea.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/europe">
-        <td>Europe Immersion (GIP)</td>
-        <td class="url-text">/immersion-programs/europe</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/europe.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/malaysia-singapore">
-        <td>Malaysia &amp; Singapore Immersion</td>
-        <td class="url-text">/immersion-programs/malaysia-singapore</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/singapore-indonesia">
-        <td>Singapore &amp; Indonesia Immersion</td>
-        <td class="url-text">/immersion-programs/singapore-indonesia</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-    </table>
-
-    <!-- Group 4: Internships & Specialized Learning -->
-    <div class="url-group-title">🤝 Internships, FDP &amp; Conferences</div>
-    <table class="url-list-table">
-      <tr class="url-row" data-path="/immersion-programs/internship-malaysia">
-        <td>Malaysia International Internship</td>
-        <td class="url-text">/immersion-programs/internship-malaysia</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/internship-malaysia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/internship-thailand">
-        <td>Thailand International Internship</td>
-        <td class="url-text">/immersion-programs/internship-thailand</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/internship-thailand.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/fdp">
-        <td>Faculty Development Programs (FDP)</td>
-        <td class="url-text">/immersion-programs/fdp</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/fdp.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/immersion-programs/international-conference">
-        <td>International Academic Conferences</td>
-        <td class="url-text">/immersion-programs/international-conference</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="immersion-programs/international-conference.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-    </table>
-
-    <!-- Group 5: Portals & Verification -->
-    <div class="url-group-title">🔐 Portals &amp; Verification</div>
-    <table class="url-list-table">
-      <tr class="url-row" data-path="/main-admin">
-        <td>Admin Dashboard</td>
-        <td class="url-text">/main-admin</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="admin-blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/login">
-        <td>Admin Login</td>
-        <td class="url-text">/login</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="login.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/page-verify">
-        <td>Certificate Verification Portal</td>
-        <td class="url-text">/page-verify</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="page-verify.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-      <tr class="url-row" data-path="/VJpage">
-        <td>VJpage Directory (This Page)</td>
-        <td class="url-text">/VJpage</td>
-        <td>
-          <button class="btn-copy-single">Copy</button>
-          <a href="VJpage.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-        </td>
-      </tr>
-    </table>
+    </details>
   </section>
 
   <footer class="quick-footer">
