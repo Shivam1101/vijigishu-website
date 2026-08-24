@@ -92,9 +92,9 @@
       background: rgba(255, 255, 255, 0.95);
       border-radius: 16px;
       display: flex;
-      box-shadow: 0 20px 48px rgba(13, 14, 46, 0.08), 0 4px 12px rgba(13, 14, 46, 0.03);
+      box-shadow: 0 20px 48px rgba(13, 14, 46, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(13, 14, 46, 0.06);
+      border: 1px solid rgba(13, 14, 46, 0.15);
       transform-style: preserve-3d;
       will-change: transform;
       position: relative;
@@ -122,9 +122,13 @@
 
     /* Carousel */
     .fact-carousel {
-      min-height: 64px; font-size: 0.95rem; color: var(--gray); font-style: italic;
-      line-height: 1.6; font-weight: 500; transition: opacity 0.5s ease;
-      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+      min-height: 84px; font-size: 0.95rem; color: var(--gray); font-style: italic;
+      line-height: 1.6; font-weight: 500; display: flex; align-items: center; 
+      justify-content: center; margin-bottom: 24px;
+    }
+    #factText {
+      transition: opacity 0.6s ease-in-out;
+      opacity: 1;
     }
 
     /* Button */
