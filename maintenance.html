@@ -19,6 +19,7 @@
       --white: #FFFFFF;
       --gray: #5A5B70;
       --light-gray: #94A3B8;
+      --blue: #4667FF; /* Exact royal blue matching the reference design */
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -90,29 +91,32 @@
       z-index: 10;
     }
 
-    /* Boarding Pass Card */
+    /* Boarding Pass Card - Redesigned to match reference image structure */
     .boarding-pass-card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 16px;
+      background: var(--white);
+      border-radius: 24px; /* Highly rounded corners matching reference design */
       display: flex;
       box-shadow: 0 20px 48px rgba(13, 14, 46, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(12px);
       border: 1px solid rgba(13, 14, 46, 0.15);
       transform-style: preserve-3d;
       will-change: transform;
       position: relative;
+      overflow: hidden; /* Clips the background color to the border radius */
     }
     
+    /* Left Main Section (Solid Royal Blue) */
     .bp-main {
-      flex: 1; padding: 36px 40px; display: flex; flex-direction: column;
+      flex: 1.6; padding: 40px; display: flex; flex-direction: column;
       align-items: flex-start; justify-content: center; text-align: left;
+      background-color: var(--blue);
+      color: var(--white);
     }
     
     .status-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(13, 14, 46, 0.04); padding: 6px 14px; border-radius: 100px;
+      background: rgba(255, 255, 255, 0.15); padding: 6px 14px; border-radius: 100px;
       font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.2);
     }
     .pulse-dot {
       width: 6px; height: 6px; background-color: var(--gold); border-radius: 50%; position: relative;
@@ -123,9 +127,9 @@
     }
     @keyframes ripple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(3); opacity: 0; } }
 
-    /* Carousel */
+    /* Carousel Text (White on Blue Background) */
     .fact-carousel {
-      min-height: 84px; font-size: 0.95rem; color: var(--gray); font-style: italic;
+      min-height: 84px; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); font-style: italic;
       line-height: 1.6; font-weight: 500; display: flex; align-items: flex-start; 
       justify-content: flex-start; margin-bottom: 24px;
     }
@@ -134,19 +138,26 @@
       opacity: 1;
     }
 
-    /* Button */
+    /* Primary Button (White base to contrast Blue background) */
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
-      background: var(--navy); color: var(--white); border-radius: 100px;
+      background: var(--white); color: var(--blue); border-radius: 100px;
       font-weight: 700; font-size: 0.9rem; transition: all 0.25s var(--ease); border: none;
+      cursor: pointer;
     }
-    .btn-primary:hover { background: var(--green); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(56, 103, 58, 0.2); }
+    .btn-primary:hover { 
+      background: var(--navy); 
+      color: var(--white); 
+      transform: translateY(-2px); 
+      box-shadow: 0 8px 16px rgba(13, 14, 46, 0.2); 
+    }
 
-    /* Boarding Pass Divider */
+    /* Boarding Pass Divider (White block base with dashed lines) */
     .bp-divider {
       width: 2px;
-      background-image: linear-gradient(to bottom, rgba(13, 14, 46, 0.15) 40%, rgba(255,255,255,0) 20%);
+      background-image: linear-gradient(to bottom, rgba(13, 14, 46, 0.2) 40%, rgba(255,255,255,0) 20%);
       background-position: left; background-size: 2px 14px; background-repeat: repeat-y;
+      background-color: var(--white);
       position: relative; z-index: 2;
     }
     .bp-divider::before, .bp-divider::after {
@@ -158,18 +169,28 @@
     .bp-divider::before { top: -12px; }
     .bp-divider::after { bottom: -12px; }
 
-    /* Boarding Pass Stub */
+    /* Boarding Pass Stub Section (Clean White) */
     .bp-stub {
-      width: 160px; background: rgba(245, 247, 246, 0.6); padding: 32px 20px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+      width: 180px; background: var(--white); padding: 40px 24px;
+      display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between;
+      color: var(--navy);
     }
-    .stub-meta { text-align: center; }
-    .stub-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-    .stub-val { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+    .stub-header {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .stub-meta { text-align: left; }
+    .stub-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .stub-val { font-size: 1.1rem; font-weight: 800; color: var(--blue); }
     .barcode {
       width: 100%; height: 50px;
       background: repeating-linear-gradient(90deg, var(--navy), var(--navy) 2px, transparent 2px, transparent 5px, var(--navy) 5px, var(--navy) 6px, transparent 6px, transparent 9px, var(--navy) 9px, var(--navy) 13px, transparent 13px, transparent 15px);
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     /* Global Clocks */
@@ -204,14 +225,16 @@
       
       .perspective-wrapper { perspective: none; margin: 16px 0 24px; }
       .boarding-pass-card { flex-direction: column; transform: none !important; }
-      .bp-main { padding: 28px 24px; align-items: center; text-align: center; }
+      .bp-main { padding: 28px 24px; align-items: center; text-align: center; border-radius: 24px 24px 0 0; }
       .fact-carousel { align-items: center; justify-content: center; text-align: center; }
+      .btn-primary { width: 100%; justify-content: center; }
       
-      .bp-divider { width: 100%; height: 2px; background-image: linear-gradient(to right, rgba(13, 14, 46, 0.15) 40%, rgba(255,255,255,0) 20%); background-size: 14px 2px; background-position: top; background-repeat: repeat-x; }
+      .bp-divider { width: 100%; height: 2px; background-image: linear-gradient(to right, rgba(13, 14, 46, 0.2) 40%, rgba(255, 255, 255, 0) 20%); background-size: 14px 2px; background-position: top; background-repeat: repeat-x; }
       .bp-divider::before { left: -12px; top: -11px; }
       .bp-divider::after { right: -12px; left: auto; top: -11px; }
       
-      .bp-stub { width: 100%; flex-direction: row; padding: 20px; justify-content: space-around; }
+      .bp-stub { width: 100%; flex-direction: row; padding: 24px; justify-content: space-around; align-items: center; border-radius: 0 0 24px 24px; }
+      .stub-header { display: none; }
       .barcode { height: 40px; width: 80px; }
       
       .global-clocks { justify-content: center; gap: 20px; flex-wrap: wrap; }
@@ -242,7 +265,7 @@
       <div class="perspective-wrapper" id="cardWrapper">
         <div class="boarding-pass-card" id="tiltCard">
           
-          <!-- Left Side: Content -->
+          <!-- Left Side: Solid Blue ticket content -->
           <div class="bp-main">
             <div class="status-badge"><span class="pulse-dot"></span> System Upgrade</div>
             
@@ -256,19 +279,23 @@
             </a>
           </div>
 
-          <!-- Divider -->
+          <!-- Perforated Divider -->
           <div class="bp-divider"></div>
 
-          <!-- Right Side: Stub -->
+          <!-- Right Side: White ticket stub -->
           <div class="bp-stub">
+            <div class="stub-header">Boarding Pass</div>
+            
             <div class="stub-meta">
               <div class="stub-label">Destination</div>
               <div class="stub-val">V-2.0</div>
             </div>
+            
             <div class="stub-meta">
               <div class="stub-label">Status</div>
               <div class="stub-val" style="color:var(--green);">BOARDING</div>
             </div>
+            
             <div class="barcode"></div>
           </div>
 
