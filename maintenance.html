@@ -52,12 +52,29 @@
 
     .maintenance-wrapper {
       flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 10px 24px; text-align: center; z-index: 10;
+      padding: 10px 24px; text-align: center; z-index: 10; position: relative;
+    }
+
+    /* Mascot Image integration */
+    .mascot-hero {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply; /* Removes the white background to blend perfectly with gradient */
+      margin-bottom: -16px; 
+      z-index: 5;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     .title {
       font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem);
       color: var(--navy); margin-bottom: 12px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em;
+      position: relative; z-index: 10;
     }
     .title span { color: var(--green); font-style: italic; }
 
@@ -67,6 +84,7 @@
       width: 100%;
       max-width: 680px;
       margin: 20px 0 32px;
+      z-index: 10;
     }
 
     /* Boarding Pass Card */
@@ -179,6 +197,17 @@
       .bp-stub { width: 100%; flex-direction: row; padding: 20px; justify-content: space-around; }
       .barcode { height: 40px; width: 80px; }
       .global-clocks { gap: 20px; flex-wrap: wrap; }
+      
+      /* Scale image on mobile */
+      .mascot-hero { max-width: 100%; margin-bottom: -10px; }
+    }
+    @media (max-height: 850px) {
+      /* Compact vertical sizing for smaller screens */
+      .mascot-hero { max-width: 320px; }
+      .title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 4px; }
+      .perspective-wrapper { margin: 12px 0 20px; }
+      .fact-carousel { min-height: 48px; margin-bottom: 16px; font-size: 0.9rem; }
+      .bp-main { padding: 24px 32px; }
     }
   </style>
 </head>
@@ -193,6 +222,9 @@
   </header>
 
   <main class="maintenance-wrapper">
+    
+    <!-- Uploaded Mascot Image with Multiply Blend Mode -->
+    <img src="images/maintenance-mascot.jpg" alt="Vijigishu Global Engineering" class="mascot-hero" />
     
     <h1 class="title">Elevating Your <span>Experience</span></h1>
     
