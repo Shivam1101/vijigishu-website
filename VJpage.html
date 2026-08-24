@@ -619,9 +619,108 @@
       .minimal-link-item {
         padding: 6px 0;
       }
-      .minimal-copy-btn {
-        opacity: 0.6;
-      }
+    /* Sidebar Drawer Styles */
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(13, 14, 46, 0.25);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .sidebar-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .sidebar-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 440px;
+      max-width: 100%;
+      height: 100vh;
+      background: #FFFFFF;
+      box-shadow: -6px 0 30px rgba(0, 0, 0, 0.08);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-drawer.open {
+      transform: translateX(0);
+    }
+    
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .sidebar-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0;
+    }
+    
+    .sidebar-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--gray-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+    .sidebar-close-btn:hover {
+      color: var(--navy);
+    }
+    
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    
+    .sidebar-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .btn-open-sidebar {
+      display: inline-flex;
+      align-items: center;
+      background: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(13, 14, 46, 0.1);
+      transition: all 0.2s var(--ease);
+      gap: 6px;
+    }
+    .btn-open-sidebar:hover {
+      background: var(--green);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(56, 103, 58, 0.15);
     }
   </style>
 </head>
@@ -637,9 +736,15 @@
           <h1 class="brand-title">Vijigishu <span>Pages Directory</span></h1>
         </div>
       </div>
-      <div class="badge-count">
-        <span>⚡</span>
-        <span id="totalCount">25 Pages Available</span>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="badge-count">
+          <span>⚡</span>
+          <span id="totalCount">25 Pages Available</span>
+        </div>
+        <button class="btn-open-sidebar" id="openSidebarBtn" title="Open Site Map URL Directory">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          Sitemap
+        </button>
       </div>
     </div>
 
@@ -1153,298 +1258,294 @@
     <p>Try searching for another keyword like "management", "uae", "contact", or "internship".</p>
   </div>
 
-  <!-- Quick Footer -->
-  
-  <!-- =================================================================
-       COMPLETE SITE URL DIRECTORY (CURRENT DOMAIN LIVE URLS) - Premium Minimal Site Map Drop Down
-       ================================================================= -->
-  <section class="url-directory-section" id="urlDirectory">
-    <details>
-      <summary class="url-dir-summary">
-        <span>🔗 Site URL Directory</span>
-        <span class="toggle-arrow">▼</span>
-      </summary>
-
-      <div class="minimal-dir-grid">
-        <!-- Column 1: Core Pages -->
-        <div class="minimal-dir-col">
-          <div class="minimal-col-title">Core &amp; Brand</div>
-          
-          <div class="minimal-link-item url-row" data-path="/">
-            <a href="/" target="_blank" class="minimal-link">
-              Homepage
-              <span class="minimal-path url-text">/</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/about">
-            <a href="about.html" target="_blank" class="minimal-link">
-              About Us
-              <span class="minimal-path url-text">/about</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/contact">
-            <a href="contact.html" target="_blank" class="minimal-link">
-              Contact Us
-              <span class="minimal-path url-text">/contact</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/gallery">
-            <a href="gallery.html" target="_blank" class="minimal-link">
-              Media &amp; Gallery
-              <span class="minimal-path url-text">/gallery</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/404">
-            <a href="404.html" target="_blank" class="minimal-link">
-              404 Error Page
-              <span class="minimal-path url-text">/404</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/maintenance">
-            <a href="maintenance.html" target="_blank" class="minimal-link">
-              Maintenance Page
-              <span class="minimal-path url-text">/maintenance</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-        </div>
-
-        <!-- Column 2: Academic Disciplines -->
-        <div class="minimal-dir-col">
-          <div class="minimal-col-title">Disciplines</div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/management">
-            <a href="immersion-programs/management.html" target="_blank" class="minimal-link">
-              Management
-              <span class="minimal-path url-text">/management</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/architecture-design">
-            <a href="immersion-programs/architecture-design.html" target="_blank" class="minimal-link">
-              Architecture &amp; Design
-              <span class="minimal-path url-text">/architecture-design</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/engineering">
-            <a href="immersion-programs/engineering.html" target="_blank" class="minimal-link">
-              Engineering
-              <span class="minimal-path url-text">/engineering</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/school-programs">
-            <a href="immersion-programs/school-programs.html" target="_blank" class="minimal-link">
-              School Programs
-              <span class="minimal-path url-text">/school-programs</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-        </div>
-
-        <!-- Column 3: Global Destinations -->
-        <div class="minimal-dir-col">
-          <div class="minimal-col-title">Destinations</div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/uae">
-            <a href="immersion-programs/uae.html" target="_blank" class="minimal-link">
-              UAE Immersion
-              <span class="minimal-path url-text">/uae</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/singapore">
-            <a href="immersion-programs/singapore.html" target="_blank" class="minimal-link">
-              Singapore
-              <span class="minimal-path url-text">/singapore</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/japan">
-            <a href="immersion-programs/japan.html" target="_blank" class="minimal-link">
-              Japan Immersion
-              <span class="minimal-path url-text">/japan</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/south-korea">
-            <a href="immersion-programs/south-korea.html" target="_blank" class="minimal-link">
-              South Korea
-              <span class="minimal-path url-text">/south-korea</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/europe">
-            <a href="immersion-programs/europe.html" target="_blank" class="minimal-link">
-              Europe GIP
-              <span class="minimal-path url-text">/europe</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/malaysia-singapore">
-            <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="minimal-link">
-              Malaysia &amp; Singapore
-              <span class="minimal-path url-text">/malaysia-singapore</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/singapore-indonesia">
-            <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="minimal-link">
-              Singapore &amp; Indonesia
-              <span class="minimal-path url-text">/singapore-indonesia</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-        </div>
-
-        <!-- Column 4: Curated Programs -->
-        <div class="minimal-dir-col">
-          <div class="minimal-col-title">Special &amp; Blogs</div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/internship-malaysia">
-            <a href="immersion-programs/internship-malaysia.html" target="_blank" class="minimal-link">
-              Malaysia Internship
-              <span class="minimal-path url-text">/internship-malaysia</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/internship-thailand">
-            <a href="immersion-programs/internship-thailand.html" target="_blank" class="minimal-link">
-              Thailand Internship
-              <span class="minimal-path url-text">/internship-thailand</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/fdp">
-            <a href="immersion-programs/fdp.html" target="_blank" class="minimal-link">
-              Faculty Dev (FDP)
-              <span class="minimal-path url-text">/fdp</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/immersion-programs/international-conference">
-            <a href="immersion-programs/international-conference.html" target="_blank" class="minimal-link">
-              Conferences
-              <span class="minimal-path url-text">/international-conference</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/leadership-walk">
-            <a href="leadership-walk.html" target="_blank" class="minimal-link">
-              Leadership Walks
-              <span class="minimal-path url-text">/leadership-walk</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/blog">
-            <a href="blog.html" target="_blank" class="minimal-link">
-              Blog Hub
-              <span class="minimal-path url-text">/blog</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-        </div>
-
-        <!-- Column 5: Admin CMS Gateway -->
-        <div class="minimal-dir-col">
-          <div class="minimal-col-title">CMS Admin Suite</div>
-
-          <div class="minimal-link-item url-row" data-path="/login">
-            <a href="login.html" target="_blank" class="minimal-link">
-              Portal Login
-              <span class="minimal-path url-text">/login</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/admin">
-            <a href="admin.html" target="_blank" class="minimal-link">
-              Admin Gateway
-              <span class="minimal-path url-text">/admin</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/admin-dashboard">
-            <a href="admin-dashboard.html" target="_blank" class="minimal-link">
-              Dashboard Hub
-              <span class="minimal-path url-text">/admin-dashboard</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/admin-blog">
-            <a href="admin-blog.html" target="_blank" class="minimal-link">
-              CMS Blog Manager
-              <span class="minimal-path url-text">/admin-blog</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/admin-facilitators">
-            <a href="admin-facilitators.html" target="_blank" class="minimal-link">
-              Facilitators CMS
-              <span class="minimal-path url-text">/admin-facilitators</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/admin-gallery">
-            <a href="admin-gallery.html" target="_blank" class="minimal-link">
-              Gallery CMS
-              <span class="minimal-path url-text">/admin-gallery</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/admin-testimonials">
-            <a href="admin-testimonials.html" target="_blank" class="minimal-link">
-              Testimonials CMS
-              <span class="minimal-path url-text">/admin-testimonials</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-
-          <div class="minimal-link-item url-row" data-path="/page-verify">
-            <a href="page-verify.html" target="_blank" class="minimal-link">
-              Staging Verify Suite
-              <span class="minimal-path url-text">/page-verify</span>
-            </a>
-            <button class="minimal-copy-btn btn-copy-single">Copy</button>
-          </div>
-        </div>
-      </div>
-    </details>
-  </section>
-
   <footer class="quick-footer">
     <p>Vijigishu Edu Tourism · Local Development Server · <a href="/">Go to Home</a></p>
   </footer>
+</div>
+
+<!-- Sidebar Drawer Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Sidebar Drawer Panel -->
+<div class="sidebar-drawer" id="sidebarDrawer">
+  <div class="sidebar-header">
+    <h3 class="sidebar-title">🔗 Site URL Directory</h3>
+    <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close Directory">&times;</button>
+  </div>
+  <div class="sidebar-content">
+    <!-- Column 1: Core Pages -->
+    <div class="sidebar-section">
+      <div class="minimal-col-title">Core &amp; Brand</div>
+      
+      <div class="minimal-link-item url-row" data-path="/">
+        <a href="/" target="_blank" class="minimal-link">
+          Homepage
+          <span class="minimal-path url-text">/</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/about">
+        <a href="about.html" target="_blank" class="minimal-link">
+          About Us
+          <span class="minimal-path url-text">/about</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/contact">
+        <a href="contact.html" target="_blank" class="minimal-link">
+          Contact Us
+          <span class="minimal-path url-text">/contact</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/gallery">
+        <a href="gallery.html" target="_blank" class="minimal-link">
+          Media &amp; Gallery
+          <span class="minimal-path url-text">/gallery</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/404">
+        <a href="404.html" target="_blank" class="minimal-link">
+          404 Error Page
+          <span class="minimal-path url-text">/404</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/maintenance">
+        <a href="maintenance.html" target="_blank" class="minimal-link">
+          Maintenance Page
+          <span class="minimal-path url-text">/maintenance</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+    </div>
+
+    <!-- Column 2: Academic Disciplines -->
+    <div class="sidebar-section">
+      <div class="minimal-col-title">Disciplines</div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/management">
+        <a href="immersion-programs/management.html" target="_blank" class="minimal-link">
+          Management
+          <span class="minimal-path url-text">/management</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/architecture-design">
+        <a href="immersion-programs/architecture-design.html" target="_blank" class="minimal-link">
+          Architecture &amp; Design
+          <span class="minimal-path url-text">/architecture-design</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/engineering">
+        <a href="immersion-programs/engineering.html" target="_blank" class="minimal-link">
+          Engineering
+          <span class="minimal-path url-text">/engineering</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/school-programs">
+        <a href="immersion-programs/school-programs.html" target="_blank" class="minimal-link">
+          School Programs
+          <span class="minimal-path url-text">/school-programs</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+    </div>
+
+    <!-- Column 3: Global Destinations -->
+    <div class="sidebar-section">
+      <div class="minimal-col-title">Destinations</div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/uae">
+        <a href="immersion-programs/uae.html" target="_blank" class="minimal-link">
+          UAE Immersion
+          <span class="minimal-path url-text">/uae</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/singapore">
+        <a href="immersion-programs/singapore.html" target="_blank" class="minimal-link">
+          Singapore
+          <span class="minimal-path url-text">/singapore</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/japan">
+        <a href="immersion-programs/japan.html" target="_blank" class="minimal-link">
+          Japan Immersion
+          <span class="minimal-path url-text">/japan</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/south-korea">
+        <a href="immersion-programs/south-korea.html" target="_blank" class="minimal-link">
+          South Korea
+          <span class="minimal-path url-text">/south-korea</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/europe">
+        <a href="immersion-programs/europe.html" target="_blank" class="minimal-link">
+          Europe GIP
+          <span class="minimal-path url-text">/europe</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/malaysia-singapore">
+        <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="minimal-link">
+          Malaysia &amp; Singapore
+          <span class="minimal-path url-text">/malaysia-singapore</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/singapore-indonesia">
+        <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="minimal-link">
+          Singapore &amp; Indonesia
+          <span class="minimal-path url-text">/singapore-indonesia</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+    </div>
+
+    <!-- Column 4: Curated Programs -->
+    <div class="sidebar-section">
+      <div class="minimal-col-title">Special &amp; Blogs</div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/internship-malaysia">
+        <a href="immersion-programs/internship-malaysia.html" target="_blank" class="minimal-link">
+          Malaysia Internship
+          <span class="minimal-path url-text">/internship-malaysia</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/internship-thailand">
+        <a href="immersion-programs/internship-thailand.html" target="_blank" class="minimal-link">
+          Thailand Internship
+          <span class="minimal-path url-text">/internship-thailand</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/fdp">
+        <a href="immersion-programs/fdp.html" target="_blank" class="minimal-link">
+          Faculty Dev (FDP)
+          <span class="minimal-path url-text">/fdp</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/immersion-programs/international-conference">
+        <a href="immersion-programs/international-conference.html" target="_blank" class="minimal-link">
+          Conferences
+          <span class="minimal-path url-text">/international-conference</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/leadership-walk">
+        <a href="leadership-walk.html" target="_blank" class="minimal-link">
+          Leadership Walks
+          <span class="minimal-path url-text">/leadership-walk</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/blog">
+        <a href="blog.html" target="_blank" class="minimal-link">
+          Blog Hub
+          <span class="minimal-path url-text">/blog</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+    </div>
+
+    <!-- Column 5: Admin CMS Gateway -->
+    <div class="sidebar-section">
+      <div class="minimal-col-title">CMS Admin Suite</div>
+
+      <div class="minimal-link-item url-row" data-path="/login">
+        <a href="login.html" target="_blank" class="minimal-link">
+          Portal Login
+          <span class="minimal-path url-text">/login</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/admin">
+        <a href="admin.html" target="_blank" class="minimal-link">
+          Admin Gateway
+          <span class="minimal-path url-text">/admin</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/admin-dashboard">
+        <a href="admin-dashboard.html" target="_blank" class="minimal-link">
+          Dashboard Hub
+          <span class="minimal-path url-text">/admin-dashboard</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/admin-blog">
+        <a href="admin-blog.html" target="_blank" class="minimal-link">
+          CMS Blog Manager
+          <span class="minimal-path url-text">/admin-blog</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/admin-facilitators">
+        <a href="admin-facilitators.html" target="_blank" class="minimal-link">
+          Facilitators CMS
+          <span class="minimal-path url-text">/admin-facilitators</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/admin-gallery">
+        <a href="admin-gallery.html" target="_blank" class="minimal-link">
+          Gallery CMS
+          <span class="minimal-path url-text">/admin-gallery</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/admin-testimonials">
+        <a href="admin-testimonials.html" target="_blank" class="minimal-link">
+          Testimonials CMS
+          <span class="minimal-path url-text">/admin-testimonials</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+
+      <div class="minimal-link-item url-row" data-path="/page-verify">
+        <a href="page-verify.html" target="_blank" class="minimal-link">
+          Staging Verify Suite
+          <span class="minimal-path url-text">/page-verify</span>
+        </a>
+        <button class="minimal-copy-btn btn-copy-single">Copy</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1514,6 +1615,35 @@
 
   // Initial count
   filterPages();
+
+  // Sidebar Open/Close Toggle Control Logic
+  const openSidebarBtn = document.getElementById('openSidebarBtn');
+  const closeSidebarBtn = document.getElementById('sidebarCloseBtn');
+  const sidebarDrawer = document.getElementById('sidebarDrawer');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function openSidebar() {
+    sidebarDrawer.classList.add('open');
+    sidebarOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    sidebarDrawer.classList.remove('open');
+    sidebarOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openSidebarBtn?.addEventListener('click', openSidebar);
+  closeSidebarBtn?.addEventListener('click', closeSidebar);
+  sidebarOverlay?.addEventListener('click', closeSidebar);
+
+  // Keyboard accessibility
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSidebar();
+    }
+  });
 
   // Dynamic Current Website Origin URL Resolver
   function populateCurrentDomainUrls() {
