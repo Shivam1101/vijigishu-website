@@ -419,6 +419,10 @@
       <!-- Global Clocks -->
       <div class="global-clocks">
         <div class="clock-item">
+          <span class="clock-city">New Delhi</span>
+          <span class="clock-time" id="time-delhi">--:--</span>
+        </div>
+        <div class="clock-item">
           <span class="clock-city">Frankfurt</span>
           <span class="clock-time" id="time-frankfurt">--:--</span>
         </div>
@@ -477,6 +481,7 @@
 
     // 2. Global Clocks
     const timezones = [
+      { id: 'delhi', tz: 'Asia/Kolkata' },
       { id: 'frankfurt', tz: 'Europe/Berlin' },
       { id: 'dubai', tz: 'Asia/Dubai' },
       { id: 'singapore', tz: 'Asia/Singapore' },
