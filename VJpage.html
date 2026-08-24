@@ -491,37 +491,137 @@
       padding: 6px 8px;
       transition: color 0.2s;
     }
-    @media (max-width: 768px) {
-      .url-directory-section { padding: 24px 16px; }
-      .url-row td { display: block; width: 100% !important; text-align: left !important; padding: 8px 12px; }
-      .url-row td:first-child { padding-bottom: 2px; }
-      .url-row td:nth-child(2) { padding-top: 0; padding-bottom: 6px; }
-      .url-row td:last-child { padding-top: 0; }
-    }
     /* Collapsible Details/Summary styling */
+    .url-directory-section {
+      margin-top: 56px;
+      padding: 32px 0 0 0;
+      border-top: 1px dashed var(--border);
+      background: transparent;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
     .url-dir-summary {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       cursor: pointer;
       list-style: none;
       outline: none;
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 24px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      width: fit-content;
+      margin: 0 auto;
+      transition: all 0.2s var(--ease);
+    }
+    .url-dir-summary:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
     }
     .url-dir-summary::-webkit-details-marker {
       display: none;
     }
-    .url-dir-summary-content {
-      flex: 1;
-    }
-    .url-dir-title .toggle-arrow {
-      font-size: 0.95rem;
-      margin-left: 8px;
-      color: var(--gray-muted);
+    .url-dir-summary .toggle-arrow {
+      font-size: 0.75rem;
       transition: transform 0.25s var(--ease);
       display: inline-block;
     }
-    details[open] .url-dir-title .toggle-arrow {
+    details[open] .url-dir-summary .toggle-arrow {
       transform: rotate(180deg);
+    }
+    .minimal-dir-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 16px;
+      text-align: left;
+    }
+    .minimal-dir-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .minimal-col-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(56, 103, 58, 0.1);
+      padding-bottom: 6px;
+    }
+    .minimal-link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      position: relative;
+      padding: 4px 0;
+    }
+    .minimal-link {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+    .minimal-link:hover {
+      color: var(--green);
+    }
+    .minimal-path {
+      font-family: ui-monospace, monospace;
+      font-size: 0.72rem;
+      color: var(--gray-muted);
+      font-weight: normal;
+    }
+    .minimal-copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--gray-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, color 0.2s;
+      font-family: inherit;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .minimal-link-item:hover .minimal-copy-btn {
+      opacity: 1;
+    }
+    .minimal-copy-btn:hover {
+      color: var(--green);
+      background: rgba(56, 103, 58, 0.08);
+    }
+    @media (max-width: 768px) {
+      .minimal-dir-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-left: 12px;
+      }
+      .minimal-link-item {
+        padding: 6px 0;
+      }
+      .minimal-copy-btn {
+        opacity: 0.6;
+      }
     }
   </style>
 </head>
@@ -1056,318 +1156,288 @@
   <!-- Quick Footer -->
   
   <!-- =================================================================
-       COMPLETE SITE URL DIRECTORY (CURRENT DOMAIN LIVE URLS) - Collapsible Accordion Drop Down
+       COMPLETE SITE URL DIRECTORY (CURRENT DOMAIN LIVE URLS) - Premium Minimal Site Map Drop Down
        ================================================================= -->
   <section class="url-directory-section" id="urlDirectory">
     <details>
       <summary class="url-dir-summary">
-        <div class="url-dir-summary-content">
-          <h2 class="url-dir-title">🔗 Complete Site <span>URL Directory</span> <span class="toggle-arrow">▼</span></h2>
-          <p style="color: var(--gray-muted); font-size: 0.88rem; margin-top: 4px; font-weight: 500;">Click to expand/collapse dynamic live URLs for all pages on the current site environment.</p>
-        </div>
-        <button class="btn-copy-all" id="copyAllUrlsBtn" onclick="event.stopPropagation();">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy All URLs
-        </button>
+        <span>🔗 Site URL Directory</span>
+        <span class="toggle-arrow">▼</span>
       </summary>
 
-      <div class="url-dir-body" style="margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);">
-        <!-- Group 1: Core Pages -->
-        <div class="url-group-title">🏠 Core Pages</div>
-        <table class="url-list-table">
-          <tr class="url-row" data-path="/">
-            <td>Home Page</td>
-            <td class="url-text">/</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="/" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/about">
-            <td>About Us</td>
-            <td class="url-text">/about</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="about.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs">
-            <td>Immersion Programs Hub</td>
-            <td class="url-text">/immersion-programs</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/leadership-walk">
-            <td>Leadership Walk</td>
-            <td class="url-text">/leadership-walk</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="leadership-walk.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/gallery">
-            <td>Gallery</td>
-            <td class="url-text">/gallery</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="gallery.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/contact">
-            <td>Contact Us</td>
-            <td class="url-text">/contact</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="contact.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/blog">
-            <td>Blog Index</td>
-            <td class="url-text">/blog</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/blog-single">
-            <td>Blog Single Article</td>
-            <td class="url-text">/blog-single</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="blog-single.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/404">
-            <td>404 Error Page</td>
-            <td class="url-text">/404</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="404.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/maintenance">
-            <td>Maintenance Page</td>
-            <td class="url-text">/maintenance</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="maintenance.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-        </table>
+      <div class="minimal-dir-grid">
+        <!-- Column 1: Core Pages -->
+        <div class="minimal-dir-col">
+          <div class="minimal-col-title">Core &amp; Brand</div>
+          
+          <div class="minimal-link-item url-row" data-path="/">
+            <a href="/" target="_blank" class="minimal-link">
+              Homepage
+              <span class="minimal-path url-text">/</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
 
-        <!-- Group 2: Academic Disciplines -->
-        <div class="url-group-title">🎓 Academic Discipline Programs</div>
-        <table class="url-list-table">
-          <tr class="url-row" data-path="/immersion-programs/management">
-            <td>Management Immersion</td>
-            <td class="url-text">/immersion-programs/management</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/management.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/architecture-design">
-            <td>Architecture &amp; Design</td>
-            <td class="url-text">/immersion-programs/architecture-design</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/architecture-design.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/engineering">
-            <td>Engineering Immersion</td>
-            <td class="url-text">/immersion-programs/engineering</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/engineering.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/school-programs">
-            <td>School Programs</td>
-            <td class="url-text">/immersion-programs/school-programs</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/school-programs.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-        </table>
+          <div class="minimal-link-item url-row" data-path="/about">
+            <a href="about.html" target="_blank" class="minimal-link">
+              About Us
+              <span class="minimal-path url-text">/about</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
 
-        <!-- Group 3: Global Destinations -->
-        <div class="url-group-title">✈️ Global Destination Programs</div>
-        <table class="url-list-table">
-          <tr class="url-row" data-path="/immersion-programs/uae">
-            <td>UAE Immersion (Dubai &amp; Abu Dhabi)</td>
-            <td class="url-text">/immersion-programs/uae</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/uae.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/singapore">
-            <td>Singapore Immersion</td>
-            <td class="url-text">/immersion-programs/singapore</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/japan">
-            <td>Japan Immersion (Tokyo &amp; Osaka)</td>
-            <td class="url-text">/immersion-programs/japan</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/japan.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/south-korea">
-            <td>South Korea Immersion (Seoul &amp; Busan)</td>
-            <td class="url-text">/immersion-programs/south-korea</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/south-korea.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/europe">
-            <td>Europe Immersion (GIP)</td>
-            <td class="url-text">/immersion-programs/europe</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/europe.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/malaysia-singapore">
-            <td>Malaysia &amp; Singapore Immersion</td>
-            <td class="url-text">/immersion-programs/malaysia-singapore</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/singapore-indonesia">
-            <td>Singapore &amp; Indonesia Immersion</td>
-            <td class="url-text">/immersion-programs/singapore-indonesia</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-        </table>
+          <div class="minimal-link-item url-row" data-path="/contact">
+            <a href="contact.html" target="_blank" class="minimal-link">
+              Contact Us
+              <span class="minimal-path url-text">/contact</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
 
-        <!-- Group 4: Internships & Specialized Learning -->
-        <div class="url-group-title">🤝 Internships, FDP &amp; Conferences</div>
-        <table class="url-list-table">
-          <tr class="url-row" data-path="/immersion-programs/internship-malaysia">
-            <td>Malaysia International Internship</td>
-            <td class="url-text">/immersion-programs/internship-malaysia</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/internship-malaysia.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/internship-thailand">
-            <td>Thailand International Internship</td>
-            <td class="url-text">/immersion-programs/internship-thailand</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/internship-thailand.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/fdp">
-            <td>Faculty Development Programs (FDP)</td>
-            <td class="url-text">/immersion-programs/fdp</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/fdp.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/immersion-programs/international-conference">
-            <td>International Academic Conferences</td>
-            <td class="url-text">/immersion-programs/international-conference</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="immersion-programs/international-conference.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-        </table>
+          <div class="minimal-link-item url-row" data-path="/gallery">
+            <a href="gallery.html" target="_blank" class="minimal-link">
+              Media &amp; Gallery
+              <span class="minimal-path url-text">/gallery</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
 
-        <!-- Group 5: Portals & Verification CMS -->
-        <div class="url-group-title">🔐 Portals, CMS &amp; Verification</div>
-        <table class="url-list-table">
-          <tr class="url-row" data-path="/login">
-            <td>Admin/User Login Portal</td>
-            <td class="url-text">/login</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="login.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/admin">
-            <td>Admin Gateway Master Router</td>
-            <td class="url-text">/admin</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="admin.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/admin-dashboard">
-            <td>Admin Dashboard Hub</td>
-            <td class="url-text">/admin-dashboard</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="admin-dashboard.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/admin-blog">
-            <td>CMS Blog Manager</td>
-            <td class="url-text">/admin-blog</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="admin-blog.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/admin-facilitators">
-            <td>Facilitators Manager</td>
-            <td class="url-text">/admin-facilitators</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="admin-facilitators.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/admin-gallery">
-            <td>Gallery CMS Manager</td>
-            <td class="url-text">/admin-gallery</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="admin-gallery.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/admin-testimonials">
-            <td>Testimonials CMS Manager</td>
-            <td class="url-text">/admin-testimonials</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="admin-testimonials.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/page-verify">
-            <td>Certificate Verification Portal</td>
-            <td class="url-text">/page-verify</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="page-verify.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-          <tr class="url-row" data-path="/VJpage">
-            <td>VJpage Directory (This Page)</td>
-            <td class="url-text">/VJpage</td>
-            <td>
-              <button class="btn-copy-single">Copy</button>
-              <a href="VJpage.html" target="_blank" class="link-open-btn" title="Open Page">↗</a>
-            </td>
-          </tr>
-        </table>
+          <div class="minimal-link-item url-row" data-path="/404">
+            <a href="404.html" target="_blank" class="minimal-link">
+              404 Error Page
+              <span class="minimal-path url-text">/404</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/maintenance">
+            <a href="maintenance.html" target="_blank" class="minimal-link">
+              Maintenance Page
+              <span class="minimal-path url-text">/maintenance</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+        </div>
+
+        <!-- Column 2: Academic Disciplines -->
+        <div class="minimal-dir-col">
+          <div class="minimal-col-title">Disciplines</div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/management">
+            <a href="immersion-programs/management.html" target="_blank" class="minimal-link">
+              Management
+              <span class="minimal-path url-text">/management</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/architecture-design">
+            <a href="immersion-programs/architecture-design.html" target="_blank" class="minimal-link">
+              Architecture &amp; Design
+              <span class="minimal-path url-text">/architecture-design</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/engineering">
+            <a href="immersion-programs/engineering.html" target="_blank" class="minimal-link">
+              Engineering
+              <span class="minimal-path url-text">/engineering</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/school-programs">
+            <a href="immersion-programs/school-programs.html" target="_blank" class="minimal-link">
+              School Programs
+              <span class="minimal-path url-text">/school-programs</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+        </div>
+
+        <!-- Column 3: Global Destinations -->
+        <div class="minimal-dir-col">
+          <div class="minimal-col-title">Destinations</div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/uae">
+            <a href="immersion-programs/uae.html" target="_blank" class="minimal-link">
+              UAE Immersion
+              <span class="minimal-path url-text">/uae</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/singapore">
+            <a href="immersion-programs/singapore.html" target="_blank" class="minimal-link">
+              Singapore
+              <span class="minimal-path url-text">/singapore</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/japan">
+            <a href="immersion-programs/japan.html" target="_blank" class="minimal-link">
+              Japan Immersion
+              <span class="minimal-path url-text">/japan</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/south-korea">
+            <a href="immersion-programs/south-korea.html" target="_blank" class="minimal-link">
+              South Korea
+              <span class="minimal-path url-text">/south-korea</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/europe">
+            <a href="immersion-programs/europe.html" target="_blank" class="minimal-link">
+              Europe GIP
+              <span class="minimal-path url-text">/europe</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/malaysia-singapore">
+            <a href="immersion-programs/malaysia-singapore.html" target="_blank" class="minimal-link">
+              Malaysia &amp; Singapore
+              <span class="minimal-path url-text">/malaysia-singapore</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/singapore-indonesia">
+            <a href="immersion-programs/singapore-indonesia.html" target="_blank" class="minimal-link">
+              Singapore &amp; Indonesia
+              <span class="minimal-path url-text">/singapore-indonesia</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+        </div>
+
+        <!-- Column 4: Curated Programs -->
+        <div class="minimal-dir-col">
+          <div class="minimal-col-title">Special &amp; Blogs</div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/internship-malaysia">
+            <a href="immersion-programs/internship-malaysia.html" target="_blank" class="minimal-link">
+              Malaysia Internship
+              <span class="minimal-path url-text">/internship-malaysia</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/internship-thailand">
+            <a href="immersion-programs/internship-thailand.html" target="_blank" class="minimal-link">
+              Thailand Internship
+              <span class="minimal-path url-text">/internship-thailand</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/fdp">
+            <a href="immersion-programs/fdp.html" target="_blank" class="minimal-link">
+              Faculty Dev (FDP)
+              <span class="minimal-path url-text">/fdp</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/immersion-programs/international-conference">
+            <a href="immersion-programs/international-conference.html" target="_blank" class="minimal-link">
+              Conferences
+              <span class="minimal-path url-text">/international-conference</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/leadership-walk">
+            <a href="leadership-walk.html" target="_blank" class="minimal-link">
+              Leadership Walks
+              <span class="minimal-path url-text">/leadership-walk</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/blog">
+            <a href="blog.html" target="_blank" class="minimal-link">
+              Blog Hub
+              <span class="minimal-path url-text">/blog</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+        </div>
+
+        <!-- Column 5: Admin CMS Gateway -->
+        <div class="minimal-dir-col">
+          <div class="minimal-col-title">CMS Admin Suite</div>
+
+          <div class="minimal-link-item url-row" data-path="/login">
+            <a href="login.html" target="_blank" class="minimal-link">
+              Portal Login
+              <span class="minimal-path url-text">/login</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/admin">
+            <a href="admin.html" target="_blank" class="minimal-link">
+              Admin Gateway
+              <span class="minimal-path url-text">/admin</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/admin-dashboard">
+            <a href="admin-dashboard.html" target="_blank" class="minimal-link">
+              Dashboard Hub
+              <span class="minimal-path url-text">/admin-dashboard</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/admin-blog">
+            <a href="admin-blog.html" target="_blank" class="minimal-link">
+              CMS Blog Manager
+              <span class="minimal-path url-text">/admin-blog</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/admin-facilitators">
+            <a href="admin-facilitators.html" target="_blank" class="minimal-link">
+              Facilitators CMS
+              <span class="minimal-path url-text">/admin-facilitators</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/admin-gallery">
+            <a href="admin-gallery.html" target="_blank" class="minimal-link">
+              Gallery CMS
+              <span class="minimal-path url-text">/admin-gallery</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/admin-testimonials">
+            <a href="admin-testimonials.html" target="_blank" class="minimal-link">
+              Testimonials CMS
+              <span class="minimal-path url-text">/admin-testimonials</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+
+          <div class="minimal-link-item url-row" data-path="/page-verify">
+            <a href="page-verify.html" target="_blank" class="minimal-link">
+              Staging Verify Suite
+              <span class="minimal-path url-text">/page-verify</span>
+            </a>
+            <button class="minimal-copy-btn btn-copy-single">Copy</button>
+          </div>
+        </div>
       </div>
     </details>
   </section>
@@ -1457,12 +1527,13 @@
       
       const textCell = row.querySelector('.url-text');
       if (textCell) {
-        textCell.textContent = fullUrl;
+        textCell.textContent = relPath;
       }
 
       const copyBtn = row.querySelector('.btn-copy-single');
       if (copyBtn) {
-        copyBtn.onclick = function() {
+        copyBtn.onclick = function(e) {
+          e.stopPropagation();
           copySingleUrl(copyBtn, fullUrl);
         };
       }
@@ -1474,33 +1545,13 @@
     navigator.clipboard.writeText(url).then(() => {
       const originalText = btn.textContent;
       btn.textContent = 'Copied! ✓';
-      btn.style.background = 'var(--green)';
-      btn.style.color = '#FFFFFF';
-      btn.style.borderColor = 'var(--green)';
+      btn.style.color = 'var(--green)';
       setTimeout(() => {
         btn.textContent = originalText;
-        btn.style.background = '';
         btn.style.color = '';
-        btn.style.borderColor = '';
       }, 1500);
     });
   }
-
-  // Copy All URLs button
-  document.getElementById('copyAllUrlsBtn')?.addEventListener('click', function() {
-    const urls = Array.from(document.querySelectorAll('.url-text')).map(el => el.textContent.trim());
-    const textToCopy = urls.join('\n');
-    navigator.clipboard.writeText(textToCopy).then(() => {
-      const btn = document.getElementById('copyAllUrlsBtn');
-      const orig = btn.innerHTML;
-      btn.innerHTML = '<span>All Copied to Clipboard! ✓</span>';
-      btn.style.background = 'var(--green)';
-      setTimeout(() => {
-        btn.innerHTML = orig;
-        btn.style.background = '';
-      }, 2000);
-    });
-  });
 
   // Populate dynamic current domain URLs on load
   populateCurrentDomainUrls();
