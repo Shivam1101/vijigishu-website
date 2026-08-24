@@ -4,15 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Under Maintenance – Vijigishu</title>
-  <meta name="description" content="We are currently performing scheduled maintenance to improve your experience." />
   
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
-  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
-  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet" />
   
   <style>
     :root {
@@ -33,207 +29,156 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       color: var(--navy);
       background: radial-gradient(circle at 50% 12%, rgba(159, 194, 140, 0.22) 0%, rgba(248, 250, 249, 0.98) 55%, #F8FAF9 100%);
       display: flex;
       flex-direction: column;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
     a { text-decoration: none; color: inherit; }
 
-    /* Header */
+    .deco-bg {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 90vw; height: 90vw; max-width: 800px; max-height: 800px;
+      background: radial-gradient(circle, rgba(159, 194, 140, 0.15) 0%, rgba(248, 250, 249, 0) 70%);
+      border-radius: 50%; z-index: 1; pointer-events: none;
+    }
+
     .top-header {
-      width: 100%;
-      padding: 32px 24px 0;
-      text-align: center;
-      flex-shrink: 0;
-      z-index: 10;
+      width: 100%; padding: 32px 24px 0; text-align: center; flex-shrink: 0; z-index: 10;
     }
-    .brand-logo img {
-      height: 48px;
-      width: auto;
-      object-fit: contain;
-      transition: transform 0.3s var(--ease);
-    }
+    .brand-logo img { height: 48px; object-fit: contain; transition: transform 0.3s var(--ease); }
     .brand-logo:hover img { transform: scale(1.03); }
 
-    /* Main Center Wrapper */
     .maintenance-wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px 24px;
-      text-align: center;
-      z-index: 10;
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 10px 24px; text-align: center; z-index: 10;
     }
 
-    /* Status Pill Badge */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(13, 14, 46, 0.08);
-      padding: 8px 16px;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--navy);
-      margin-bottom: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-      backdrop-filter: blur(8px);
+    .title {
+      font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem);
+      color: var(--navy); margin-bottom: 12px; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em;
     }
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--gold);
-      border-radius: 50%;
+    .title span { color: var(--green); font-style: italic; }
+
+    /* Perspective Wrapper for 3D Tilt */
+    .perspective-wrapper {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 680px;
+      margin: 20px 0 32px;
+    }
+
+    /* Boarding Pass Card */
+    .boarding-pass-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      display: flex;
+      box-shadow: 0 20px 48px rgba(13, 14, 46, 0.08), 0 4px 12px rgba(13, 14, 46, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(13, 14, 46, 0.06);
+      transform-style: preserve-3d;
+      will-change: transform;
       position: relative;
     }
-    .pulse-dot::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: var(--gold);
-      border-radius: 50%;
-      animation: ripple 1.8s infinite ease-out;
-    }
-
-    @keyframes ripple {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(2.8); opacity: 0; }
-    }
-
-    /* Typography */
-    .title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-      color: var(--navy);
-      margin-bottom: 16px;
-      line-height: 1.15;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .title span { color: var(--green); font-style: italic; font-weight: 700; }
-    .desc {
-      color: var(--gray);
-      font-size: clamp(1rem, 1.25vw, 1.15rem);
-      line-height: 1.6;
-      margin: 0 auto 36px;
-      max-width: 580px;
-      font-weight: 500;
-    }
-
-    /* Contact Card */
-    .contact-card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 28px 36px;
-      border-radius: 20px;
-      box-shadow: 0 12px 32px rgba(13, 14, 46, 0.04), 0 2px 8px rgba(13, 14, 46, 0.02);
-      border: 1px solid rgba(13, 14, 46, 0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      max-width: 420px;
-      width: 100%;
-      backdrop-filter: blur(12px);
-    }
-    .contact-card p {
-      font-size: 0.95rem;
-      color: var(--navy);
-      font-weight: 600;
-      margin: 0;
+    
+    .bp-main {
+      flex: 1; padding: 32px 40px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
     }
     
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 32px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.01em;
-      transition: all 0.25s var(--ease);
-      border: none;
-      width: 100%;
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(13, 14, 46, 0.04); padding: 6px 14px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 16px;
     }
-    .btn-primary:hover {
-      background: var(--green);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(56, 103, 58, 0.25);
+    .pulse-dot {
+      width: 6px; height: 6px; background-color: var(--gold); border-radius: 50%; position: relative;
+    }
+    .pulse-dot::after {
+      content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+      background-color: var(--gold); border-radius: 50%; animation: ripple 1.8s infinite ease-out;
+    }
+    @keyframes ripple { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(3); opacity: 0; } }
+
+    /* Carousel */
+    .fact-carousel {
+      min-height: 64px; font-size: 0.95rem; color: var(--gray); font-style: italic;
+      line-height: 1.6; font-weight: 500; transition: opacity 0.5s ease;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
     }
 
-    /* Abstract Decorative Element */
-    .deco-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90vw;
-      height: 90vw;
-      max-width: 800px;
-      max-height: 800px;
-      background: radial-gradient(circle, rgba(159, 194, 140, 0.15) 0%, rgba(248, 250, 249, 0) 70%);
-      border-radius: 50%;
-      z-index: 1;
-      pointer-events: none;
+    /* Button */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
+      background: var(--navy); color: var(--white); border-radius: 100px;
+      font-weight: 700; font-size: 0.9rem; transition: all 0.25s var(--ease); border: none;
     }
+    .btn-primary:hover { background: var(--green); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(56, 103, 58, 0.2); }
+
+    /* Boarding Pass Divider */
+    .bp-divider {
+      width: 2px;
+      background-image: linear-gradient(to bottom, rgba(13, 14, 46, 0.15) 40%, rgba(255,255,255,0) 20%);
+      background-position: left; background-size: 2px 14px; background-repeat: repeat-y;
+      position: relative; z-index: 2;
+    }
+    .bp-divider::before, .bp-divider::after {
+      content: ''; position: absolute; left: -11px; width: 24px; height: 24px;
+      background: #EAF0EC; /* Blends roughly with radial bg */
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(13,14,46,0.03);
+    }
+    .bp-divider::before { top: -12px; }
+    .bp-divider::after { bottom: -12px; }
+
+    /* Boarding Pass Stub */
+    .bp-stub {
+      width: 160px; background: rgba(245, 247, 246, 0.6); padding: 32px 20px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+    }
+    .stub-meta { text-align: center; }
+    .stub-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .stub-val { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+    .barcode {
+      width: 100%; height: 50px;
+      background: repeating-linear-gradient(90deg, var(--navy), var(--navy) 2px, transparent 2px, transparent 5px, var(--navy) 5px, var(--navy) 6px, transparent 6px, transparent 9px, var(--navy) 9px, var(--navy) 13px, transparent 13px, transparent 15px);
+      opacity: 0.8;
+    }
+
+    /* Global Clocks */
+    .global-clocks {
+      display: flex; gap: 40px; justify-content: center; margin-bottom: 24px;
+    }
+    .clock-item { display: flex; flex-direction: column; align-items: center; }
+    .clock-city { font-family: 'Geist Mono', monospace; font-size: 0.65rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 2px; }
+    .clock-time { font-size: 1.05rem; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
 
     /* Footer & Socials */
     .bottom-bar {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 12px 20px 24px;
-      z-index: 10;
+      width: 100%; display: flex; flex-direction: column; align-items: center; gap: 16px;
+      padding: 12px 20px 24px; z-index: 10;
     }
-    
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
-    .social-links a {
-      color: var(--light-gray);
-      transition: color 0.25s ease, transform 0.25s ease;
-      display: flex;
-    }
-    .social-links a:hover {
-      color: var(--navy);
-      transform: translateY(-2px);
-    }
-    
-    .copyright {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--light-gray);
-    }
+    .social-links { display: flex; gap: 16px; }
+    .social-links a { color: var(--light-gray); transition: color 0.25s, transform 0.25s; }
+    .social-links a:hover { color: var(--navy); transform: translateY(-2px); }
+    .copyright { font-size: 0.8rem; font-weight: 500; color: var(--light-gray); }
 
     /* Responsive */
     @media (max-width: 768px) {
       html, body { height: auto; min-height: 100vh; overflow-y: auto; }
-      .top-header { padding: 24px 16px 0; }
-      .brand-logo img { height: 40px; }
-      .maintenance-wrapper { padding: 40px 16px; }
-      .title { font-size: 2.2rem; }
-      .desc { font-size: 1.05rem; }
-      .contact-card { padding: 24px; }
-      .btn-primary { padding: 14px 24px; }
+      .perspective-wrapper { perspective: none; }
+      .boarding-pass-card { flex-direction: column; transform: none !important; }
+      .bp-main { padding: 24px 20px; }
+      
+      .bp-divider { width: 100%; height: 2px; background-image: linear-gradient(to right, rgba(13, 14, 46, 0.15) 40%, rgba(255,255,255,0) 20%); background-size: 14px 2px; background-position: top; background-repeat: repeat-x; }
+      .bp-divider::before { left: -12px; top: -11px; }
+      .bp-divider::after { right: -12px; left: auto; top: -11px; }
+      
+      .bp-stub { width: 100%; flex-direction: row; padding: 20px; justify-content: space-around; }
+      .barcode { height: 40px; width: 80px; }
+      .global-clocks { gap: 20px; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -243,73 +188,159 @@
 
   <header class="top-header">
     <a href="/" class="brand-logo" aria-label="Vijigishu Home">
-      <img 
-        src="images/logo-of-vijigishu_2-1.webp" 
-        onerror="this.src='/images/logo-of-vijigishu_2-1.webp'" 
-        alt="Vijigishu Education Private Limited" 
-      />
+      <img src="images/logo-of-vijigishu_2-1.webp" onerror="this.src='/images/logo-of-vijigishu_2-1.webp'" alt="Vijigishu" />
     </a>
   </header>
 
   <main class="maintenance-wrapper">
-    <div class="status-badge">
-      <span class="pulse-dot"></span>
-      System Update
+    
+    <h1 class="title">Elevating Your <span>Experience</span></h1>
+    
+    <div class="perspective-wrapper" id="cardWrapper">
+      <div class="boarding-pass-card" id="tiltCard">
+        
+        <!-- Left Side: Content -->
+        <div class="bp-main">
+          <div class="status-badge"><span class="pulse-dot"></span> System Upgrade</div>
+          
+          <div class="fact-carousel">
+            <span id="factText">Our digital doors will reopen shortly. Thank you for your patience while we perform scheduled maintenance.</span>
+          </div>
+
+          <a href="mailto:info@vijigishu.co.in" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Contact Support
+          </a>
+        </div>
+
+        <!-- Divider -->
+        <div class="bp-divider"></div>
+
+        <!-- Right Side: Stub -->
+        <div class="bp-stub">
+          <div class="stub-meta">
+            <div class="stub-label">Destination</div>
+            <div class="stub-val">V-2.0</div>
+          </div>
+          <div class="stub-meta">
+            <div class="stub-label">Status</div>
+            <div class="stub-val" style="color:var(--green);">BOARDING</div>
+          </div>
+          <div class="barcode"></div>
+        </div>
+
+      </div>
     </div>
-    
-    <h1 class="title">
-      Elevating Your <span>Experience</span>
-    </h1>
-    
-    <p class="desc">
-      We are currently performing scheduled maintenance to upgrade our platform. Our digital doors will reopen shortly. Thank you for your patience.
-    </p>
-    
-    <!-- Contact Card -->
-    <div class="contact-card">
-      <p>Need immediate assistance?</p>
-      <a href="mailto:info@vijigishu.co.in" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        Contact Support
-      </a>
+
+    <!-- Global Clocks -->
+    <div class="global-clocks">
+      <div class="clock-item">
+        <span class="clock-city">Frankfurt</span>
+        <span class="clock-time" id="time-frankfurt">--:--</span>
+      </div>
+      <div class="clock-item">
+        <span class="clock-city">Dubai</span>
+        <span class="clock-time" id="time-dubai">--:--</span>
+      </div>
+      <div class="clock-item">
+        <span class="clock-city">Singapore</span>
+        <span class="clock-time" id="time-singapore">--:--</span>
+      </div>
+      <div class="clock-item">
+        <span class="clock-city">Tokyo</span>
+        <span class="clock-time" id="time-tokyo">--:--</span>
+      </div>
     </div>
+
   </main>
 
   <footer class="bottom-bar">
     <div class="social-links">
-      <a href="#" aria-label="LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-      </a>
-      <a href="#" aria-label="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-      </a>
-      <a href="#" aria-label="Facebook">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-      </a>
+      <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
     </div>
-    <div class="copyright">
-      © <span class="year"></span> Vijigishu Education Pvt. Ltd.
-    </div>
+    <div class="copyright">© <span class="year"></span> Vijigishu Education Pvt. Ltd.</div>
   </footer>
 
   <script>
-    // Set Year
     document.querySelector('.year').textContent = new Date().getFullYear();
 
-    // Auto-Recovery Polling
-    // Checks every 30 seconds if the main site is back online.
+    // 1. Fact Carousel
+    const facts = [
+      "We are currently performing scheduled maintenance to upgrade our platform. Thank you for your patience.",
+      "Did you know? The Burj Khalifa's cooling system produces enough condensation to fill 20 Olympic pools a year.",
+      "Did you know? Japan's Shinkansen bullet trains experience an average delay of just 36 seconds.",
+      "Did you know? Over 60% of Germany's exports are driven by its 'Mittelstand' engineering companies.",
+      "Did you know? Singapore's Gardens by the Bay uses supertrees to vent waste heat from underground biomass boilers."
+    ];
+    let factIndex = 0;
+    const factEl = document.getElementById('factText');
+    setInterval(() => {
+      factEl.style.opacity = '0';
+      setTimeout(() => {
+        factIndex = (factIndex + 1) % facts.length;
+        factEl.textContent = facts[factIndex];
+        factEl.style.opacity = '1';
+      }, 500);
+    }, 7000);
+
+    // 2. Global Clocks
+    const timezones = [
+      { id: 'frankfurt', tz: 'Europe/Berlin' },
+      { id: 'dubai', tz: 'Asia/Dubai' },
+      { id: 'singapore', tz: 'Asia/Singapore' },
+      { id: 'tokyo', tz: 'Asia/Tokyo' }
+    ];
+    function updateClocks() {
+      const now = new Date();
+      timezones.forEach(t => {
+        const timeStr = new Intl.DateTimeFormat('en-US', { timeZone: t.tz, hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
+        document.getElementById(`time-${t.id}`).textContent = timeStr;
+      });
+    }
+    setInterval(updateClocks, 1000);
+    updateClocks();
+
+    // 3. 3D Card Tilt (Desktop only)
+    const card = document.getElementById('tiltCard');
+    const wrapper = document.getElementById('cardWrapper');
+    
+    if (window.matchMedia("(min-width: 769px)").matches) {
+      wrapper.addEventListener('mousemove', (e) => {
+        const rect = wrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate tilt up to 6 degrees
+        const rotateX = ((y - centerY) / centerY) * -6; 
+        const rotateY = ((x - centerX) / centerX) * 6;
+        
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      
+      wrapper.addEventListener('mouseleave', () => {
+        card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+        card.style.transition = `transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)`;
+      });
+      
+      wrapper.addEventListener('mouseenter', () => {
+        card.style.transition = `transform 0.1s ease-out`;
+      });
+    }
+
+    // 4. Auto-Recovery Polling
     setInterval(() => {
       fetch('/')
-        .then(response => response.text())
+        .then(res => res.text())
         .then(html => {
-          // If the fetched index response does NOT contain the maintenance title, the site is live!
           if (!html.includes('Under Maintenance – Vijigishu')) {
             window.location.reload(); 
           }
         })
-        .catch(() => {
-          // Ignore network errors while server is completely down
-        });
+        .catch(() => {});
     }, 30000);
   </script>
 </body>
