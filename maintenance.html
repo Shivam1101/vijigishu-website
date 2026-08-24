@@ -278,13 +278,19 @@
       .bp-right-col { width: 100%; }
 
       .bp-header-left { justify-content: center; padding: 0 20px; }
-      .bp-header-right { justify-content: center; padding: 0 20px; }
-      .bp-main { padding: 28px 24px; align-items: center; text-align: center; }
+      .bp-header-right { display: none; } /* Hide 'Boarding Pass' header text on mobile */
+      .bp-main { padding: 28px 24px 44px; align-items: center; text-align: center; } /* Added space below Contact Support */
       .fact-carousel { align-items: center; justify-content: center; text-align: center; }
       .btn-primary { width: 100%; justify-content: center; }
       
-      .bp-stub { padding: 24px; flex-direction: row; justify-content: space-around; align-items: center; }
-      .barcode { height: 40px; width: 80px; }
+      .bp-stub { 
+        padding: 28px 24px; 
+        flex-direction: column; /* Stack stub vertically to place barcode below MAINTENANCE */
+        justify-content: center; 
+        align-items: center; 
+        gap: 20px;
+      }
+      .barcode { height: 40px; width: 140px; }
       
       /* Vertical divider transforms into a horizontal divider in the mobile stack */
       .bp-divider {
