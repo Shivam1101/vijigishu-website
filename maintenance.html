@@ -104,11 +104,11 @@
       overflow: hidden; /* Clips the background color to the border radius */
     }
     
-    /* Left Main Section (Solid Royal Blue) */
+    /* Left Main Section (Aurora Gradient: Navy, Forest Green, Sage Green) */
     .bp-main {
       flex: 1.6; padding: 40px; display: flex; flex-direction: column;
       align-items: flex-start; justify-content: center; text-align: left;
-      background-color: var(--blue);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--green) 55%, var(--sage) 100%);
       color: var(--white);
     }
     
@@ -141,7 +141,7 @@
     /* Primary Button (White base to contrast Blue background) */
     .btn-primary {
       display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
-      background: var(--white); color: var(--blue); border-radius: 100px;
+      background: var(--white); color: var(--navy); border-radius: 100px;
       font-weight: 700; font-size: 0.9rem; transition: all 0.25s var(--ease); border: none;
       cursor: pointer;
     }
@@ -186,7 +186,7 @@
     }
     .stub-meta { text-align: left; }
     .stub-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
-    .stub-val { font-size: 1.1rem; font-weight: 800; color: var(--blue); }
+    .stub-val { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
     .barcode {
       width: 100%; height: 50px;
       background: repeating-linear-gradient(90deg, var(--navy), var(--navy) 2px, transparent 2px, transparent 5px, var(--navy) 5px, var(--navy) 6px, transparent 6px, transparent 9px, var(--navy) 9px, var(--navy) 13px, transparent 13px, transparent 15px);
