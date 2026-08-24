@@ -90,32 +90,37 @@
       z-index: 10;
     }
 
-    /* Boarding Pass Card - Redesigned to match the new top-header layout */
+    /* Boarding Pass Card - 1px border restored */
     .boarding-pass-card {
       background: var(--white);
       border-radius: 24px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       box-shadow: 0 20px 48px rgba(13, 14, 46, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-      border: 2px solid rgba(13, 14, 46, 0.35); /* Increased border color opacity & thickness */
+      border: 1px solid rgba(13, 14, 46, 0.15); /* Restored to 1px border */
       transform-style: preserve-3d;
       will-change: transform;
       position: relative;
       overflow: hidden;
     }
 
-    /* 1. Header Band with Aurora Gradient */
-    .bp-header-band {
+    /* Column-based Stacking structures for layout control */
+    .bp-left-col {
+      width: 64%;
       display: flex;
-      background: linear-gradient(90deg, var(--navy) 0%, var(--green) 50%, var(--sage) 100%);
+      flex-direction: column;
+    }
+    .bp-right-col {
+      width: 36%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Headers built into columns for mobile order preservation */
+    .bp-header-left {
+      background: linear-gradient(90deg, var(--navy) 0%, var(--green) 100%);
       color: var(--white);
       height: 56px;
-      align-items: center;
-      position: relative;
-      z-index: 3;
-    }
-    .bp-header-left {
-      width: 64%;
       padding: 0 40px;
       display: flex;
       align-items: center;
@@ -132,28 +137,23 @@
       display: inline-block;
     }
     .bp-header-right {
-      width: 36%;
+      background: var(--sage);
+      color: var(--white);
+      height: 56px;
       padding: 0 24px;
+      display: flex;
+      align-items: center;
       font-weight: 800;
       font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.9;
-    }
-
-    /* 2. Content Band */
-    .bp-content-band {
-      display: flex;
-      background: var(--white);
-      position: relative;
-      flex: 1;
     }
     
-    /* Left Main Content (Apology/Carousel) */
+    /* Left Main Content Body */
     .bp-main {
-      width: 64%; padding: 32px 40px; display: flex; flex-direction: column;
+      padding: 32px 40px; display: flex; flex-direction: column;
       align-items: flex-start; justify-content: center; text-align: left;
-      color: var(--navy);
+      color: var(--navy); background: var(--white); flex: 1;
     }
     
     .status-badge {
@@ -195,12 +195,12 @@
       box-shadow: 0 8px 16px rgba(56, 103, 58, 0.2); 
     }
 
-    /* Perforated Divider (Overlaying the entire card height) */
+    /* Perforated Divider (Overlaying card height) with specific user requested gradient */
     .bp-divider {
       position: absolute;
       top: 0; bottom: 0; left: 64%;
       width: 2px;
-      background-image: linear-gradient(to bottom, rgba(13, 14, 46, 0.15) 40%, rgba(255,255,255,0) 20%);
+      background-image: linear-gradient(to bottom, rgb(13 14 46 / 27%) 40%, rgba(255, 255, 255, 0) 20%);
       background-position: left; background-size: 2px 14px; background-repeat: repeat-y;
       z-index: 5;
     }
@@ -209,16 +209,16 @@
       background: #EAF0EC; 
       border-radius: 50%;
       z-index: 6;
-      box-shadow: inset 0 2px 4px rgba(13,14,46,0.03);
+      box-shadow: inset 0 2px 4px rgb(13 14 46 / 23%); /* Custom shadow requested */
     }
     .bp-divider::before { top: -12px; }
     .bp-divider::after { bottom: -12px; }
 
     /* Boarding Pass Stub Section */
     .bp-stub {
-      width: 36%; background: var(--white); padding: 32px 24px;
+      padding: 32px 24px;
       display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between;
-      color: var(--navy);
+      color: var(--navy); background: var(--white); flex: 1;
     }
     .stub-meta { text-align: left; }
     .stub-label { font-family: 'Geist Mono', monospace; font-size: 0.6rem; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
@@ -260,25 +260,25 @@
       .title { font-size: 2.5rem; text-align: center; }
       
       .perspective-wrapper { perspective: none; margin: 16px 0 24px; }
-      .boarding-pass-card { transform: none !important; }
+      .boarding-pass-card { flex-direction: column; transform: none !important; }
       
-      .bp-header-band { flex-direction: column; height: auto; }
-      .bp-header-left { width: 100%; padding: 12px 20px; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
-      .bp-header-right { width: 100%; padding: 10px 20px; text-align: center; }
+      .bp-left-col { width: 100%; }
+      .bp-right-col { width: 100%; }
 
-      .bp-content-band { flex-direction: column; }
-      .bp-main { width: 100%; padding: 28px 24px; align-items: center; text-align: center; }
+      .bp-header-left { justify-content: center; padding: 0 20px; }
+      .bp-header-right { justify-content: center; padding: 0 20px; }
+      .bp-main { padding: 28px 24px; align-items: center; text-align: center; }
       .fact-carousel { align-items: center; justify-content: center; text-align: center; }
       .btn-primary { width: 100%; justify-content: center; }
       
-      .bp-stub { width: 100%; padding: 24px; flex-direction: row; justify-content: space-around; align-items: center; }
+      .bp-stub { padding: 24px; flex-direction: row; justify-content: space-around; align-items: center; }
       .barcode { height: 40px; width: 80px; }
       
-      /* Vertical divider transforms into a horizontal divider */
+      /* Vertical divider transforms into a horizontal divider in the mobile stack */
       .bp-divider {
         left: 0; right: 0; top: 62%;
         bottom: auto; width: 100%; height: 2px;
-        background-image: linear-gradient(to right, rgba(13, 14, 46, 0.2) 40%, rgba(255, 255, 255, 0) 20%);
+        background-image: linear-gradient(to right, rgb(13 14 46 / 27%) 40%, rgba(255, 255, 255, 0) 20%);
         background-size: 14px 2px; background-repeat: repeat-x;
       }
       .bp-divider::before { left: -12px; top: -11px; }
@@ -312,22 +312,15 @@
       <div class="perspective-wrapper" id="cardWrapper">
         <div class="boarding-pass-card" id="tiltCard">
           
-          <!-- 1. Header Band matching exact blueprint (Left title + plane icon, Right mini-title) -->
-          <div class="bp-header-band">
+          <!-- Left Column (Main Ticket Column) -->
+          <div class="bp-left-col">
             <div class="bp-header-left">
               <span>Vijigishu Air</span>
               <svg class="plane-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
               </svg>
             </div>
-            <div class="bp-header-right">
-              <span>Boarding Pass</span>
-            </div>
-          </div>
-
-          <!-- 2. Bottom Content Band (Main body + Stub) -->
-          <div class="bp-content-band">
-            <!-- Left Main Body -->
+            
             <div class="bp-main">
               <div class="status-badge"><span class="pulse-dot"></span> System Upgrade</div>
               
@@ -340,11 +333,17 @@
                 Contact Support
               </a>
             </div>
+          </div>
 
-            <!-- Absolute Divider (cuts vertically through whole card height) -->
-            <div class="bp-divider"></div>
+          <!-- Absolute Perforated Divider -->
+          <div class="bp-divider"></div>
 
-            <!-- Right Stub -->
+          <!-- Right Column (Stub Column) -->
+          <div class="bp-right-col">
+            <div class="bp-header-right">
+              <span>Boarding Pass</span>
+            </div>
+            
             <div class="bp-stub">
               <div class="stub-meta">
                 <div class="stub-label">Destination</div>
