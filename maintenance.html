@@ -240,6 +240,9 @@
       background: repeating-linear-gradient(90deg, var(--navy), var(--navy) 2px, transparent 2px, transparent 5px, var(--navy) 5px, var(--navy) 6px, transparent 6px, transparent 9px, var(--navy) 9px, var(--navy) 13px, transparent 13px, transparent 15px);
       opacity: 0.85;
     }
+    .mobile-bp-footer {
+      display: none;
+    }
 
     /* Global Clocks */
     .global-clocks {
@@ -291,6 +294,17 @@
         gap: 20px;
       }
       .barcode { height: 40px; width: 140px; }
+      .mobile-bp-footer {
+        display: block;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--navy);
+        opacity: 0.85;
+        margin-top: 4px;
+      }
       
       /* Vertical divider transforms into a horizontal divider in the mobile stack */
       .bp-divider {
@@ -376,6 +390,8 @@
               </div>
               
               <div class="barcode"></div>
+              <!-- Mobile Only Footer -->
+              <div class="mobile-bp-footer">Boarding Pass</div>
             </div>
           </div>
 
