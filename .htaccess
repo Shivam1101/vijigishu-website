@@ -5,13 +5,21 @@
   RewriteEngine On
   RewriteBase /
 
+  # Explicit clean routes (Overrules directory name conflicts)
+  RewriteRule ^gallery/?$ gallery.html [L]
+  RewriteRule ^about/?$ about.html [L]
+  RewriteRule ^contact/?$ contact.html [L]
+  RewriteRule ^leadership-walk/?$ leadership-walk.html [L]
+  RewriteRule ^login/?$ login.html [L]
+  RewriteRule ^maintenance/?$ maintenance.html [L]
+
   # Redirect URLs ending with .html to clean extensionless URLs (301 Permanent)
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9} /([^/]+/)*([^.]+).html HTTP/
   RewriteRule ^([^/]+/)*([^.]+).html$ /$1$2 [R=301,L]
 
   # Internally map clean URL to .html file if file exists
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
 
