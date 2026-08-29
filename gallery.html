@@ -471,7 +471,7 @@
 
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
 </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1788014647203" />
+  <link rel="stylesheet" href="css/global-components.css?v=1788015579634" />
   
   
   
@@ -514,7 +514,8 @@
 
 <!-- ===== PAGE HERO BANNER (NO OVERLAY, CLEAN VIDEO) ===== -->
 <div class="page-hero">
-  <video autoplay loop muted playsinline>
+  <video autoplay loop muted playsinline preload="none" poster="images/banner-our-programs.webp" style="width:100%; height:auto; display:block; object-fit:contain;">
+    <source src="videos/gallery-banner-optimized.mp4" type="video/mp4" />
     <source src="images/Website-Gallery-Banner-Video-.mp4" type="video/mp4" />
   </video>
 </div>
@@ -565,7 +566,7 @@
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1788014647203"></script>
+<script src="js/global-components.js?v=1788015579634"></script>
 
 <script>
   // High Quality Vector SVG Flag & Globe Icons
@@ -1123,7 +1124,7 @@
       card.setAttribute('data-index', index);
       card.innerHTML = `
         <div class="masonry-item-badge">${item.icon}</div>
-        <img src="${item.src}" loading="lazy" alt="${item.title}" />
+        <img src="${item.src}" loading="lazy" decoding="async" alt="${item.title}" />
         <div class="masonry-overlay">
           <div class="masonry-zoom-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
