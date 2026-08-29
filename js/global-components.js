@@ -93,11 +93,11 @@
         />
       </a>
       <div class="nav-links">
-        <a href="${urlHome}" class="${isActive('index.html')}">Home</a>
-        <a href="${urlAbout}" class="${isActive('about.html')}">About Us</a>
-        <a href="${urlImmersion}" class="${isActive('our-programs.html')}">Our Programs</a>
-        <a href="${urlGallery}" class="${isActive('gallery.html')}">Gallery</a>
-        <a href="${urlContact}" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
+        <a href="${urlHome}" class="${isActive('index')}">Home</a>
+        <a href="${urlAbout}" class="${isActive('about')}">About Us</a>
+        <a href="${urlImmersion}" class="${isActive('our-programs')}">Our Programs</a>
+        <a href="${urlGallery}" class="${isActive('gallery')}">Gallery</a>
+        <a href="${urlContact}" class="nav-cta ${isActive('contact')}">Contact Us</a>
       </div>
       <div class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu">
         <span></span><span></span><span></span>
@@ -105,11 +105,11 @@
     </div>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="${urlHome}" class="${isActive('index.html')}">Home</a>
-    <a href="${urlAbout}" class="${isActive('about.html')}">About Us</a>
-    <a href="${urlImmersion}" class="${isActive('our-programs.html')}">Our Programs</a>
-    <a href="${urlGallery}" class="${isActive('gallery.html')}">Gallery</a>
-    <a href="${urlContact}" class="${isActive('contact.html')}">Contact Us</a>
+    <a href="${urlHome}" class="${isActive('index')}">Home</a>
+    <a href="${urlAbout}" class="${isActive('about')}">About Us</a>
+    <a href="${urlImmersion}" class="${isActive('our-programs')}">Our Programs</a>
+    <a href="${urlGallery}" class="${isActive('gallery')}">Gallery</a>
+    <a href="${urlContact}" class="${isActive('contact')}">Contact Us</a>
   </div>
   `;
 
