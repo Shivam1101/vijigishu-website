@@ -1,9 +1,18 @@
 # ----------------------------------------------------------------------
-# 1. 301 Redirect Legacy File Routes
+# 1. Clean Extensionless URLs Rewrite Engine (.html removal)
 # ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  Redirect 301 /our-programs.html /our-programs/
+  RewriteBase /
+
+  # Redirect URLs ending with .html to clean extensionless URLs (301 Permanent)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9} /([^/]+/)*([^.]+).html HTTP/
+  RewriteRule ^([^/]+/)*([^.]+).html$ /$1$2 [R=301,L]
+
+  # Internally map clean URL to .html file if file exists
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
 </IfModule>
 
 # ----------------------------------------------------------------------
