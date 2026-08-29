@@ -13,17 +13,16 @@
 
   const assetBase = isSubFolder ? '../' : './';
   
-  // 1. Permanent Bulletproof URL Mapper
-  // Logo & Home link ALWAYS resolves to root homepage ('/'), never to any subfolder.
-  let urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : '/';
+    // 1. Permanent Bulletproof Clean URL Mapper
+  let urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : (isSubFolder ? '../' : '/');
   let urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact;
   let urlDestSingapore, urlDestJapan, urlDestKorea, urlDestEurope, urlDestMalaysia, urlDestUAE;
 
-  if (hasHtmlExt) {
+  if (isFileProtocol) {
     if (isSubFolder) {
       urlHome = '../index.html';
       urlAbout = '../about.html';
-      urlImmersion = '../our-programs/';
+      urlImmersion = '../our-programs/index.html';
       urlLeadership = '../leadership-walk.html';
       urlGallery = '../gallery.html';
       urlContact = '../contact.html';
@@ -37,7 +36,7 @@
     } else {
       urlHome = 'index.html';
       urlAbout = 'about.html';
-      urlImmersion = 'our-programs/';
+      urlImmersion = 'our-programs/index.html';
       urlLeadership = 'leadership-walk.html';
       urlGallery = 'gallery.html';
       urlContact = 'contact.html';
@@ -50,20 +49,23 @@
       urlDestUAE = 'our-programs/uae.html';
     }
   } else {
-    urlHome = '/';
-    urlAbout = isSubFolder ? '../about.html' : 'about.html';
-    urlImmersion = isSubFolder ? '../our-programs/index.html' : 'our-programs/index.html';
-    urlLeadership = '/leadership-walk';
-    urlGallery = isSubFolder ? '../gallery.html' : 'gallery.html';
-    urlContact = isSubFolder ? '../contact.html' : 'contact.html';
+    // 100% Clean Extensionless URLs for Web Server & Localhost Server
+    urlHome = isSubFolder ? '../' : '/';
+    urlAbout = isSubFolder ? '../about' : '/about';
+    urlImmersion = isSubFolder ? '../our-programs/' : '/our-programs/';
+    urlLeadership = isSubFolder ? '../leadership-walk' : '/leadership-walk';
+    urlGallery = isSubFolder ? '../gallery' : '/gallery';
+    urlContact = isSubFolder ? '../contact' : '/contact';
 
-    urlDestSingapore = isSubFolder ? 'singapore-indonesia.html' : 'our-programs/singapore-indonesia.html';
-    urlDestJapan = isSubFolder ? 'japan.html' : 'our-programs/japan.html';
-    urlDestKorea = isSubFolder ? 'south-korea.html' : 'our-programs/south-korea.html';
-    urlDestEurope = isSubFolder ? 'europe.html' : 'our-programs/europe.html';
-    urlDestMalaysia = isSubFolder ? 'malaysia-singapore.html' : 'our-programs/malaysia-singapore.html';
-    urlDestUAE = isSubFolder ? 'uae.html' : 'our-programs/uae.html';
+    urlDestSingapore = isSubFolder ? 'singapore-indonesia' : '/our-programs/singapore-indonesia';
+    urlDestJapan = isSubFolder ? 'japan' : '/our-programs/japan';
+    urlDestKorea = isSubFolder ? 'south-korea' : '/our-programs/south-korea';
+    urlDestEurope = isSubFolder ? 'europe' : '/our-programs/europe';
+    urlDestMalaysia = isSubFolder ? 'malaysia-singapore' : '/our-programs/malaysia-singapore';
+    urlDestUAE = isSubFolder ? 'uae' : '/our-programs/uae';
   }
+
+
 
   function isActive(page) {
     const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
