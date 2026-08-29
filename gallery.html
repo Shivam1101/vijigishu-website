@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photo Gallery – Vijigishu Immersion Programs</title>
+  <title>Photo Gallery – Vijigishu Our Programs</title>
   <meta name="description" content="View highlights and photo memories from our recent international student cohorts, university masterclasses, and industrial tours." />
   <link rel="canonical" href="https://vijigishu.co.in/gallery" />
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vijigishu Educational Travel" />
   <meta property="og:url" content="https://vijigishu.co.in/gallery.html" />
-  <meta property="og:title" content="Photo Gallery – Vijigishu Immersion Programs" />
+  <meta property="og:title" content="Photo Gallery – Vijigishu Our Programs" />
   <meta property="og:description" content="View highlights and photo memories from our recent international student cohorts, university masterclasses, and industrial tours." />
   <meta property="og:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   <meta property="og:image:width" content="1200" />
@@ -19,12 +19,12 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://vijigishu.co.in/gallery.html" />
-  <meta name="twitter:title" content="Photo Gallery – Vijigishu Immersion Programs" />
+  <meta name="twitter:title" content="Photo Gallery – Vijigishu Our Programs" />
   <meta name="twitter:description" content="View highlights and photo memories from our recent international student cohorts, university masterclasses, and industrial tours." />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
-  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
-  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
-  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+  
+  
+  
   
   
   
@@ -79,9 +79,9 @@
     .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
-    /* ─── PAGE HERO WITH VIDEO (NO OVERLAY) ─── */
-    .page-hero { position: relative; height: 560px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: 72px; background: var(--dark); }
-    .page-hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+    
+    .page-hero { position: relative; width: 100%; height: auto; min-height: auto; margin-top: 0; overflow: hidden; background: var(--navy); display: block; }
+    .page-hero video { width: 100%; height: auto; display: block; object-fit: contain; }
     
 
     /* ─── GALLERY SUB-HEADING & TITLE BANNER BAR ─── */
@@ -453,7 +453,7 @@
       }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .page-hero { height: 260px; }
+      .page-hero { height: auto; width: 100%; }
       .masonry-grid { column-count: 1; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .lightbox-nav-btn { width: 42px; height: 42px; font-size: 1.3rem; }
@@ -461,8 +461,51 @@
       .lightbox-next { right: 10px; }
       .lightbox-close { top: 16px !important; right: 16px !important; width: 40px !important; height: 40px !important; }
     }
+  
+    .section-heading span, h1 span, h2 span, h3 span { color: #0F172A !important; font-style: italic !important; }
+
+    .incl-title, .inclusion-title, .incl-card .incl-title { color: #0F172A !important; font-weight: 700 !important; }
+
+    .acc-title, .acc-header, .acc-item .acc-title { color: #0F172A !important; font-weight: 700 !important; }
+    .acc-title span { color: #0F172A !important; font-style: italic !important; }
+
+    .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
+</style>
+  <link rel="stylesheet" href="css/global-components.css?v=1788008618603" />
+  
+  
+  
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+
+    
+  
+
+  <style>
+    /* --- USER-CONTROLLED LIGHTBOX TOOLBAR & ZOOM --- */
+    .lightbox-img-wrap {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 90vw;
+      max-height: 75vh;
+      border-radius: 16px;
+      user-select: none;
+    }
+    .lightbox-content {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 75vh;
+      object-fit: contain;
+      transition: transform 0.25s ease;
+      transform-origin: center center;
+    }
+    
   </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
 </head>
 <body>
 
@@ -515,13 +558,14 @@
     <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
     <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next">›</button>
   </div>
+  
 </div>
 
 <!-- ===== FOOTER ===== -->
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1787475903488"></script>
+<script src="js/global-components.js?v=1788008618603"></script>
 
 <script>
   // High Quality Vector SVG Flag & Globe Icons
@@ -533,19 +577,26 @@
     europe: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#003399"/><circle cx="18" cy="8" r="1.5" fill="#FFCC00"/><circle cx="25" cy="11" r="1.5" fill="#FFCC00"/><circle cx="28" cy="18" r="1.5" fill="#FFCC00"/><circle cx="25" cy="25" r="1.5" fill="#FFCC00"/><circle cx="18" cy="28" r="1.5" fill="#FFCC00"/><circle cx="11" cy="25" r="1.5" fill="#FFCC00"/><circle cx="8" cy="18" r="1.5" fill="#FFCC00"/><circle cx="11" cy="11" r="1.5" fill="#FFCC00"/></svg>`,
     malaysia: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#CC0000"/><rect x="0" y="4" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="12" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="20" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="28" width="36" height="4" fill="#FFFFFF"/><rect x="0" y="0" width="18" height="20" fill="#000066"/><path d="M7 5A6 6 0 1 0 13 15A7 7 0 1 1 7 5Z" fill="#FFCC00"/></svg>`,
     uae: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#000000"/><path d="M0 0H36V12H0Z" fill="#007A3D"/><path d="M0 12H36V24H0Z" fill="#FFFFFF"/><rect x="0" y="0" width="10" height="36" fill="#FF0000"/></svg>`,
+    dubai: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#000000"/><path d="M0 0H36V12H0Z" fill="#007A3D"/><path d="M0 12H36V24H0Z" fill="#FFFFFF"/><rect x="0" y="0" width="10" height="36" fill="#FF0000"/></svg>`,
+    indonesia: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5"/><path d="M 1 18 A 17 17 0 0 1 35 18 Z" fill="#FFFFFF"/><path d="M 1 18 A 17 17 0 0 0 35 18 Z" fill="#FFFFFF"/><path d="M0 0H36V18H0Z" fill="#CE1126"/></svg>`,
     india: `<svg width="20" height="20" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#FFFFFF"/><path d="M0 0H36V12H0Z" fill="#FF9933"/><path d="M0 24H36V36H0Z" fill="#128807"/><circle cx="18" cy="18" r="4.5" fill="none" stroke="#000080" stroke-width="1.2"/><circle cx="18" cy="18" r="1" fill="#000080"/></svg>`
   };
+
+  function getCountryIcon(key) {
+    if (!key) return countryIcons.all;
+    const lowerKey = String(key).toLowerCase();
+    return countryIcons[lowerKey] || countryIcons[lowerKey === 'dubai' ? 'uae' : lowerKey] || countryIcons.all;
+  }
 
   // Country Categories Configuration
   const categoriesList = [
     { key: 'all', label: 'All Destinations', icon: countryIcons.all },
-    { key: 'singapore', label: 'Singapore', icon: countryIcons.singapore },
-    { key: 'japan', label: 'Japan', icon: countryIcons.japan },
-    { key: 'south-korea', label: 'South Korea', icon: countryIcons['south-korea'] },
+    { key: 'dubai', label: 'Dubai / UAE', icon: countryIcons.uae },
     { key: 'europe', label: 'Europe', icon: countryIcons.europe },
+    { key: 'indonesia', label: 'Indonesia', icon: countryIcons.indonesia },
+    { key: 'japan', label: 'Japan', icon: countryIcons.japan },
     { key: 'malaysia', label: 'Malaysia', icon: countryIcons.malaysia },
-    { key: 'uae', label: 'UAE / Dubai', icon: countryIcons.uae },
-    { key: 'india', label: 'India', icon: countryIcons.india }
+    { key: 'singapore', label: 'Singapore', icon: countryIcons.singapore }
   ];
 
   // Render Filter Buttons
@@ -564,51 +615,505 @@
 
   // Gallery Country Data Mapping (Dynamic with localStorage sync)
   const defaultPresetItems = [
-    { src: 'images/Gallery-10-scaled.webp', country: 'singapore', label: 'Singapore', title: 'National University of Singapore - Tech & Innovation Hub' },
-    { src: 'images/Gallery-11-scaled.webp', country: 'japan', label: 'Japan', title: 'Tokyo University & Robotics Research Facility' },
-    { src: 'images/Gallery-12-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Seoul National University & K-Tech Center' },
-    { src: 'images/Gallery-13-scaled.webp', country: 'europe', label: 'Europe', title: 'Politecnico di Milano - Architectural Design Workshop' },
-    { src: 'images/Gallery-14-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Kuala Lumpur Smart City & Financial Hub' },
-    { src: 'images/Gallery-15-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Museum of the Future & uSky Transport Test Facility' },
-    { src: 'images/Gallery-16-scaled.webp', country: 'india', label: 'India', title: 'IIM Bangalore & Tech Parks Industry Delegation' },
-    { src: 'images/Gallery-18-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Marina Bay Financial Centre & Enterprise Visit' },
-    { src: 'images/Gallery-19-scaled.webp', country: 'japan', label: 'Japan', title: 'Kyoto High-Tech Cultural Immersion' },
-    { src: 'images/Gallery-20-scaled.webp', country: 'south-korea', label: 'South Korea', title: 'Hyundai Innovation & Smart Manufacturing' },
-    { src: 'images/Gallery-22-scaled.webp', country: 'europe', label: 'Europe', title: 'BMW Welt & Engineering Campus - Germany' },
-    { src: 'images/Gallery-23-scaled.webp', country: 'malaysia', label: 'Malaysia', title: 'Asia Pacific University & Industry Partner Meet' },
-    { src: 'images/Gallery-25-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'American University of Sharjah Leadership Walk' },
-    { src: 'images/Gallery-30-scaled.webp', country: 'india', label: 'India', title: 'Jaipur Vernacular Heritage & Architecture Documentation' },
-    { src: 'images/Gallery-32-scaled.webp', country: 'singapore', label: 'Singapore', title: 'Gardens by the Bay Sustainable Architecture Study' },
-    { src: 'images/Gallery-35-scaled.webp', country: 'japan', label: 'Japan', title: 'Shinkansen High-Speed Rail Engineering Center' },
-    { src: 'images/Gallery-36-scaled.webp', country: 'europe', label: 'Europe', title: 'Paris School of Business Executive Masterclass' },
-    { src: 'images/Gallery-37-scaled.webp', country: 'uae', label: 'UAE / Dubai', title: 'Burj Khalifa Structural Engineering Walk' },
-    { src: 'images/Gallery-38-scaled.webp', country: 'india', label: 'India', title: 'Tata Motors Industry 4.0 Manufacturing Plant' }
-  ];
+  {
+    "src": "images/gallery/gallery-dubai-01.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-02.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-03.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-04.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-05.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-06.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-07.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-08.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-dubai-09.webp",
+    "country": "dubai",
+    "label": "Dubai, UAE",
+    "title": "Vijigishu Immersion Program - Dubai, UAE"
+  },
+  {
+    "src": "images/gallery/gallery-europe-01.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-02.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-03.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-04.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-05.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-06.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-07.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-08.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-09.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-10.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-11.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-12.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-13.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-14.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-15.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-16.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-17.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-18.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-19.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-20.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-21.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-22.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-23.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-24.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-25.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-26.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-27.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-28.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-29.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-europe-30.webp",
+    "country": "europe",
+    "label": "Europe",
+    "title": "Vijigishu Immersion Program - Europe"
+  },
+  {
+    "src": "images/gallery/gallery-indonesia-01.webp",
+    "country": "indonesia",
+    "label": "Indonesia",
+    "title": "Vijigishu Immersion Program - Indonesia"
+  },
+  {
+    "src": "images/gallery/gallery-indonesia-02.webp",
+    "country": "indonesia",
+    "label": "Indonesia",
+    "title": "Vijigishu Immersion Program - Indonesia"
+  },
+  {
+    "src": "images/gallery/gallery-indonesia-03.webp",
+    "country": "indonesia",
+    "label": "Indonesia",
+    "title": "Vijigishu Immersion Program - Indonesia"
+  },
+  {
+    "src": "images/gallery/gallery-japan-01.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-02.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-03.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-04.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-05.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-06.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-07.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-08.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-09.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-10.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-japan-11.webp",
+    "country": "japan",
+    "label": "Japan",
+    "title": "Vijigishu Immersion Program - Japan"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-01.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-02.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-03.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-04.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-05.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-06.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-07.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-08.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-09.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-10.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-11.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-12.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-malaysia-13.webp",
+    "country": "malaysia",
+    "label": "Malaysia",
+    "title": "Vijigishu Immersion Program - Malaysia"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-01.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-02.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-03.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-04.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-05.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-06.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-07.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-08.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-09.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-10.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  },
+  {
+    "src": "images/gallery/gallery-singapore-11.webp",
+    "country": "singapore",
+    "label": "Singapore",
+    "title": "Vijigishu Immersion Program - Singapore"
+  }
+];
 
   function loadGalleryItems() {
     const raw = localStorage.getItem('vijigishu_gallery_items');
     if (!raw) {
       localStorage.setItem('vijigishu_gallery_items', JSON.stringify(defaultPresetItems));
-      return defaultPresetItems.map(item => ({ ...item, icon: countryIcons[item.country] }));
+      return defaultPresetItems.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
     }
     try {
       const parsed = JSON.parse(raw);
-      return parsed.map(item => ({ ...item, icon: countryIcons[item.country] }));
+      return parsed.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
     } catch(e) {
-      return defaultPresetItems.map(item => ({ ...item, icon: countryIcons[item.country] }));
+      return defaultPresetItems.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
     }
   }
 
+  localStorage.removeItem('vijigishu_gallery_items');
   let galleryItems = loadGalleryItems();
   const masonryGrid = document.getElementById('masonryGrid');
   let currentFilteredList = [...galleryItems];
   let currentLightboxIndex = 0;
 
+  function shuffleArray(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
   function renderGallery(filter = 'all') {
     galleryItems = loadGalleryItems();
     masonryGrid.innerHTML = '';
-    currentFilteredList = filter === 'all' 
-      ? galleryItems 
+    
+    currentFilteredList = filter === 'all'
+      ? shuffleArray(galleryItems)
       : galleryItems.filter(item => item.country === filter);
 
     currentFilteredList.forEach((item, index) => {
@@ -655,6 +1160,7 @@
   const lightboxClose = document.getElementById("lightboxClose");
 
   function openLightbox(index) {
+    
     if (!currentFilteredList[index]) return;
     currentLightboxIndex = index;
     updateLightboxContent();
@@ -745,6 +1251,11 @@
       if (e.key === 'ArrowRight' && lightboxNext) lightboxNext.click();
     }
   });
+
+  
+  
+
+  
 </script>
 </body>
 </html>

@@ -22,9 +22,9 @@
   <meta name="twitter:title" content="About Us – Vijigishu Educational Travel" />
   <meta name="twitter:description" content="Discover Vijigishu" />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
-  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
-  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
-  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+  
+  
+  
   
   
   
@@ -86,10 +86,34 @@
     .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
 
-    /* ─── PAGE HERO BANNER ─── */
-    .page-hero { position: relative; height: 560px; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
-    .page-hero-img { position: absolute; inset: 0; }
-    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: none; }
+    
+    
+    /* --- FULL-WIDTH UNCROPPED HERO BANNER (MATCHING OUR-PROGRAMS.HTML) --- */
+    .page-hero {
+      position: relative;
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      margin-top: 0;
+      overflow: hidden;
+      background: var(--off);
+      display: block;
+    }
+    .page-hero-img {
+      position: relative;
+      width: 100%;
+      display: block;
+    }
+    .page-hero-img img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      animation: none !important;
+      transform: none !important;
+      display: block;
+    }
+
+
 
     /* ─── ABOUT INTRO ─── */
     #about-intro { padding: 48px 0 60px; background: var(--white); }
@@ -98,13 +122,14 @@
     .about-body { font-size: .95rem; color: var(--gray); line-height: 1.8; margin-bottom: 24px; }
     .about-right { position: relative; }
     .about-img-main { border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.12); }
-    .about-img-main img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .about-img-main img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .about-img-main:hover img { transform: scale(1.05); }
 
     /* ─── CORNELL SECTION ─── */
     #cornell { padding: 60px 0; background: var(--off); }
     .cornell-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-    .cornell-img { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.1); }
-    .cornell-img img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .cornell-img { display: flex; justify-content: center; align-items: center; }
+    .cornell-img img { width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,.12); }
     .cornell-ribbon {
       display: inline-flex;
       align-items: center;
@@ -128,7 +153,7 @@
       padding: 24px 32px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border: 1px solid rgba(56,103,58,0.12);
+      border: 1px solid rgba(43,84,149,0.12);
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
     .pillar-item {
@@ -149,8 +174,8 @@
     .pillar-icon-box {
       width: 52px; height: 52px;
       border-radius: 14px;
-      background: rgba(159,194,140,0.25);
-      border: 1px solid rgba(56,103,58,0.15);
+      background: rgba(43,84,149,0.25);
+      border: 1px solid rgba(43,84,149,0.15);
       display: grid;
       place-items: center;
       font-size: 1.6rem;
@@ -160,7 +185,7 @@
     .pillar-item:hover .pillar-icon-box {
       background: var(--sage);
       transform: scale(1.08) rotate(3deg);
-      box-shadow: 0 8px 20px rgba(56,103,58,0.2);
+      box-shadow: 0 8px 20px rgba(43,84,149,0.2);
     }
     .pillar-text {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -171,8 +196,9 @@
     }
 
     /* ─── VISION & MISSION ─── */
-    #vision-mission { padding: 60px 0; background: var(--white); }
-    .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
+    #vision-mission { padding: 80px 0; background: var(--white); position: relative; overflow: hidden; z-index: 1; }
+    #vision-mission::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(circle at 10% 80%, rgba(43,84,149,0.2) 0%, transparent 40%), radial-gradient(circle at 90% 90%, rgba(43,84,149,0.1) 0%, transparent 40%); }
+    .vm-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px; }
     .vm-card {
       border-radius: 24px;
       padding: 44px 40px;
@@ -194,38 +220,62 @@
     .vm-text { font-size: .98rem; color: rgba(255,255,255,.82); line-height: 1.75; }
 
     /* ─── CORE VALUES ─── */
-    #core-values { padding: 60px 0; background: var(--dark); position: relative; overflow: hidden; }
-    #core-values::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 50% 60% at 10% 50%, rgba(56,103,58,.25) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 90% 30%, rgba(159,194,140,.1) 0%, transparent 60%);
+    #core-values { padding: 60px 0; background: var(--white); position: relative; overflow: hidden; }
+    #core-values::before { display: none; }
+    .cv-header { position: relative; z-index: 2; text-align: center; margin-bottom: 56px; margin-top: 100px; }
+    .cv-header .section-heading { color: var(--navy); }
+    .cv-subtitle { color: var(--gray); font-size: .95rem; line-height: 1.75; max-width: 760px; margin: 16px auto 0; }
+    /* ─── RESTORED CENTERED CORE VALUES WITH SUBTLE NAVY/GREEN GLASS ─── */
+    .cv-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
     }
-    .cv-header { position: relative; z-index: 2; text-align: center; margin-bottom: 56px; }
-    .cv-header .section-heading { color: var(--white); }
-    .cv-subtitle { color: rgba(255,255,255,.65); font-size: .95rem; line-height: 1.75; max-width: 760px; margin: 16px auto 0; }
-    .cv-grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+
+    
     .cv-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
+      background: #F8FAFC !important;
+      border: 1px solid rgba(43, 84, 149, 0.15) !important;
       border-radius: 20px;
-      padding: 28px 20px;
+      padding: 32px 24px;
       text-align: center;
-      transition: background .3s, transform .3s var(--ease);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s var(--ease);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .cv-card:hover { background: rgba(255,255,255,.1); transform: translateY(-6px); }
+    .cv-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(43, 84, 149, 0.12) !important;
+      background: #FFFFFF !important;
+      border-color: var(--royal) !important;
+    }
     .cv-letter {
       font-family: 'Playfair Display', serif;
-      font-size: 3rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      color: var(--sage);
+      color: var(--royal) !important;
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
+      transition: transform 0.4s var(--ease);
     }
-    .cv-word { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
-    .cv-text { font-size: .8rem; color: rgba(255,255,255,.5); line-height: 1.65; }
+    .cv-word {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0F172A !important;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+    .cv-text {
+      font-size: 0.9rem;
+      color: #475569 !important;
+      line-height: 1.65;
+    }
 
     /* ─── DIRECTORS ─── */
     #directors { padding: 60px 0; background: var(--off); }
@@ -281,8 +331,8 @@
       inset: 0;
       pointer-events: none;
       z-index: 1;
-      opacity: 1;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400' fill='none'%3E%3Cpath d='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' stroke='rgba(159,194,140,0.48)' stroke-width='2' stroke-linecap='round' stroke-dasharray='6 8'/%3E%3Cpath d='M-8,-6 L10,0 L-8,6 L-4,0 Z' fill='rgba(56,103,58,0.75)'%3E%3CanimateMotion path='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' dur='15s' repeatCount='indefinite' rotate='auto' /%3E%3C/path%3E%3Ccircle cx='200' cy='150' r='140' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ccircle cx='200' cy='150' r='90' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='200' y1='0' x2='200' y2='300' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='50' y1='150' x2='350' y2='150' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ctext x='190' y='38' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EN 18° 30' 13%22%3C/text%3E%3Ctext x='190' y='54' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EE 73° 49' 44%22%3C/text%3E%3C/svg%3E");
+      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400' fill='none'%3E%3Cpath d='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' stroke='rgba(43,84,149,0.35)' stroke-width='2' stroke-linecap='round' stroke-dasharray='6 8'/%3E%3Cpath d='M-8,-6 L10,0 L-8,6 L-4,0 Z' fill='rgba(43,84,149,0.85)'%3E%3CanimateMotion path='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' dur='15s' repeatCount='indefinite' rotate='auto' /%3E%3C/path%3E%3Ccircle cx='200' cy='150' r='140' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ccircle cx='200' cy='150' r='90' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='200' y1='0' x2='200' y2='300' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Cline x1='50' y1='150' x2='350' y2='150' stroke='rgba(27,28,74,0.07)' stroke-width='1.5'/%3E%3Ctext x='190' y='38' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EN 18° 30' 13%22%3C/text%3E%3Ctext x='190' y='54' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(27,28,74,0.22)' letter-spacing='1'%3EE 73° 49' 44%22%3C/text%3E%3C/svg%3E");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -328,32 +378,14 @@
       align-items: center;
       z-index: 2;
     }
-    .portal-shape {
-      width: 300px; /* Sized to 300px as requested */
-      height: 300px; /* Sized to 300px as requested */
-      background: rgba(27,28,74,0.02);
-      border: 3px solid var(--sage);
-      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      position: relative;
-      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
-      animation: morph 8s ease-in-out infinite;
-      transition: border-color 0.4s, background 0.4s;
-    }
+    
     .mascot-img-portal {
       width: 232px; /* Sized to 232px as requested */
       height: auto;
       transition: transform 0.5s ease;
     }
-    .opt-portal:hover .portal-shape {
-      border-color: var(--green);
-      background: rgba(27,28,74,0.05);
-    }
-    .opt-portal:hover .mascot-img-portal {
-      transform: scale(1.12) rotate(-3deg);
-    }
+    .opt-portal:hover 
+    
     @keyframes morph {
       0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
       50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
@@ -370,10 +402,7 @@
       .about-cta-left { text-align: center; padding-left: 0 !important; }
       .about-cta-right { flex-direction: row; justify-content: center; width: 100%; gap: 12px; margin-top: 24px; }
       .about-cta-right .btn { flex: 1; max-width: 220px; text-align: center; justify-content: center; }
-      .portal-shape {
-        width: 240px;
-        height: 240px;
-      }
+      
       .mascot-img-portal {
         width: 180px;
       }
@@ -525,7 +554,7 @@
     /* ─── Responsive ─── */
     @media (max-width: 1024px) {
       .about-split, .cornell-inner, .vm-grid { grid-template-columns: 1fr; }
-      .cv-grid { grid-template-columns: repeat(3, 1fr); }
+      
       .dir-card, .dir-card.reverse { grid-template-columns: 1fr; }
       .dir-card.reverse .dir-photo { order: 0; }
       .dir-card.reverse .dir-body { order: 0; }
@@ -535,10 +564,10 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .page-hero { height: 280px; }
+      .page-hero { height: auto; width: 100%; }
       .footer-grid { grid-template-columns: 1fr; }
-      .cv-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .cv-card:last-child { grid-column: span 2; }
+      
+      
       #about-cta { padding: 48px 0; }
     }
     @media (max-width: 560px) {
@@ -556,9 +585,9 @@
       .pillar-item:last-child {
         border-bottom: none;
       }
-      .cv-grid { grid-template-columns: 1fr; gap: 12px; }
+      
       .cv-card { padding: 24px 16px; }
-      .cv-card:last-child { grid-column: span 1; }
+      
       .about-cta-right {
         flex-direction: column !important;
         align-items: stretch;
@@ -572,8 +601,53 @@
         justify-content: center;
       }
     }
-  </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
+  
+    @media (max-width: 1024px) {
+      .cv-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+    @media (max-width: 768px) {
+      .cv-grid { grid-template-columns: repeat(2, 1fr); }
+      .cv-card:last-child { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .cv-grid { grid-template-columns: 1fr; }
+      .cv-card:last-child { grid-column: span 1; }
+    }
+  
+    /* --- Floating Island CTA --- */
+    @keyframes floatIsland {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    .floating-cta-img {
+      width: 400px;
+      max-width: 100%;
+      height: auto;
+      
+      animation: floatIsland 5s ease-in-out infinite;
+      /* Removed the portal morph animation from earlier */
+    }
+    @media (max-width: 1024px) {
+      .floating-cta-img { width: 300px; }
+    }
+  
+    .section-heading span, h1 span, h2 span, h3 span { color: #0F172A !important; font-style: italic !important; }
+
+    .incl-title, .inclusion-title, .incl-card .incl-title { color: #0F172A !important; font-weight: 700 !important; }
+
+    .acc-title, .acc-header, .acc-item .acc-title { color: #0F172A !important; font-weight: 700 !important; }
+    .acc-title span { color: #0F172A !important; font-style: italic !important; }
+
+    .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
+</style>
+  <link rel="stylesheet" href="css/global-components.css?v=1788008618603" />
+  
+  
+  
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
 </head>
 <body>
 
@@ -583,7 +657,7 @@
 <!-- ===== PAGE HERO BANNER (NO GRADIENT OVERLAY) ===== -->
 <div class="page-hero">
   <div class="page-hero-img">
-    <img src="images/About-Us-1.webp" alt="About Vijigishu" fetchpriority="high" />
+    <img src="images/banner-about.webp" alt="About Us Banner" fetchpriority="high" />
   </div>
 </div>
 
@@ -591,8 +665,7 @@
 <section style="padding: 48px 0 24px; text-align: center; background: var(--white);">
   <div class="container">
     <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: var(--navy); margin-bottom: 20px; line-height: 1.15;">About <span style="color: var(--green); font-style: italic;">Vijigishu</span></h1>
-    <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(56,103,58,0.08); border: 1px solid rgba(56,103,58,0.2); border-radius: 100px; padding: 8px 24px; color: var(--green); font-size: 0.9rem; font-weight: 600;">
-      <span>🪔</span>
+    <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(43,84,149,0.08); border: 1px solid rgba(43,84,149,0.2); border-radius: 100px; padding: 8px 24px; color: var(--green); font-size: 0.9rem; font-weight: 600;">
       <span>विजिगीषु — World Conqueror Forever</span>
     </div>
   </div>
@@ -606,11 +679,11 @@
         <div class="tag">Who We Are</div>
         <h2 class="section-heading">Conquer the World<br>Through <span>Experience</span></h2>
         <p class="about-lead" style="margin-top:20px;">Vijigishu (विजिगीषु) is a Sanskrit term meaning "World conqueror forever," perfectly capturing our visionary ethos.</p>
-        <p class="about-body">We are committed to transforming lives and making a profound impact by crafting unique learning experiences through our diverse travel programs. Our expertise lies in curating International and Domestic Academic Immersion Programs tailored for school, undergraduate, and postgraduate students. Additionally, we offer Transformational Learning Programs and Leadership Walks, Spiritual Retreats, International Internship Programs, Study Abroad initiatives, Faculty Development Programs, Summer and Winter Schools, Seminars &amp; Conferences. We provide a platform for continuous learning and growth to shape the leaders of tomorrow with experiences that transcend the classroom.</p>
+        <p class="about-body">We are committed to transforming lives and making a profound impact by crafting unique learning experiences through our diverse travel programs. Our expertise lies in curating International and Domestic Academic Our Programs tailored for school, undergraduate, and postgraduate students. Additionally, we offer Transformational Learning Programs and Leadership Walks, Spiritual Retreats, International Internship Programs, Study Abroad initiatives, Faculty Development Programs, Summer and Winter Schools, Seminars &amp; Conferences. We provide a platform for continuous learning and growth to shape the leaders of tomorrow with experiences that transcend the classroom.</p>
       </div>
       <div class="about-right reveal reveal-delay-2">
         <div class="about-img-main">
-          <img src="images/Random-1.webp" alt="Vijigishu students" loading="lazy" />
+          <img src="images/about-who-we-are.webp" alt="Vijigishu students" loading="lazy" />
         </div>
       </div>
     </div>
@@ -656,7 +729,7 @@
         <h3 class="cornell-h3">Recognised by <em>Cornell Maha 60</em></h3>
         <p class="cornell-p">Vijigishu Education Pvt. Ltd. (VEPL) is a proud part of the prestigious Cornell Maha 60 program — India's 1st Ivy League Business Accelerator Program, a fully sponsored initiative by the Government of Maharashtra in association with Cornell University, USA.</p>
         <p class="cornell-p">Our unwavering commitment is to redefine the future of education and provide a 360-degree learning approach that will be a catalyst in the transformative journey of every student.</p>
-        <a href="index.html#cta" class="btn btn-primary" style="margin-top:8px;">Partner with Us →</a>
+        <a href="contact.html" class="btn btn-primary" style="margin-top:8px;">Partner with Us →</a>
       </div>
     </div>
   </div>
@@ -682,38 +755,35 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- ===== CORE VALUES ===== -->
-<section id="core-values">
+<!-- Core Values merged into the same section -->
   <div class="container">
     <div class="cv-header reveal">
-      <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage)">Our I-RACE Philosophy</div>
+      <div class="tag">Our I-RACE Philosophy</div>
       <h2 class="section-heading">Core <span>Values</span></h2>
       <p class="cv-subtitle">At Vijigishu, our values define who we are, how we work, and the way we build lasting relationships with our clients, partners, and team members. Guided by our I-RACE philosophy, we are committed to maintaining the highest standards in everything we do.</p>
     </div>
     <div class="cv-grid">
-      <div class="cv-card reveal">
+      <div class="cv-card">
         <div class="cv-letter">I</div>
         <div class="cv-word">Integrity</div>
         <p class="cv-text">We believe in being ethical, sincere, and transparent in every interaction. Integrity is the foundation of our business, helping us build trust and long-term relationships with everyone we work with.</p>
       </div>
-      <div class="cv-card reveal reveal-delay-1">
+      <div class="cv-card">
         <div class="cv-letter">R</div>
         <div class="cv-word">Respect</div>
         <p class="cv-text">We treat every individual with dignity, fairness, and respect. We value diverse perspectives and foster an environment where everyone feels heard, appreciated, and empowered.</p>
       </div>
-      <div class="cv-card reveal reveal-delay-2">
+      <div class="cv-card">
         <div class="cv-letter">A</div>
         <div class="cv-word">Accountability</div>
         <p class="cv-text">We take ownership of our actions, decisions, and commitments. By being accountable, we ensure reliability, responsibility, and continuous improvement in all our efforts.</p>
       </div>
-      <div class="cv-card reveal reveal-delay-3">
+      <div class="cv-card">
         <div class="cv-letter">C</div>
         <div class="cv-word">Collaboration</div>
         <p class="cv-text">Success comes from working together. We encourage teamwork, open communication, and shared goals to create innovative solutions and achieve meaningful results.</p>
       </div>
-      <div class="cv-card reveal reveal-delay-4">
+      <div class="cv-card">
         <div class="cv-letter">E</div>
         <div class="cv-word">Excellence</div>
         <p class="cv-text">We strive for excellence in every aspect of our work. Through dedication, passion, and continuous learning, we aim to exceed expectations and deliver the highest quality outcomes.</p>
@@ -776,30 +846,12 @@
 </section>
 
 <!-- ===== CTA ===== -->
-<section id="about-cta">
-  <div class="container">
-    <div class="about-cta-inner opt-portal reveal">
-      <div class="about-cta-left">
-        <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
-        <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
-        <div class="about-cta-right">
-          <a href="immersion-programs" class="btn btn-green">Explore Programs →</a>
-          <a href="index.html#cta" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">Contact Our Team</a>
-        </div>
-      </div>
-      <div class="portal-wrapper">
-        <div class="portal-shape">
-          <img src="images/vijigishu-lion-mascot.png" class="mascot-img-portal" alt="Lion Mascot" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div id="global-cta"></div>
 
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1787475903488"></script>
+<script src="js/global-components.js?v=1788008618603"></script>
 <script>
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {

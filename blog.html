@@ -22,9 +22,9 @@
   <meta name="twitter:title" content="Insights &amp; Stories – Vijigishu Educational Travel" />
   <meta name="twitter:description" content="Explore articles, guides, and trends in global educational travel, architecture study tours, and international student immersion programs." />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/blog-banner.png" />
-  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
-  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
-  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+  
+  
+  
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -59,26 +59,9 @@
     .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 
     /* ─── PAGE HERO BANNER ─── */
-    .page-hero {
-      position: relative;
-      width: 100%;
-      height: 380px;
-      overflow: hidden;
-      background: var(--dark);
-    }
-    .page-hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .page-hero-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
+    .page-hero { position: relative; aspect-ratio: 38 / 10; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    .page-hero-img { position: absolute; inset: 0; width: 100%; }
+    .page-hero-img img { width: 100%; height: 100%; object-fit: cover; animation: none; }
 
     /* ─── SECTION TITLE & INTRO ─── */
     .hero-title-section {
@@ -370,10 +353,16 @@
     }
     @media (max-width: 680px) {
       .blog-grid { grid-template-columns: 1fr; gap: 20px; }
-      .page-hero { height: 260px; }
+      .page-hero { aspect-ratio: 16 / 9; height: auto; max-height: none; }
     }
   </style>
   <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
+  
+  
+  
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
 </head>
 <body>
 

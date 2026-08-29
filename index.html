@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vijigishu – Educational Travel & Global Immersion Programs</title>
+  <title>Vijigishu – Educational Travel & Global Our Programs</title>
   <meta name="description" content="Vijigishu creates transformative academic journeys, industry immersion programs, leadership walks, and global internships for students and educators." />
   <link rel="canonical" href="https://vijigishu.co.in/" />
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vijigishu Educational Travel" />
   <meta property="og:url" content="https://vijigishu.co.in/" />
-  <meta property="og:title" content="Vijigishu – Educational Travel & Global Immersion Programs" />
+  <meta property="og:title" content="Vijigishu – Educational Travel & Global Our Programs" />
   <meta property="og:description" content="Vijigishu creates transformative academic journeys, industry immersion programs, leadership walks, and global internships for students and educators." />
   <meta property="og:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   <meta property="og:image:width" content="1200" />
@@ -19,12 +19,12 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://vijigishu.co.in/" />
-  <meta name="twitter:title" content="Vijigishu – Educational Travel & Global Immersion Programs" />
+  <meta name="twitter:title" content="Vijigishu – Educational Travel & Global Our Programs" />
   <meta name="twitter:description" content="Vijigishu creates transformative academic journeys, industry immersion programs, leadership walks, and global internships for students and educators." />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
-  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
-  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
-  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
+  
+  
+  
   
   
   
@@ -188,7 +188,7 @@
     /* ─── HERO ─── */
     #hero {
       position: relative;
-      height: calc(100vh - 72px);
+      height: 100vh !important;
       overflow: hidden;
       background: #000;
     }
@@ -431,22 +431,8 @@
     }
 
     /* ─── COUNTERS & STATS (PARALLAX) ─── */
-    #stats { padding: 60px 0;
-      position: relative;
-      overflow: hidden;
-      background-image: url('stats-bg-landmarks.jpg?v=4');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-      color: var(--white);
-    }
-    #stats::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(13, 14, 46, 0.76) 0%, rgba(7, 8, 26, 0.72) 100%);
-      z-index: 1;
-    }
+    
+    /* ─── COUNTERS & STATS (HERO) ─── */
     .stats-inner {
       position: relative;
       z-index: 2;
@@ -454,28 +440,32 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
       text-align: center;
+      margin-top: 48px;
+      border-top: 1px solid rgba(0,0,0,.06);
+      border-bottom: 1px solid rgba(0,0,0,.06);
     }
     .stat-item {
-      padding: 40px 24px;
-      border-right: 1px solid rgba(255,255,255,.1);
+      padding: 32px 16px;
+      border-right: 1px solid rgba(0,0,0,.06);
     }
     .stat-item:last-child { border-right: none; }
     .stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 3.8rem;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
       font-weight: 800;
-      color: var(--white);
+      color: var(--navy);
       line-height: 1;
     }
-    .stat-num span { color: var(--sage); }
+    .stat-num span { color: var(--green); }
     .stat-lbl {
-      font-size: .82rem;
-      color: rgba(255,255,255,.5);
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--gray);
       text-transform: uppercase;
       letter-spacing: .1em;
-      margin-top: 10px;
+      margin-top: 8px;
     }
-
+    
     /* ─── FACILITATORS ─── */
     #partners { padding: 60px 0; background: var(--off); }
     .partners-heading {
@@ -502,7 +492,7 @@
     .partners-track {
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 50px;
       width: max-content;
       animation: marquee 40s linear infinite;
     }
@@ -510,14 +500,12 @@
       animation-play-state: paused;
     }
     .partner-logo {
-      height: 76px;
-      width: 170px;
+      height: 100px; /* Increased size */
+      width: 220px;
       object-fit: contain;
-      filter: grayscale(1) opacity(.82);
-      transition: filter .3s var(--ease), transform .3s var(--ease);
+      /* Removed grayscale filter entirely */
       flex-shrink: 0;
     }
-    .partner-logo:hover { filter: grayscale(0) opacity(1); transform: scale(1.12); }
 
         /* ─── TESTIMONIALS ─── */
     #testimonials { padding: 60px 0; background: var(--off); }
@@ -950,7 +938,7 @@
       .why-grid { grid-template-columns: 1fr; gap: 48px; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .stat-item:nth-child(2) { border-right: none; }
-      .stat-item:nth-child(3) { border-top: 1px solid rgba(255,255,255,.08); }
+      .stat-item:nth-child(3) { border-top: 1px solid rgba(0,0,0,.06); }
       .testi-grid { grid-template-columns: repeat(2, 1fr); }
       .faq-inner { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 32px; }
@@ -972,7 +960,7 @@
     @media (max-width: 480px) {
       .hero-stats { gap: 16px; }
       .stats-inner { grid-template-columns: 1fr; }
-      .stat-item { border-right: none !important; border-top: 1px solid rgba(255,255,255,.08); }
+      .stat-item { border-right: none !important; border-top: 1px solid rgba(0,0,0,.06); }
       .stat-item:first-child { border-top: none; }
       .why-right { grid-template-columns: 1fr; }
     }
@@ -988,8 +976,26 @@
     .reveal-delay-2 { transition-delay: .2s; }
     .reveal-delay-3 { transition-delay: .3s; }
     .reveal-delay-4 { transition-delay: .4s; }
-  </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1787475903488" />
+  
+    .program-name { color: #0F172A !important; font-weight: 700 !important; }
+    .program-duration { color: #475569 !important; font-weight: 600 !important; }
+    .program-duration svg { stroke: #475569 !important; }
+
+    .faq-question { color: #475569 !important; font-weight: 700 !important; }
+
+    .section-heading span, h1 span, h2 span, h3 span { color: #0F172A !important; font-style: italic !important; }
+
+    .incl-title, .inclusion-title, .incl-card .incl-title { color: #0F172A !important; font-weight: 700 !important; }
+
+    .acc-title, .acc-header, .acc-item .acc-title { color: #0F172A !important; font-weight: 700 !important; }
+    .acc-title span { color: #0F172A !important; font-style: italic !important; }
+
+    .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
+</style>
+  <link rel="stylesheet" href="css/global-components.css?v=1788008618603" />
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
 </head>
 <body>
 
@@ -998,8 +1004,9 @@
 
 <!-- ===== HERO ===== -->
 <section id="hero">
-  <video poster="images/hero-video-poster.jpg" preload="metadata" autoplay muted loop playsinline class="hero-video">
-    <source src="images/Website-Home-Page-Banner-Video-.mp4" type="video/mp4">
+  <video poster="images/hero-banner-poster.webp" preload="metadata" autoplay muted loop playsinline class="hero-video">
+    <source src="videos/home-banner-optimized.webm" type="video/webm">
+    <source src="videos/home-banner-optimized.mp4" type="video/mp4">
   </video>
 
   <!-- ===== MARQUEE ===== -->
@@ -1030,10 +1037,29 @@
 </section>
 
 <!-- ===== HERO INTRO (BELOW MARQUEE) ===== -->
-<section id="hero-intro" class="reveal" style="padding: 50px 24px 20px; background: var(--white); text-align: center;">
+<section id="hero-intro" class="reveal" style="padding: 60px 24px 40px; background: var(--white); text-align: center;">
   <div class="container" style="max-width: 1200px; margin: 0 auto;">
     <p style="text-transform: uppercase; color: var(--navy); letter-spacing: 2.5px; font-weight: 700; font-size: 0.92rem; margin-bottom: 12px; margin-top: 0;">India's Most Trusted</p>
     <h1 class="section-heading" style="margin-bottom: 0; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.2;">Educational Travel <span style="color: var(--green);">Specialist</span></h1>
+
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="stat-num"><span class="counter" data-target="125">0</span><span>+</span></div>
+        <div class="stat-lbl">Partnered Institutions</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num"><span class="counter" data-target="18">0</span><span>K+</span></div>
+        <div class="stat-lbl">Students Travelled</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num"><span class="counter" data-target="30">0</span><span>+</span></div>
+        <div class="stat-lbl">Countries Covered</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num"><span class="counter" data-target="25">0</span><span>+</span></div>
+        <div class="stat-lbl">Years of Experience</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1046,9 +1072,9 @@
     </div>
     <div class="programs-grid">
       <!-- SINGAPORE CARD (ENTIRE CARD CLICKABLE) -->
-      <a href="/immersion-programs/singapore" class="program-card reveal" aria-label="Explore Singapore Immersion Program">
+      <a href="our-programs/singapore-indonesia.html" class="program-card reveal" aria-label="Explore Singapore Immersion Program">
         <div class="program-img">
-          <img src="images/Singapore.webp" alt="Singapore Program" loading="lazy" />
+          <img src="images/banner-singapore-indonesia.webp" alt="Singapore Program" loading="lazy" />
           <span class="program-badge">Popular</span>
         </div>
         <div class="program-body">
@@ -1068,9 +1094,9 @@
       </a>
 
       <!-- JAPAN CARD (ENTIRE CARD CLICKABLE) -->
-      <a href="/immersion-programs/japan" class="program-card reveal reveal-delay-1" aria-label="Explore Japan Immersion Program">
+      <a href="our-programs/japan.html" class="program-card reveal reveal-delay-1" aria-label="Explore Japan Immersion Program">
         <div class="program-img">
-          <img src="images/Japan-Banner.webp" alt="Japan Program" loading="lazy" />
+          <img src="images/banner-japan.webp" alt="Japan Program" loading="lazy" />
         </div>
         <div class="program-body">
           <div class="program-duration">
@@ -1089,9 +1115,9 @@
       </a>
 
       <!-- SOUTH KOREA CARD (ENTIRE CARD CLICKABLE) -->
-      <a href="/immersion-programs/south-korea" class="program-card reveal reveal-delay-2" aria-label="Explore South Korea Immersion Program">
+      <a href="our-programs/south-korea.html" class="program-card reveal reveal-delay-2" aria-label="Explore South Korea Immersion Program">
         <div class="program-img">
-          <img src="images/South-Korea.webp" alt="South Korea Program" loading="lazy" />
+          <img src="images/banner-south-korea.webp" alt="South Korea Program" loading="lazy" />
         </div>
         <div class="program-body">
           <div class="program-duration">
@@ -1110,9 +1136,9 @@
       </a>
 
       <!-- EUROPE CARD (ENTIRE CARD CLICKABLE) -->
-      <a href="/immersion-programs/europe" class="program-card reveal reveal-delay-3" aria-label="Explore Europe Immersion Program">
+      <a href="our-programs/europe.html" class="program-card reveal reveal-delay-3" aria-label="Explore Europe Immersion Program">
         <div class="program-img">
-          <img src="images/Europe-GIP-1.webp" alt="Europe Program" loading="lazy" />
+          <img src="images/banner-europe.webp" alt="Europe Program" loading="lazy" />
           <span class="program-badge">Premium</span>
         </div>
         <div class="program-body">
@@ -1134,7 +1160,7 @@
 
     <!-- View All Programs Button Below Cards -->
     <div style="text-align: center; margin-top: 48px;">
-      <a href="immersion-programs" class="btn btn-primary">
+      <a href="our-programs/index.html" class="btn btn-primary">
         View All Programs
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1200,35 +1226,7 @@
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
-<section id="stats">
-  <div class="container">
-    
-    <div class="stats-header reveal" style="text-align: center; margin-bottom: 40px; position: relative; z-index: 2;">
-      <p style="text-transform: uppercase; color: var(--sage); letter-spacing: 2.5px; font-weight: 700; font-size: 0.88rem; margin-bottom: 12px;">India's Most Trusted</p>
-      <h2 class="section-heading" style="color: var(--white); font-size: clamp(2rem, 3.8vw, 2.8rem);">Educational Travel <span style="color: var(--sage);">Specialist</span></h2>
-    </div>
 
-    <div class="stats-inner">
-      <div class="stat-item reveal">
-        <div class="stat-num"><span class="counter" data-target="125">0</span><span>+</span></div>
-        <div class="stat-lbl">Partnered Institutions</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-num"><span class="counter" data-target="18">0</span><span>K+</span></div>
-        <div class="stat-lbl">Students Travelled</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <div class="stat-num"><span class="counter" data-target="30">0</span><span>+</span></div>
-        <div class="stat-lbl">Countries Covered</div>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <div class="stat-num"><span class="counter" data-target="25">0</span><span>+</span></div>
-        <div class="stat-lbl">Years of Experience</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== ACADEMIC FACILITATORS ===== -->
 <section id="partners">
@@ -1453,18 +1451,7 @@
   </div> <!-- Closes container -->
 </section>
 
-<section id="cta">
-  <div class="cta-bg"></div>
-  <div class="container">
-    <div class="cta-content reveal">
-      <div class="tag" style="background:rgba(159,194,140,.15);color:var(--sage);">Start Your Journey</div>
-      <h2 class="cta-h2">Immersive Learning Experiences<br><em>Across the World</em></h2>
-      <div class="cta-actions">
-        <a href="https://staging.vijigishu.co.in/contact/" class="btn btn-green">Join The Experience</a>
-      </div>
-    </div>
-  </div>
-</section>
+<div id="global-cta"></div>
 
 <!-- ===== FAQ ===== -->
 <section id="faq">
@@ -1580,7 +1567,7 @@
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1787475903488"></script>
+<script src="js/global-components.js?v=1788008618603"></script>
 
 <script>
   // FAQ accordion
@@ -1660,7 +1647,7 @@
 
   // Counter Animation for Stats
   (function() {
-    const statsSection = document.getElementById('stats');
+    const statsSection = document.getElementById('hero-intro');
     if (!statsSection) return;
 
     let animated = false;

@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Under Maintenance – Vijigishu</title>
   
-  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet" />
   
   <style>
     :root {
-      --navy: #0D0E2E;
-      --green: #38673A;
+      --navy: #2B5495;
+      --green: #2B5495;
       --sage: #9FC28C;
       --gold: #D4A840;
       --white: #FFFFFF;
-      --gray: #5A5B70;
+      --gray: #475569;
       --light-gray: #94A3B8;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -67,7 +67,7 @@
     }
     .mascot-hero {
       width: 100%; max-width: 700px; height: auto; object-fit: contain;
-      mix-blend-mode: multiply; z-index: 5; animation: float 6s ease-in-out infinite;
+      mix-blend-mode: normal; z-index: 5; animation: float 6s ease-in-out infinite;
     }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
@@ -341,7 +341,27 @@
       
       .bottom-bar { flex-direction: column; gap: 16px; padding: 16px 24px 24px; }
     }
-  </style>
+  
+    @media (max-width: 768px) {
+      .page-hero { position: relative; aspect-ratio: 38 / 10; display: flex; align-items: center; overflow: hidden; margin-top: 72px; }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero { aspect-ratio: 16 / 9; height: auto; max-height: none; }
+    }
+
+    @keyframes ctaFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .mascot-hero { animation: ctaFloat 6s ease-in-out infinite !important; }
+</style>
+  
+  
+  
+  <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
+  <link rel="shortcut icon" href="images/admin-profile-icon.png" />
+  <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
 </head>
 <body>
 
@@ -443,7 +463,7 @@
 
     <!-- Right Column: Mascot Image -->
     <div class="mascot-col">
-      <img src="images/maintenance-mascot.jpg" alt="Vijigishu Global Engineering" class="mascot-hero" />
+      <img src="images/floating-world-cta.webp" alt="Vijigishu 3D Floating World" class="mascot-hero" style="max-width: 620px; width: 100%; height: auto; object-fit: contain; filter: drop-shadow(0 20px 48px rgba(43,84,149,0.22)); animation: float 6s ease-in-out infinite;" />
     </div>
 
   </main>

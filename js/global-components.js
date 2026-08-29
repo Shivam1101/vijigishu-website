@@ -4,7 +4,7 @@
  */
 (function () {
   const pathname = window.location.pathname.toLowerCase();
-  const isSubFolder = pathname.includes('/immersion-programs');
+  const isSubFolder = pathname.includes('/our-programs');
   const isFileProtocol = window.location.protocol === 'file:';
   const hasHtmlExt = pathname.endsWith('.html') || pathname.includes('.html') || isFileProtocol;
   
@@ -23,7 +23,7 @@
     if (isSubFolder) {
       urlHome = '../index.html';
       urlAbout = '../about.html';
-      urlImmersion = '../immersion-programs.html';
+      urlImmersion = '../our-programs/';
       urlLeadership = '../leadership-walk.html';
       urlGallery = '../gallery.html';
       urlContact = '../contact.html';
@@ -37,36 +37,39 @@
     } else {
       urlHome = 'index.html';
       urlAbout = 'about.html';
-      urlImmersion = 'immersion-programs.html';
+      urlImmersion = 'our-programs/';
       urlLeadership = 'leadership-walk.html';
       urlGallery = 'gallery.html';
       urlContact = 'contact.html';
 
-      urlDestSingapore = 'immersion-programs/singapore-indonesia.html';
-      urlDestJapan = 'immersion-programs/japan.html';
-      urlDestKorea = 'immersion-programs/south-korea.html';
-      urlDestEurope = 'immersion-programs/europe.html';
-      urlDestMalaysia = 'immersion-programs/malaysia-singapore.html';
-      urlDestUAE = 'immersion-programs/uae.html';
+      urlDestSingapore = 'our-programs/singapore-indonesia.html';
+      urlDestJapan = 'our-programs/japan.html';
+      urlDestKorea = 'our-programs/south-korea.html';
+      urlDestEurope = 'our-programs/europe.html';
+      urlDestMalaysia = 'our-programs/malaysia-singapore.html';
+      urlDestUAE = 'our-programs/uae.html';
     }
   } else {
     urlHome = '/';
-    urlAbout = '/about';
-    urlImmersion = '/immersion-programs';
+    urlAbout = isSubFolder ? '../about.html' : 'about.html';
+    urlImmersion = isSubFolder ? '../our-programs/index.html' : 'our-programs/index.html';
     urlLeadership = '/leadership-walk';
-    urlGallery = '/gallery';
-    urlContact = '/contact';
+    urlGallery = isSubFolder ? '../gallery.html' : 'gallery.html';
+    urlContact = isSubFolder ? '../contact.html' : 'contact.html';
 
-    urlDestSingapore = '/immersion-programs/singapore-indonesia';
-    urlDestJapan = '/immersion-programs/japan';
-    urlDestKorea = '/immersion-programs/south-korea';
-    urlDestEurope = '/immersion-programs/europe';
-    urlDestMalaysia = '/immersion-programs/malaysia-singapore';
-    urlDestUAE = '/immersion-programs/uae';
+    urlDestSingapore = isSubFolder ? 'singapore-indonesia.html' : 'our-programs/singapore-indonesia.html';
+    urlDestJapan = isSubFolder ? 'japan.html' : 'our-programs/japan.html';
+    urlDestKorea = isSubFolder ? 'south-korea.html' : 'our-programs/south-korea.html';
+    urlDestEurope = isSubFolder ? 'europe.html' : 'our-programs/europe.html';
+    urlDestMalaysia = isSubFolder ? 'malaysia-singapore.html' : 'our-programs/malaysia-singapore.html';
+    urlDestUAE = isSubFolder ? 'uae.html' : 'our-programs/uae.html';
   }
 
   function isActive(page) {
     const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
+    if (pathname.includes('our-programs')) {
+      return clean === 'our-programs' ? 'active' : '';
+    }
     if (clean === 'index' && (currentPath === '' || currentPath === 'index')) return 'active';
     if (currentPath === clean) return 'active';
     return '';
@@ -92,8 +95,7 @@
       <div class="nav-links">
         <a href="${urlHome}" class="${isActive('index.html')}">Home</a>
         <a href="${urlAbout}" class="${isActive('about.html')}">About Us</a>
-        <a href="${urlImmersion}" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-        <a href="${urlLeadership}" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+        <a href="${urlImmersion}" class="${isActive('our-programs.html')}">Our Programs</a>
         <a href="${urlGallery}" class="${isActive('gallery.html')}">Gallery</a>
         <a href="${urlContact}" class="nav-cta ${isActive('contact.html')}">Contact Us</a>
       </div>
@@ -105,8 +107,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="${urlHome}" class="${isActive('index.html')}">Home</a>
     <a href="${urlAbout}" class="${isActive('about.html')}">About Us</a>
-    <a href="${urlImmersion}" class="${isActive('immersion-programs.html')}">Immersion Programs</a>
-    <a href="${urlLeadership}" class="${isActive('leadership-walk.html')}">Leadership Walk</a>
+    <a href="${urlImmersion}" class="${isActive('our-programs.html')}">Our Programs</a>
     <a href="${urlGallery}" class="${isActive('gallery.html')}">Gallery</a>
     <a href="${urlContact}" class="${isActive('contact.html')}">Contact Us</a>
   </div>
@@ -123,11 +124,11 @@
           <div class="footer-logo">
             <a href="${urlHome}" onclick="window.location.href='${urlHome}'; return false;" style="text-decoration: none; display: inline-block;">
               <img 
-                src="/images/logo-of-vijigishu_2-white-01-scaled.webp" 
+                src="/images/logo-of-vijigishu_2-1.webp" 
                 onerror="
-                  if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.webp'; }
-                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-white-01-scaled.png'; }
-                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-white-01-scaled.png'; }
+                  if (!this.dataset.step) { this.dataset.step='1'; this.src='${assetBase}images/logo-of-vijigishu_2-1.webp'; }
+                  else if (this.dataset.step==='1') { this.dataset.step='2'; this.src='/images/logo-of-vijigishu_2-1.webp'; }
+                  else if (this.dataset.step==='2') { this.dataset.step='3'; this.src='${assetBase}images/logo-of-vijigishu_2-1.webp'; }
                   else if (this.dataset.step==='3') { this.dataset.step='4'; this.src='https://staging.vijigishu.co.in/wp-content/uploads/2026/05/logo-of-vijigishu_2-white-01-scaled.png'; }
                 " 
                 alt="Vijigishu Educational Travel" 
@@ -135,18 +136,18 @@
               />
             </a>
           </div>
-          <div class="footer-socials">
-            <a class="social-btn" href="https://www.facebook.com/share/17EA8VpoFP/" target="_blank" aria-label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:20px;">
+            <a class="social-btn fb" href="https://www.facebook.com/people/Vijigishu-Education-Pvt-Ltd/100087566430571/#" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-            <a class="social-btn" href="https://www.instagram.com/vijigishu_official?igsh=cWc1ejBqdmZ3djRv" target="_blank" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+            <a class="social-btn insta" href="https://www.instagram.com/vijigishu_official/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
             </a>
-            <a class="social-btn" href="https://youtube.com/@vijigishueducation?si=LATkWNQpwHbw_ppp" target="_blank" aria-label="YouTube">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" fill="white"/></svg>
+            <a class="social-btn yt" href="https://www.youtube.com/@vijigishueducation" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" class="yt-body"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02" class="yt-play"/></svg>
             </a>
-            <a class="social-btn" href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" aria-label="LinkedIn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <a class="social-btn linkedin" href="https://www.linkedin.com/company/vijigishu-education-private-limited/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
           </div>
         </div>
@@ -156,7 +157,6 @@
           <div class="footer-col-title">Quick Links</div>
           <div class="footer-links">
             <a href="${urlImmersion}">Programs</a>
-            <a href="${urlLeadership}">Leadership walk</a>
             <a href="${urlGallery}">Gallery</a>
             <a href="${urlContact}">Cancellation &amp; Refund process</a>
           </div>
@@ -179,16 +179,16 @@
         <div>
           <div class="footer-col-title">Contact</div>
           <div style="display:flex; flex-direction:column; gap:16px;">
-            <div style="display:flex; align-items:flex-start; gap:12px; color:rgba(255,255,255,.75); font-size:.9rem;">
+            <div style="display:flex; align-items:flex-start; gap:12px; color:#1E293B; font-size:.9rem;">
               <div class="social-btn" style="width:36px; height:36px; flex-shrink:0; pointer-events:none; margin:0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div style="line-height:1.5; padding-top:6px;">
-                <a href="tel:02079626639" style="color:inherit; text-decoration:none;">020 7962 6639</a> , <a href="tel:7588522386" style="color:inherit; text-decoration:none;">7588522386</a>
+                <a href="tel:9028068711" style="color:inherit; text-decoration:none;">+91 9028068711</a> , <a href="tel:9422023792" style="color:inherit; text-decoration:none;">+91 9422023792</a>
               </div>
             </div>
 
-            <div style="display:flex; align-items:flex-start; gap:12px; color:rgba(255,255,255,.75); font-size:.9rem;">
+            <div style="display:flex; align-items:flex-start; gap:12px; color:#1E293B; font-size:.9rem;">
               <div class="social-btn" style="width:36px; height:36px; flex-shrink:0; pointer-events:none; margin:0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
@@ -197,12 +197,12 @@
               </div>
             </div>
 
-            <div style="display:flex; align-items:flex-start; gap:12px; color:rgba(255,255,255,.75); font-size:.88rem; line-height:1.55;">
+            <div style="display:flex; align-items:flex-start; gap:12px; color:#1E293B; font-size:.88rem; line-height:1.55;">
               <div class="social-btn" style="width:36px; height:36px; flex-shrink:0; pointer-events:none; margin:0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
               <div style="padding-top:4px;">
-                A9- 3rd floor, Mark Park building, Pandurang Colony, Near Dr. Kalmadi Shamrao Jr. College, Erandwane, Pune 411038
+                C-41, Floor No. 1, Madhav Baug Society, Shivthirth Nagar, Paud Road, Kothrud, Pune – 411038
               </div>
             </div>
           </div>
@@ -215,6 +215,30 @@
     © ${new Date().getFullYear()} Vijigishu Education Pvt. Ltd. All rights reserved.
   </div>
   `;
+
+  const ctaHTML = `
+<!-- ===== GLOBAL CTA ===== -->
+<section class="global-cta-section" style="position:relative; overflow:hidden;">
+  <!-- Flowing Background SVG Animation & Office Coordinates Watermark -->
+  
+
+  <div class="container" style="position:relative; z-index:2;">
+    <div class="global-cta-inner reveal">
+      <div class="global-cta-left">
+        <h2 class="global-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
+        <p class="global-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
+        <div class="global-cta-buttons">
+          <a href="${urlImmersion}" class="btn btn-green">Explore Programs &nbsp;&nbsp;&rarr;</a>
+          <a href="${urlContact}" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">Contact Our Team</a>
+        </div>
+      </div>
+      <div class="global-cta-right">
+        <img src="${assetBase}images/floating-world-cta.webp" class="floating-cta-img" alt="Global Education Island" />
+      </div>
+    </div>
+  </div>
+</section>
+`;
 
   // 4. Auto-Inject into DOM
   function injectComponents() {
@@ -233,6 +257,13 @@
       }
     }
 
+    
+    // Inject Global CTA
+    const ctaContainer = document.getElementById('global-cta');
+    if (ctaContainer) {
+      ctaContainer.outerHTML = ctaHTML;
+    }
+
     // Inject Footer
     const footerContainer = document.getElementById('global-footer');
     if (footerContainer) {
@@ -243,6 +274,20 @@
       }
     } else if (document.body) {
       document.body.insertAdjacentHTML('beforeend', footerHTML);
+    }
+
+    
+    // Inject Global Floating WhatsApp Button
+    if (!currentPath.includes('admin') && !document.getElementById('whatsappFloat') && document.body) {
+      const whatsappBtnHTML = `
+      <a href="https://wa.me/919422023792?text=Hello%20Vijigishu%20Team%2C%20I%20have%20an%20enquiry" target="_blank" rel="noopener noreferrer" id="whatsappFloat" class="whatsapp-float-btn" aria-label="Chat on WhatsApp" title="Chat with us on WhatsApp">
+        <span class="whatsapp-tooltip">Chat with Us</span>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.16 4.237 4.303-1.128zm11.38-5.378c-.287-.144-1.696-.837-1.958-.933-.263-.096-.455-.144-.647.144-.192.288-.744.933-.912 1.125-.168.192-.336.216-.623.072-.287-.144-1.214-.447-2.312-1.427-.854-.763-1.431-1.704-1.598-1.992-.168-.288-.018-.444.126-.587.13-.13.287-.336.431-.504.144-.168.192-.288.287-.48.096-.192.048-.36-.024-.504-.072-.144-.647-1.56-.886-2.136-.233-.561-.47-.484-.647-.492-.168-.008-.36-.008-.552-.008s-.504.072-.767.36c-.263.288-1.007.984-1.007 2.4 0 1.416 1.031 2.784 1.175 2.976.144.192 2.03 3.1 4.918 4.347 2.888 1.248 2.888.832 3.415.776.527-.056 1.696-.693 1.935-1.363.239-.67.239-1.243.168-1.363-.072-.12-.264-.192-.551-.336z"/>
+        </svg>
+      </a>
+      `;
+      document.body.insertAdjacentHTML('beforeend', whatsappBtnHTML);
     }
 
     // Inject Global Scroll To Top Button (Excluding admin page)
