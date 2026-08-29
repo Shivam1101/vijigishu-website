@@ -36,24 +36,24 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:  #1B1C4A;
-      --green: #38673A;
-      --sage:  #9FC28C;
+      --navy: #2B5495;
+      --green: #2B5495;
+      --sage: #2B5495;
       --gold:  #D4A840;
       --white: #FFFFFF;
       --off:   #F6F7F2;
       --gray:  #7B7B8F;
-      --dark:  #0D0E2E;
+      --dark: #0F172A;
       --ease:  cubic-bezier(.25,.46,.45,.94);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--navy); background: var(--off); overflow-x: hidden; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: #0F172A; background: var(--off); overflow-x: hidden; }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
     ul { list-style: none; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .tag { display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--green); background: transparent; padding: 0; margin-bottom: 12px; }
-    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.15; color: var(--navy); }
+    .section-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.15; color: #0F172A; }
     .section-heading span { color: var(--green); font-style: italic; }
 
     /* ─── NAVBAR ─── */
@@ -70,14 +70,14 @@
     .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-links a:hover, .nav-links a.active { color: #0F172A; }
     .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
-    .nav-cta:hover { background: var(--sage) !important; color: var(--navy) !important; }
+    .nav-cta:hover { background: var(--sage) !important; color: #0F172A !important; }
     .nav-cta::after { display: none !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: #FFFFFF !important; border-radius: 2px; }
     .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
-    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: var(--navy); display: block; }
+    .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: #0F172A; display: block; }
 
     
     .page-hero { position: relative; width: 100%; height: auto; min-height: auto; margin-top: 0; overflow: hidden; background: #FFFFFF !important; display: block; }
@@ -136,7 +136,7 @@
       font-family: inherit;
       font-size: .88rem;
       font-weight: 700;
-      color: var(--navy);
+      color: #0F172A;
       cursor: pointer;
       transition: all .25s var(--ease);
       display: inline-flex;
@@ -154,13 +154,13 @@
       border-color: var(--green);
       color: var(--green);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.15);
+      box-shadow: 0 8px 20px rgba(43, 84, 149, 0.15);
     }
     .filter-btn.active {
       background: var(--green);
       color: var(--white);
       border-color: var(--green);
-      box-shadow: 0 8px 24px rgba(56, 103, 58, 0.3);
+      box-shadow: 0 8px 24px rgba(43, 84, 149, 0.3);
     }
 
     .masonry-grid {
@@ -219,7 +219,7 @@
     .masonry-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(43, 84, 149, 0.15);
+      background: rgba(15, 23, 42, 0.6);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -234,7 +234,7 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      color: var(--navy);
+      color: #0F172A;
       box-shadow: 0 8px 24px rgba(0,0,0,0.2);
       transform: scale(0.8);
       transition: transform .3s var(--ease);
@@ -243,7 +243,11 @@
     .masonry-item:hover .masonry-zoom-icon { transform: scale(1); }
 
     
-    /* ─── LIGHTBOX MODAL WITH ULTRA HIGH Z-INDEX ─── */
+    
+    
+    
+    
+    /* ─── LIGHTBOX MODAL WITH PURE BLACK & WHITE HIGH CONTRAST PALETTE (NO NAVY / NO BLUE) ─── */
     .lightbox {
       display: none;
       position: fixed !important;
@@ -251,143 +255,142 @@
       inset: 0 !important;
       width: 100vw !important;
       height: 100vh !important;
-      background: rgba(43, 84, 149, 0.15) !important;
-      backdrop-filter: blur(14px) !important;
-      -webkit-backdrop-filter: blur(14px) !important;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      background: rgba(0, 0, 0, 0.94) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 20px !important;
     }
     .lightbox.open {
       display: flex !important;
     }
     .lightbox-img-wrap {
-      position: relative;
-      max-width: 90vw;
-      max-height: 82vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      position: relative !important;
+      max-width: calc(100vw - 160px) !important;
+      max-height: 82vh !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
     .lightbox-content {
-      max-width: 100%;
-      max-height: 78vh;
-      border-radius: 14px;
-      object-fit: contain;
-      box-shadow: 0 25px 70px rgba(0,0,0,.6);
-      display: block;
+      max-width: 100% !important;
+      max-height: 80vh !important;
+      border-radius: 16px !important;
+      object-fit: contain !important;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8) !important;
+      display: block !important;
     }
+    
+    /* Navigation Arrow Buttons: Pure White Badge with Pure Black SVG Icon */
     .lightbox-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 52px;
-      height: 52px;
-      background: rgba(255,255,255,0.18);
-      border: 1.5px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      color: var(--white);
-      font-size: 1.6rem;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: all .25s;
-      z-index: 10000001;
-      user-select: none;
-      touch-action: manipulation;
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 54px !important;
+      height: 54px !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+      border-radius: 50% !important;
+      color: #000000 !important;
+      display: grid !important;
+      place-items: center !important;
+      cursor: pointer !important;
+      transition: all 0.25s cubic-bezier(.25,.46,.45,.94) !important;
+      z-index: 10000001 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+      user-select: none !important;
+      touch-action: manipulation !important;
+    }
+    .lightbox-nav-btn svg {
+      stroke: #000000 !important;
+      width: 26px !important;
+      height: 26px !important;
     }
     .lightbox-nav-btn:hover {
-      background: var(--green);
-      border-color: var(--sage);
-      color: var(--white);
-      transform: translateY(-50%) scale(1.08);
+      background: #F1F5F9 !important;
+      border-color: #FFFFFF !important;
+      color: #000000 !important;
+      transform: translateY(-50%) scale(1.1) !important;
+      box-shadow: 0 14px 36px rgba(255, 255, 255, 0.25) !important;
     }
-    .lightbox-prev { left: 28px; }
-    .lightbox-next { right: 28px; }
-    .lightbox-nav-container {
-      display: contents;
+    .lightbox-prev {
+      left: 28px !important;
+    }
+    .lightbox-next {
+      right: 28px !important;
+    }
+    
+    /* Close Button: Pure White Badge with Pure Black Cross Icon */
+    .lightbox-close {
+      position: absolute !important;
+      top: 24px !important;
+      right: 28px !important;
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: 50% !important;
+      background: #FFFFFF !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+      color: #000000 !important;
+      display: grid !important;
+      place-items: center !important;
+      cursor: pointer !important;
+      z-index: 10000002 !important;
+      transition: all 0.25s cubic-bezier(.25,.46,.45,.94) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    }
+    .lightbox-close svg {
+      stroke: #000000 !important;
+      width: 22px !important;
+      height: 22px !important;
+    }
+    .lightbox-close:hover {
+      background: #F1F5F9 !important;
+      border-color: #FFFFFF !important;
+      color: #000000 !important;
+      transform: scale(1.1) !important;
+      box-shadow: 0 14px 36px rgba(255, 255, 255, 0.25) !important;
+    }
+    .masonry-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5) !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s var(--ease);
+      z-index: 2;
+    }
+    .masonry-zoom-icon {
+      width: 44px;
+      height: 44px;
+      background: #FFFFFF !important;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #000000 !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      transform: scale(0.8);
+      transition: transform .3s var(--ease);
     }
 
     @media (max-width: 768px) {
-      .lightbox {
-        padding: 50px 16px 20px !important;
-        justify-content: center !important;
-      }
-      .lightbox-img-wrap {
-        max-width: 96vw !important;
-        max-height: 68vh !important;
-        margin-bottom: 16px !important;
-      }
-      .lightbox-content {
-        max-height: 64vh !important;
-      }
-      .lightbox-nav-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 28px !important;
-        width: 100% !important;
-        z-index: 10000001 !important;
-      }
-      .lightbox-nav-btn {
-        position: static !important;
-        transform: none !important;
-        width: 48px !important;
-        height: 48px !important;
-        font-size: 1.5rem !important;
-        background: rgba(255, 255, 255, 0.22) !important;
-        border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
-      }
-      .lightbox-nav-btn:active {
-        transform: scale(0.92) !important;
-      }
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1.5px solid rgba(255, 255, 255, 0.4);
-      color: #FFFFFF;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      z-index: 10000002;
-      transition: all 0.25s var(--ease);
-      touch-action: manipulation;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-    }
-    .lightbox-close:hover {
-      background: var(--green);
-      border-color: var(--sage);
-      color: #FFFFFF;
-      transform: scale(1.1);
-      box-shadow: 0 8px 24px rgba(56, 103, 58, 0.4);
-    }
-    .lightbox-close svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
-    }
-    .lightbox-close svg {
-      width: 20px;
-      height: 20px;
-      stroke: currentColor;
+      .lightbox-img-wrap { max-width: calc(100vw - 110px) !important; }
+      .lightbox-prev { left: 12px !important; }
+      .lightbox-next { right: 12px !important; }
+      .lightbox-nav-btn { width: 44px !important; height: 44px !important; }
+      .lightbox-close { top: 16px !important; right: 16px !important; width: 42px !important; height: 42px !important; }
     }
 
-    /* ─── FOOTER ─── */
+/* ─── FOOTER ─── */
     footer {
       background: linear-gradient(135deg, var(--dark) 0%, var(--navy) 60%, var(--dark) 100%);
       position: relative;
       overflow: hidden;
       padding: 60px 0 0;
-      border-top: 1px solid rgba(159, 194, 140, 0.12);
+      border-top: 1px solid rgba(43, 84, 149, 0.12);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -404,7 +407,7 @@
     .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .footer-socials { display: flex; gap: 12px; margin-top: 28px; }
     .social-btn { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08); display: grid; place-items: center; color: rgba(255,255,255,.7); transition: all .35s var(--ease); font-size: .9rem; }
-    .social-btn:hover { background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%); border-color: var(--sage); color: var(--navy); transform: translateY(-3px); }
+    .social-btn:hover { background: linear-gradient(135deg, var(--green) 0%, var(--sage) 100%); border-color: var(--sage); color: #0F172A; transform: translateY(-3px); }
     .footer-col-title { font-size: .82rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); margin-bottom: 24px; position: relative; padding-bottom: 8px; display: inline-block; }
     .footer-col-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 32px; height: 2px; background: linear-gradient(90deg, var(--sage), transparent); border-radius: 2px; }
     .footer-links { display: flex; flex-direction: column; gap: 14px; }
@@ -471,7 +474,7 @@
 
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
 </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1788017659625" />
+  <link rel="stylesheet" href="css/global-components.css?v=1788027507395" />
   
   
   
@@ -514,7 +517,7 @@
 
 <!-- ===== PAGE HERO BANNER (NO OVERLAY, CLEAN VIDEO) ===== -->
 <div class="page-hero">
-  <video autoplay loop muted playsinline preload="auto" poster="images/gallery-video-poster.jpg" style="width:100%; height:auto; display:block; object-fit:contain;">
+  <video autoplay loop muted playsinline preload="metadata" poster="images/gallery-hero-poster.webp" style="width:100%; height:auto; display:block; object-fit:contain;">
     <source src="videos/gallery-banner-optimized.mp4" type="video/mp4" />
     <source src="images/Website-Gallery-Banner-Video-.mp4" type="video/mp4" />
   </video>
@@ -523,7 +526,7 @@
 <!-- ===== HEADING AND SUB-HEADING DIRECTLY BELOW BANNER CENTER ===== -->
 <div class="gallery-intro-bar">
   <div class="container">
-    <h1 class="section-heading reveal" style="text-align: center;">Journey Through Our <span>Global Galleries</span></h1>
+    <h1 class="page-hero-title reveal" style="text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); color: #2B5495; margin-bottom: 12px;">Journey Through Our <em>Global Galleries</em></h1>
     <p class="gallery-sub-heading reveal">Our Global Footprint - Moments captured from thousands of successful student journeys worldwide.</p>
   </div>
 </div>
@@ -546,27 +549,35 @@
 
 <!-- LIGHTBOX MODAL WITH NEXT/PREV ARROWS -->
 <div id="lightbox" class="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox" title="Close">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox" title="Close Gallery">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <line x1="18" y1="6" x2="6" y2="18"></line>
       <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
   </button>
+  
+  <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous Photo" title="Previous">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"></path>
+    </svg>
+  </button>
+
   <div class="lightbox-img-wrap">
     <img class="lightbox-content" id="lightbox-img" alt="Gallery Photo" />
   </div>
-  <div class="lightbox-nav-container">
-    <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
-    <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next">›</button>
-  </div>
-  
+
+  <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next Photo" title="Next">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18l6-6-6-6"></path>
+    </svg>
+  </button>
 </div>
 
 <!-- ===== FOOTER ===== -->
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1788017659625"></script>
+<script src="js/global-components.js?v=1788027507395"></script>
 
 <script>
   // High Quality Vector SVG Flag & Globe Icons

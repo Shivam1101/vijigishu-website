@@ -32,14 +32,14 @@
     /* ─── Reset & Design Tokens ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:  #2B5495;
+      --navy: #2B5495;
       --green: #2B5495;
-      --sage:  #E7F5FB;
+      --sage: #2B5495;
       --gold:  #D4A840;
       --white: #FFFFFF;
       --off:   #F6F7F2;
       --gray:  #7B7B8F;
-      --dark:  #0D0E2E;
+      --dark: #0F172A;
       --ease:  cubic-bezier(.25,.46,.45,.94);
     }
     html { scroll-behavior: smooth; }
@@ -54,8 +54,8 @@
     .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
     .btn-primary { background: var(--navy); color: var(--white); }
     .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
-    .btn-green { background: var(--sage); color: var(--navy); }
-    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+    .btn-royal { background: var(--sage); color: var(--navy); }
+    .btn-royal:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
     
     
@@ -291,7 +291,7 @@
       box-sizing: border-box !important;
       flex: 0 0 calc((100% - 48px) / 3) !important;
       max-width: calc((100% - 48px) / 3) !important;
-      background: linear-gradient(145deg, rgba(43, 84, 149, 0.12) 0%, rgba(56, 103, 58, 0.06) 100%);
+      background: linear-gradient(145deg, rgba(43, 84, 149, 0.12) 0%, rgba(43, 84, 149, 0.06) 100%);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(43, 84, 149, 0.12);
@@ -304,8 +304,8 @@
     .incl-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 16px 40px rgba(43, 84, 149, 0.12);
-      background: linear-gradient(145deg, rgba(43, 84, 149, 0.12) 0%, rgba(56, 103, 58, 0.12) 100%);
-      border-color: rgba(56, 103, 58, 0.2);
+      background: linear-gradient(145deg, rgba(43, 84, 149, 0.12) 0%, rgba(43, 84, 149, 0.12) 100%);
+      border-color: rgba(43, 84, 149, 0.2);
     }
     .incl-icon {
       width: 52px; height: 52px;
@@ -313,7 +313,7 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: rgba(56, 103, 58, 0.1);
+      background: rgba(43, 84, 149, 0.1);
       color: var(--green);
       flex-shrink: 0;
       transition: all 0.4s cubic-bezier(.25,.46,.45,.94);
@@ -612,7 +612,7 @@
     </div>
 
     <div class="details-action-wrap reveal">
-      <a href="../contact?type=internship-malaysia" class="btn btn-green" style="padding: 16px 40px; font-size: 1rem;">
+      <a href="../contact?type=internship-malaysia" class="btn btn-royal" style="padding: 16px 40px; font-size: 1rem;">
         Apply Now! →
       </a>
     </div>

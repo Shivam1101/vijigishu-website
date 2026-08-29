@@ -37,14 +37,14 @@
     /* ─── Reset & Base ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:   #1B1C4A;
-      --green:  #38673A;
-      --sage:   #9FC28C;
+      --navy: #2B5495;
+      --green:  #2B5495;
+      --sage: #2B5495;
       --gold:   #D4A840;
       --white:  #FFFFFF;
       --off:    #F6F7F2;
       --gray:   #7B7B8F;
-      --dark:   #0D0E2E;
+      --dark: #0F172A;
       --ease:   cubic-bezier(.25,.46,.45,.94);
     }
     html { scroll-behavior: smooth; }
@@ -92,11 +92,11 @@
       border: 2px solid var(--white);
     }
     .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
-    .btn-green {
+    .btn-royal {
       background: var(--sage);
       color: var(--navy);
     }
-    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+    .btn-royal:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
     /* ─── NAVBAR ─── */
     nav {
@@ -397,9 +397,9 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
     .why-col-item:hover .why-icon-box {
-      transform: scale(1.12);
-      background: rgba(159, 194, 140, 0.28);
-      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.15);
+      transform: scale(1.08);
+      background: #eef2eb !important;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
     }
     .why-item-title {
       font-size: .95rem;
@@ -430,8 +430,6 @@
       }
     }
 
-    /* ─── COUNTERS & STATS (PARALLAX) ─── */
-    
     /* ─── COUNTERS & STATS (HERO) ─── */
     .stats-inner {
       position: relative;
@@ -441,14 +439,13 @@
       gap: 0;
       text-align: center;
       margin-top: 48px;
-      border-top: 1px solid rgba(0,0,0,.06);
-      border-bottom: 1px solid rgba(0,0,0,.06);
+      border: none !important;
     }
     .stat-item {
       padding: 32px 16px;
-      border-right: 1px solid rgba(0,0,0,.06);
+      border: none !important;
     }
-    .stat-item:last-child { border-right: none; }
+    .stat-item:last-child { border: none !important; }
     .stat-num {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.5rem, 4vw, 3.5rem);
@@ -507,120 +504,69 @@
       flex-shrink: 0;
     }
 
-        /* ─── TESTIMONIALS ─── */
-    #testimonials { padding: 60px 0; background: var(--off); }
+        /* ─── TESTIMONIALS SLIDER COMPLETE DESIGN SYSTEM ─── */
+    #testimonials { padding: 60px 0; background: #F1F5F9; }
     .testimonials-header { text-align: center; margin-bottom: 40px; }
 
-    .testi-slider-wrapper {
-      position: relative;
-    }
-    .testi-slider {
-      overflow: hidden;
-      width: 100%;
-      padding: 20px 0;
-    }
-    .testi-track {
-      display: flex;
-      gap: 24px;
-      transition: transform 0.5s cubic-bezier(.25,.46,.45,.94);
-    }
+    .testi-slider-wrapper { position: relative; }
+    .testi-slider { overflow: hidden; width: 100%; padding: 20px 0; }
+    .testi-track { display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(.25,.46,.45,.94); }
+
     .testi-card {
       flex: 0 0 calc((100% - 48px) / 3);
-      background: var(--white);
-      border-radius: 12px;
+      background: #FFFFFF;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid rgba(43, 84, 149, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
       display: flex;
       flex-direction: column;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
     }
-    .testi-img {
-      height: 200px;
-      overflow: hidden;
-    }
-    .testi-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .testi-body {
-      padding: 40px 24px 32px;
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    .testi-quote-badge {
-      width: 48px; height: 48px;
-      background: var(--navy);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: absolute;
-      top: -24px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 4px solid var(--white);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      z-index: 2;
-    }
-    .testi-name {
-      font-size: .95rem;
-      color: var(--navy);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      margin-bottom: 18px;
-      position: relative;
-    }
-    .testi-name::after {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 3px;
-      background: var(--green); /* Forest green accent color fits perfectly */
-      margin: 8px auto 0;
-      border-radius: 2px;
-    }
-    .testi-text {
-      font-size: .88rem;
-      color: var(--gray);
-      line-height: 1.65;
+    .testi-card:hover {
+      transform: translateY(-6px) !important;
+      border-color: rgba(43, 84, 149, 0.25) !important;
+      box-shadow: 0 16px 40px rgba(43, 84, 149, 0.12) !important;
     }
 
-    .slider-arrow {
-      background: var(--white);
-      border: 2px solid rgba(0,0,0,0.08);
+    .testi-img { height: 200px; overflow: hidden; }
+    .testi-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease !important; }
+    .testi-card:hover .testi-img img { transform: scale(1.06) !important; }
+
+    .testi-body { padding: 40px 24px 32px; position: relative; text-align: center; display: flex; flex-direction: column; flex: 1; }
+
+    .testi-quote-badge {
+      width: 48px; height: 48px;
+      background: #2B5495;
       border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--navy);
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: -24px; left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid #FFFFFF;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 2;
     }
-    .slider-arrow:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    .testi-name { font-size: 0.95rem; color: #0F172A; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 18px; position: relative; }
+    .testi-name::after { content: ''; display: block; width: 32px; height: 3px; background: #2B5495; margin: 8px auto 0; border-radius: 2px; }
+    .testi-text { font-size: 0.88rem; color: #475569; line-height: 1.65; }
+
+    .slider-arrow {
+      background: #FFFFFF; border: 2px solid rgba(0, 0, 0, 0.08); border-radius: 50%;
+      width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+      color: #2B5495; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .slider-arrow:hover {
+      background: #2B5495 !important; border-color: #2B5495 !important; color: #FFFFFF !important;
+      transform: translateY(-50%) scale(1.08) !important; box-shadow: 0 8px 22px rgba(43, 84, 149, 0.3) !important;
+    }
     .prev-arrow { left: -68px; }
     .next-arrow { right: -68px; }
 
-    @media (max-width: 1280px) {
-      .prev-arrow { left: 8px; }
-      .next-arrow { right: 8px; }
-    }
-    @media (max-width: 1024px) {
-      .testi-card { flex: 0 0 calc((100% - 24px) / 2); }
-    }
-    @media (max-width: 768px) {
-      .testi-card { flex: 0 0 100%; }
-    }
+    @media (max-width: 1280px) { .prev-arrow { left: 8px; } .next-arrow { right: 8px; } }
+    @media (max-width: 1024px) { .testi-card { flex: 0 0 calc((100% - 24px) / 2); } }
+    @media (max-width: 768px) { .testi-card { flex: 0 0 100%; } }
 
     /* ─── CTA BANNER ─── */
     #cta { padding: 60px 0;
@@ -679,7 +625,7 @@
     }
     .faq-item.open {
       border-color: var(--green);
-      box-shadow: 0 10px 30px rgba(56, 103, 58, 0.12);
+      box-shadow: 0 10px 30px rgba(43, 84, 149, 0.12);
     }
     .faq-question {
       display: flex;
@@ -731,7 +677,7 @@
       position: relative;
       overflow: hidden;
       padding: 60px 0 0;
-      border-top: 1px solid rgba(159, 194, 140, 0.12);
+      border-top: 1px solid rgba(43, 84, 149, 0.12);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -741,8 +687,8 @@
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(159, 194, 140, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 90% 80%, rgba(56, 103, 58, 0.15) 0%, transparent 70%);
+        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(43, 84, 149, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 90% 80%, rgba(43, 84, 149, 0.15) 0%, transparent 70%);
       pointer-events: none;
     }
     .footer-grid {
@@ -800,7 +746,7 @@
       border-color: var(--sage);
       color: var(--navy); 
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.3);
+      box-shadow: 0 8px 20px rgba(43, 84, 149, 0.3);
     }
     .footer-col-title {
       font-size: .82rem;
@@ -992,7 +938,7 @@
 
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
 </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1788017659625" />
+  <link rel="stylesheet" href="css/global-components.css?v=1788027507395" />
   <link rel="icon" type="image/png" href="images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="images/admin-profile-icon.png" />
@@ -1075,7 +1021,7 @@
       <a href="our-programs/singapore-indonesia" class="program-card reveal" aria-label="Explore Singapore Immersion Program">
         <div class="program-img">
           <img src="images/banner-singapore-indonesia.webp" alt="Singapore Program" loading="lazy" />
-          <span class="program-badge">Popular</span>
+          <span class="program-badge">🔥 Popular</span>
         </div>
         <div class="program-body">
           <div class="program-duration">
@@ -1139,7 +1085,7 @@
       <a href="our-programs/europe" class="program-card reveal reveal-delay-3" aria-label="Explore Europe Immersion Program">
         <div class="program-img">
           <img src="images/banner-europe.webp" alt="Europe Program" loading="lazy" />
-          <span class="program-badge">Premium</span>
+          <span class="program-badge">✨ Premium</span>
         </div>
         <div class="program-body">
           <div class="program-duration">
@@ -1567,7 +1513,7 @@
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1788017659625"></script>
+<script src="js/global-components.js?v=1788027507395"></script>
 
 <script>
   // FAQ accordion

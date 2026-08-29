@@ -32,12 +32,12 @@
   
   <style>
     :root {
-      --navy: #0D0E2E;
-      --green: #38673A;
-      --sage: #9FC28C;
+      --navy: #2B5495;
+      --green: #2B5495;
+      --sage: #2B5495;
       --gold: #D4A840;
       --off: #F8F9FA;
-      --dark: #07081A;
+      --dark: #0F172A;
       --white: #FFFFFF;
       --gray: #5A5B70;
       --border: #E2E8F0;
@@ -272,7 +272,7 @@
     .share-icon-btn svg.svg-stroke { fill: none !important; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .share-icon-btn:hover {
       background: var(--green); color: var(--white); border-color: var(--green); transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(56,103,58,0.3);
+      box-shadow: 0 4px 12px rgba(43, 84, 149,0.3);
     }
 
     /* Author Bio Card */
@@ -334,7 +334,7 @@
       padding: 5px 8px; border-radius: 8px; transition: all 0.2s; line-height: 1.35;
     }
     .toc-item.active a, .toc-item a:hover {
-      color: var(--navy); background: rgba(159,194,140,0.18); font-weight: 700; padding-left: 12px;
+      color: var(--navy); background: rgba(43, 84, 149,0.18); font-weight: 700; padding-left: 12px;
     }
 
     /* Sidebar Programs Links */
@@ -427,10 +427,10 @@
       justify-content: flex-start;
       flex-wrap: wrap;
     }
-    .about-cta-right .btn-green {
+    .about-cta-right .btn-royal {
       background: var(--green); color: var(--white); padding: 10px 22px; border-radius: 100px; font-weight: 700; font-size: 0.84rem;
     }
-    .about-cta-right .btn-green:hover {
+    .about-cta-right .btn-royal:hover {
       background: var(--sage); color: var(--navy); transform: translateY(-2px);
     }
     .about-cta-right .btn-outline {
@@ -457,7 +457,7 @@
       place-items: center;
       overflow: hidden;
       position: relative;
-      box-shadow: inset 0 0 20px rgba(159,194,140,0.15), 0 10px 25px rgba(0,0,0,0.06);
+      box-shadow: inset 0 0 20px rgba(43, 84, 149,0.15), 0 10px 25px rgba(0,0,0,0.06);
       animation: morphBlob 8s ease-in-out infinite;
       transition: border-color 0.4s, background 0.4s;
     }
@@ -678,7 +678,7 @@
           <h2 class="about-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
           <p class="about-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
           <div class="about-cta-right">
-            <a href="our-programs" class="btn-green">Explore Programs →</a>
+            <a href="our-programs" class="btn-royal">Explore Programs →</a>
             <a href="contact" class="btn-outline">Contact Our Team</a>
           </div>
         </div>
@@ -1171,24 +1171,24 @@
     pdfContainer.style.width = '750px';
     pdfContainer.style.padding = '40px';
     pdfContainer.style.background = '#FFFFFF';
-    pdfContainer.style.color = '#0D0E2E';
+    pdfContainer.style.color = '#0F172A';
     pdfContainer.style.fontFamily = "'Plus Jakarta Sans', Arial, sans-serif";
     pdfContainer.style.lineHeight = '1.7';
 
     pdfContainer.innerHTML = `
       <!-- Letterhead Header -->
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #38673A; padding-bottom: 16px; margin-bottom: 28px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #2B5495; padding-bottom: 16px; margin-bottom: 28px;">
         <div>
-          <div style="font-size: 1.15rem; font-weight: 800; color: #0D0E2E; letter-spacing: 0.05em;">VIJIGISHU EDUCATIONAL TRAVEL</div>
-          <div style="font-size: 0.75rem; color: #38673A; font-weight: 700; text-transform: uppercase;">Academic &amp; Industrial Our Programs</div>
+          <div style="font-size: 1.15rem; font-weight: 800; color: #0F172A; letter-spacing: 0.05em;">VIJIGISHU EDUCATIONAL TRAVEL</div>
+          <div style="font-size: 0.75rem; color: #2B5495; font-weight: 700; text-transform: uppercase;">Academic &amp; Industrial Our Programs</div>
         </div>
         <div style="text-align: right;">
-          <span style="background: rgba(56,103,58,0.1); color: #38673A; font-weight: 800; font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; text-transform: uppercase;">${category}</span>
+          <span style="background: rgba(43, 84, 149,0.1); color: #2B5495; font-weight: 800; font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; text-transform: uppercase;">${category}</span>
         </div>
       </div>
 
       <!-- Article Title & Meta -->
-      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.85rem; line-height: 1.28; color: #0D0E2E; margin-bottom: 14px;">${title}</h1>
+      <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.85rem; line-height: 1.28; color: #0F172A; margin-bottom: 14px;">${title}</h1>
       
       <div style="display: flex; gap: 16px; font-size: 0.8rem; color: #5A5B70; font-weight: 600; margin-bottom: 26px; border-bottom: 1px solid #E2E8F0; padding-bottom: 12px;">
         <span><strong>Author:</strong> ${author}</span>

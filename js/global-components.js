@@ -230,7 +230,7 @@
         <h2 class="global-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
         <p class="global-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
         <div class="global-cta-buttons">
-          <a href="${urlImmersion}" class="btn btn-green">Explore Programs &nbsp;&nbsp;&rarr;</a>
+          <a href="${urlImmersion}" class="btn btn-royal">Explore Programs &nbsp;&nbsp;&rarr;</a>
           <a href="${urlContact}" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">Contact Our Team</a>
         </div>
       </div>
@@ -279,10 +279,13 @@
     }
 
     
-    // Inject Global Floating WhatsApp Button
+        // Inject Global Floating WhatsApp Button
     if (!currentPath.includes('admin') && !document.getElementById('whatsappFloat') && document.body) {
+      const hasFab = !!document.getElementById('floating-fab-menu');
+      if (hasFab) document.body.classList.add('has-fab-menu');
+
       const whatsappBtnHTML = `
-      <a href="https://wa.me/919422023792?text=Hello%20Vijigishu%20Team%2C%20I%20have%20an%20enquiry" target="_blank" rel="noopener noreferrer" id="whatsappFloat" class="whatsapp-float-btn" aria-label="Chat on WhatsApp" title="Chat with us on WhatsApp">
+      <a href="https://wa.me/919422023792?text=Hello%20Vijigishu%20Team%2C%20I%20have%20an%20enquiry" target="_blank" rel="noopener noreferrer" id="whatsappFloat" class="whatsapp-float-btn ${hasFab ? 'has-fab' : ''}" aria-label="Chat on WhatsApp" title="Chat with us on WhatsApp">
         <span class="whatsapp-tooltip">Chat with Us</span>
         <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.16 4.237 4.303-1.128zm11.38-5.378c-.287-.144-1.696-.837-1.958-.933-.263-.096-.455-.144-.647.144-.192.288-.744.933-.912 1.125-.168.192-.336.216-.623.072-.287-.144-1.214-.447-2.312-1.427-.854-.763-1.431-1.704-1.598-1.992-.168-.288-.018-.444.126-.587.13-.13.287-.336.431-.504.144-.168.192-.288.287-.48.096-.192.048-.36-.024-.504-.072-.144-.647-1.56-.886-2.136-.233-.561-.47-.484-.647-.492-.168-.008-.36-.008-.552-.008s-.504.072-.767.36c-.263.288-1.007.984-1.007 2.4 0 1.416 1.031 2.784 1.175 2.976.144.192 2.03 3.1 4.918 4.347 2.888 1.248 2.888.832 3.415.776.527-.056 1.696-.693 1.935-1.363.239-.67.239-1.243.168-1.363-.072-.12-.264-.192-.551-.336z"/>
@@ -347,7 +350,30 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectComponents);
+    
+  // Global Asset Protection: Disable context menu & drag on media
+  
+  // Prevent text selection site-wide except in input & textarea fields
+  document.addEventListener('selectstart', function (e) {
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      return false;
+    }
+  }, true);
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO' || e.target.closest('img') || e.target.closest('video')) {
+      e.preventDefault();
+      return false;
+    }
+  }, true);
+
+  document.addEventListener('dragstart', function (e) {
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO' || e.target.closest('img') || e.target.closest('video')) {
+      e.preventDefault();
+      return false;
+    }
+  }, true);
+  document.addEventListener('DOMContentLoaded', injectComponents);
   } else {
     injectComponents();
   }
@@ -451,3 +477,16 @@
     reveals.forEach(el => observer.observe(el));
   }
 })();
+
+
+  // Detect if page has floating FAB menu and add class to body for side-by-side layout
+  function checkFabMenu() {
+    if (document.getElementById('floating-fab-menu')) {
+      document.body.classList.add('has-fab-menu');
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkFabMenu);
+  } else {
+    checkFabMenu();
+  }

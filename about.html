@@ -36,14 +36,14 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy:  #1B1C4A;
-      --green: #38673A;
-      --sage:  #9FC28C;
+      --navy: #2B5495;
+      --green: #2B5495;
+      --sage: #2B5495;
       --gold:  #D4A840;
       --white: #FFFFFF;
       --off:   #F6F7F2;
       --gray:  #7B7B8F;
-      --dark:  #0D0E2E;
+      --dark: #0F172A;
       --ease:  cubic-bezier(.25,.46,.45,.94);
     }
     html { scroll-behavior: smooth; }
@@ -58,8 +58,8 @@
     .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-weight: 700; font-size: .9rem; transition: all .3s var(--ease); cursor: pointer; border: none; font-family: inherit; }
     .btn-primary { background: var(--navy); color: var(--white); }
     .btn-primary:hover { background: var(--green); transform: translateY(-2px); }
-    .btn-green { background: var(--sage); color: var(--navy); }
-    .btn-green:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
+    .btn-royal { background: var(--sage); color: var(--navy); }
+    .btn-royal:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.5); }
     .btn-outline:hover { background: var(--white); color: var(--navy); transform: translateY(-2px); }
 
@@ -131,17 +131,18 @@
     .cornell-img { display: flex; justify-content: center; align-items: center; }
     .cornell-img img { width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,.12); }
     .cornell-ribbon {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(212,168,64,.1);
-      border: 1px solid rgba(212,168,64,.3);
-      border-radius: 12px;
-      padding: 10px 18px;
-      margin-bottom: 24px;
+      display: inline-flex !important;
+      align-items: center !important;
+      width: fit-content !important;
+      gap: 8px !important;
+      background: rgba(43, 84, 149, 0.08) !important;
+      border: 1px solid rgba(43, 84, 149, 0.2) !important;
+      border-radius: 100px !important;
+      padding: 5px 14px !important;
+      margin-bottom: 20px !important;
     }
-    .cornell-ribbon-icon { font-size: 1.2rem; }
-    .cornell-ribbon-text { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); }
+    .cornell-ribbon-icon { font-size: .95rem !important; }
+    .cornell-ribbon-text { font-size: .72rem !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: .08em !important; color: #2B5495 !important; }
     .cornell-h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
     .cornell-h3 em { color: var(--green); font-style: italic; }
     .cornell-p { font-size: .95rem; color: var(--gray); line-height: 1.8; margin-bottom: 14px; }
@@ -236,7 +237,7 @@
 
     
     .cv-card {
-      background: #F8FAFC !important;
+      background: #F1F5F9 !important;
       border: 1px solid rgba(43, 84, 149, 0.15) !important;
       border-radius: 20px;
       padding: 32px 24px;
@@ -296,16 +297,17 @@
     .dir-body { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
     .dir-card.reverse .dir-body { order: 1; }
     .dir-award {
-      display: inline-flex;
-      align-items: center;
+      display: inline-flex !important;
+      align-items: center !important;
+      width: fit-content !important;
       gap: 8px;
-      background: rgba(212,168,64,.1);
-      border: 1px solid rgba(212,168,64,.25);
+      background: rgba(43, 84, 149, 0.08) !important;
+      border: 1px solid rgba(43, 84, 149, 0.2) !important;
       border-radius: 100px;
       padding: 5px 14px;
       font-size: .72rem;
       font-weight: 700;
-      color: var(--gold);
+      color: #2B5495 !important;
       text-transform: uppercase;
       letter-spacing: .08em;
       margin-bottom: 20px;
@@ -429,15 +431,15 @@
       position: relative;
       overflow: hidden;
       padding: 60px 0 0;
-      border-top: 1px solid rgba(159, 194, 140, 0.12);
+      border-top: 1px solid rgba(43, 84, 149, 0.12);
     }
     footer::before {
       content: '';
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(159, 194, 140, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 90% 80%, rgba(56, 103, 58, 0.15) 0%, transparent 70%);
+        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(43, 84, 149, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 90% 80%, rgba(43, 84, 149, 0.15) 0%, transparent 70%);
       pointer-events: none;
     }
     
@@ -495,7 +497,7 @@
       border-color: var(--sage);
       color: var(--navy); 
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(56, 103, 58, 0.3);
+      box-shadow: 0 8px 20px rgba(43, 84, 149, 0.3);
     }
     .footer-col-title {
       font-size: .82rem;
@@ -641,7 +643,7 @@
 
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
 </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1788017659625" />
+  <link rel="stylesheet" href="css/global-components.css?v=1788027507395" />
   
   
   
@@ -851,7 +853,7 @@
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1788017659625"></script>
+<script src="js/global-components.js?v=1788027507395"></script>
 <script>
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {

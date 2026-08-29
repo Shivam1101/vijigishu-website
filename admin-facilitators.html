@@ -15,12 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #0D0E2E;
-      --green: #38673A;
-      --sage: #9FC28C;
+      --navy: #2B5495;
+      --green: #2B5495;
+      --sage: #2B5495;
       --gold: #D4A840;
       --off: #F4F5F8;
-      --dark: #07081A;
+      --dark: #0F172A;
       --white: #FFFFFF;
       --gray: #5A5B70;
       --border: #CBD5E1;
@@ -63,9 +63,9 @@
     .sidebar-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; overflow: hidden; white-space: nowrap; }
     .sidebar-brand img { height: 32px; width: auto; }
     .sidebar-badge {
-      background: rgba(159,194,140,0.15); color: var(--sage); padding: 3px 8px; border-radius: 4px;
+      background: rgba(43, 84, 149,0.15); color: var(--sage); padding: 3px 8px; border-radius: 4px;
       font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
-      border: 1px solid rgba(159,194,140,0.3); display: inline-block;
+      border: 1px solid rgba(43, 84, 149,0.3); display: inline-block;
     }
     .sidebar-toggle-btn {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
@@ -87,7 +87,7 @@
       white-space: nowrap; overflow: hidden; text-decoration: none;
     }
     .menu-btn:hover { background: rgba(255,255,255,0.06); color: var(--white); }
-    .menu-btn.active { background: var(--green); color: var(--white); font-weight: 700; box-shadow: 0 4px 15px rgba(56,103,58,0.4); }
+    .menu-btn.active { background: var(--green); color: var(--white); font-weight: 700; box-shadow: 0 4px 15px rgba(43, 84, 149,0.4); }
     .admin-sidebar.collapsed .menu-btn { justify-content: center; padding: 12px 0; border-radius: 12px; }
     .admin-sidebar.collapsed .menu-btn span { display: none; }
 
@@ -124,10 +124,10 @@
       padding: 8px 16px; border-radius: 100px; font-weight: 700; font-size: .8rem;
       cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 6px; transition: all .2s;
     }
-    .btn-green { background: var(--sage); color: var(--navy); }
-    .btn-green:hover { background: var(--green); color: var(--white); }
+    .btn-royal { background: var(--sage); color: var(--navy); }
+    .btn-royal:hover { background: var(--green); color: var(--white); }
     .btn-navy { background: var(--navy); color: var(--white); }
-    .btn-navy:hover { background: #1B1C4A; }
+    .btn-navy:hover { background: #2B5495; }
     .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--navy); }
     .btn-outline:hover { background: var(--white); }
     .btn-danger { background: #FFEBEE; color: #D32F2F; border: 1px solid #FFCDD2; }
@@ -170,7 +170,7 @@
     .modal-card { background: var(--white); border-radius: 24px; padding: 28px; max-width: 520px; width: 100%; box-shadow: 0 30px 80px rgba(0,0,0,.3); }
 
     .upload-dropzone { border: 2px dashed #CBD5E1; border-radius: 12px; padding: 18px 12px; text-align: center; background: #F8FAFC; cursor: pointer; transition: all .3s; position: relative; margin-bottom: 10px; }
-    .upload-dropzone:hover { border-color: var(--green); background: rgba(56,103,58,0.03); }
+    .upload-dropzone:hover { border-color: var(--green); background: rgba(43, 84, 149,0.03); }
     .upload-dropzone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
 
     /* Toast Alert */
@@ -365,7 +365,7 @@
         <div class="top-actions-wrap">
           
     <a href="#partners" class="top-live-btn" target="_blank">👁 View Live Marquee ↗</a>
-    <button class="btn btn-green" onclick="openNewFacModal()">+ Add Facilitator Logo</button>
+    <button class="btn btn-royal" onclick="openNewFacModal()">+ Add Facilitator Logo</button>
   
         </div>
       </div>
@@ -414,7 +414,7 @@
 
     <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
       <button class="btn btn-outline" onclick="closeFacModal()">Cancel</button>
-      <button class="btn btn-green" onclick="saveFacilitatorData()">Save Logo</button>
+      <button class="btn btn-royal" onclick="saveFacilitatorData()">Save Logo</button>
     </div>
   </div>
 </div>
