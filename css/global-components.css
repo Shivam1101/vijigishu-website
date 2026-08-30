@@ -1462,10 +1462,15 @@ h3 span, h3 em,
     @media (max-width: 1024px) { .testi-card { flex: 0 0 calc((100% - 24px) / 2); } }
     @media (max-width: 768px) { .testi-card { flex: 0 0 100%; } }
 
-/* ─── SLIDE OUT CONTENT GRADIENT OVERLAY (OPTION A SOFT TINT) ─── */
-.slide-out-content,
+/* ─── SLIDE OUT CONTENT & TOTAL FIELD HOVER BACKGROUND ─── */
+.slide-out-content {
+  background: linear-gradient(to top, rgba(43, 84, 149, 0.96) 0%, rgba(43, 84, 149, 0) 100%) !important;
+}
+.option-slide-out:hover {
+  background: #2B5495 !important;
+}
 .option-slide-out:hover .slide-out-content {
-  background: linear-gradient(to top, rgba(43, 84, 149, 0.96) 0%, rgba(43, 84, 149, 0.45) 100%) !important;
+  background: transparent !important;
 }
 
 /* ─── SITE-WIDE CONTENT SELECTION PROTECTION ─── */
