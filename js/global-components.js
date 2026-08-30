@@ -281,7 +281,7 @@
     
         
     // Inject Global Floating FAB Menu (Excluding admin page)
-    if (!currentPath.includes('admin') && !document.getElementById('floating-fab-menu') && document.body) {
+    if ((isSubFolder || pathname.includes('/our-programs')) && !document.getElementById('floating-fab-menu') && document.body) {
       const fabMenuHTML = `
       <div id="floating-fab-menu">
         <button class="fab-main-btn" id="fabMainBtn" type="button" aria-label="Explore Destinations Menu" title="Explore Destinations">
