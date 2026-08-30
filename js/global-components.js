@@ -279,7 +279,55 @@
     }
 
     
-        // Inject Global Floating WhatsApp Button
+        
+    // Inject Global Floating FAB Menu (Excluding admin page)
+    if (!currentPath.includes('admin') && !document.getElementById('floating-fab-menu') && document.body) {
+      const fabMenuHTML = `
+      <div id="floating-fab-menu">
+        <button class="fab-main-btn" id="fabMainBtn" type="button" aria-label="Explore Destinations Menu" title="Explore Destinations">
+          <span class="fab-main-tip">Explore Destinations</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+        </button>
+        <div class="fab-actions">
+          <a href="${urlDestUAE}" class="fab-action-item" title="Dubai & Abu Dhabi (UAE)">
+            <span class="fab-action-icon">🇦🇪</span>
+            <span class="fab-action-label">Dubai & Abu Dhabi</span>
+          </a>
+          <a href="${urlDestJapan}" class="fab-action-item" title="Japan Immersion">
+            <span class="fab-action-icon">🇯🇵</span>
+            <span class="fab-action-label">Japan Immersion</span>
+          </a>
+          <a href="${urlDestKorea}" class="fab-action-item" title="South Korea Immersion">
+            <span class="fab-action-icon">🇰🇷</span>
+            <span class="fab-action-label">South Korea</span>
+          </a>
+          <a href="${urlDestEurope}" class="fab-action-item" title="Europe Immersion">
+            <span class="fab-action-icon">🇪🇺</span>
+            <span class="fab-action-label">Europe Immersion</span>
+          </a>
+          <a href="${urlDestMalaysia}" class="fab-action-item" title="Malaysia & Singapore">
+            <span class="fab-action-icon">🇲🇾</span>
+            <span class="fab-action-label">Malaysia & Singapore</span>
+          </a>
+          <a href="${urlDestSingapore}" class="fab-action-item" title="Singapore & Indonesia">
+            <span class="fab-action-icon">🇸🇬</span>
+            <span class="fab-action-label">Singapore & Indonesia</span>
+          </a>
+          <a href="${urlLeadership}" class="fab-action-item" title="Leadership Walks">
+            <span class="fab-action-icon">🚶</span>
+            <span class="fab-action-label">Leadership Walks</span>
+          </a>
+        </div>
+      </div>
+      `;
+      document.body.insertAdjacentHTML('beforeend', fabMenuHTML);
+      document.body.classList.add('has-fab-menu');
+    }
+
+    // Inject Global Floating WhatsApp Button
     if (!currentPath.includes('admin') && !document.getElementById('whatsappFloat') && document.body) {
       const hasFab = !!document.getElementById('floating-fab-menu');
       if (hasFab) document.body.classList.add('has-fab-menu');
@@ -345,6 +393,7 @@
     // Initialize Event Listeners
     initHeaderEvents();
     initRevealObserver();
+    initFabMenu();
     initScrollToTop();
     document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
   }
@@ -404,6 +453,25 @@
         }
       });
     }
+  }
+
+  
+  function initFabMenu() {
+    const fabMenu = document.getElementById('floating-fab-menu');
+    const fabBtn = document.getElementById('fabMainBtn') || (fabMenu ? fabMenu.querySelector('.fab-main-btn') : null);
+    if (!fabMenu || !fabBtn) return;
+
+    fabBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      fabMenu.classList.toggle('is-open');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!fabMenu.contains(e.target)) {
+        fabMenu.classList.remove('is-open');
+      }
+    });
   }
 
   function initScrollToTop() {

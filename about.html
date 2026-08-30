@@ -41,7 +41,7 @@
       --sage: #2B5495;
       --gold:  #D4A840;
       --white: #FFFFFF;
-      --off:   #F6F7F2;
+      --off: #FFFFFF;
       --gray:  #7B7B8F;
       --dark: #0F172A;
       --ease:  cubic-bezier(.25,.46,.45,.94);
@@ -74,7 +74,7 @@
     .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .logo-wrap { display: flex; align-items: center; gap: 10px; }
     .nav-links { display: flex; align-items: center; gap: 36px; }
-    .nav-links a { font-size: .88rem; font-weight: 600; color: var(--gray); transition: color .25s; position: relative; }
+    .nav-links a { font-size: .88rem; font-weight: 600 !important; color: var(--gray); transition: color .25s; position: relative; }
     .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--green); border-radius: 2px; transition: width .3s var(--ease); }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-links a:hover, .nav-links a.active { color: var(--navy); }
@@ -237,7 +237,7 @@
 
     
     .cv-card {
-      background: #F1F5F9 !important;
+      background: #FFFFFF !important;
       border: 1px solid rgba(43, 84, 149, 0.15) !important;
       border-radius: 20px;
       padding: 32px 24px;
@@ -313,7 +313,7 @@
       margin-bottom: 20px;
     }
     .dir-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
-    .dir-title { font-size: .88rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px; }
+    .dir-title { font-size: .88rem; font-weight: 700; color: #475569 !important; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px; }
     .dir-divider { width: 48px; height: 3px; background: var(--sage); border-radius: 2px; margin-bottom: 20px; }
     .dir-bio { font-size: .92rem; color: var(--gray); line-height: 1.8; }
     .dir-highlights { display: flex; gap: 24px; margin-top: 24px; flex-wrap: wrap; }
@@ -522,7 +522,7 @@
     .footer-links a {
       color: rgba(255,255,255,.65);
       font-size: .92rem;
-      font-weight: 500;
+      font-weight: 400 !important;
       transition: all .25s var(--ease);
       display: inline-block;
     }
@@ -643,7 +643,7 @@
 
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
 </style>
-  <link rel="stylesheet" href="css/global-components.css?v=1788027507395" />
+  <link rel="stylesheet" href="css/global-components.css?v=1788076071480" />
   
   
   
@@ -853,7 +853,7 @@
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
 
-<script src="js/global-components.js?v=1788027507395"></script>
+<script src="js/global-components.js?v=1788076071480"></script>
 <script>
   // Reveal on scroll
   const observer = new IntersectionObserver((entries) => {
