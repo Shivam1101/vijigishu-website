@@ -280,8 +280,9 @@
 
     
         
-    // Inject Global Floating FAB Menu (Excluding admin page)
-    if ((isSubFolder || pathname.includes('/our-programs')) && !document.getElementById('floating-fab-menu') && document.body) {
+    // Inject Global Floating FAB Menu ONLY on individual program detail pages (excluding main Our Programs page)
+    const isProgramDetailPage = isSubFolder && !currentPath.includes('index') && !rawPath.includes('index');
+    if (isProgramDetailPage && !document.getElementById('floating-fab-menu') && document.body) {
       const fabMenuHTML = `
       <div id="floating-fab-menu">
         <button class="fab-main-btn" id="fabMainBtn" type="button" aria-label="Explore Destinations Menu" title="Explore Destinations">
