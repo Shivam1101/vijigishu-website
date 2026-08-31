@@ -851,34 +851,7 @@
 <!-- ===== CTA ===== -->
 <div id="global-cta"></div>
 
-<!-- ===== DISCIPLINE SWITCHER SPEED DIAL FAB ===== -->
-<div id="floating-fab-menu">
-  <!-- Main Icon Button -->
-  <button class="fab-main-btn" id="fabToggleBtn" aria-label="Switch Discipline">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-      <polyline points="2 17 12 22 22 17"></polyline>
-      <polyline points="2 12 12 17 22 12"></polyline>
-    </svg>
-    <div class="fab-main-tip">Switch Discipline</div>
-  </button>
 
-  <!-- Pop-out Icon Actions -->
-  <div class="fab-actions" id="fabActions">
-    <a href="architecture-design" class="fab-action-item" aria-label="Architecture & Design">
-      <span>🏛️</span>
-      <div class="fab-action-label">Architecture &amp; Design <span class="arr">→</span></div>
-    </a>
-    <a href="engineering" class="fab-action-item" aria-label="Engineering">
-      <span>⚙️</span>
-      <div class="fab-action-label">Engineering <span class="arr">→</span></div>
-    </a>
-    <a href="school-programs" class="fab-action-item" aria-label="School Programs">
-      <span>🎓</span>
-      <div class="fab-action-label">School Programs <span class="arr">→</span></div>
-    </a>
-  </div>
-</div>
 
 <!-- ===== GLOBAL FOOTER ===== -->
 <footer id="global-footer"></footer>
@@ -894,41 +867,7 @@
   }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Speed Dial FAB: Rock-solid hover & click behavior
-  (function() {
-    const fabMenu = document.getElementById('floating-fab-menu');
-    const fabBtn = document.getElementById('fabToggleBtn');
-    let closeTimer = null;
-
-    if (!fabMenu || !fabBtn) return;
-
-    function openMenu() {
-      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
-      fabMenu.classList.add('is-open');
-    }
-
-    function scheduleCloseMenu() {
-      if (closeTimer) clearTimeout(closeTimer);
-      closeTimer = setTimeout(() => {
-        fabMenu.classList.remove('is-open');
-      }, 350);
-    }
-
-    fabMenu.addEventListener('mouseenter', openMenu);
-    fabMenu.addEventListener('mouseleave', scheduleCloseMenu);
-
-    fabBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (closeTimer) clearTimeout(closeTimer);
-      fabMenu.classList.toggle('is-open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!fabMenu.contains(e.target)) {
-        fabMenu.classList.remove('is-open');
-      }
-    });
-  })();
+  
 </script>
 
 
