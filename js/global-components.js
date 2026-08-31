@@ -280,6 +280,15 @@
 
     
         
+    // HARD DOM PURGE GUARD: Immediately destroy FAB menu if on excluded pages (Home, About, Contact, Gallery, Our Programs Overview)
+    const isExcludedPage = !isSubFolder || currentPath.endsWith('/') || currentPath.includes('index') || rawPath.includes('index');
+    const existingFab = document.getElementById('floating-fab-menu');
+    if (isExcludedPage) {
+      if (existingFab) existingFab.remove();
+      document.body.classList.remove('has-fab-menu');
+      return; // Stop execution on excluded pages
+    }
+
     // Inject Dual FAB Menu System (Only on inner program detail pages)
     const isSubProgram = isSubFolder && !currentPath.includes('index') && !rawPath.includes('index');
     if (isSubProgram && !document.getElementById('floating-fab-menu') && document.body) {
