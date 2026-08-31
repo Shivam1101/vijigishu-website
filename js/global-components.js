@@ -286,7 +286,6 @@
     if (isExcludedPage) {
       if (existingFab) existingFab.remove();
       document.body.classList.remove('has-fab-menu');
-      return; // Stop execution on excluded pages
     }
 
     // Inject Dual FAB Menu System (Only on inner program detail pages)
