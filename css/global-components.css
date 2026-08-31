@@ -1669,3 +1669,15 @@ input, textarea, select {
 .incl-card {
   background: linear-gradient(145deg, rgb(43 84 149 / 0%) 0%, rgb(43 84 149 / 4%) 100%) !important;
 }
+
+/* ─── DUAL FAB SYSTEM & SVG ACTION ICON STYLING ─── */
+.fab-action-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  transition: transform 0.25s ease !important;
+}
+
+.fab-action-item:hover .fab-action-icon svg {
+  transform: scale(1.15) !important;
+}

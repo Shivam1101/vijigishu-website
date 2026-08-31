@@ -280,50 +280,88 @@
 
     
         
-    // Inject Global Floating FAB Menu ONLY on individual program detail pages (excluding main Our Programs page)
-    const isProgramDetailPage = isSubFolder && !currentPath.includes('index') && !rawPath.includes('index');
-    if (isProgramDetailPage && !document.getElementById('floating-fab-menu') && document.body) {
-      const fabMenuHTML = `
-      <div id="floating-fab-menu">
-        <button class="fab-main-btn" id="fabMainBtn" type="button" aria-label="Explore Destinations Menu" title="Explore Destinations">
-          <span class="fab-main-tip">Explore Destinations</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-          </svg>
-        </button>
-        <div class="fab-actions">
-          <a href="${urlDestUAE}" class="fab-action-item" title="Dubai & Abu Dhabi (UAE)">
-            <span class="fab-action-icon">🇦🇪</span>
-            <span class="fab-action-label">Dubai & Abu Dhabi</span>
-          </a>
-          <a href="${urlDestJapan}" class="fab-action-item" title="Japan Immersion">
-            <span class="fab-action-icon">🇯🇵</span>
-            <span class="fab-action-label">Japan Immersion</span>
-          </a>
-          <a href="${urlDestKorea}" class="fab-action-item" title="South Korea Immersion">
-            <span class="fab-action-icon">🇰🇷</span>
-            <span class="fab-action-label">South Korea</span>
-          </a>
-          <a href="${urlDestEurope}" class="fab-action-item" title="Europe Immersion">
-            <span class="fab-action-icon">🇪🇺</span>
-            <span class="fab-action-label">Europe Immersion</span>
-          </a>
-          <a href="${urlDestMalaysia}" class="fab-action-item" title="Malaysia & Singapore">
-            <span class="fab-action-icon">🇲🇾</span>
-            <span class="fab-action-label">Malaysia & Singapore</span>
-          </a>
-          <a href="${urlDestSingapore}" class="fab-action-item" title="Singapore & Indonesia">
-            <span class="fab-action-icon">🇸🇬</span>
-            <span class="fab-action-label">Singapore & Indonesia</span>
-          </a>
-          <a href="${urlLeadership}" class="fab-action-item" title="Leadership Walks">
-            <span class="fab-action-icon">🚶</span>
-            <span class="fab-action-label">Leadership Walks</span>
-          </a>
+    // Inject Dual FAB Menu System (Only on inner program detail pages)
+    const isSubProgram = isSubFolder && !currentPath.includes('index') && !rawPath.includes('index');
+    if (isSubProgram && !document.getElementById('floating-fab-menu') && document.body) {
+      
+      const disciplinePages = ['management', 'architecture-design', 'engineering', 'school-programs'];
+      const isDisciplinePage = disciplinePages.some(p => currentPath.includes(p) || rawPath.includes(p));
+
+      let fabMenuHTML = '';
+
+      if (isDisciplinePage) {
+        // 1. DISCIPLINE SWITCHER FAB (Academic Discipline Pages)
+        fabMenuHTML = `
+        <div id="floating-fab-menu">
+          <button class="fab-main-btn" id="fabMainBtn" type="button" aria-label="Switch Discipline Menu" title="Switch Discipline">
+            <span class="fab-main-tip">Switch Discipline</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </button>
+          <div class="fab-actions">
+            <a href="management" class="fab-action-item" title="Management Immersion">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="fab-action-label">Management Immersion</span>
+            </a>
+            <a href="architecture-design" class="fab-action-item" title="Architecture & Design">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="22" x2="22" y2="22"></line><line x1="6" y1="18" x2="6" y2="11"></line><line x1="10" y1="18" x2="10" y2="11"></line><line x1="14" y1="18" x2="14" y2="11"></line><line x1="18" y1="18" x2="18" y2="11"></line><polygon points="12 2 2 7 22 7 12 2"></polygon></svg></span>
+              <span class="fab-action-label">Architecture & Design</span>
+            </a>
+            <a href="engineering" class="fab-action-item" title="Engineering Immersion">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span>
+              <span class="fab-action-label">Engineering Immersion</span>
+            </a>
+            <a href="school-programs" class="fab-action-item" title="School Programs">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg></span>
+              <span class="fab-action-label">School Programs</span>
+            </a>
+          </div>
         </div>
-      </div>
-      `;
+        `;
+      } else {
+        // 2. DESTINATION SWITCHER FAB (Best-Selling Destination Pages)
+        fabMenuHTML = `
+        <div id="floating-fab-menu">
+          <button class="fab-main-btn" id="fabMainBtn" type="button" aria-label="Explore Destinations Menu" title="Explore Destinations">
+            <span class="fab-main-tip">Explore Destinations</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+          </button>
+          <div class="fab-actions">
+            <a href="${urlDestUAE}" class="fab-action-item" title="Dubai & Abu Dhabi (UAE)">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></span>
+              <span class="fab-action-label">Dubai & Abu Dhabi</span>
+            </a>
+            <a href="${urlDestJapan}" class="fab-action-item" title="Japan Immersion">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v12M6 12h12"></path></svg></span>
+              <span class="fab-action-label">Japan Immersion</span>
+            </a>
+            <a href="${urlDestKorea}" class="fab-action-item" title="South Korea Immersion">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 19 21 12 17 5 21 12 2"></polygon></svg></span>
+              <span class="fab-action-label">South Korea</span>
+            </a>
+            <a href="${urlDestEurope}" class="fab-action-item" title="Europe Immersion">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>
+              <span class="fab-action-label">Europe Immersion</span>
+            </a>
+            <a href="${urlDestMalaysia}" class="fab-action-item" title="Malaysia & Singapore">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="6" height="20" rx="1"></rect><rect x="14" y="2" width="6" height="20" rx="1"></rect><path d="M10 12h4"></path></svg></span>
+              <span class="fab-action-label">Malaysia & Singapore</span>
+            </a>
+            <a href="${urlDestSingapore}" class="fab-action-item" title="Singapore & Indonesia">
+              <span class="fab-action-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></span>
+              <span class="fab-action-label">Singapore & Indonesia</span>
+            </a>
+          </div>
+        </div>
+        `;
+      }
+
       document.body.insertAdjacentHTML('beforeend', fabMenuHTML);
       document.body.classList.add('has-fab-menu');
     }
