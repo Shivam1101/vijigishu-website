@@ -1682,3 +1682,78 @@ input, textarea, select {
 .fab-action-item:hover .fab-action-icon svg {
   transform: scale(1.15) !important;
 }
+
+/* ─── FLOATING COMPONENTS HIGH-LEVEL STACKING & VISIBILITY ─── */
+.whatsapp-float-btn {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#floating-fab-menu {
+  position: fixed !important;
+  bottom: 24px !important;
+  left: 24px !important;
+  z-index: 99999 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Slide out card global fallback */
+.disc-card-wrapper {
+  height: 420px;
+  border-radius: 28px;
+  position: relative;
+  background: var(--white);
+}
+.option-slide-out {
+  height: 100%;
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+  transition: box-shadow 0.45s ease, transform 0.45s ease, background 0.45s ease;
+}
+.option-slide-out:hover {
+  background: #2B5495 !important;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,.12);
+}
+.slide-out-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 1;
+}
+.option-slide-out:hover .slide-out-image {
+  transform: scale(1.05);
+  opacity: 0 !important;
+}
+.slide-out-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(to top, rgba(43, 84, 149, 0.96) 0%, rgba(43, 84, 149, 0) 100%) !important;
+  color: var(--white);
+  transition: background 0.45s ease, color 0.45s ease;
+}
+.option-slide-out:hover .slide-out-content {
+  background: #2B5495 !important;
+  color: #FFFFFF !important;
+}
