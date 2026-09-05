@@ -333,7 +333,7 @@
       width: 100%;
       padding: 15px 20px;
       border-radius: 14px;
-      border: 1.5px solid rgba(43, 84, 149, 0.15);
+      border: 1.5px solid rgb(43 84 149 / 29%);
       background: #FFFFFF;
       font-family: inherit;
       font-size: 0.95rem;
@@ -474,36 +474,55 @@
       width: 40px;
       height: 40px;
     }
-    .popup-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--navy);
-      margin-bottom: 12px;
-      font-weight: 700;
-    }
-    .popup-title span {
-      color: var(--green);
-      font-style: italic;
-    }
-    .popup-desc {
-      font-size: 0.94rem;
-      color: var(--gray);
-      line-height: 1.65;
-      margin-bottom: 28px;
-    }
     .popup-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 16px !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin-top: 24px !important;
+      width: 100% !important;
     }
-.popup-actions .btn-outline {
-      border-color: #2B5495 !important;
-      color: #2B5495 !important;
-      background: transparent !important;
-      transition: all 0.3s ease !important;
+    .popup-actions .btn,
+    .popup-actions button,
+    .popup-actions a {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 12px 24px !important;
+      border-radius: 50px !important;
+      font-size: 0.95rem !important;
+      font-weight: 700 !important;
       text-decoration: none !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+      margin: 0 !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
     }
-    .popup-actions .btn-outline:hover {
+    .popup-actions .btn-primary,
+    .popup-actions button.btn-primary {
+      background: #2B5495 !important;
+      color: #FFFFFF !important;
+      border: 2px solid #2B5495 !important;
+      box-shadow: 0 4px 14px rgba(43, 84, 149, 0.25) !important;
+    }
+    .popup-actions .btn-primary:hover,
+    .popup-actions button.btn-primary:hover {
+      background: #0F172A !important;
+      border-color: #0F172A !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.3) !important;
+    }
+    .popup-actions .btn-outline,
+    .popup-actions a.btn-outline {
+      background: #FFFFFF !important;
+      color: #2B5495 !important;
+      border: 2px solid #2B5495 !important;
+    }
+    .popup-actions .btn-outline:hover,
+    .popup-actions a.btn-outline:hover {
       background: #0F172A !important;
       border-color: #0F172A !important;
       color: #FFFFFF !important;
@@ -527,7 +546,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(43, 84, 149, 0.92) 100%);
+      background: linear-gradient(1deg, rgb(0 0 0 / 71%) 0%, rgb(0 0 0 / 53%) 100%);
       z-index: 1;
     }
     .elite-inner {
@@ -540,22 +559,6 @@
     .elite-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.8vw, 2.8rem); color: var(--white); line-height: 1.2; margin-bottom: 18px; }
     .elite-h2 em { color: var(--sage); font-style: italic; }
     .elite-p { font-size: 1.02rem; color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 30px; }
-
-    @media (max-width: 1024px) {
-      .journey-channels-grid { grid-template-columns: 1fr; gap: 16px; }
-      .form-container-card { padding: 44px 32px; }
-    }
-    @media (max-width: 768px) {
-      .page-hero { height: auto; width: 100%; }
-      .page-hero-img img { max-height: 280px; }
-      .journey-hub-card { padding: 32px 24px; border-radius: 24px; }
-      .journey-top-bar { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .form-container-card { padding: 36px 20px; border-radius: 24px; }
-      .form-grid { grid-template-columns: 1fr; }
-      .popup-card { padding: 36px 24px 28px; }
-      .popup-actions { flex-direction: column; }
-      #elite-cta { padding: 80px 24px; background-attachment: scroll; }
-    }
   
     .section-heading span, h1 span, h2 span, h3 span { color: #0F172A !important; font-style: italic !important; }
 
@@ -869,7 +872,7 @@
     <div class="elite-inner reveal">
       <div class="elite-tag">Transformative Global Exposure</div>
       <h2 class="elite-h2">Join the Global Circle of <em>Vijigishu</em></h2>
-      <p class="elite-p">We don’t just "travel"—we curate limited-access, immersive learning experiences for the visionary. Contact our specialists to see if our upcoming programs align with your goals.</p>
+      <p class="elite-p">We don’t just "travel", we curate limited-access, immersive learning experiences for the visionary. Contact our specialists to see if our upcoming programs align with your goals.</p>
       <a href="our-programs/" class="btn btn-royal">Explore All Our Programs</a>
     </div>
   </div>

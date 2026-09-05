@@ -397,6 +397,11 @@
       </div>
 
       <div>
+        <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Role / Designation (e.g. Faculty, Student)</label>
+        <input type="text" id="testiRoleInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem;" placeholder="e.g. Faculty, Student, HOD (Optional)" />
+      </div>
+
+      <div>
         <label style="font-size: 0.78rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">Star Rating</label>
         <select id="testiStarsInput" style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.85rem; background: #fff;">
           <option value="5">⭐⭐⭐⭐⭐ (5 Stars)</option>
@@ -514,11 +519,11 @@
   const DEFAULT_TESTIMONIALS = [
     { id: 'testi-1', name: 'Shaanya', stars: 5, img: 'images/Random-2.webp', text: 'Dear Vijigishu Team, I would like to sincerely thank you for organizing such a wonderful and exciting trip. The entire experience was exceptionally well-managed, thoroughly enjoyable, and truly memorable for me.' },
     { id: 'testi-2', name: 'Jamila Gangardiwala', stars: 5, img: 'images/Random-1.webp', text: 'My experience with Vijigishu Company has been highly enriching and professionally rewarding. The organization has provided me with valuable exposure, enabling me to enhance my skills and gain practical insights.' },
-    { id: 'testi-3', name: 'Dr. VIJAYA KUMAR THOTA', stars: 5, img: 'images/Singapore-1.webp', text: 'Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution.' },
+    { id: 'testi-3', name: 'Dr. VIJAYA KUMAR THOTA', role: 'Faculty', stars: 5, img: 'images/Singapore-1.webp', text: 'Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution.' },
     { id: 'testi-4', name: 'Sai Vamshi Akkem', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip was really awesome, we all enjoyed travelling to 3 countries: Malaysia, Indonesia and Singapore. One of my best lifelong experiences.' },
-    { id: 'testi-5', name: 'Garima Goyal', stars: 5, img: 'images/Singapore-2.webp', text: 'My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia.' },
-    { id: 'testi-6', name: 'Sana Fatima', stars: 5, img: 'images/Malaysia-1.webp', text: 'The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives.' },
-    { id: 'testi-7', name: 'Mrunal Joshi', stars: 5, img: 'images/Dubai-2.webp', text: 'Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students.' },
+    { id: 'testi-5', name: 'Garima Goyal', stars: 5, img: 'images/gallery/gallery-malaysia-09.webp', text: 'My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia.' },
+    { id: 'testi-6', name: 'Sana Fatima', stars: 5, img: 'images/gallery/gallery-malaysia-12.webp', text: 'The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives.' },
+    { id: 'testi-7', name: 'Mrunal Joshi', role: 'Faculty', stars: 5, img: 'images/gallery/gallery-dubai-03.webp', text: 'Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students.' },
     { id: 'testi-8', name: 'Tanya Sinha', stars: 5, img: 'images/Untitled-design-2.png', text: 'We had an absolutely wonderful 6-day experience in UAE. All thanks to the Vijigishu team from the moment we landed till our departure, everything was amazing.' },
     { id: 'testi-9', name: 'Mayur Deshmukh', stars: 5, img: 'images/Dubai-1.webp', text: 'A big shoutout to Vijigishu for organizing such a smooth and memorable Dubai trip for us students. Everything was well managed - stay, travel, food, and experiences.' },
     { id: 'testi-10', name: 'Nakul Jadav', stars: 5, img: 'images/Dubai-3.webp', text: 'Our recent student tour to Dubai with Vijigishu Organization was an unforgettable experience! Everything was perfectly managed.' },
@@ -528,7 +533,24 @@
   function getTestimonials() {
     try {
       const raw = localStorage.getItem('vijigishu_testimonials');
-      if (raw) return JSON.parse(raw);
+      if (raw) {
+        let list = JSON.parse(raw);
+        let updated = false;
+        list = list.map(t => {
+          if (t.id === 'testi-5' || t.name === 'Garima Goyal') {
+            if (t.img !== 'images/gallery/gallery-malaysia-09.webp') { t.img = 'images/gallery/gallery-malaysia-09.webp'; updated = true; }
+          }
+          if (t.id === 'testi-6' || t.name === 'Sana Fatima') {
+            if (t.img !== 'images/gallery/gallery-malaysia-12.webp') { t.img = 'images/gallery/gallery-malaysia-12.webp'; updated = true; }
+          }
+          if (t.id === 'testi-7' || t.name === 'Mrunal Joshi' || (t.name && t.name.includes('Mrunal'))) {
+            if (t.img !== 'images/gallery/gallery-dubai-03.webp') { t.img = 'images/gallery/gallery-dubai-03.webp'; updated = true; }
+          }
+          return t;
+        });
+        if (updated) localStorage.setItem('vijigishu_testimonials', JSON.stringify(list));
+        return list;
+      }
     } catch(e) {}
     localStorage.setItem('vijigishu_testimonials', JSON.stringify(DEFAULT_TESTIMONIALS));
     return DEFAULT_TESTIMONIALS;
@@ -553,7 +575,7 @@
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
             <img src="${t.img || 'images/Singapore.webp'}" onerror="this.src='images/Singapore.webp';" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sage);" />
             <div>
-              <div style="font-weight: 800; font-size: 0.92rem; color: var(--navy);">${escapeHtml((t.name || '').replace(/\s*\((Faculty|Student)\)/gi, ''))}</div>
+              <div style="font-weight: 800; font-size: 0.92rem; color: var(--navy);">${escapeHtml((t.name || '').replace(/\s*\((Faculty|Student)\)/gi, ''))} ${t.role ? `<span style="font-size:0.75rem; color:var(--green); font-weight:700;">(${escapeHtml(t.role)})</span>` : ''}</div>
               <div style="font-size: 0.75rem; color: var(--gold); font-weight: 700; margin-top: 2px;">${'⭐'.repeat(t.stars || 5)}</div>
             </div>
           </div>
@@ -575,6 +597,7 @@
   function openNewTestimonialModal() {
     document.getElementById('editTestiId').value = '';
     document.getElementById('testiNameInput').value = '';
+    document.getElementById('testiRoleInput').value = '';
     document.getElementById('testiStarsInput').value = '5';
     document.getElementById('testiImgInput').value = 'images/Random-1.webp';
     document.getElementById('testiPreviewImg').src = 'images/Random-1.webp';
@@ -589,6 +612,7 @@
     if (!item) return;
     document.getElementById('editTestiId').value = item.id;
     document.getElementById('testiNameInput').value = item.name || '';
+    document.getElementById('testiRoleInput').value = item.role || '';
     document.getElementById('testiStarsInput').value = item.stars || 5;
     document.getElementById('testiImgInput').value = item.img || '';
     document.getElementById('testiPreviewImg').src = item.img || 'images/Singapore.webp';
@@ -618,6 +642,7 @@
   function saveTestimonialData() {
     const id = document.getElementById('editTestiId').value;
     const name = document.getElementById('testiNameInput').value.trim();
+    const role = document.getElementById('testiRoleInput').value.trim();
     const stars = parseInt(document.getElementById('testiStarsInput').value) || 5;
     const img = document.getElementById('testiImgInput').value.trim() || 'images/Singapore.webp';
     const text = document.getElementById('testiTextInput').value.trim();
@@ -630,9 +655,9 @@
     const list = getTestimonials();
     if (id) {
       const idx = list.findIndex(x => x.id === id);
-      if (idx !== -1) list[idx] = { ...list[idx], name, stars, img, text };
+      if (idx !== -1) list[idx] = { ...list[idx], name, role, stars, img, text };
     } else {
-      list.unshift({ id: 'testi-' + Date.now(), name, stars, img, text });
+      list.unshift({ id: 'testi-' + Date.now(), name, role, stars, img, text });
     }
     saveTestimonials(list);
     closeTestiModal();

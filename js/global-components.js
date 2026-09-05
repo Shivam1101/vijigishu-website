@@ -8,13 +8,17 @@
     management: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
     architecture: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21V11h6v10"></path></svg>',
     engineering: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>',
-    school: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>',
+    school: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>',
+    fdp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path><path d="M12 17v4M10 21h4"></path></svg>',
     uae: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M6 21V3l6 3v15M12 21V9l6 3v9"></path></svg>',
     japan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V9M20 21V9M2 9h20M5 5h14M10 9v12M14 9v12"></path></svg>',
     korea: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20c2-5-2-5 0-10s-2-5 0-10z"></path></svg>',
-    europe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>',
+    europe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M8 22l3-14h2l3 14"></path><path d="M9 15h6"></path><path d="M7 22h10"></path><path d="M10 11h4"></path></svg>',
     malaysia: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="6" height="20" rx="1"></rect><rect x="14" y="2" width="6" height="20" rx="1"></rect><path d="M10 12h4M7 2V0M17 2V0"></path></svg>',
-    singapore: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>'
+    singapore: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8c0-2.76-2.24-5-5-5-1.35 0-2.58.54-3.48 1.42M13 8c2.76 0 5-2.24 5-5 0-1.35-.54-2.58-1.42-3.48M13 8v13M8 21h10M4 21c4-2 7-1 9 0M2 17c4-2 7-1 9 0"></path></svg>',
+    internshipMalaysia: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><path d="M12 12v3"></path></svg>',
+    internshipThailand: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><circle cx="12" cy="14" r="2"></circle></svg>',
+    conference: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>'
   };
 
   const pathname = window.location.pathname.toLowerCase();
@@ -79,8 +83,6 @@
     urlDestUAE = isSubFolder ? 'uae' : '/our-programs/uae';
   }
 
-
-
   function isActive(page) {
     const clean = page.replace(/\.html$/, '').replace(/^\//, '') || 'index';
     if (pathname.includes('our-programs')) {
@@ -111,7 +113,129 @@
       <div class="nav-links">
         <a href="${urlHome}" class="${isActive('index')}">Home</a>
         <a href="${urlAbout}" class="${isActive('about')}">About Us</a>
-        <a href="${urlImmersion}" class="${isActive('our-programs')}">Our Programs</a>
+        <div class="nav-dropdown-wrap">
+          <a href="${urlImmersion}" class="nav-dropdown-trigger ${isActive('our-programs')}">
+            Our Programs <svg class="dropdown-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="mega-dropdown-menu">
+            <div class="mega-dropdown-grid">
+              <!-- Col 1: Academic Disciplines -->
+              <div class="mega-col">
+                <div class="mega-col-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  Academic Disciplines
+                </div>
+                <div class="mega-links-list">
+                  <a href="${assetBase}our-programs/architecture-design.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.architecture}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Architecture & Design</span>
+                      <span class="mega-item-desc">Vernacular heritage, urban planning & design thinking</span>
+                    </div>
+                  </a>
+                  <a href="${assetBase}our-programs/engineering.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.engineering}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Engineering & Tech</span>
+                      <span class="mega-item-desc">Robotics, Industry 4.0, high-speed rail & AI hubs</span>
+                    </div>
+                  </a>
+                  <a href="${assetBase}our-programs/management.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.management}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Management & Business</span>
+                      <span class="mega-item-desc">Global financial centers & executive masterclasses</span>
+                    </div>
+                  </a>
+                  <a href="${assetBase}our-programs/school-programs.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.school}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">School Immersion</span>
+                      <span class="mega-item-desc">K-12 STEAM learning & global student exchange</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Col 2: Specialized Programs -->
+              <div class="mega-col">
+                <div class="mega-col-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  Specialized Programs
+                </div>
+                <div class="mega-links-list">
+                  <a href="${assetBase}our-programs/internship-malaysia.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.internshipMalaysia}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Internship — Malaysia</span>
+                      <span class="mega-item-desc">Industry-focused practical exposure in Kuala Lumpur</span>
+                    </div>
+                  </a>
+                  <a href="${assetBase}our-programs/internship-thailand.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.internshipThailand}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Internship — Thailand</span>
+                      <span class="mega-item-desc">Practical learning inside Thailand's innovation ecosystem</span>
+                    </div>
+                  </a>
+                  <a href="${assetBase}our-programs/fdp.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.fdp}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Faculty Development (FDP)</span>
+                      <span class="mega-item-desc">Pedagogy masterclasses & research collaborations</span>
+                    </div>
+                  </a>
+                  <a href="${assetBase}our-programs/international-conference.html" class="mega-item">
+                    <div class="mega-item-icon">${svgIcons.conference}</div>
+                    <div class="mega-item-text">
+                      <span class="mega-item-title">Conferences & Seminars</span>
+                      <span class="mega-item-desc">Global research trends & international delegate networking</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Col 3: Global Destinations -->
+              <div class="mega-col">
+                <div class="mega-col-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Global Destinations
+                </div>
+                <div class="mega-links-grid">
+                  <a href="${assetBase}our-programs/singapore.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0"></path><path d="M4 16l2-7h12l2 7H4z"></path><path d="M9 9V5h6v4"></path><path d="M12 2v3"></path></svg></span> Singapore
+                  </a>
+                  <a href="${assetBase}our-programs/japan.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9M20 21V9M2 9h20M5 5h14M10 9v12M14 9v12"></path></svg></span> Japan
+                  </a>
+                  <a href="${assetBase}our-programs/south-korea.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20c2-5-2-5 0-10s-2-5 0-10z"></path></svg></span> South Korea
+                  </a>
+                  <a href="${assetBase}our-programs/europe.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M8 22l3-14h2l3 14"></path><path d="M9 15h6"></path><path d="M7 22h10"></path><path d="M10 11h4"></path></svg></span> Europe
+                  </a>
+                  <a href="${assetBase}our-programs/uae.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V3l6 3v15M12 21V9l6 3v9"></path></svg></span> UAE / Dubai
+                  </a>
+                  <a href="${assetBase}our-programs/malaysia-singapore.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="6" height="20" rx="1"></rect><rect x="14" y="2" width="6" height="20" rx="1"></rect><path d="M10 12h4M7 2V0M17 2V0"></path></svg></span> Malaysia & Singapore
+                  </a>
+                  <a href="${assetBase}our-programs/singapore-indonesia.html" class="mega-country-pill">
+                    <span class="country-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8c0-2.76-2.24-5-5-5-1.35 0-2.58.54-3.48 1.42M13 8c2.76 0 5-2.24 5-5 0-1.35-.54-2.58-1.42-3.48M13 8v13M8 21h10M4 21c4-2 7-1 9 0M2 17c4-2 7-1 9 0"></path></svg></span> Singapore & Indonesia
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Banner / CTA -->
+            <div class="mega-dropdown-footer">
+              <a href="${urlImmersion}" class="mega-footer-btn">
+                Browse All Programs
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="${urlGallery}" class="${isActive('gallery')}">Gallery</a>
         <a href="${urlContact}" class="nav-cta ${isActive('contact')}">Contact Us</a>
       </div>
@@ -120,12 +244,112 @@
       </div>
     </div>
   </nav>
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="${urlHome}" class="${isActive('index')}">Home</a>
-    <a href="${urlAbout}" class="${isActive('about')}">About Us</a>
-    <a href="${urlImmersion}" class="${isActive('our-programs')}">Our Programs</a>
-    <a href="${urlGallery}" class="${isActive('gallery')}">Gallery</a>
-    <a href="${urlContact}" class="${isActive('contact')}">Contact Us</a>
+    <div class="mobile-drawer-header">
+      <a href="${urlHome}" class="mobile-drawer-brand">
+        <img 
+          src="${assetBase}images/logo-of-vijigishu_2-1.png" 
+          onerror="this.onerror=null; this.src='/images/logo-of-vijigishu_2-1.png';" 
+          alt="Vijigishu Educational Travel" 
+          class="mobile-logo-img" 
+        />
+      </a>
+      <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Menu">&times;</button>
+    </div>
+    <div class="mobile-drawer-nav">
+      <a href="${urlHome}" class="mobile-nav-item ${isActive('index')}">Home</a>
+      <a href="${urlAbout}" class="mobile-nav-item ${isActive('about')}">About Us</a>
+
+      <!-- Parent Accordion: Our Programs -->
+      <div class="mobile-accordion-group">
+        <div class="mobile-dropdown-header" id="mobileDropdownHeader">
+          <span>Our Programs</span>
+          <svg class="mobile-arrow" id="mobileArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="mobile-dropdown-body" id="mobileDropdownBody">
+          
+          <!-- Sub Accordion 1: Academic Disciplines -->
+          <div class="mobile-sub-accordion">
+            <div class="mobile-sub-header" id="subHeaderDisciplines">
+              <span>Academic Disciplines</span>
+              <svg class="sub-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="mobile-sub-body" id="subBodyDisciplines">
+              <a href="${assetBase}our-programs/architecture-design.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.architecture}</span> Architecture & Design
+              </a>
+              <a href="${assetBase}our-programs/engineering.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.engineering}</span> Engineering & Tech
+              </a>
+              <a href="${assetBase}our-programs/management.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.management}</span> Management & Business
+              </a>
+              <a href="${assetBase}our-programs/school-programs.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.school}</span> School Immersion
+              </a>
+            </div>
+          </div>
+
+          <!-- Sub Accordion 2: Specialized Programs -->
+          <div class="mobile-sub-accordion">
+            <div class="mobile-sub-header" id="subHeaderSpecialized">
+              <span>Specialized Programs</span>
+              <svg class="sub-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="mobile-sub-body" id="subBodySpecialized">
+              <a href="${assetBase}our-programs/internship-malaysia.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.internshipMalaysia}</span> Internship — Malaysia
+              </a>
+              <a href="${assetBase}our-programs/internship-thailand.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.internshipThailand}</span> Internship — Thailand
+              </a>
+              <a href="${assetBase}our-programs/fdp.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.fdp}</span> Faculty Development (FDP)
+              </a>
+              <a href="${assetBase}our-programs/international-conference.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap">${svgIcons.conference}</span> Conferences & Seminars
+              </a>
+            </div>
+          </div>
+
+          <!-- Sub Accordion 2: Global Destinations -->
+          <div class="mobile-sub-accordion">
+            <div class="mobile-sub-header" id="subHeaderDestinations">
+              <span>Global Destinations</span>
+              <svg class="sub-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="mobile-sub-body" id="subBodyDestinations">
+              <a href="${assetBase}our-programs/singapore.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0"></path><path d="M4 16l2-7h12l2 7H4z"></path><path d="M9 9V5h6v4"></path><path d="M12 2v3"></path></svg></span> Singapore
+              </a>
+              <a href="${assetBase}our-programs/japan.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9M20 21V9M2 9h20M5 5h14M10 9v12M14 9v12"></path></svg></span> Japan
+              </a>
+              <a href="${assetBase}our-programs/south-korea.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20c2-5-2-5 0-10s-2-5 0-10z"></path></svg></span> South Korea
+              </a>
+              <a href="${assetBase}our-programs/europe.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"></path><path d="M8 22l3-14h2l3 14"></path><path d="M9 15h6"></path><path d="M7 22h10"></path><path d="M10 11h4"></path></svg></span> Europe
+              </a>
+              <a href="${assetBase}our-programs/uae.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V3l6 3v15M12 21V9l6 3v9"></path></svg></span> UAE / Dubai
+              </a>
+              <a href="${assetBase}our-programs/malaysia-singapore.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="6" height="20" rx="1"></rect><rect x="14" y="2" width="6" height="20" rx="1"></rect><path d="M10 12h4M7 2V0M17 2V0"></path></svg></span> Malaysia & Singapore
+              </a>
+              <a href="${assetBase}our-programs/singapore-indonesia.html" class="mobile-sub-link">
+                <span class="mobile-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8c0-2.76-2.24-5-5-5-1.35 0-2.58.54-3.48 1.42M13 8c2.76 0 5-2.24 5-5 0-1.35-.54-2.58-1.42-3.48M13 8v13M8 21h10M4 21c4-2 7-1 9 0M2 17c4-2 7-1 9 0"></path></svg></span> Singapore & Indonesia
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <a href="${urlGallery}" class="mobile-nav-item ${isActive('gallery')}">Gallery</a>
+      <a href="${urlContact}" class="mobile-nav-item ${isActive('contact')}">Contact Us</a>
+    </div>
   </div>
   `;
 
@@ -244,12 +468,17 @@
         <h2 class="global-cta-h2">Ready to <em>Transform</em> Your<br>Students' Learning Journey?</h2>
         <p class="global-cta-sub">Partner with India's most trusted educational travel specialist and give your students a learning experience they'll carry for life.</p>
         <div class="global-cta-buttons">
-          <a href="${urlImmersion}" class="btn btn-royal">Explore Programs &nbsp;&nbsp;&rarr;</a>
+          <a href="${urlImmersion}" class="btn btn-royal btn-with-svg">
+            Explore Programs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
           <a href="${urlContact}" class="btn btn-outline" style="border-color: var(--navy); color: var(--navy);">Contact Our Team</a>
         </div>
       </div>
       <div class="global-cta-right">
-        <img src="${assetBase}images/floating-world-cta.webp" class="floating-cta-img" alt="Global Education Island" />
+        <div class="cta-blob-wrapper">
+          <img src="${assetBase}images/gallery/gallery-singapore-07.webp" class="floating-cta-img" alt="Vijigishu Global Immersion" />
+        </div>
       </div>
     </div>
   </div>
@@ -503,20 +732,94 @@
 
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger && mobileMenu) {
+    const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+    const mobileDrawerClose = document.getElementById('mobileDrawerClose');
+
+    // Main Drawer Toggle
+    function toggleMobileDrawer(open) {
+      if (!mobileMenu) return;
+      const shouldOpen = open !== undefined ? open : !mobileMenu.classList.contains('open');
+      mobileMenu.classList.toggle('open', shouldOpen);
+      if (mobileDrawerOverlay) mobileDrawerOverlay.classList.toggle('open', shouldOpen);
+      document.body.style.overflow = shouldOpen ? 'hidden' : '';
+    }
+
+    if (hamburger) {
       hamburger.addEventListener('click', function (e) {
         e.stopPropagation();
-        mobileMenu.classList.toggle('open');
+        toggleMobileDrawer();
       });
+    }
+
+    if (mobileDrawerClose) {
+      mobileDrawerClose.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMobileDrawer(false);
+      });
+    }
+
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.addEventListener('click', function () {
+        toggleMobileDrawer(false);
+      });
+    }
+
+    // Close drawer when tapping links inside mobileMenu
+    if (mobileMenu) {
       mobileMenu.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () {
-          mobileMenu.classList.remove('open');
+          toggleMobileDrawer(false);
         });
       });
-      document.addEventListener('click', function (e) {
-        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
-          mobileMenu.classList.remove('open');
-        }
+    }
+
+    // Parent Accordion: Our Programs
+    const mobileDropdownHeader = document.getElementById('mobileDropdownHeader');
+    const mobileDropdownBody = document.getElementById('mobileDropdownBody');
+    const mobileArrow = document.getElementById('mobileArrow');
+
+    if (mobileDropdownHeader && mobileDropdownBody) {
+      mobileDropdownHeader.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        mobileDropdownBody.classList.toggle('open');
+        if (mobileArrow) mobileArrow.classList.toggle('open');
+      });
+    }
+
+    // Sub Accordion 1: Academic Disciplines
+    const subHeaderDisciplines = document.getElementById('subHeaderDisciplines');
+    const subBodyDisciplines = document.getElementById('subBodyDisciplines');
+    if (subHeaderDisciplines && subBodyDisciplines) {
+      subHeaderDisciplines.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        subBodyDisciplines.classList.toggle('open');
+        this.classList.toggle('open');
+      });
+    }
+
+    // Sub Accordion 2: Specialized Programs
+    const subHeaderSpecialized = document.getElementById('subHeaderSpecialized');
+    const subBodySpecialized = document.getElementById('subBodySpecialized');
+    if (subHeaderSpecialized && subBodySpecialized) {
+      subHeaderSpecialized.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        subBodySpecialized.classList.toggle('open');
+        this.classList.toggle('open');
+      });
+    }
+
+    // Sub Accordion 3: Global Destinations
+    const subHeaderDestinations = document.getElementById('subHeaderDestinations');
+    const subBodyDestinations = document.getElementById('subBodyDestinations');
+    if (subHeaderDestinations && subBodyDestinations) {
+      subHeaderDestinations.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        subBodyDestinations.classList.toggle('open');
+        this.classList.toggle('open');
       });
     }
   }

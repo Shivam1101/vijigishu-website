@@ -95,9 +95,14 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: var(--gray);
-      max-width: 820px;
+      max-width: 1050px;
       margin: 12px auto 0;
       line-height: 1.6;
+    }
+    @media (min-width: 992px) {
+      .gallery-sub-heading {
+        white-space: nowrap;
+      }
     }
 
     /* ─── COUNTRY FILTERS & MINIMAL GALLERY MASONRY ─── */
@@ -527,7 +532,7 @@
 <div class="gallery-intro-bar">
   <div class="container">
     <h1 class="page-hero-title reveal" style="text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); color: #2B5495; margin-bottom: 12px;">Journey Through Our <em>Global Galleries</em></h1>
-    <p class="gallery-sub-heading reveal">Our Global Footprint - Moments captured from thousands of successful student journeys worldwide.</p>
+    <p class="gallery-sub-heading reveal">Our Global Footprint: Moments captured from thousands of successful student journeys worldwide.</p>
   </div>
 </div>
 
@@ -1105,7 +1110,6 @@
     }
   }
 
-  localStorage.removeItem('vijigishu_gallery_items');
   let galleryItems = loadGalleryItems();
   const masonryGrid = document.getElementById('masonryGrid');
   let currentFilteredList = [...galleryItems];

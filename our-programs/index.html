@@ -135,7 +135,7 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-links a:hover, .nav-links a.active { color: var(--navy); }
     .nav-cta { background: var(--green) !important; color: var(--white) !important; padding: 8px 22px; border-radius: 100px; font-weight: 700 !important; }
-    .nav-cta:hover { background: var(--sage) !important; color: var(--navy) !important; }
+    .nav-cta:hover { background: #0F172A !important; color: #FFFFFF !important; }
     .nav-cta::after { display: none !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); border-radius: 2px; }
@@ -203,7 +203,8 @@
       padding: 0 24px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: flex-start;
+      gap: 12px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
@@ -214,7 +215,7 @@
     .filter-btn {
       white-space: nowrap;
       flex-shrink: 0;
-      padding: 16px 20px;
+      padding: 16px 18px;
       font-size: .88rem;
       font-weight: 700;
       color: var(--gray);
@@ -226,11 +227,21 @@
       transition: all .25s var(--ease);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
       text-decoration: none;
     }
     .filter-btn:hover { color: var(--navy); }
     .filter-btn.active { color: var(--green) !important; border-bottom: 3px solid var(--green) !important; }
+
+    @media (min-width: 1025px) {
+      .filter-inner {
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .filter-btn {
+        padding: 18px 14px;
+      }
+    }
 
     /* Scroll Margin Offset for Sticky Header (72px) + Sticky Filter Bar (~54px) */
     #best-selling,
@@ -556,7 +567,8 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      max-width: 1050px;
+      width: 100%;
+      max-width: 100%;
     }
     .internship-accordion-item {
       background: var(--white);
@@ -573,8 +585,12 @@
       transform: translateY(-3px) !important;
       box-shadow: 0 12px 32px rgba(43, 84, 149, 0.14) !important;
     }
-    .internship-accordion-item:hover .internship-toggle-icon {
+    .internship-accordion-item:not(.active):hover .internship-toggle-icon {
       background: rgba(43, 84, 149, 0.18) !important;
+      transform: scale(1.08) !important;
+    }
+    .internship-accordion-item.active:hover .internship-toggle-icon {
+      background: var(--navy) !important;
       transform: scale(1.08) !important;
     }
     /* ACTIVE ACCORDION ITEM WITH PROMINENT GREEN BORDER */
@@ -609,8 +625,8 @@
       transform-origin: center center;
     }
     .internship-accordion-item.active .internship-toggle-icon {
-      background: var(--navy);
-      color: var(--white);
+      background: var(--navy) !important;
+      color: var(--white) !important;
     }
     .internship-accordion-item.active .internship-toggle-icon svg {
       transform: rotate(45deg);
@@ -1068,11 +1084,11 @@
 <!-- ===== BOOKMARK FILTER BAR ===== -->
 <div class="filter-bar">
   <div class="filter-inner">
-    <a href="#top" class="filter-btn active" data-section="all">🌐 All Programs</a>
-    <a href="#best-selling" class="filter-btn" data-section="best-selling">🔥 Best Selling</a>
-    <a href="#disciplines" class="filter-btn" data-section="disciplines">🎓 Academic Disciplines</a>
-    <a href="#internship" class="filter-btn" data-section="internship">🤝 Internships, Faculty Development &amp; Conferences</a>
-    <a href="#process" class="filter-btn" data-section="process">📋 How It Works</a>
+    <a href="#top" class="filter-btn active" data-section="all">All Programs</a>
+    <a href="#best-selling" class="filter-btn" data-section="best-selling">Best Selling</a>
+    <a href="#disciplines" class="filter-btn" data-section="disciplines">Academic Disciplines</a>
+    <a href="#internship" class="filter-btn" data-section="internship">Internships, Faculty Development &amp; Conferences</a>
+    <a href="#process" class="filter-btn" data-section="process">How It Works</a>
   </div>
 </div>
 
@@ -1363,7 +1379,7 @@
     <div class="internship-accordion-list">
 
       <!-- ITEM 1: Malaysia Internship -->
-      <div class="internship-accordion-item reveal" onclick="toggleInternshipAccordion(this)">
+      <div id="item-internship" class="internship-accordion-item reveal" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
@@ -1384,7 +1400,7 @@
         </div>
         <div class="internship-accordion-body">
           <div class="int-detail-grid" style="margin-bottom: 18px;">
-            <div class="int-detail-box"><label>⏱️ Program Duration</label><span>2 Months Internship</span></div>
+            <div class="int-detail-box"><label>⏱️ Program Duration</label><span>3 Months Internship</span></div>
             <div class="int-detail-box"><label>📍 Program Location</label><span>Kuala Lumpur, Malaysia</span></div>
           </div>
           <a href="internship-malaysia" class="btn btn-royal" style="padding: 10px 24px; font-size: .84rem;">Explore Full Internship Program →</a>
@@ -1414,14 +1430,14 @@
         <div class="internship-accordion-body">
           <div class="int-detail-grid" style="margin-bottom: 18px;">
             <div class="int-detail-box"><label>⏱️ Program Duration</label><span>1 Month in Thailand + 2 Months Online</span></div>
-            <div class="int-detail-box"><label>📍 Program Location</label><span>Bangkok &amp; Chonburi, Thailand</span></div>
+            <div class="int-detail-box"><label>📍 Program Location</label><span>Thailand</span></div>
           </div>
           <a href="internship-thailand" class="btn btn-royal" style="padding: 10px 24px; font-size: .84rem;">Explore Full Internship Program →</a>
         </div>
       </div>
 
       <!-- ITEM 3: Faculty Development Program -->
-      <div class="internship-accordion-item reveal reveal-delay-2" onclick="toggleInternshipAccordion(this)">
+      <div id="item-fdp" class="internship-accordion-item reveal reveal-delay-2" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(43,84,149,0.1); display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0;">🎓</div>
@@ -1440,16 +1456,12 @@
         </div>
         <div class="internship-accordion-body">
           <p style="margin-bottom: 16px; color: var(--navy); line-height: 1.6;">The Faculty Development Program (FDP) provides a unique opportunity for faculty members to collaborate with top-tier international institutions and immerse themselves in the latest education, management, and architecture trends.</p>
-          <div class="int-detail-grid" style="margin-bottom: 18px;">
-            <div class="int-detail-box"><label>⏱️ Program Duration</label><span>5 Days / 7 Days</span></div>
-            <div class="int-detail-box"><label>📍 Program Location</label><span>Singapore, Malaysia, Dubai, Europe</span></div>
-          </div>
           <a href="fdp" class="btn btn-royal" style="padding: 10px 24px; font-size: .84rem;">Explore More →</a>
         </div>
       </div>
 
       <!-- ITEM 4: International Conferences & Seminars -->
-      <div class="internship-accordion-item reveal reveal-delay-3" onclick="toggleInternshipAccordion(this)">
+      <div id="item-conferences" class="internship-accordion-item reveal reveal-delay-3" onclick="toggleInternshipAccordion(this)">
         <div class="internship-accordion-header">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(43, 84, 149, 0.12); display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0;">🌐</div>
@@ -1468,10 +1480,6 @@
         </div>
         <div class="internship-accordion-body">
           <p style="margin-bottom: 16px; color: var(--navy); line-height: 1.6;">VEPL facilitates international conferences and global immersion programs that provide participants with valuable exposure to emerging technologies, innovation ecosystems, industry practices, research trends, and cross-cultural learning experiences.</p>
-          <div class="int-detail-grid" style="margin-bottom: 18px;">
-            <div class="int-detail-box"><label>⏱️ Program Duration</label><span>3 Days / 5 Days</span></div>
-            <div class="int-detail-box"><label>📍 Program Location</label><span>Dubai, Singapore, Bangkok, Paris</span></div>
-          </div>
           <a href="international-conference" class="btn btn-royal" style="padding: 10px 24px; font-size: .84rem;">Explore More →</a>
         </div>
       </div>
@@ -1514,8 +1522,8 @@
             <span class="timeline-step-emoji">🤝</span>
             <span class="timeline-step-num">Step 02</span>
           </div>
-          <h4 class="timeline-card-title">Connect With Experts</h4>
-          <p class="timeline-card-desc">Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations.</p>
+          <h4 class="timeline-card-title">Connect with our Program Experts</h4>
+          <p class="timeline-card-desc">Get in touch with our experienced program experts to discuss your requirements, student profiles, preferred destinations, academic interests, and overall expectations. Our team works closely with institutions to understand their objectives and create meaningful experiences.</p>
         </div>
       </div>
 
@@ -1528,7 +1536,7 @@
             <span class="timeline-step-num">Step 03</span>
           </div>
           <h4 class="timeline-card-title">Customize Your Experience</h4>
-          <p class="timeline-card-desc">Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on budget.</p>
+          <p class="timeline-card-desc">Every institution is unique and so is every program. We help tailor the itinerary, academic sessions, industry visits, leisure activities, duration, and overall structure based on your preferred learning outcomes and budget.</p>
         </div>
       </div>
 
@@ -1554,7 +1562,7 @@
             <span class="timeline-step-num">Step 05</span>
           </div>
           <h4 class="timeline-card-title">Pre-Departure Orientation</h4>
-          <p class="timeline-card-desc">Before the journey begins, we conduct a detailed pre-departure orientation briefing covering travel guidelines, cultural awareness, safety protocols, documentation, and program expectations.</p>
+          <p class="timeline-card-desc">Before the journey begins, we conduct a detailed pre-departure orientation briefing for students and educators covering travel guidelines, cultural awareness, itinerary briefings, safety protocols, documentation, and program expectations.</p>
         </div>
       </div>
 
@@ -1566,7 +1574,7 @@
             <span class="timeline-step-emoji">🌍</span>
             <span class="timeline-step-num">Step 06</span>
           </div>
-          <h4 class="timeline-card-title">Experience Global Exposure</h4>
+          <h4 class="timeline-card-title">Experience Global Exposure &amp; Exploration</h4>
           <p class="timeline-card-desc">Students embark on an immersive journey filled with academic learning, real-world industry insights, cultural exploration, networking opportunities, and international exposure.</p>
         </div>
       </div>
@@ -1580,7 +1588,7 @@
             <span class="timeline-step-num">Step 07</span>
           </div>
           <h4 class="timeline-card-title">Reflect, Share &amp; Grow</h4>
-          <p class="timeline-card-desc">At the end of every program, we encourage feedback from educators and students to continuously improve and enhance our experiences, ensuring future programs are even more impactful.</p>
+          <p class="timeline-card-desc">At the end of every program, we encourage feedback from both educators and students. These insights help us continuously improve and enhance our experiences, ensuring every future program becomes even more impactful, enriching, and globally relevant.</p>
         </div>
       </div>
 

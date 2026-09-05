@@ -276,7 +276,7 @@
       text-align: center;
     }
 
-    /* ─── SECTION 3: PROGRAM INCLUSIONS (EXACT MANAGEMENT PAGE DESIGN) ─── */
+    /* ─── SECTION 3: PROGRAM INCLUSIONS ─── */
     #inclusions { padding: 60px 0; background: var(--off); color: var(--navy); }
     .incl-header { text-align: center; margin-bottom: 56px; }
     .incl-header .section-heading { color: var(--navy) !important; }
@@ -288,8 +288,8 @@
     }
     .incl-card {
       box-sizing: border-box !important;
-      flex: 0 0 calc((100% - 48px) / 3) !important;
-      max-width: calc((100% - 48px) / 3) !important;
+      flex: 0 0 calc((100% - 72px) / 4) !important;
+      max-width: calc((100% - 72px) / 4) !important;
       background: linear-gradient(145deg, rgb(43 84 149 / 0%) 0%, rgb(43 84 149 / 4%) 100%) !important;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -336,33 +336,6 @@
         flex: 0 0 100% !important;
         max-width: 100% !important;
       }
-    }
-    
-    @media (max-width: 1024px) {
-      .incl-card {
-        flex: 0 0 calc((100% - 24px) / 2) !important;
-        max-width: calc((100% - 24px) / 2) !important;
-      }
-    }
-    @media (max-width: 600px) {
-      .incl-card {
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-      }
-    }
-    .incl-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-    .incl-header .section-heading {
-      color: var(--white);
-    }
-    .incl-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 1100px;
-      margin: 0 auto;
     }
     
 
@@ -518,9 +491,9 @@
 <div class="breadcrumb-container">
   <div class="container">
     <div class="page-breadcrumb">
-      <a href="/">Home</a>
+      <a href="../index.html">Home</a>
       <span>›</span>
-      <a href="/">Our Programs</a>
+      <a href="index.html">Our Programs</a>
       <span>›</span>
       <span class="current">International Internship Program – THAILAND</span>
     </div>
@@ -610,54 +583,53 @@
   </div>
 </section>
 
-<!-- ===== PROGRAM INCLUSIONS (EXACT 5 ITEMS IN MANAGEMENT PAGE DESIGN) ===== -->
+<!-- ===== INCLUSIONS ===== -->
 <section id="inclusions">
   <div class="container">
     <div class="incl-header reveal">
       <div class="tag" style="background:rgba(43,84,149,.1);color:var(--green)">What's Included</div>
       <h2 class="section-heading">Program <span>Inclusions</span></h2>
     </div>
-    <div class="incl-grid grid-3-col">
+    <div class="incl-grid">
       
       <div class="incl-card reveal">
-        <div class="incl-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg>
-        </div>
-        <div class="incl-title">Accommodation Assistance</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></div>
+        <div class="incl-title">Flights (Roundtrip)</div>
       </div>
-
-      <div class="incl-card reveal">
-        <div class="incl-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-        </div>
-        <div class="incl-title">LOI (Letter of Intent)</div>
+      
+      <div class="incl-card reveal reveal-delay-1">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg></div>
+        <div class="incl-title">Accommodation</div>
       </div>
-
-      <div class="incl-card reveal">
-        <div class="incl-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        </div>
-        <div class="incl-title">International Exposure</div>
+      
+      <div class="incl-card reveal reveal-delay-2">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
+        <div class="incl-title">Meals</div>
       </div>
-
-      <div class="incl-card reveal">
-        <div class="incl-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-        </div>
-        <div class="incl-title">Professional Mentorship</div>
+      
+      <div class="incl-card reveal reveal-delay-3">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19H2V5h20v14zM6 12h4M14 12h4M10 16h4"></path></svg></div>
+        <div class="incl-title">Industry/Academic visit</div>
       </div>
-
+      
       <div class="incl-card reveal">
-        <div class="incl-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-        </div>
-        <div class="incl-title">Local Support &amp; Coordination</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
+        <div class="incl-title">Transportation (Comfortable AC coach)</div>
       </div>
-      <div class="incl-card reveal">
-        <div class="incl-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-        </div>
-        <div class="incl-title">Completion Certificate</div>
+      
+      <div class="incl-card reveal reveal-delay-1">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="9" r="3"/></svg></div>
+        <div class="incl-title">Sightseeing</div>
+      </div>
+      
+      <div class="incl-card reveal reveal-delay-2">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="incl-title">Experienced VPL Tour leader</div>
+      </div>
+      
+      <div class="incl-card reveal reveal-delay-3">
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="incl-title">Visa and Travel Insurance</div>
       </div>
 
     </div>

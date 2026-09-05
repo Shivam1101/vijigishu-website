@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vijigishu – Educational Travel & Global Our Programs</title>
+  <title>Vijigishu – India's Most Trusted Educational Travel Specialist</title>
   <meta name="description" content="Vijigishu creates transformative academic journeys, industry immersion programs, leadership walks, and global internships for students and educators." />
   <link rel="canonical" href="https://vijigishu.co.in/" />
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vijigishu Educational Travel" />
   <meta property="og:url" content="https://vijigishu.co.in/" />
-  <meta property="og:title" content="Vijigishu – Educational Travel & Global Our Programs" />
+  <meta property="og:title" content="Vijigishu – India's Most Trusted Educational Travel Specialist" />
   <meta property="og:description" content="Vijigishu creates transformative academic journeys, industry immersion programs, leadership walks, and global internships for students and educators." />
   <meta property="og:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   <meta property="og:image:width" content="1200" />
@@ -19,7 +19,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://vijigishu.co.in/" />
-  <meta name="twitter:title" content="Vijigishu – Educational Travel & Global Our Programs" />
+  <meta name="twitter:title" content="Vijigishu – India's Most Trusted Educational Travel Specialist" />
   <meta name="twitter:description" content="Vijigishu creates transformative academic journeys, industry immersion programs, leadership walks, and global internships for students and educators." />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   
@@ -185,22 +185,28 @@
       transition: all .3s;
     }
 
-    /* ─── HERO ─── */
+    /* ─── HERO (NATURAL VIDEO HEIGHT) ─── */
     #hero {
       position: relative;
-      height: 100vh !important;
+      width: 100%;
+      height: auto !important;
+      margin-top: 72px !important;
       overflow: hidden;
       background: #000;
     }
     .hero-video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto !important;
+      display: block;
     }
     @media (max-width: 768px) {
       #hero {
-        height: 50vh;
-        min-height: 350px;
+        height: 350px !important;
+        min-height: 350px !important;
+      }
+      .hero-video {
+        height: 100% !important;
+        object-fit: cover !important;
       }
     }
     .dest-days {
@@ -994,7 +1000,7 @@
         <div class="stat-lbl">Partnered Institutions</div>
       </div>
       <div class="stat-item reveal reveal-delay-1">
-        <div class="stat-num"><span class="counter" data-target="18">0</span><span>K+</span></div>
+        <div class="stat-num"><span class="counter" data-target="18000">0</span><span>+</span></div>
         <div class="stat-lbl">Students Travelled</div>
       </div>
       <div class="stat-item reveal reveal-delay-2">
@@ -1018,9 +1024,9 @@
     </div>
     <div class="programs-grid">
       <!-- SINGAPORE CARD (ENTIRE CARD CLICKABLE) -->
-      <a href="our-programs/singapore-indonesia" class="program-card reveal" aria-label="Explore Singapore Immersion Program">
+      <a href="our-programs/singapore.html" class="program-card reveal" aria-label="Explore Singapore Immersion Program">
         <div class="program-img">
-          <img src="images/banner-singapore-indonesia.webp" alt="Singapore Program" loading="lazy" />
+          <img src="images/banner-singapore.webp" alt="Singapore Program" loading="lazy" />
           <span class="program-badge">🔥 Popular</span>
         </div>
         <div class="program-body">
@@ -1150,8 +1156,8 @@
       <!-- Item 4 -->
       <div class="why-col-item reveal reveal-delay-3">
         <div class="why-icon-box">🎓</div>
-        <h3 class="why-item-title">Top University Collaborations</h3>
-        <p class="why-item-desc">Strong partnerships with QS-ranked universities.</p>
+        <h3 class="why-item-title">Top QS-Ranked Universities</h3>
+        <p class="why-item-desc">Strong Partnerships with Top QS-ranked universities.</p>
       </div>
 
       <!-- Item 5 -->
@@ -1244,7 +1250,7 @@
               <div class="testi-quote-badge">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
               </div>
-              <div class="testi-name">${(t.name || '').replace(/\s*\((Faculty|Student)\)/gi, '')}</div>
+              <div class="testi-name">Amitesh Chakraborty</div>
               <p class="testi-text">Vijigishu Education Pvt. Ltd. flawlessly executed our 6-day, 5-night college tour to Dubai. The itinerary was perfectly balanced, combining educational and recreational activities. Accommodations, food and transport were top-notch, and their team was professional and highly attentive. A truly memorable and stress-free experience. Highly recommended.</p>
             </div>
           </div>
@@ -1266,7 +1272,7 @@
           <!-- Card 3: Garima Goyal -->
           <div class="testi-card">
             <div class="testi-img">
-              <img src="images/Malaysia-2.webp" alt="Garima Goyal" loading="lazy" />
+              <img src="images/gallery/gallery-malaysia-09.webp" alt="Garima Goyal" loading="lazy" />
             </div>
             <div class="testi-body">
               <div class="testi-quote-badge">
@@ -1300,7 +1306,7 @@
               <div class="testi-quote-badge">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
               </div>
-              <div class="testi-name">Dr. VIJAYA KUMAR THOTA</div>
+              <div class="testi-name">Dr. VIJAYA KUMAR THOTA <span style="font-size:0.75rem; color:var(--green); font-weight:600; text-transform:capitalize; display:block; margin-top:2px;">(Faculty)</span></div>
               <p class="testi-text">Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution. From seamless airport and ferry transfers to comfortable accommodation in both Batam and Singapore, every arrangement reflected professionalism and attention to detail. The hospitality extended throughout the trip ensured students felt safe, well-guided, and cared for at every stage.</p>
             </div>
           </div>
@@ -1350,13 +1356,13 @@
           <!-- Card 9: Mrunal Joshi -->
           <div class="testi-card">
             <div class="testi-img">
-              <img src="images/Dubai-2.webp" alt="Mrunal Joshi" loading="lazy" />
+              <img src="images/gallery/gallery-dubai-03.webp" alt="Mrunal Joshi" loading="lazy" />
             </div>
             <div class="testi-body">
               <div class="testi-quote-badge">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
               </div>
-              <div class="testi-name">Mrunal Joshi</div>
+              <div class="testi-name">Mrunal Joshi <span style="font-size:0.75rem; color:var(--green); font-weight:600; text-transform:capitalize; display:block; margin-top:2px;">(Faculty)</span></div>
               <p class="testi-text">Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students.</p>
             </div>
           </div>
@@ -1410,7 +1416,7 @@
       <div class="faq-list reveal reveal-delay-1">
         <div class="faq-item">
           <div class="faq-question">
-            What kind of food is provided during the trip?
+            What kind of food will be provided during the trip?
             <div class="faq-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14"/>
@@ -1432,7 +1438,7 @@
         </div>
         <div class="faq-item">
           <div class="faq-question">
-            Can the trip be customised for our college?
+            Can the trip be customized for our college or group?
             <div class="faq-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14"/>
@@ -1461,7 +1467,7 @@
               </svg>
             </div>
           </div>
-          <div class="faq-answer">Yes, travel insurance is included in the program for all participants.</div>
+          <div class="faq-answer">Yes, travel insurance is included in the program.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question">
@@ -1476,14 +1482,14 @@
         </div>
         <div class="faq-item">
           <div class="faq-question">
-            How do you balance learning and leisure?
+            How do you balance learning and leisure during the trip?
             <div class="faq-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M12 5v14M5 12h14"/>
               </svg>
             </div>
           </div>
-          <div class="faq-answer">Our programs combine academic sessions, industry visits, and cultural exploration with visits to iconic landmarks — ensuring students learn while enjoying the destination.</div>
+          <div class="faq-answer">Our programs are thoughtfully designed to offer a balanced experience, combining academic sessions, industry visits, and cultural exploration with visits to iconic landmarks, ensuring students learn while enjoying the destination.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question">
@@ -1496,7 +1502,7 @@
           </div>
           <div class="faq-answer">
             Before departure, we conduct:<br>
-            ● Pre-departure sessions<br>
+            ● Predeparture training session on intercultural competence enhancement for a seamless global mobility & adaptability<br>
             ● Detailed itinerary briefings<br>
             ● Packing and travel guidance<br>
             ● Visa and documentation support
@@ -1655,7 +1661,7 @@
   {
     "id": "testi-3",
     "name": "Dr. VIJAYA KUMAR THOTA",
-    
+    "role": "Faculty",
     "stars": 5,
     "img": "images/Singapore-1.webp",
     "text": "Excellent Global Immersion arrangements by Vijigishu Education Pvt. Ltd. We sincerely appreciate Vijigishu Education Pvt. Ltd. for their outstanding planning and flawless execution. From seamless airport and ferry transfers to comfortable accommodation in both Batam and Singapore, every arrangement reflected professionalism and attention to detail. The hospitality extended throughout the trip ensured students felt safe, well-guided, and cared for at every stage."
@@ -1673,7 +1679,7 @@
     "name": "Garima Goyal",
     
     "stars": 5,
-    "img": "images/Singapore-2.webp",
+    "img": "images/gallery/gallery-malaysia-09.webp",
     "text": "My experience of VIJIGISHU EDUCATION PVT. LTD. is superb! They planned a very nice educational trip for us to Malaysia."
   },
   {
@@ -1681,15 +1687,15 @@
     "name": "Sana Fatima",
     
     "stars": 5,
-    "img": "images/Malaysia-1.webp",
+    "img": "images/gallery/gallery-malaysia-12.webp",
     "text": "The trip to Malaysia was an incredibly insightful and well-organized trip, offering a perfect blend of academic and professional perspectives through the university and industry visits. It was all possible with the help of Vijigishu."
   },
   {
     "id": "testi-7",
     "name": "Mrunal Joshi",
-    
+    "role": "Faculty",
     "stars": 5,
-    "img": "images/Dubai-2.webp",
+    "img": "images/gallery/gallery-dubai-03.webp",
     "text": "Thank you for your valuable support in the successful execution of IES MCRC’s Global Immersion to UAE. The experience proved to be truly enriching for the students."
   },
   {
@@ -1732,6 +1738,20 @@
       const raw = localStorage.getItem('vijigishu_testimonials');
       if (raw) {
         list = JSON.parse(raw);
+        let updated = false;
+        list = list.map(t => {
+          if (t.id === 'testi-5' || t.name === 'Garima Goyal') {
+            if (t.img !== 'images/gallery/gallery-malaysia-09.webp') { t.img = 'images/gallery/gallery-malaysia-09.webp'; updated = true; }
+          }
+          if (t.id === 'testi-6' || t.name === 'Sana Fatima') {
+            if (t.img !== 'images/gallery/gallery-malaysia-12.webp') { t.img = 'images/gallery/gallery-malaysia-12.webp'; updated = true; }
+          }
+          if (t.id === 'testi-7' || t.name === 'Mrunal Joshi' || (t.name && t.name.includes('Mrunal'))) {
+            if (t.img !== 'images/gallery/gallery-dubai-03.webp') { t.img = 'images/gallery/gallery-dubai-03.webp'; updated = true; }
+          }
+          return t;
+        });
+        if (updated) localStorage.setItem('vijigishu_testimonials', JSON.stringify(list));
       }
     } catch(e) {}
 
@@ -1807,6 +1827,11 @@
   }
 
   document.addEventListener('DOMContentLoaded', loadHomeTestimonials);
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'vijigishu_testimonials') {
+      loadHomeTestimonials();
+    }
+  });
 
 
   // Dynamic Academic Facilitators Sync

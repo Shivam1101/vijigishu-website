@@ -23,13 +23,6 @@
   <meta name="twitter:description" content="Explore European automotive giants, stock exchanges, UNESCO heritage, and premier institutions across France, Germany, Italy & Switzerland." />
   <meta name="twitter:image" content="https://vijigishu.co.in/images/Singapore.webp" />
   
-  
-  
-  
-  
-  
-  
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet" />
@@ -61,8 +54,6 @@
     .btn-royal { background: var(--sage); color: var(--navy); }
     .btn-royal:hover { background: var(--green); color: var(--white); transform: translateY(-2px); }
 
-    
-    
     /* --- FULL-WIDTH UNCROPPED HERO BANNER --- */
     .page-hero {
       position: relative;
@@ -88,12 +79,8 @@
       display: block;
     }
 
-
-
     /* Breadcrumbs below banner */
-    .breadcrumb-container { padding: 24px 0 12px;
-      background: var(--white);
-    }
+    .breadcrumb-container { padding: 24px 0 12px; background: var(--white); }
     .page-breadcrumb {
       display: flex;
       align-items: center;
@@ -121,7 +108,6 @@
     /* ─── OVERVIEW ─── */
     #overview { padding: 36px 0 60px; background: var(--white); }
     .overview-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: flex-start; }
-    .overview-left {}
     .overview-text { font-size: 1.05rem; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
     .overview-text-lead { font-size: 1.2rem; color: var(--navy); font-weight: 500; margin-bottom: 16px; line-height: 1.6; }
     
@@ -234,8 +220,9 @@
       user-select: none;
       transition: color .3s;
     }
-    .acc-title { font-weight: 700; color: #0F172A !important; font-size: .98rem; display: flex; align-items: center; gap: 12px; }
+    .acc-title { font-weight: 700; color: #0F172A !important; font-size: .98rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .acc-title span { color: #0F172A !important; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 800; font-style: italic; }
+    .acc-title svg { display: inline-block; vertical-align: middle; flex-shrink: 0; color: var(--green); }
     .acc-icon {
       width: 28px; height: 28px;
       border-radius: 50%;
@@ -258,10 +245,22 @@
       padding: 0 24px 20px 24px;
     }
     .acc-item.open .acc-body { display: block; animation: fadeIn .4s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-    .acc-body ul { display: flex; flex-direction: column; gap: 12px; }
-    .acc-body li { position: relative; font-size: .92rem; color: var(--gray); line-height: 1.65; padding-left: 20px; }
-    .acc-body li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
+    .acc-body ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .acc-body li {
+      position: relative;
+      padding-left: 20px;
+      font-size: .88rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+    .acc-body li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      color: var(--green);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
 
     /* ─── INCLUSIONS ─── */
     #inclusions { padding: 60px 0; background: var(--off); color: var(--navy); }
@@ -324,24 +323,6 @@
         max-width: 100% !important;
       }
     }
-    .incl-header { text-align: center; margin-bottom: 56px; }
-    .incl-header .section-heading { color: var(--white); }
-    .incl-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    
-
-    /* ─── FOOTER ─── */
-    footer { background: var(--dark); padding: 60px 0 32px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; margin-bottom: 64px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .footer-logo-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 10px; display: grid; place-items: center; color: var(--sage); font-weight: 800; font-size: 1rem; }
-    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); font-weight: 800; }
-    .footer-tagline { color: rgba(255,255,255,.4); font-size: .88rem; line-height: 1.7; max-width: 300px; }
-    .footer-col-title { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 20px; }
-    .footer-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-links a { color: rgba(255,255,255,.5); font-size: .88rem; transition: color .25s; }
-    .footer-links a:hover { color: var(--sage); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .footer-copy { color: rgba(255,255,255,.3); font-size: .82rem; }
 
     /* ─── Reveal ─── */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -350,295 +331,28 @@
     .reveal-delay-2 { transition-delay: .2s; }
     .reveal-delay-3 { transition-delay: .3s; }
 
-    /* ─── CTA PANEL ─── */
-    #about-cta {
-      padding: 60px 0;
-      background: var(--off);
-      position: relative;
-      overflow: hidden;
-    }
-    #about-cta::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.5;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='400' viewBox='0 0 1200 400' fill='none'%3E%3Cpath d='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' stroke='rgba(43,84,149,0.35)' stroke-width='2' stroke-linecap='round' stroke-dasharray='6 8'/%3E%3Cpath d='M-8,-6 L10,0 L-8,6 L-4,0 Z' fill='rgba(43,84,149,0.85)'%3E%3CanimateMotion path='M-100,220 C300,70 500,370 900,120 C1100,20 1200,270 1300,170' dur='15s' repeatCount='indefinite' rotate='auto' /%3E%3C/path%3E%3Ccircle cx='200' cy='150' r='140' stroke='rgba(43, 84, 149, 0.12)' stroke-width='1.5'/%3E%3Ccircle cx='200' cy='150' r='90' stroke='rgba(43, 84, 149, 0.12)' stroke-width='1.5'/%3E%3Cline x1='200' y1='0' x2='200' y2='300' stroke='rgba(43, 84, 149, 0.12)' stroke-width='1.5'/%3E%3Cline x1='50' y1='150' x2='350' y2='150' stroke='rgba(43, 84, 149, 0.12)' stroke-width='1.5'/%3E%3Ctext x='190' y='38' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(43, 84, 149, 0.12)' letter-spacing='1'%3EN 18° 30' 13%22%3C/text%3E%3Ctext x='190' y='54' text-anchor='end' font-family='sans-serif' font-size='9' font-weight='700' fill='rgba(43, 84, 149, 0.12)' letter-spacing='1'%3EE 73° 49' 44%22%3C/text%3E%3C/svg%3E");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    .about-cta-inner {
-      background: transparent;
-      border-radius: 0;
-      position: relative;
-      overflow: visible;
-      box-shadow: none;
-      transition: none;
-      z-index: 2;
-    }
-    .about-cta-left { position: relative; z-index: 2; text-align: left; }
-    .about-cta-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--navy) !important; margin-bottom: 12px; line-height: 1.2; }
-    .about-cta-h2 em { color: var(--green) !important; font-style: italic; }
-    .about-cta-sub { color: var(--gray) !important; font-size: .95rem; line-height: 1.65; margin: 0; }
-    .about-cta-right {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: row;
-      gap: 16px;
-      margin-top: 28px;
-      justify-content: flex-start;
-    }
-    .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
-    .btn-outline:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* --- Mascot Portal Window --- */
-    .opt-portal {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      align-items: center;
-      gap: 40px;
-      padding: 0 !important;
-      background: transparent !important;
-      box-shadow: none !important;
-    }
-    .portal-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-    }
-    .portal-shape {
-      width: 300px;
-      height: 300px;
-      background: rgba(43, 84, 149, 0.12);
-      border: 3px solid var(--sage);
-      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      position: relative;
-      box-shadow: inset 0 0 20px rgba(43,84,149,0.15), 0 10px 25px rgba(0,0,0,0.06);
-      animation: morph 8s ease-in-out infinite;
-      transition: border-color 0.4s, background 0.4s;
-    }
-    .mascot-img-portal {
-      width: 232px;
-      height: auto;
-      transition: transform 0.5s ease;
-    }
-    .opt-portal:hover .portal-shape {
-      border-color: var(--green);
-      background: rgba(43, 84, 149, 0.12);
-    }
-    .opt-portal:hover .mascot-img-portal {
-      transform: scale(1.12) rotate(-3deg);
-    }
-    @keyframes morph {
-      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
-      50% { border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%; }
-      100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
-    }
-
-    /* ─── Responsive ─── */
     @media (max-width: 1024px) {
-      .overview-split { grid-template-columns: 1fr; gap: 48px; }
-      .incl-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .highlights-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .itin-grid { grid-template-columns: 1fr; gap: 32px; }
-      .opt-portal {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 40px 0 !important;
-        text-align: center;
-      }
-      .about-cta-left { text-align: center; padding-left: 0 !important; }
-      .about-cta-right { flex-direction: row; justify-content: center; width: 100%; gap: 12px; margin-top: 24px; }
-      .about-cta-right .btn { flex: 1; max-width: 220px; text-align: center; justify-content: center; }
-      .portal-shape {
-        width: 240px;
-        height: 240px;
-      }
-      .mascot-img-portal {
-        width: 180px;
-      }
+      .overview-split { grid-template-columns: 1fr; gap: 40px; }
+      .itin-grid { grid-template-columns: 1fr; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 768px) {
-      
-      .hamburger { display: flex; }
-      .incl-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .acc-header { padding: 20px; }
-      .acc-body { padding: 0 20px 24px 20px; }
-      .highlights-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      #about-cta { padding: 48px 0; }
-    }
-    @media (max-width: 560px) {
-      .highlights-grid { grid-template-columns: 1fr; gap: 12px; }
-      .incl-grid { grid-template-columns: 1fr; gap: 12px; }
-      .about-cta-right {
-        flex-direction: column !important;
-        align-items: stretch;
-        gap: 12px;
-      }
-      .about-cta-right .btn {
-        flex: none;
-        max-width: none;
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-      }
-    }
-  
-    /* ═════════════════════════════════════════════════════════════════
-       ICON-ONLY DESTINATION SPEED DIAL FAB (7 Destinations)
-       ═════════════════════════════════════════════════════════════════ */
-    
-    .fab-main-btn { width: 54px; height: 54px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #2B5495 0%, #0F172A 100%);
-      color: #FFFFFF;
-      border: 1.5px solid rgba(43, 84, 149, 0.45);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(43, 84, 149, 0.12);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      position: relative;
-      z-index: 2;
-    }
-    .fab-main-btn svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--sage);
-      transition: transform 0.3s var(--ease), stroke 0.3s;
-    }
-    .fab-main-btn:hover,
-    #floating-fab-menu.is-open .fab-main-btn {
-      background: var(--green);
-      border-color: var(--sage);
-      transform: scale(1.06);
-      box-shadow: 0 12px 30px rgba(43, 84, 149, 0.45);
-    }
-    .fab-main-btn:hover svg,
-    #floating-fab-menu.is-open .fab-main-btn svg {
-      stroke: #FFFFFF;
-      transform: rotate(45deg);
+    @media (max-width: 600px) {
+      .highlights-grid { grid-template-columns: 1fr; }
     }
 
-    /* Main FAB Tooltip on hover */
-    .fab-main-tip {
-      position: absolute;
-      left: calc(100% + 12px);
-      top: 50%;
-      transform: translateY(-50%) translateX(-6px);
-      background: var(--navy);
-      color: #FFFFFF;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      border: 1px solid rgba(43, 84, 149, 0.3);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      transition: all 0.2s var(--ease);
-    }
-    #floating-fab-menu:not(.is-open) .fab-main-btn:hover .fab-main-tip {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    /* Pop-out actions stack */
-    .fab-actions { position: absolute !important; bottom: calc(100% + 10px) !important; left: 50% !important; transform: translateX(-50%) translateY(12px) scale(0.9) !important; display: flex !important; flex-direction: column-reverse !important; gap: 8px !important; align-items: center !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transition: opacity 0.25s var(--ease), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0.25s !important; z-index: 1000005 !important; }
-    #floating-fab-menu:hover .fab-actions,
-    #floating-fab-menu.is-open .fab-actions {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: translateY(0) scale(1);
-    }
-
-    /* Individual action circle button */
-    .fab-action-item {
-      position: relative;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 1.5px solid rgba(43, 84, 149, 0.22);
-      display: grid;
-      place-items: center;
-      font-size: 1.15rem;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-      transition: all 0.25s var(--ease);
-      cursor: pointer;
-    }
-    .fab-action-item:hover {
-      background: #F8FAFC;
-      border-color: var(--green);
-      transform: scale(1.12);
-      box-shadow: 0 8px 24px rgba(43, 84, 149, 0.25);
-    }
-
-    /* Action Name Tooltip on individual icon hover */
-    .fab-action-label {
-      position: absolute;
-      left: calc(100% + 12px);
-      top: 50%;
-      transform: translateY(-50%) translateX(-8px);
-      background: var(--navy);
-      color: #FFFFFF;
-      padding: 7px 14px;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      border: 1px solid rgba(43, 84, 149, 0.3);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      transition: all 0.2s var(--ease);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 10;
-    }
-    .fab-action-label span.arr {
-      color: var(--sage);
-      font-weight: 800;
-    }
-    .fab-action-item:hover .fab-action-label {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
-
-    
-    }
-  
     @media (max-width: 768px) {
       .page-hero { height: auto; width: 100%; }
     }
 
     .section-heading span, h1 span, h2 span, h3 span { color: #0F172A !important; font-style: italic !important; }
-
     .incl-title, .inclusion-title, .incl-card .incl-title { color: #0F172A !important; font-weight: 700 !important; }
-
     .acc-title, .acc-header, .acc-item .acc-title { color: #0F172A !important; font-weight: 700 !important; }
     .acc-title span { color: #0F172A !important; font-style: italic !important; }
-
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
-</style>
+  </style>
   <link rel="stylesheet" href="../css/global-components.css?v=1787475903488" onerror="this.onerror=null;this.href='../css/global-components.css?v=1787475903488';" />
-  
-  
-  
   <link rel="icon" type="image/png" href="../images/admin-profile-icon.png" />
   <link rel="shortcut icon" href="../images/admin-profile-icon.png" />
   <link rel="apple-touch-icon" href="../images/admin-profile-icon.png" />
@@ -654,16 +368,14 @@
     <img src="../images/banner-europe.webp" alt="Banner" fetchpriority="high" />
   </div>
 </div>
-</div>
-</div>
 
 <!-- ===== BREADCRUMBS ===== -->
 <div class="breadcrumb-container">
   <div class="container">
     <div class="page-breadcrumb">
-      <a href="/">Home</a>
+      <a href="../index.html">Home</a>
       <span>›</span>
-      <a href="/">Our Programs</a>
+      <a href="index.html">Our Programs</a>
       <span>›</span>
       <span class="current">Europe</span>
     </div>
@@ -678,7 +390,7 @@
         <div class="tag">Program Overview</div>
         <h2 class="section-heading" style="margin-bottom: 24px;">Explore Europe's<br><span>Dynamic Hubs</span></h2>
         <p class="overview-text-lead">Europe offers a powerful blend of innovation, history, design, and global systems making it one of the most enriching destinations for international exposure.</p>
-        <p class="overview-text" style="margin-bottom: 16px;">Our Europe Our Programs are designed to give students across disciplines—management, engineering, architecture, and design—a chance to experience:</p>
+        <p class="overview-text" style="margin-bottom: 16px;">Designed for students across disciplines such as management, engineering, architecture, and design, our Europe programs provide an opportunity to experience:</p>
         <ul class="overview-text" style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
           <li style="display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--gray); font-weight: 500;">
             <span style="color: var(--green); font-weight: bold;">✓</span> World-class infrastructure
@@ -774,56 +486,124 @@
                 <div class="acc-title"><span>Day 1</span> – Arrival in Paris</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Arrival, city orientation & Seine River cruise</li><li>Hotel check-in</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Arrival in <strong>Paris</strong> and transfer to the hotel.</li>
+                  <li>Paris city orientation covering the key landmarks and surroundings.</li>
+                  <li>Enjoy a <strong>Seine River Cruise</strong> and experience the city from the waterfront.</li>
+                  <li>Hotel check-in and overnight stay in Paris.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 2</span> – Industry & City Exposure</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Industry visit / academic session</li><li>Visit Eiffel Tower</li><li>City exploration</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast followed by an <strong>industry visit / academic session</strong>.</li>
+                  <li>Interaction with professionals / academic experts and practical learning exposure.</li>
+                  <li>Visit the iconic <strong>Eiffel Tower</strong>.</li>
+                  <li>Explore central Paris and its major city landmarks.</li>
+                  <li>Overnight stay in Paris.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 3</span> – Exploration Day</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Free day for learning through exploration (Disneyland / cultural sites / markets)</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and a full day for <strong>independent learning and exploration</strong>.</li>
+                  <li>Option to visit <strong>Disneyland Paris</strong>, cultural sites or local markets.</li>
+                  <li>Experience Parisian culture, lifestyle and local surroundings.</li>
+                  <li>Overnight stay in Paris.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 4</span> – Paris to Brussels</div>
+                <div class="acc-title"><span>Day 4</span> – Paris <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg> Brussels</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Transfer with enroute industry visit</li><li>Brussels city tour</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out from the hotel.</li>
+                  <li>Travel from <strong>Paris to Brussels</strong>.</li>
+                  <li><strong>En-route industry visit</strong> for practical exposure and interaction.</li>
+                  <li>Arrival in Brussels and city tour covering the key landmarks.</li>
+                  <li>Hotel check-in and overnight stay in Brussels.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 5</span> – Brussels to Essen</div>
+                <div class="acc-title"><span>Day 5</span> – Brussels <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg> Essen</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>University session with certification</li><li>Networking exposure</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out.</li>
+                  <li>Transfer from <strong>Brussels to Essen, Germany</strong>.</li>
+                  <li>Attend an <strong>interactive university session</strong> with academic experts.</li>
+                  <li>Receive <strong>participation / academic certification</strong>.</li>
+                  <li>Networking and interaction with university representatives and students.</li>
+                  <li>Overnight stay in Essen.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 6</span> – Essen to Amsterdam</div>
+                <div class="acc-title"><span>Day 6</span> – Essen <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg> Amsterdam</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Transfer to Amsterdam</li><li>Visit sustainability-focused project</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out from the hotel.</li>
+                  <li>Transfer from <strong>Essen to Amsterdam, Netherlands</strong>.</li>
+                  <li>Visit a <strong>sustainability-focused project</strong> to understand practical approaches to sustainable development.</li>
+                  <li>Hotel check-in and overnight stay in Amsterdam.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 7</span> – Amsterdam Exploration</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Academic/industry visit</li><li>Dutch village experience (Zaanse Schans)</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast followed by an <strong>academic / industry visit</strong>.</li>
+                  <li>Interaction with professionals and practical learning exposure.</li>
+                  <li>Visit <strong>Zaanse Schans</strong>, a traditional Dutch village experience.</li>
+                  <li>Explore traditional Dutch architecture, windmills and local surroundings.</li>
+                  <li>Return to Amsterdam and overnight stay.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 8</span> – Departure</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Airport transfer & departure</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and hotel check-out.</li>
+                  <li>Free time for local exploration, subject to departure schedule.</li>
+                  <li>Transfer to the airport.</li>
+                  <li>Departure with valuable <strong>academic, industry and international cultural exposure</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -837,77 +617,171 @@
                 <div class="acc-title"><span>Day 1</span> – Arrival in Frankfurt</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Arrival, cultural orientation & hotel check-in</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Arrival in <strong>Frankfurt</strong> and transfer to the hotel.</li>
+                  <li>Cultural orientation and introduction to the city.</li>
+                  <li>Explore the surrounding areas and key landmarks.</li>
+                  <li>Hotel check-in and overnight stay in Frankfurt.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 2</span> – Engineering & Industry Exposure</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Visit to automobile/engineering hub</li><li>Academic interaction</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast followed by a visit to an <strong>automobile / engineering hub</strong>.</li>
+                  <li>Gain practical exposure to engineering, manufacturing and industrial processes.</li>
+                  <li>Academic interaction with industry / academic professionals.</li>
+                  <li>Return to the hotel and overnight stay in Frankfurt.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 3</span> – Heritage & Transition</div>
+                <div class="acc-title"><span>Day 3</span> – Heritage & Transition to Stuttgart</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Visit historic sites</li><li>Transfer to Stuttgart & museum visit</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and visit to <strong>historic sites</strong> in Frankfurt.</li>
+                  <li>Check-out and transfer to <strong>Stuttgart</strong>.</li>
+                  <li>Explore the city's heritage and cultural surroundings.</li>
+                  <li>Visit a <strong>museum</strong> for industry / technology-oriented learning.</li>
+                  <li>Hotel check-in and overnight stay in Stuttgart.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 4</span> – Infrastructure Learning</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Airport operations / infrastructure exposure</li><li>City exploration</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast followed by <strong>airport operations / infrastructure exposure</strong>.</li>
+                  <li>Understand airport systems, operations and infrastructure management.</li>
+                  <li>Explore Stuttgart city and its key landmarks.</li>
+                  <li>Return to the hotel and overnight stay in Stuttgart.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 5</span> – Stuttgart to Munich</div>
+                <div class="acc-title"><span>Day 5</span> – Stuttgart <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg> Munich</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Transfer, cultural & architectural exploration</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out from the hotel.</li>
+                  <li>Transfer from <strong>Stuttgart to Munich</strong>.</li>
+                  <li>Cultural and architectural exploration of Munich.</li>
+                  <li>Explore the city's historic landmarks and urban surroundings.</li>
+                  <li>Hotel check-in and overnight stay in Munich.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 6</span> – Industry & Systems</div>
+                <div class="acc-title"><span>Day 6</span> – Industry & Systems Exposure</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Visit manufacturing/industry unit</li><li>Visit Allianz Arena</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast followed by a visit to a <strong>manufacturing / industry unit</strong>.</li>
+                  <li>Gain insights into industrial systems, operations and management practices.</li>
+                  <li>Interaction with industry professionals.</li>
+                  <li>Visit <strong>Allianz Arena</strong> and explore its architecture and operations.</li>
+                  <li>Overnight stay in Munich.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 7</span> – Travel to Prague</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>City orientation & cultural exposure</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out from the hotel.</li>
+                  <li>Travel from <strong>Munich to Prague, Czech Republic</strong>.</li>
+                  <li>Arrival in Prague and hotel check-in.</li>
+                  <li>Prague city orientation and cultural exploration.</li>
+                  <li>Overnight stay in Prague.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 8</span> – Prague Exploration</div>
+                <div class="acc-title"><span>Day 8</span> – Prague: Architecture & Urban Learning</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Architecture, urban design & academic learning</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast followed by an exploration of <strong>Prague's architecture and urban design</strong>.</li>
+                  <li>Visit key architectural and historic sites.</li>
+                  <li>Academic learning through observation of the city's urban planning and heritage.</li>
+                  <li>Cultural exploration of Prague.</li>
+                  <li>Overnight stay in Prague.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 9</span> – Travel to Vienna</div>
+                <div class="acc-title"><span>Day 9</span> – Prague <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg> Vienna</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>City tour & cultural learning</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out from the hotel.</li>
+                  <li>Transfer from <strong>Prague to Vienna, Austria</strong>.</li>
+                  <li>Vienna city tour covering major landmarks and cultural attractions.</li>
+                  <li>Explore the city's architecture, heritage and urban environment.</li>
+                  <li>Hotel check-in and overnight stay in Vienna.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
-                <div class="acc-title"><span>Day 10</span> – Vienna to Budapest</div>
+                <div class="acc-title"><span>Day 10</span> – Vienna <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg> Budapest</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>City exploration</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and check-out from the hotel.</li>
+                  <li>Transfer from <strong>Vienna to Budapest, Hungary</strong>.</li>
+                  <li>Arrival and city exploration covering key landmarks.</li>
+                  <li>Experience Budapest's architecture, culture and cityscape.</li>
+                  <li>Overnight stay in Budapest.</li>
+                </ul>
+              </div>
             </div>
+
             <div class="acc-item">
               <div class="acc-header">
                 <div class="acc-title"><span>Day 11</span> – Departure</div>
                 <div class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
               </div>
-              <div class="acc-body"><ul><li>Airport transfer & departure</li></ul></div>
+              <div class="acc-body">
+                <ul>
+                  <li>Breakfast and hotel check-out.</li>
+                  <li>Free time for local exploration, subject to departure schedule.</li>
+                  <li>Transfer to the airport.</li>
+                  <li>Departure with valuable <strong>international academic, industry, engineering and cultural exposure</strong>.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -917,7 +791,7 @@
   </div>
 </section>
 
-<!-- ===== INCLUSIONS ─── -->
+<!-- ===== INCLUSIONS ===== -->
 <section id="inclusions">
   <div class="container">
     <div class="incl-header reveal">
@@ -928,62 +802,42 @@
       
       <div class="incl-card reveal">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg></div>
-        <div class="incl-title">Economy Class Airfare (to & from)</div>
+        <div class="incl-title">Flights (Roundtrip)</div>
       </div>
       
       <div class="incl-card reveal reveal-delay-1">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9V21M21 9V21M18 5H6M3 9h18M3 9V5a2 2 0 012-2h14a2 2 0 012 2v4M8 14h8M8 18h8"></path></svg></div>
-        <div class="incl-title">Accommodation in quality 3★ hotels<br>(Twin/Triple Sharing)</div>
+        <div class="incl-title">Accommodation</div>
       </div>
       
       <div class="incl-card reveal reveal-delay-2">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
-        <div class="incl-title">All Meals<br>(Breakfast, Lunch, Dinner)</div>
+        <div class="incl-title">Meals</div>
       </div>
       
       <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
-        <div class="incl-title">All Intercity & Local transportation via comfortable AC coach</div>
-      </div>
-      
-      <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="9" r="3"/></svg></div>
-        <div class="incl-title">Sightseeing & guided city tours as per itinerary</div>
-      </div>
-      
-      <div class="incl-card reveal reveal-delay-1">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 19H2V5h20v14zM6 12h4M14 12h4M10 16h4"></path></svg></div>
-        <div class="incl-title">Industry visits and real-world exposure sessions</div>
+        <div class="incl-title">Industry/Academic visit</div>
       </div>
       
-      <div class="incl-card reveal reveal-delay-2">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
-        <div class="incl-title">Academic engagement / university workshop with certification</div>
-      </div>
-      
-      <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 5v2M15 11v2M15 17v2M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg></div>
-        <div class="incl-title">Entry tickets for attractions and visits included in itinerary</div>
-      </div>
-
       <div class="incl-card reveal">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path></svg></div>
-        <div class="incl-title">Travel Insurance</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><circle cx="7" cy="20" r="2"/><circle cx="17" cy="20" r="2"/><path d="M12 16V4M12 10h9M3 10h9"></path></svg></div>
+        <div class="incl-title">Transportation (Comfortable AC coach)</div>
       </div>
-
+      
       <div class="incl-card reveal reveal-delay-1">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5A2.5 2.5 0 006.5 22H20M4 19.5V3.5A2.5 2.5 0 016.5 1h11A2.5 2.5 0 0120 3.5v13.5M12 7v6M9 10h6"></path></svg></div>
-        <div class="incl-title">Visa Assistance</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 7.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="9" r="3"/></svg></div>
+        <div class="incl-title">Sightseeing</div>
       </div>
-
+      
       <div class="incl-card reveal reveal-delay-2">
         <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="incl-title">Experienced tour leader & tips for drivers & local guides</div>
+        <div class="incl-title">Experienced VPL Tour leader</div>
       </div>
-
+      
       <div class="incl-card reveal reveal-delay-3">
-        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <div class="incl-title">Pre-departure orientation session, travel kit & GST</div>
+        <div class="incl-icon"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="incl-title">Visa and Travel Insurance</div>
       </div>
 
     </div>
@@ -994,9 +848,6 @@
 <div id="global-cta"></div>
 
 <!-- ===== GLOBAL FOOTER ===== -->
-
-
-
 <footer id="global-footer"></footer>
 
 <script src="/js/global-components.js?v=1787475903488" onerror="this.onerror=null;this.src='../js/global-components.js?v=1787475903488';"></script>
@@ -1007,25 +858,31 @@
     header.addEventListener('click', () => {
       const item = header.parentElement;
       const accordion = item.parentElement;
+      const allItems = accordion.querySelectorAll('.acc-item');
+      
       const isOpen = item.classList.contains('open');
-      
-      // Close all others in the same accordion container
-      accordion.querySelectorAll('.acc-item').forEach(el => el.classList.remove('open'));
-      
-      // Toggle current
+      allItems.forEach(i => i.classList.remove('open'));
       if (!isOpen) {
         item.classList.add('open');
       }
     });
   });
 
-  // Reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
+  // Reveal Animation on Scroll
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }, {
+    rootMargin: '0px 0px -50px 0px',
+    threshold: 0.1
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
