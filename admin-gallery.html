@@ -594,7 +594,6 @@
     { src: 'images/gallery/gallery-singapore-03.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
     { src: 'images/gallery/gallery-singapore-04.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
     { src: 'images/gallery/gallery-singapore-05.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
-    { src: 'images/gallery/gallery-singapore-06.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
     { src: 'images/gallery/gallery-singapore-07.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
     { src: 'images/gallery/gallery-singapore-08.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
     { src: 'images/gallery/gallery-singapore-09.webp', country: 'singapore', label: 'Singapore', title: 'Vijigishu Immersion Program - Singapore' },
@@ -607,7 +606,14 @@
   function getGalleryItems() {
     try {
       const raw = localStorage.getItem('vijigishu_gallery_items');
-      if (raw) return JSON.parse(raw);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        const valid = parsed.filter(x => x && x.src && !x.src.includes('singapore-06'));
+        if (valid.length !== parsed.length) {
+          localStorage.setItem('vijigishu_gallery_items', JSON.stringify(valid));
+        }
+        return valid;
+      }
     } catch(e) {}
     localStorage.setItem('vijigishu_gallery_items', JSON.stringify(DEFAULT_GALLERY));
     return DEFAULT_GALLERY;

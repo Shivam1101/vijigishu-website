@@ -1059,12 +1059,6 @@
     "title": "Vijigishu Immersion Program - Singapore"
   },
   {
-    "src": "images/gallery/gallery-singapore-06.webp",
-    "country": "singapore",
-    "label": "Singapore",
-    "title": "Vijigishu Immersion Program - Singapore"
-  },
-  {
     "src": "images/gallery/gallery-singapore-07.webp",
     "country": "singapore",
     "label": "Singapore",
@@ -1104,7 +1098,12 @@
     }
     try {
       const parsed = JSON.parse(raw);
-      return parsed.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
+      // Clean up any stale references to deleted images
+      const valid = parsed.filter(item => item && item.src && !item.src.includes('singapore-06'));
+      if (valid.length !== parsed.length) {
+        localStorage.setItem('vijigishu_gallery_items', JSON.stringify(valid));
+      }
+      return valid.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
     } catch(e) {
       return defaultPresetItems.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
     }
@@ -1139,7 +1138,7 @@
       card.setAttribute('data-index', index);
       card.innerHTML = `
         <div class="masonry-item-badge">${item.icon}</div>
-        <img src="${item.src}" loading="lazy" decoding="async" alt="${item.title}" />
+        <img src="${item.src}" loading="lazy" decoding="async" alt="${item.title}" onerror="this.closest('.masonry-item')?.remove()" />
         <div class="masonry-overlay">
           <div class="masonry-zoom-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
