@@ -4,5 +4,10 @@ Thumbs.db
 *.log
 .gemini/
 .env
+.env.*
+*.local
+*.local.*
+credentials.local.json
+secrets/
 dist/
 build/
