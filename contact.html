@@ -1094,7 +1094,6 @@
 <footer id="global-footer"></footer>
 
 <script src="js/global-components.js?v=1788191808139"></script>
-<script src="js/config.local.js" onerror="this.remove()"></script>
 
 <script>
   // Reveal on scroll
@@ -1142,8 +1141,8 @@
   const submitBtn = document.getElementById('submitBtn');
   const accessKeyInput = document.getElementById('accessKey');
 
-  const GOOGLE_SCRIPT_URL = (window.VIJIGISHU_CONFIG && window.VIJIGISHU_CONFIG.GOOGLE_SCRIPT_URL) || 'YOUR_GOOGLE_SCRIPT_URL_HERE';
-  const WEB3FORMS_ACCESS_KEY = (window.VIJIGISHU_CONFIG && window.VIJIGISHU_CONFIG.WEB3FORMS_ACCESS_KEY) || 'YOUR_ACCESS_KEY_HERE';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHnweOO56bI3_hnU7XPBV3vZiZrH4gSoYbJnPvJQcbaw3HJ4MMnhQlqbPXG_1_jJGt/exec';
+  const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
 
   if (contactForm) {
     const fullNameInput = document.getElementById('fullName');
