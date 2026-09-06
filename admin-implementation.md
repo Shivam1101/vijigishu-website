@@ -1,9 +1,9 @@
 # 📋 Vijigishu Admin & Hostinger Backend Implementation Plan
 
 > **Document Name:** `admin-implementation.md`  
-> **Date:** September 5, 2026  
+> **Date:** September 6, 2026  
 > **Target Environment:** Hostinger Web Hosting (PHP 8.x / Native SSD File Storage)  
-> **Objective:** Transition all Vijigishu Admin Modules from browser-isolated `localStorage` to a centralized, real-time server-side backend with persistent media storage, multi-page live sync (including all academic discipline pages), and strict zero-disruption safeguards.
+> **Objective:** Transition all Vijigishu Admin Modules from browser-isolated `localStorage` to a centralized, real-time server-side backend with persistent media storage, multi-page live sync (including all academic discipline pages), automated contact form processing, and strict zero-disruption safeguards.
 
 ---
 
@@ -15,7 +15,7 @@ Before any implementation, the following foundational safeguards are strictly es
    - No itinerary text, bullet points, inclusions, titles, meta tags, or custom stylings across any pages will be touched or altered.
    - No shortcodes, component IDs, or layout classes will be renamed or disrupted.
 2. **Progressive Enhancement & Offline Resilience:**
-   - Every public-facing page (`index.html`, `gallery.html`, `management.html`, `engineering.html`, `architecture-design.html`, `school-programs.html`, `about.html`) retains its existing inline preset fallback.
+   - Every public-facing page (`index.html`, `gallery.html`, `management.html`, `engineering.html`, `architecture-design.html`, `school-programs.html`, `about.html`, `contact.html`) retains its existing inline preset fallback.
    - If the server or API is ever undergoing maintenance or temporarily unreachable, the frontend pages seamlessly display their default content without throwing errors or breaking UI rendering.
 3. **Subfolder Path Normalization:**
    - Media paths returned by the API (e.g. `/uploads/testimonials/...`) are automatically handled and normalized so they render perfectly on root pages (`index.html`) and subfolder pages (`our-programs/*.html`) alike.
@@ -43,8 +43,8 @@ Before any implementation, the following foundational safeguards are strictly es
 └───────────────────────────┘  │                                                        │  │  • school-programs.html   │
                                │   ⚙️ /api/ (RESTful PHP Endpoints)                     │  │  • about.html (Team/Bios) │
                                │   ├── auth.php (Login, logout, session verification)   │  │  • blog pages             │
-                               │   ├── upload.php (Secure file handler & sanitization)  │  └───────────────────────────┘
-                               │   ├── gallery.php (CRUD for gallery items)             │
+                               │   ├── upload.php (Secure file handler & sanitization)  │  │  • contact.html           │
+                               │   ├── gallery.php (CRUD for gallery items)             │  └───────────────────────────┘
                                │   ├── testimonials.php (CRUD for reviews)              │
                                │   ├── blog.php (CRUD for blog posts)                   │
                                │   └── facilitators.php (CRUD for leadership/team)      │
@@ -186,7 +186,35 @@ Every modifying request (`POST`, `PUT`, `DELETE`) passes through a central `chec
 
 ---
 
-## 6. 📅 Phased Implementation Roadmap
+## 6. 📬 Contact Form & Google Apps Script Infrastructure
+
+```
+┌─────────────────┐       POST (no-cors)       ┌──────────────────────────────┐
+│  contact.html   │───────────────────────────►│ Google Apps Script Web App   │
+└─────────────────┘                            └──────────────┬───────────────┘
+                                                              │
+                                    ┌─────────────────────────┴─────────────────────────┐
+                                    ▼                                                   ▼
+                         ┌───────────────────────┐                           ┌────────────────────┐
+                         │  Google Spreadsheet   │                           │  Gmail Dispatch    │
+                         │  (Appends new row)    │                           │  (Dual HTML Mails) │
+                         └───────────────────────┘                           └─────────┬──────────┘
+                                                                                       │
+                                                        ┌──────────────────────────────┴──────────────────────────────┐
+                                                        ▼                                                             ▼
+                                             ┌──────────────────────┐                                      ┌──────────────────────┐
+                                             │ Internal Alert       │                                      │ Inquirer Auto-Reply  │
+                                             │ (info@vijigishu.co.in)                                      │ (Branded Confirmation│
+                                             └──────────────────────┘                                      └──────────────────────┘
+```
+
+- **Honeypot Protection:** Embedded hidden fields (`botcheck` and `_hp_val`) to silently drop bot submissions.
+- **DDoS & Flood Protection:** Managed natively by Google Cloud Edge infrastructure.
+- **Dual-Email Dispatch:** Powered by `MailApp.sendEmail` with high-speed CDN logo rendering.
+
+---
+
+## 7. 📅 Phased Implementation Roadmap
 
 ```mermaid
 flowchart TD
@@ -232,7 +260,7 @@ flowchart TD
 
 ---
 
-## 7. 🧪 Multi-Page Verification & Testing Checklist
+## 8. 🧪 Multi-Page Verification & Testing Checklist
 
 1. **Academic Testimonials Live-Sync Check:** Add/edit a testimonial in `admin-testimonials.html` → verify it updates simultaneously across:
    - `index.html`
