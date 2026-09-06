@@ -171,3 +171,108 @@ http://localhost:4040
 
 - **No Secrets in Source:** All sensitive credentials, tokens, and local configuration files (`.env*`, `*.local*`, `credentials.local.json`, `secrets/`) are strictly ignored via `.gitignore`.
 - **Static Integrity:** Public pages do not expose database connection strings or administrative private keys.
+
+---
+
+## 📸 8. Media & Asset Management Standards
+
+To maintain high visual quality without degrading page loading speed, all media assets adhere to the following standards:
+
+### Standard Dimensions & Formats:
+| Asset Type | Aspect Ratio | Dimensions | Max File Size | Format |
+|---|---|---|---|---|
+| **Hero Banners** | 16:9 / Contained | `1920 × 1080px` or `1440 × 600px` | `< 250 KB` | `.webp` |
+| **Program Cards** | 4:3 | `800 × 600px` | `< 120 KB` | `.webp` |
+| **Gallery Images** | 3:2 / 4:3 | `1200 × 800px` | `< 150 KB` | `.webp` |
+| **Testimonial Avatars** | 1:1 | `200 × 200px` (Square) | `< 40 KB` | `.webp` |
+| **Partner & QS Logos** | Scaled Vector | Original Aspect Ratio | `< 30 KB` | `.png` (Alpha) / `.svg` |
+
+### Image Optimization Rules:
+- **Format:** Always prefer `.webp` over `.jpg` or `.png` for photographs.
+- **Priority Loading:** High-priority hero images must include `fetchpriority="high"`. Below-the-fold content images should include `loading="lazy"`.
+- **Naming Conventions:** All lowercase with hyphen delimiters (e.g. `banner-contact.webp`, `gallery-singapore-01.webp`, `testi-dr-vijaya.webp`).
+
+---
+
+## 🔍 9. SEO & Social Graph Architecture
+
+Every public page contains comprehensive Open Graph, Twitter Card, and Canonical metadata for institutional sharing and discoverability:
+
+### Standard Social Metadata Template:
+```html
+<!-- Primary Meta Tags -->
+<title>Destination / Program Title – Vijigishu Educational Travel</title>
+<meta name="description" content="Structured academic immersion programs curated for universities and colleges." />
+<link rel="canonical" href="https://vijigishu.co.in/our-programs/destination.html" />
+
+<!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Vijigishu Educational Travel" />
+<meta property="og:url" content="https://vijigishu.co.in/our-programs/destination.html" />
+<meta property="og:title" content="Destination Title – Vijigishu Educational Travel" />
+<meta property="og:description" content="Structured academic immersion programs curated for universities and colleges." />
+<meta property="og:image" content="https://vijigishu.co.in/images/banner-destination.webp" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Destination Title – Vijigishu Educational Travel" />
+<meta name="twitter:image" content="https://vijigishu.co.in/images/banner-destination.webp" />
+```
+
+---
+
+## ♿ 10. Accessibility (a11y) & Performance Guidelines
+
+The platform is designed to comply with **WCAG 2.1 Level AA** accessibility and Core Web Vitals (CWV) thresholds:
+
+1. **Semantic Heading Structure:** Exactly one `<h1>` per page, followed by strictly descending `<h2>` and `<h3>` tags.
+2. **Touch Targets:** All interactive links, buttons, and form inputs meet the minimum touch target requirement of `44 × 44px` on mobile screens.
+3. **Color Contrast:** All body text meets or exceeds a `4.5:1` contrast ratio against backgrounds; large headers meet `3:1`.
+4. **Interactive Focus States:** Buttons and inputs retain clear `:focus-visible` outline rings for keyboard navigation.
+5. **Screen Reader Visibility:** Icons without visible text labels must include `aria-label` or `aria-hidden="true"`.
+
+---
+
+## 🤝 11. Contributor & Content Extension Workflow
+
+When adding a new destination, academic discipline, or program page:
+
+### Step 1 — Copy a Base Template
+- For destination itineraries: copy `our-programs/uae.html` or `our-programs/europe.html`.
+- For academic disciplines: copy `our-programs/management.html` or `our-programs/engineering.html`.
+
+### Step 2 — Standardize Page Sections
+Ensure every new program includes the mandatory standardized sections:
+1. **Hero Banner & Title Header** (Title Case, never ALL-CAPS).
+2. **Standardized 8-Point Inclusions Grid** (Flights, Accommodation, Meals, Industry Visits, Coach, Sightseeing, Tour Leader, Insurance).
+3. **Day-by-Day Indicative Itinerary** (Bold highlights, route transition tags).
+4. **Discipline Academic Pillars / Learning Outcomes**.
+5. **Interactive FAQ Accordion & Floating CTA Desk**.
+
+### Step 3 — Update Navigation & Mega Menu
+Update the desktop mega-menu and mobile drawer links in:
+- `css/global-components.css`
+- `js/global-components.js`
+
+### Step 4 — Commit Message Standards
+Follow Conventional Commits:
+- `feat(programs): add new South Africa immersion program`
+- `fix(gallery): resolve responsive grid spacing on mobile`
+- `docs(readme): update deployment and backup procedures`
+
+---
+
+## 🛡️ 12. Backup, Hosting & Disaster Recovery
+
+### Hostinger Web Hosting Management:
+- **Server Platform:** Hostinger Business Web Hosting running PHP 8.x with NVMe SSD storage.
+- **Automated Backups:** Hostinger generates automatic daily/weekly snapshots of `public_html`.
+- **Manual Backups:** Administrators can generate a full ZIP snapshot anytime via **hPanel → Backups → Generate New Backup**.
+
+### Disaster Recovery & Rollback:
+- **Instant Git Rollback:** In the event of a breaking change, roll back instantly using:
+  ```bash
+  git revert <commit-hash>
+  git push origin main
+  ```
+- **Inquiry Data Backup:** All form submissions are permanently stored in the linked Google Spreadsheet independent of web hosting servers.
