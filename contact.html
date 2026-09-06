@@ -181,6 +181,7 @@
       letter-spacing: 0.1em;
       margin-right: 4px;
     }
+    .journey-social-strip .social-btn,
     .journey-social-btn {
       width: 44px;
       height: 44px;
@@ -194,7 +195,9 @@
       flex-shrink: 0;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
+    .journey-social-strip .social-btn svg,
     .journey-social-btn svg { width: 19px; height: 19px; }
+    .journey-social-strip .social-btn:hover,
     .journey-social-btn:hover {
       background: var(--navy);
       border-color: var(--navy);
@@ -577,6 +580,215 @@
     .acc-title span { color: #0F172A !important; font-style: italic !important; }
 
     .highlight-card-text, .highlight-text, .highlight-title { color: #0F172A !important; font-weight: 700 !important; }
+
+    /* ═════════════════════════════════════════════════════════════════
+       RESPONSIVE DESIGN / MOBILE VIEW FIXES
+       ═════════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .journey-channels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .journey-channels-grid .journey-channel-card:last-child {
+        grid-column: 1 / -1;
+      }
+      .form-container-card {
+        padding: 44px 36px;
+      }
+      .journey-hub-card {
+        padding: 36px 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+      .page-header-section {
+        padding: 28px 0 12px;
+      }
+      .page-header-section h1 {
+        font-size: clamp(1.8rem, 6vw, 2.3rem);
+      }
+      
+      /* Journey Hub Section */
+      #journey-hub-section {
+        padding: 24px 0 20px;
+      }
+      .journey-hub-card {
+        padding: 28px 20px;
+        border-radius: 24px;
+      }
+      .journey-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+      }
+      .journey-title-wrap h2 {
+        font-size: clamp(1.5rem, 5vw, 1.95rem);
+      }
+      .journey-social-strip {
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+      }
+      .journey-social-label {
+        width: 100%;
+        margin-bottom: 4px;
+      }
+      .journey-channels-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .journey-channels-grid .journey-channel-card:last-child {
+        grid-column: auto;
+      }
+      .journey-channel-card {
+        padding: 22px 20px;
+        border-radius: 18px;
+        gap: 12px;
+      }
+      .journey-channel-body {
+        font-size: 0.95rem;
+        word-break: break-word;
+      }
+      
+      /* Contact Form Section */
+      #contact-form-section {
+        padding: 20px 0 48px;
+      }
+      .form-container-card {
+        padding: 32px 20px;
+        border-radius: 24px;
+      }
+      .form-header {
+        margin-bottom: 24px;
+      }
+      .form-title {
+        font-size: clamp(1.5rem, 5vw, 1.95rem);
+      }
+      .form-sub {
+        font-size: 0.88rem;
+        line-height: 1.55;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .form-group.full {
+        grid-column: 1;
+      }
+      .form-control {
+        padding: 13px 16px;
+        font-size: 0.92rem;
+        border-radius: 12px;
+      }
+      .form-input-wrap .form-control {
+        padding-right: 44px !important;
+      }
+      .form-submit-btn {
+        padding: 15px 24px;
+        font-size: 0.98rem;
+      }
+
+      /* Popup Modals on Mobile */
+      .popup-modal {
+        padding: 16px;
+      }
+      .popup-card {
+        padding: 32px 20px 24px;
+        border-radius: 22px;
+        max-width: 100%;
+      }
+      .popup-icon-wrap {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+      }
+      .popup-icon-wrap svg {
+        width: 32px;
+        height: 32px;
+      }
+      .popup-title {
+        font-size: 1.35rem;
+        margin-bottom: 8px;
+      }
+      .popup-desc {
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+      .popup-actions {
+        flex-direction: column !important;
+        gap: 10px !important;
+        margin-top: 20px !important;
+        width: 100% !important;
+      }
+      .popup-actions .btn,
+      .popup-actions button,
+      .popup-actions a {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        white-space: normal !important;
+        text-align: center !important;
+      }
+
+      /* Elite Circle CTA on Mobile */
+      #elite-cta {
+        padding: 48px 0;
+        background-attachment: scroll;
+      }
+      .elite-h2 {
+        font-size: clamp(1.6rem, 5vw, 2.1rem);
+      }
+      .elite-p {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+      .journey-hub-card {
+        padding: 22px 16px;
+        border-radius: 20px;
+      }
+      .journey-channel-head {
+        gap: 10px;
+      }
+      .journey-channel-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+      }
+      .journey-channel-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+      .journey-social-strip .social-btn,
+      .journey-social-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+      }
+      .journey-social-strip .social-btn svg,
+      .journey-social-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+      .form-container-card {
+        padding: 24px 16px;
+        border-radius: 20px;
+      }
+      .form-control {
+        padding: 12px 14px;
+        font-size: 0.88rem;
+      }
+    }
 </style>
   <link rel="stylesheet" href="css/global-components.css?v=1788191808139" />
   
