@@ -33,7 +33,7 @@
   
     // 1. Permanent Bulletproof Clean URL Mapper
   let urlHome = isFileProtocol ? (isSubFolder ? '../index.html' : 'index.html') : (isSubFolder ? '../' : '/');
-  let urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact;
+  let urlAbout, urlImmersion, urlLeadership, urlGallery, urlContact, urlCancellation;
   let urlDestSingapore, urlDestJapan, urlDestKorea, urlDestEurope, urlDestMalaysia, urlDestUAE;
 
   if (isFileProtocol) {
@@ -44,6 +44,7 @@
       urlLeadership = '../leadership-walk.html';
       urlGallery = '../gallery.html';
       urlContact = '../contact.html';
+      urlCancellation = '../cancellation-and-refund-policy.html';
 
       urlDestSingapore = 'singapore-indonesia.html';
       urlDestJapan = 'japan.html';
@@ -58,6 +59,7 @@
       urlLeadership = 'leadership-walk.html';
       urlGallery = 'gallery.html';
       urlContact = 'contact.html';
+      urlCancellation = 'cancellation-and-refund-policy.html';
 
       urlDestSingapore = 'our-programs/singapore-indonesia.html';
       urlDestJapan = 'our-programs/japan.html';
@@ -74,6 +76,7 @@
     urlLeadership = isSubFolder ? '../leadership-walk' : '/leadership-walk';
     urlGallery = isSubFolder ? '../gallery' : '/gallery';
     urlContact = isSubFolder ? '../contact' : '/contact';
+    urlCancellation = isSubFolder ? '../cancellation-and-refund-policy' : '/cancellation-and-refund-policy';
 
     urlDestSingapore = isSubFolder ? 'singapore-indonesia' : '/our-programs/singapore-indonesia';
     urlDestJapan = isSubFolder ? 'japan' : '/our-programs/japan';
@@ -398,7 +401,7 @@
           <div class="footer-links">
             <a href="${urlImmersion}">Programs</a>
             <a href="${urlGallery}">Gallery</a>
-            <a href="${urlContact}">Cancellation &amp; Refund process</a>
+            <a href="${urlCancellation}">Cancellation &amp; Refund process</a>
           </div>
         </div>
 

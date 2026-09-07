@@ -1091,22 +1091,28 @@
 ];
 
   function loadGalleryItems() {
-    const raw = localStorage.getItem('vijigishu_gallery_items');
-    if (!raw) {
-      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(defaultPresetItems));
-      return defaultPresetItems.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
-    }
+    let list = [];
     try {
-      const parsed = JSON.parse(raw);
-      // Clean up any stale references to deleted images
-      const valid = parsed.filter(item => item && item.src && !item.src.includes('singapore-06'));
-      if (valid.length !== parsed.length) {
-        localStorage.setItem('vijigishu_gallery_items', JSON.stringify(valid));
+      const raw = localStorage.getItem('vijigishu_gallery_items');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const existingSrcs = new Set(parsed.map(x => x.src));
+          const missingDefaults = defaultPresetItems.filter(x => !existingSrcs.has(x.src));
+          list = [...parsed, ...missingDefaults].filter(item => item && item.src && !item.src.includes('singapore-06'));
+          localStorage.setItem('vijigishu_gallery_items', JSON.stringify(list));
+        }
       }
-      return valid.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
-    } catch(e) {
-      return defaultPresetItems.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
+    } catch(e) {}
+
+    if (!list || !list.length) {
+      list = defaultPresetItems.filter(item => item && item.src && !item.src.includes('singapore-06'));
+      try {
+        localStorage.setItem('vijigishu_gallery_items', JSON.stringify(list));
+      } catch(e) {}
     }
+
+    return list.map(item => ({ ...item, icon: getCountryIcon(item.country || item.category) }));
   }
 
   let galleryItems = loadGalleryItems();

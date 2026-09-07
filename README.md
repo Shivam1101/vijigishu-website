@@ -59,7 +59,8 @@ vijigishu-website/
 │   ├── about.html                      # About Us: Mission, Cornell Maha 60 partnership, executive leadership
 │   ├── gallery.html                    # Media Gallery: Interactive masonry grid with country filters & lightbox
 │   ├── contact.html                    # Inquiry Hub: Multi-channel contact points, responsive inquiry form
-│   └── login.html                      # Administrative authentication portal
+│   ├── login.html                      # Administrative authentication portal
+│   └── cancellation-and-refund-policy.html # Official Terms & Cancellation Policy: Interactive TOC, Slabs & Payment Security
 │
 ├── 🎓 Academic & Destination Programs (/our-programs/)
 │   ├── index.html                      # Programs Explorer: 3-column discovery hub and modal overviews
@@ -244,7 +245,7 @@ When adding a new destination, academic discipline, or program page:
 ### Step 2 — Standardize Page Sections
 Ensure every new program includes the mandatory standardized sections:
 1. **Hero Banner & Title Header** (Title Case, never ALL-CAPS).
-2. **Standardized 8-Point Inclusions Grid** (Flights, Accommodation, Meals, Industry Visits, Coach, Sightseeing, Tour Leader, Insurance).
+2. **Standardized 8-Point Inclusions Grid** (Flights, Accommodation, Meals, Industry and Academic visit, Coach, Sightseeing, Tour Leader, Insurance).
 3. **Day-by-Day Indicative Itinerary** (Bold highlights, route transition tags).
 4. **Discipline Academic Pillars / Learning Outcomes**.
 5. **Interactive FAQ Accordion & Floating CTA Desk**.

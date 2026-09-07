@@ -604,19 +604,25 @@
   let currentCountryFilter = 'all';
 
   function getGalleryItems() {
+    let list = [];
     try {
       const raw = localStorage.getItem('vijigishu_gallery_items');
       if (raw) {
         const parsed = JSON.parse(raw);
-        const valid = parsed.filter(x => x && x.src && !x.src.includes('singapore-06'));
-        if (valid.length !== parsed.length) {
-          localStorage.setItem('vijigishu_gallery_items', JSON.stringify(valid));
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const existingSrcs = new Set(parsed.map(x => x.src));
+          const missingDefaults = DEFAULT_GALLERY.filter(x => !existingSrcs.has(x.src));
+          list = [...parsed, ...missingDefaults].filter(x => x && x.src && !x.src.includes('singapore-06'));
+          localStorage.setItem('vijigishu_gallery_items', JSON.stringify(list));
+          return list;
         }
-        return valid;
       }
     } catch(e) {}
-    localStorage.setItem('vijigishu_gallery_items', JSON.stringify(DEFAULT_GALLERY));
-    return DEFAULT_GALLERY;
+    list = DEFAULT_GALLERY.filter(x => x && x.src && !x.src.includes('singapore-06'));
+    try {
+      localStorage.setItem('vijigishu_gallery_items', JSON.stringify(list));
+    } catch(e) {}
+    return list;
   }
 
   function saveGalleryItems(list) {
