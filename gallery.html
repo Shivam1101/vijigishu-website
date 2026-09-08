@@ -75,13 +75,13 @@
     .nav-cta:hover { background: var(--sage) !important; color: #0F172A !important; }
     .nav-cta::after { display: none !important; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: #FFFFFF !important; border-radius: 2px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #0F172A !important; border-radius: 2px; }
     .mobile-menu { display: none; flex-direction: column; background: var(--white); position: fixed; top: 72px; left: 0; right: 0; z-index: 998; padding: 16px 24px; box-shadow: 0 8px 30px rgba(0,0,0,.1); }
     .mobile-menu a { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.04); font-weight: 600; color: #0F172A; display: block; }
 
     
-    .page-hero { position: relative; width: 100%; height: auto; min-height: auto; margin-top: 0; overflow: hidden; background: #FFFFFF !important; display: block; }
-    .page-hero video { width: 100%; height: auto; display: block; object-fit: contain; }
+    .page-hero { position: relative; width: 100%; height: auto; min-height: auto; margin-top: 0; overflow: hidden; background: #FFFFFF; display: block; }
+    .page-hero video, .gallery-hero-video { width: 100%; height: auto; display: block; object-fit: cover; }
     
 
     /* ─── GALLERY SUB-HEADING & TITLE BANNER BAR ─── */
@@ -461,7 +461,8 @@
       }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .page-hero { height: auto; width: 100%; }
+      .page-hero { height: 38vh !important; min-height: 280px !important; width: 100% !important; position: relative !important; overflow: hidden !important; background: #000000 !important; }
+      .page-hero video, .gallery-hero-video { width: 100% !important; height: 100% !important; min-height: 100% !important; object-fit: cover !important; object-position: center !important; display: block !important; }
       .masonry-grid { column-count: 1; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .lightbox-nav-btn { width: 42px; height: 42px; font-size: 1.3rem; }
@@ -522,7 +523,7 @@
 
 <!-- ===== PAGE HERO BANNER (NO OVERLAY, CLEAN VIDEO) ===== -->
 <div class="page-hero">
-  <video autoplay loop muted playsinline preload="metadata" poster="images/gallery-hero-poster.webp" style="width:100%; height:auto; display:block; object-fit:contain;">
+  <video autoplay loop muted playsinline preload="metadata" poster="images/gallery-hero-poster.webp" class="gallery-hero-video">
     <source src="videos/gallery-banner-optimized.mp4" type="video/mp4" />
     <source src="images/Website-Gallery-Banner-Video-.mp4" type="video/mp4" />
   </video>

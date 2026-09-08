@@ -483,7 +483,7 @@ nav#navbar.scrolled {
   }
   .mobile-nav-item,
   .mobile-dropdown-header {
-    padding: 12px 16px !important;
+    padding: 0 !important;
     margin: 0 !important;
     font-size: 0.96rem !important;
     font-weight: 700 !important;
@@ -497,11 +497,37 @@ nav#navbar.scrolled {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    cursor: pointer !important;
     user-select: none !important;
     -webkit-tap-highlight-color: transparent !important;
     box-sizing: border-box !important;
     width: 100% !important;
+  }
+  .mobile-nav-item {
+    padding: 12px 16px !important;
+    cursor: pointer !important;
+  }
+  .mobile-dropdown-title-link {
+    flex: 1 !important;
+    padding: 12px 16px !important;
+    font-size: 0.96rem !important;
+    font-weight: 700 !important;
+    color: #0F172A !important;
+    text-decoration: none !important;
+    border-radius: 10px 0 0 10px !important;
+    transition: all 0.2s ease !important;
+    display: block !important;
+  }
+  .mobile-dropdown-toggle-btn {
+    background: transparent !important;
+    border: none !important;
+    padding: 12px 16px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 0 10px 10px 0 !important;
+    transition: all 0.2s ease !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
   .mobile-dropdown-header span,
   .mobile-nav-item span {
@@ -511,10 +537,15 @@ nav#navbar.scrolled {
   .mobile-nav-item:hover,
   .mobile-nav-item:active,
   .mobile-nav-item.active,
-  .mobile-dropdown-header:hover,
-  .mobile-dropdown-header:active {
+  .mobile-dropdown-title-link:hover,
+  .mobile-dropdown-title-link:active,
+  .mobile-dropdown-title-link.active {
     background: rgba(43, 84, 149, 0.06) !important;
     color: #2B5495 !important;
+  }
+  .mobile-dropdown-toggle-btn:hover,
+  .mobile-dropdown-toggle-btn:active {
+    background: rgba(43, 84, 149, 0.08) !important;
   }
   .mobile-arrow {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;

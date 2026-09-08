@@ -267,11 +267,12 @@
       <!-- Parent Accordion: Our Programs -->
       <div class="mobile-accordion-group">
         <div class="mobile-dropdown-header" id="mobileDropdownHeader">
-          <span>Our Programs</span>
-          <svg class="mobile-arrow" id="mobileArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          <a href="${urlImmersion}" class="mobile-dropdown-title-link ${isActive('our-programs')}">Our Programs</a>
+          <button type="button" class="mobile-dropdown-toggle-btn" id="mobileDropdownToggleBtn" aria-label="Toggle Our Programs submenu">
+            <svg class="mobile-arrow" id="mobileArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
         </div>
         <div class="mobile-dropdown-body" id="mobileDropdownBody">
-          
           <!-- Sub Accordion 1: Academic Disciplines -->
           <div class="mobile-sub-accordion">
             <div class="mobile-sub-header" id="subHeaderDisciplines">
@@ -777,12 +778,12 @@
     }
 
     // Parent Accordion: Our Programs
-    const mobileDropdownHeader = document.getElementById('mobileDropdownHeader');
+    const mobileDropdownToggleBtn = document.getElementById('mobileDropdownToggleBtn');
     const mobileDropdownBody = document.getElementById('mobileDropdownBody');
     const mobileArrow = document.getElementById('mobileArrow');
 
-    if (mobileDropdownHeader && mobileDropdownBody) {
-      mobileDropdownHeader.addEventListener('click', function (e) {
+    if (mobileDropdownToggleBtn && mobileDropdownBody) {
+      mobileDropdownToggleBtn.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
         mobileDropdownBody.classList.toggle('open');
