@@ -4,6 +4,85 @@
  */
 (function () {
 
+  // --- 1. Google Analytics 4 (GA4) Global Initialization ---
+  (function initGoogleAnalytics() {
+    const GA_ID = 'G-C5DX1M9CSL';
+    if (!window[`ga-disable-${GA_ID}`] && !document.querySelector(`script[src*="${GA_ID}"]`)) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_ID, {
+        send_page_view: true,
+        cookie_flags: 'SameSite=None;Secure'
+      });
+
+      // Attach automatic click & conversion event tracking
+      document.addEventListener('click', function (e) {
+        const target = e.target.closest('a, button, .filter-btn, .nav-cta, .btn-primary, .btn-secondary, .btn-outline');
+        if (!target || typeof window.gtag !== 'function') return;
+
+        const href = target.getAttribute('href') || '';
+
+        // Phone call clicks
+        if (href.startsWith('tel:')) {
+          window.gtag('event', 'phone_call_click', {
+            event_category: 'Contact',
+            event_label: href.replace('tel:', ''),
+            phone_number: href.replace('tel:', '')
+          });
+        }
+        // Email inquiry clicks
+        else if (href.startsWith('mailto:')) {
+          window.gtag('event', 'email_inquiry_click', {
+            event_category: 'Contact',
+            event_label: href.replace('mailto:', ''),
+            email_address: href.replace('mailto:', '')
+          });
+        }
+        // Brochure / PDF download clicks
+        else if (href.toLowerCase().endsWith('.pdf') || target.classList.contains('download-brochure-btn')) {
+          window.gtag('event', 'brochure_download', {
+            event_category: 'Engagement',
+            event_label: href.split('/').pop() || 'Brochure PDF',
+            file_url: href
+          });
+        }
+        // Social media clicks
+        else if (target.classList.contains('social-btn') || target.classList.contains('journey-social-btn')) {
+          const network = target.getAttribute('title') || target.getAttribute('aria-label') || href;
+          window.gtag('event', 'social_click', {
+            event_category: 'Social',
+            event_label: network,
+            social_network: network
+          });
+        }
+        // Gallery destination filter clicks
+        else if (target.classList.contains('filter-btn')) {
+          const filterName = target.getAttribute('data-filter') || target.innerText.trim();
+          window.gtag('event', 'gallery_filter_click', {
+            event_category: 'Gallery',
+            event_label: filterName,
+            country_filter: filterName
+          });
+        }
+        // CTA & primary buttons
+        else if (target.classList.contains('nav-cta') || target.classList.contains('btn-primary')) {
+          window.gtag('event', 'cta_button_click', {
+            event_category: 'Conversion',
+            event_label: target.innerText.trim() || 'CTA Click',
+            link_url: href
+          });
+        }
+      }, { passive: true });
+    }
+  })();
+
   const svgIcons = {
     management: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
     architecture: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21V11h6v10"></path></svg>',
